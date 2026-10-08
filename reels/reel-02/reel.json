@@ -1,21 +1,46 @@
 {
   "id": "reel-02",
   "number": "02",
-  "title": "A definir",
-  "status": "aguardando briefing",
+  "title": "Reel 002 — \"Muito além de um site\"",
+  "status": "concluído · em avaliação",
   "format": { "width": 1080, "height": 1920, "fps": 60 },
   "output": {
     "video": "output/fazlo-digital-reel-02.mp4",
     "cover": "output/capa.png"
   },
-  "fonts": [],
-  "assets": {},
-  "qa": {
-    "duration": [15, 30],
-    "lufs": -14,
-    "syncCues": [],
-    "visualCues": [],
-    "checkTimes": []
+  "fonts": [
+    "400 100px 'FZD Display'", "600 100px 'FZD Display'", "800 100px 'FZD Display'", "900 100px 'FZD Display'",
+    "400 100px 'FZD Text'", "500 100px 'FZD Text'", "600 100px 'FZD Text'", "700 100px 'FZD Text'"
+  ],
+  "assets": {
+    "logo": "brand/logo/fazlo-digital-logo.webp",
+    "logoDark": "brand/logo/fazlo-digital-logo-escura.png"
   },
-  "storyboard": []
+  "qa": {
+    "duration": [20, 30],
+    "lufs": -14,
+    "syncCues": ["hit", "zoom", "logo"],
+    "visualCues": ["zoom", "logo"],
+    "checkTimes": [0.6, 1.8, 3.6, 6.0, 8.4, 10.8, 13.2, 15.6, 17.2, 18.6, 20.4, 22.4]
+  },
+  "storyboard": [
+    [0.6, "UM SITE"],
+    [1.8, "É SÓ UMA PÁGINA?"],
+    [2.55, "ZOOM · UM LADRILHO"],
+    [3.6, "01 IDENTIDADE"],
+    [4.95, "ZOOM · UM NÓ"],
+    [6.2, "02 INFORMAÇÕES"],
+    [7.35, "ZOOM · UMA TELA"],
+    [8.6, "03 APRESENTAÇÃO"],
+    [9.75, "ZOOM · UM CARTÃO"],
+    [10.8, "04 CONEXÃO"],
+    [13.0, "UM SITE NÃO É SÓ…"],
+    [14.1, "A REDE SE ABRE"],
+    [15.4, "É PARTE DE COMO…"],
+    [16.95, "A BARRA DA LOGO"],
+    [17.4, "A MARCA SE FORMA"],
+    [18.6, "MUITO ALÉM DE UM SITE."],
+    [20.2, "FAZLODIGITAL.COM.BR"],
+    [22.4, "FIM"]
+  ]
 }

@@ -2,7 +2,7 @@
 
 Produção dos Reels do Instagram da **FAZLO Digital**: motion graphics 9:16 animados em código, renderizados quadro a quadro e com trilha e efeitos sintetizados e sincronizados à imagem.
 
-> **Status:** **Reel 00 · "Da ideia ao digital."** e **Reel 001 · "Seu negócio já é bom. Seu digital precisa parecer isso."** concluídos e em avaliação ([`reels/`](reels)). Identidade audiovisual em [`brand/`](brand): logo oficial (clara e escura), paleta, tipografia e assinatura sonora.
+> **Status:** **Reel 00 · "Da ideia ao digital."**, **Reel 001 · "Seu negócio já é bom. Seu digital precisa parecer isso."** e **Reel 002 · "Muito além de um site."** concluídos e em avaliação ([`reels/`](reels)). Identidade audiovisual em [`brand/`](brand): logo oficial (clara e escura), paleta, tipografia e assinatura sonora.
 
 ## Padrão de entrega
 
