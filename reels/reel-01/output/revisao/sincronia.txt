@@ -1,0 +1,21 @@
+REEL-01 — sincronização som x imagem
+
+OK     áudio do MP4 = trilha, sem deslocamento (+0.0, +0.0, +0.0 ms)
+OK     8 efeitos-chave com ataque no instante do evento (desvio médio 5.1 ms, máximo 9.3 ms; 1 quadro = 16,7 ms)
+OK     a imagem reage em 6/6 golpes principais (pico de movimento a ≤ 8 quadros do som)
+
+Evento a evento (instante do evento visual, desvio medido):
+           0.000 s  hit         áudio   -9.3 ms
+           0.500 s  slam        áudio   -1.8 ms
+           2.000 s  cut         áudio   -4.3 ms
+           8.000 s  virada      áudio   +3.2 ms
+          10.000 s  forte       áudio   -4.3 ms
+          12.000 s  snap        áudio   -4.3 ms
+          16.000 s  stamp       áudio   -6.8 ms
+          22.000 s  logo        áudio   -6.8 ms
+           2.000 s  cut         imagem: movimento  34.7 (antes  1.0), pico a +0 quadro(s)
+           8.000 s  virada      imagem: movimento  58.9 (antes  1.2), pico a +1 quadro(s)
+          10.000 s  forte       imagem: movimento  22.0 (antes  0.1), pico a +0 quadro(s)
+          12.000 s  snap        imagem: movimento   4.7 (antes  0.1), pico a +6 quadro(s)
+          16.000 s  stamp       imagem: movimento   5.4 (antes  0.4), pico a -2 quadro(s)
+          22.000 s  logo        imagem: movimento  11.6 (antes  0.1), pico a +0 quadro(s)

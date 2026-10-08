@@ -2,7 +2,7 @@
 
 Produção dos Reels do Instagram da **FAZLO Digital**: motion graphics 9:16 animados em código, renderizados quadro a quadro e com trilha e efeitos sintetizados e sincronizados à imagem.
 
-> **Status:** **Reel 00 · "Da ideia ao digital."** concluído e em avaliação ([`reels/reel-00/`](reels/reel-00)). Identidade audiovisual definida em [`brand/`](brand): logo oficial, paleta, tipografia e assinatura sonora.
+> **Status:** **Reel 00 · "Da ideia ao digital."** e **Reel 001 · "Seu negócio já é bom. Seu digital precisa parecer isso."** concluídos e em avaliação ([`reels/`](reels)). Identidade audiovisual em [`brand/`](brand): logo oficial (clara e escura), paleta, tipografia e assinatura sonora.
 
 ## Padrão de entrega
 
@@ -59,7 +59,7 @@ core/
 brand/
   tokens.js          # paleta, tipografia, logo e geometria da barra do Z
   fonts/             # Unbounded + Sora (OFL) e fonts.css
-  logo/              # logo oficial (arquivo intacto)
+  logo/              # logo oficial (mestre intacto + versão escura) e folhas de referência
   audio/             # referências da assinatura sonora
 tools/
   render.cjs         # cues | video | preview | stills | cover  (Chromium headless -> ffmpeg)
@@ -70,7 +70,9 @@ tools/
   qa.py              # revisão técnica + sincronização + zonas seguras + capa no feed
   storyboard.py      # folha de quadros-chave
   logo_alpha.py      # fundo da logo transparente, sem alterar a arte
+  logo_variant.py    # variante de cor da logo (ex.: versão escura) trocando só a cor das letras
   audio/fzaudio.py   # síntese (osciladores, bateria, efeitos), mixagem em barramentos e master
+  audio/fzbrand.py   # assinatura sonora da marca ("o corte")
 templates/reel/      # modelo de pasta de Reel
 reels/
   reel-00/ reel-01/ reel-02/   # um Reel por pasta (ver reels/README.md)

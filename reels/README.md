@@ -5,7 +5,7 @@ Cada Reel vive numa pasta independente (`reel-NN/`), com conceito, animação, t
 | Reel | Conceito | Duração | Status | Pasta |
 |---|---|---|---|---|
 | **00** | **"Da ideia ao digital."** Apresentação oficial: a barra lima da logo corta, organiza e transforma (ideia → forma → código → sites e experiências digitais) e volta ao seu lugar na logo | 26,8 s | concluído · em avaliação | [`reel-00/`](reel-00) |
-| **01** | a definir | — | aguardando briefing | [`reel-01/`](reel-01) |
+| **001** | **"Seu negócio já é bom. Seu digital precisa parecer isso."** A barra vira a fronteira de resolução: o negócio nítido x o digital pixelado; a virada para um estúdio em alta definição (mais forte, profissional, confiável, marcante) e "à altura" | 26,6 s | concluído · em avaliação | [`reel-01/`](reel-01) |
 | **02** | a definir | — | aguardando briefing | [`reel-02/`](reel-02) |
 
 Novos Reels: `npm run new-reel -- 03 "Título"`.

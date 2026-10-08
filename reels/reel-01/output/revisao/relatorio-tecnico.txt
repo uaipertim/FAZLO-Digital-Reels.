@@ -1,0 +1,25 @@
+REEL-01 — revisão técnica
+output/fazlo-digital-reel-01.mp4
+
+OK     vídeo h264 High yuv420p
+OK     resolução 1080x1920 (9:16)
+OK     60 fps, 1596 quadros
+OK     duração do vídeo 26.600 s (alvo 20–30 s)
+OK     arquivo 12.4 MB, 3.7 Mb/s
+OK     faixa de áudio presente
+OK     áudio aac 48000 Hz, 2 canais, 263 kb/s
+OK     vídeo e áudio com a mesma duração (Δ 0 ms)
+OK     loudness integrado -14.1 LUFS (alvo -14)
+OK     pico real -2.6 dBTP (limite -1)
+       faixa de loudness (LRA) 3.2 LU
+OK     sem trechos pretos ≥ 0,1 s
+OK     sem imagem congelada ≥ 0,75 s
+OK     o 1º quadro já tem imagem (luminância média 30.1), sem abertura preta
+OK     capa 1080x1920
+
+Sincronização (detalhes em sincronia.txt):
+OK     áudio do MP4 = trilha, sem deslocamento (+0.0, +0.0, +0.0 ms)
+OK     8 efeitos-chave com ataque no instante do evento (desvio médio 5.1 ms, máximo 9.3 ms; 1 quadro = 16,7 ms)
+OK     a imagem reage em 6/6 golpes principais (pico de movimento a ≤ 8 quadros do som)
+
+RESULTADO: aprovado

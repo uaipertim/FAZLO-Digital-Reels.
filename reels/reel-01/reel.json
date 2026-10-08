@@ -1,21 +1,158 @@
 {
   "id": "reel-01",
   "number": "01",
-  "title": "A definir",
-  "status": "aguardando briefing",
-  "format": { "width": 1080, "height": 1920, "fps": 60 },
+  "title": "Reel 001 — \"Seu negócio já é bom. Seu digital precisa parecer isso.\"",
+  "status": "concluído · em avaliação",
+  "format": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 60
+  },
   "output": {
     "video": "output/fazlo-digital-reel-01.mp4",
     "cover": "output/capa.png"
   },
-  "fonts": [],
-  "assets": {},
-  "qa": {
-    "duration": [15, 30],
-    "lufs": -14,
-    "syncCues": [],
-    "visualCues": [],
-    "checkTimes": []
+  "fonts": [
+    "400 100px 'FZD Display'",
+    "600 100px 'FZD Display'",
+    "800 100px 'FZD Display'",
+    "900 100px 'FZD Display'",
+    "400 100px 'FZD Text'",
+    "500 100px 'FZD Text'",
+    "600 100px 'FZD Text'",
+    "700 100px 'FZD Text'"
+  ],
+  "assets": {
+    "logo": "brand/logo/fazlo-digital-logo.webp",
+    "logoDark": "brand/logo/fazlo-digital-logo-escura.png"
   },
-  "storyboard": []
+  "qa": {
+    "duration": [
+      20,
+      30
+    ],
+    "lufs": -14,
+    "syncCues": [
+      "hit",
+      "slam",
+      "cut",
+      "virada",
+      "forte",
+      "snap",
+      "stamp",
+      "logo"
+    ],
+    "visualCues": [
+      "cut",
+      "virada",
+      "forte",
+      "snap",
+      "stamp",
+      "logo"
+    ],
+    "checkTimes": [
+      0.7,
+      2.6,
+      4.8,
+      6.6,
+      8.2,
+      9.2,
+      10.8,
+      12.8,
+      15.4,
+      17.0,
+      20.6,
+      25.0
+    ]
+  },
+  "storyboard": [
+    [
+      0.15,
+      "SEU NEGÓCIO"
+    ],
+    [
+      0.9,
+      "JÁ É BOM."
+    ],
+    [
+      2.03,
+      "O CORTE"
+    ],
+    [
+      2.9,
+      "NA PRÁTICA | NO DIGITAL"
+    ],
+    [
+      4.7,
+      "O DIGITAL TOMA CONTA"
+    ],
+    [
+      5.6,
+      "MENOR DO QUE É"
+    ],
+    [
+      6.6,
+      "SEU DIGITAL"
+    ],
+    [
+      7.6,
+      "PRECISA PARECER"
+    ],
+    [
+      8.03,
+      "A VIRADA"
+    ],
+    [
+      8.6,
+      "ISSO."
+    ],
+    [
+      10.15,
+      "FORTE"
+    ],
+    [
+      11.95,
+      "FORA DE LUGAR"
+    ],
+    [
+      12.9,
+      "PROFISSIONAL"
+    ],
+    [
+      14.6,
+      "CONFIÁVEL"
+    ],
+    [
+      16.1,
+      "MARCANTE"
+    ],
+    [
+      17.3,
+      "ECO"
+    ],
+    [
+      18.4,
+      "NA PRÁTICA = NO DIGITAL"
+    ],
+    [
+      19.3,
+      "NÍVEL"
+    ],
+    [
+      20.6,
+      "À ALTURA"
+    ],
+    [
+      22.07,
+      "RESOLUÇÃO"
+    ],
+    [
+      22.7,
+      "LOGO"
+    ],
+    [
+      25.5,
+      "ASSINATURA"
+    ]
+  ]
 }
