@@ -1,21 +1,163 @@
 {
   "id": "reel-00",
   "number": "00",
-  "title": "A definir",
-  "status": "aguardando briefing",
-  "format": { "width": 1080, "height": 1920, "fps": 60 },
+  "title": "Da ideia ao digital — apresentação oficial",
+  "status": "concluído · em avaliação",
+  "format": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 60
+  },
   "output": {
     "video": "output/fazlo-digital-reel-00.mp4",
     "cover": "output/capa.png"
   },
-  "fonts": [],
-  "assets": {},
-  "qa": {
-    "duration": [15, 30],
-    "lufs": -14,
-    "syncCues": [],
-    "visualCues": [],
-    "checkTimes": []
+  "fonts": [
+    "300 100px 'FZD Display'",
+    "400 100px 'FZD Display'",
+    "600 100px 'FZD Display'",
+    "800 100px 'FZD Display'",
+    "900 100px 'FZD Display'",
+    "400 100px 'FZD Text'",
+    "500 100px 'FZD Text'",
+    "600 100px 'FZD Text'",
+    "700 100px 'FZD Text'"
+  ],
+  "assets": {
+    "logo": "brand/logo/fazlo-digital-logo.webp"
   },
-  "storyboard": []
+  "qa": {
+    "duration": [
+      20,
+      30
+    ],
+    "lufs": -14,
+    "syncCues": [
+      "blade",
+      "drop",
+      "slash",
+      "chev",
+      "warp",
+      "morph",
+      "logo"
+    ],
+    "visualCues": [
+      "drop",
+      "wipe",
+      "morph",
+      "logo"
+    ],
+    "checkTimes": [
+      0.5,
+      2.6,
+      4.6,
+      6.4,
+      8.95,
+      10.2,
+      12.9,
+      14.4,
+      16.3,
+      18.0,
+      21.8,
+      25.5
+    ]
+  },
+  "storyboard": [
+    [
+      0.05,
+      "O CORTE"
+    ],
+    [
+      0.6,
+      "FAÍSCA"
+    ],
+    [
+      1.5,
+      "POEIRA"
+    ],
+    [
+      2.6,
+      "IDEIA"
+    ],
+    [
+      3.82,
+      "A BARRA CORTA"
+    ],
+    [
+      4.15,
+      "FATIAS"
+    ],
+    [
+      5.0,
+      "FORMA · MALHA"
+    ],
+    [
+      6.3,
+      "VOLUME"
+    ],
+    [
+      7.45,
+      "CORTINA"
+    ],
+    [
+      8.95,
+      "</>"
+    ],
+    [
+      9.9,
+      "CÓDIGO"
+    ],
+    [
+      10.62,
+      "PORTAL"
+    ],
+    [
+      10.95,
+      "TÚNEL"
+    ],
+    [
+      12.0,
+      "PAINÉIS"
+    ],
+    [
+      13.6,
+      "SITES PROFISSIONAIS"
+    ],
+    [
+      15.7,
+      "MOSAICO"
+    ],
+    [
+      16.55,
+      "ANEL"
+    ],
+    [
+      17.35,
+      "ESCADA"
+    ],
+    [
+      18.3,
+      "PERSONALIZADAS"
+    ],
+    [
+      19.5,
+      "CONVERGÊNCIA"
+    ],
+    [
+      20.45,
+      "O PONTO"
+    ],
+    [
+      20.75,
+      "A BARRA VOLTA"
+    ],
+    [
+      21.05,
+      "REVELAÇÃO"
+    ],
+    [
+      25.5,
+      "ASSINATURA"
+    ]
+  ]
 }

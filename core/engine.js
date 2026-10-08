@@ -5,7 +5,8 @@
    FZD.define({...}) e o motor cuida do resto:
 
      - renderAt(ctx, t)  quadro exato do instante t (determinístico), com
-                         motion blur real por subamostragem do obturador;
+                         motion blur real por subamostragem do obturador e
+                         pós-processamento opcional (post) sobre o quadro final;
      - renderCover(ctx)  capa 1080x1920;
      - cues()            eventos de som tirados da animação (audio/cues.json),
                          que a trilha usa para cair no quadro certo.
@@ -187,7 +188,7 @@
       if (!ready) throw new Error(`${spec.id}: init() ainda não foi chamado`);
       t = clamp(t, 0, DURATION - 1e-4);
       const sh = o.noBlur ? { n: 1 } : shutter(t);
-      if (sh.n <= 1) { frame(ctx, t); return; }
+      if (sh.n <= 1) { frame(ctx, t); post(ctx, t); return; }
       const [S, A] = buffers();
       const sctx = S.getContext('2d'), actx = A.getContext('2d');
       actx.setTransform(1, 0, 0, 1, 0, 0); actx.globalCompositeOperation = 'source-over';
@@ -199,12 +200,22 @@
       actx.globalAlpha = 1;
       ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.globalAlpha = 1; ctx.globalCompositeOperation = 'source-over';
       ctx.drawImage(A, 0, 0);
+      post(ctx, t);
+    }
+
+    // pós-processamento sobre o quadro final, depois do motion blur (bloom, grão...)
+    function post(ctx, t) {
+      if (!spec.post) return;
+      ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.globalAlpha = 1; ctx.globalCompositeOperation = 'source-over'; ctx.filter = 'none';
+      spec.post(ctx, t, api);
+      ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.globalAlpha = 1; ctx.globalCompositeOperation = 'source-over'; ctx.filter = 'none';
     }
 
     function renderCover(ctx) {
       ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.globalAlpha = 1; ctx.globalCompositeOperation = 'source-over';
       if (spec.cover) spec.cover(ctx, api);
       else frame(ctx, spec.coverAt ?? DURATION * 0.5);
+      post(ctx, spec.coverAt ?? DURATION * 0.5);
     }
 
     return {

@@ -2,7 +2,7 @@
 
 Produção dos Reels do Instagram da **FAZLO Digital**: motion graphics 9:16 animados em código, renderizados quadro a quadro e com trilha e efeitos sintetizados e sincronizados à imagem.
 
-> **Status:** infraestrutura pronta e validada (`npm test` aprovado). A identidade visual e sonora da FAZLO Digital ainda será definida: **aguardando a logo oficial e as orientações criativas do Reel 00.**
+> **Status:** **Reel 00 · "Da ideia ao digital."** concluído e em avaliação ([`reels/reel-00/`](reels/reel-00)). Identidade audiovisual definida em [`brand/`](brand): logo oficial, paleta, tipografia e assinatura sonora.
 
 ## Padrão de entrega
 
@@ -53,14 +53,14 @@ Atalhos do preview: `espaço` play/pausa · `←/→` 1 quadro · `shift+←/→
 
 ```
 core/
-  engine.js          # motor Canvas 2D determinístico: FZD.define, renderAt (motion blur), capa, cues, utilitários
+  engine.js          # motor Canvas 2D determinístico: FZD.define, renderAt (motion blur + pós), capa, cues, utilitários
   player.html        # preview interativo e página usada pelo render (?render)
   safe-zones.json    # áreas cobertas pela interface do Reels + recorte 3:4 do perfil
 brand/
-  tokens.js          # paleta, tipografia e logo da FAZLO Digital (PROVISÓRIO, neutro)
-  fonts/             # fontes oficiais + fonts.css (aguardando)
-  logo/              # logo oficial (aguardando)
-  audio/             # referências da assinatura sonora (aguardando)
+  tokens.js          # paleta, tipografia, logo e geometria da barra do Z
+  fonts/             # Unbounded + Sora (OFL) e fonts.css
+  logo/              # logo oficial (arquivo intacto)
+  audio/             # referências da assinatura sonora
 tools/
   render.cjs         # cues | video | preview | stills | cover  (Chromium headless -> ffmpeg)
   build.cjs          # pipeline completo de um Reel
@@ -92,7 +92,7 @@ reels/reel-NN/
 ## Como funciona
 
 1. **Animação determinística.** `frame(ctx, t, api)` desenha o quadro exato do instante `t`, sem estado entre quadros. O mesmo código serve o preview, o render e a lista de cues.
-2. **Motion blur real.** `renderAt` faz a média de vários subquadros dentro da abertura do obturador; o padrão é 4 amostras em 1/120 s e cada Reel define faixas com mais amostras nas passagens rápidas (`blur.ranges`).
+2. **Motion blur real.** `renderAt` faz a média de vários subquadros dentro da abertura do obturador; o padrão é 4 amostras em 1/120 s e cada Reel define faixas com mais amostras nas passagens rápidas (`blur.ranges`). Um passo opcional `post(ctx, t)` roda sobre o quadro final (bloom, vinheta, grão).
 3. **Render.** `tools/render.cjs` sobe um servidor local, abre `core/player.html?reel=<id>&render` em várias abas do Chromium headless, captura cada quadro do canvas e envia em ordem ao ffmpeg (x264 CRF 15, preset slow); depois multiplexa a trilha em AAC.
 4. **Som sincronizado.** A animação registra eventos (`api.cue(t, 'tipo', {...})`); `npm run cues` exporta `audio/cues.json` e o `audio.py` do Reel coloca cada som exatamente nesses instantes. Mudou um tempo na animação → `npm run build -- <reel> --steps cues,audio,video` e tudo ressincroniza.
 5. **Master.** `fzaudio.master` satura de leve, normaliza em duas passagens (loudnorm linear), aplica limitador de pico real sobreamostrado 4× e corrige o ganho até ±0,2 LU de −14 LUFS, com folga para o AAC ficar abaixo de −1 dBTP.

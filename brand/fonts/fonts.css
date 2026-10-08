@@ -1,7 +1,17 @@
-/* FAZLO Digital — fontes da marca.
-   Declare aqui as @font-face oficiais quando a tipografia for definida, ex.:
+/* FAZLO Digital — fontes da marca (SIL Open Font License 1.1, ver LICENSE-*.txt).
 
-   @font-face { font-family: 'FZD Display'; src: url('NomeDaFonte-Bold.otf') format('opentype'); font-weight: 700; }
+   FZD Display = Unbounded: sans geométrica larga, de cantos arredondados, em
+   diálogo com o desenho largo e pesado da logo. Títulos e palavras-chave.
+   FZD Text    = Sora: sans geométrica técnica, para apoios, rótulos e o endereço.
 
-   e liste as variações a pré-carregar em "fonts" no reel.json de cada Reel
-   (ex.: "700 100px 'FZD Display'"), para o render só começar com elas prontas. */
+   Pré-carregue as variações usadas em "fonts" no reel.json de cada Reel. */
+@font-face { font-family: 'FZD Display'; src: url('unbounded-latin-300-normal.woff2') format('woff2'); font-weight: 300; }
+@font-face { font-family: 'FZD Display'; src: url('unbounded-latin-400-normal.woff2') format('woff2'); font-weight: 400; }
+@font-face { font-family: 'FZD Display'; src: url('unbounded-latin-600-normal.woff2') format('woff2'); font-weight: 600; }
+@font-face { font-family: 'FZD Display'; src: url('unbounded-latin-800-normal.woff2') format('woff2'); font-weight: 800; }
+@font-face { font-family: 'FZD Display'; src: url('unbounded-latin-900-normal.woff2') format('woff2'); font-weight: 900; }
+@font-face { font-family: 'FZD Text'; src: url('sora-latin-300-normal.woff2') format('woff2'); font-weight: 300; }
+@font-face { font-family: 'FZD Text'; src: url('sora-latin-400-normal.woff2') format('woff2'); font-weight: 400; }
+@font-face { font-family: 'FZD Text'; src: url('sora-latin-500-normal.woff2') format('woff2'); font-weight: 500; }
+@font-face { font-family: 'FZD Text'; src: url('sora-latin-600-normal.woff2') format('woff2'); font-weight: 600; }
+@font-face { font-family: 'FZD Text'; src: url('sora-latin-700-normal.woff2') format('woff2'); font-weight: 700; }

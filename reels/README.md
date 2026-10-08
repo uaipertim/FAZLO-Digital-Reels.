@@ -4,7 +4,7 @@ Cada Reel vive numa pasta independente (`reel-NN/`), com conceito, animação, t
 
 | Reel | Conceito | Duração | Status | Pasta |
 |---|---|---|---|---|
-| **00** | a definir | — | aguardando logo oficial e briefing | [`reel-00/`](reel-00) |
+| **00** | **"Da ideia ao digital."** Apresentação oficial: a barra lima da logo corta, organiza e transforma (ideia → forma → código → sites e experiências digitais) e volta ao seu lugar na logo | 26,8 s | concluído · em avaliação | [`reel-00/`](reel-00) |
 | **01** | a definir | — | aguardando briefing | [`reel-01/`](reel-01) |
 | **02** | a definir | — | aguardando briefing | [`reel-02/`](reel-02) |
 

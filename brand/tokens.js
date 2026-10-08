@@ -1,26 +1,29 @@
 /* =====================================================================
-   FAZLO Digital — tokens de marca (PROVISÓRIOS)
+   FAZLO Digital — tokens de marca
 
-   Valores neutros só para o motor e os testes técnicos funcionarem.
-   Serão substituídos pela identidade oficial da FAZLO Digital (logo,
-   paleta, tipografia) quando a direção de arte for definida.
-   Nada aqui vem da identidade do FAZLO Hospeda.
+   Paleta amostrada da logo oficial (brand/logo/fazlo-digital-logo.webp):
+   o verde-lima da barra do Z, o branco das letras e um preto profundo
+   como palco. Tipografia em brand/fonts/fonts.css.
    ===================================================================== */
 window.FZD_BRAND = {
-  status: 'provisorio',
+  status: 'oficial',
   color: {
-    bg: '#101010',
-    surface: '#1C1C1C',
-    ink: '#F4F4F4',
-    muted: '#8A8A8A',
-    accent: '#FFFFFF',        // a definir com a direção de arte
+    bg: '#050506',            // palco: preto profundo, levemente frio
+    surface: '#0E0F12',       // planos e painéis
+    line: '#2A2C31',          // fios e guias
+    ink: '#FFFFFF',           // branco das letras da logo
+    muted: '#8B8F98',         // apoio
+    accent: '#C5FA40',        // verde-lima da barra da logo (amostrado)
+    accentHi: '#E4FF9A',      // brilho do lima
+    accentLo: '#7FA82A',      // lima na sombra
   },
   font: {
-    // famílias declaradas em brand/fonts/fonts.css; enquanto não houver
-    // fontes oficiais, o navegador usa as genéricas do sistema
-    display: "'FZD Display', system-ui, sans-serif",
-    text: "'FZD Text', system-ui, sans-serif",
-    mono: "'FZD Mono', ui-monospace, monospace",
+    display: "'FZD Display', system-ui, sans-serif",   // Unbounded
+    text: "'FZD Text', system-ui, sans-serif",         // Sora
+    mono: "ui-monospace, 'DejaVu Sans Mono', monospace",
   },
-  logo: null,                 // ex.: 'brand/logo/fazlo-digital-logo-alpha.png'
+  logo: 'brand/logo/fazlo-digital-logo.webp',
+  // geometria da barra lima do "Z", medida no arquivo oficial (px da imagem 2000x621):
+  // lados horizontais em y=92 e y=397; lados inclinados com dx/dy = -0,966 (≈ 46°)
+  slash: { top: 92, bottom: 397, tl: 998.6, tr: 1130.7, bl: 702.4, br: 837.7, imgW: 2000, imgH: 621 },
 };
