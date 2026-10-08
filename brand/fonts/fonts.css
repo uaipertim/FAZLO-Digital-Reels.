@@ -1,0 +1,7 @@
+/* FAZLO Digital — fontes da marca.
+   Declare aqui as @font-face oficiais quando a tipografia for definida, ex.:
+
+   @font-face { font-family: 'FZD Display'; src: url('NomeDaFonte-Bold.otf') format('opentype'); font-weight: 700; }
+
+   e liste as variações a pré-carregar em "fonts" no reel.json de cada Reel
+   (ex.: "700 100px 'FZD Display'"), para o render só começar com elas prontas. */

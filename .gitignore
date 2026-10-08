@@ -1,0 +1,15 @@
+node_modules/
+__pycache__/
+*.pyc
+.DS_Store
+.venv/
+
+# intermediários do render e do áudio
+**/output/.video-only.mp4
+**/output/preview.mp4
+**/output/stills/
+**/audio/*.raw.wav
+
+# calibração técnica: saídas regeneráveis, não versionadas
+reels/_calibracao/audio/
+reels/_calibracao/output/

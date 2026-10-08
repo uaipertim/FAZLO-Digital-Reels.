@@ -1,0 +1,10 @@
+{
+  "width": 1080,
+  "height": 1920,
+  "zones": [
+    { "name": "topo: perfil, áudio e câmera", "rect": [0, 0, 1080, 220] },
+    { "name": "base: legenda, música e CTA", "rect": [0, 1560, 1080, 1920] },
+    { "name": "coluna de ações: curtir, comentar, compartilhar", "rect": [950, 1060, 1080, 1560] }
+  ],
+  "feedCrop3x4": [0, 240, 1080, 1680]
+}

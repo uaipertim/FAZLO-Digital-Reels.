@@ -1,0 +1,21 @@
+{
+  "id": "reel-02",
+  "number": "02",
+  "title": "A definir",
+  "status": "aguardando briefing",
+  "format": { "width": 1080, "height": 1920, "fps": 60 },
+  "output": {
+    "video": "output/fazlo-digital-reel-02.mp4",
+    "cover": "output/capa.png"
+  },
+  "fonts": [],
+  "assets": {},
+  "qa": {
+    "duration": [15, 30],
+    "lufs": -14,
+    "syncCues": [],
+    "visualCues": [],
+    "checkTimes": []
+  },
+  "storyboard": []
+}

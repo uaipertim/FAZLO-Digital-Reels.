@@ -1,0 +1,106 @@
+# FAZLO Digital — Motion Graphics
+
+Produção dos Reels do Instagram da **FAZLO Digital**: motion graphics 9:16 animados em código, renderizados quadro a quadro e com trilha e efeitos sintetizados e sincronizados à imagem.
+
+> **Status:** infraestrutura pronta e validada (`npm test` aprovado). A identidade visual e sonora da FAZLO Digital ainda será definida: **aguardando a logo oficial e as orientações criativas do Reel 00.**
+
+## Padrão de entrega
+
+| Item | Especificação |
+|---|---|
+| Vídeo | MP4, H.264 High (yuv420p, bt709), **1080×1920 (9:16), 60 fps**, `+faststart` |
+| Áudio | AAC 256 kb/s, 48 kHz estéreo, **−14 LUFS** integrado, pico real **≤ −1 dBTP** |
+| Capa | PNG 1080×1920, conferida também no recorte 3:4 do perfil |
+| Revisão | relatório técnico, sincronia som × imagem, zonas seguras da interface do Reels, storyboard |
+
+## Requisitos
+
+- Node 18+
+- ffmpeg/ffprobe com libx264 e AAC
+- Python 3.10+ com numpy, scipy e Pillow
+- Chromium via Playwright
+
+```bash
+npm install                          # Playwright
+npx playwright install chromium      # se ainda não houver Chromium (ou defina CHROMIUM_PATH)
+python3 -m pip install -r requirements.txt
+npm run doctor                       # confere o ambiente
+npm test                             # calibração de ponta a ponta: deve terminar em "RESULTADO: aprovado"
+```
+
+## Comandos
+
+`<reel>` aceita `00`, `reel-00` ou `_calibracao`.
+
+| Comando | O que faz |
+|---|---|
+| `npm run dev` | preview interativo em http://127.0.0.1:5173 (play/scrub com áudio, quadro a quadro, zonas seguras, capa) |
+| `npm run new-reel -- 03 "Título"` | cria `reels/reel-03/` a partir de `templates/reel/` |
+| `npm run build -- <reel>` | pipeline completo: cues → áudio → vídeo → capa → storyboard → QA |
+| `npm run build -- <reel> --steps audio,video` | só alguns passos (`--skip qa` também funciona) |
+| `npm run cues -- <reel>` | exporta os eventos de som da animação para `audio/cues.json` |
+| `npm run audio -- <reel>` | sintetiza `audio/trilha.wav` a partir dos cues (master −14 LUFS) |
+| `npm run video -- <reel>` | MP4 final 60 fps (`--workers 4`, `--from 3 --to 8` para um trecho, `--noblur`) |
+| `npm run preview -- <reel>` | MP4 rápido em 30 fps para revisão (`output/preview.mp4`, não versionado) |
+| `npm run cover -- <reel>` | capa `output/capa.png` |
+| `npm run stills -- <reel> 1.5,8.2` | quadros avulsos em PNG (`--noblur` para ver sem motion blur) |
+| `npm run storyboard -- <reel>` | `output/storyboard.jpg` |
+| `npm run qa -- <reel>` | revisão técnica e de sincronização em `output/revisao/` (sai com erro se algo falhar) |
+
+Atalhos do preview: `espaço` play/pausa · `←/→` 1 quadro · `shift+←/→` 1 s · `Z` zonas seguras · `B` motion blur · `C` capa. Parâmetros de URL: `?reel=reel-00&t=12.5`, `&cover`, `&zones`.
+
+## Estrutura
+
+```
+core/
+  engine.js          # motor Canvas 2D determinístico: FZD.define, renderAt (motion blur), capa, cues, utilitários
+  player.html        # preview interativo e página usada pelo render (?render)
+  safe-zones.json    # áreas cobertas pela interface do Reels + recorte 3:4 do perfil
+brand/
+  tokens.js          # paleta, tipografia e logo da FAZLO Digital (PROVISÓRIO, neutro)
+  fonts/             # fontes oficiais + fonts.css (aguardando)
+  logo/              # logo oficial (aguardando)
+  audio/             # referências da assinatura sonora (aguardando)
+tools/
+  render.cjs         # cues | video | preview | stills | cover  (Chromium headless -> ffmpeg)
+  build.cjs          # pipeline completo de um Reel
+  serve.cjs          # servidor de desenvolvimento
+  new-reel.cjs       # novo Reel a partir do modelo
+  doctor.cjs         # verificação do ambiente
+  qa.py              # revisão técnica + sincronização + zonas seguras + capa no feed
+  storyboard.py      # folha de quadros-chave
+  logo_alpha.py      # fundo da logo transparente, sem alterar a arte
+  audio/fzaudio.py   # síntese (osciladores, bateria, efeitos), mixagem em barramentos e master
+templates/reel/      # modelo de pasta de Reel
+reels/
+  reel-00/ reel-01/ reel-02/   # um Reel por pasta (ver reels/README.md)
+  _calibracao/                 # cartela técnica que valida o pipeline
+```
+
+Cada Reel:
+
+```
+reels/reel-NN/
+  reel.json          # título, status, saídas, fontes/assets a pré-carregar, parâmetros de QA, storyboard
+  src/anim.js        # a animação: FZD.define({ id, duration, bpm, sections, blur, setup, frame, cover, cues })
+  src/assets/        # imagens específicas do Reel
+  scripts/audio.py   # trilha + efeitos (usa tools/audio/fzaudio.py)
+  audio/             # cues.json + trilha.wav
+  output/            # vídeo, capa, storyboard e revisão/
+```
+
+## Como funciona
+
+1. **Animação determinística.** `frame(ctx, t, api)` desenha o quadro exato do instante `t`, sem estado entre quadros. O mesmo código serve o preview, o render e a lista de cues.
+2. **Motion blur real.** `renderAt` faz a média de vários subquadros dentro da abertura do obturador; o padrão é 4 amostras em 1/120 s e cada Reel define faixas com mais amostras nas passagens rápidas (`blur.ranges`).
+3. **Render.** `tools/render.cjs` sobe um servidor local, abre `core/player.html?reel=<id>&render` em várias abas do Chromium headless, captura cada quadro do canvas e envia em ordem ao ffmpeg (x264 CRF 15, preset slow); depois multiplexa a trilha em AAC.
+4. **Som sincronizado.** A animação registra eventos (`api.cue(t, 'tipo', {...})`); `npm run cues` exporta `audio/cues.json` e o `audio.py` do Reel coloca cada som exatamente nesses instantes. Mudou um tempo na animação → `npm run build -- <reel> --steps cues,audio,video` e tudo ressincroniza.
+5. **Master.** `fzaudio.master` satura de leve, normaliza em duas passagens (loudnorm linear), aplica limitador de pico real sobreamostrado 4× e corrige o ganho até ±0,2 LU de −14 LUFS, com folga para o AAC ficar abaixo de −1 dBTP.
+6. **QA.** `tools/qa.py` confere formato, duração, loudness, pico real, quadros pretos/congelados, 1º quadro, capa; mede a sincronia em três camadas (trilha sem deslocamento no MP4, ataque dos efeitos-chave em relação ao evento visual, reação da imagem nos golpes) e gera as folhas de zonas seguras e da capa no feed.
+
+## Regras do projeto
+
+- A FAZLO Digital tem **identidade, direção de arte e assinatura sonora próprias**. Nenhuma paleta, fonte, logo, roteiro, animação ou som do FAZLO Hospeda é reutilizado; deste projeto veio apenas a experiência técnica (motor, render, síntese e QA), reescrita e generalizada aqui.
+- O repositório do FAZLO Hospeda não é modificado.
+- Logo: sempre o arquivo oficial, sem redesenho (ver [`brand/README.md`](brand/README.md)).
+- Textos e elementos importantes fora das zonas cobertas pela interface do Reels (`core/safe-zones.json`).
