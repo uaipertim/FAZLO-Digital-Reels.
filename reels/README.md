@@ -7,7 +7,8 @@ Cada Reel vive numa pasta independente (`reel-NN/`), com conceito, animação, t
 | **00** | **"Da ideia ao digital."** Apresentação oficial: a barra lima da logo corta, organiza e transforma (ideia → forma → código → sites e experiências digitais) e volta ao seu lugar na logo | 26,8 s | concluído · em avaliação | [`reel-00/`](reel-00) |
 | **001** | **"Seu negócio já é bom. Seu digital precisa parecer isso."** A barra vira a fronteira de resolução: o negócio nítido x o digital pixelado; a virada para um estúdio em alta definição (mais forte, profissional, confiável, marcante) e "à altura" | 26,6 s | concluído · em avaliação | [`reel-01/`](reel-01) |
 | **002** | **"Muito além de um site."** Zoom infinito sem cortes: a página vira ladrilho, nó, tela e cartão de mundos cada vez maiores (identidade, informações, apresentação, conexão) até a rede inteira caber na barra da logo | 23,0 s | concluído · em avaliação | [`reel-02/`](reel-02) |
+| **003** | **"Ideias que ganham forma."** A matéria das ideias: uma substância lima com três estados (líquido, projeto, sólido) que vira IDEIA, estoura, ganha forma em REAL., constrói SITES, flui em EXPERIÊNCIAS, encaixa SOLUÇÕES e vira a logo; renderizada com luz num plano em 3D (WebGL) | 25,7 s | concluído · em avaliação | [`reel-03/`](reel-03) |
 
-Novos Reels: `npm run new-reel -- 03 "Título"`.
+Novos Reels: `npm run new-reel -- 04 "Título"`.
 
 [`_calibracao/`](_calibracao) não é um Reel: é a cartela técnica que valida o pipeline (`npm test`).

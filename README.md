@@ -2,7 +2,7 @@
 
 Produção dos Reels do Instagram da **FAZLO Digital**: motion graphics 9:16 animados em código, renderizados quadro a quadro e com trilha e efeitos sintetizados e sincronizados à imagem.
 
-> **Status:** **Reel 00 · "Da ideia ao digital."**, **Reel 001 · "Seu negócio já é bom. Seu digital precisa parecer isso."** e **Reel 002 · "Muito além de um site."** concluídos e em avaliação ([`reels/`](reels)). Identidade audiovisual em [`brand/`](brand): logo oficial (clara e escura), paleta, tipografia e assinatura sonora.
+> **Status:** **Reel 00 · "Da ideia ao digital."**, **Reel 001 · "Seu negócio já é bom. Seu digital precisa parecer isso."**, **Reel 002 · "Muito além de um site."** e **Reel 003 · "Ideias que ganham forma."** concluídos e em avaliação ([`reels/`](reels)). Identidade audiovisual em [`brand/`](brand): logo oficial (clara e escura), paleta, tipografia e assinatura sonora.
 
 ## Padrão de entrega
 
@@ -35,7 +35,7 @@ npm test                             # calibração de ponta a ponta: deve termi
 | Comando | O que faz |
 |---|---|
 | `npm run dev` | preview interativo em http://127.0.0.1:5173 (play/scrub com áudio, quadro a quadro, zonas seguras, capa) |
-| `npm run new-reel -- 03 "Título"` | cria `reels/reel-03/` a partir de `templates/reel/` |
+| `npm run new-reel -- 04 "Título"` | cria `reels/reel-04/` a partir de `templates/reel/` |
 | `npm run build -- <reel>` | pipeline completo: cues → áudio → vídeo → capa → storyboard → QA |
 | `npm run build -- <reel> --steps audio,video` | só alguns passos (`--skip qa` também funciona) |
 | `npm run cues -- <reel>` | exporta os eventos de som da animação para `audio/cues.json` |
@@ -75,7 +75,7 @@ tools/
   audio/fzbrand.py   # assinatura sonora da marca ("o corte")
 templates/reel/      # modelo de pasta de Reel
 reels/
-  reel-00/ reel-01/ reel-02/   # um Reel por pasta (ver reels/README.md)
+  reel-00/ … reel-03/          # um Reel por pasta (ver reels/README.md)
   _calibracao/                 # cartela técnica que valida o pipeline
 ```
 
@@ -83,7 +83,7 @@ Cada Reel:
 
 ```
 reels/reel-NN/
-  reel.json          # título, status, saídas, fontes/assets a pré-carregar, parâmetros de QA, storyboard
+  reel.json          # título, status, saídas, fontes/assets a pré-carregar, scripts auxiliares (opcional), parâmetros de QA, storyboard
   src/anim.js        # a animação: FZD.define({ id, duration, bpm, sections, blur, setup, frame, cover, cues })
   src/assets/        # imagens específicas do Reel
   scripts/audio.py   # trilha + efeitos (usa tools/audio/fzaudio.py)

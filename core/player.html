@@ -57,6 +57,8 @@
   window.ready = (async () => {
     cfg = await fetch(`${base}/reel.json`).then((r) => { if (!r.ok) throw new Error(`${base}/reel.json não encontrado`); return r.json(); });
     zones = await fetch('/core/safe-zones.json').then((r) => r.json());
+    // scripts auxiliares do Reel (opcional, reel.json "scripts": ["src/x.js"]), carregados antes da animação
+    for (const s of cfg.scripts || []) await loadScript(`${base}/${s}`);
     await loadScript(`${base}/src/anim.js`);
     reel = FZD.get(cfg.id) || FZD.current();
     // fontes: as da marca e as listadas no reel.json precisam estar prontas antes do layout

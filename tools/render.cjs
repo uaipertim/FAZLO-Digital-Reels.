@@ -87,7 +87,7 @@ async function video(browser, port, preview) {
   const audio = R('audio/trilha.wav');
   if (fs.existsSync(audio)) {
     execFileSync('ffmpeg', ['-y', '-loglevel', 'error', '-i', silent, '-ss', String(from), '-t', String(to - from), '-i', audio,
-      '-map', '0:v', '-map', '1:a', '-c:v', 'copy', '-c:a', 'aac', '-b:a', '256k', '-ar', '48000', '-shortest', '-movflags', '+faststart', out]);
+      '-map', '0:v', '-map', '1:a', '-c:v', 'copy', '-c:a', 'aac', '-b:a', '256k', '-ar', '48000', '-movflags', '+faststart', out]);
     fs.unlinkSync(silent);
   } else {
     console.warn('  aviso: audio/trilha.wav não existe; vídeo sem áudio');
