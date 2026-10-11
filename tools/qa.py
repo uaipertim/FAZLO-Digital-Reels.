@@ -203,6 +203,24 @@ if os.path.exists(COVER):
     d = ImageDraw.Draw(prev)
     d.rectangle((x0, y0, x1 - 1, y1 - 1), outline=(235, 235, 235), width=5)
     d.text((1120, 360), 'RECORTE 3:4 NO PERFIL', font=font, fill=(235, 235, 235))
+    # opcional (reel.json qa.coverClear): áreas da capa que devem ficar livres (ícone de play, rodapé do recorte)
+    clear = QA.get('coverClear') or []
+    if clear:
+        L = cv.convert('L')
+        busy = []
+        for zx0, zy0, zx1, zy1 in clear:
+            px = np.asarray(L.crop((zx0, zy0, zx1, zy1)), dtype=float)
+            frac = float((px > 90).mean())               # texto, logo ou desenho claro (o fundo fica bem abaixo)
+            if frac > 0.002:
+                busy.append(f'{zx0},{zy0}-{zx1},{zy1} ({frac * 100:.1f}% ocupado)')
+            d.rectangle((zx0, zy0, zx1 - 1, zy1 - 1), outline=(255, 40, 80), width=4)
+        ok(not busy, 'capa: áreas livres respeitadas (' + '; '.join(f'{a},{b2}-{c},{e}' for a, b2, c, e in clear) + ')'
+           if not busy else 'capa: há conteúdo nas áreas que devem ficar livres: ' + '; '.join(busy))
+        # todo o conteúdo claro da capa dentro do recorte 3:4
+        full = np.asarray(L, dtype=float)
+        mask = full > 90
+        outside = mask.copy(); outside[y0:y1, x0:x1] = False
+        ok(outside.mean() < 0.0005, f'capa: conteúdo dentro do recorte 3:4 (y {y0}–{y1})')
     prev.save(os.path.join(OUT, 'capa-no-feed.jpg'), quality=90)
 else:
     ok(False, 'capa (output/capa.png) não encontrada')

@@ -1,0 +1,139 @@
+{
+  "id": "instagram-nao-e-site",
+  "title": "Instagram não é site",
+  "status": "concluído · em avaliação",
+  "format": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 60
+  },
+  "output": {
+    "video": "output/fazlo-digital-instagram-nao-e-site.mp4",
+    "cover": "output/capa.png"
+  },
+  "fonts": [
+    "800 100px 'FZD Display'",
+    "900 100px 'FZD Display'",
+    "400 100px 'FZD Text'",
+    "500 100px 'FZD Text'",
+    "600 100px 'FZD Text'",
+    "700 100px 'FZD Text'"
+  ],
+  "assets": {},
+  "qa": {
+    "duration": [
+      30,
+      36
+    ],
+    "lufs": -14,
+    "syncCues": [
+      "agora",
+      "slash",
+      "logo"
+    ],
+    "visualCues": [
+      "agora",
+      "slash",
+      "split",
+      "logo"
+    ],
+    "checkTimes": [
+      1.8,
+      3.4,
+      6.5,
+      10.5,
+      14.0,
+      17.3,
+      19.5,
+      22.0,
+      25.5,
+      29.0,
+      31.5,
+      33.2
+    ],
+    "coverClear": [
+      [
+        860,
+        240,
+        1080,
+        440
+      ],
+      [
+        0,
+        1560,
+        1080,
+        1680
+      ]
+    ]
+  },
+  "storyboard": [
+    [
+      0.4,
+      "GANCHO"
+    ],
+    [
+      3.4,
+      "E AGORA?"
+    ],
+    [
+      5.4,
+      "O PERFIL"
+    ],
+    [
+      9.4,
+      "AS PERGUNTAS"
+    ],
+    [
+      11.0,
+      "FICAM NO DIRECT"
+    ],
+    [
+      14.0,
+      "A ESPERA"
+    ],
+    [
+      17.2,
+      "A BARRA LIMA"
+    ],
+    [
+      18.3,
+      "O SITE"
+    ],
+    [
+      19.3,
+      "PERÍODO: DIA 20"
+    ],
+    [
+      19.95,
+      "CONSULTAR"
+    ],
+    [
+      20.9,
+      "A PARTIR DE"
+    ],
+    [
+      22.1,
+      "REGRAS"
+    ],
+    [
+      23.5,
+      "RESERVAR"
+    ],
+    [
+      25.5,
+      "TUDO NO LUGAR"
+    ],
+    [
+      29.0,
+      "ATRAI x RESPONDE"
+    ],
+    [
+      31.1,
+      "A LOGO"
+    ],
+    [
+      33.3,
+      "FALE COM A FAZLO"
+    ]
+  ]
+}

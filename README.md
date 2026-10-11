@@ -2,7 +2,7 @@
 
 Produção dos Reels do Instagram da **FAZLO Digital**: motion graphics 9:16 animados em código, renderizados quadro a quadro e com trilha e efeitos sintetizados e sincronizados à imagem.
 
-> **Status:** **Reel 00 · "Da ideia ao digital."**, **Reel 001 · "Seu negócio já é bom. Seu digital precisa parecer isso."**, **Reel 002 · "Muito além de um site."** e **Reel 003 · "Ideias que ganham forma."** concluídos e em avaliação ([`reels/`](reels)). Identidade audiovisual em [`brand/`](brand): logo oficial (clara e escura), paleta, tipografia e assinatura sonora.
+> **Status:** **Reel 00 · "Da ideia ao digital."**, **Reel 001 · "Seu negócio já é bom. Seu digital precisa parecer isso."**, **Reel 002 · "Muito além de um site."**, **Reel 003 · "Ideias que ganham forma."** e **"Instagram não é site."** concluídos e em avaliação ([`reels/`](reels)). Identidade audiovisual em [`brand/`](brand): kit oficial de logos em SVG (com o símbolo FZ corrigido), verde-limão `#C6FA41`, fontes Unbounded + Sora e assinatura sonora.
 
 ## Padrão de entrega
 
@@ -30,12 +30,12 @@ npm test                             # calibração de ponta a ponta: deve termi
 
 ## Comandos
 
-`<reel>` aceita `00`, `reel-00` ou `_calibracao`.
+`<reel>` aceita `00`, `reel-00`, o nome da pasta (`instagram-nao-e-site`) ou `_calibracao`.
 
 | Comando | O que faz |
 |---|---|
 | `npm run dev` | preview interativo em http://127.0.0.1:5173 (play/scrub com áudio, quadro a quadro, zonas seguras, capa) |
-| `npm run new-reel -- 04 "Título"` | cria `reels/reel-04/` a partir de `templates/reel/` |
+| `npm run new-reel -- titulo-do-reel "Título"` | cria `reels/titulo-do-reel/` a partir de `templates/reel/` (com número, `04` → `reels/reel-04/`) |
 | `npm run build -- <reel>` | pipeline completo: cues → áudio → vídeo → capa → storyboard → QA |
 | `npm run build -- <reel> --steps audio,video` | só alguns passos (`--skip qa` também funciona) |
 | `npm run cues -- <reel>` | exporta os eventos de som da animação para `audio/cues.json` |
@@ -59,7 +59,7 @@ core/
 brand/
   tokens.js          # paleta, tipografia, logo e geometria da barra do Z
   fonts/             # Unbounded + Sora (OFL) e fonts.css
-  logo/              # logo oficial (mestre intacto + versão escura) e folhas de referência
+  logo/              # logo oficial (mestre intacto + versão escura), kit oficial em SVG (logo/kit/) e folhas de referência
   audio/             # referências da assinatura sonora
 tools/
   render.cjs         # cues | video | preview | stills | cover  (Chromium headless -> ffmpeg)
@@ -76,13 +76,14 @@ tools/
 templates/reel/      # modelo de pasta de Reel
 reels/
   reel-00/ … reel-03/          # um Reel por pasta (ver reels/README.md)
+  instagram-nao-e-site/        # a partir daqui, pastas com o nome do título
   _calibracao/                 # cartela técnica que valida o pipeline
 ```
 
 Cada Reel:
 
 ```
-reels/reel-NN/
+reels/<pasta>/
   reel.json          # título, status, saídas, fontes/assets a pré-carregar, scripts auxiliares (opcional), parâmetros de QA, storyboard
   src/anim.js        # a animação: FZD.define({ id, duration, bpm, sections, blur, setup, frame, cover, cues })
   src/assets/        # imagens específicas do Reel
@@ -98,7 +99,7 @@ reels/reel-NN/
 3. **Render.** `tools/render.cjs` sobe um servidor local, abre `core/player.html?reel=<id>&render` em várias abas do Chromium headless, captura cada quadro do canvas e envia em ordem ao ffmpeg (x264 CRF 15, preset slow); depois multiplexa a trilha em AAC.
 4. **Som sincronizado.** A animação registra eventos (`api.cue(t, 'tipo', {...})`); `npm run cues` exporta `audio/cues.json` e o `audio.py` do Reel coloca cada som exatamente nesses instantes. Mudou um tempo na animação → `npm run build -- <reel> --steps cues,audio,video` e tudo ressincroniza.
 5. **Master.** `fzaudio.master` satura de leve, normaliza em duas passagens (loudnorm linear), aplica limitador de pico real sobreamostrado 4× e corrige o ganho até ±0,2 LU de −14 LUFS, com folga para o AAC ficar abaixo de −1 dBTP.
-6. **QA.** `tools/qa.py` confere formato, duração, loudness, pico real, quadros pretos/congelados, 1º quadro, capa; mede a sincronia em três camadas (trilha sem deslocamento no MP4, ataque dos efeitos-chave em relação ao evento visual, reação da imagem nos golpes) e gera as folhas de zonas seguras e da capa no feed.
+6. **QA.** `tools/qa.py` confere formato, duração, loudness, pico real, quadros pretos/congelados, 1º quadro, capa (e, se o `reel.json` definir `qa.coverClear`, as áreas da capa que devem ficar livres e o conteúdo dentro do recorte 3:4); mede a sincronia em três camadas (trilha sem deslocamento no MP4, ataque dos efeitos-chave em relação ao evento visual, reação da imagem nos golpes) e gera as folhas de zonas seguras e da capa no feed.
 
 ## Regras do projeto
 

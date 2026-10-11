@@ -1,0 +1,161 @@
+{
+ "id": "instagram-nao-e-site",
+ "bpm": 100,
+ "fps": 60,
+ "duration": 33.6,
+ "sections": {
+  "gancho": 0,
+  "perguntas": 4.2,
+  "espera": 12,
+  "virada": 16.8,
+  "sintese": 27,
+  "fecho": 30.6
+ },
+ "cues": [
+  {
+   "t": 0,
+   "type": "open"
+  },
+  {
+   "t": 0.85,
+   "type": "mark"
+  },
+  {
+   "t": 2.7,
+   "type": "lift"
+  },
+  {
+   "t": 3,
+   "type": "agora"
+  },
+  {
+   "t": 3.9,
+   "type": "phone"
+  },
+  {
+   "t": 5,
+   "type": "shimmer"
+  },
+  {
+   "t": 5.4,
+   "type": "bubble",
+   "k": 0
+  },
+  {
+   "t": 6.6,
+   "type": "bubble",
+   "k": 1
+  },
+  {
+   "t": 7.8,
+   "type": "bubble",
+   "k": 2
+  },
+  {
+   "t": 9,
+   "type": "bubble",
+   "k": 3
+  },
+  {
+   "t": 9.6,
+   "type": "title"
+  },
+  {
+   "t": 12,
+   "type": "freeze"
+  },
+  {
+   "t": 12,
+   "type": "clock",
+   "d": 4.500000000000001
+  },
+  {
+   "t": 16.2,
+   "type": "lift2"
+  },
+  {
+   "t": 16.8,
+   "type": "slash"
+  },
+  {
+   "t": 18,
+   "type": "fly",
+   "k": 0,
+   "d": 0.6
+  },
+  {
+   "t": 18.6,
+   "type": "dock",
+   "k": 0
+  },
+  {
+   "t": 18.85,
+   "type": "pickopen"
+  },
+  {
+   "t": 19.2,
+   "type": "day"
+  },
+  {
+   "t": 19.55,
+   "type": "pickclose"
+  },
+  {
+   "t": 19.8,
+   "type": "press"
+  },
+  {
+   "t": 20.1,
+   "type": "fly",
+   "k": 1,
+   "d": 0.6
+  },
+  {
+   "t": 20.7,
+   "type": "dock",
+   "k": 1
+  },
+  {
+   "t": 21.3,
+   "type": "fly",
+   "k": 2,
+   "d": 0.6
+  },
+  {
+   "t": 21.9,
+   "type": "dock",
+   "k": 2
+  },
+  {
+   "t": 22.5,
+   "type": "fly",
+   "k": 3,
+   "d": 0.6
+  },
+  {
+   "t": 23.1,
+   "type": "dock",
+   "k": 3
+  },
+  {
+   "t": 23.4,
+   "type": "tap"
+  },
+  {
+   "t": 24,
+   "type": "title"
+  },
+  {
+   "t": 27,
+   "type": "split"
+  },
+  {
+   "t": 30.6,
+   "type": "logo"
+  },
+  {
+   "t": 31.9,
+   "type": "cta"
+  }
+ ]
+}

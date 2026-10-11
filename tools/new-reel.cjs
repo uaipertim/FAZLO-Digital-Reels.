@@ -2,7 +2,8 @@
 /*
  * Cria a pasta de um novo Reel a partir de templates/reel.
  *
- *   node tools/new-reel.cjs 03 "Título provisório"     -> reels/reel-03/
+ *   node tools/new-reel.cjs 03 "Título provisório"                    -> reels/reel-03/
+ *   node tools/new-reel.cjs instagram-nao-e-site "Instagram não é site" -> reels/instagram-nao-e-site/
  *
  * Não sobrescreve um Reel existente.
  */
@@ -11,9 +12,11 @@ const path = require('path');
 const { ROOT } = require('./lib.cjs');
 
 const [numArg, ...titleParts] = process.argv.slice(2);
-if (!numArg || !/^\d+$/.test(numArg)) { console.error('uso: node tools/new-reel.cjs <número> ["título"]'); process.exit(2); }
-const num = numArg.padStart(2, '0');
-const id = `reel-${num}`;
+// número (03 -> reel-03) ou nome da pasta pelo título (minúsculas, sem acento, com hífens)
+if (!numArg || !/^(\d+|[a-z0-9]+(-[a-z0-9]+)*)$/.test(numArg)) { console.error('uso: node tools/new-reel.cjs <número | nome-da-pasta> ["título"]'); process.exit(2); }
+const isNum = /^\d+$/.test(numArg);
+const num = isNum ? numArg.padStart(2, '0') : numArg;
+const id = isNum ? `reel-${num}` : numArg;
 const title = titleParts.join(' ') || 'A definir';
 const dest = path.join(ROOT, 'reels', id);
 if (fs.existsSync(dest)) { console.error(`já existe: reels/${id}`); process.exit(1); }

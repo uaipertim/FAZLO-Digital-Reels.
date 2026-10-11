@@ -1,0 +1,21 @@
+FAZLO DIGITAL · KIT DE LOGOS (2026-10-08)
+
+Partindo das logos originais enviadas, foram preservados o desenho geométrico FAZLO/FZ e o verde-limão. Não houve redesign.
+
+ARQUIVOS
+- FAZLO-DIGITAL-branca-transparente: assinatura com DIGITAL, para fundo escuro.
+- FAZLO-DIGITAL-preta-transparente: assinatura com DIGITAL, para fundo claro.
+- FAZLO-logo-branca-transparente / FAZLO-logo-preta-transparente: marca FAZLO sem subtítulo, para aplicações compactas.
+- FAZLO-simbolo-branco-verde / FAZLO-simbolo-preto-verde: monograma FZ isolado.
+- FAZLO-avatar-perfil-1080.png: avatar pronto para o Instagram (fundo preto).
+- FAZLO-DIGITAL-fundo-preto.png: imagem sobre fundo preto, pronta para uso simples.
+- FAZLO-Digital-PREVIEW.png: prévia de aplicações.
+
+TODAS AS MARCAS TÊM PNG E SVG. O SVG usa traçados vetoriais e não precisa de fonte externa.
+
+NOTA: o símbolo ® que constava nos originais foi omitido nas versões exportadas porque o status de registro não foi confirmado. Se já existir registro concedido, ele poderá ser incluído novamente.
+
+COR VERDE-LIMÃO: #C6FA41 (normalizada a partir da arte enviada).
+FUNDO ESCURO RECOMENDADO: #000000 ou #050606.
+
+Para Claude Code: usar preferencialmente arquivos SVG em brand/logo/, animar suas formas sem mudar a identidade oficial.
