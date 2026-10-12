@@ -1,0 +1,45 @@
+CHECAGEM — https://pousadavaledoscanteiros.com.br/ (2026-10-12T11:18:23.484Z)
+
+OK     ficha · LOGO
+       “…Vale dos Canteiros POUSADA SERRA DA CANASTRA MENU FAZENDA NA CANASTRA · A CAS…”
+OK     ficha · FOTOS
+       “…TRA MENU FAZENDA NA CANASTRA · A CASA Portas abertas, rede na varanda. Casa colonial de paredes brancas, telhad…”
+OK     ficha · CHALÉS
+       “…para descansar no seu tempo. A pousada conta com 9 chalés. Conheça algumas opções e consulte a equipe para encontrar…”
+OK     ficha · CAFÉ
+       “…quinhas e comida feita no tempo certo. Café da manhã Quitandas mineiras Fogão a lenha Sabores da roça Refeições…”
+OK     ficha · PASSEIOS
+       “…de virar uma experiência diferente. 01 Encontro das Águas 300 m da pousada a pé Um dos passeios mais próximos para c…”
+OK     ficha · HISTÓRIA
+       “…eríodo e a modalidade da estadia. 04 — NOSSA HISTÓRIA Antes de existir uma pousada, já existia o costume de rece…”
+OK     ficha · CONTATOS (só ícones)
+       “…ibilidade e os valores diretamente pelo WhatsApp. ENTRADA Selecionar data SAÍDA Selecionar data ADULTOS − 2…”
+OK     chip · Fazenda de tropeiros
+       “…ar de amplas paisagens, que nossos avós recebiam os tropeiros com pouso e refeições, antes de seguirem viagens mais longa…”
+OK     chip · Desde 2009
+       “…epois a mãe; hoje somos nós. A pousada abriu as portas em 2009, mas as portas — as mesmas portas coloridas — já estavam ab…”
+OK     chip · Cachoeiras na fazenda
+       “…ngular: dentro das terras da fazenda há quatro cachoeiras — Capivara, Oratório, Gruta do Lobo Guará e Paraíso dos Pás…”
+OK     chip · Fogão a lenha
+       “…As refeições são caseiras, servidas no fogão a lenha. No café da manhã, os quitutes de fazenda saem na hora: pãe…”
+OK     chip · Day Use
+       “…alé × DAY USE · PASSE O DIA COM A GENTE Um dia inteiro na serra, sem dormir fora Chegue de manhã, aproveite a estrutura da…”
+OK     chip · Datas e hóspedes → Consulte sua estadia
+       “…iras. O tempo aqui passa mais devagar. Consulte sua estadia Informe as datas e os hóspedes. A equipe da Pousada Vale dos Canteiros confirma a disponibilidade e os valores diretamente pelo WhatsApp. ENTRADA Selecionar data SAÍDA Selecionar data ADULTOS − 2 adultos + CRIANÇAS − Sem crianças + ACOMODAÇÃO DE INTERESSE Quero a…”
+OK     chip · Qual chalé → Nossos chalés
+       “…OMIDA CASEIRA MINEIRA 01 — HOSPEDAGEM Nossos chalés, para descansar no seu tempo. A pousada conta com 9 chalés…”
+OK     chip · O que está incluso → modal Ver detalhes
+       “…e casal Ar-condicionado Rede na varanda COMODIDADES · Ar-condicionado · Ventilador de teto · Frigobar · Rede na varanda · Banheiro privativo · Wi-Fi ALIMENTAÇÃO Café da manhã e jantar no fim de semana VALORES DA HOSPEDAG…”
+OK     chip · Cachoeiras na fazenda → Viver a Canastra
+       “…és disponíveis. CONSULTAR DATAS → 02 — VIVER A CANASTRA A pousada termina onde a aventura começa. Entre cachoeira…”
+OK     chip · Day Use → Day Use (acesso às cachoeiras)
+       “…ocê volta para casa. · Das 10h às 17h · Acesso às 04 cachoeiras da pousada · Almoço mineiro incluído · Vagas limitadas por…”
+OK     chip · Fogão a lenha → Sabores da fazenda
+       “…seu ritmo. Organizar um passeio 03 — SABORES DA FAZENDA Comida mineira feita com tempo, fogo e afeto. Do café da…”
+OK     chip · tropeiros + 2009 → Nossa história
+       “…eríodo e a modalidade da estadia. 04 — NOSSA HISTÓRIA Antes de existir uma pousada, já existia o costume de rece…”
+OK     chip · Como chegar → Onde estamos
+       “…OBO-GUARÁ PÔR DO SOL NOITES ESTRELADAS ONDE ESTAMOS São João Batista do Glória, Serra da Canastra. A pousada…”
+
+depoimentos removidos: celular sim, desktop sim
+mapa do Google carregado: celular NÃO (www.google.com bloqueado na rede), desktop NÃO
