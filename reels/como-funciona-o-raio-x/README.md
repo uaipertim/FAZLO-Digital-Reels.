@@ -10,7 +10,7 @@
 - **`manifest.json`:** guarda a posição de cada seção, usada para rolar a tela e acender a seção certa.
 - **Depoimentos:** a seção "Quem passou por aqui conta melhor" é **removida da página antes de capturar**. Ela não aparece em nenhuma imagem.
 - **Dados:** cada dado do roteiro foi conferido no site ao vivo, com o trecho onde aparece, em [`checagem.txt`](src/assets/site/checagem.txt).
-- **Pendência:** o mapa de "Onde estamos" (Google Maps) não carregou na captura, porque `www.google.com` está bloqueado na rede do ambiente.
+- **Mapa de "Onde estamos" (Google Maps):** a captura de página inteira não desenha iframes de outro domínio, então o mapa é capturado à parte, na área visível (`m-map.jpg`, `d-map.jpg`). O Reel o sobrepõe na posição do iframe.
 - **Visão geral:** [`output/revisao/capturas.jpg`](output/revisao/capturas.jpg).
 
 **Formato:** 9:16 (1080×1920), 60 fps, H.264 + AAC 48 kHz, áudio em −14 LUFS · capa 1080×1920.
@@ -39,6 +39,7 @@ reels/como-funciona-o-raio-x/
 
 ```bash
 node reels/como-funciona-o-raio-x/scripts/capture.cjs   # recaptura o site e refaz a checagem
+python3 reels/como-funciona-o-raio-x/scripts/capturas_folha.py   # folha de revisão das capturas
 npm run dev                          # preview: http://127.0.0.1:5173/core/player.html?reel=como-funciona-o-raio-x
 npm run build -- como-funciona-o-raio-x              # cues -> áudio -> vídeo -> capa -> storyboard -> QA
 npm run preview -- como-funciona-o-raio-x            # MP4 rápido (30 fps) para revisão

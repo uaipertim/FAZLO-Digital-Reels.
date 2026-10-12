@@ -10,6 +10,9 @@
  *   d-NN.jpg            desktop (1440 px, 1x), página inteira em faixas de 1600 px
  *   m-modal-1.jpg/-2    modal "Ver detalhes" do 1º chalé (topo e comodidades/alimentação)
  *   m-dayuse.jpg        modal do Day Use no celular; d-dayuse.jpg no desktop
+ *   m-map.jpg/d-map.jpg o mapa de "Onde estamos" (iframe do Google Maps), capturado à parte:
+ *                       a captura de página inteira não desenha iframes de outro domínio; o Reel
+ *                       sobrepõe esta imagem às faixas na posição do iframe (manifest: map)
  *   manifest.json       faixas, altura da página e caixa de cada seção/título (para rolar e acender)
  *   checagem.txt        cada dado do roteiro com o trecho do site onde ele aparece
  *
@@ -79,6 +82,10 @@ async function prepare(page) {
   await page.addStyleTag({ content: '*,*::before,*::after{transition:none!important;scroll-behavior:auto!important}' });
   const H = await page.evaluate(() => document.documentElement.scrollHeight);
   for (let y = 0; y < H; y += 300) { await page.evaluate((yy) => window.scrollTo(0, yy), y); await page.waitForTimeout(90); }
+  // o mapa de "Onde estamos" é um iframe do Google Maps: trazê-lo à vista e esperar os blocos
+  await page.evaluate(() => { const f = document.querySelector('iframe[src*="google.com/maps"]'); if (f) f.scrollIntoView({ block: 'center' }); });
+  await page.waitForLoadState('networkidle').catch(() => {});
+  await page.waitForTimeout(4000);
   await page.evaluate(() => window.scrollTo(0, 0));
   await page.waitForTimeout(1200);
   const still = await page.evaluate(() => /Quem passou por aqui/i.test(document.body.innerText));
@@ -97,7 +104,7 @@ async function measure(page) {
     const head = (re) => { const e = [...document.querySelectorAll('h1,h2,h3,p,span,div')].find((x) => x.children.length === 0 && re.test(x.innerText || '')); return e ? box(e) : null; };
     const anchors = {
       consulte: head(/^Consulte sua estadia$/i),
-      chales: head(/^Nossos chalés/i),
+      chales: (() => { const e = [...document.querySelectorAll('h2')].find((x) => /^Nossos chalés/i.test(x.innerText)); return e ? box(e) : null; })(),
       verDetalhes: (() => { const e = [...document.querySelectorAll('button,a')].find((x) => /^Ver detalhes$/i.test(x.innerText.trim()) && x.getBoundingClientRect().width > 0); return e ? box(e) : null; })(),
       viver: head(/Viver a Canastra/i),
       sabores: head(/Sabores da fazenda/i),
@@ -106,7 +113,40 @@ async function measure(page) {
       logo: (() => { const e = document.querySelector('header a'); return e ? box(e) : null; })(),
     };
     const ifr = document.querySelector('iframe[src*="google.com/maps"]');
-    return { H: document.documentElement.scrollHeight, W: document.documentElement.clientWidth, sections, anchors, map: ifr ? box(ifr) : null };
+    const firstImg = (sel) => { const e = [...document.querySelectorAll(`${sel} img`)].find((i) => i.getBoundingClientRect().width > 60 && getComputedStyle(i).opacity !== '0'); return e ? box(e) : null; };
+    const images = { hero: firstImg('section.vc-hero'), chales: firstImg('#acomodacoes'), passeios: firstImg('#experiencias'), cafe: firstImg('#mesa'), historia: firstImg('#historia') };
+    const name = [...document.querySelectorAll('#acomodacoes h3')].find((x) => x.getBoundingClientRect().width > 0);
+    let card = name; while (card && card.parentElement && card.getBoundingClientRect().height < 420) card = card.parentElement;
+    // foto do 1º chalé: o bloco logo acima do texto do cartão
+    let ph = card && card.previousElementSibling;
+    if (!ph && card) { let up = card; while (up.parentElement && !up.previousElementSibling) up = up.parentElement; ph = up.previousElementSibling; }
+    if (ph) images.chales = box(ph);
+    return { H: document.documentElement.scrollHeight, W: document.documentElement.clientWidth, sections, anchors, images, firstCard: card ? box(card) : null, map: ifr ? box(ifr) : null };
+  });
+}
+
+// o iframe do mapa só aparece numa captura da área visível: centralizar, esperar os blocos e recortar
+async function mapShot(page, map, file) {
+  if (!map) return null;
+  await page.evaluate((m) => window.scrollTo(0, Math.max(0, m.y + m.h / 2 - window.innerHeight / 2)), map);
+  await page.waitForLoadState('networkidle').catch(() => {});
+  await page.waitForTimeout(5000);
+  const sy = await page.evaluate(() => window.scrollY);
+  await page.screenshot({ path: path.join(OUT, file), clip: { x: map.x, y: map.y - sy, width: map.w, height: map.h }, type: 'jpeg', quality: 90 });
+  await page.evaluate(() => window.scrollTo(0, 0));
+  await page.waitForTimeout(600);
+  return { file, ...map };
+}
+
+// modal do Day Use aberto: caixas (na área visível) do título, do item "Acesso às 04 cachoeiras" e do painel
+function dayRects(page) {
+  return page.evaluate(() => {
+    const bx = (e) => { const r = e.getBoundingClientRect(); return { x: Math.round(r.left), y: Math.round(r.top), w: Math.round(r.width), h: Math.round(r.height) }; };
+    const h = [...document.querySelectorAll('h2')].find((e) => /dia inteiro na serra/i.test(e.innerText) && e.getBoundingClientRect().width > 0);
+    const li = [...document.querySelectorAll('li, p, span, div')].filter((e) => /Acesso às 04 cachoeiras/i.test(e.innerText) && e.getBoundingClientRect().width > 0)
+      .sort((a, b) => a.getBoundingClientRect().width * a.getBoundingClientRect().height - b.getBoundingClientRect().width * b.getBoundingClientRect().height)[0];
+    let panel = h; while (panel && panel.parentElement && !/Reservar no WhatsApp/i.test(panel.innerText)) panel = panel.parentElement;
+    return { title: h ? bx(h) : null, cachoeiras: li ? bx(li) : null, panel: panel ? bx(panel) : null };
   });
 }
 
@@ -135,10 +175,12 @@ async function chunks(page, prefix, H, W, upTo) {
     let { page, ctx, failed } = await openPage(browser, M, local);
     const prepM = await prepare(page);
     const mm = await measure(page);
-    const text = await page.evaluate(() => document.body.innerText);
+    const text = await page.evaluate(() => `${document.body.innerText}\n${[...document.querySelectorAll('[aria-label]')].map((e) => e.getAttribute('aria-label')).join(' | ')}`);
     const upTo = mm.sections.contato ? mm.sections.contato.y + mm.sections.contato.h + 200 : mm.H;
     manifest.mobile = { dpr: 2, W: mm.W, H: mm.H, ...mm, chunks: await chunks(page, 'm', mm.H, mm.W, upTo), testimonialsRemoved: prepM.removed && !prepM.stillThere };
-    manifest.mobile.mapLoaded = !failed.has('www.google.com');
+    manifest.mobile.map = await mapShot(page, mm.map, 'm-map.jpg');
+    manifest.mobile.failedHosts = [...failed];
+    manifest.mobile.mapLoaded = ![...failed].some((h) => /google|gstatic/.test(h));
     // modal "Ver detalhes" do 1º chalé
     await page.locator('button:visible, a:visible').filter({ hasText: /^\s*Ver detalhes\s*$/ }).first().click();
     await page.waitForTimeout(1200);
@@ -151,9 +193,21 @@ async function chunks(page, prefix, H, W, upTo) {
       let dlg = h; while (dlg.parentElement && !/Consultar este chalé/i.test(dlg.innerText)) dlg = dlg.parentElement;
       return { name: (dlg.querySelector('h2') || {}).innerText || '', text: dlg.innerText.replace(/\s+/g, ' ') };
     });
+    await page.waitForTimeout(400);
+    const inclusoRect = await page.evaluate(() => {   // "o que está incluso": blocos Comodidades e Alimentação, na área visível
+      const parts = [];
+      for (const re of [/comodidades/i, /alimenta/i]) {
+        const h = [...document.querySelectorAll('h3')].find((e) => re.test(e.innerText) && e.getBoundingClientRect().width > 0);
+        if (!h) return null;
+        parts.push(h.getBoundingClientRect());
+        if (h.nextElementSibling) parts.push(h.nextElementSibling.getBoundingClientRect());
+      }
+      const x0 = Math.min(...parts.map((r) => r.left)), y0 = Math.min(...parts.map((r) => r.top)), x1 = Math.max(...parts.map((r) => r.right)), y1 = Math.max(...parts.map((r) => r.bottom));
+      return { x: Math.round(x0), y: Math.round(y0), w: Math.round(x1 - x0), h: Math.round(y1 - y0) };
+    });
     await page.waitForTimeout(500);
     await page.screenshot({ path: path.join(OUT, 'm-modal-2.jpg'), type: 'jpeg', quality: 90 });
-    manifest.mobile.modal = { files: ['m-modal-1.jpg', 'm-modal-2.jpg'], chalet: modal && modal.name };
+    manifest.mobile.modal = { files: ['m-modal-1.jpg', 'm-modal-2.jpg'], chalet: modal && modal.name, incluso: inclusoRect };
     await ctx.close();
     // Day Use (celular: menu -> "Reservar Day Use")
     ({ page, ctx } = await openPage(browser, M, local));
@@ -162,6 +216,7 @@ async function chunks(page, prefix, H, W, upTo) {
     await page.locator('button:visible, a:visible').filter({ hasText: /Day Use/i }).first().click();
     await page.waitForTimeout(1200);
     await page.screenshot({ path: path.join(OUT, 'm-dayuse.jpg'), type: 'jpeg', quality: 90 });
+    manifest.mobile.dayuse = { file: 'm-dayuse.jpg', ...(await dayRects(page)) };
     const dayuse = await page.evaluate(() => { const h = [...document.querySelectorAll('h2')].find((e) => /dia inteiro na serra/i.test(e.innerText)); if (!h) return ''; let el = h; for (let i = 0; i < 3 && el.parentElement; i++) el = el.parentElement; return el.innerText.replace(/\s+/g, ' '); });
     await ctx.close();
 
@@ -172,12 +227,15 @@ async function chunks(page, prefix, H, W, upTo) {
     const dm = await measure(page);
     const upD = dm.sections.contato ? dm.sections.contato.y + dm.sections.contato.h + 200 : dm.H;
     manifest.desktop = { dpr: 1, W: dm.W, H: dm.H, ...dm, chunks: await chunks(page, 'd', dm.H, dm.W, upD), testimonialsRemoved: prepD.removed && !prepD.stillThere };
-    manifest.desktop.mapLoaded = !failed.has('www.google.com');
+    manifest.desktop.map = await mapShot(page, dm.map, 'd-map.jpg');
+    manifest.desktop.failedHosts = [...failed];
+    manifest.desktop.mapLoaded = ![...failed].some((h) => /google|gstatic/.test(h));
     await page.evaluate(() => window.scrollTo(0, 0));
     await page.waitForTimeout(500);
     await page.locator('header button:visible').filter({ hasText: /Day Use/i }).first().click();
     await page.waitForTimeout(1200);
     await page.screenshot({ path: path.join(OUT, 'd-dayuse.jpg'), type: 'jpeg', quality: 90 });
+    manifest.desktop.dayuse = { file: 'd-dayuse.jpg', ...(await dayRects(page)) };
     await ctx.close();
 
     // ---------------- checagem dos dados do roteiro (texto do site ao vivo)
@@ -186,7 +244,7 @@ async function chunks(page, prefix, H, W, upTo) {
     const check = (item, re) => facts.push({ item, found: find(re) });
     // ficha (cena 2)
     check('ficha · LOGO', /Vale dos Canteiros/);
-    check('ficha · FOTOS', /Foto 1 de 5|Portas abertas/);
+    check('ficha · FOTOS', /Foto 1 de 5/);                     // galeria do topo (5 fotos)
     check('ficha · CHALÉS', /conta com 9 chalés/);
     check('ficha · CAFÉ', /Café da manhã/);
     check('ficha · PASSEIOS', /Encontro das Águas/);
@@ -213,7 +271,8 @@ async function chunks(page, prefix, H, W, upTo) {
   fs.writeFileSync(path.join(OUT, 'manifest.json'), JSON.stringify(manifest, null, 1) + '\n');
   const lines = facts.map((f) => `${f.found ? 'OK   ' : 'FALTA'}  ${f.item}${f.found ? `\n       “…${f.found}…”` : ''}`);
   lines.push('', `depoimentos removidos: celular ${manifest.mobile.testimonialsRemoved ? 'sim' : 'NÃO'}, desktop ${manifest.desktop.testimonialsRemoved ? 'sim' : 'NÃO'}`);
-  lines.push(`mapa do Google carregado: celular ${manifest.mobile.mapLoaded ? 'sim' : 'NÃO (www.google.com bloqueado na rede)'}, desktop ${manifest.desktop.mapLoaded ? 'sim' : 'NÃO'}`);
+  const fh = (d) => (d.failedHosts.length ? ` (falharam: ${d.failedHosts.join(', ')})` : '');
+  lines.push(`mapa do Google carregado: celular ${manifest.mobile.mapLoaded ? 'sim' : 'NÃO'}${fh(manifest.mobile)}, desktop ${manifest.desktop.mapLoaded ? 'sim' : 'NÃO'}${fh(manifest.desktop)}`);
   fs.writeFileSync(path.join(OUT, 'checagem.txt'), `CHECAGEM — ${URL0} (${manifest.capturedAt})\n\n${lines.join('\n')}\n`);
   console.log(lines.join('\n'));
   if (facts.some((f) => !f.found)) process.exitCode = 1;

@@ -1,9 +1,9 @@
-CHECAGEM — https://pousadavaledoscanteiros.com.br/ (2026-10-12T11:18:23.484Z)
+CHECAGEM — https://pousadavaledoscanteiros.com.br/ (2026-10-12T11:37:10.424Z)
 
 OK     ficha · LOGO
-       “…Vale dos Canteiros POUSADA SERRA DA CANASTRA MENU FAZENDA NA CANASTRA · A CAS…”
+       “…Vale dos Canteiros POUSADA SERRA DA CANASTRA MENU MESA MINEIRA · FOGÃO A LENH…”
 OK     ficha · FOTOS
-       “…TRA MENU FAZENDA NA CANASTRA · A CASA Portas abertas, rede na varanda. Casa colonial de paredes brancas, telhad…”
+       “…enu | Apresentação | Fotos da pousada | Foto 1 de 5 | Foto 2 de 5 | Foto 3 de 5 | Foto 4 de 5 | Foto 5 de 5 | M…”
 OK     ficha · CHALÉS
        “…para descansar no seu tempo. A pousada conta com 9 chalés. Conheça algumas opções e consulte a equipe para encontrar…”
 OK     ficha · CAFÉ
@@ -21,11 +21,11 @@ OK     chip · Desde 2009
 OK     chip · Cachoeiras na fazenda
        “…ngular: dentro das terras da fazenda há quatro cachoeiras — Capivara, Oratório, Gruta do Lobo Guará e Paraíso dos Pás…”
 OK     chip · Fogão a lenha
-       “…As refeições são caseiras, servidas no fogão a lenha. No café da manhã, os quitutes de fazenda saem na hora: pãe…”
+       “…SERRA DA CANASTRA MENU MESA MINEIRA · FOGÃO A LENHA O fogão a lenha nunca apaga. Café coado, quitandas fresqu…”
 OK     chip · Day Use
        “…alé × DAY USE · PASSE O DIA COM A GENTE Um dia inteiro na serra, sem dormir fora Chegue de manhã, aproveite a estrutura da…”
 OK     chip · Datas e hóspedes → Consulte sua estadia
-       “…iras. O tempo aqui passa mais devagar. Consulte sua estadia Informe as datas e os hóspedes. A equipe da Pousada Vale dos Canteiros confirma a disponibilidade e os valores diretamente pelo WhatsApp. ENTRADA Selecionar data SAÍDA Selecionar data ADULTOS − 2 adultos + CRIANÇAS − Sem crianças + ACOMODAÇÃO DE INTERESSE Quero a…”
+       “…a — do jeito que a família sempre fez. Consulte sua estadia Informe as datas e os hóspedes. A equipe da Pousada Vale dos Canteiros confirma a disponibilidade e os valores diretamente pelo WhatsApp. ENTRADA Selecionar data SAÍDA Selecionar data ADULTOS − 2 adultos + CRIANÇAS − Sem crianças + ACOMODAÇÃO DE INTERESSE Quero a…”
 OK     chip · Qual chalé → Nossos chalés
        “…OMIDA CASEIRA MINEIRA 01 — HOSPEDAGEM Nossos chalés, para descansar no seu tempo. A pousada conta com 9 chalés…”
 OK     chip · O que está incluso → modal Ver detalhes
@@ -42,4 +42,4 @@ OK     chip · Como chegar → Onde estamos
        “…OBO-GUARÁ PÔR DO SOL NOITES ESTRELADAS ONDE ESTAMOS São João Batista do Glória, Serra da Canastra. A pousada…”
 
 depoimentos removidos: celular sim, desktop sim
-mapa do Google carregado: celular NÃO (www.google.com bloqueado na rede), desktop NÃO
+mapa do Google carregado: celular sim, desktop sim

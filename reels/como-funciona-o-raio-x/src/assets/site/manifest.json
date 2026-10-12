@@ -1,6 +1,6 @@
 {
  "url": "https://pousadavaledoscanteiros.com.br/",
- "capturedAt": "2026-10-12T11:18:23.484Z",
+ "capturedAt": "2026-10-12T11:37:10.424Z",
  "removed": "seção de depoimentos (\"Quem passou por aqui conta melhor\")",
  "mobile": {
   "dpr": 2,
@@ -69,7 +69,12 @@
     "w": 217,
     "h": 29
    },
-   "chales": null,
+   "chales": {
+    "x": 20,
+    "y": 2989,
+    "w": 350,
+    "h": 82
+   },
    "verDetalhes": {
     "x": 39,
     "y": 3957,
@@ -107,7 +112,46 @@
     "h": 33
    }
   },
+  "images": {
+   "hero": {
+    "x": -12,
+    "y": -19,
+    "w": 413,
+    "h": 680
+   },
+   "chales": {
+    "x": 21,
+    "y": 3363,
+    "w": 348,
+    "h": 261
+   },
+   "passeios": {
+    "x": 20,
+    "y": 8552,
+    "w": 350,
+    "h": 219
+   },
+   "cafe": {
+    "x": 20,
+    "y": 12020,
+    "w": 350,
+    "h": 438
+   },
+   "historia": {
+    "x": 96,
+    "y": 13986,
+    "w": 198,
+    "h": 146
+   }
+  },
+  "firstCard": {
+   "x": 21,
+   "y": 3640,
+   "w": 348,
+   "h": 443
+  },
   "map": {
+   "file": "m-map.jpg",
    "x": 21,
    "y": 15681,
    "w": 348,
@@ -171,13 +215,41 @@
    }
   ],
   "testimonialsRemoved": true,
-  "mapLoaded": false,
+  "failedHosts": [],
+  "mapLoaded": true,
   "modal": {
    "files": [
     "m-modal-1.jpg",
     "m-modal-2.jpg"
    ],
-   "chalet": "Bica D'água 1"
+   "chalet": "Bica D'água 1",
+   "incluso": {
+    "x": 32,
+    "y": 238,
+    "w": 326,
+    "h": 183
+   }
+  },
+  "dayuse": {
+   "file": "m-dayuse.jpg",
+   "title": {
+    "x": 34,
+    "y": 237,
+    "w": 322,
+    "h": 59
+   },
+   "cachoeiras": {
+    "x": 34,
+    "y": 467,
+    "w": 322,
+    "h": 23
+   },
+   "panel": {
+    "x": 12,
+    "y": 184,
+    "w": 366,
+    "h": 696
+   }
   }
  },
  "desktop": {
@@ -247,7 +319,12 @@
     "w": 295,
     "h": 39
    },
-   "chales": null,
+   "chales": {
+    "x": 92,
+    "y": 2343,
+    "w": 820,
+    "h": 165
+   },
    "verDetalhes": {
     "x": 119,
     "y": 3328,
@@ -285,7 +362,46 @@
     "h": 26
    }
   },
+  "images": {
+   "hero": {
+    "x": -43,
+    "y": -27,
+    "w": 1526,
+    "h": 954
+   },
+   "chales": {
+    "x": 92,
+    "y": 2641,
+    "w": 1256,
+    "h": 19
+   },
+   "passeios": {
+    "x": 92,
+    "y": 5102,
+    "w": 704,
+    "h": 440
+   },
+   "cafe": {
+    "x": 92,
+    "y": 7430,
+    "w": 711,
+    "h": 889
+   },
+   "historia": {
+    "x": 732,
+    "y": 8839,
+    "w": 616,
+    "h": 770
+   }
+  },
+  "firstCard": {
+   "x": 92,
+   "y": 2690,
+   "w": 394,
+   "h": 712
+  },
   "map": {
+   "file": "d-map.jpg",
    "x": 650,
    "y": 10852,
    "w": 697,
@@ -334,6 +450,28 @@
    }
   ],
   "testimonialsRemoved": true,
-  "mapLoaded": false
+  "failedHosts": [],
+  "mapLoaded": true,
+  "dayuse": {
+   "file": "d-dayuse.jpg",
+   "title": {
+    "x": 472,
+    "y": 309,
+    "w": 496,
+    "h": 84
+   },
+   "cachoeiras": {
+    "x": 472,
+    "y": 539,
+    "w": 496,
+    "h": 23
+   },
+   "panel": {
+    "x": 440,
+    "y": 246,
+    "w": 560,
+    "h": 636
+   }
+  }
  }
 }
