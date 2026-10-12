@@ -198,14 +198,14 @@
         c.fillStyle = '#7A5C44'; c.fillRect(0, h * 0.9, w, h * 0.1);
         break;
       }
-      case 'pool': {                                         // área externa com piscina
+      case 'pool': {                                         // área externa com piscina e árvore
         g('#A6DBE6', '#E8F3EE', 0, h * 0.45);
         c.fillStyle = '#E9DCC6'; c.fillRect(0, h * 0.45, w, h * 0.55);
         c.fillStyle = '#4FB6C8'; c.beginPath(); c.roundRect(w * 0.12, h * 0.55, w * 0.76, h * 0.32, 10); c.fill();
         c.strokeStyle = 'rgba(255,255,255,0.7)'; c.lineWidth = 2;
         for (let i = 0; i < 3; i++) { c.beginPath(); for (let xx = w * 0.16; xx <= w * 0.84; xx += 6) c.lineTo(xx, h * (0.63 + 0.08 * i) + Math.sin(xx * 0.08 + i) * 2); c.stroke(); }
-        c.strokeStyle = '#2F6B4F'; c.lineWidth = 4; c.beginPath(); c.moveTo(w * 0.86, h * 0.5); c.quadraticCurveTo(w * 0.84, h * 0.3, w * 0.9, h * 0.14); c.stroke();
-        c.fillStyle = '#2F6B4F'; for (let i = 0; i < 4; i++) { c.save(); c.translate(w * 0.9, h * 0.14); c.rotate(-1.4 + i * 0.7); c.beginPath(); c.ellipse(w * 0.07, 0, w * 0.08, h * 0.03, 0, 0, TAU); c.fill(); c.restore(); }
+        c.strokeStyle = '#6B5340'; c.lineWidth = Math.max(3, w * 0.012); c.beginPath(); c.moveTo(w * 0.9, h * 0.52); c.quadraticCurveTo(w * 0.86, h * 0.36, w * 0.91, h * 0.24); c.stroke();   // árvore de copa redonda (serra, não praia)
+        c.fillStyle = '#3F7350'; [[0.86, 0.2, 0.07], [0.93, 0.17, 0.065], [0.9, 0.1, 0.06]].forEach(([a1, b1, r1]) => { c.beginPath(); c.arc(w * a1, h * b1, Math.min(w, h * 2) * r1, 0, TAU); c.fill(); });
         break;
       }
       default: {                                             // fachada / área comum
@@ -217,13 +217,15 @@
     }
     c.restore();
   }
-  // mapa abstrato: ruas, orla, parque, o pin da pousada e as rotas até os passeios
+  // mapa abstrato: ruas, rio, represa, mata, o pin da pousada e as rotas até os passeios
   function mapArt(c, x, y, w, h, pois) {
     c.save(); rrect(c, x, y, w, h, 14); c.clip(); c.translate(x, y);
     c.fillStyle = '#182020'; c.fillRect(0, 0, w, h);
-    c.fillStyle = '#16343C'; c.beginPath(); c.moveTo(w * 0.72, 0); c.quadraticCurveTo(w * 0.62, h * 0.5, w * 0.8, h); c.lineTo(w, h); c.lineTo(w, 0); c.fill();
+    c.strokeStyle = '#16343C'; c.lineWidth = Math.max(10, h * 0.08); c.lineCap = 'round';
+    c.beginPath(); c.moveTo(w * 0.6, -12); c.bezierCurveTo(w * 0.8, h * 0.22, w * 0.62, h * 0.48, w * 0.84, h * 0.72); c.stroke();
+    c.fillStyle = '#16343C'; c.beginPath(); c.ellipse(w * 0.9, h * 0.88, w * 0.2, h * 0.24, -0.35, 0, TAU); c.fill();
     c.strokeStyle = 'rgba(120,190,205,0.35)'; c.lineWidth = 1.5;
-    for (let i = 0; i < 3; i++) { c.beginPath(); c.moveTo(w * (0.8 + i * 0.06), h * 0.05); c.quadraticCurveTo(w * (0.7 + i * 0.06), h * 0.5, w * (0.86 + i * 0.05), h * 0.95); c.stroke(); }
+    for (let i = 0; i < 3; i++) { c.beginPath(); c.ellipse(w * 0.9, h * 0.88, w * (0.06 + 0.045 * i), h * (0.07 + 0.05 * i), -0.35, Math.PI * 1.05, Math.PI * 1.6); c.stroke(); }
     c.fillStyle = '#1C3324'; c.beginPath(); c.ellipse(w * 0.2, h * 0.24, w * 0.12, h * 0.16, 0.3, 0, TAU); c.fill(); c.beginPath(); c.ellipse(w * 0.36, h * 0.84, w * 0.1, h * 0.12, -0.2, 0, TAU); c.fill();
     c.strokeStyle = '#2E3838'; c.lineWidth = 7; c.lineCap = 'round';
     [[0, 0.55, 0.7, 0.42], [0.18, 0, 0.3, 1], [0.48, 0, 0.56, 1], [0, 0.2, 0.64, 0.12], [0.05, 0.9, 0.7, 0.78]].forEach(([a, b, cc, d]) => { c.beginPath(); c.moveTo(w * a, h * b); c.lineTo(w * cc, h * d); c.stroke(); });
@@ -241,35 +243,40 @@
     c.restore();
   }
 
-  // ---------------------------------------------------------------- logo oficial (SVG do kit, intacto)
-  let LOGO = null;
-  function loadLogo() {
-    const x = new XMLHttpRequest(); x.open('GET', '/brand/logo/kit/FAZLO-DIGITAL-branca-transparente.svg', false); x.send();
+  // ---------------------------------------------------------------- logo oficial (SVGs do kit, intactos)
+  // full = FAZLO DIGITAL (capa e fechamento); compact = FAZLO sem "DIGITAL" (aplicações pequenas, itens)
+  const LOGOS = {};
+  function loadLogo(key, file) {
+    const x = new XMLHttpRequest(); x.open('GET', `/brand/logo/kit/${file}`, false); x.send();
     const doc = new DOMParser().parseFromString(x.responseText, 'image/svg+xml');
-    const paths = [...doc.querySelectorAll('path')].map((p) => ({ fill: p.getAttribute('fill'), path: new Path2D(p.getAttribute('d')), d: p.getAttribute('d') }));
-    const nums = paths.flatMap((p) => p.d.match(/-?\d+\.?\d*/g).map(Number));
-    const xs = nums.filter((_, i) => i % 2 === 0), ys = nums.filter((_, i) => i % 2 === 1);
-    LOGO = { paths, x0: Math.min(...xs), x1: Math.max(...xs), y0: Math.min(...ys), y1: Math.max(...ys) };
+    const paths = [...doc.querySelectorAll('path')].map((p) => {
+      const d = p.getAttribute('d'), n = d.match(/-?\d+\.?\d*/g).map(Number);
+      const xs = n.filter((_, i) => i % 2 === 0), ys = n.filter((_, i) => i % 2 === 1);
+      return { fill: p.getAttribute('fill'), path: new Path2D(d), x0: Math.min(...xs), x1: Math.max(...xs), y0: Math.min(...ys), y1: Math.max(...ys) };
+    });
+    const box = (ps) => ({ x0: Math.min(...ps.map((p) => p.x0)), x1: Math.max(...ps.map((p) => p.x1)), y0: Math.min(...ps.map((p) => p.y0)), y1: Math.max(...ps.map((p) => p.y1)) });
+    LOGOS[key] = { paths, all: box(paths), letters: box(paths.slice(0, 2)) };    // 1º traçado = letras, 2º = barra lima
   }
-  // logo com largura w (do desenho, sem margens do arquivo) a partir de (x, y) = canto superior esquerdo
-  function drawLogo(c, x, y, w) {
-    const s = w / (LOGO.x1 - LOGO.x0);
-    c.save(); c.translate(x - LOGO.x0 * s, y - LOGO.y0 * s); c.scale(s, s);
-    LOGO.paths.forEach((p) => { c.fillStyle = p.fill; c.fill(p.path, 'evenodd'); });
+  // logo com largura w (do desenho, sem as margens do arquivo) a partir do canto superior esquerdo (x, y)
+  function drawLogo(c, key, x, y, w) {
+    const L = LOGOS[key], s = w / (L.all.x1 - L.all.x0);
+    c.save(); c.translate(x - L.all.x0 * s, y - L.all.y0 * s); c.scale(s, s);
+    L.paths.forEach((p) => { c.fillStyle = p.fill; c.fill(p.path, 'evenodd'); });
     c.restore();
-    return (LOGO.y1 - LOGO.y0) * s;
+    return { h: (L.all.y1 - L.all.y0) * s, letters: (L.letters.y1 - L.letters.y0) * s };
   }
 
   // ---------------------------------------------------------------- estrutura comum
-  const LOGO_W = 250, HEAD_Y = 100;                   // topo abaixo do contador nativo do Instagram
+  const HEAD_Y = 100;                                  // topo abaixo do contador nativo do Instagram
+  const LOGO_FULL_W = 360, LOGO_COMPACT_W = 200;      // FAZLO DIGITAL legível na capa e no fecho; FAZLO nos itens
   function background(c) {
     c.fillStyle = C.bg; c.fillRect(0, 0, W, H);
     c.fillStyle = 'rgba(255,255,255,0.05)';
     for (let y = 22; y < H; y += 44) for (let x = 22; x < W; x += 44) { c.beginPath(); c.arc(x, y, 1.3, 0, TAU); c.fill(); }
   }
-  function header(c, n) {
-    const lh = drawLogo(c, M, HEAD_Y, LOGO_W);
-    const by = HEAD_Y + lh * 0.62 + 11;                 // alinhado ao miolo das letras FAZLO
+  function header(c, n, full = false) {
+    const lg = full ? drawLogo(c, 'full', M, HEAD_Y, LOGO_FULL_W) : drawLogo(c, 'compact', M, HEAD_Y, LOGO_COMPACT_W);
+    const by = HEAD_Y + lg.letters / 2 + 10;            // contador alinhado ao miolo das letras FAZLO
     const tot = `/${String(N).padStart(2, '0')}`;
     const wt = measure(tot, 28, 500);
     text(c, tot, W - M, by, { size: 28, weight: 500, color: C.muted, align: 'right' });
@@ -322,7 +329,7 @@
   function itemSlide(c, n, lines, body, screen, chips) {
     background(c);
     header(c, n);
-    const y1 = 214 + S_ITEM * 0.74;                    // linha de base do título
+    const y1 = 200 + S_ITEM * 0.74;                    // linha de base do título
     const yl = title(c, lines, M, y1, S_ITEM, { lime: [lines[0].split(' ')[0]] });
     const bl = wrap(body, 35, 500, W - 2 * M);
     bl.forEach((s, i) => text(c, s, M, yl + 72 + i * 50, { size: 35, weight: 500, color: C.soft }));
@@ -402,10 +409,10 @@
     const x = 12, y = T0, w = SW - 24, h = 430;
     card(c, x, y, w, h, true);
     text(c, 'Localização', x + 18, y + 38, { size: 22, weight: 700, color: C.white });
-    mapArt(c, x + 12, y + 54, w - 24, 196, [{ x: 0.86, y: 0.3, ic: 'wave' }, { x: 0.12, y: 0.18, ic: 'leaf' }, { x: 0.22, y: 0.84, ic: 'drop' }]);
+    mapArt(c, x + 12, y + 54, w - 24, 196, [{ x: 0.72, y: 0.2, ic: 'drop' }, { x: 0.12, y: 0.18, ic: 'leaf' }, { x: 0.22, y: 0.84, ic: 'view' }]);
     card(c, x, y + h + 14, w, 260, false);
     photo(c, 'pool', x + 14, y + h + 28, w - 28, 200);
-    [['wave', 'Praia'], ['leaf', 'Trilha'], ['drop', 'Cachoeira']].forEach(([ic, lb], i) => {
+    [['drop', 'Cachoeira'], ['leaf', 'Trilha'], ['view', 'Mirante']].forEach(([ic, lb], i) => {
       const ry = y + 266 + i * 52;
       c.beginPath(); c.arc(x + 36, ry + 18, 18, 0, TAU); c.fillStyle = C.card2; c.fill();
       icon(c, ic, x + 36, ry + 18, 24, C.soft, 0.1);
@@ -480,7 +487,7 @@
     B[0] = [cx, cy];
     // 4 onde fica
     const my = cy + ph1 + 10 + th + G;
-    mapArt(c, cx, my, lw, cy + CH - my, [{ x: 0.85, y: 0.3, ic: 'wave' }, { x: 0.14, y: 0.24, ic: 'leaf' }, { x: 0.3, y: 0.82, ic: 'drop' }]);
+    mapArt(c, cx, my, lw, cy + CH - my, [{ x: 0.72, y: 0.24, ic: 'drop' }, { x: 0.14, y: 0.24, ic: 'leaf' }, { x: 0.3, y: 0.82, ic: 'view' }]);
     B[3] = [cx, my];
     // coluna da direita: 2 valor, 3 vaga, 5 incluso, 6 regras, 7 reservar
     const hs = [0.205, 0.285, 0.145, 0.145], hk = CH - 4 * G - hs.reduce((a, v) => a + Math.round(CH * v), 0);
@@ -548,16 +555,16 @@
   function slideCover(c) {
     background(c);
     glow(c, 540, 900, 620, 0.08);
-    header(c, 1);
-    const yl = title(c, L_COVER, M, 238 + S_COVER * 0.74, S_COVER, { lh: 1.08, lime: ['ANTES', 'DE', 'RESERVAR'] });
+    header(c, 1, true);
+    const yl = title(c, L_COVER, M, 266 + S_COVER * 0.74, S_COVER, { lh: 1.08, lime: ['ANTES', 'DE', 'RESERVAR'] });
     coverBrowser(c, Math.round(yl + 86));
     footer(c, ['bookmark'], 'Salve para revisar a sua pousada', 1278);
   }
   function slideEnd(c) {
     background(c);
     glow(c, 540, 820, 600, 0.07);
-    header(c, 9);
-    const yl = title(c, L_END, M, 222 + S_END * 0.74, S_END, { lh: 1.1, lime: ['ONLINE?'] });
+    header(c, 9, true);
+    const yl = title(c, L_END, M, 248 + S_END * 0.74, S_END, { lh: 1.1, lime: ['ONLINE?'] });
     // checklist para revisar a própria pousada
     const x = M, y = yl + 56, w = W - 2 * M, rh = 60, h = CHECK.length * rh + 28;
     fillR(c, x, y, w, h, 24, C.card);
@@ -584,7 +591,8 @@
     width: W,
     height: H,
     setup() {
-      loadLogo();
+      loadLogo('full', 'FAZLO-DIGITAL-branca-transparente.svg');
+      loadLogo('compact', 'FAZLO-logo-branca-transparente.svg');
       S_ITEM = Math.min(84, ...ITEMS.map((it) => fit(it.lines, 900, W - 2 * M, 100)));
       L_COVER = ['O QUE O HÓSPEDE', 'PROCURA ANTES', 'DE RESERVAR'];
       S_COVER = fit(L_COVER, 900, W - 2 * M, 120);
