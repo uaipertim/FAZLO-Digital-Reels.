@@ -1,7 +1,7 @@
 {
   "id": "como-funciona-o-raio-x",
   "title": "Como funciona o raio-x",
-  "status": "em produção · capturas e checagem feitas",
+  "status": "concluído · em avaliação",
   "format": {
     "width": 1080,
     "height": 1920,
@@ -116,19 +116,19 @@
     ],
     [
       7.3,
-      "O SCAN LÊ A POUSADA"
+      "O SCAN LÊ"
     ],
     [
       10.6,
-      "TUDO O QUE ELA TEM"
+      "TUDO O QUE TEM"
     ],
     [
       13.0,
-      "O QUE SÓ ELA TEM?"
+      "SÓ ELA TEM?"
     ],
     [
       16.6,
-      "FAZENDA DE TROPEIROS…"
+      "OS 5 CHIPS"
     ],
     [
       18.3,
@@ -136,23 +136,23 @@
     ],
     [
       22.6,
-      "O QUE O HÓSPEDE PRECISA"
+      "O HÓSPEDE"
     ],
     [
       23.65,
-      "O CORTE: RAIO-X"
+      "O CORTE"
     ],
     [
       24.5,
-      "CONSULTE SUA ESTADIA"
+      "CONSULTE"
     ],
     [
       25.9,
-      "NOSSOS CHALÉS"
+      "CHALÉS"
     ],
     [
       26.7,
-      "O QUE ESTÁ INCLUSO"
+      "INCLUSO"
     ],
     [
       28.2,
@@ -164,11 +164,11 @@
     ],
     [
       30.6,
-      "SABORES DA FAZENDA"
+      "SABORES"
     ],
     [
       31.9,
-      "NOSSA HISTÓRIA"
+      "HISTÓRIA"
     ],
     [
       33.1,
@@ -180,7 +180,7 @@
     ],
     [
       36.2,
-      "FALE COM A FAZLO"
+      "CTA"
     ]
   ]
 }

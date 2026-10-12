@@ -2,6 +2,8 @@
 
 Reel da @fazlodigital (pasta `como-funciona-o-raio-x`, nomeada pelo título). Usa a mesma identidade, o mesmo motor e a mesma linguagem de trilha do Reel "Instagram não é site".
 
+**Status: concluído · em avaliação.**
+
 **Formato:** 9:16 (1080×1920), **36,6 s**, 60 fps, H.264 + AAC 48 kHz, áudio em −14 LUFS. 100% motion graphics: sem avatar, sem pessoa, sem cenário real. As telas do site são **capturas reais** do site da Pousada Vale dos Canteiros, com uso autorizado pelo cliente.
 
 ▶ **Vídeo:** [`output/fazlo-digital-como-funciona-o-raio-x.mp4`](output/fazlo-digital-como-funciona-o-raio-x.mp4)
@@ -106,7 +108,37 @@ Trilha e efeitos **sintetizados do zero** (numpy/scipy), seguindo os cues da ani
 
 ## Revisão
 
-Em render: os resultados do QA entram aqui quando o vídeo final estiver pronto.
+`npm run qa -- como-funciona-o-raio-x` gera [`relatorio-tecnico.txt`](output/revisao/relatorio-tecnico.txt), [`sincronia.txt`](output/revisao/sincronia.txt), [`zonas-seguras.jpg`](output/revisao/zonas-seguras.jpg) e [`capa-no-feed.jpg`](output/revisao/capa-no-feed.jpg).
+
+**Técnica (aprovada):**
+
+- 1080×1920, 60 fps, 2.196 quadros, 24,5 MB;
+- H.264 High yuv420p, AAC 48 kHz estéreo;
+- 36,600 s de vídeo e de áudio (Δ 0 ms);
+- **−14,1 LUFS** e pico real **−2,9 dBTP**;
+- sem trechos pretos nem imagem congelada; o 1º quadro já tem imagem;
+- capa 1080×1920, com as áreas livres respeitadas e o conteúdo dentro do recorte 3:4.
+
+**Sincronização (aprovada):**
+
+1. o áudio do MP4 é a trilha, sem deslocamento (0,0 ms);
+2. os 3 golpes-chave caem no instante do evento visual, com **desvio médio de 7,7 ms e máximo de 9,3 ms**: "RAIO-X.", o corte e a logo;
+3. a imagem reage nos 4 golpes principais ("RAIO-X.", a virada do scan, o corte, a logo).
+
+**Zonas seguras:** todo texto fica fora das áreas cobertas pela interface do Reels. O celular da cena 5 termina antes da coluna de botões à direita, e os chips presos às seções ficam abaixo da barra de status do celular.
+
+**Ajustes feitos na revisão:**
+
+- **Cena 5:**
+  - as etiquetas dos chips ficavam sob a barra de status do celular, por isso a rolagem para cada seção passou a deixar uma margem;
+  - a deriva da página recomeça a cada seção (antes se acumulava);
+  - os modais abrem e fecham sem cruzar com a rolagem;
+  - os chips presos somem sob os modais.
+- **Ritmo:** a cena 5 ganhou 1,8 s, tirados das pausas das cenas 3 e 4. Antes, o chip do chalé ficava só 0,2 s antes de o modal abrir.
+- **Raio-x:**
+  - o negativo das páginas ficou mais claro, para ler como raio-x;
+  - nas fotos ele é mais escuro, porque antes estourava em lima.
+- **Imagem congelada:** o QA acusou dois trechos parados, em 0,4–2,4 s e 10,5–12 s. Entraram a linha de scan "em espera" no gancho, com um brilho correndo por ela, a aproximação lenta da frase e da ficha completa, e um brilho que passa pelas fotos.
 
 ## Arquivos-fonte
 
