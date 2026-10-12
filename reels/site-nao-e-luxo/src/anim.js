@@ -43,7 +43,7 @@
   const FRASE = { t0: b(25), t1: 17.7 };             // UMA POUSADA PEQUENA… (2,7 s)
   const NOITE = {
     off: T.trabalha,                                 // 18,0: a tela apaga, cai a noite
-    lock: b(30.5),                                   // 18,3: tela de bloqueio
+    lock: b(30.25),                                  // 18,15: tela de bloqueio
     relogio: b(31),                                  // 18,6: 22:59 -> 23:00
     notif: b(32),                                    // 19,2: "Consulta pelo site"
     frase: 19.5, fraseSai: 25.5,                     // ELE TRABALHA…
@@ -713,7 +713,7 @@
   // a tela do celular em cada momento: site -> (apaga) -> bloqueio -> conversa -> site (virada)
   function screenAt(c, t) {
     const back = E.inOutCubic(prog(t, T.virada, T.virada + 0.4));
-    const siteA = t < T.virada ? 1 - prog(t, NOITE.off, NOITE.off + 0.18) : back;
+    const siteA = t < T.virada ? (1 - 0.65 * prog(t, NOITE.off, NOITE.off + 0.15)) * (1 - prog(t, NOITE.lock, NOITE.lock + 0.3)) : back;
     if (t >= NOITE.off && t < T.virada + 0.4) {
       const lockA = prog(t, NOITE.lock, NOITE.lock + 0.3) * (1 - back);
       if (lockA > 0.001) { c.save(); c.globalAlpha *= lockA; lockScreen(c, t); c.restore(); }
@@ -812,7 +812,14 @@
     if (pd > 0) { c.save(); c.globalAlpha *= pd; c.translate((1 - E.outCubic(pd)) * 30, 0); c.fillStyle = LOGO.digital.fill; c.fill(LOGO.digital.path, 'evenodd'); c.restore(); }
     c.restore();
   }
+  const SK = 0.966;                                   // inclinação da barra da logo
   function cta(c, t) {
+    const wp = prog(t, T.cta - 0.12, T.cta + 0.4);     // "o corte": a barra lima varre na diagonal
+    if (wp > 0 && wp < 1) {
+      const x0 = 540 + lerp(-1400, 1400, E.inOutCubic(wp)), bw = 120;
+      c.beginPath(); c.moveTo(x0 + SK * 1200 - bw / 2, -200); c.lineTo(x0 + SK * 1200 + bw / 2, -200); c.lineTo(x0 - SK * 1200 + bw / 2, 2200); c.lineTo(x0 - SK * 1200 - bw / 2, 2200); c.closePath();
+      c.fillStyle = C.lime; c.fill();
+    }
     if (t < T.cta - 0.1) return;
     const gp = prog(t, T.cta, T.cta + 1.0);
     glow(c, 540, 900, 520, 0.1 * gp + 0.03 * Math.sin(t * 3) * gp);
@@ -847,7 +854,10 @@
     c.save(); c.translate(sh, U.noise1(t * 30, 7) * 8 * kick(t, GOLPE, 0.3));
 
     // ===== 1 · GANCHO
+    const hz = 1 + 0.05 * E.inOutSine(prog(t, 0.2, 4.0));                    // aproximação lenta durante a leitura
+    c.save(); c.translate(W / 2, 890); c.scale(hz, hz); c.translate(-W / 2, -890);
     titleBlock(c, L_HOOK, t, -0.32, 3.9, { size: SZ.hook, y: 860, lime: ['GRANDE?'] });
+    c.restore();
 
     // ===== 2 · O MITO
     if (t > T.mito - 0.05 && t < GOLPE - 0.02) drawLuxoWhole(c, t, 1);
@@ -859,8 +869,12 @@
     // ===== 3 a 5 · O CELULAR (some no rodapé seguro)
     const rise = E.outCubic(prog(t, 8.85, 9.45)), out = E.inCubic(prog(t, T.cta - 0.3, T.cta + 0.15));
     if (rise > 0 && out < 1) {
+      // depois do último pouso o celular respira devagar (a imagem nunca congela nas pausas de leitura)
+      const br = prog(t, LAND[3] + 0.05, LAND[3] + 0.4), fy = (Math.sin((t - LAND[3]) * 0.9) * 4 + Math.sin((t - LAND[3]) * 0.37) * 3) * br;
+      const zb = 1 + 0.01 * Math.sin((t - LAND[3]) * 0.55) * br, cy = PY + PHH / 2;
       faded(c, (g) => {
-        g.translate(0, (1 - rise) * 1300 + out * 1400);
+        g.translate(0, (1 - rise) * 1300 + out * 1400 + fy);
+        g.translate(W / 2, cy); g.scale(zb, zb); g.translate(-W / 2, -cy);
         pings(g, t);
         phone(g, (cc) => screenAt(cc, t), phoneGlow(t));
       });
