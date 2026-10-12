@@ -84,6 +84,7 @@ reels/
   reel-00/ … reel-03/          # um Reel por pasta (ver reels/README.md)
   instagram-nao-e-site/        # a partir daqui, pastas com o nome do título
   como-funciona-o-raio-x/      # telas reais de cliente (scripts/capture.cjs)
+  case-vale-dos-canteiros/     # navegação no site real do cliente (reaproveita as capturas do raio-x)
   _calibracao/                 # cartela técnica que valida o pipeline
 carrosseis/
   o-que-o-hospede-procura/     # um carrossel por pasta (ver carrosseis/README.md)

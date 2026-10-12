@@ -1,0 +1,356 @@
+{
+ "id": "case-vale-dos-canteiros",
+ "bpm": 100,
+ "fps": 60,
+ "duration": 35.4,
+ "sections": {
+  "gancho": 0,
+  "consulta": 4.2,
+  "chales": 13.8,
+  "viver": 19.8,
+  "dayuse": 24,
+  "chegar": 27,
+  "assinatura": 30,
+  "cta": 32.4
+ },
+ "cues": [
+  {
+   "t": 0,
+   "type": "open"
+  },
+  {
+   "t": 0,
+   "type": "title"
+  },
+  {
+   "t": 0.05,
+   "type": "rise",
+   "d": 0.9
+  },
+  {
+   "t": 1.9,
+   "type": "slide"
+  },
+  {
+   "t": 2.4,
+   "type": "slash"
+  },
+  {
+   "t": 2.44,
+   "type": "title"
+  },
+  {
+   "t": 2.55,
+   "type": "pop"
+  },
+  {
+   "t": 4,
+   "type": "swish",
+   "d": 0.62,
+   "k": 0
+  },
+  {
+   "t": 4.8,
+   "type": "tap",
+   "k": 0,
+   "name": "entrada"
+  },
+  {
+   "t": 4.85,
+   "type": "sheet",
+   "dir": 1
+  },
+  {
+   "t": 5.4,
+   "type": "tap",
+   "k": 1,
+   "name": "proximo"
+  },
+  {
+   "t": 6,
+   "type": "tap",
+   "k": 2,
+   "name": "dia5"
+  },
+  {
+   "t": 6.6,
+   "type": "tap",
+   "k": 3,
+   "name": "dia8"
+  },
+  {
+   "t": 6.66,
+   "type": "sheet",
+   "dir": -1
+  },
+  {
+   "t": 6.8,
+   "type": "chip",
+   "k": 0
+  },
+  {
+   "t": 7.2,
+   "type": "tap",
+   "k": 4,
+   "name": "crianca"
+  },
+  {
+   "t": 7.32,
+   "type": "chip",
+   "k": 1
+  },
+  {
+   "t": 7.8,
+   "type": "tap",
+   "k": 5,
+   "name": "acomod"
+  },
+  {
+   "t": 7.85,
+   "type": "sheet",
+   "dir": 1
+  },
+  {
+   "t": 8.4,
+   "type": "tap",
+   "k": 6,
+   "name": "chale"
+  },
+  {
+   "t": 8.5,
+   "type": "sheet",
+   "dir": -1
+  },
+  {
+   "t": 8.82,
+   "type": "chip",
+   "k": 2
+  },
+  {
+   "t": 10.2,
+   "type": "tap",
+   "k": 7,
+   "name": "enviar"
+  },
+  {
+   "t": 10.3,
+   "type": "switch"
+  },
+  {
+   "t": 10.48,
+   "type": "title"
+  },
+  {
+   "t": 11,
+   "type": "sendtap",
+   "k": 8,
+   "name": "send"
+  },
+  {
+   "t": 11.06,
+   "type": "sent"
+  },
+  {
+   "t": 13.8,
+   "type": "switch"
+  },
+  {
+   "t": 13.8,
+   "type": "section",
+   "k": 0
+  },
+  {
+   "t": 14.15,
+   "type": "swish",
+   "d": 1.4,
+   "k": 1
+  },
+  {
+   "t": 14.2,
+   "type": "title"
+  },
+  {
+   "t": 16.2,
+   "type": "tap",
+   "k": 9,
+   "name": "ver"
+  },
+  {
+   "t": 16.25,
+   "type": "modal"
+  },
+  {
+   "t": 17.55,
+   "type": "ring",
+   "k": 0
+  },
+  {
+   "t": 17.85,
+   "type": "ring",
+   "k": 1
+  },
+  {
+   "t": 19.4,
+   "type": "tap",
+   "k": 10,
+   "name": "fora"
+  },
+  {
+   "t": 19.45,
+   "type": "modalclose"
+  },
+  {
+   "t": 19.72,
+   "type": "swish",
+   "d": 1,
+   "k": 2
+  },
+  {
+   "t": 19.8,
+   "type": "section",
+   "k": 1
+  },
+  {
+   "t": 20,
+   "type": "title"
+  },
+  {
+   "t": 20.85,
+   "type": "swish",
+   "d": 2.45,
+   "k": 3
+  },
+  {
+   "t": 20.9,
+   "type": "ring",
+   "k": 2
+  },
+  {
+   "t": 21.55,
+   "type": "ring",
+   "k": 3
+  },
+  {
+   "t": 23.075,
+   "type": "ring",
+   "k": 4
+  },
+  {
+   "t": 24,
+   "type": "tap",
+   "k": 11,
+   "name": "menu"
+  },
+  {
+   "t": 24,
+   "type": "section",
+   "k": 2
+  },
+  {
+   "t": 24.05,
+   "type": "modal"
+  },
+  {
+   "t": 24.15,
+   "type": "title"
+  },
+  {
+   "t": 24.6,
+   "type": "tap",
+   "k": 12,
+   "name": "reservar"
+  },
+  {
+   "t": 24.65,
+   "type": "modal"
+  },
+  {
+   "t": 25.2,
+   "type": "ring",
+   "k": 6
+  },
+  {
+   "t": 25.45,
+   "type": "ring",
+   "k": 7
+  },
+  {
+   "t": 25.7,
+   "type": "ring",
+   "k": 8
+  },
+  {
+   "t": 26.5,
+   "type": "tap",
+   "k": 13,
+   "name": "fechar"
+  },
+  {
+   "t": 26.55,
+   "type": "modalclose"
+  },
+  {
+   "t": 26.85,
+   "type": "swish",
+   "d": 0.9,
+   "k": 4
+  },
+  {
+   "t": 27,
+   "type": "section",
+   "k": 3
+  },
+  {
+   "t": 27.15,
+   "type": "title"
+  },
+  {
+   "t": 27.85,
+   "type": "swish",
+   "d": 0.9,
+   "k": 5
+  },
+  {
+   "t": 28.3,
+   "type": "ring",
+   "k": 5
+  },
+  {
+   "t": 29.25,
+   "type": "pin"
+  },
+  {
+   "t": 29.65,
+   "type": "pin"
+  },
+  {
+   "t": 29.95,
+   "type": "swish",
+   "d": 0.9,
+   "k": 6
+  },
+  {
+   "t": 30,
+   "type": "section",
+   "k": 4
+  },
+  {
+   "t": 30.9,
+   "type": "zoom",
+   "d": 0.95
+  },
+  {
+   "t": 31.35,
+   "type": "ring",
+   "k": 9
+  },
+  {
+   "t": 32.4,
+   "type": "logo"
+  },
+  {
+   "t": 33.8,
+   "type": "cta"
+  }
+ ]
+}
