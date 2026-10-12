@@ -380,7 +380,7 @@
   }
   // posição do celular: sobe com o site (8,85–9,45) e desce quando o Hospeda entra (15,0–15,45)
   const phoneY = (t) => (1 - E.outCubic(prog(t, 8.85, 9.45))) * 1300 + E.inCubic(prog(t, T.hospeda, T.hospeda + 0.45)) * 900;
-  const phoneA = (t) => 1 - prog(t, T.hospeda + 0.1, T.hospeda + 0.45);
+  const phoneA = (t) => 1 - prog(t, T.hospeda, T.hospeda + 0.3);
   const chatK = (t) => E.inOutCubic(prog(t, ENVIAR + 0.15, ENVIAR + 0.5));
   function phoneScreen(c, t) {
     const k = chatK(t);
@@ -400,8 +400,9 @@
     ciclo: { key: '02-calendario-antes', key2: '06-calendario-depois', s: 1070 / 1963, x: (W - 1290 * 1070 / 1963) / 2, y: 470, vh: 1070, t0: b(48), t1: T.cta - 0.15, chip: 'Calendário de ocupação' },
   };
   function frState(fr, t) {
-    const a = clamp(prog(t, fr.t0, fr.t0 + 0.3)) * (1 - prog(t, fr.t1, fr.t1 + 0.3));
-    const dy = (1 - E.outCubic(prog(t, fr.t0, fr.t0 + 0.42))) * 150 - E.inCubic(prog(t, fr.t1, fr.t1 + 0.3)) * 110;
+    // o próximo cartão entra opaco, de baixo, por cima do anterior (que recua e se apaga por trás)
+    const a = clamp(prog(t, fr.t0, fr.t0 + 0.08)) * (1 - prog(t, fr.t1, fr.t1 + 0.3));
+    const dy = (1 - E.outCubic(prog(t, fr.t0, fr.t0 + 0.42))) * 320 - E.inCubic(prog(t, fr.t1, fr.t1 + 0.3)) * 80;
     const z = 1 + 0.014 * prog(t, fr.t0, fr.t1 + 0.3);          // aproximação lenta: a imagem nunca congela
     const sc = fr.scroll ? lerp(fr.scroll[2], fr.scroll[3], E.inOutCubic(prog(t, fr.scroll[0], fr.scroll[1]))) : 0;
     const sx = fr.sx || [0, 1290];
@@ -446,11 +447,12 @@
   const frRect = (name, x0, y0, x1, y1, pad = 8) => (t) => {
     const fr = FR[name], st = frState(fr, t), p0 = frMap(fr, st, x0, y0), p1 = frMap(fr, st, x1, y1);
     const v0 = frMap(fr, st, st.sx[0], st.sc), v1 = frMap(fr, st, st.sx[1], st.sc + fr.vh / fr.s);
-    return { x: p0.x - pad, y: p0.y - pad, w: p1.x - p0.x + 2 * pad, h: p1.y - p0.y + 2 * pad, a: st.a, clip: { x: v0.x, y: v0.y, w: v1.x - v0.x, h: v1.y - v0.y } };
+    const a = st.a * (1 - prog(t, fr.t1, fr.t1 + 0.08));       // some assim que o próximo cartão entra por cima
+    return { x: p0.x - pad, y: p0.y - pad, w: p1.x - p0.x + 2 * pad, h: p1.y - p0.y + 2 * pad, a, clip: { x: v0.x, y: v0.y, w: v1.x - v0.x, h: v1.y - v0.y } };
   };
   const FIO = [
     { t0: ENVIAR + 0.02, t1: ENVIAR + 0.3, r: 26, rect: (t) => { const r = phoneRect(BTN.x - 8, BTN.y - 8, BTN.w + 16, BTN.h + 16)(t); r.a *= 1 - chatK(t); return r; } },
-    { t0: CHEGA + 0.05, t1: CHEGA + 0.5, r: 34, rect: phoneRect(BUB.x - 10, BUB.y - 10, BUB.w + 20, BUB.h + 20) },
+    { t0: CHEGA + 0.05, t1: CHEGA + 0.5, r: 34, until: T.hospeda, rect: phoneRect(BUB.x - 10, BUB.y - 10, BUB.w + 20, BUB.h + 20) },
     { t0: T.hospeda + 0.45, t1: T.hospeda + 0.8, r: 30, rect: frRect('painel', 36, 36, 469, 108, 10) },
     { t0: 16.75, t1: 17.15, r: 16, until: 17.4, rect: frRect('antes', 124, 252, 540, 310, 8) },
     { t0: 18.0, t1: 18.35, r: 16, rect: frRect('antes', 728, 1455, 1237, 1730, 4) },

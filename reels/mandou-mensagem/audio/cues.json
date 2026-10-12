@@ -1,0 +1,271 @@
+{
+ "id": "mandou-mensagem",
+ "bpm": 100,
+ "fps": 60,
+ "duration": 35.4,
+ "sections": {
+  "gancho": 0,
+  "rotina": 4.2,
+  "site": 9,
+  "hospeda": 15,
+  "ciclo": 27,
+  "cta": 31.2
+ },
+ "cues": [
+  {
+   "t": 0,
+   "type": "open"
+  },
+  {
+   "t": 0,
+   "type": "title"
+  },
+  {
+   "t": 1.2,
+   "type": "typing",
+   "d": 1.4
+  },
+  {
+   "t": 4.8,
+   "type": "icon",
+   "k": 0
+  },
+  {
+   "t": 5.4,
+   "type": "icon",
+   "k": 1
+  },
+  {
+   "t": 6,
+   "type": "icon",
+   "k": 2
+  },
+  {
+   "t": 6,
+   "type": "title"
+  },
+  {
+   "t": 6.6,
+   "type": "icon",
+   "k": 3
+  },
+  {
+   "t": 8.85,
+   "type": "rise",
+   "d": 0.6
+  },
+  {
+   "t": 9.05,
+   "type": "fly",
+   "d": 0.5
+  },
+  {
+   "t": 9.6,
+   "type": "fill",
+   "k": 0
+  },
+  {
+   "t": 10.2,
+   "type": "fill",
+   "k": 1
+  },
+  {
+   "t": 10.8,
+   "type": "fill",
+   "k": 2
+  },
+  {
+   "t": 11.4,
+   "type": "tap"
+  },
+  {
+   "t": 11.42,
+   "type": "fio"
+  },
+  {
+   "t": 11.55,
+   "type": "switch"
+  },
+  {
+   "t": 11.7,
+   "type": "travel",
+   "d": 0.35
+  },
+  {
+   "t": 12,
+   "type": "notif"
+  },
+  {
+   "t": 12,
+   "type": "title"
+  },
+  {
+   "t": 14.95,
+   "type": "travel",
+   "d": 0.5
+  },
+  {
+   "t": 15.05,
+   "type": "slide"
+  },
+  {
+   "t": 15.45,
+   "type": "wrap",
+   "k": 2
+  },
+  {
+   "t": 16.2,
+   "type": "slide"
+  },
+  {
+   "t": 16.25,
+   "type": "travel",
+   "d": 0.5
+  },
+  {
+   "t": 16.75,
+   "type": "wrap",
+   "k": 3
+  },
+  {
+   "t": 16.8,
+   "type": "title"
+  },
+  {
+   "t": 17.4,
+   "type": "scroll",
+   "d": 0.5
+  },
+  {
+   "t": 17.5,
+   "type": "travel",
+   "d": 0.5
+  },
+  {
+   "t": 18,
+   "type": "wrap",
+   "k": 4
+  },
+  {
+   "t": 18.38,
+   "type": "wrap",
+   "k": 5
+  },
+  {
+   "t": 19.8,
+   "type": "slide"
+  },
+  {
+   "t": 19.9,
+   "type": "travel",
+   "d": 0.5
+  },
+  {
+   "t": 20.4,
+   "type": "wrap",
+   "k": 6
+  },
+  {
+   "t": 20.72,
+   "type": "travel",
+   "d": 0.28
+  },
+  {
+   "t": 21,
+   "type": "wrap",
+   "k": 7
+  },
+  {
+   "t": 22.8,
+   "type": "slide"
+  },
+  {
+   "t": 22.9,
+   "type": "travel",
+   "d": 0.5
+  },
+  {
+   "t": 23.05,
+   "type": "scroll",
+   "d": 0.35
+  },
+  {
+   "t": 23.4,
+   "type": "wrap",
+   "k": 8
+  },
+  {
+   "t": 23.4,
+   "type": "title"
+  },
+  {
+   "t": 25.3,
+   "type": "travel",
+   "d": 0.5
+  },
+  {
+   "t": 25.8,
+   "type": "confirm"
+  },
+  {
+   "t": 27,
+   "type": "slide"
+  },
+  {
+   "t": 27.1,
+   "type": "travel",
+   "d": 0.5
+  },
+  {
+   "t": 27.6,
+   "type": "wrap",
+   "k": 10
+  },
+  {
+   "t": 28.2,
+   "type": "title"
+  },
+  {
+   "t": 28.8,
+   "type": "slide"
+  },
+  {
+   "t": 28.9,
+   "type": "travel",
+   "d": 0.5
+  },
+  {
+   "t": 29.4,
+   "type": "vira",
+   "d": 0.5
+  },
+  {
+   "t": 30,
+   "type": "wrap",
+   "k": 12
+  },
+  {
+   "t": 30.38,
+   "type": "wrap",
+   "k": 13
+  },
+  {
+   "t": 31.1,
+   "type": "travel",
+   "d": 0.5
+  },
+  {
+   "t": 31.2,
+   "type": "logo"
+  },
+  {
+   "t": 31.6,
+   "type": "link",
+   "d": 0.6
+  },
+  {
+   "t": 32.8,
+   "type": "cta"
+  }
+ ]
+}
