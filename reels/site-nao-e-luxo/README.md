@@ -1,6 +1,6 @@
 # FAZLO Digital — site-nao-e-luxo · Site não é luxo
 
-**Status: em produção.** Roteiro técnico aprovado; cenas 1–3 (mecânica do LUXO) em teste — `output/revisao/teste-mecanica-luxo.jpg`. Cenas 4–6, capa e trilha a seguir.
+**Status: em produção.** Mecânica do LUXO aprovada; cena 3 refeita (celular 660 px, etiquetas 32 px) e cenas 4–6 + capa montadas — `output/revisao/cenas-3-e-4.jpg` e `output/revisao/cenas-5-6-e-capa.jpg`. Trilha a seguir.
 
 **Formato:** 9:16 (1080×1920), 60 fps, H.264 + AAC 48 kHz, áudio em −14 LUFS · capa 1080×1920.
 

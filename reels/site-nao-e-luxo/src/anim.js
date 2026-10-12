@@ -7,19 +7,21 @@
 
    100 BPM · 1 tempo = 0,6 s · 55 tempos
      1 gancho        0,0–4,2   SITE É COISA DE / POUSADA GRANDE? -> pausa
-     2 o mito        4,2–9,0   LUXO gigante, contorno branco, brilho caricato; no golpe (6,6) racha
-                               e se desmonta em peças. NÃO.
-     3 o básico      9,0–18,0  o celular sobe com o site vazio; a cada 2 tempos 3 peças viram um bloco
-                               que cai no lugar (pousos em 10,2 · 11,4 · 12,6 · 13,8), com a etiqueta:
-                               FOTOS DE CADA QUARTO · CONSULTA DE DATAS · COMO CHEGAR · WHATSAPP À VISTA
+     2 o mito        4,2–9,0   LUXO gigante, contorno branco, brilho caricato; no golpe (6,6) racha e,
+                               um 16º depois (6,75), se desmonta em peças que passam em volta do NÃO.
+     3 o básico      9,0–18,0  o celular (660 px) sobe com o site vazio; a cada 2 tempos 3 peças viram
+                               um bloco que cai no lugar (pousos em 10,2 · 11,4 · 12,6 · 13,8), com a
+                               etiqueta (32 px no site montado): FOTOS DE CADA QUARTO · CONSULTA DE DATAS ·
+                               COMO CHEGAR · WHATSAPP À VISTA
                                UMA POUSADA PEQUENA / PRECISA DO BÁSICO / BEM FEITO. (15,0–17,7)
-     4 trabalha      18,0–25,8 noite (23:00): chega "Consulta pelo site" (valores em barras) ->
-                               manhã (07:00): o dono abre, "digitando…", a pousada responde (barras)
-                               ELE TRABALHA ATÉ QUANDO / VOCÊ NÃO PODE ATENDER.
-     5 virada        25,8–30,0 o site montado, contorno lima: NÃO É LUXO. -> É SER ENCONTRADA.
+     4 trabalha      18,0–25,8 noite: tela de bloqueio, 23:00; chega "Consulta pelo site" (valores em
+                               barras). ELE TRABALHA / ATÉ QUANDO VOCÊ / NÃO PODE ATENDER. (19,5–25,5)
+                               manhã: 07:00; o dono toca, "digitando…", a pousada responde (em barras)
+     5 virada        25,8–30,0 o site montado, contorno lima: NÃO É / LUXO. -> É SER / ENCONTRADA. (27,9)
      6 CTA           30,0–33,0 logo FAZLO DIGITAL · Sites para pousadas e negócios locais ·
                                Fale com a FAZLO · link na bio
 
+   O celular vai só até y 1560 (rodapé seguro): a parte de baixo se apaga antes.
    Interfaces ilustrativas e genéricas: nenhuma pousada real, nenhum número
    inventado, nenhuma promessa de preço. Fontes oficiais: Unbounded + Sora.
    ===================================================================== */
@@ -39,6 +41,19 @@
   const ESTOURO = b(11.25);                          // 6,75: um 16º depois, as peças se soltam (e o NÃO.)
   const LAND = [b(17), b(19), b(21), b(23)];         // pouso de cada bloco, a cada 2 tempos: 10,2 · 11,4 · 12,6 · 13,8
   const FRASE = { t0: b(25), t1: 17.7 };             // UMA POUSADA PEQUENA… (2,7 s)
+  const NOITE = {
+    off: T.trabalha,                                 // 18,0: a tela apaga, cai a noite
+    lock: b(30.5),                                   // 18,3: tela de bloqueio
+    relogio: b(31),                                  // 18,6: 22:59 -> 23:00
+    notif: b(32),                                    // 19,2: "Consulta pelo site"
+    frase: 19.5, fraseSai: 25.5,                     // ELE TRABALHA…
+    manha: b(36),                                    // 21,6: amanhece
+    roll: 21.75,                                     // 23:00 -> 07:00 (até 22,75)
+    toque: b(39),                                    // 23,4: o dono toca a notificação
+    digita: b(40),                                   // 24,0: "digitando…"
+    envia: b(41),                                    // 24,6: a resposta da pousada
+  };
+  const VIRA = { luxo: 26.0, luxoSai: 27.6, golpe: 27.9, sai: 29.8 };
 
   // ---------------------------------------------------------------- cores e texto
   let DISPLAY, TEXT;
@@ -74,7 +89,7 @@
         const ti = t0 + k * (o.st ?? 0.07), p = E.outExpo(prog(t, ti, ti + 0.5));
         const q = E.inCubic(prog(t, t1 + k * 0.025, t1 + k * 0.025 + 0.28));
         const lime = o.lime && o.lime.includes(w);
-        if (p > 0 && q < 1) text(c, w, x, y + (1 - p) * size * 1.15 - q * size * 1.2, { fam: DISPLAY, size, weight: wt, color: lime ? C.lime : C.white, ls });
+        if (p > 0 && q < 1) text(c, w, x, y + (1 - p) * size * 1.35 - q * size * 1.2, { fam: DISPLAY, size, weight: wt, color: lime ? C.lime : C.white, ls });
         x += ww + sp; k++;
       }
       c.restore();
@@ -107,6 +122,10 @@
       case 'arrow': c.moveTo(-0.34, 0); c.lineTo(0.3, 0); c.moveTo(0.06, -0.24); c.lineTo(0.3, 0); c.lineTo(0.06, 0.24); break;
       case 'signal': for (let k = 0; k < 4; k++) c.rect(-0.3 + k * 0.17, 0.2 - k * 0.13, 0.1, 0.13 + k * 0.13); c.fill(); c.restore(); return;
       case 'battery': c.roundRect(-0.4, -0.18, 0.72, 0.36, 0.08); c.stroke(); c.beginPath(); c.roundRect(-0.34, -0.12, 0.5, 0.24, 0.04); c.fill(); c.fillRect(0.34, -0.07, 0.06, 0.14); c.restore(); return;
+      case 'globe': c.arc(0, 0, 0.36, 0, TAU); c.moveTo(0.15, 0); c.ellipse(0, 0, 0.15, 0.36, 0, 0, TAU); c.moveTo(-0.36, 0); c.lineTo(0.36, 0); break;
+      case 'back': c.moveTo(0.1, -0.28); c.lineTo(-0.16, 0); c.lineTo(0.1, 0.28); break;
+      case 'checks': c.moveTo(-0.42, 0.02); c.lineTo(-0.24, 0.2); c.lineTo(0.08, -0.18); c.moveTo(-0.06, 0.12); c.lineTo(0.02, 0.2); c.lineTo(0.36, -0.18); break;
+      case 'send': c.moveTo(-0.3, -0.3); c.lineTo(0.34, 0); c.lineTo(-0.3, 0.3); c.lineTo(-0.18, 0); c.closePath(); c.fill(); c.restore(); return;
       default: break;
     }
     c.stroke(); c.restore();
@@ -227,15 +246,37 @@
       const ang = Math.atan2(dy, dx) + (hash(i, 3) - 0.5) * 0.5;
       return { P, cx, cy, ink, i, dir: { x: Math.cos(ang), y: Math.sin(ang) * 1.6 }, dist: 110 + 160 * hash(i, 5) + d * 0.25, rot: (hash(i, 7) - 0.5) * 0.9, ph: hash(i, 9) * TAU };
     });
+    // a caixa do NÃO. (entra no estouro): cada peça termina a explosão em volta dela, nunca por cima
+    const ns = fit(['NÃO.'], DISPLAY, 900, 940, 260, -0.02);
+    MEAS.font = fnt(DISPLAY, ns, 900); MEAS.letterSpacing = `${-ns * 0.02}px`;
+    const nm = MEAS.measureText('NÃO.'), nb = LUXO_Y + ns * 0.36, M = 44;
+    const NB = { x0: W / 2 - nm.width / 2 - M, x1: W / 2 + nm.width / 2 + M, y0: nb - nm.actualBoundingBoxAscent - M, y1: nb + nm.actualBoundingBoxDescent + M };
+    pieces.forEach((p) => {
+      const cs = Math.cos(p.rot), sn = Math.sin(p.rot);
+      let hw = 0, hh = 0;                             // meia largura/altura da peça já girada
+      p.P.forEach((q) => { const dx = q.x - p.cx, dy = q.y - p.cy; hw = Math.max(hw, Math.abs(dx * cs - dy * sn)); hh = Math.max(hh, Math.abs(dx * sn + dy * cs)); });
+      p.bx = W / 2 + (p.cx - cw / 2); p.by = LUXO_Y + (p.cy - ch / 2);
+      p.tx = p.bx + p.dir.x * p.dist; p.ty = p.by + p.dir.y * p.dist;
+      if (p.tx + hw > NB.x0 && p.tx - hw < NB.x1 && p.ty + hh > NB.y0 && p.ty - hh < NB.y1) {
+        const up = p.cy < ch / 2 || (p.cy === ch / 2 && hash(p.i, 11) < 0.5);
+        p.ty = up ? NB.y0 - hh : NB.y1 + hh;
+      }
+    });
     // as 12 peças com mais traço viram os 4 blocos (3 cada); as 3 seguintes, o topo do site
     const ranked = [...pieces].sort((p, q) => q.ink - p.ink);
-    const blockP = ranked.slice(0, 12).sort((p, q) => p.cx - q.cx);
-    blockP.forEach((p, k) => { p.block = Math.floor(k / 3); });
     ranked.slice(12, 15).forEach((p) => { p.header = true; });
-    LX = { word, halo, size, cw, ch, asc, by, pieces, cuts: CUTS };
-    // pontos de espera (em volta do celular) de cada peça
-    const park = [[150, 330], [300, 250], [420, 340], [660, 250], [800, 330], [940, 270], [130, 560], [190, 820], [120, 1000], [930, 560], [880, 800], [960, 980]];
-    blockP.forEach((p, k) => { p.park = { x: park[k][0], y: park[k][1] }; });
+    // pontos de espera em volta do celular (nunca na coluna da direita, y 1060–1560): cada peça vai para o
+    // ponto livre mais próximo; os blocos juntam peças de lados diferentes (índice % 4)
+    const PARK = [[105, 600], [105, 820], [105, 1040], [105, 1260], [105, 1460], [975, 600], [975, 800], [975, 990], [110, 360], [280, 240], [800, 240], [970, 360]];
+    const pairs = [];
+    ranked.slice(0, 12).forEach((p) => PARK.forEach((q, k) => pairs.push([Math.hypot(p.tx - q[0], p.ty - q[1]), p, k])));
+    pairs.sort((u, v) => u[0] - v[0]);
+    const usedP = new Set(), usedK = new Set();
+    pairs.forEach(([, p, k]) => {
+      if (usedP.has(p) || usedK.has(k)) return;
+      usedP.add(p); usedK.add(k); p.park = { x: PARK[k][0], y: PARK[k][1] }; p.block = k % 4;
+    });
+    LX = { word, halo, size, cw, ch, asc, by, tw: m.width, pieces, cuts: CUTS };
   }
   // a palavra inteira (antes do golpe): halo pulsando, raios, reflexo que varre, estrelinhas
   function drawLuxoWhole(c, t, a, luz = 1) {
@@ -280,16 +321,15 @@
   let SHINE;
   // posição, giro, escala e opacidade de uma peça no instante t (quadro)
   function pieceState(p, t) {
-    const base = { x: W / 2 + (p.cx - LX.cw / 2), y: LUXO_Y + (p.cy - LX.ch / 2) };
-    const sp = E.outCubic(prog(t, ESTOURO, ESTOURO + 1.2));
+    const sp = E.outCubic(prog(t, ESTOURO, ESTOURO + 0.9));
     const fl = prog(t, ESTOURO + 0.1, ESTOURO + 0.7);
-    let x = base.x + p.dir.x * p.dist * sp + Math.sin(t * 1.3 + p.ph) * 8 * fl;
-    let y = base.y + p.dir.y * p.dist * sp + Math.cos(t * 1.1 + p.ph) * 8 * fl;
+    let x = lerp(p.bx, p.tx, sp) + Math.sin(t * 1.3 + p.ph) * 8 * fl;
+    let y = lerp(p.by, p.ty, sp) + Math.cos(t * 1.1 + p.ph) * 8 * fl;
     let r = p.rot * sp + Math.sin(t * 0.9 + p.ph) * 0.05 * fl, s = 1, a = 1;
     if (p.park) {                                     // vai esperar em volta do celular, menor
       const k = E.inOutCubic(prog(t, 8.3 + p.i * 0.012, 9.2 + p.i * 0.012));
       x = lerp(x, p.park.x + Math.sin(t * 1.2 + p.ph) * 6, k); y = lerp(y, p.park.y + Math.cos(t * 1.4 + p.ph) * 6, k);
-      s = lerp(1, 0.5, k); r = lerp(r, p.rot * 0.6 + Math.sin(t * 0.8 + p.ph) * 0.08, k);
+      s = lerp(1, 0.42, k); r = lerp(r, p.rot * 0.6 + Math.sin(t * 0.8 + p.ph) * 0.08, k);
       const L = LAND[p.block], f = E.inOutCubic(prog(t, L - 1.0, L - 0.66));   // junta-se às outras 2 e vira o bloco
       x = lerp(x, FORM.x + (p.cx - LX.cw / 2) * 0.12, f); y = lerp(y, FORM.y + (p.cy - LX.ch / 2) * 0.12, f);
       s = lerp(s, 0.3, f); a = 1 - prog(t, L - 0.74, L - 0.62);
@@ -336,89 +376,137 @@
     c.restore();
   }
 
-  // ---------------------------------------------------------------- celular e site genérico
-  const SB = 40, BZ = 13, SW = 480, SH = SB + 1039;
-  const PW = SW + 2 * BZ, PHH = SH + 2 * BZ, PX = W / 2 - PW / 2, PY = 448;
+
+  // ---------------------------------------------------------------- celular (660 px) e site genérico
+  const BZ = 16, PW = 660, PHH = 1350, PR = 84;
+  const PX = W / 2 - PW / 2, PY = 470;                // x 210–870: fora da coluna da direita (x 950–1080)
+  const SW = PW - 2 * BZ, SH = PHH - 2 * BZ, SRD = PR - BZ;
   const SCR = { x: PX + BZ, y: PY + BZ };
-  const WEB = { x: SCR.x, y: SCR.y + SB, w: SW, h: 1039 };
-  const SX = WEB.x + 12, SWD = SW - 24;               // coluna do site
-  const SLOT_HEAD = { x: SX, y: WEB.y + 52, w: SWD, h: 50 };
-  const SLOTS = [
-    { y: WEB.y + 114, h: 250, label: 'FOTOS DE CADA QUARTO' },
-    { y: WEB.y + 378, h: 186, label: 'CONSULTA DE DATAS' },
-    { y: WEB.y + 578, h: 216, label: 'COMO CHEGAR' },
-    { y: WEB.y + 808, h: 92, label: 'WHATSAPP À VISTA' },
-  ];
-  const FORM = { x: W / 2, y: 330 };                  // onde as 3 peças viram o bloco (acima do celular)
-  function phone(c, inner) {
-    c.save(); c.shadowColor = 'rgba(0,0,0,0.6)'; c.shadowBlur = 60; c.shadowOffsetY = 26;
-    rrect(c, PX, PY, PW, PHH, 66); c.fillStyle = '#0B0D0D'; c.fill(); c.restore();
-    rrect(c, PX, PY, PW, PHH, 66); c.lineWidth = 3; c.strokeStyle = '#30363A'; c.stroke();
-    c.fillStyle = '#1A1E20'; c.fillRect(PX - 3, PY + 190, 4, 70); c.fillRect(PX - 3, PY + 280, 4, 70); c.fillRect(PX + PW - 1, PY + 240, 4, 110);
-    c.save(); rrect(c, SCR.x, SCR.y, SW, SH, 54); c.clip();
+  const SB = 52;                                      // barra de status
+  const WEB = { x: SCR.x, y: SCR.y + SB, w: SW, h: SH - SB };
+  const SX = WEB.x + 16, SWD = SW - 32;               // coluna do site (596 px)
+  const CORTE_Y = 1560;                               // rodapé seguro: nada abaixo daqui (o celular se apaga antes)
+  const SLOT_HEAD = { x: SX, y: WEB.y + 64, w: SWD, h: 60 };
+  const LBL = 32, LBH = Math.round(LBL * 1.6), LBO = 10;   // etiqueta do site montado: 32 px, presa na borda de cima do bloco
+  const SLOTS = [];
+  {
+    let yy = SLOT_HEAD.y + SLOT_HEAD.h + 14;
+    [['FOTOS DE CADA QUARTO', 228], ['CONSULTA DE DATAS', 168], ['COMO CHEGAR', 150], ['WHATSAPP À VISTA', 84]].forEach(([label, h]) => {
+      const y = yy + LBH - LBO;
+      SLOTS.push({ label, y, h });
+      yy = y + h + 14;
+    });
+  }
+  const FORM = { x: W / 2, y: 340 };                  // onde as 3 peças viram o bloco (acima do celular)
+
+  // desenha num layer e apaga a parte de baixo (degradê em y 1516–1560; nada abaixo de 1560)
+  let LAYER = null;
+  function faded(c, draw) {
+    if (!LAYER) { LAYER = document.createElement('canvas'); LAYER.width = W; LAYER.height = H; }
+    const g = LAYER.getContext('2d');
+    g.setTransform(1, 0, 0, 1, 0, 0); g.globalAlpha = 1; g.globalCompositeOperation = 'source-over'; g.filter = 'none';
+    g.clearRect(0, 0, W, H);
+    g.setTransform(c.getTransform());
+    g.save(); draw(g); g.restore();
+    g.setTransform(1, 0, 0, 1, 0, 0); g.globalAlpha = 1; g.globalCompositeOperation = 'destination-out';
+    const gr = g.createLinearGradient(0, CORTE_Y - 44, 0, CORTE_Y);
+    gr.addColorStop(0, 'rgba(0,0,0,0)'); gr.addColorStop(1, 'rgba(0,0,0,1)');
+    g.fillStyle = gr; g.fillRect(0, CORTE_Y - 44, W, 44); g.fillStyle = '#000'; g.fillRect(0, CORTE_Y, W, H - CORTE_Y);
+    g.globalCompositeOperation = 'source-over';
+    c.save(); c.setTransform(1, 0, 0, 1, 0, 0); c.drawImage(LAYER, 0, 0); c.restore();
+  }
+  function phone(c, inner, glowA = 0) {
+    c.save(); c.shadowColor = 'rgba(0,0,0,0.65)'; c.shadowBlur = 70; c.shadowOffsetY = 30;
+    rrect(c, PX, PY, PW, PHH, PR); c.fillStyle = '#0B0D0D'; c.fill(); c.restore();
+    rrect(c, PX, PY, PW, PHH, PR); c.lineWidth = 3; c.strokeStyle = '#30363A'; c.stroke();
+    c.fillStyle = '#1A1E20'; c.fillRect(PX - 3, PY + 240, 4, 90); c.fillRect(PX - 3, PY + 350, 4, 90); c.fillRect(PX + PW - 1, PY + 300, 4, 140);
+    c.save(); rrect(c, SCR.x, SCR.y, SW, SH, SRD); c.clip();
     c.fillStyle = '#070808'; c.fillRect(SCR.x, SCR.y, SW, SH);
-    icon(c, 'signal', SCR.x + SW - 96, SCR.y + 21, 22, '#F2F4F3'); icon(c, 'battery', SCR.x + SW - 46, SCR.y + 21, 28, '#F2F4F3', 0.07);
     inner(c);
     c.restore();
-    rrect(c, W / 2 - 54, SCR.y + 8, 108, 26, 13); c.fillStyle = '#000'; c.fill();
+    icon(c, 'signal', SCR.x + SW - 112, SCR.y + 27, 26, '#F2F4F3'); icon(c, 'battery', SCR.x + SW - 58, SCR.y + 27, 34, '#F2F4F3', 0.07);
+    rrect(c, W / 2 - 66, SCR.y + 11, 132, 34, 17); c.fillStyle = '#000'; c.fill();
+    if (glowA > 0.01) {                               // virada: contorno lima com brilho
+      c.save(); c.shadowColor = C.lime; c.shadowBlur = 46 * glowA;
+      rrect(c, PX - 2, PY - 2, PW + 4, PHH + 4, PR + 2); c.lineWidth = 5; c.strokeStyle = rgba(C.lime, clamp(glowA)); c.stroke();
+      c.restore();
+    }
   }
-  // o site vazio: barra de endereço (sem domínio), topo e os lugares tracejados dos blocos
+  // o site vazio: barra de endereço (sem domínio), topo e os lugares tracejados dos blocos e etiquetas
   function siteFrame(c, t) {
-    fillR(c, SX, WEB.y + 8, SWD, 34, 17, '#1A1F1F');
-    icon(c, 'lock', SX + 24, WEB.y + 25, 20, C.muted, 0.09); fillR(c, SX + 42, WEB.y + 20, 140, 9, 4.5, C.bar);
+    c.fillStyle = '#080A0A'; c.fillRect(SCR.x, SCR.y, SW, SH);
+    fillR(c, SX, WEB.y + 10, SWD, 42, 21, '#1A1F1F');
+    icon(c, 'lock', SX + 28, WEB.y + 31, 24, C.muted, 0.09); fillR(c, SX + 50, WEB.y + 26, 170, 10, 5, C.bar);
     const hp = prog(t, 9.45, 9.65);                    // o topo do site (vindo das 3 peças)
     if (hp > 0) {
+      const hy = SLOT_HEAD.y + SLOT_HEAD.h / 2;
       c.save(); c.globalAlpha *= hp;
-      c.beginPath(); c.arc(SX + 22, SLOT_HEAD.y + 25, 20, 0, TAU); c.fillStyle = C.lime; c.fill();
-      fillR(c, SX + 54, SLOT_HEAD.y + 14, 150, 12, 6, '#DCE2E2'); fillR(c, SX + 54, SLOT_HEAD.y + 32, 96, 8, 4, C.bar2);
-      icon(c, 'menu', SX + SWD - 22, SLOT_HEAD.y + 25, 28, C.soft, 0.1);
+      c.beginPath(); c.arc(SX + 26, hy, 24, 0, TAU); c.fillStyle = C.lime; c.fill();
+      fillR(c, SX + 64, hy - 16, 190, 14, 7, '#DCE2E2'); fillR(c, SX + 64, hy + 6, 120, 10, 5, C.bar2);
+      icon(c, 'menu', SX + SWD - 26, hy, 34, C.soft, 0.1);
       c.restore();
     }
     SLOTS.forEach((sl, i) => {                         // lugares vazios, até o bloco pousar
       const a = 1 - prog(t, LAND[i] - 0.05, LAND[i]);
       if (a <= 0) return;
-      c.save(); c.globalAlpha *= a * 0.7; c.setLineDash([9, 9]); strokeR(c, SX, sl.y, SWD, sl.h, 18, C.dim, 2); c.restore();
+      c.save(); c.globalAlpha *= a * 0.7; c.setLineDash([10, 10]);
+      strokeR(c, SX, sl.y, SWD, sl.h, 24, C.dim, 2);
+      strokeR(c, SX, sl.y - LBH + LBO, 230, LBH - 4, (LBH - 4) / 2, C.dim, 2);
+      c.restore();
     });
-    fillR(c, SX, WEB.y + 916, SWD, 90, 18, '#0C0F0F');                     // rodapé do site
-    bars(c, SX + 18, WEB.y + 940, [180, 120], 9, 20, C.bar);
+    const fy = SLOTS[3].y + SLOTS[3].h + 16;           // rodapé do site (some no corte)
+    fillR(c, SX, fy, SWD, 100, 22, '#0C0F0F'); bars(c, SX + 22, fy + 26, [220, 150], 10, 22, C.bar);
+  }
+  function site(c, t) {
+    siteFrame(c, t);
+    for (let i = 0; i < 4; i++) if (t >= LAND[i]) drawBlock(c, i, t);
   }
   // conteúdo de cada bloco (coordenadas do quadro, no tamanho final)
   function blockBody(c, i, x, y, w, h) {
     if (i === 3) {                                     // WhatsApp à vista: o botão é o bloco
-      c.save(); c.shadowColor = rgba(C.lime, 0.5); c.shadowBlur = 26; fillR(c, x, y, w, h, 20, C.lime); c.restore();
-      icon(c, 'chat', x + 50, y + h / 2, 38, C.ink, 0.1);
-      text(c, 'Conversar no WhatsApp', x + 84, y + h / 2 + 9, { size: 25, weight: 700, color: C.ink });
+      c.save(); c.shadowColor = rgba(C.lime, 0.5); c.shadowBlur = 28; fillR(c, x, y, w, h, 24, C.lime); c.restore();
+      const s = 'Conversar no WhatsApp', fs = 32, tw = measure(s, TEXT, fs, 700), gx = x + w / 2 - (tw + 62) / 2;
+      icon(c, 'chat', gx + 22, y + h / 2, 48, C.ink, 0.1);
+      text(c, s, gx + 62, y + h / 2 + 11, { size: fs, weight: 700, color: C.ink });
       return;
     }
-    fillR(c, x, y, w, h, 20, C.card);
-    if (i === 0) {                                     // fotos de cada quarto
-      photo(c, 'room', x + 12, y + 12, w - 24, 160);
-      const tw = (w - 24 - 16) / 3;
-      ['bath', 'view', 'pool'].forEach((k, j) => photo(c, k, x + 12 + j * (tw + 8), y + 182, tw, h - 194));
+    fillR(c, x, y, w, h, 24, C.card);
+    if (i === 0) {                                     // fotos de cada quarto: a foto grande e mais duas
+      const pw = Math.round((w - 36) * 0.64), ph = h - 24, tw = w - 36 - pw, th = (ph - 12) / 2;
+      photo(c, 'room', x + 12, y + 12, pw, ph);
+      photo(c, 'view', x + 24 + pw, y + 12, tw, th);
+      photo(c, 'pool', x + 24 + pw, y + 24 + th, tw, th);
     } else if (i === 1) {                              // consulta de datas
-      const fw = (w - 36) / 2;
+      const fw = (w - 36) / 2, fh = 68;
       ['Entrada', 'Saída'].forEach((lb, j) => {
         const fx = x + 12 + j * (fw + 12);
-        fillR(c, fx, y + 14, fw, 70, 12, C.card2); strokeR(c, fx, y + 14, fw, 70, 12, rgba(C.lime, 0.7), 2);
-        text(c, lb, fx + 14, y + 42, { size: 17, weight: 500, color: C.muted });
-        icon(c, 'cal', fx + fw - 24, y + 38, 24, C.lime, 0.08);
-        fillR(c, fx + 14, y + 58, 86, 10, 5, C.bar2);
+        fillR(c, fx, y + 12, fw, fh, 14, C.card2); strokeR(c, fx, y + 12, fw, fh, 14, rgba(C.lime, 0.7), 2);
+        text(c, lb, fx + 18, y + 42, { size: 22, weight: 500, color: C.muted });
+        icon(c, 'cal', fx + fw - 30, y + 40, 30, C.lime, 0.08);
+        fillR(c, fx + 18, y + 56, 110, 11, 5.5, C.bar2);
       });
-      fillR(c, x + 12, y + 96, w - 24, 30, 9, C.card2); text(c, 'Hóspedes', x + 28, y + 117, { size: 15, weight: 500, color: C.muted });
-      fillR(c, x + 12, y + 136, w - 24, 38, 11, C.lime);
-      text(c, 'Consultar', x + w / 2, y + 161, { size: 18, weight: 700, color: C.ink, align: 'center' });
-    } else {                                           // como chegar
-      mapArt(c, x + 12, y + 12, w - 24, h - 66);                      // endereço só em barras
-      c.beginPath(); c.arc(x + 26, y + h - 30, 7, 0, TAU); c.fillStyle = C.lime; c.fill();
-      bars(c, x + 44, y + h - 40, [230, 150], 9, 18, C.bar2);
+      const ry = y + 24 + fh, rh = h - (ry - y) - 12;
+      fillR(c, x + 12, ry, fw, rh, 14, C.card2);
+      text(c, 'Hóspedes', x + 30, ry + rh / 2 - 3, { size: 20, weight: 500, color: C.muted });
+      fillR(c, x + 30, ry + rh / 2 + 9, 70, 10, 5, C.bar2);
+      fillR(c, x + 24 + fw, ry, fw, rh, 14, C.lime);
+      text(c, 'Consultar', x + 24 + fw * 1.5, ry + rh / 2 + 9, { size: 26, weight: 700, color: C.ink, align: 'center' });
+    } else {                                           // como chegar: mapa e endereço (só em barras)
+      const mw = Math.round((w - 36) * 0.62), ax = x + 24 + mw, aw = w - 36 - mw;
+      mapArt(c, x + 12, y + 12, mw, h - 24);
+      c.beginPath(); c.arc(ax + 14, y + 44, 9, 0, TAU); c.fillStyle = C.lime; c.fill();
+      bars(c, ax + 34, y + 38, [aw - 44, (aw - 44) * 0.7], 11, 26, C.bar2);
+      strokeR(c, ax, y + h - 66, aw - 4, 46, 23, rgba(C.lime, 0.8), 2);
+      icon(c, 'arrow', ax + (aw - 4) / 2, y + h - 43, 30, C.lime, 0.1);
     }
   }
-  // etiqueta lima do bloco (grande na queda, menor depois do pouso)
-  function blockLabel(c, i, x, y, k) {
-    const size = lerp(30, 19, k), s = SLOTS[i].label, pw = measure(s, TEXT, size, 700) + size * 1.3, ph = size * 1.7;
-    c.save(); c.shadowColor = 'rgba(0,0,0,0.55)'; c.shadowBlur = 16; c.shadowOffsetY = 6;
-    fillR(c, x, y - ph / 2, pw, ph, ph / 2, C.lime); c.restore();
-    text(c, s, x + size * 0.65, y + size * 0.36, { size, weight: 700, color: C.ink });
+  // etiqueta lima presa na borda de cima do bloco, alinhada à esquerda dele (top = borda de cima do bloco)
+  function blockLabel(c, i, x, top, size) {
+    if (size <= 0.5) return;
+    const s = SLOTS[i].label, ph = size * 1.6, pw = measure(s, TEXT, size, 700) + size * 1.2, y = top - ph + LBO * (size / LBL);
+    c.save(); c.shadowColor = 'rgba(0,0,0,0.55)'; c.shadowBlur = 14; c.shadowOffsetY = 5;
+    fillR(c, x, y, pw, ph, ph / 2, C.lime); c.restore();
+    text(c, s, x + size * 0.6, y + ph / 2 + size * 0.36, { size, weight: 700, color: C.ink });
   }
   // um bloco: aparece em FORM (vindo das 3 peças), cai e encaixa no seu lugar no celular
   function drawBlock(c, i, t) {
@@ -426,31 +514,335 @@
     const ap = E.outBack(prog(t, L - 0.72, L - 0.5), 1.6);
     if (ap <= 0) return;
     const fall = E.inCubic(prog(t, L - 0.42, L));                       // queda com aceleração, pouso no tempo
-    const sc0 = 0.56, sc = lerp(sc0, 1, E.outCubic(prog(t, L - 0.42, L)));
-    const fx = FORM.x, fy = FORM.y, tx = SX + SWD / 2, ty = sl.y + sl.h / 2;
-    const cx = lerp(fx, tx, fall), cy = lerp(fy, ty, fall);
+    const sc = lerp(0.56, 1, E.outCubic(prog(t, L - 0.42, L)));
+    const cx = lerp(FORM.x, SX + SWD / 2, fall), cy = lerp(FORM.y, sl.y + sl.h / 2, fall);
     const sq = 1 - 0.06 * kick(t, L, 0.18);                             // amassadinho no pouso
-    const w = SWD, h = sl.h;
-    c.save(); c.translate(cx, cy); c.scale(sc * ap, sc * ap * sq); c.translate(-w / 2, -h / 2);
+    const w = SWD, h = sl.h, k = sc * ap;
+    c.save(); c.translate(cx, cy); c.scale(k, k * sq); c.translate(-w / 2, -h / 2);
     blockBody(c, i, 0, 0, w, h);
     const lit = kick(t, L, 0.5);
-    if (lit > 0.02) { c.save(); c.shadowColor = C.lime; c.shadowBlur = 30 * lit; strokeR(c, 0, 0, w, h, 20, rgba(C.lime, lit), 4); c.restore(); }
+    if (lit > 0.02) { c.save(); c.shadowColor = C.lime; c.shadowBlur = 30 * lit; strokeR(c, 0, 0, w, h, 24, rgba(C.lime, lit), 4); c.restore(); }
     c.restore();
-    // etiqueta presa ao canto do bloco, legível durante a queda
-    const k = E.inOutCubic(prog(t, L, L + 0.35));
-    const lx = cx - (w / 2) * sc * ap + 10, ly = cy - (h / 2) * sc * ap;
-    blockLabel(c, i, lx, ly, k);
-    if (t > L - 0.74 && t < L - 0.4) glow(c, fx, fy, 160, 0.25 * (1 - prog(t, L - 0.6, L - 0.4)));   // clarão: as peças viram o bloco
+    const size = lerp(34, LBL, E.inOutCubic(prog(t, L, L + 0.35))) * Math.min(1, ap);
+    blockLabel(c, i, cx - (w / 2) * k, cy - (h / 2) * k * sq, size);
+    if (t > L - 0.74 && t < L - 0.4) glow(c, FORM.x, FORM.y, 180, 0.25 * (1 - prog(t, L - 0.6, L - 0.4)));   // clarão: as peças viram o bloco
+  }
+
+  // ---------------------------------------------------------------- cena 4: noite e manhã
+  let MOON = null;
+  const NSTARS = [];
+  function buildNight() {
+    const cv = document.createElement('canvas'); cv.width = cv.height = 140; const g = cv.getContext('2d');
+    g.fillStyle = '#EEF1F4'; g.beginPath(); g.arc(70, 70, 38, 0, TAU); g.fill();
+    g.globalCompositeOperation = 'destination-out'; g.beginPath(); g.arc(88, 58, 34, 0, TAU); g.fill();
+    MOON = cv;
+    const r = U.rng(31);
+    for (let k = 0; k < 80; k++) {
+      const x = 30 + r() * 1020; let y = 60 + r() * 1440;
+      if (y > 460 && x > 180 && x < 900) y = 60 + r() * 380;           // atrás do celular não se vê: vai para o céu
+      if (x > 930 && y > 1040) continue;                                // coluna da direita livre
+      NSTARS.push([x, y, 0.8 + r() * 1.8, r() * TAU, 1.5 + r() * 3]);
+    }
+  }
+  const nightK = (t) => E.inOutSine(prog(t, NOITE.off, NOITE.off + 0.8)) * (1 - E.inOutSine(prog(t, T.virada - 0.1, T.virada + 0.5)));
+  const mornK = (t) => E.inOutSine(prog(t, NOITE.manha, NOITE.manha + 1.2));
+  function sky(c, t) {
+    const n = nightK(t);
+    if (n <= 0.002) return;
+    const m = mornK(t);
+    c.save(); c.globalAlpha = n;
+    const g = c.createLinearGradient(0, 0, 0, H);
+    g.addColorStop(0, U.mix('#0B1430', '#271A0E', m)); g.addColorStop(0.45, U.mix('#070A16', '#0E0B08', m)); g.addColorStop(1, '#050606');
+    c.fillStyle = g; c.fillRect(0, 0, W, H);
+    const sa = (1 - m) * prog(t, NOITE.off + 0.2, NOITE.off + 1.0);    // estrelas (somem de manhã)
+    if (sa > 0.01) NSTARS.forEach(([x, y, r, ph, w]) => {
+      c.globalAlpha = n * sa * (0.35 + 0.65 * Math.abs(Math.sin(t * w * 0.5 + ph)));
+      c.fillStyle = '#FFFFFF'; c.beginPath(); c.arc(x, y, r, 0, TAU); c.fill();
+    });
+    c.globalAlpha = n;
+    // lua: sobe no alto à esquerda e se põe quando amanhece
+    const mu = E.outCubic(prog(t, NOITE.off + 0.1, NOITE.off + 1.0)), md = E.inCubic(prog(t, NOITE.manha, NOITE.manha + 0.7));
+    if (mu > 0 && md < 1) {
+      const my = lerp(300, 165, mu) + md * 160;
+      glow(c, 150, my, 130, 0.16 * (1 - md), '#DDE6FF');
+      c.globalAlpha = n * (1 - md); c.drawImage(MOON, 80, my - 70); c.globalAlpha = n;
+    }
+    // sol: nasce no alto à direita; o céu esquenta
+    const su = E.outCubic(prog(t, NOITE.manha + 0.4, NOITE.manha + 1.3));
+    if (su > 0) {
+      const sy = lerp(330, 175, su);
+      glow(c, 930, sy, 440, 0.16 * su, '#FFB45C'); glow(c, 930, sy, 110, 0.5 * su, '#FFE2A8');
+      c.beginPath(); c.arc(930, sy, 34, 0, TAU); c.fillStyle = rgba('#FFE9BE', su); c.fill();
+    }
+    c.restore();
+  }
+  // relógio da tela de bloqueio: as horas (e os minutos) rolam como num contador
+  function clockState(t) {
+    if (t < NOITE.manha) return [22, 1, 59, 1, E.inOutCubic(prog(t, NOITE.relogio - 0.35, NOITE.relogio))];   // 22:59 -> 23:00
+    return [23, 8, 0, 0, E.inOutCubic(prog(t, NOITE.roll, NOITE.roll + 1.0))];                                // 23:00 -> 07:00
+  }
+  function clock(c, cx, by, size, t) {
+    const [h0, hs, m0, ms, p] = clockState(t);
+    c.save();
+    c.font = fnt(TEXT, size, 300); c.letterSpacing = '0px'; c.textAlign = 'center'; c.textBaseline = 'alphabetic'; c.fillStyle = '#F4F6F6';
+    const dw = Math.max(...'0123456789'.split('').map((d) => c.measureText(d).width));
+    const cw = c.measureText(':').width + size * 0.08, pw = 2 * dw, x0 = cx - (2 * pw + cw) / 2;
+    const step = size * 0.95, top = by - size * 0.8, hh = size * 0.9;
+    const pair = (x, v0, steps, mod) => {
+      const pos = v0 + steps * p, fl = Math.floor(pos + 1e-6), fr = steps ? pos - fl : 0;
+      c.save(); c.beginPath(); c.rect(x - 8, top, pw + 16, hh); c.clip();
+      [fl, fl + 1].forEach((v, j) => {
+        if (j === 1 && fr < 0.001) return;
+        const s = String(((v % mod) + mod) % mod).padStart(2, '0'), yy = by - fr * step + j * step;
+        c.fillText(s[0], x + dw / 2, yy); c.fillText(s[1], x + dw * 1.5, yy);
+      });
+      c.restore();
+    };
+    pair(x0, h0, hs, 24);
+    c.fillText(':', x0 + pw + cw / 2, by - size * 0.06);
+    pair(x0 + pw + cw, m0, ms, 60);
+    c.restore();
+  }
+  const ROWS = ['Entrada', 'Saída', 'Hóspedes', 'Chalé'];
+  function consultaRows(c, x, y, w, rowH, fs) {        // os campos da consulta; os valores são barras
+    const bw = [150, 150, 70, 190], lx = fs * 5.6;
+    ROWS.forEach((lb, k) => {
+      const ry = y + k * rowH;
+      text(c, lb, x, ry + fs * 0.36, { size: fs, weight: 500, color: C.soft });
+      fillR(c, x + lx, ry - 7, Math.min(bw[k], w - lx), 14, 7, C.bar2);
+    });
+  }
+  function checkBadge(c, x, y, r) { c.beginPath(); c.arc(x, y, r, 0, TAU); c.fillStyle = C.lime; c.fill(); icon(c, 'check', x, y, r * 1.6, C.ink, 0.13); }
+  const NOT = { x: SCR.x + 20, y: SCR.y + 372, w: SW - 40, h: 330 };
+  function notifCard(c) {
+    const { x, y, w, h } = NOT;
+    c.save(); c.shadowColor = 'rgba(0,0,0,0.5)'; c.shadowBlur = 36; c.shadowOffsetY = 12;
+    fillR(c, x, y, w, h, 34, 'rgba(36,41,44,0.95)'); c.restore();
+    fillR(c, x + 24, y + 24, 58, 58, 16, C.lime); icon(c, 'globe', x + 53, y + 53, 42, C.ink, 0.085);   // ícone genérico (site)
+    text(c, 'Consulta pelo site', x + 100, y + 64, { size: 30, weight: 700, color: C.white });
+    text(c, '23:00', x + w - 26, y + 62, { size: 22, weight: 500, color: C.muted, align: 'right' });
+    c.fillStyle = 'rgba(255,255,255,0.08)'; c.fillRect(x + 24, y + 104, w - 48, 2);
+    consultaRows(c, x + 30, y + 146, w - 120, 52, 26);
+    checkBadge(c, x + w - 52, y + 146 + 3 * 52, 24);
+  }
+  function lockScreen(c, t) {
+    const m = mornK(t);
+    const g = c.createLinearGradient(0, SCR.y, 0, SCR.y + SH);
+    g.addColorStop(0, U.mix('#101B3A', '#3A2814', m)); g.addColorStop(0.6, U.mix('#070B18', '#15100A', m)); g.addColorStop(1, '#050708');
+    c.fillStyle = g; c.fillRect(SCR.x, SCR.y, SW, SH);
+    fillR(c, W / 2 - 100, SCR.y + 112, 200, 16, 8, 'rgba(255,255,255,0.5)');          // data (em barra)
+    clock(c, W / 2, SCR.y + 300, 168, t);
+    const np = E.outBack(prog(t, NOITE.notif, NOITE.notif + 0.4), 1.3);
+    if (np > 0) {
+      const press = 1 - 0.03 * kick(t, NOITE.toque, 0.3), cy = NOT.y + NOT.h / 2, s = lerp(0.9, 1, clamp(np)) * press;
+      c.save(); c.globalAlpha *= clamp(np * 1.5);
+      c.translate(W / 2, cy - (1 - np) * 220); c.scale(s, s); c.translate(-W / 2, -cy);
+      notifCard(c);
+      c.restore();
+    }
+  }
+  function avatar(c, x, y, r) {                        // silhueta genérica
+    c.save(); c.beginPath(); c.arc(x, y, r, 0, TAU); c.fillStyle = '#2A3236'; c.fill(); c.clip();
+    c.fillStyle = '#8A9292'; c.beginPath(); c.arc(x, y - r * 0.18, r * 0.36, 0, TAU); c.fill();
+    c.beginPath(); c.ellipse(x, y + r * 0.78, r * 0.66, r * 0.5, 0, 0, TAU); c.fill();
+    c.restore();
+  }
+  const BUB = { x: SX, y: WEB.y + 134, w: 500, h: 340 };
+  const REP = { y: BUB.y + BUB.h + 36 };
+  function chatScreen(c, t) {
+    c.fillStyle = '#0A0D0E'; c.fillRect(SCR.x, SCR.y, SW, SH);
+    const hy = WEB.y;
+    c.fillStyle = '#131819'; c.fillRect(SCR.x, SCR.y, SW, SB + 100);
+    icon(c, 'back', SX + 16, hy + 50, 40, C.soft, 0.11);
+    avatar(c, SX + 82, hy + 50, 32);
+    fillR(c, SX + 130, hy + 32, 210, 16, 8, '#DCE2E2'); fillR(c, SX + 130, hy + 60, 130, 11, 5.5, C.bar2);
+    // a consulta que chegou às 23:00, já organizada pelo site
+    const { x: bx, y: by, w: bw, h: bh } = BUB;
+    fillR(c, bx, by, bw, bh, 28, '#1B2224');
+    c.beginPath(); c.moveTo(bx, by + 22); c.lineTo(bx - 12, by + 4); c.lineTo(bx + 26, by); c.closePath(); c.fillStyle = '#1B2224'; c.fill();
+    icon(c, 'globe', bx + 42, by + 46, 34, C.lime, 0.09);
+    text(c, 'Consulta pelo site', bx + 70, by + 56, { size: 28, weight: 700, color: C.white });
+    consultaRows(c, bx + 30, by + 124, bw - 60, 50, 26);
+    text(c, '23:00', bx + bw - 24, by + bh - 22, { size: 20, weight: 500, color: C.muted, align: 'right' });
+    // a resposta, só de manhã: "digitando…" (balão da pousada) e depois a mensagem
+    const tp = E.outBack(prog(t, NOITE.digita, NOITE.digita + 0.3), 1.6), tq = prog(t, NOITE.envia - 0.04, NOITE.envia + 0.08);
+    if (tp > 0 && tq < 1) {
+      const dw = measure('digitando', TEXT, 26, 500), w = dw + 110, h = 78, rx = SX + SWD - w, ry = REP.y;
+      c.save(); c.globalAlpha *= clamp(tp) * (1 - tq); c.translate(rx + w, ry); c.scale(tp, tp); c.translate(-(rx + w), -ry);
+      fillR(c, rx, ry, w, h, 26, '#141A1C'); strokeR(c, rx, ry, w, h, 26, rgba(C.lime, 0.85), 2);
+      text(c, 'digitando', rx + 30, ry + 48, { size: 26, weight: 500, color: C.soft });
+      for (let k = 0; k < 3; k++) {
+        const j = Math.max(0, Math.sin((t - NOITE.digita) * 9 - k * 0.9));
+        c.beginPath(); c.arc(rx + 44 + dw + k * 18, ry + 42 - j * 7, 4.5, 0, TAU); c.fillStyle = C.lime; c.fill();
+      }
+      c.restore();
+    }
+    const rp = E.outBack(prog(t, NOITE.envia, NOITE.envia + 0.35), 1.6);
+    if (rp > 0) {
+      const w = 440, h = 170, rx = SX + SWD - w, ry = REP.y;
+      c.save(); c.translate(rx + w, ry); c.scale(rp, rp); c.translate(-(rx + w), -ry);
+      c.save(); c.shadowColor = rgba(C.lime, 0.5); c.shadowBlur = 30 * kick(t, NOITE.envia + 0.1, 0.6); fillR(c, rx, ry, w, h, 28, C.lime); c.restore();
+      bars(c, rx + 28, ry + 34, [w - 70, w - 140, w - 220], 14, 30, 'rgba(10,12,12,0.5)');
+      text(c, '07:00', rx + w - 66, ry + h - 20, { size: 20, weight: 600, color: 'rgba(10,12,12,0.72)', align: 'right' });
+      icon(c, 'checks', rx + w - 38, ry + h - 27, 30, 'rgba(10,12,12,0.78)', 0.1);
+      c.restore();
+    }
+    // campo de mensagem: a resposta sendo escrita (barra que cresce) até o envio
+    const iy = 1422, ty = prog(t, NOITE.digita + 0.1, NOITE.envia - 0.05);
+    fillR(c, SX, iy, SWD - 86, 70, 35, '#1B2224');
+    if (ty > 0 && t < NOITE.envia) {
+      const tw = 30 + 300 * ty;
+      fillR(c, SX + 28, iy + 29, tw, 12, 6, C.soft);
+      if (Math.sin(t * 18) > 0) { c.fillStyle = C.lime; c.fillRect(SX + 34 + tw, iy + 20, 3, 30); }
+    } else fillR(c, SX + 28, iy + 30, 140, 11, 5.5, C.bar);
+    c.beginPath(); c.arc(SX + SWD - 35, iy + 35, 35, 0, TAU); c.fillStyle = C.lime; c.fill();
+    icon(c, 'send', SX + SWD - 33, iy + 35, 34, C.ink, 0.09);
+  }
+  // o toque do dono na notificação (de manhã)
+  function touchDot(c, t) {
+    const t0 = NOITE.toque, a = prog(t, t0 - 0.4, t0 - 0.2) * (1 - prog(t, t0 + 0.12, t0 + 0.3));
+    if (a <= 0.01) return;
+    const tx = 720, ty = NOT.y + 110, ap = E.outCubic(prog(t, t0 - 0.4, t0));
+    const x = lerp(tx + 90, tx, ap), y = lerp(ty + 260, ty, ap), r = 36 * (1 - 0.18 * kick(t, t0, 0.25));
+    c.save(); c.globalAlpha *= a;
+    c.beginPath(); c.arc(x, y, r, 0, TAU); c.fillStyle = 'rgba(255,255,255,0.3)'; c.fill(); c.lineWidth = 3; c.strokeStyle = 'rgba(255,255,255,0.9)'; c.stroke();
+    const rp = prog(t, t0, t0 + 0.45);
+    if (rp > 0 && rp < 1) { c.beginPath(); c.arc(x, y, r + 54 * E.outCubic(rp), 0, TAU); c.globalAlpha *= 1 - rp; c.strokeStyle = C.white; c.stroke(); }
+    c.restore();
+  }
+  // a tela do celular em cada momento: site -> (apaga) -> bloqueio -> conversa -> site (virada)
+  function screenAt(c, t) {
+    const back = E.inOutCubic(prog(t, T.virada, T.virada + 0.4));
+    const siteA = t < T.virada ? 1 - prog(t, NOITE.off, NOITE.off + 0.18) : back;
+    if (t >= NOITE.off && t < T.virada + 0.4) {
+      const lockA = prog(t, NOITE.lock, NOITE.lock + 0.3) * (1 - back);
+      if (lockA > 0.001) { c.save(); c.globalAlpha *= lockA; lockScreen(c, t); c.restore(); }
+      const cp = E.outCubic(prog(t, NOITE.toque + 0.12, NOITE.toque + 0.45));
+      if (cp > 0) { c.save(); c.globalAlpha *= clamp(cp * 1.4) * (1 - back); c.translate(0, (1 - cp) * 90); chatScreen(c, t); c.restore(); }
+    }
+    if (siteA > 0.001) {
+      c.save(); c.globalAlpha *= siteA;
+      if (t >= T.virada) { const z = lerp(1.05, 1, back); c.translate(W / 2, SCR.y + SH / 2); c.scale(z, z); c.translate(-W / 2, -(SCR.y + SH / 2)); }
+      site(c, t); c.restore();
+    }
+  }
+
+  // ---------------------------------------------------------------- cena 5: virada
+  const phoneGlow = (t) => E.outCubic(prog(t, T.virada + 0.1, T.virada + 0.5)) * (1 - prog(t, T.cta - 0.3, T.cta)) * (0.75 + 0.25 * Math.sin(t * 4)) + 0.6 * kick(t, VIRA.golpe, 0.7);
+  function pings(c, t) {                               // "ser encontrada": ondas lima saindo do celular
+    [VIRA.golpe, VIRA.golpe + 0.6].forEach((t0) => {
+      const p = prog(t, t0, t0 + 1.1);
+      if (p <= 0 || p >= 1) return;
+      const e = E.outCubic(p), w = PW * (1 + 0.36 * e), h = PHH * (1 + 0.04 * e);
+      c.save(); c.globalAlpha *= (1 - p) * 0.75; rrect(c, W / 2 - w / 2, PY + PHH / 2 - h / 2, w, h, PR * (1 + 0.3 * e));
+      c.lineWidth = 4; c.strokeStyle = C.lime; c.stroke(); c.restore();
+    });
+  }
+  // LUXO no contorno rachado da cena 2: peças levemente afastadas, a fresta lima entre elas
+  let GAP = null;
+  function luxoCracked(c, cx, cy, k, spread) {
+    const place = (g, p) => {
+      const dx = p.cx - LX.cw / 2, dy = p.cy - LX.ch / 2, d = Math.hypot(dx, dy) || 1, sp = spread * (0.7 + 0.6 * hash(p.i, 21));
+      g.translate(p.cx + (dx / d) * sp, p.cy + (dy / d) * sp * 0.7); g.rotate((hash(p.i, 23) - 0.5) * 0.004 * spread); g.translate(-p.cx, -p.cy);
+      g.beginPath(); p.P.forEach((q, j) => (j ? g.lineTo(q.x, q.y) : g.moveTo(q.x, q.y))); g.closePath();
+    };
+    const g = GAP.getContext('2d');
+    g.setTransform(1, 0, 0, 1, 0, 0); g.globalCompositeOperation = 'source-over'; g.clearRect(0, 0, LX.cw, LX.ch);
+    g.save(); g.beginPath(); g.rect((LX.cw - LX.tw) / 2 - 14, LX.by - LX.asc - 14, LX.tw + 28, LX.asc + 28); g.clip();   // só na palavra
+    g.strokeStyle = C.lime; g.lineCap = 'round'; g.shadowColor = C.lime; g.shadowBlur = 14; g.lineWidth = 7;
+    LX.cuts.forEach(([x0, y0, x1, y1]) => { g.beginPath(); g.moveTo(x0, y0); g.lineTo(x1, y1); g.stroke(); });
+    g.restore();
+    g.globalCompositeOperation = 'destination-out'; g.fillStyle = '#000';  // a fresta só aparece entre as peças
+    LX.pieces.forEach((p) => { g.save(); place(g, p); g.fill(); g.restore(); });
+    g.globalCompositeOperation = 'source-over';
+    c.save(); c.translate(cx, cy); c.scale(k, k); c.translate(-LX.cw / 2, -LX.ch / 2);
+    c.drawImage(GAP, 0, 0);
+    LX.pieces.forEach((p) => { c.save(); place(c, p); c.clip(); c.drawImage(LX.word, 0, 0); c.restore(); });
+    c.restore();
+  }
+  function naoELuxo(c, t) {
+    const t0 = VIRA.luxo, t1 = VIRA.luxoSai;
+    if (t < t0 - 0.05 || t > t1 + 0.6) return;
+    titleBlock(c, ['NÃO É'], t, t0, t1, { size: SZ.naoE, y: SZ.naoEY, lime: ['NÃO', 'É'] });
+    const p = E.outCubic(prog(t, t0 + 0.15, t0 + 0.65)), q = E.inCubic(prog(t, t1 + 0.06, t1 + 0.34));
+    if (p <= 0 || q >= 1) return;
+    const k = SZ.luxoK, dot = measure('.', DISPLAY, SZ.luxoS, 900), cx = W / 2 - dot / 2;
+    c.save(); c.translate(0, -q * 90); c.globalAlpha *= clamp(p * 1.6) * (1 - q);
+    luxoCracked(c, cx, SZ.luxoY, k, lerp(48, 9, p));
+    text(c, '.', cx + (LX.tw * k) / 2 + 2, SZ.luxoY + (LX.asc * k) / 2, { fam: DISPLAY, size: SZ.luxoS, weight: 900, color: C.white });
+    c.restore();
+  }
+
+  // ---------------------------------------------------------------- logo oficial (SVG do kit, montada pelas formas)
+  let LOGO = null;
+  function loadLogo() {
+    const x = new XMLHttpRequest(); x.open('GET', '/brand/logo/kit/FAZLO-DIGITAL-branca-transparente.svg', false); x.send();
+    const doc = new DOMParser().parseFromString(x.responseText, 'image/svg+xml');
+    const vb = doc.documentElement.getAttribute('viewBox').split(/\s+/).map(Number);
+    const paths = [...doc.querySelectorAll('path')].map((p) => ({ fill: p.getAttribute('fill'), d: p.getAttribute('d') }));
+    const subs = paths[0].d.split(/(?=M)/).filter((s) => s.trim()).map((d) => {
+      const n = d.match(/-?\d+\.?\d*/g).map(Number), xs = n.filter((_, i) => i % 2 === 0), ys = n.filter((_, i) => i % 2 === 1);
+      return { d, x0: Math.min(...xs), x1: Math.max(...xs), y0: Math.min(...ys), y1: Math.max(...ys) };
+    });
+    const inside = (a, o) => o !== a && o.x0 <= a.x0 && o.x1 >= a.x1 && o.y0 <= a.y0 && o.y1 >= a.y1;
+    const pieces = [];
+    subs.forEach((s) => {
+      if (subs.some((o) => inside(s, o))) return;
+      const holes = subs.filter((o) => inside(o, s));
+      pieces.push({ path: new Path2D([s.d, ...holes.map((hh) => hh.d)].join(' ')), x0: s.x0, x1: s.x1, y0: s.y0, y1: s.y1 });
+    });
+    pieces.sort((a, b2) => a.x0 - b2.x0);
+    LOGO = { vb, pieces, slash: { path: new Path2D(paths[1].d), fill: paths[1].fill }, digital: { path: new Path2D(paths[2].d), fill: paths[2].fill } };
+  }
+  function drawLogo(c, cx, cy, w, t, t0, a = 1) {
+    if (!LOGO || a <= 0.01) return;
+    const [vx, vy, vw, vh] = LOGO.vb, s = w / vw;
+    c.save(); c.globalAlpha *= a;
+    c.translate(cx - (vw / 2) * s, cy - (vh / 2) * s); c.scale(s, s); c.translate(-vx, -vy);
+    LOGO.pieces.forEach((pc, i) => {
+      const p = E.outExpo(prog(t, t0 + i * 0.05, t0 + i * 0.05 + 0.5));
+      if (p <= 0) return;
+      c.save(); c.beginPath(); c.rect(pc.x0 - 4, pc.y0 - 4, pc.x1 - pc.x0 + 8, pc.y1 - pc.y0 + 8); c.clip();
+      c.translate(0, (1 - p) * (pc.y1 - pc.y0 + 10));
+      c.fillStyle = '#FFFFFF'; c.fill(pc.path, 'evenodd'); c.restore();
+    });
+    const ps = E.outCubic(prog(t, t0 + 0.18, t0 + 0.55));
+    if (ps > 0) { c.save(); c.beginPath(); const yb = 124 - (124 - 26) * ps; c.rect(200, yb, 160, 130); c.clip(); c.fillStyle = LOGO.slash.fill; c.fill(LOGO.slash.path, 'evenodd'); c.restore(); }
+    const pd = prog(t, t0 + 0.45, t0 + 0.85);
+    if (pd > 0) { c.save(); c.globalAlpha *= pd; c.translate((1 - E.outCubic(pd)) * 30, 0); c.fillStyle = LOGO.digital.fill; c.fill(LOGO.digital.path, 'evenodd'); c.restore(); }
+    c.restore();
+  }
+  function cta(c, t) {
+    if (t < T.cta - 0.1) return;
+    const gp = prog(t, T.cta, T.cta + 1.0);
+    glow(c, 540, 900, 520, 0.1 * gp + 0.03 * Math.sin(t * 3) * gp);
+    drawLogo(c, 540, 880, 720, t, T.cta + 0.02);
+    const s1 = E.outCubic(prog(t, T.cta + 0.85, T.cta + 1.3));
+    text(c, 'Sites para pousadas e negócios locais', W / 2, 1100 + (1 - s1) * 24, { size: 40, weight: 500, color: C.soft, align: 'center', alpha: s1 });
+    const s2 = E.outBack(prog(t, T.cta + 1.4, T.cta + 1.8), 1.6);
+    if (s2 > 0) {
+      const lbl = 'Fale com a FAZLO · link na bio', fw = measure(lbl, TEXT, 34, 600) + 120;
+      c.save(); c.translate(W / 2, 1222); c.scale(s2, s2);
+      rrect(c, -fw / 2, -38, fw, 76, 38); c.fillStyle = C.lime; c.fill();
+      text(c, lbl, -fw / 2 + 40, 12, { size: 34, weight: 600, color: C.ink });
+      icon(c, 'arrow', fw / 2 - 44, -2 - 4 * Math.sin(t * 6), 34, C.ink, 0.12);
+      c.restore();
+    }
+    const fl = kick(t, T.cta, 0.3);                   // clarão lima na virada para a logo
+    if (fl > 0.01) { c.fillStyle = rgba(C.lime, 0.16 * fl); c.fillRect(0, 0, W, H); }
   }
 
   // ---------------------------------------------------------------- textos
   const L_HOOK = ['SITE É COISA DE', 'POUSADA GRANDE?'];
   const L_FRASE = ['UMA POUSADA PEQUENA', 'PRECISA DO BÁSICO', 'BEM FEITO.'];
+  const L_NOITE = ['ELE TRABALHA', 'ATÉ QUANDO VOCÊ', 'NÃO PODE ATENDER.'];
+  const L_ACHADA = ['É SER', 'ENCONTRADA.'];
   let SZ = {};
 
   // ---------------------------------------------------------------- quadro
   function frame(c, t) {
     background(c, t);
+    sky(c, t);
     const sh = U.noise1(t * 30, 3) * 14 * kick(t, GOLPE, 0.3);
     c.save(); c.translate(sh, U.noise1(t * 30, 7) * 8 * kick(t, GOLPE, 0.3));
 
@@ -464,17 +856,14 @@
     const fl = kick(t, GOLPE, 0.18);
     if (fl > 0.02) { c.fillStyle = rgba(C.lime, 0.14 * fl); c.fillRect(-40, -40, W + 80, H + 80); }
 
-    // ===== 3 · O BÁSICO
-    const rise = E.outCubic(prog(t, 8.85, 9.45));
-    if (rise > 0 && t < T.trabalha + 0.5) {
-      const back = E.inOutCubic(prog(t, FRASE.t0 - 0.2, FRASE.t0 + 0.4));   // recua um pouco para a frase
-      c.save(); c.translate(0, (1 - rise) * 1300 + back * 70);
-      c.translate(W / 2, PY + PHH / 2); const ps = 1 - 0.06 * back; c.scale(ps, ps); c.translate(-W / 2, -(PY + PHH / 2));
-      phone(c, (cc) => siteFrame(cc, t));
-      c.save(); rrect(c, SCR.x, SCR.y, SW, SH, 54); c.clip();
-      for (let i = 0; i < 4; i++) if (t >= LAND[i]) drawBlock(c, i, t);        // pousados: dentro da tela
-      c.restore();
-      c.restore();
+    // ===== 3 a 5 · O CELULAR (some no rodapé seguro)
+    const rise = E.outCubic(prog(t, 8.85, 9.45)), out = E.inCubic(prog(t, T.cta - 0.3, T.cta + 0.15));
+    if (rise > 0 && out < 1) {
+      faded(c, (g) => {
+        g.translate(0, (1 - rise) * 1300 + out * 1400);
+        pings(g, t);
+        phone(g, (cc) => screenAt(cc, t), phoneGlow(t));
+      });
     }
     drawPieces(c, t);
     // NÃO. (por cima das peças)
@@ -484,14 +873,22 @@
       text(c, 'NÃO.', 0, SZ.nao * 0.36, { fam: DISPLAY, size: SZ.nao, weight: 900, color: C.lime, align: 'center', ls: -SZ.nao * 0.02 });
       c.restore();
     }
-    if (rise > 0 && t < T.trabalha) {                                          // caindo: por cima de tudo
-      const back = E.inOutCubic(prog(t, FRASE.t0 - 0.2, FRASE.t0 + 0.4));
-      c.save(); c.translate(0, back * 70);
-      for (let i = 0; i < 4; i++) if (t < LAND[i]) drawBlock(c, i, t);
-      c.restore();
-    }
-    titleBlock(c, L_FRASE, t, FRASE.t0, FRASE.t1, { size: SZ.frase, y: 296, lime: ['BEM', 'FEITO.'] });
+    for (let i = 0; i < 4; i++) if (t < LAND[i]) drawBlock(c, i, t);          // caindo: por cima de tudo
+    titleBlock(c, L_FRASE, t, FRASE.t0, FRASE.t1, { size: SZ.frase, y: SZ.fraseY, lime: ['BEM', 'FEITO.'] });
+
+    // ===== 4 · TRABALHA POR VOCÊ
+    titleBlock(c, L_NOITE, t, NOITE.frase, NOITE.fraseSai, { size: SZ.noite, y: SZ.noiteY, lime: ['TRABALHA'] });
+    touchDot(c, t);
+
+    // ===== 5 · VIRADA
+    naoELuxo(c, t);
+    titleBlock(c, L_ACHADA, t, VIRA.golpe - 0.02, VIRA.sai, { size: SZ.achada, y: SZ.achadaY, lime: ['ENCONTRADA.'] });
+    const vf = kick(t, VIRA.golpe, 0.25);
+    if (vf > 0.02) { c.fillStyle = rgba(C.lime, 0.1 * vf); c.fillRect(-40, -40, W + 80, H + 80); }
     c.restore();
+
+    // ===== 6 · CTA
+    cta(c, t);
   }
 
   // ---------------------------------------------------------------- pós: vinheta e grão leves
@@ -518,22 +915,63 @@
     duration: DURATION,
     bpm: BPM,
     sections: T,
-    blur: { default: [3, 1 / 120], ranges: [[ESTOURO, ESTOURO + 0.9, 5, 1 / 110]] },
+    blur: { default: [3, 1 / 120], ranges: [[ESTOURO, ESTOURO + 0.9, 5, 1 / 110], [T.cta - 0.3, T.cta + 0.2, 5, 1 / 110]] },
     setup() {
       DISPLAY = "'FZD Display'"; TEXT = "'FZD Text'";
-      buildLuxo();
+      buildLuxo(); buildNight(); loadLogo();
       SHINE = document.createElement('canvas'); SHINE.width = LX.cw; SHINE.height = LX.ch;
+      GAP = document.createElement('canvas'); GAP.width = LX.cw; GAP.height = LX.ch;
       const f = (L, max) => fit(L, DISPLAY, 900, 940, max, -0.02);
-      SZ = { hook: f(L_HOOK, 100), frase: f(L_FRASE, 64), nao: f(['NÃO.'], 260) };
+      // títulos acima do celular, na faixa y 240–436 (centralizados nela)
+      const ty = (n, s) => 240 + (196 - (0.74 * s + 1.12 * s * (n - 1))) / 2 + 0.74 * s;
+      SZ = { hook: f(L_HOOK, 100), frase: f(L_FRASE, 60), nao: f(['NÃO.'], 260), noite: f(L_NOITE, 60), achada: f(L_ACHADA, 104), naoE: f(['NÃO É'], 84) };
+      SZ.fraseY = ty(3, SZ.frase); SZ.noiteY = ty(3, SZ.noite); SZ.achadaY = ty(2, SZ.achada);
+      SZ.luxoS = 140; SZ.luxoK = SZ.luxoS / LX.size;
+      const hNE = 0.74 * SZ.naoE, hL = LX.asc * SZ.luxoK, top = 240 + (196 - (hNE + 26 + hL)) / 2;
+      SZ.naoEY = top + hNE; SZ.luxoY = top + hNE + 26 + hL / 2;
     },
     frame,
     post,
+    cover(ctx) {
+      background(ctx, 20);
+      glow(ctx, 540, 1060, 640, 0.07);
+      drawLogo(ctx, 540, 352, 560, 99, 0);                           // logo no topo, centralizada
+      // SITE / NÃO É / LUXO (contorno rachado): tudo em y 520–1460
+      const s = fit(['NÃO É', 'SITE'], DISPLAY, 900, 880, 220, -0.02), k = 1, hL = LX.asc * k;
+      const hTot = 0.74 * s + 1.14 * s + 0.36 * s + hL, y0 = 520 + (940 - hTot) / 2;
+      const y1 = y0 + 0.74 * s, y2 = y1 + 1.14 * s, ly = y2 + 0.36 * s + hL / 2;
+      text(ctx, 'SITE', 540, y1, { fam: DISPLAY, size: s, weight: 900, color: C.white, align: 'center', ls: -s * 0.02 });
+      text(ctx, 'NÃO É', 540, y2, { fam: DISPLAY, size: s, weight: 900, color: C.lime, align: 'center', ls: -s * 0.02 });
+      luxoCracked(ctx, 540, ly, k, 14);
+    },
     cues(api) {
       const cue = api.cue;
       cue(0, 'open');
       cue(T.mito, 'luxo');
+      [5.0, 5.9].forEach((t, k) => cue(t, 'shine', { k }));
       cue(GOLPE, 'slash');
-      LAND.forEach((t, k) => cue(t, 'drop', { k }));
+      cue(ESTOURO, 'burst');
+      cue(8.3, 'gather', { d: 0.9 });
+      cue(8.85, 'rise', { d: 0.6 });
+      cue(9.45, 'header');
+      LAND.forEach((t, k) => { cue(t - 0.72, 'form', { k }); cue(t - 0.42, 'fall', { k, d: 0.42 }); cue(t, 'drop', { k }); });
+      cue(FRASE.t0, 'title');
+      cue(NOITE.off, 'night');
+      cue(NOITE.relogio, 'clock');
+      cue(NOITE.notif, 'notif');
+      cue(NOITE.frase, 'title');
+      cue(NOITE.manha, 'morning', { d: 1.2 });
+      cue(NOITE.roll, 'clockroll', { d: 1.0 });
+      cue(NOITE.toque, 'tap');
+      cue(NOITE.toque + 0.12, 'switch');
+      cue(NOITE.digita, 'typing', { d: +(NOITE.envia - NOITE.digita).toFixed(3) });
+      cue(NOITE.envia, 'sent');
+      cue(T.virada, 'switch');
+      cue(VIRA.luxo, 'title');
+      cue(VIRA.luxo + 0.15, 'crack');
+      cue(VIRA.golpe, 'hit');
+      cue(T.cta, 'logo');
+      cue(T.cta + 1.4, 'cta');
     },
   });
 })();
