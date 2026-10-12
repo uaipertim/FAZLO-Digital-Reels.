@@ -1,0 +1,9 @@
+Olá! Vim pelo site da Pousada Vale dos Canteiros e gostaria de consultar uma estadia.
+
+Entrada: 05/11/2026
+Saída: 08/11/2026
+Adultos: 2
+Crianças: 1
+Acomodação de interesse: Chalé de Pedra 6
+
+Poderiam confirmar a disponibilidade e os valores?

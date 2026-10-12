@@ -1,0 +1,66 @@
+CHECAGEM (dados novos) — https://pousadavaledoscanteiros.com.br/ (2026-10-12T16:32:06.106Z)
+
+OK     gancho · pousada de família (texto do topo)
+       “…GERAIS Onde a serra amanhece devagar. Uma pousada de família entre montanhas, sabores mineiros, cachoeiras e histórias q…”
+OK     gancho · pousada de família (A pousada)
+       “…de passeio trafegam normalmente. É uma pousada de ambiente familiar: avós, pais, filhos e filhas que construíram suas raízes ne…”
+OK     gancho · Serra da Canastra
+       “…. A POUSADA Aqui tem história, aqui é Serra da Canastra. A pousada fica dentro de uma fazenda, na Serra da Canastr…”
+OK     gancho · carrossel: Onde a serra amanhece devagar.
+       “…MENU SERRA DA CANASTRA · MINAS GERAIS Onde a serra amanhece devagar. Uma pousada de família entre montanhas, sabores mineiros,…”
+OK     gancho · carrossel: Portas abertas, rede na varanda.
+       “…e devagar. FAZENDA NA CANASTRA · A CASA Portas abertas, rede na varanda. MESA MINEIRA · FOGÃO A LENHA O fogão a lenha nunca apaga. A…”
+OK     consulta · Consulte sua estadia
+       “…s e histórias que atravessam gerações. Consulte sua estadia Informe as datas e os hóspedes. A equipe da Pousada Vale do…”
+OK     consulta · calendário: Escolha a chegada
+       “…nfirmar a disponibilidade e os valores? ESCOLHA A CHEGADA OUTUBRO DE 2026 NOVEMBRO DE 2026 ESCOLHA A SAÍDA Bica D'águ…”
+OK     consulta · calendário: novembro de 2026
+       “…ores? ESCOLHA A CHEGADA OUTUBRO DE 2026 NOVEMBRO DE 2026 ESCOLHA A SAÍDA Bica D'água 1 Até 2 hóspedes · a partir de…”
+OK     consulta · calendário: Escolha a saída (depois do dia 5)
+       “…HEGADA OUTUBRO DE 2026 NOVEMBRO DE 2026 ESCOLHA A SAÍDA Bica D'água 1 Até 2 hóspedes · a partir de R$ 700 | Bica D'…”
+OK     consulta · datas: qui, 5 de nov. / dom, 8 de nov.
+       “…ores diretamente pelo WhatsApp. ENTRADA qui, 5 de nov. SAÍDA dom, 8 de nov. ADULTOS − 2 adultos + CRIANÇAS − 1 criança + ACOMODAÇÃO DE…”
+OK     consulta · 2 adultos · 1 criança
+       “…de nov. SAÍDA dom, 8 de nov. ADULTOS − 2 adultos + CRIANÇAS − 1 criança + ACOMODAÇÃO DE INTERESSE Chalé de Pedra 6 ▼ ENVIAR CONSULT…”
+OK     consulta · Chalé de Pedra 6 na lista
+       “…5 Até 3 hóspedes · a partir de R$ 900 | Chalé de Pedra 6 Até 4 hóspedes · a partir de R$ 1.200 | Chalé de Pedra 7 Até 4 hóspedes ·…”
+OK     consulta · Enviar consulta pelo WhatsApp
+       “…E INTERESSE Quero ajuda para escolher ▼ ENVIAR CONSULTA PELO WHATSAPP Em semanas regulares, recebemos hóspedes a partir de quint…”
+OK     consulta · mensagem montada pelo site = modelo do código (texto exato)
+       “…Olá! Vim pelo site da Pousada Vale dos Canteiros e gostaria de consultar uma estadia.…”
+OK     chalés · Chalé de Pedra 6: Até 4 hóspedes
+       “…r opção para as suas datas × ACOMODAÇÃO Chalé de Pedra 6 Até 4 hóspedes · 1 cama de casal e 2 de solteiro Um chalé cheio de personalidade, com clima rústico, aconche…”
+OK     chalés · Comodidades
+       “…olteiro Ar-condicionado Rede na varanda COMODIDADES · Ar-condicionado · Ventilador de teto · Frigobar · Rede na varanda · Banheiro privativo · Wi-Fi ALIMENTAÇÃO Café da manhã e jantar no fim de semana VALORES…”
+OK     chalés · Alimentação
+       “…na varanda · Banheiro privativo · Wi-Fi ALIMENTAÇÃO Café da manhã e jantar no fim de semana VALORES DA HOSPEDAGEM A partir de R$ 1.200 para 4 pessoas/n…”
+OK     passeios · Encontro das Águas · 300 m da pousada · a pé
+       “…de virar uma experiência diferente. 01 Encontro das Águas 300 m da pousada a pé Um dos passeios mais próximos para começar a descobrir os…”
+OK     passeios · Árvore que Encanta · 4 km da pousada
+       “…tos ao redor da Vale dos Canteiros. 02 Árvore que Encanta 4 km da pousada Que espetáculo de árvore. Galhos retorcidos que parecem de…”
+OK     passeios · Paraíso dos Pássaros · 4 km · 4x4 ou caminhada
+       “…io feito para contemplar. 03 Cachoeira Paraíso dos Pássaros na propriedade 4 km 4x4 ou caminhada Um dos refúgios naturais da fazenda. O acesso pode ser fei…”
+OK     day use · MENU → Reservar Day Use
+       “…s 04 Mesa mineira 05 A Serra 06 Contato Reservar Day Use WhatsApp Instagram SERRA DA CANASTRA — MINAS GERAIS Vale do…”
+OK     day use · Das 10h às 17h
+       “…No fim da tarde você volta para casa. · Das 10h às 17h · Acesso às 04 cachoeiras da pousada · Almoço mineiro inclu…”
+OK     day use · Acesso às 04 cachoeiras da pousada
+       “…ocê volta para casa. · Das 10h às 17h · Acesso às 04 cachoeiras da pousada · Almoço mineiro incluído · Vagas limitadas por dia (reserv…”
+OK     day use · Almoço mineiro incluído
+       “…· Acesso às 04 cachoeiras da pousada · Almoço mineiro incluído · Vagas limitadas por dia (reserva antecipada) VALOR R$ 100…”
+OK     como chegar · Onde estamos
+       “…OBO-GUARÁ PÔR DO SOL NOITES ESTRELADAS ONDE ESTAMOS São João Batista do Glória, Serra da Canastra. A pousada…”
+OK     como chegar · 22 km · estrada de terra
+       “…m normalmente. DA CIDADE ATÉ A POUSADA 22 km · estrada de terra CACHOEIRAS NA FAZENDA 4, dentro da propriedade ACESSO carro…”
+OK     assinatura · rodapé: Site por
+       “…atas © 2026 Pousada Vale dos Canteiros® Site por Feito na serra, com café. Carregando o site da Pousada Vale…”
+OK     assinatura · rodapé: logo alt "Fazlo Digital" → fazlodigital.com.br
+       “…e por Feito na serra, com café. https://fazlodigital.com.br alt="Fazlo Digital"…”
+
+geometria igual à das capturas reaproveitadas do raio-x: sim
+depoimentos removidos em todas as capturas: sim
+calendário fecha sozinho ao tocar a saída: sim (não há toque em Aplicar)
+modal do chalé fecha com toque fora do painel: sim
+wa.me interceptado (nada aberto, número não guardado): sim (wa.me)
+
+dados reaproveitados: reels/como-funciona-o-raio-x/src/assets/site/checagem.txt

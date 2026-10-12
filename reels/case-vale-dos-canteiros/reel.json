@@ -1,0 +1,73 @@
+{
+  "id": "case-vale-dos-canteiros",
+  "title": "Conheça o site da Pousada Vale dos Canteiros",
+  "status": "em produção",
+  "format": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 60
+  },
+  "output": {
+    "video": "output/fazlo-digital-case-vale-dos-canteiros.mp4",
+    "cover": "output/capa.png"
+  },
+  "fonts": [
+    "800 100px 'FZD Display'",
+    "900 100px 'FZD Display'",
+    "400 100px 'FZD Text'",
+    "500 100px 'FZD Text'",
+    "600 100px 'FZD Text'",
+    "700 100px 'FZD Text'"
+  ],
+  "assets": {
+    "m-00": "reels/como-funciona-o-raio-x/src/assets/site/m-00.jpg",
+    "m-01": "reels/como-funciona-o-raio-x/src/assets/site/m-01.jpg",
+    "m-02": "reels/como-funciona-o-raio-x/src/assets/site/m-02.jpg",
+    "m-03": "reels/como-funciona-o-raio-x/src/assets/site/m-03.jpg",
+    "m-04": "reels/como-funciona-o-raio-x/src/assets/site/m-04.jpg",
+    "m-05": "reels/como-funciona-o-raio-x/src/assets/site/m-05.jpg",
+    "m-06": "reels/como-funciona-o-raio-x/src/assets/site/m-06.jpg",
+    "m-07": "reels/como-funciona-o-raio-x/src/assets/site/m-07.jpg",
+    "m-08": "reels/como-funciona-o-raio-x/src/assets/site/m-08.jpg",
+    "m-09": "reels/como-funciona-o-raio-x/src/assets/site/m-09.jpg",
+    "m-10": "reels/como-funciona-o-raio-x/src/assets/site/m-10.jpg",
+    "m-map": "reels/como-funciona-o-raio-x/src/assets/site/m-map.jpg",
+    "cal-d5": "reels/case-vale-dos-canteiros/src/assets/site/cal-d5.jpg",
+    "cal-nov": "reels/case-vale-dos-canteiros/src/assets/site/cal-nov.jpg",
+    "cal-oct": "reels/case-vale-dos-canteiros/src/assets/site/cal-oct.jpg",
+    "cal-scrim": "reels/case-vale-dos-canteiros/src/assets/site/cal-scrim.jpg",
+    "dayuse-scrim": "reels/case-vale-dos-canteiros/src/assets/site/dayuse-scrim.jpg",
+    "dayuse": "reels/case-vale-dos-canteiros/src/assets/site/dayuse.jpg",
+    "footer-4x": "reels/case-vale-dos-canteiros/src/assets/site/footer-4x.jpg",
+    "form-0": "reels/case-vale-dos-canteiros/src/assets/site/form-0.jpg",
+    "form-1": "reels/case-vale-dos-canteiros/src/assets/site/form-1.jpg",
+    "form-2": "reels/case-vale-dos-canteiros/src/assets/site/form-2.jpg",
+    "form-3": "reels/case-vale-dos-canteiros/src/assets/site/form-3.jpg",
+    "header-scrolled": "reels/case-vale-dos-canteiros/src/assets/site/header-scrolled.png",
+    "header-top": "reels/case-vale-dos-canteiros/src/assets/site/header-top.png",
+    "hero-1": "reels/case-vale-dos-canteiros/src/assets/site/hero-1.jpg",
+    "hero-2": "reels/case-vale-dos-canteiros/src/assets/site/hero-2.jpg",
+    "hero-3": "reels/case-vale-dos-canteiros/src/assets/site/hero-3.jpg",
+    "hero-4": "reels/case-vale-dos-canteiros/src/assets/site/hero-4.jpg",
+    "hero-5": "reels/case-vale-dos-canteiros/src/assets/site/hero-5.jpg",
+    "list-scrim": "reels/case-vale-dos-canteiros/src/assets/site/list-scrim.jpg",
+    "list": "reels/case-vale-dos-canteiros/src/assets/site/list.jpg",
+    "m6-0": "reels/case-vale-dos-canteiros/src/assets/site/m6-0.jpg",
+    "m6-s0": "reels/case-vale-dos-canteiros/src/assets/site/m6-s0.jpg",
+    "m6-s1": "reels/case-vale-dos-canteiros/src/assets/site/m6-s1.jpg",
+    "m6-scrim": "reels/case-vale-dos-canteiros/src/assets/site/m6-scrim.jpg",
+    "menu": "reels/case-vale-dos-canteiros/src/assets/site/menu.jpg",
+    "t-11": "reels/case-vale-dos-canteiros/src/assets/site/t-11.jpg"
+  },
+  "qa": {
+    "duration": [
+      15,
+      30
+    ],
+    "lufs": -14,
+    "syncCues": [],
+    "visualCues": [],
+    "checkTimes": []
+  },
+  "storyboard": []
+}

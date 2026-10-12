@@ -1,0 +1,873 @@
+{
+ "url": "https://pousadavaledoscanteiros.com.br/",
+ "capturedAt": "2026-10-12T16:32:06.106Z",
+ "removed": "seção de depoimentos (\"Quem passou por aqui conta melhor\")",
+ "viewport": {
+  "w": 390,
+  "h": 844,
+  "dpr": 2
+ },
+ "page": {
+  "H": 18589,
+  "W": 390,
+  "sections": {
+   "hero": {
+    "x": 0,
+    "y": 0,
+    "w": 390,
+    "h": 641
+   },
+   "disponibilidade": {
+    "x": 0,
+    "y": 569,
+    "w": 390,
+    "h": 873
+   },
+   "pousada": {
+    "x": 0,
+    "y": 1398,
+    "w": 390,
+    "h": 1489
+   },
+   "acomodacoes": {
+    "x": 0,
+    "y": 2888,
+    "w": 390,
+    "h": 5278
+   },
+   "experiencias": {
+    "x": 0,
+    "y": 8166,
+    "w": 390,
+    "h": 3517
+   },
+   "mesa": {
+    "x": 0,
+    "y": 11683,
+    "w": 390,
+    "h": 1716
+   },
+   "historia": {
+    "x": 0,
+    "y": 13399,
+    "w": 390,
+    "h": 818
+   },
+   "serra": {
+    "x": 0,
+    "y": 14218,
+    "w": 390,
+    "h": 776
+   },
+   "contato": {
+    "x": 0,
+    "y": 14994,
+    "w": 390,
+    "h": 1028
+   }
+  },
+  "anchors": {
+   "consulte": {
+    "x": 49,
+    "y": 592,
+    "w": 217,
+    "h": 29
+   },
+   "chales": {
+    "x": 20,
+    "y": 2989,
+    "w": 350,
+    "h": 82
+   },
+   "viver": {
+    "x": 20,
+    "y": 8238,
+    "w": 350,
+    "h": 19
+   },
+   "onde": {
+    "x": 20,
+    "y": 15074,
+    "w": 350,
+    "h": 19
+   }
+  },
+  "chales": {
+   "cards": [
+    {
+     "name": "Bica D'água 1",
+     "x": 39,
+     "y": 3644,
+     "w": 138,
+     "h": 29
+    },
+    {
+     "name": "Bica D'água 2",
+     "x": 39,
+     "y": 4386,
+     "w": 140,
+     "h": 29
+    },
+    {
+     "name": "Bica D'água 3",
+     "x": 39,
+     "y": 5153,
+     "w": 140,
+     "h": 29
+    },
+    {
+     "name": "Bica D'água 4",
+     "x": 39,
+     "y": 5896,
+     "w": 142,
+     "h": 29
+    },
+    {
+     "name": "Bica D'água 5",
+     "x": 39,
+     "y": 6638,
+     "w": 141,
+     "h": 29
+    },
+    {
+     "name": "Chalé de Pedra 6",
+     "x": 39,
+     "y": 7380,
+     "w": 180,
+     "h": 29
+    }
+   ],
+   "card6": {
+    "x": 20,
+    "y": 7098,
+    "w": 350,
+    "h": 748
+   },
+   "name6": {
+    "x": 39,
+    "y": 7380,
+    "w": 180,
+    "h": 29
+   },
+   "ver6": {
+    "x": 39,
+    "y": 7719,
+    "w": 130,
+    "h": 48
+   }
+  },
+  "passeios": [
+   {
+    "title": "Encontro das Águas",
+    "x": 70,
+    "y": 8795,
+    "w": 244,
+    "h": 33,
+    "tags": [
+     {
+      "text": "300 m da pousada",
+      "x": 20,
+      "y": 8844,
+      "w": 135,
+      "h": 30
+     },
+     {
+      "text": "a pé",
+      "x": 163,
+      "y": 8844,
+      "w": 51,
+      "h": 30
+     }
+    ],
+    "card": {
+     "x": 20,
+     "y": 8552,
+     "w": 350,
+     "h": 416
+    }
+   },
+   {
+    "title": "Árvore que Encanta",
+    "x": 63,
+    "y": 9294,
+    "w": 198,
+    "h": 27,
+    "tags": [
+     {
+      "text": "4 km da pousada",
+      "x": 20,
+      "y": 9336,
+      "w": 126,
+      "h": 30
+     }
+    ],
+    "card": {
+     "x": 20,
+     "y": 9012,
+     "w": 350,
+     "h": 465
+    }
+   },
+   {
+    "title": "Cachoeira Paraíso dos Pássaros",
+    "x": 63,
+    "y": 9799,
+    "w": 304,
+    "h": 27,
+    "tags": [
+     {
+      "text": "na propriedade",
+      "x": 20,
+      "y": 9841,
+      "w": 118,
+      "h": 30
+     },
+     {
+      "text": "4 km",
+      "x": 146,
+      "y": 9841,
+      "w": 54,
+      "h": 30
+     },
+     {
+      "text": "4x4 ou caminhada",
+      "x": 207,
+      "y": 9841,
+      "w": 135,
+      "h": 30
+     }
+    ],
+    "card": {
+     "x": 20,
+     "y": 9517,
+     "w": 350,
+     "h": 417
+    }
+   },
+   {
+    "title": "Cachoeira Gruta do Lobo Guará",
+    "x": 65,
+    "y": 10256,
+    "w": 305,
+    "h": 53,
+    "tags": [
+     {
+      "text": "na propriedade",
+      "x": 20,
+      "y": 10323,
+      "w": 118,
+      "h": 30
+     },
+     {
+      "text": "2 km",
+      "x": 146,
+      "y": 10323,
+      "w": 54,
+      "h": 30
+     },
+     {
+      "text": "veículo comum",
+      "x": 207,
+      "y": 10323,
+      "w": 116,
+      "h": 30
+     }
+    ],
+    "card": {
+     "x": 20,
+     "y": 9973,
+     "w": 350,
+     "h": 466
+    }
+   },
+   {
+    "title": "Cachoeira do Oratório",
+    "x": 63,
+    "y": 10762,
+    "w": 226,
+    "h": 27,
+    "tags": [
+     {
+      "text": "na propriedade",
+      "x": 20,
+      "y": 10804,
+      "w": 118,
+      "h": 30
+     },
+     {
+      "text": "1,3 km",
+      "x": 146,
+      "y": 10804,
+      "w": 62,
+      "h": 30
+     },
+     {
+      "text": "4x4 ou ~30 min de caminhada",
+      "x": 20,
+      "y": 10842,
+      "w": 205,
+      "h": 30
+     }
+    ],
+    "card": {
+     "x": 20,
+     "y": 10479,
+     "w": 350,
+     "h": 455
+    }
+   },
+   {
+    "title": "Cachoeira Capivara",
+    "x": 65,
+    "y": 11257,
+    "w": 195,
+    "h": 27,
+    "tags": [
+     {
+      "text": "na propriedade",
+      "x": 20,
+      "y": 11299,
+      "w": 118,
+      "h": 30
+     },
+     {
+      "text": "1,5 km",
+      "x": 146,
+      "y": 11299,
+      "w": 62,
+      "h": 30
+     },
+     {
+      "text": "4x4 ou ~25 min de caminhada",
+      "x": 20,
+      "y": 11338,
+      "w": 204,
+      "h": 30
+     }
+    ],
+    "card": {
+     "x": 20,
+     "y": 10975,
+     "w": 350,
+     "h": 455
+    }
+   }
+  ],
+  "onde": {
+   "km": {
+    "text": "DA CIDADE ATÉ A POUSADA 22 km · estrada de terra",
+    "x": 20,
+    "y": 15413,
+    "w": 163,
+    "h": 82
+   }
+  },
+  "footer": {
+   "x": 0,
+   "y": 17515,
+   "w": 390,
+   "h": 1074,
+   "text": "Vale dos Canteiros SERRA DA CANASTRA — MINAS GERAIS A pousada Acomodações Experiências Mesa mineira A Serra Contato WhatsApp Instagram (35) 99742-1143 contato@valedoscanteiros.com.br Zona rural, a 22 km da cidade São João Batista do Glória — MG Serra da Canastra Consultar datas © 2026 Pousada Vale dos Canteiros® Site por Feito na serra, com café.",
+   "link": {
+    "x": 20,
+    "y": 18538,
+    "w": 145,
+    "h": 19,
+    "href": "https://fazlodigital.com.br",
+    "alt": "Fazlo Digital"
+   },
+   "logo": {
+    "x": 73,
+    "y": 18538,
+    "w": 92,
+    "h": 18
+   }
+  },
+  "heroTabs": [
+   {
+    "label": "Foto 1 de 5",
+    "x": 20,
+    "y": 493,
+    "w": 44,
+    "h": 44
+   },
+   {
+    "label": "Foto 2 de 5",
+    "x": 78,
+    "y": 493,
+    "w": 44,
+    "h": 44
+   },
+   {
+    "label": "Foto 3 de 5",
+    "x": 136,
+    "y": 493,
+    "w": 44,
+    "h": 44
+   },
+   {
+    "label": "Foto 4 de 5",
+    "x": 194,
+    "y": 493,
+    "w": 44,
+    "h": 44
+   },
+   {
+    "label": "Foto 5 de 5",
+    "x": 252,
+    "y": 493,
+    "w": 44,
+    "h": 44
+   }
+  ],
+  "header": {
+   "x": 0,
+   "y": 0,
+   "w": 390,
+   "h": 76
+  }
+ },
+ "reuse": {
+  "from": "reels/como-funciona-o-raio-x/src/assets/site",
+  "chunks": [
+   {
+    "file": "m-00.jpg",
+    "y": 0,
+    "h": 1600
+   },
+   {
+    "file": "m-01.jpg",
+    "y": 1600,
+    "h": 1600
+   },
+   {
+    "file": "m-02.jpg",
+    "y": 3200,
+    "h": 1600
+   },
+   {
+    "file": "m-03.jpg",
+    "y": 4800,
+    "h": 1600
+   },
+   {
+    "file": "m-04.jpg",
+    "y": 6400,
+    "h": 1600
+   },
+   {
+    "file": "m-05.jpg",
+    "y": 8000,
+    "h": 1600
+   },
+   {
+    "file": "m-06.jpg",
+    "y": 9600,
+    "h": 1600
+   },
+   {
+    "file": "m-07.jpg",
+    "y": 11200,
+    "h": 1600
+   },
+   {
+    "file": "m-08.jpg",
+    "y": 12800,
+    "h": 1600
+   },
+   {
+    "file": "m-09.jpg",
+    "y": 14400,
+    "h": 1600
+   },
+   {
+    "file": "m-10.jpg",
+    "y": 16000,
+    "h": 1600
+   }
+  ],
+  "map": {
+   "file": "m-map.jpg",
+   "x": 21,
+   "y": 15681,
+   "w": 348,
+   "h": 261
+  },
+  "sameGeometry": true,
+  "diffs": []
+ },
+ "hero": {
+  "rect": {
+   "x": 0,
+   "y": 0,
+   "w": 390,
+   "h": 641
+  },
+  "slides": [
+   {
+    "file": "hero-1.jpg",
+    "title": "Onde a serra amanhece devagar.",
+    "eyebrow": "SERRA DA CANASTRA · MINAS GERAIS",
+    "h1": {
+     "x": 20,
+     "y": 254,
+     "w": 267,
+     "h": 114
+    }
+   },
+   {
+    "file": "hero-2.jpg",
+    "title": "Portas abertas, rede na varanda.",
+    "eyebrow": "FAZENDA NA CANASTRA · A CASA",
+    "h1": {
+     "x": 20,
+     "y": 290,
+     "w": 267,
+     "h": 78
+    }
+   },
+   {
+    "file": "hero-3.jpg",
+    "title": "O fogão a lenha nunca apaga.",
+    "eyebrow": "MESA MINEIRA · FOGÃO A LENHA",
+    "h1": {
+     "x": 20,
+     "y": 290,
+     "w": 267,
+     "h": 78
+    }
+   },
+   {
+    "file": "hero-4.jpg",
+    "title": "Noite tranquila, céu aberto e descanso de verdade.",
+    "eyebrow": "A POUSADA À NOITE · SERRA DA CANASTRA",
+    "h1": {
+     "x": 20,
+     "y": 155,
+     "w": 267,
+     "h": 188
+    }
+   },
+   {
+    "file": "hero-5.jpg",
+    "title": "Um dia inteiro na serra sem dormir fora.",
+    "eyebrow": "DAY USE · PASSE O DIA COM A GENTE",
+    "h1": {
+     "x": 20,
+     "y": 254,
+     "w": 267,
+     "h": 114
+    }
+   }
+  ]
+ },
+ "header": {
+  "rect": {
+   "x": 0,
+   "y": 0,
+   "w": 390,
+   "h": 76
+  },
+  "scrolledAfter": 60,
+  "menu": {
+   "x": 280,
+   "y": 16,
+   "w": 90,
+   "h": 44
+  }
+ },
+ "tail": [
+  {
+   "file": "t-11.jpg",
+   "y": 17600,
+   "h": 989
+  }
+ ],
+ "form": {
+  "scroll": 479,
+  "files": {
+   "form0": "form-0.jpg",
+   "calOct": "cal-oct.jpg",
+   "calScrim": "cal-scrim.jpg",
+   "calNov": "cal-nov.jpg",
+   "calD5": "cal-d5.jpg",
+   "form1": "form-1.jpg",
+   "form2": "form-2.jpg",
+   "list": "list.jpg",
+   "listScrim": "list-scrim.jpg",
+   "form3": "form-3.jpg"
+  },
+  "taps": {
+   "entrada": {
+    "x": 21,
+    "y": 269,
+    "w": 348,
+    "h": 86
+   },
+   "saida": {
+    "x": 21,
+    "y": 355,
+    "w": 348,
+    "h": 86
+   },
+   "maisCriancas": {
+    "x": 201,
+    "y": 573,
+    "w": 36,
+    "h": 36
+   },
+   "acomodacao": {
+    "x": 39,
+    "y": 665,
+    "w": 312,
+    "h": 36
+   },
+   "enviar": {
+    "x": 37,
+    "y": 732,
+    "w": 316,
+    "h": 56
+   },
+   "proximo": {
+    "x": 322,
+    "y": 280,
+    "w": 44,
+    "h": 44
+   },
+   "dia5": {
+    "x": 224,
+    "y": 393,
+    "w": 48,
+    "h": 48
+   },
+   "dia8": {
+    "x": 12,
+    "y": 447,
+    "w": 48,
+    "h": 48
+   },
+   "chale6": {
+    "x": 8,
+    "y": 521,
+    "w": 374,
+    "h": 72
+   }
+  },
+  "card": {
+   "x": 20,
+   "y": 90,
+   "w": 350,
+   "h": 873
+  },
+  "cal": {
+   "sheet": {
+    "x": 0,
+    "y": 258,
+    "w": 390,
+    "h": 586
+   },
+   "monthOct": "OUTUBRO DE 2026",
+   "eyebrowOct": "ESCOLHA A CHEGADA",
+   "monthNov": "NOVEMBRO DE 2026",
+   "eyebrowD5": "ESCOLHA A SAÍDA",
+   "closesOnCheckout": true
+  },
+  "values1": [
+   "ENTRADA qui, 5 de nov.",
+   "SAÍDA dom, 8 de nov.",
+   "ADULTOS − 2 adultos +",
+   "CRIANÇAS − Sem crianças +",
+   "ACOMODAÇÃO DE INTERESSE Quero ajuda para escolher ▼"
+  ],
+  "list": {
+   "sheet": {
+    "x": 0,
+    "y": 152,
+    "w": 390,
+    "h": 692
+   },
+   "options": [
+    "Bica D'água 1 Até 2 hóspedes · a partir de R$ 700",
+    "Bica D'água 2 Até 2 hóspedes · a partir de R$ 700",
+    "Bica D'água 3 Até 2 hóspedes · a partir de R$ 700",
+    "Bica D'água 4 Até 2 hóspedes · a partir de R$ 700",
+    "Bica D'água 5 Até 3 hóspedes · a partir de R$ 900",
+    "Chalé de Pedra 6 Até 4 hóspedes · a partir de R$ 1.200",
+    "Chalé de Pedra 7 Até 4 hóspedes · a partir de R$ 1.200",
+    "Chalé Ipê 8 Até 5 hóspedes · a partir de R$ 1.500",
+    "Chalé Ipê 9 Até 3 hóspedes · a partir de R$ 900",
+    "Quero ajuda para escolher A equipe indica a melhor opção para as suas datas"
+   ]
+  },
+  "values3": "Consulte sua estadia Informe as datas e os hóspedes. A equipe da Pousada Vale dos Canteiros confirma a disponibilidade e os valores diretamente pelo WhatsApp. ENTRADA qui, 5 de nov. SAÍDA dom, 8 de nov. ADULTOS − 2 adultos + CRIANÇAS − 1 criança + ACOMODAÇÃO DE INTERESSE Chalé de Pedra 6 ▼ ENVIAR CONSULTA PELO WHATSAPP Em semanas regulares, recebemos hóspedes a partir de quinta-feira. Em feriados e datas especiais, consulte outras condições. A disponibilidade e os valores são confirmados diretamente pela equipe da pousada pelo WhatsApp.",
+  "scrollEnd": 479,
+  "message": {
+   "opened": true,
+   "host": "wa.me",
+   "text": "Olá! Vim pelo site da Pousada Vale dos Canteiros e gostaria de consultar uma estadia.\n\nEntrada: 05/11/2026\nSaída: 08/11/2026\nAdultos: 2\nCrianças: 1\nAcomodação de interesse: Chalé de Pedra 6\n\nPoderiam confirmar a disponibilidade e os valores?"
+  }
+ },
+ "chalet6": {
+  "scroll": 7002,
+  "taps": {
+   "ver": {
+    "x": 39,
+    "y": 717,
+    "w": 130,
+    "h": 48
+   },
+   "close": {
+    "x": 322,
+    "y": 24,
+    "w": 44,
+    "h": 44
+   }
+  },
+  "files": {
+   "page": "m6-page.jpg",
+   "top": "m6-0.jpg",
+   "scrim": "m6-scrim.jpg",
+   "s0": "m6-s0.jpg",
+   "s1": "m6-s1.jpg"
+  },
+  "rect": {
+   "x": 12,
+   "y": 12,
+   "w": 366,
+   "h": 776
+  },
+  "radius": 8,
+  "scrollMax": 605,
+  "scrollH": 1381,
+  "name": "Chalé de Pedra 6",
+  "text": "× ACOMODAÇÃO Chalé de Pedra 6 Até 4 hóspedes · 1 cama de casal e 2 de solteiro Um chalé cheio de personalidade, com clima rústico, aconchego e tranquilidade para aproveitar a Canastra em um ritmo mais leve. DESTAQUES Cama de casal + solteiro Ar-condicionado Rede na varanda COMODIDADES · Ar-condicionado · Ventilador de teto · Frigobar · Rede na varanda · Banheiro privativo · Wi-Fi ALIMENTAÇÃO Café da manhã e jantar no fim de semana VALORES DA HOSPEDAGEM A partir de R$ 1.200 para 4 pessoas/noite · casal R$ 800 Os valores variam conforme o período, finais de semana, feriados e datas especiais. A confirmação é feita diretamente pela pousada pelo WhatsApp. Consultar este chalé",
+  "cta": {
+   "x": 32,
+   "y": 704,
+   "w": 326,
+   "h": 84
+  },
+  "blocks": {
+   "comodidades": {
+    "x": 32,
+    "y": 831,
+    "w": 326,
+    "h": 111,
+    "text": "COMODIDADES · Ar-condicionado · Ventilador de teto · Frigobar · Rede na varanda · Banheiro privativo · Wi-Fi"
+   },
+   "alimentacao": {
+    "x": 32,
+    "y": 965,
+    "w": 326,
+    "h": 48,
+    "text": "ALIMENTAÇÃO Café da manhã e jantar no fim de semana"
+   },
+   "destaques": {
+    "x": 32,
+    "y": 703,
+    "w": 326,
+    "h": 104,
+    "text": "DESTAQUES Cama de casal + solteiro Ar-condicionado Rede na varanda"
+   },
+   "valores": {
+    "x": 32,
+    "y": 1037,
+    "w": 326,
+    "h": 54,
+    "text": "VALORES DA HOSPEDAGEM A partir de R$ 1.200"
+   }
+  },
+  "s1Scroll": 605,
+  "closesOnBackdrop": true
+ },
+ "dayuse": {
+  "scroll": 9130,
+  "taps": {
+   "menu": {
+    "x": 280,
+    "y": 16,
+    "w": 90,
+    "h": 44
+   },
+   "reservar": {
+    "x": 20,
+    "y": 664,
+    "w": 350,
+    "h": 52
+   },
+   "close": {
+    "x": 322,
+    "y": 46,
+    "w": 44,
+    "h": 44
+   }
+  },
+  "files": {
+   "page": "du-page.jpg",
+   "menu": "menu.jpg",
+   "modal": "dayuse.jpg",
+   "scrim": "dayuse-scrim.jpg"
+  },
+  "menuText": "Vale dos Canteiros × 01 A pousada 02 Acomodações 03 Experiências 04 Mesa mineira 05 A Serra 06 Contato Reservar Day Use WhatsApp Instagram SERRA DA CANASTRA — MINAS GERAIS",
+  "scrollAfter": 9130,
+  "panel": {
+   "cls": "",
+   "x": 12,
+   "y": 34,
+   "w": 366,
+   "h": 776,
+   "scrollMax": 70,
+   "text": "× DAY USE · PASSE O DIA COM A GENTE Um dia inteiro na serra, sem dormir fora Chegue de manhã, aproveite a estrutura da pousada, o almoço mineiro de fogão a lenha e a paisagem do vale. No fim da tarde você volta para casa. · Das 10h às 17h · Acesso às 04 cachoeiras da pousada · Almoço mineiro incluído · Vagas limitadas por dia (reserva antecipada) VALOR R$ 100 por pessoa / por dia Crianças de 05 a 11 anos pagam meia Reservar no WhatsApp Confirmação de data e vagas feita pela equipe da pousada."
+  },
+  "bullets": {
+   "horario": {
+    "x": 34,
+    "y": 434,
+    "w": 322,
+    "h": 23
+   },
+   "cachoeiras": {
+    "x": 34,
+    "y": 467,
+    "w": 322,
+    "h": 23
+   },
+   "almoco": {
+    "x": 34,
+    "y": 500,
+    "w": 322,
+    "h": 23
+   }
+  },
+  "title": {
+   "x": 34,
+   "y": 237,
+   "w": 322,
+   "h": 59
+  }
+ },
+ "footer": {
+  "file": "footer-4x.jpg",
+  "dpr": 4,
+  "x": 0,
+  "y": 17515,
+  "w": 390,
+  "h": 1074,
+  "text": "Vale dos Canteiros SERRA DA CANASTRA — MINAS GERAIS A pousada Acomodações Experiências Mesa mineira A Serra Contato WhatsApp Instagram (35) 99742-1143 contato@valedoscanteiros.com.br Zona rural, a 22 km da cidade São João Batista do Glória — MG Serra da Canastra Consultar datas © 2026 Pousada Vale dos Canteiros® Site por Feito na serra, com café.",
+  "link": {
+   "x": 20,
+   "y": 18538,
+   "w": 145,
+   "h": 19,
+   "href": "https://fazlodigital.com.br",
+   "alt": "Fazlo Digital"
+  },
+  "logo": {
+   "x": 73,
+   "y": 18538,
+   "w": 92,
+   "h": 18
+  }
+ },
+ "testimonialsRemoved": true
+}
