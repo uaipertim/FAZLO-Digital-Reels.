@@ -11,17 +11,176 @@
     "video": "output/fazlo-digital-como-funciona-o-raio-x.mp4",
     "cover": "output/capa.png"
   },
-  "fonts": [],
-  "assets": {},
+  "fonts": [
+    "800 100px 'FZD Display'",
+    "900 100px 'FZD Display'",
+    "400 100px 'FZD Text'",
+    "500 100px 'FZD Text'",
+    "600 100px 'FZD Text'",
+    "700 100px 'FZD Text'"
+  ],
+  "assets": {
+    "m-00": "reels/como-funciona-o-raio-x/src/assets/site/m-00.jpg",
+    "m-01": "reels/como-funciona-o-raio-x/src/assets/site/m-01.jpg",
+    "m-02": "reels/como-funciona-o-raio-x/src/assets/site/m-02.jpg",
+    "m-03": "reels/como-funciona-o-raio-x/src/assets/site/m-03.jpg",
+    "m-04": "reels/como-funciona-o-raio-x/src/assets/site/m-04.jpg",
+    "m-05": "reels/como-funciona-o-raio-x/src/assets/site/m-05.jpg",
+    "m-06": "reels/como-funciona-o-raio-x/src/assets/site/m-06.jpg",
+    "m-07": "reels/como-funciona-o-raio-x/src/assets/site/m-07.jpg",
+    "m-08": "reels/como-funciona-o-raio-x/src/assets/site/m-08.jpg",
+    "m-09": "reels/como-funciona-o-raio-x/src/assets/site/m-09.jpg",
+    "m-10": "reels/como-funciona-o-raio-x/src/assets/site/m-10.jpg",
+    "m-map": "reels/como-funciona-o-raio-x/src/assets/site/m-map.jpg",
+    "m-dayuse": "reels/como-funciona-o-raio-x/src/assets/site/m-dayuse.jpg",
+    "d-00": "reels/como-funciona-o-raio-x/src/assets/site/d-00.jpg",
+    "d-01": "reels/como-funciona-o-raio-x/src/assets/site/d-01.jpg",
+    "d-02": "reels/como-funciona-o-raio-x/src/assets/site/d-02.jpg",
+    "d-03": "reels/como-funciona-o-raio-x/src/assets/site/d-03.jpg",
+    "d-04": "reels/como-funciona-o-raio-x/src/assets/site/d-04.jpg",
+    "d-05": "reels/como-funciona-o-raio-x/src/assets/site/d-05.jpg",
+    "d-06": "reels/como-funciona-o-raio-x/src/assets/site/d-06.jpg",
+    "d-07": "reels/como-funciona-o-raio-x/src/assets/site/d-07.jpg",
+    "d-map": "reels/como-funciona-o-raio-x/src/assets/site/d-map.jpg",
+    "d-dayuse": "reels/como-funciona-o-raio-x/src/assets/site/d-dayuse.jpg",
+    "m-modal-1": "reels/como-funciona-o-raio-x/src/assets/site/m-modal-1.jpg",
+    "m-modal-2": "reels/como-funciona-o-raio-x/src/assets/site/m-modal-2.jpg"
+  },
   "qa": {
     "duration": [
-      15,
-      30
+      34,
+      39
     ],
     "lufs": -14,
-    "syncCues": [],
-    "visualCues": [],
-    "checkTimes": []
+    "syncCues": [
+      "raiox",
+      "slash",
+      "logo"
+    ],
+    "visualCues": [
+      "raiox",
+      "slash",
+      "flip",
+      "logo"
+    ],
+    "checkTimes": [
+      1.5,
+      3.3,
+      6.6,
+      10.6,
+      13.0,
+      16.6,
+      19.8,
+      22.6,
+      24.4,
+      25.9,
+      26.7,
+      28.2,
+      29.1,
+      30.6,
+      31.9,
+      33.1,
+      35.8
+    ],
+    "coverClear": [
+      [
+        860,
+        240,
+        1080,
+        440
+      ],
+      [
+        0,
+        1560,
+        1080,
+        1680
+      ]
+    ]
   },
-  "storyboard": []
+  "storyboard": [
+    [
+      0.6,
+      "GANCHO"
+    ],
+    [
+      2.9,
+      "O SCAN"
+    ],
+    [
+      3.5,
+      "UM RAIO-X."
+    ],
+    [
+      5.0,
+      "A FICHA"
+    ],
+    [
+      7.3,
+      "O SCAN LÊ A POUSADA"
+    ],
+    [
+      10.6,
+      "TUDO O QUE ELA TEM"
+    ],
+    [
+      13.0,
+      "O QUE SÓ ELA TEM?"
+    ],
+    [
+      16.6,
+      "FAZENDA DE TROPEIROS…"
+    ],
+    [
+      18.3,
+      "A VIRADA"
+    ],
+    [
+      22.6,
+      "O QUE O HÓSPEDE PRECISA"
+    ],
+    [
+      23.65,
+      "O CORTE: RAIO-X"
+    ],
+    [
+      24.5,
+      "CONSULTE SUA ESTADIA"
+    ],
+    [
+      25.9,
+      "NOSSOS CHALÉS"
+    ],
+    [
+      26.7,
+      "O QUE ESTÁ INCLUSO"
+    ],
+    [
+      28.2,
+      "VIVER A CANASTRA"
+    ],
+    [
+      29.1,
+      "DAY USE"
+    ],
+    [
+      30.6,
+      "SABORES DA FAZENDA"
+    ],
+    [
+      31.9,
+      "NOSSA HISTÓRIA"
+    ],
+    [
+      33.1,
+      "ONDE ESTAMOS"
+    ],
+    [
+      34.3,
+      "A LOGO"
+    ],
+    [
+      36.2,
+      "FALE COM A FAZLO"
+    ]
+  ]
 }

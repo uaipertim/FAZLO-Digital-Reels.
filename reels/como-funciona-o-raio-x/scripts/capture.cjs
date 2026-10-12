@@ -269,6 +269,15 @@ async function chunks(page, prefix, H, W, upTo) {
     await browser.close();
   }
   fs.writeFileSync(path.join(OUT, 'manifest.json'), JSON.stringify(manifest, null, 1) + '\n');
+  // reel.json: as imagens capturadas viram assets pré-carregados pelo player (chave = nome do arquivo)
+  const cfgPath = path.join(ROOT, 'reel.json');
+  const cfg = JSON.parse(fs.readFileSync(cfgPath, 'utf8'));
+  const rel = (f) => path.relative(path.resolve(ROOT, '..', '..'), path.join(OUT, f)).split(path.sep).join('/');
+  const files = [];
+  for (const d of [manifest.mobile, manifest.desktop]) { files.push(...d.chunks.map((c) => c.file)); if (d.map) files.push(d.map.file); if (d.dayuse) files.push(d.dayuse.file); }
+  files.push(...manifest.mobile.modal.files);
+  cfg.assets = Object.fromEntries(files.map((f) => [f.replace(/\.jpg$/, ''), rel(f)]));
+  fs.writeFileSync(cfgPath, JSON.stringify(cfg, null, 2) + '\n');
   const lines = facts.map((f) => `${f.found ? 'OK   ' : 'FALTA'}  ${f.item}${f.found ? `\n       “…${f.found}…”` : ''}`);
   lines.push('', `depoimentos removidos: celular ${manifest.mobile.testimonialsRemoved ? 'sim' : 'NÃO'}, desktop ${manifest.desktop.testimonialsRemoved ? 'sim' : 'NÃO'}`);
   const fh = (d) => (d.failedHosts.length ? ` (falharam: ${d.failedHosts.join(', ')})` : '');
