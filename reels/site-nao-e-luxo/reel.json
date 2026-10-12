@@ -1,0 +1,48 @@
+{
+  "id": "site-nao-e-luxo",
+  "title": "Site não é luxo",
+  "status": "em produção",
+  "format": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 60
+  },
+  "output": {
+    "video": "output/fazlo-digital-site-nao-e-luxo.mp4",
+    "cover": "output/capa.png"
+  },
+  "fonts": [
+    "800 100px 'FZD Display'",
+    "900 100px 'FZD Display'",
+    "400 100px 'FZD Text'",
+    "500 100px 'FZD Text'",
+    "600 100px 'FZD Text'",
+    "700 100px 'FZD Text'"
+  ],
+  "assets": {},
+  "qa": {
+    "duration": [
+      32,
+      34
+    ],
+    "lufs": -14,
+    "syncCues": [],
+    "visualCues": [],
+    "checkTimes": [],
+    "coverClear": [
+      [
+        860,
+        240,
+        1080,
+        440
+      ],
+      [
+        0,
+        1560,
+        1080,
+        1680
+      ]
+    ]
+  },
+  "storyboard": []
+}
