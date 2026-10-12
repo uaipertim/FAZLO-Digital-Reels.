@@ -2,7 +2,7 @@
 
 Carrossel da @fazlodigital. Peça estática: **8 slides PNG 1080×1350 (4:5)**. Público: **negócios em geral**, não só pousada.
 
-**Status: prévia · aguardando aprovação.**
+**Status: concluído · aprovado.** Os 8 PNGs finais estão em `output/`.
 
 🖼 **Folha:** [`output/previa.jpg`](output/previa.jpg) · Slides: [`output/01.png`](output/01.png) … [`output/08.png`](output/08.png) · Revisão: [`output/revisao/`](output/revisao)
 
@@ -37,6 +37,15 @@ São as 6 informações que todo negócio deixa difíceis de achar. Cada item ap
 - **horários, preços, endereços e números aparecem como barras**, sem números inventados;
 - "WhatsApp" aparece só como texto do botão, com ícone genérico de conversa, sem logo oficial; Pix usa um ícone genérico (raio), sem logo oficial;
 - as "fotos" são ilustrações planas: balcão de padaria, arara de roupas, recepção de clínica, mesa de restaurante, quarto de pousada e pet shop com um cachorro.
+
+## Aprovado como está
+
+A folha foi aprovada sem ajustes, incluindo estas decisões:
+
+- no 04, o botão "Conversar no WhatsApp" com ícone genérico e "ou ligue" com o número só como barra;
+- no 07, o ícone genérico de raio para o Pix;
+- no 02, o "Aberto agora" ilustrativo e a linha "Feriados" em lima;
+- a capa com os seis negócios numerados.
 
 ## Direção de arte
 
