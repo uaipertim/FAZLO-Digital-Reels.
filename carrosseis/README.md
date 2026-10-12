@@ -4,7 +4,7 @@ Peças estáticas do feed da @fazlodigital. Cada carrossel vive numa pasta indep
 
 | Carrossel | Conceito | Slides | Status | Pasta |
 |---|---|---|---|---|
-| **"O que o hóspede procura antes de reservar"** | As 7 informações que o hóspede procura antes de reservar, cada uma numa mini tela de site no celular. A capa traz a página inteira numerada, e o fechamento um checklist para o dono revisar a própria pousada | 9 × 1080×1350 | ajustes aplicados · aguardando aprovação final | [`o-que-o-hospede-procura/`](o-que-o-hospede-procura) |
+| **"O que o hóspede procura antes de reservar"** | As 7 informações que o hóspede procura antes de reservar, cada uma numa mini tela de site no celular. A capa traz a página inteira numerada, e o fechamento um checklist para o dono revisar a própria pousada | 9 × 1080×1350 | concluído · aprovado | [`o-que-o-hospede-procura/`](o-que-o-hospede-procura) |
 
 ## Como funciona
 

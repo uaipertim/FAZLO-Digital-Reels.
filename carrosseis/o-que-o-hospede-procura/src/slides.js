@@ -331,7 +331,7 @@
     header(c, n);
     const y1 = 200 + S_ITEM * 0.74;                    // linha de base do título
     const yl = title(c, lines, M, y1, S_ITEM, { lime: [lines[0].split(' ')[0]] });
-    const bl = wrap(body, 35, 500, W - 2 * M);
+    const bl = body.split('\n').flatMap((part) => wrap(part, 35, 500, W - 2 * M));   // \n = quebra escolhida
     bl.forEach((s, i) => text(c, s, M, yl + 72 + i * 50, { size: 35, weight: 500, color: C.soft }));
     // o celular sobe quando o texto é curto (sem faixa vazia); chips acompanham
     const py = clamp(yl + 72 + (bl.length - 1) * 50 + 112, 460, 612), dy = py - 612;
@@ -537,7 +537,7 @@
       chips: [{ ic: 'bed', x: 168, y: 790 }, { ic: 'bath', x: 930, y: 930 }, { ic: 'view', x: 150, y: 1150 }] },
     { lines: ['2. UM VALOR DE', 'REFERÊNCIA'], body: 'Um “a partir de” já ajuda a decidir. Sem nenhum valor, ele precisa perguntar antes de seguir.', scr: scrValor,
       chips: [{ ic: 'tag', x: 160, y: 1010, lime: true }, { ic: 'check', x: 924, y: 820 }] },
-    { lines: ['3. SE TEM VAGA'], body: 'Escolher entrada e saída e ter resposta na hora.', scr: scrVaga,
+    { lines: ['3. SE TEM VAGA'], body: 'Escolher entrada e saída sem depender\nde resposta no direct.', scr: scrVaga,
       chips: [{ ic: 'cal', x: 160, y: 800 }, { ic: 'clock', x: 926, y: 1010, lime: true }] },
     { lines: ['4. ONDE FICA'], body: 'Mapa e distância até os passeios que ele veio fazer.', scr: scrLocal,
       chips: [{ ic: 'pin', x: 160, y: 820, lime: true }, { ic: 'map', x: 926, y: 1080 }] },

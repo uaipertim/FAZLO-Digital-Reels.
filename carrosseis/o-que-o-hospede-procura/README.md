@@ -2,9 +2,9 @@
 
 Carrossel da @fazlodigital. Peça estática: **9 slides PNG 1080×1350 (4:5)**.
 
-**Status: ajustes aplicados · aguardando aprovação final.**
+**Status: concluído · aprovado.** Os 9 PNGs finais estão em `output/`.
 
-🖼 **Prévia:** [`output/previa.jpg`](output/previa.jpg) · Slides: [`output/01.png`](output/01.png) … [`output/09.png`](output/09.png) · Revisão: [`output/revisao/`](output/revisao)
+🖼 **Folha:** [`output/previa.jpg`](output/previa.jpg) · Slides: [`output/01.png`](output/01.png) … [`output/09.png`](output/09.png) · Revisão: [`output/revisao/`](output/revisao)
 
 ![prévia](output/previa.jpg)
 
@@ -25,7 +25,7 @@ São as 7 informações que o hóspede procura antes de reservar. Cada uma apare
 | 01 | **O QUE O HÓSPEDE PROCURA ANTES DE RESERVAR** (ANTES DE RESERVAR em lima) | rodapé: "Salve para revisar a sua pousada" | navegador com a página inteira e os selos 1–7 em cada seção |
 | 02 | **1. FOTOS DE CADA QUARTO** | Não só a piscina. Ele quer ver onde vai dormir: cama, banheiro, vista. | galeria com a aba "Quartos" ativa (Piscina e Área comum ao lado), foto grande do quarto, miniaturas Cama, Banheiro e Vista |
 | 03 | **2. UM VALOR DE REFERÊNCIA** | Um "a partir de" já ajuda a decidir. Sem nenhum valor, ele precisa perguntar antes de seguir. | card da acomodação com o bloco "a partir de · R$ ▬ / noite" em destaque |
-| 04 | **3. SE TEM VAGA** | Escolher entrada e saída e ter resposta na hora. | campos **Entrada** e **Saída** preenchidos, botão **Consultar disponibilidade** e a resposta "Disponível para as datas escolhidas", **sem calendário aberto** |
+| 04 | **3. SE TEM VAGA** | Escolher entrada e saída sem depender de resposta no direct. | campos **Entrada** e **Saída** preenchidos, botão **Consultar disponibilidade** e a resposta "Disponível para as datas escolhidas", **sem calendário aberto** |
 | 05 | **4. ONDE FICA** | Mapa e distância até os passeios que ele veio fazer. | mapa ilustrado (ruas, rio, represa, mata) com o pin da pousada e rotas até os passeios; lista **Cachoeira, Trilha, Mirante** (público da Serra da Canastra e de Capitólio) com a distância como barra + "km" |
 | 06 | **5. O QUE ESTÁ INCLUSO** | Café da manhã, estacionamento, Wi-Fi, ar-condicionado: tudo à vista. | grade com os 4 itens, cada um com ícone e ✓ |
 | 07 | **6. AS REGRAS** | Check-in, check-out, crianças, pets. O que ele pergunta antes de fechar. | "Regras da hospedagem": Check-in, Check-out, Crianças, Pets, com os valores como barras |
@@ -57,7 +57,7 @@ A identidade é a mesma do Reel "Instagram não é site":
 
 ## Ajustes aprovados
 
-Ajustes da primeira prévia:
+Ajustes da 1ª prévia:
 
 - **Passeios do slide 05:** "Praia, Trilha, Cachoeira" virou "Cachoeira, Trilha, Mirante". O mapa trocou a orla por rio e represa.
 - **Logo:** FAZLO DIGITAL com 360 px na capa e no fechamento, e FAZLO compacta com 200 px nos itens.
@@ -67,6 +67,10 @@ Ajustes da primeira prévia:
   - checklist do slide 09;
   - palavras em lima;
   - topo mais baixo por causa do contador do Instagram.
+
+Ajuste da 2ª prévia:
+
+- **Texto do slide 04:** passou a ser "Escolher entrada e saída sem depender de resposta no direct.", quebrado em "…sem depender / de resposta no direct.". O card "Disponível para as datas escolhidas" continua.
 
 ## Revisão
 
