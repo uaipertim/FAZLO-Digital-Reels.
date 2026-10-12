@@ -1,0 +1,191 @@
+{
+ "id": "site-nao-e-luxo",
+ "bpm": 100,
+ "fps": 60,
+ "duration": 33,
+ "sections": {
+  "gancho": 0,
+  "mito": 4.2,
+  "basico": 9,
+  "trabalha": 18,
+  "virada": 25.8,
+  "cta": 30
+ },
+ "cues": [
+  {
+   "t": 0,
+   "type": "open"
+  },
+  {
+   "t": 4.2,
+   "type": "luxo"
+  },
+  {
+   "t": 5,
+   "type": "shine",
+   "k": 0
+  },
+  {
+   "t": 5.9,
+   "type": "shine",
+   "k": 1
+  },
+  {
+   "t": 6.6,
+   "type": "slash"
+  },
+  {
+   "t": 6.75,
+   "type": "burst"
+  },
+  {
+   "t": 8.3,
+   "type": "gather",
+   "d": 0.9
+  },
+  {
+   "t": 8.85,
+   "type": "rise",
+   "d": 0.6
+  },
+  {
+   "t": 9.45,
+   "type": "header"
+  },
+  {
+   "t": 9.48,
+   "type": "form",
+   "k": 0
+  },
+  {
+   "t": 9.78,
+   "type": "fall",
+   "k": 0,
+   "d": 0.42
+  },
+  {
+   "t": 10.2,
+   "type": "drop",
+   "k": 0
+  },
+  {
+   "t": 10.68,
+   "type": "form",
+   "k": 1
+  },
+  {
+   "t": 10.98,
+   "type": "fall",
+   "k": 1,
+   "d": 0.42
+  },
+  {
+   "t": 11.4,
+   "type": "drop",
+   "k": 1
+  },
+  {
+   "t": 11.88,
+   "type": "form",
+   "k": 2
+  },
+  {
+   "t": 12.18,
+   "type": "fall",
+   "k": 2,
+   "d": 0.42
+  },
+  {
+   "t": 12.6,
+   "type": "drop",
+   "k": 2
+  },
+  {
+   "t": 13.08,
+   "type": "form",
+   "k": 3
+  },
+  {
+   "t": 13.38,
+   "type": "fall",
+   "k": 3,
+   "d": 0.42
+  },
+  {
+   "t": 13.8,
+   "type": "drop",
+   "k": 3
+  },
+  {
+   "t": 15,
+   "type": "title"
+  },
+  {
+   "t": 18,
+   "type": "night"
+  },
+  {
+   "t": 18.6,
+   "type": "clock"
+  },
+  {
+   "t": 19.2,
+   "type": "notif"
+  },
+  {
+   "t": 19.5,
+   "type": "title"
+  },
+  {
+   "t": 21.6,
+   "type": "morning",
+   "d": 1.2
+  },
+  {
+   "t": 21.75,
+   "type": "clockroll",
+   "d": 1
+  },
+  {
+   "t": 23.4,
+   "type": "tap"
+  },
+  {
+   "t": 23.52,
+   "type": "switch"
+  },
+  {
+   "t": 24,
+   "type": "typing",
+   "d": 0.6
+  },
+  {
+   "t": 24.6,
+   "type": "sent"
+  },
+  {
+   "t": 25.8,
+   "type": "switch"
+  },
+  {
+   "t": 26,
+   "type": "title"
+  },
+  {
+   "t": 26.15,
+   "type": "crack"
+  },
+  {
+   "t": 27.9,
+   "type": "hit"
+  },
+  {
+   "t": 30,
+   "type": "logo"
+  },
+  {
+   "t": 31.4,
+   "type": "cta"
+  }
+ ]
+}
