@@ -5,6 +5,7 @@ Peças estáticas do feed da @fazlodigital. Cada carrossel vive numa pasta indep
 | Carrossel | Conceito | Slides | Status | Pasta |
 |---|---|---|---|---|
 | **"O que o hóspede procura antes de reservar"** | As 7 informações que o hóspede procura antes de reservar, cada uma numa mini tela de site no celular. A capa traz a página inteira numerada, e o fechamento um checklist para o dono revisar a própria pousada | 9 × 1080×1350 | concluído · aprovado | [`o-que-o-hospede-procura/`](o-que-o-hospede-procura) |
+| **"Por que a consulta de datas vem primeiro"** | O que a FAZLO decide antes de desenhar: a consulta de datas logo abaixo do topo. Slides 04–07 com **capturas reais** do site da Pousada Vale dos Canteiros (calendário do site, a mensagem que chega organizada, os chalés) | 8 × 1080×1350 | prévia · aguardando aprovação | [`consulta-de-datas-primeiro/`](consulta-de-datas-primeiro) |
 
 ## Como funciona
 
