@@ -2,7 +2,7 @@
 
 Produção dos Reels do Instagram da **FAZLO Digital**: motion graphics 9:16 animados em código, renderizados quadro a quadro e com trilha e efeitos sintetizados e sincronizados à imagem. Também os **carrosséis** estáticos do feed, desenhados com o mesmo código e a mesma identidade ([`carrosseis/`](carrosseis)).
 
-> **Status:** **Reel 00 · "Da ideia ao digital."**, **Reel 001 · "Seu negócio já é bom. Seu digital precisa parecer isso."**, **Reel 002 · "Muito além de um site."**, **Reel 003 · "Ideias que ganham forma."** e **"Instagram não é site."** concluídos e em avaliação ([`reels/`](reels)). Carrossel **"O que o hóspede procura antes de reservar"** concluído e aprovado ([`carrosseis/`](carrosseis)). Identidade audiovisual em [`brand/`](brand): kit oficial de logos em SVG (com o símbolo FZ corrigido), verde-limão `#C6FA41`, fontes Unbounded + Sora e assinatura sonora.
+> **Status:** **Reel 00 · "Da ideia ao digital."**, **Reel 001 · "Seu negócio já é bom. Seu digital precisa parecer isso."**, **Reel 002 · "Muito além de um site."**, **Reel 003 · "Ideias que ganham forma."** e **"Instagram não é site."** concluídos e em avaliação; **"Como funciona o raio-x."** em produção ([`reels/`](reels)). Carrossel **"O que o hóspede procura antes de reservar"** concluído e aprovado ([`carrosseis/`](carrosseis)). Identidade audiovisual em [`brand/`](brand): kit oficial de logos em SVG (com o símbolo FZ corrigido), verde-limão `#C6FA41`, fontes Unbounded + Sora e assinatura sonora.
 
 ## Padrão de entrega
 
@@ -83,6 +83,7 @@ templates/reel/      # modelo de pasta de Reel
 reels/
   reel-00/ … reel-03/          # um Reel por pasta (ver reels/README.md)
   instagram-nao-e-site/        # a partir daqui, pastas com o nome do título
+  como-funciona-o-raio-x/      # telas reais de cliente (scripts/capture.cjs)
   _calibracao/                 # cartela técnica que valida o pipeline
 carrosseis/
   o-que-o-hospede-procura/     # um carrossel por pasta (ver carrosseis/README.md)
