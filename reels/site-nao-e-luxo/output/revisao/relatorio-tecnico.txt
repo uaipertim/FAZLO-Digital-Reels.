@@ -1,0 +1,27 @@
+SITE-NAO-E-LUXO — revisão técnica
+output/fazlo-digital-site-nao-e-luxo.mp4
+
+OK     vídeo h264 High yuv420p
+OK     resolução 1080x1920 (9:16)
+OK     60 fps, 1980 quadros
+OK     duração do vídeo 33.000 s (alvo 32–34 s)
+OK     arquivo 11.9 MB, 2.9 Mb/s
+OK     faixa de áudio presente
+OK     áudio aac 48000 Hz, 2 canais, 264 kb/s
+OK     vídeo e áudio com a mesma duração (Δ 0 ms)
+OK     loudness integrado -14.1 LUFS (alvo -14)
+OK     pico real -1.6 dBTP (limite -1)
+       faixa de loudness (LRA) 10.6 LU
+OK     sem trechos pretos ≥ 0,1 s
+OK     sem imagem congelada ≥ 0,75 s
+OK     o 1º quadro já tem imagem (luminância média 8.0), sem abertura preta
+OK     capa 1080x1920
+OK     capa: áreas livres respeitadas (860,240-1080,440; 0,1560-1080,1680)
+OK     capa: conteúdo dentro do recorte 3:4 (y 240–1680)
+
+Sincronização (detalhes em sincronia.txt):
+OK     áudio do MP4 = trilha, sem deslocamento (+0.0, +0.0, +0.0 ms)
+OK     9 efeitos-chave com ataque no instante do evento (desvio médio 6.8 ms, máximo 6.8 ms; 1 quadro = 16,7 ms)
+OK     a imagem reage em 5/5 golpes principais (pico de movimento a ≤ 8 quadros do som)
+
+RESULTADO: aprovado

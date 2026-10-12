@@ -75,7 +75,33 @@ Trilha e efeitos **sintetizados do zero** (numpy/scipy), seguindo os cues da ani
 
 ## Revisão
 
-<!--QA-->
+`npm run qa -- site-nao-e-luxo` gera [`relatorio-tecnico.txt`](output/revisao/relatorio-tecnico.txt), [`sincronia.txt`](output/revisao/sincronia.txt), [`zonas-seguras.jpg`](output/revisao/zonas-seguras.jpg) e [`capa-no-feed.jpg`](output/revisao/capa-no-feed.jpg). As folhas de teste das cenas estão em [`cenas-3-e-4.jpg`](output/revisao/cenas-3-e-4.jpg) e [`cenas-5-6-e-capa.jpg`](output/revisao/cenas-5-6-e-capa.jpg).
+
+**Técnica (aprovada):**
+
+- 1080×1920, 60 fps, 1.980 quadros, 11,9 MB;
+- H.264 High yuv420p, AAC 48 kHz estéreo;
+- 33,000 s de vídeo e de áudio (Δ 0 ms);
+- **−14,1 LUFS** e pico real **−1,6 dBTP**;
+- sem trechos pretos nem imagem congelada; o 1º quadro já tem imagem;
+- capa 1080×1920, com as áreas livres respeitadas e o conteúdo dentro do recorte 3:4.
+
+**Sincronização (aprovada):**
+
+1. o áudio do MP4 é a trilha, sem deslocamento (0,0 ms);
+2. os 9 golpes-chave caem no instante do evento visual, com **desvio máximo de 6,8 ms**: o golpe no LUXO, os 4 pousos dos blocos, a notificação, a resposta enviada, É SER ENCONTRADA. e a logo;
+3. a imagem reage nos 5 golpes principais: o golpe, a notificação, a resposta, É SER ENCONTRADA. e a logo.
+
+**Zonas seguras:** todo texto fica fora das áreas cobertas pela interface do Reels. Os títulos ficam entre y 240 e 436; o celular fica entre x 210 e 870 (fora da coluna de botões à direita) e se apaga antes de y 1560.
+
+**Ajustes feitos na revisão:**
+
+- **Contorno do LUXO:** a fonte tem traços internos sobrepostos (no "X" e no "L"); o contorno passou a ser feito pela silhueta da letra.
+- **Golpe em dois tempos:** a rachadura no tempo (6,6 s) e as peças soltas um 16º depois (6,75 s).
+- **Como chegar:** sem título interno repetindo a etiqueta; o endereço só em barras.
+- **Cena 3 (pedido da revisão):** o celular passou de 480 para 660 px; as etiquetas ficam em 32 px no site montado (antes caíam para 19 px); as peças terminam a explosão fora da caixa do NÃO.; a frase fica acima do celular com respiro.
+- **Imagem congelada:** o QA acusou as pausas de leitura (gancho, site montado, frase, noite). Agora o gancho tem uma aproximação lenta e o celular respira devagar (±7 px e 1% de escala) depois do último pouso, sem mexer na leitura.
+- **Trechos escuros:** o QA acusou 0,15 s em 18,2 s (a tela apagando à noite) e 0,2 s em 30,1 s (a passagem para a logo). Agora a tela escurece e passa direto para a tela de bloqueio, e no CTA a barra lima da logo ("o corte") varre a tela enquanto o celular sai e a logo se monta.
 
 ## Arquivos-fonte
 

@@ -1,0 +1,21 @@
+SITE-NAO-E-LUXO — sincronização som x imagem
+
+OK     áudio do MP4 = trilha, sem deslocamento (+0.0, +0.0, +0.0 ms)
+OK     9 efeitos-chave com ataque no instante do evento (desvio médio 6.8 ms, máximo 6.8 ms; 1 quadro = 16,7 ms)
+OK     a imagem reage em 5/5 golpes principais (pico de movimento a ≤ 8 quadros do som)
+
+Evento a evento (instante do evento visual, desvio medido):
+           6.600 s  slash       áudio   -6.8 ms
+          10.200 s  drop        áudio   -6.8 ms
+          11.400 s  drop        áudio   -6.8 ms
+          12.600 s  drop        áudio   -6.8 ms
+          13.800 s  drop        áudio   -6.8 ms
+          19.200 s  notif       áudio   -6.8 ms
+          24.600 s  sent        áudio   -6.8 ms
+          27.900 s  hit         áudio   -6.8 ms
+          30.000 s  logo        áudio   -6.8 ms
+           6.600 s  slash       imagem: movimento  17.3 (antes  0.3), pico a +0 quadro(s)
+          19.200 s  notif       imagem: movimento   2.2 (antes  0.1), pico a +5 quadro(s)
+          24.600 s  sent        imagem: movimento   1.6 (antes  0.1), pico a +6 quadro(s)
+          27.900 s  hit         imagem: movimento  12.3 (antes  0.1), pico a +0 quadro(s)
+          30.000 s  logo        imagem: movimento  27.5 (antes  0.1), pico a +0 quadro(s)
