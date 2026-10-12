@@ -2,12 +2,14 @@
 
 Reel da @fazlodigital (pasta `case-vale-dos-canteiros`). Usa a mesma identidade, o mesmo motor e a mesma linguagem de trilha dos Reels anteriores.
 
-**Status: em produção · render e QA em andamento.**
+**Status: concluído · em avaliação.**
 
 **Formato:** 9:16 (1080×1920), **35,4 s**, 60 fps, H.264 + AAC 48 kHz, áudio em −14 LUFS. 100% motion graphics. As telas são **capturas reais** do site da Pousada Vale dos Canteiros, com uso autorizado pelo cliente.
 
 ▶ **Vídeo:** [`output/fazlo-digital-case-vale-dos-canteiros.mp4`](output/fazlo-digital-case-vale-dos-canteiros.mp4)
 🖼 **Capa:** [`output/capa.png`](output/capa.png) · Storyboard: [`output/storyboard.jpg`](output/storyboard.jpg) · Revisão: [`output/revisao/`](output/revisao)
+
+![storyboard](output/storyboard.jpg)
 
 ---
 
@@ -136,3 +138,59 @@ Trilha e efeitos **sintetizados do zero** (numpy/scipy), seguindo os cues da ani
 - todo o texto fica entre y 240 e 1680 e dentro do recorte 3:4;
 - o canto x ≥ 860 / y 240–440 fica livre;
 - o rodapé y 1560–1680 fica livre.
+
+## Revisão
+
+`npm run qa -- case-vale-dos-canteiros` gera [`relatorio-tecnico.txt`](output/revisao/relatorio-tecnico.txt), [`sincronia.txt`](output/revisao/sincronia.txt), [`zonas-seguras.jpg`](output/revisao/zonas-seguras.jpg) e [`capa-no-feed.jpg`](output/revisao/capa-no-feed.jpg).
+
+**Técnica (aprovada):**
+
+- 1080×1920, 60 fps, 2.124 quadros, 29,3 MB;
+- H.264 High yuv420p, AAC 48 kHz estéreo;
+- 35,400 s de vídeo e de áudio (Δ 0 ms);
+- **−14,0 LUFS** e pico real **−2,5 dBTP**;
+- sem trechos pretos nem imagem congelada; o 1º quadro já tem imagem;
+- capa 1080×1920, com as áreas livres respeitadas e o conteúdo dentro do recorte 3:4.
+
+**Sincronização (aprovada):**
+
+1. o áudio do MP4 é a trilha, sem deslocamento (0,0 ms);
+2. os 3 golpes-chave caem no instante do evento visual, com **desvio médio de 7,7 ms e máximo de 9,3 ms**: o corte em SITE NOVO NO AR., a mensagem enviada e a logo;
+3. a imagem reage nos 7 golpes principais: o corte, as duas trocas de app, o modal do chalé, o MENU, o Day Use e a logo.
+
+**Zonas seguras:** todo texto fica fora das áreas cobertas pela interface do Reels. Os títulos e as etiquetas ficam entre y 240 e 440, e o celular fica entre y 448 e 1553, fora da coluna de botões à direita.
+
+**Ajustes feitos na revisão:**
+
+- **Avatar da conversa:** o primeiro ícone lembrava o logo do WhatsApp e foi trocado por uma silhueta genérica de contato.
+- **Toque:** quando descansa, fica fora dos botões, para não parecer que toca em algo:
+  - na pausa do formulário, à direita;
+  - nas rolagens de "Onde estamos", na margem direita;
+  - na leitura do Day Use, ele sai de cena e volta para fechar no ×.
+- **Conversa:** a câmera avança devagar enquanto a mensagem enviada fica na tela, para a imagem nunca congelar.
+- **"Mensagem enviada":** o som e o balão foram alinhados a um oitavo de tempo da música (11,1 s), com desvio de 6,8 ms; antes, um acorde 40 ms depois puxava o ataque medido.
+- **Rodapé → logo:** o QA acusou 0,2 s escuro entre o zoom e a logo. Agora o celular cai para 45% de opacidade enquanto a logo se monta, sobre uma faixa escura, logo acima do "Site por FAZLO" do rodapé. Sem trecho preto, e o texto do rodapé não aparece por baixo da logo.
+
+## Arquivos-fonte
+
+```
+reels/case-vale-dos-canteiros/
+  reel.json                 # metadados, fontes, assets (capturas reaproveitadas + novas), QA, storyboard
+  src/anim.js               # roteiro: toque, site real no celular, conversa recriada, zoom no rodapé, CTA, capa, cues
+  src/assets/site/          # capturas complementares, manifest.json, mensagem.txt e checagem.txt
+  scripts/capture.cjs       # capturas complementares no site ao vivo + checagem (+ assets no reel.json)
+  scripts/capturas_folha.py # folha de revisão das capturas, com os toques marcados
+  scripts/audio.py          # trilha e efeitos por cue, master
+  audio/cues.json           # 68 eventos de som exportados da animação
+  audio/trilha.wav
+  output/                   # vídeo, capa, storyboard, revisão
+```
+
+### Comandos (na raiz do repositório)
+
+```bash
+node reels/case-vale-dos-canteiros/scripts/capture.cjs        # recaptura as telas complementares e refaz a checagem
+python3 reels/case-vale-dos-canteiros/scripts/capturas_folha.py
+npm run build -- case-vale-dos-canteiros                      # cues -> áudio -> vídeo -> capa -> storyboard -> QA
+npm run dev                                                   # preview: /core/player.html?reel=case-vale-dos-canteiros
+```

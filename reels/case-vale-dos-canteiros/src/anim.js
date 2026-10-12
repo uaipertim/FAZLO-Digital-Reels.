@@ -465,7 +465,7 @@
     icon(c, 'user', 56, 34, 34, '#7F8C87'); c.restore();
     text(c, 'Pousada Vale dos Canteiros', 85, 38, { size: 15.5, weight: 600, color: '#F1F3F2' });
     // mensagem: no campo de digitação -> enviada (balão) ✓
-    const sp = E.inOutCubic(prog(t, TP.send + 0.02, TP.send + 0.3));
+    const sp = E.inOutCubic(prog(t, TP.send + 0.06, TP.send + 0.34));
     const boxH = MSG_LINES.length * CHAT.lh + 2 * CHAT.pad;
     const emptyH = 44, bottom = VH - 12;
     const fieldH = lerp(boxH, emptyH, sp);
@@ -485,7 +485,7 @@
     }
     const col = sp < 0.5 ? '#EEF1EF' : C.ink;
     MSG_LINES.forEach((l, i) => { if (l) text(c, l, mx + CHAT.pad, my + CHAT.pad + 16 + i * CHAT.lh, { size: CHAT.fs, weight: 400, color: col, alpha: sp > 0.35 && sp < 0.6 ? 0.4 : 1 }); });
-    const ck = E.outBack(prog(t, TP.send + 0.3, TP.send + 0.5));
+    const ck = E.outBack(prog(t, TP.send + 0.34, TP.send + 0.54));
     if (ck > 0) { c.save(); c.globalAlpha *= clamp(ck); icon(c, 'check', mx + bw - 16, my + boxH + 2, 18 * ck, C.ink, 0.15); c.restore(); }
     c.restore();
   }
@@ -663,8 +663,9 @@
     // celular: sobe no gancho, respira devagar (nunca congela), some no zoom final
     const rise = (1 - E.outCubic(prog(t, -0.12, 0.95))) * 760;
     const float = (Math.sin(t * 0.9) * 4 + Math.sin(t * 0.37 + 1) * 3) * (1 - prog(t, 30.5, 30.9));
-    const out = prog(t, 31.95, 32.4);
-    if (t < T.cta + 0.1) {
+    // some enquanto a logo se monta: cai rápido para 45% (a logo fica nítida por cima) e depois se apaga (sem intervalo escuro)
+    const out = 1 - lerp(1, 0.45, E.outCubic(prog(t, 32.2, 32.5))) * (1 - prog(t, 32.75, 32.95));
+    if (out < 1) {
       const [z, fx, fy, tx, ty] = camAt(t);
       const zb = z * (1 + 0.012 * Math.sin(t * 0.55) * (1 - prog(t, 30.5, 30.9)));
       c.save(); c.globalAlpha *= 1 - out;
@@ -679,6 +680,13 @@
         c.setLineDash([per * p, per]); rrect(c, rr.x, rr.y, rr.w, rr.h, 60); c.lineWidth = 6; c.strokeStyle = C.lime; c.stroke(); c.setLineDash([]);
         c.restore();
       }
+    }
+    // faixa escura onde a logo se monta (o rodapé não aparece por baixo dela)
+    const band = E.outCubic(prog(t, 32.12, 32.42)) * (1 - prog(t, 32.8, 33.0));
+    if (band > 0) {
+      const g = c.createLinearGradient(0, 600, 0, 1160);
+      g.addColorStop(0, rgba(C.bg, 0)); g.addColorStop(0.28, rgba(C.bg, 0.94 * band)); g.addColorStop(0.72, rgba(C.bg, 0.94 * band)); g.addColorStop(1, rgba(C.bg, 0));
+      c.fillStyle = g; c.fillRect(0, 600, W, 560);
     }
     valueChips(c, t);
     // títulos
@@ -786,7 +794,7 @@
       [0, CORTE + 0.04, TP.enviar + 0.28, T.chales + 0.4, T.viver + 0.2, T.dayuse + 0.15, T.chegar + 0.15].forEach((t) => cue(t, 'title'));
       SCROLL.forEach(([t0, t1], k) => cue(t0, 'swish', { d: +(t1 - t0).toFixed(3), k }));
       Object.entries(TP).forEach(([name, t], k) => cue(t, name === 'send' ? 'sendtap' : 'tap', { k, name }));
-      cue(TP.send + 0.06, 'sent');
+      cue(TP.send + 0.1, 'sent');                                      // no 8º de tempo da música (11,1 s)
       cue(TP.entrada + 0.05, 'sheet', { dir: 1 }); cue(TP.dia8 + 0.06, 'sheet', { dir: -1 });
       cue(TP.acomod + 0.05, 'sheet', { dir: 1 }); cue(TP.chale + 0.1, 'sheet', { dir: -1 });
       VAL.forEach((v, k) => cue(v.t, 'chip', { k }));

@@ -1,0 +1,17 @@
+CASE-VALE-DOS-CANTEIROS — sincronização som x imagem
+
+OK     áudio do MP4 = trilha, sem deslocamento (+0.0, +0.0, +0.0 ms)
+OK     3 efeitos-chave com ataque no instante do evento (desvio médio 7.7 ms, máximo 9.3 ms; 1 quadro = 16,7 ms)
+OK     a imagem reage em 7/7 golpes principais (pico de movimento a ≤ 8 quadros do som)
+
+Evento a evento (instante do evento visual, desvio medido):
+           2.400 s  slash       áudio   -9.3 ms
+          11.100 s  sent        áudio   -6.8 ms
+          32.400 s  logo        áudio   -6.8 ms
+           2.400 s  slash       imagem: movimento  22.3 (antes  0.1), pico a +8 quadro(s)
+          10.300 s  switch      imagem: movimento   7.7 (antes  0.1), pico a +8 quadro(s)
+          13.800 s  switch      imagem: movimento   7.6 (antes  0.1), pico a +8 quadro(s)
+          16.250 s  modal       imagem: movimento   5.1 (antes  0.1), pico a +1 quadro(s)
+          24.050 s  modal       imagem: movimento   4.4 (antes  0.3), pico a +1 quadro(s)
+          24.650 s  modal       imagem: movimento   6.7 (antes  0.8), pico a +4 quadro(s)
+          32.400 s  logo        imagem: movimento  17.2 (antes  2.7), pico a +0 quadro(s)

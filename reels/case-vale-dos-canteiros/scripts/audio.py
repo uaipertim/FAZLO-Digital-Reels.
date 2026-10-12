@@ -237,10 +237,11 @@ def fx(c):
     elif ty == 'sendtap':
         mix.place('sfx', tap(midi(TAP_N['send'])), t, 0.22, 0.2)
     elif ty == 'sent':                                  # mensagem enviada: dois tons que sobem
-        mix.place('sfx', blip(midi(92), 0.12), t, 0.2, 0.15)
-        mix.place('sfx', blip(midi(99), 0.16), t + 0.08, 0.17, 0.15)
-        mix.place('send', glass(midi(99), 0.7), t + 0.08, 0.05)
-        mix.place('sfx', whoosh(0.28, 900, 5200, 0.3, 1.4), t - 0.02, 0.06)
+        mix.place('sfx', tick(5200, 0.02), t, 0.14, 0.15)
+        mix.place('sfx', blip(midi(92), 0.12), t, 0.26, 0.15)
+        mix.place('sfx', blip(midi(99), 0.16), t + 0.12, 0.17, 0.15)
+        mix.place('send', glass(midi(99), 0.7), t + 0.12, 0.05)
+        mix.place('sfx', whoosh(0.28, 900, 5200, 0.6, 1.4), t + 0.04, 0.035)
     elif ty == 'sheet':                                 # folha do site (calendário, lista) sobe ou desce
         f0, f1 = (300, 2200) if c.get('dir', 1) > 0 else (2200, 300)
         mix.place('sfx', whoosh(0.3, f0, f1, 0.5, 1.2), t, 0.08)
