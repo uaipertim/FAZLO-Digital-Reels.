@@ -390,6 +390,13 @@
         crop(c, 'mobile', THUMB[i], tx, ty, tw, th, true);
         if (scanY > ty) { c.save(); c.beginPath(); c.rect(tx, ty, tw, Math.min(th, scanY - ty)); c.clip(); crop(c, 'mobile', THUMB[i], tx, ty, tw, th, false); c.restore(); }
       }
+      const sh = o.shine || 0;                                            // brilho que passa pelas fotos
+      if (sh > 0 && sh < 1) {
+        const bx = tx - 120 + (tw + 240) * E.inOutSine(clamp(sh * 1.4 - i * 0.06));
+        const gb = c.createLinearGradient(bx - 60, 0, bx + 60, 0);
+        gb.addColorStop(0, 'rgba(255,255,255,0)'); gb.addColorStop(0.5, 'rgba(255,255,255,0.35)'); gb.addColorStop(1, 'rgba(255,255,255,0)');
+        c.fillStyle = gb; c.fillRect(tx, ty, tw, th);
+      }
       c.restore();
       rrect(c, tx, ty, tw, th, 12); c.lineWidth = 2; c.strokeStyle = lit > 0 ? rgba(C.lime, 0.5 + 0.5 * kick(t, ROW_T(i), 0.5)) : C.dim; c.setLineDash(lit > 0 ? [] : [7, 6]); c.stroke(); c.setLineDash([]);
       c.restore();
@@ -519,8 +526,21 @@
       const sy = lerp(SCAN1.y0, SCAN1.y1, prog(t, SCAN1.t0, SCAN1.t1));
       const scanOn = t >= SCAN1.t0 && t <= SCAN1.t1 + 0.05;
       const out1 = prog(t, 3.4, 3.9);
-      // frase 1: acima da linha vira raio-x (contorno lima)
+      // linha de scan "em espera" no alto, antes de descer (um brilho corre por ela)
+      const idle = prog(t, 0.5, 0.9) * (1 - prog(t, SCAN1.t0 - 0.05, SCAN1.t0));
+      if (idle > 0) {
+        c.save(); c.globalAlpha *= idle * 0.85;
+        c.fillStyle = rgba(C.lime, 0.55); c.fillRect(40, SCAN1.y0 - 1.5, W - 80, 3);
+        const hx = 40 + ((t * 620) % (W + 200)) - 100, gr = c.createLinearGradient(hx - 110, 0, hx + 110, 0);
+        gr.addColorStop(0, rgba(C.lime, 0)); gr.addColorStop(0.5, rgba('#F2FFD0', 1)); gr.addColorStop(1, rgba(C.lime, 0));
+        c.fillStyle = gr; c.fillRect(Math.max(40, hx - 110), SCAN1.y0 - 3, Math.min(220, W - 40 - Math.max(40, hx - 110)), 6);
+        c.fillStyle = C.lime; c.fillRect(40, SCAN1.y0 - 14, 4, 28); c.fillRect(W - 44, SCAN1.y0 - 14, 4, 28);
+        c.restore();
+      }
+      // frase 1: acima da linha vira raio-x (contorno lima); aproximação lenta enquanto é lida
       c.save(); c.globalAlpha *= 1 - out1;
+      const z1 = 1 + 0.045 * E.inOutSine(prog(t, 0, SCAN1.t1));
+      c.translate(W / 2, Y1); c.scale(z1, z1); c.translate(-W / 2, -Y1);
       if (t < SCAN1.t0) titleBlock(c, L1, t, -0.32, 99, { size: S1, y: Y1, st: 0.07 });
       else {
         c.save(); c.beginPath(); c.rect(0, sy, W, H); c.clip(); titleBlock(c, L1, t, -0.32, 99, { size: S1, y: Y1 }); c.restore();
@@ -557,8 +577,9 @@
       const fade = 1 - prog(t, T.precisa, T.precisa + 0.4);
       c.save();
       const cx = FX + FW / 2, cy = FY + FH / 2;
-      c.translate(lerp(cx, 540, mini), lerp(cy, 480, mini)); const ms = lerp(1, 0.42, mini); c.scale(ms, ms); c.translate(-cx, -cy);
-      ficha(c, t, sY, { build, alpha: fade, lit: (i) => prog(t, ROW_T(i) - 0.05, ROW_T(i) + 0.25) });
+      const zf = 1 + 0.045 * E.inOutSine(prog(t, 9.4, T.unico + 0.3));        // depois do scan, aproximação lenta
+      c.translate(lerp(cx, 540, mini), lerp(cy, 480, mini)); const ms = lerp(1, 0.42, mini) * zf; c.scale(ms, ms); c.translate(-cx, -cy);
+      ficha(c, t, sY, { build, alpha: fade, lit: (i) => prog(t, ROW_T(i) - 0.05, ROW_T(i) + 0.25), shine: prog(t, 10.0, 11.4) });
       if (t >= 5.1 && t < 9.75) scanLine(c, sY, FX - 20, FX + FW + 20, 1 - prog(t, 9.5, 9.75));
       const fs = prog(t, 12.45, 12.95);                         // filtro: o scan passa pela ficha
       if (fs > 0 && fs < 1) scanLine(c, lerp(FY + 20, FY + FH - 20, E.inOutSine(fs)), FX - 20, FX + FW + 20, 1);
