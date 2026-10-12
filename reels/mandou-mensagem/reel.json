@@ -1,7 +1,7 @@
 {
   "id": "mandou-mensagem",
   "title": "Mandou mensagem e ninguém respondeu",
-  "status": "em produção",
+  "status": "concluído · em avaliação",
   "format": {
     "width": 1080,
     "height": 1920,
@@ -23,6 +23,9 @@
     "01-painel": "reels/mandou-mensagem/src/assets/hospeda/01-painel.jpg",
     "02-calendario-antes": "reels/mandou-mensagem/src/assets/hospeda/02-calendario-antes.jpg",
     "03-etapa4": "reels/mandou-mensagem/src/assets/hospeda/03-etapa4.jpg",
+    "04-revisao": "reels/mandou-mensagem/src/assets/hospeda/04-revisao.jpg",
+    "05-detalhes": "reels/mandou-mensagem/src/assets/hospeda/05-detalhes.jpg",
+    "06-calendario-depois": "reels/mandou-mensagem/src/assets/hospeda/06-calendario-depois.jpg",
     "hospeda-pilula": "reels/mandou-mensagem/src/assets/hospeda/hospeda-pilula.png"
   },
   "qa": {
@@ -31,9 +34,42 @@
       36
     ],
     "lufs": -14,
-    "syncCues": [],
-    "visualCues": [],
-    "checkTimes": [],
+    "syncCues": [
+      "fill",
+      "tap",
+      "notif",
+      "confirm",
+      "vira",
+      "logo"
+    ],
+    "visualCues": [
+      "notif",
+      "vira",
+      "logo"
+    ],
+    "checkTimes": [
+      1.8,
+      3.6,
+      5.6,
+      7.6,
+      9.25,
+      10.9,
+      12.6,
+      14.2,
+      15.7,
+      16.9,
+      18.6,
+      20.6,
+      21.6,
+      23.8,
+      25.9,
+      27.55,
+      28.1,
+      30.1,
+      30.75,
+      32.0,
+      34.5
+    ],
     "coverClear": [
       [
         860,
@@ -49,5 +85,78 @@
       ]
     ]
   },
-  "storyboard": []
+  "storyboard": [
+    [
+      1.8,
+      "GANCHO"
+    ],
+    [
+      3.6,
+      "ENTREGUE"
+    ],
+    [
+      7.6,
+      "A ROTINA"
+    ],
+    [
+      9.25,
+      "O BALÃO VIRA O SITE"
+    ],
+    [
+      10.9,
+      "A CONSULTA"
+    ],
+    [
+      11.45,
+      "ENVIAR: O FIO NASCE"
+    ],
+    [
+      12.6,
+      "CHEGA NO WHATSAPP"
+    ],
+    [
+      15.7,
+      "HOSPEDA: PAINEL"
+    ],
+    [
+      16.9,
+      "5 LIVRE(S)"
+    ],
+    [
+      18.6,
+      "DIAS 5 A 8 LIVRES"
+    ],
+    [
+      20.6,
+      "CANAL WHATSAPP"
+    ],
+    [
+      21.6,
+      "CONFIRMADA"
+    ],
+    [
+      23.8,
+      "PRONTO PARA SALVAR!"
+    ],
+    [
+      25.9,
+      "CONFIRMAR RESERVA"
+    ],
+    [
+      27.55,
+      "DETALHES: CONFIRMADA"
+    ],
+    [
+      28.1,
+      "ORIGEM: WHATSAPP"
+    ],
+    [
+      30.75,
+      "ANTES -> DEPOIS"
+    ],
+    [
+      34.5,
+      "CTA"
+    ]
+  ]
 }

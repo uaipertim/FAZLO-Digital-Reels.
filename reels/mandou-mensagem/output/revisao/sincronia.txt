@@ -1,0 +1,18 @@
+MANDOU-MENSAGEM — sincronização som x imagem
+
+OK     áudio do MP4 = trilha, sem deslocamento (+0.0, +0.0, +0.0 ms)
+OK     8 efeitos-chave com ataque no instante do evento (desvio médio 6.8 ms, máximo 6.8 ms; 1 quadro = 16,7 ms)
+OK     a imagem reage em 3/3 golpes principais (pico de movimento a ≤ 8 quadros do som)
+
+Evento a evento (instante do evento visual, desvio medido):
+           9.600 s  fill        áudio   -6.8 ms
+          10.200 s  fill        áudio   -6.8 ms
+          10.800 s  fill        áudio   -6.8 ms
+          11.400 s  tap         áudio   -6.8 ms
+          12.000 s  notif       áudio   -6.8 ms
+          25.800 s  confirm     áudio   -6.8 ms
+          29.400 s  vira        áudio   -6.8 ms
+          31.200 s  logo        áudio   -6.8 ms
+          12.000 s  notif       imagem: movimento   2.2 (antes  0.3), pico a +7 quadro(s)
+          29.400 s  vira        imagem: movimento   1.9 (antes  0.6), pico a +8 quadro(s)
+          31.200 s  logo        imagem: movimento  29.5 (antes  0.2), pico a +8 quadro(s)

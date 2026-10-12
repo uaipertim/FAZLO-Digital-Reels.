@@ -11,6 +11,19 @@
     "w": 1290,
     "h": 468
   },
+  "04-revisao": {
+    "w": 860,
+    "h": 1305
+  },
+  "05-detalhes": {
+    "w": 722,
+    "h": 770
+  },
+  "06-calendario-depois": {
+    "w": 1290,
+    "h": 1950,
+    "alinhado_ao_02": 1.5822
+  },
   "hospeda-pilula": {
     "w": 433,
     "h": 72

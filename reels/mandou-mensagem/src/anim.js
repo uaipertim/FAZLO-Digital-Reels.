@@ -379,7 +379,8 @@
     icon(c, 'send', SX + SWD - 33, iy + 35, 34, C.ink, 0.09);
   }
   // posição do celular: sobe com o site (8,85–9,45) e desce quando o Hospeda entra (15,0–15,45)
-  const phoneY = (t) => (1 - E.outCubic(prog(t, 8.85, 9.45))) * 1300 + E.inCubic(prog(t, T.hospeda, T.hospeda + 0.45)) * 900;
+  const phoneY = (t) => (1 - E.outCubic(prog(t, 8.85, 9.45))) * 1300 + E.inCubic(prog(t, T.hospeda, T.hospeda + 0.45)) * 900
+    + (Math.sin(t * 0.9) * 4 + Math.sin(t * 0.37 + 1) * 3) * prog(t, 9.5, 10.2);   // respira devagar: a imagem nunca congela
   const phoneA = (t) => 1 - prog(t, T.hospeda, T.hospeda + 0.3);
   const chatK = (t) => E.inOutCubic(prog(t, ENVIAR + 0.15, ENVIAR + 0.5));
   function phoneScreen(c, t) {
@@ -390,13 +391,12 @@
 
   // ---------------------------------------------------------------- 4–5 · os recortes do Hospeda
   // cada recorte vira um cartão (o fundo claro do próprio app), ~1,4x a tela do celular; o 05 sem zoom (1x)
-  const S14 = 880 / 1290, S10 = SW / 1290;
   const FR = {
-    painel: { key: '01-painel', s: S14, x: 100, y: 470, full: true, t0: T.hospeda + 0.05, t1: b(27) },
-    antes: { key: '02-calendario-antes', s: S14, x: 100, y: 470, vh: 1070, t0: b(27), t1: b(33), scroll: [b(29), b(29) + 0.5, 0, 'fim'], chip: 'Calendário de ocupação' },
-    etapa: { key: '03-etapa4', sx: [96, 1194], s: 920 / 1098, x: 80, y: 700, full: true, t0: b(33), t1: b(38), chip: 'Nova reserva' },
-    revisao: { key: '04-revisao', s: S14, x: 100, y: 470, vh: 1070, t0: b(38), t1: T.ciclo, scroll: [b(38) + 0.25, b(38) + 0.6, 0, 'fim'], chip: 'Nova reserva' },
-    detalhes: { key: '05-detalhes', s: S10, x: SCR.x, y: 700, full: true, t0: T.ciclo, t1: b(48), chip: 'Detalhes da reserva' },
+    painel: { key: '01-painel', w: 880, x: 100, y: 470, full: true, t0: T.hospeda + 0.05, t1: b(27) },
+    antes: { key: '02-calendario-antes', w: 880, x: 100, y: 470, vh: 1070, t0: b(27), t1: b(33), scroll: [b(29), b(29) + 0.5, 0, 'fim'], chip: 'Calendário de ocupação' },
+    etapa: { key: '03-etapa4', sx: [96, 1194], w: 920, x: 80, y: 700, full: true, t0: b(33), t1: b(38), chip: 'Nova reserva' },
+    revisao: { key: '04-revisao', w: 880, x: 100, y: 470, vh: 1070, t0: b(38), t1: T.ciclo, scroll: [b(38) + 0.25, b(38) + 0.6, 0, 'fim'], chip: 'Nova reserva' },
+    detalhes: { key: '05-detalhes', w: SW, x: SCR.x, y: 640, full: true, t0: T.ciclo, t1: b(48), chip: 'Detalhes da reserva' },   // sem zoom: a largura da tela do celular
     ciclo: { key: '02-calendario-antes', key2: '06-calendario-depois', fit: 1070, y: 470, vh: 1070, t0: b(48), t1: T.cta - 0.15, chip: 'Calendário de ocupação' },
   };
   // medidas que dependem do recorte (altura de cada print): definidas no setup
@@ -405,7 +405,9 @@
       const img = IMG[fr.key];
       fr.ok = !!img;
       if (!img) { fr.vh = fr.vh || 600; if (fr.scroll) fr.scroll[3] = 0; return; }
-      if (fr.fit) { fr.s = fr.fit / img.height; fr.x = (W - 1290 * fr.s) / 2; }
+      fr.sx = fr.sx || [0, img.width];
+      if (fr.w) fr.s = fr.w / (fr.sx[1] - fr.sx[0]);
+      if (fr.fit) { fr.s = fr.fit / img.height; fr.x = (W - img.width * fr.s) / 2; }
       if (fr.full) fr.vh = img.height * fr.s;
       if (fr.scroll) fr.scroll[3] = Math.max(0, img.height - fr.vh / fr.s);
     });
@@ -440,6 +442,12 @@
     if (fr.key2 && IMG[fr.key2]) {                    // depois: revelado pelo fio, da esquerda para a direita
       const wx = lerp(fr.x - 20, fr.x + st.w + 20, E.inOutSine(prog(t, VIRA, VIRA + 0.5)));
       if (wx > fr.x) { c.save(); c.beginPath(); c.rect(fr.x, fr.y, wx - fr.x, fr.vh); c.clip(); c.drawImage(IMG[fr.key2], fr.x, fr.y - st.sc * fr.s, st.w, IMG[fr.key2].height * fr.s); c.restore(); }
+      const wp = prog(t, VIRA, VIRA + 0.5);
+      if (wp > 0 && wp < 1) {                       // a faixa lima da troca antes -> depois
+        const band = c.createLinearGradient(wx - 150, 0, wx + 10, 0);
+        band.addColorStop(0, rgba(C.lime, 0)); band.addColorStop(0.8, rgba(C.lime, 0.45)); band.addColorStop(1, rgba(C.lime, 0.95));
+        c.fillStyle = band; c.fillRect(wx - 150, fr.y, 160, fr.vh);
+      }
     }
     c.restore();
     if (fr.chip) {                                    // o título da tela no app, como etiqueta
@@ -470,12 +478,14 @@
     { t0: 18.38, t1: 18.62, r: 16, rect: frRect('antes', 50, 1729, 219, 1950, 4) },
     { t0: 20.4, t1: 20.72, r: 22, rect: frRect('etapa', 110, 40, 1180, 230, 8) },
     { t0: 21.0, t1: 21.32, r: 22, rect: frRect('etapa', 110, 262, 1180, 455, 8) },
-    { t0: 23.4, t1: 23.78, r: 26, rect: frRect('revisao', 123, 1305, 1167, 1602, 8) },
-    { t0: CONFIRMA, t1: CONFIRMA + 0.3, r: 34, rect: frRect('revisao', 628, 1750, 1167, 1858, 8) },
-    { t0: 27.6, t1: 27.92, r: 16, rect: frRect('detalhes', 650, 712, 942, 830, 8) },
+    { t0: 23.4, t1: 23.78, r: 26, rect: frRect('revisao', 83, 920, 775, 1111, 8) },
+    { t0: CONFIRMA, t1: CONFIRMA + 0.3, r: 34, rect: frRect('revisao', 420, 1213, 776, 1282, 8) },
+    { t0: 27.4, t1: 27.65, r: 18, rect: frRect('detalhes', 473, 23, 638, 53, 7) },          // selo CONFIRMADA
+    { t0: 27.85, t1: 28.15, r: 14, rect: frRect('detalhes', 362, 575, 590, 642, 6) },       // Origem / Canal: WhatsApp
     { t0: VIRA, t1: VIRA + 0.5, sweep: true, rect: frRect('ciclo', 0, 1592, 1290, 1594, 0) },
-    { t0: 30.0, t1: 30.35, r: 14, rect: frRect('ciclo', 728, 1455, 1237, 1729, 4) },
-    { t0: 30.38, t1: 30.62, r: 14, rect: frRect('ciclo', 50, 1729, 219, 1950, 4) },
+    { t0: 29.95, t1: 30.2, r: 14, rect: frRect('ciclo', 124, 252, 540, 310, 6) },           // 4 livre(s) no período
+    { t0: 30.3, t1: 30.6, r: 14, rect: frRect('ciclo', 728, 1455, 1237, 1729, 4) },         // 5 chegada · 6 e 7 reservados
+    { t0: 30.62, t1: 30.82, r: 14, rect: frRect('ciclo', 50, 1729, 219, 1950, 4) },         // 8 saída
   ];
   function rrPoly(x, y, w, h, r) {
     r = Math.max(0, Math.min(r, w / 2, h / 2));
@@ -691,7 +701,7 @@
     if (t >= T.site && t < T.site + 0.6) guestBalloon(c, t, bx, by, bs, ba, 0, 1 - prog(t, T.site, T.site + 0.2));   // entrando no formulário
     if (t > T.hospeda) faded(c, (g) => Object.values(FR).forEach((fr) => drawFrag(g, fr, t)));
     touchDot(c, t, ENVIAR, BTN.x + BTN.w * 0.72, BTN.y + BTN.h / 2 + phoneY(t));
-    const cb = frRect('revisao', 628, 1750, 1167, 1858, 0)(t);
+    const cb = frRect('revisao', 420, 1213, 776, 1282, 0)(t);
     if (FR.revisao.ok) touchDot(c, t, CONFIRMA, cb.x + cb.w * 0.62, cb.y + cb.h / 2);
     drawFio(c, t);
     titleBlock(c, L_SITE, t, CHEGA, 14.75, { size: SZ.site, y: SZ.siteY, lime: ['ORGANIZA'] });

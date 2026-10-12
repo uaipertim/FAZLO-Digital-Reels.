@@ -2,7 +2,7 @@
 
 Produção dos Reels do Instagram da **FAZLO Digital**: motion graphics 9:16 animados em código, renderizados quadro a quadro e com trilha e efeitos sintetizados e sincronizados à imagem. Também os **carrosséis** estáticos do feed, desenhados com o mesmo código e a mesma identidade ([`carrosseis/`](carrosseis)).
 
-> **Status:** **Reel 00 · "Da ideia ao digital."**, **Reel 001 · "Seu negócio já é bom. Seu digital precisa parecer isso."**, **Reel 002 · "Muito além de um site."**, **Reel 003 · "Ideias que ganham forma."**, **"Instagram não é site."**, **"Como funciona o raio-x."**, **"Conheça o site da Pousada Vale dos Canteiros."** e **"Site não é luxo."** concluídos e em avaliação ([`reels/`](reels)). Carrossel **"O que o hóspede procura antes de reservar"** concluído e aprovado ([`carrosseis/`](carrosseis)). Identidade audiovisual em [`brand/`](brand): kit oficial de logos em SVG (com o símbolo FZ corrigido), verde-limão `#C6FA41`, fontes Unbounded + Sora e assinatura sonora.
+> **Status:** **Reel 00 · "Da ideia ao digital."**, **Reel 001 · "Seu negócio já é bom. Seu digital precisa parecer isso."**, **Reel 002 · "Muito além de um site."**, **Reel 003 · "Ideias que ganham forma."**, **"Instagram não é site."**, **"Como funciona o raio-x."**, **"Conheça o site da Pousada Vale dos Canteiros."**, **"Site não é luxo."** e a collab com o FAZLO Hospeda **"Mandou mensagem e ninguém respondeu."** concluídos e em avaliação ([`reels/`](reels)). Carrossel **"O que o hóspede procura antes de reservar"** concluído e aprovado ([`carrosseis/`](carrosseis)). Identidade audiovisual em [`brand/`](brand): kit oficial de logos em SVG (com o símbolo FZ corrigido), verde-limão `#C6FA41`, fontes Unbounded + Sora e assinatura sonora.
 
 ## Padrão de entrega
 
@@ -86,6 +86,7 @@ reels/
   como-funciona-o-raio-x/      # telas reais de cliente (scripts/capture.cjs)
   case-vale-dos-canteiros/     # navegação no site real do cliente (reaproveita as capturas do raio-x)
   site-nao-e-luxo/             # o LUXO racha e vira os blocos de um site simples (interfaces genéricas)
+  mandou-mensagem/             # collab com o FAZLO Hospeda: o fio da consulta até a reserva (prints reais)
   _calibracao/                 # cartela técnica que valida o pipeline
 carrosseis/
   o-que-o-hospede-procura/     # um carrossel por pasta (ver carrosseis/README.md)
@@ -114,7 +115,7 @@ reels/<pasta>/
 
 ## Regras do projeto
 
-- A FAZLO Digital tem **identidade, direção de arte e assinatura sonora próprias**. Nenhuma paleta, fonte, logo, roteiro, animação ou som do FAZLO Hospeda é reutilizado; deste projeto veio apenas a experiência técnica (motor, render, síntese e QA), reescrita e generalizada aqui.
+- A FAZLO Digital tem **identidade, direção de arte e assinatura sonora próprias**. Nenhuma paleta, fonte, logo, roteiro, animação ou som do FAZLO Hospeda é reutilizado (exceção combinada: a collab "Mandou mensagem e ninguém respondeu", que mostra prints reais do sistema e a marca do Hospeda); deste projeto veio apenas a experiência técnica (motor, render, síntese e QA), reescrita e generalizada aqui.
 - O repositório do FAZLO Hospeda não é modificado.
 - Logo: sempre o arquivo oficial, sem redesenho (ver [`brand/README.md`](brand/README.md)).
 - Textos e elementos importantes fora das zonas cobertas pela interface do Reels (`core/safe-zones.json`).
