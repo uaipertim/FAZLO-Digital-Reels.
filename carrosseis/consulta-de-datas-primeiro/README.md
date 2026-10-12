@@ -2,7 +2,7 @@
 
 Carrossel da @fazlodigital. Peça estática: **8 slides PNG 1080×1350 (4:5)**.
 
-**Status: prévia · aguardando aprovação.**
+**Status: concluído · aprovado.** Os 8 PNGs finais estão em `output/`.
 
 🖼 **Folha:** [`output/previa.jpg`](output/previa.jpg) · Slides: [`output/01.png`](output/01.png) … [`output/08.png`](output/08.png) · Revisão: [`output/revisao/`](output/revisao)
 
@@ -23,7 +23,7 @@ O que a FAZLO decide antes de desenhar: o hóspede chega com uma pergunta ("Tem 
 |---|---|---|---|
 | 01 | **POR QUE A CONSULTA DE DATAS VEM PRIMEIRO NO SITE** ("PRIMEIRO" em lima) | rodapé: "O que a gente decide antes de desenhar" | uma página genérica no celular, com a consulta de datas (Entrada, Saída, Hóspedes, "Consultar datas") logo depois do topo e acesa em lima; ao lado, a ordem da página: **1 Consulta de datas**, depois Acomodações, Passeios, Como chegar |
 | 02 | **O HÓSPEDE CHEGA COM UMA PERGUNTA** | — | balão lima grande "Tem vaga nas minhas datas?", avatar genérico e reticências de quem espera resposta |
-| 03 | **SE ELE PRECISA PROCURAR, PODE DESISTIR ANTES** | — | página longa genérica no celular, rolando (toque com rastro), **sem formulário à vista**; ao lado, o minimapa da página inteira com a janela "a tela"; chips de busca e de saída |
+| 03 | **SE ELE PRECISA PROCURAR, PODE DESISTIR ANTES** | — | página longa genérica no celular, rolando (toque com rastro), **sem formulário à vista**; ao lado, o minimapa da página inteira com a janela "a tela"; ícones de busca e de **aba do navegador fechando** (o hóspede sai do site), sem rótulo |
 | 04 | **POR ISSO, LOGO ABAIXO DO TOPO** | "Site da Pousada Vale dos Canteiros" | captura real do topo (foto "Onde a serra amanhece devagar.") com o bloco "Consulte sua estadia" logo abaixo, aceso; ampliação real do bloco com **Entrada, Saída, Adultos, Crianças** |
 | 05 | **O CALENDÁRIO SÓ ABRE QUANDO ELE TOCA** | "Nada de calendário gigante ocupando a página." | captura real do seletor de datas aberto (novembro, dia 5 escolhido, o toque no 8), que ocupa a tela só enquanto ele escolhe |
 | 06 | **UM TOQUE, E A CONSULTA CHEGA ORGANIZADA** | "Site da Pousada Vale dos Canteiros" | captura real do formulário preenchido com o toque em **"Enviar consulta pelo WhatsApp"** → a **mesma conversa recriada do Reel do case**, com a mensagem real que o site monta, enviada ✓ |
@@ -35,6 +35,17 @@ O que a FAZLO decide antes de desenhar: o hóspede chega com uma pergunta ("Tem 
 - **Depoimentos:** a seção "Quem passou por aqui conta melhor" não aparece; as capturas foram feitas sem ela.
 - **Nada inventado:** o que aparece nas telas reais é o que o site mostra. A mensagem da conversa é o texto que o site monta, conferido na checagem do Reel do case.
 - **A conversa recriada não é o WhatsApp:** avatar genérico (silhueta), só o nome da pousada, sem número e sem logo oficial.
+
+## Ajustes aprovados
+
+- **Acréscimos aprovados:**
+  - a ordem da página na capa;
+  - o minimapa no 03;
+  - a ampliação do bloco "Consulte sua estadia" no 04;
+  - o calendário de novembro no 05;
+  - a linha "Site da Pousada Vale dos Canteiros" nos slides 04–07;
+  - os toques numerados no 08.
+- **Slide 03:** o ícone de saída era uma seta saindo de uma porta, o mesmo de "Check-out" no carrossel anterior, e podia parecer o campo de data de saída. Virou uma **aba do navegador fechando (×)**, sem rótulo.
 
 ## Direção de arte
 

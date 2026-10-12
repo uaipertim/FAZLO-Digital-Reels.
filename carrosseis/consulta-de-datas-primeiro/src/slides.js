@@ -95,8 +95,11 @@
       case 'arrow': c.moveTo(-0.34, 0); c.lineTo(0.3, 0); c.moveTo(0.06, -0.24); c.lineTo(0.3, 0); c.lineTo(0.06, 0.24); break;
       case 'up': c.moveTo(0, 0.36); c.lineTo(0, -0.3); c.moveTo(-0.24, -0.06); c.lineTo(0, -0.3); c.lineTo(0.24, -0.06); break;
       case 'bed': c.moveTo(-0.4, 0.25); c.lineTo(-0.4, -0.25); c.moveTo(-0.4, 0.05); c.lineTo(0.4, 0.05); c.lineTo(0.4, 0.25); c.moveTo(-0.4, -0.05); c.lineTo(0.4, -0.05); c.moveTo(-0.32, -0.05); c.roundRect(-0.32, -0.2, 0.22, 0.15, 0.04); break;
-      case 'out':
-        c.moveTo(-0.06, -0.4); c.lineTo(-0.38, -0.4); c.lineTo(-0.38, 0.4); c.lineTo(-0.06, 0.4); c.moveTo(-0.18, 0); c.lineTo(0.42, 0); c.moveTo(0.24, -0.18); c.lineTo(0.42, 0); c.lineTo(0.24, 0.18); break;
+      case 'tabclose':                              // aba do navegador fechando (o hóspede sai do site), sem rótulo
+        c.moveTo(-0.52, 0.3); c.lineTo(0.52, 0.3);
+        c.moveTo(-0.5, 0.3); c.quadraticCurveTo(-0.36, 0.3, -0.36, 0.16); c.lineTo(-0.36, -0.12); c.quadraticCurveTo(-0.36, -0.3, -0.18, -0.3);
+        c.lineTo(0.18, -0.3); c.quadraticCurveTo(0.36, -0.3, 0.36, -0.12); c.lineTo(0.36, 0.16); c.quadraticCurveTo(0.36, 0.3, 0.5, 0.3);
+        c.moveTo(-0.13, -0.13); c.lineTo(0.13, 0.13); c.moveTo(0.13, -0.13); c.lineTo(-0.13, 0.13); break;
       case 'search': c.arc(-0.07, -0.07, 0.26, 0, TAU); c.moveTo(0.12, 0.12); c.lineTo(0.38, 0.38); break;
       case 'pencil':
         c.moveTo(-0.36, 0.36); c.lineTo(-0.3, 0.14); c.lineTo(0.18, -0.34); c.lineTo(0.34, -0.18); c.lineTo(-0.14, 0.3); c.closePath(); c.moveTo(0.06, -0.22); c.lineTo(0.22, -0.06); break;
@@ -456,7 +459,7 @@
     c.save(); c.strokeStyle = C.bar2; c.lineWidth = 2; c.setLineDash([6, 8]);
     c.beginPath(); c.moveTo(mx + mw + 34, vy + vh + 14); c.lineTo(mx + mw + 34, my + mh - 50); c.stroke(); c.restore();
     chip(c, 'search', mx + mw + 92, vy + vh * 0.55, 104, false);
-    chip(c, 'out', px + pw - 10, top + 140, 104, true);
+    chip(c, 'tabclose', px + pw - 14, top + 146, 116, true);
   }
 
   // 04 — topo + "Consulte sua estadia" (captura real)
