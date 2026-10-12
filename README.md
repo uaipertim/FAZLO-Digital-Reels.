@@ -1,8 +1,8 @@
 # FAZLO Digital — Motion Graphics
 
-Produção dos Reels do Instagram da **FAZLO Digital**: motion graphics 9:16 animados em código, renderizados quadro a quadro e com trilha e efeitos sintetizados e sincronizados à imagem.
+Produção dos Reels do Instagram da **FAZLO Digital**: motion graphics 9:16 animados em código, renderizados quadro a quadro e com trilha e efeitos sintetizados e sincronizados à imagem. Também os **carrosséis** estáticos do feed, desenhados com o mesmo código e a mesma identidade ([`carrosseis/`](carrosseis)).
 
-> **Status:** **Reel 00 · "Da ideia ao digital."**, **Reel 001 · "Seu negócio já é bom. Seu digital precisa parecer isso."**, **Reel 002 · "Muito além de um site."**, **Reel 003 · "Ideias que ganham forma."** e **"Instagram não é site."** concluídos e em avaliação ([`reels/`](reels)). Identidade audiovisual em [`brand/`](brand): kit oficial de logos em SVG (com o símbolo FZ corrigido), verde-limão `#C6FA41`, fontes Unbounded + Sora e assinatura sonora.
+> **Status:** **Reel 00 · "Da ideia ao digital."**, **Reel 001 · "Seu negócio já é bom. Seu digital precisa parecer isso."**, **Reel 002 · "Muito além de um site."**, **Reel 003 · "Ideias que ganham forma."** e **"Instagram não é site."** concluídos e em avaliação ([`reels/`](reels)). Carrossel **"O que o hóspede procura antes de reservar"** em prévia, aguardando aprovação ([`carrosseis/`](carrosseis)). Identidade audiovisual em [`brand/`](brand): kit oficial de logos em SVG (com o símbolo FZ corrigido), verde-limão `#C6FA41`, fontes Unbounded + Sora e assinatura sonora.
 
 ## Padrão de entrega
 
@@ -12,6 +12,7 @@ Produção dos Reels do Instagram da **FAZLO Digital**: motion graphics 9:16 ani
 | Áudio | AAC 256 kb/s, 48 kHz estéreo, **−14 LUFS** integrado, pico real **≤ −1 dBTP** |
 | Capa | PNG 1080×1920, conferida também no recorte 3:4 do perfil |
 | Revisão | relatório técnico, sincronia som × imagem, zonas seguras da interface do Reels, storyboard |
+| Carrossel | PNG **1080×1350 (4:5)** por slide, opaco; topo abaixo do contador nativo do Instagram; capa conferida no recorte 3:4 da grade do perfil; prévia e folha em tamanho real |
 
 ## Requisitos
 
@@ -46,6 +47,7 @@ npm test                             # calibração de ponta a ponta: deve termi
 | `npm run stills -- <reel> 1.5,8.2` | quadros avulsos em PNG (`--noblur` para ver sem motion blur) |
 | `npm run storyboard -- <reel>` | `output/storyboard.jpg` |
 | `npm run qa -- <reel>` | revisão técnica e de sincronização em `output/revisao/` (sai com erro se algo falhar) |
+| `npm run carousel -- <pasta>` | carrossel: `carrosseis/<pasta>/output/NN.png` + prévia e revisão (`--slides 2,9` para só alguns) |
 
 Atalhos do preview: `espaço` play/pausa · `←/→` 1 quadro · `shift+←/→` 1 s · `Z` zonas seguras · `B` motion blur · `C` capa. Parâmetros de URL: `?reel=reel-00&t=12.5`, `&cover`, `&zones`.
 
@@ -55,6 +57,8 @@ Atalhos do preview: `espaço` play/pausa · `←/→` 1 quadro · `shift+←/→
 core/
   engine.js          # motor Canvas 2D determinístico: FZD.define, renderAt (motion blur + pós), capa, cues, utilitários
   player.html        # preview interativo e página usada pelo render (?render)
+  carousel.js        # carrosséis estáticos: FZC.define (slides desenhados com os utilitários do motor)
+  carousel.html      # preview dos slides (guias: tecla G) e página usada pelo render de PNG (?render)
   safe-zones.json    # áreas cobertas pela interface do Reels + recorte 3:4 do perfil
 brand/
   tokens.js          # paleta, tipografia, logo e geometria da barra do Z
@@ -68,6 +72,8 @@ tools/
   new-reel.cjs       # novo Reel a partir do modelo
   doctor.cjs         # verificação do ambiente
   qa.py              # revisão técnica + sincronização + zonas seguras + capa no feed
+  carousel.cjs       # carrossel: slides em PNG (Chromium headless) e revisão
+  carousel_qa.py     # carrossel: tamanho, bordas, contador nativo, recorte 3:4, prévia e tamanho real
   storyboard.py      # folha de quadros-chave
   logo_alpha.py      # fundo da logo transparente, sem alterar a arte
   logo_variant.py    # variante de cor da logo (ex.: versão escura) trocando só a cor das letras
@@ -78,6 +84,8 @@ reels/
   reel-00/ … reel-03/          # um Reel por pasta (ver reels/README.md)
   instagram-nao-e-site/        # a partir daqui, pastas com o nome do título
   _calibracao/                 # cartela técnica que valida o pipeline
+carrosseis/
+  o-que-o-hospede-procura/     # um carrossel por pasta (ver carrosseis/README.md)
 ```
 
 Cada Reel:

@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FAZLO Digital — Carrossel</title>
+<link rel="stylesheet" href="/brand/fonts/fonts.css">
+<style>
+  html, body { margin: 0; background: #0B0B0B; color: #EDEDED; font: 500 13px ui-monospace, 'DejaVu Sans Mono', monospace; }
+  body { padding: 18px; box-sizing: border-box; }
+  h1 { font-size: 15px; margin: 0 0 12px; }
+  .strip { display: flex; gap: 14px; overflow-x: auto; padding-bottom: 12px; }
+  .slide { flex: 0 0 auto; width: min(380px, 80vw); }
+  .frame { position: relative; }
+  .slide canvas { width: 100%; height: auto; display: block; border-radius: 6px; background: #000; }
+  .slide span { display: block; margin-top: 6px; opacity: .6; }
+  .guides { position: absolute; inset: 0; pointer-events: none; display: none; }
+  body.g .guides { display: block; }
+  .guides div { position: absolute; outline: 2px dashed rgba(255, 40, 80, .85); outline-offset: -1px; }
+  .help { opacity: .55; margin-top: 8px; }
+  .err { color: #FF6B6B; white-space: pre-wrap; }
+  body.render { padding: 0; }
+  body.render h1, body.render .strip, body.render .help { display: none; }
+</style>
+</head>
+<body>
+<h1 id="title">carrossel</h1>
+<div class="strip" id="strip"></div>
+<div class="help" id="help">G: guias (margem de 64 px, recorte 3:4 da grade do perfil na capa, contador nativo do Instagram no canto superior direito)</div>
+<canvas id="out" style="display:none"></canvas>
+<script src="/brand/tokens.js"></script>
+<script src="/core/engine.js"></script>
+<script src="/core/carousel.js"></script>
+<script>
+(async () => {
+  const params = new URLSearchParams(location.search);
+  const id = params.get('c');
+  const base = `/carrosseis/${id}`;
+  const fail = (e) => { document.getElementById('help').innerHTML = `<span class="err">${e}</span>`; throw e; };
+  const loadScript = (src) => new Promise((ok, no) => { const s = document.createElement('script'); s.src = src; s.onload = ok; s.onerror = () => no(new Error('não carregou ' + src)); document.body.appendChild(s); });
+  const loadImg = (src) => new Promise((ok, no) => { const i = new Image(); i.onload = () => ok(i); i.onerror = () => no(new Error('não carregou ' + src)); i.src = src; });
+
+  let car, cfg;
+  window.ready = (async () => {
+    if (!id) throw new Error('informe o carrossel: carousel.html?c=<pasta>');
+    cfg = await fetch(`${base}/carrossel.json`).then((r) => { if (!r.ok) throw new Error(`${base}/carrossel.json não encontrado`); return r.json(); });
+    for (const s of cfg.scripts || []) await loadScript(`${base}/${s}`);
+    await loadScript(`${base}/src/slides.js`);
+    car = FZC.get(cfg.id) || FZC.current();
+    await Promise.all((cfg.fonts || []).map((f) => document.fonts.load(f)));
+    await document.fonts.ready;
+    const assets = {};
+    for (const [k, src] of Object.entries(cfg.assets || {})) { assets[k] = await loadImg('/' + src); await assets[k].decode(); }
+    car.init(assets);
+  })().catch(fail);
+
+  if (params.has('render')) {
+    document.body.classList.add('render');
+    const out = document.getElementById('out');
+    // usados por tools/carousel.cjs
+    window.count = () => car.count;
+    window.slide = (i) => { out.width = car.W; out.height = car.H; car.render(out.getContext('2d'), i); return out.toDataURL('image/png'); };
+    return;
+  }
+
+  await window.ready;
+  document.title = `FAZLO Digital — ${cfg.title || id}`;
+  document.getElementById('title').textContent = `${cfg.title || id} · ${car.count} slides ${car.W}x${car.H}`;
+  const strip = document.getElementById('strip');
+  for (let i = 0; i < car.count; i++) {
+    const box = document.createElement('div'); box.className = 'slide';
+    const cv = document.createElement('canvas'); cv.width = car.W; cv.height = car.H;
+    car.render(cv.getContext('2d'), i);
+    const g = document.createElement('div'); g.className = 'guides';
+    const pct = (x0, y0, x1, y1) => { const d = document.createElement('div'); Object.assign(d.style, { left: `${x0 / car.W * 100}%`, top: `${y0 / car.H * 100}%`, width: `${(x1 - x0) / car.W * 100}%`, height: `${(y1 - y0) / car.H * 100}%` }); g.appendChild(d); };
+    pct(64, 64, car.W - 64, car.H - 64);
+    pct(car.W - 140, 30, car.W - 30, 100);                                    // contador nativo "1/9" do Instagram
+    if (i === 0) { const cw = car.H * 0.75; pct((car.W - cw) / 2, 0, (car.W + cw) / 2, car.H); }   // grade do perfil (3:4)
+    const lb = document.createElement('span'); lb.textContent = String(i + 1).padStart(2, '0');
+    const fr = document.createElement('div'); fr.className = 'frame'; fr.append(cv, g);
+    box.append(fr, lb); strip.appendChild(box);
+  }
+  addEventListener('keydown', (e) => { if (e.code === 'KeyG') document.body.classList.toggle('g'); });
+  if (params.has('guides')) document.body.classList.add('g');
+})();
+</script>
+</body>
+</html>

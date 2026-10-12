@@ -1,0 +1,23 @@
+{
+  "id": "o-que-o-hospede-procura",
+  "title": "O que o hóspede procura antes de reservar",
+  "status": "prévia · aguardando aprovação",
+  "format": {
+    "width": 1080,
+    "height": 1350
+  },
+  "slides": 9,
+  "fonts": [
+    "800 100px 'FZD Display'",
+    "900 100px 'FZD Display'",
+    "400 100px 'FZD Text'",
+    "500 100px 'FZD Text'",
+    "600 100px 'FZD Text'",
+    "700 100px 'FZD Text'"
+  ],
+  "assets": {},
+  "qa": {
+    "margin": 40,
+    "bleedBottom": true
+  }
+}

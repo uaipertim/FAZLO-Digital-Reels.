@@ -18,6 +18,7 @@
     "stills": "node tools/render.cjs stills",
     "storyboard": "python3 tools/storyboard.py",
     "qa": "python3 tools/qa.py",
+    "carousel": "node tools/carousel.cjs",
     "test": "node tools/build.cjs _calibracao"
   },
   "devDependencies": {
