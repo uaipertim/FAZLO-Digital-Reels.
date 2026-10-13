@@ -6,427 +6,367 @@
    "fala": "1-gancho",
    "palavra": "Site",
    "t": 0.29,
-   "db": 29.4
+   "db": 29.3
   },
   {
    "fala": "1-gancho",
    "palavra": "é",
    "t": 0.85,
-   "db": 30.0
+   "db": 29.9
   },
   {
    "fala": "1-gancho",
    "palavra": "coisa",
    "t": 0.97,
-   "db": 36.3
+   "db": 36.2
   },
   {
    "fala": "1-gancho",
    "palavra": "de",
    "t": 1.25,
-   "db": 14.9
+   "db": 14.8
   },
   {
    "fala": "1-gancho",
    "palavra": "pousada",
    "t": 1.37,
-   "db": 28.9
+   "db": 28.8
   },
   {
    "fala": "1-gancho",
    "palavra": "grande",
    "t": 1.81,
-   "db": 22.6
+   "db": 22.5
   },
   {
    "fala": "2-mito",
    "palavra": "Tem",
    "t": 4.46,
-   "db": 10.6
+   "db": 10.5
   },
   {
    "fala": "2-mito",
    "palavra": "gente",
    "t": 4.7,
-   "db": 11.6
+   "db": 11.5
   },
   {
    "fala": "2-mito",
    "palavra": "que",
    "t": 5.02,
-   "db": 18.8
+   "db": 18.7
   },
   {
    "fala": "2-mito",
    "palavra": "acha",
    "t": 5.18,
-   "db": 21.1
+   "db": 21.0
   },
   {
    "fala": "2-mito",
    "palavra": "que",
    "t": 5.46,
-   "db": 14.7
+   "db": 14.6
   },
   {
    "fala": "2-mito",
    "palavra": "é",
    "t": 5.58,
-   "db": 22.8
+   "db": 22.7
   },
   {
    "fala": "2-mito",
    "palavra": "luxo",
    "t": 5.86,
-   "db": 11.4
+   "db": 11.3
   },
   {
    "fala": "3-nao-e",
    "palavra": "Não",
    "t": 6.58,
-   "db": 15.2
+   "db": 15.1
   },
   {
    "fala": "3-nao-e",
    "palavra": "é",
    "t": 6.9,
-   "db": 18.3
+   "db": 18.2
   },
   {
-   "fala": "4-basico",
-   "palavra": "Uma",
-   "t": 8.99,
-   "db": 23.2
+   "fala": "4a-fotos",
+   "palavra": "Fotos",
+   "t": 10.23,
+   "db": 29.2
   },
   {
-   "fala": "4-basico",
-   "palavra": "pousada",
-   "t": 9.31,
-   "db": 25.8
+   "fala": "4b-datas",
+   "palavra": "datas",
+   "t": 11.44,
+   "db": 26.1
   },
   {
-   "fala": "4-basico",
-   "palavra": "pequena",
-   "t": 9.79,
-   "db": 14.5
+   "fala": "4c-chegar",
+   "palavra": "como",
+   "t": 12.62,
+   "db": 27.4
   },
   {
-   "fala": "4-basico",
-   "palavra": "precisa",
-   "t": 10.39,
-   "db": 22.4
+   "fala": "4c-chegar",
+   "palavra": "chegar",
+   "t": 12.94,
+   "db": 20.2
   },
   {
-   "fala": "4-basico",
-   "palavra": "do",
-   "t": 10.75,
-   "db": 13.0
+   "fala": "4d-whatsapp",
+   "palavra": "e",
+   "t": 13.83,
+   "db": 12.7
   },
   {
-   "fala": "4-basico",
-   "palavra": "básico",
-   "t": 10.87,
-   "db": 25.8
-  },
-  {
-   "fala": "4-basico",
-   "palavra": "bem",
-   "t": 11.35,
-   "db": 15.7
-  },
-  {
-   "fala": "4-basico",
-   "palavra": "feito",
-   "t": 11.63,
+   "fala": "4d-whatsapp",
+   "palavra": "o",
+   "t": 13.95,
    "db": 21.6
   },
   {
-   "fala": "4-basico",
-   "palavra": "fotos",
-   "t": 12.41,
-   "db": 29.0
-  },
-  {
-   "fala": "4-basico",
-   "palavra": "de",
-   "t": 12.81,
-   "db": 15.4
-  },
-  {
-   "fala": "4-basico",
-   "palavra": "cada",
-   "t": 12.93,
-   "db": 19.9
-  },
-  {
-   "fala": "4-basico",
-   "palavra": "quarto",
-   "t": 13.21,
-   "db": 26.7
-  },
-  {
-   "fala": "4-basico",
-   "palavra": "consulta",
-   "t": 13.93,
-   "db": 19.9
-  },
-  {
-   "fala": "4-basico",
-   "palavra": "de",
-   "t": 14.41,
-   "db": 8.7
-  },
-  {
-   "fala": "4-basico",
-   "palavra": "datas",
-   "t": 14.85,
-   "db": 25.9
-  },
-  {
-   "fala": "4-basico",
-   "palavra": "como",
-   "t": 15.29,
-   "db": 16.9
-  },
-  {
-   "fala": "4-basico",
-   "palavra": "chegar",
-   "t": 15.53,
-   "db": 27.0
-  },
-  {
-   "fala": "4-basico",
-   "palavra": "e",
-   "t": 16.41,
-   "db": 26.8
-  },
-  {
-   "fala": "4-basico",
-   "palavra": "o",
-   "t": 16.49,
-   "db": 29.7
-  },
-  {
-   "fala": "4-basico",
+   "fala": "4d-whatsapp",
    "palavra": "WhatsApp",
-   "t": 16.57,
-   "db": 28.9
+   "t": 14.07,
+   "db": 22.7
   },
   {
-   "fala": "4-basico",
-   "palavra": "à",
-   "t": 17.21,
-   "db": 20.1
+   "fala": "4e-frase",
+   "palavra": "Só",
+   "t": 15.04,
+   "db": 34.9
   },
   {
-   "fala": "4-basico",
-   "palavra": "vista",
-   "t": 17.29,
+   "fala": "4e-frase",
+   "palavra": "o",
+   "t": 15.28,
+   "db": 29.2
+  },
+  {
+   "fala": "4e-frase",
+   "palavra": "básico",
+   "t": 15.44,
+   "db": 26.0
+  },
+  {
+   "fala": "4e-frase",
+   "palavra": "bem",
+   "t": 16.6,
    "db": 21.1
+  },
+  {
+   "fala": "4e-frase",
+   "palavra": "feito",
+   "t": 16.88,
+   "db": 23.6
   },
   {
    "fala": "5-trabalha",
    "palavra": "E",
    "t": 17.97,
-   "db": 21.7
+   "db": 20.9
   },
   {
    "fala": "5-trabalha",
    "palavra": "o",
    "t": 18.09,
-   "db": 27.4
+   "db": 27.0
   },
   {
    "fala": "5-trabalha",
    "palavra": "site",
    "t": 18.21,
-   "db": 37.0
+   "db": 36.8
   },
   {
    "fala": "5-trabalha",
    "palavra": "trabalha",
    "t": 18.61,
-   "db": 38.0
+   "db": 37.8
   },
   {
    "fala": "5-trabalha",
    "palavra": "até",
    "t": 19.21,
-   "db": 16.1
+   "db": 16.0
   },
   {
    "fala": "5-trabalha",
    "palavra": "quando",
    "t": 19.49,
-   "db": 27.2
+   "db": 27.1
   },
   {
    "fala": "5-trabalha",
    "palavra": "você",
    "t": 19.81,
-   "db": 29.7
+   "db": 29.6
   },
   {
    "fala": "5-trabalha",
    "palavra": "não",
    "t": 20.09,
-   "db": 29.4
+   "db": 29.3
   },
   {
    "fala": "5-trabalha",
    "palavra": "pode",
    "t": 20.33,
-   "db": 38.4
+   "db": 38.3
   },
   {
    "fala": "5-trabalha",
    "palavra": "atender",
    "t": 20.61,
-   "db": 28.4
+   "db": 28.3
   },
   {
    "fala": "5-trabalha",
    "palavra": "A",
    "t": 21.65,
-   "db": 25.9
+   "db": 25.8
   },
   {
    "fala": "5-trabalha",
    "palavra": "consulta",
    "t": 22.01,
-   "db": 22.5
+   "db": 22.4
   },
   {
    "fala": "5-trabalha",
    "palavra": "chega",
    "t": 22.37,
-   "db": 25.4
+   "db": 25.3
   },
   {
    "fala": "5-trabalha",
    "palavra": "à",
    "t": 22.61,
-   "db": 24.6
+   "db": 24.5
   },
   {
    "fala": "5-trabalha",
    "palavra": "noite",
    "t": 22.69,
-   "db": 21.5
+   "db": 21.4
   },
   {
    "fala": "5-trabalha",
    "palavra": "e",
    "t": 23.65,
-   "db": 14.3
+   "db": 14.2
   },
   {
    "fala": "5-trabalha",
    "palavra": "de",
    "t": 23.73,
-   "db": 17.7
+   "db": 17.6
   },
   {
    "fala": "5-trabalha",
    "palavra": "manhã",
    "t": 23.89,
-   "db": 28.9
+   "db": 28.8
   },
   {
    "fala": "5-trabalha",
    "palavra": "é",
    "t": 24.53,
-   "db": 21.8
+   "db": 21.7
   },
   {
    "fala": "5-trabalha",
    "palavra": "só",
    "t": 24.61,
-   "db": 24.1
+   "db": 24.0
   },
   {
    "fala": "5-trabalha",
    "palavra": "responder",
    "t": 24.77,
-   "db": 20.7
+   "db": 20.6
   },
   {
    "fala": "6-virada",
    "palavra": "Não",
    "t": 26.72,
-   "db": 22.7
+   "db": 22.6
   },
   {
    "fala": "6-virada",
    "palavra": "é",
    "t": 26.96,
-   "db": 23.5
+   "db": 23.4
   },
   {
    "fala": "6-virada",
    "palavra": "luxo",
    "t": 27.28,
-   "db": 18.5
+   "db": 18.4
   },
   {
    "fala": "6-virada",
    "palavra": "É",
    "t": 28.0,
-   "db": 13.1
+   "db": 13.0
   },
   {
    "fala": "6-virada",
    "palavra": "ser",
    "t": 28.16,
-   "db": 23.3
+   "db": 23.2
   },
   {
    "fala": "6-virada",
    "palavra": "encontrada",
    "t": 28.32,
-   "db": 19.7
+   "db": 19.6
   },
   {
    "fala": "7-cta",
    "palavra": "Fale",
    "t": 30.33,
-   "db": 22.4
+   "db": 22.3
   },
   {
    "fala": "7-cta",
    "palavra": "com",
    "t": 30.69,
-   "db": 8.6
+   "db": 8.5
   },
   {
    "fala": "7-cta",
    "palavra": "a",
    "t": 30.81,
-   "db": 10.8
+   "db": 10.7
   },
   {
    "fala": "7-cta",
    "palavra": "FAZLO",
    "t": 30.97,
-   "db": 16.8
+   "db": 16.7
   },
   {
    "fala": "7-cta",
    "palavra": "Link",
    "t": 31.85,
-   "db": 8.8
+   "db": 8.7
   },
   {
    "fala": "7-cta",
    "palavra": "na",
    "t": 32.17,
-   "db": 14.9
+   "db": 14.8
   },
   {
    "fala": "7-cta",
    "palavra": "bio",
    "t": 32.41,
-   "db": 10.6
+   "db": 10.5
   }
  ]
 }

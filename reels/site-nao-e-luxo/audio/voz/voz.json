@@ -28,7 +28,6 @@
       "duracao_fala": 2.025,
       "ancora": "Site",
       "ancora_em": 0.3,
-      "pausas_encurtadas": [],
       "cabe": true
     },
     {
@@ -47,7 +46,6 @@
       "duracao_fala": 1.736,
       "ancora": "Tem",
       "ancora_em": 4.5,
-      "pausas_encurtadas": [],
       "cabe": true
     },
     {
@@ -66,35 +64,96 @@
       "duracao_fala": 0.556,
       "ancora": "Não",
       "ancora_em": 6.6,
-      "pausas_encurtadas": [],
       "cabe": true
     },
     {
-      "id": "4-basico",
-      "texto": "Uma pousada pequena precisa do básico bem feito: fotos de cada quarto, consulta de datas, como chegar… e o WhatsApp à vista.",
-      "texto_api": "Uma pousada pequena precisa do básico bem feito: fotos de cada quarto, consulta de datas, como chegar… e o WhatsApp à vista.",
+      "id": "4a-fotos",
+      "texto": "Fotos…",
+      "texto_api": "Fotos…",
       "semente": 2026,
-      "arquivo": "4-basico.mp3",
+      "arquivo": "4a-fotos.mp3",
       "janela": [
-        9.0,
+        10.2,
+        11.4
+      ],
+      "arquivo_ini": 10.23,
+      "fala_ini": 10.25,
+      "fala_fim": 11.045,
+      "duracao_fala": 0.795,
+      "ancora": "Fotos",
+      "ancora_em": 10.25,
+      "cabe": true
+    },
+    {
+      "id": "4b-datas",
+      "texto": "datas…",
+      "texto_api": "datas…",
+      "semente": 2026,
+      "arquivo": "4b-datas.mp3",
+      "janela": [
+        11.4,
+        12.6
+      ],
+      "arquivo_ini": 11.441,
+      "fala_ini": 11.45,
+      "fala_fim": 12.162,
+      "duracao_fala": 0.712,
+      "ancora": "datas",
+      "ancora_em": 11.45,
+      "cabe": true
+    },
+    {
+      "id": "4c-chegar",
+      "texto": "como chegar…",
+      "texto_api": "como chegar…",
+      "semente": 2026,
+      "arquivo": "4c-chegar.mp3",
+      "janela": [
+        12.6,
+        13.8
+      ],
+      "arquivo_ini": 12.616,
+      "fala_ini": 12.65,
+      "fala_fim": 13.534,
+      "duracao_fala": 0.884,
+      "ancora": "como",
+      "ancora_em": 12.65,
+      "cabe": true
+    },
+    {
+      "id": "4d-whatsapp",
+      "texto": "e o WhatsApp.",
+      "texto_api": "e o WhatsApp.",
+      "semente": 2026,
+      "arquivo": "4d-whatsapp.mp3",
+      "janela": [
+        13.8,
+        15.0
+      ],
+      "arquivo_ini": 13.834,
+      "fala_ini": 13.85,
+      "fala_fim": 14.736,
+      "duracao_fala": 0.886,
+      "ancora": "e o",
+      "ancora_em": 13.85,
+      "cabe": true
+    },
+    {
+      "id": "4e-frase",
+      "texto": "Só o básico… bem feito.",
+      "texto_api": "Só o básico… bem feito.",
+      "semente": 2026,
+      "arquivo": "4e-frase.mp3",
+      "janela": [
+        15.0,
         18.0
       ],
-      "arquivo_ini": 8.988,
-      "fala_ini": 9.02,
-      "fala_fim": 17.682,
-      "duracao_fala": 8.662,
-      "ancora": "Uma",
-      "ancora_em": 9.02,
-      "pausas_encurtadas": [
-        {
-          "em": 3.2,
-          "tirado": 0.18
-        },
-        {
-          "em": 7.404,
-          "tirado": 0.153
-        }
-      ],
+      "arquivo_ini": 15.039,
+      "fala_ini": 15.05,
+      "fala_fim": 17.393,
+      "duracao_fala": 2.343,
+      "ancora": "Só",
+      "ancora_em": 15.05,
       "cabe": true
     },
     {
@@ -113,7 +172,6 @@
       "duracao_fala": 7.326,
       "ancora": "E o site",
       "ancora_em": 18.0,
-      "pausas_encurtadas": [],
       "cabe": true
     },
     {
@@ -132,7 +190,6 @@
       "duracao_fala": 2.376,
       "ancora": "É ser",
       "ancora_em": 27.95,
-      "pausas_encurtadas": [],
       "cabe": true
     },
     {
@@ -151,7 +208,6 @@
       "duracao_fala": 2.291,
       "ancora": "Fale",
       "ancora_em": 30.35,
-      "pausas_encurtadas": [],
       "cabe": true
     }
   ]

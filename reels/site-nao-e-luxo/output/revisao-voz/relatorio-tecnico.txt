@@ -7,10 +7,10 @@ OK     60 fps, 1980 quadros
 OK     duração do vídeo 33.000 s (alvo 32–34 s)
 OK     arquivo 11.9 MB, 2.9 Mb/s
 OK     faixa de áudio presente
-OK     áudio aac 48000 Hz, 2 canais, 265 kb/s
+OK     áudio aac 48000 Hz, 2 canais, 264 kb/s
 OK     vídeo e áudio com a mesma duração (Δ 0 ms)
 OK     loudness integrado -14.0 LUFS (alvo -14)
-OK     pico real -3.0 dBTP (limite -1)
+OK     pico real -3.1 dBTP (limite -1)
        faixa de loudness (LRA) 3.9 LU
 OK     sem trechos pretos ≥ 0,1 s
 OK     sem imagem congelada ≥ 0,75 s
@@ -21,7 +21,7 @@ OK     capa: conteúdo dentro do recorte 3:4 (y 240–1680)
 
 Sincronização (detalhes em sincronia.txt):
 OK     áudio do MP4 = trilha, sem deslocamento (+0.0, +0.0, +0.0 ms)
-OK     9 efeitos-chave com ataque no instante do evento (desvio médio 6.3 ms, máximo 6.8 ms; 1 quadro = 16,7 ms)
+OK     9 efeitos-chave com ataque no instante do evento (desvio médio 6.6 ms, máximo 6.8 ms; 1 quadro = 16,7 ms)
 OK     a imagem reage em 5/5 golpes principais (pico de movimento a ≤ 8 quadros do som)
 
 RESULTADO: aprovado

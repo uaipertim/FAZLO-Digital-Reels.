@@ -46,7 +46,6 @@ SEMENTE = 2026                      # a da amostra aprovada
 FAZLO_API = 'FAZLO'
 
 # fala: texto, janela da cena (s) e onde ela entra: `ancora` (trecho da fala) começa em `em`.
-# pausa_max: pausas internas mais longas que isso são encurtadas (corte no silêncio, sem esticar a voz)
 FALAS = [
     {'id': '1-gancho',   'janela': (0.0, 4.2),   'ancora': 'Site', 'em': 0.30,
      'texto': 'Site é coisa de pousada grande?'},
@@ -54,9 +53,18 @@ FALAS = [
      'texto': 'Tem gente que acha que é luxo…'},
     {'id': '3-nao-e',    'janela': (6.6, 9.0),   'ancora': 'Não', 'em': 6.60,
      'texto': 'Não é.'},
-    {'id': '4-basico',   'janela': (9.0, 18.0),  'ancora': 'Uma', 'em': 9.02, 'pausa_max': 0.30,
-     'texto': 'Uma pousada pequena precisa do básico bem feito: fotos de cada quarto, consulta de datas, '
-              'como chegar… e o WhatsApp à vista.'},
+    # cena 3: a voz segue a tela. Cada item curto logo depois do pouso do seu bloco (10,2 · 11,4 · 12,6 · 13,8),
+    # como uma lista contínua (contexto anterior/seguinte); a frase junto com UMA POUSADA PEQUENA… (15,0)
+    {'id': '4a-fotos',    'janela': (10.2, 11.4), 'ancora': 'Fotos', 'em': 10.25,
+     'texto': 'Fotos…'},
+    {'id': '4b-datas',    'janela': (11.4, 12.6), 'ancora': 'datas', 'em': 11.45,
+     'texto': 'datas…'},
+    {'id': '4c-chegar',   'janela': (12.6, 13.8), 'ancora': 'como', 'em': 12.65,
+     'texto': 'como chegar…'},
+    {'id': '4d-whatsapp', 'janela': (13.8, 15.0), 'ancora': 'e o', 'em': 13.85,
+     'texto': 'e o WhatsApp.'},
+    {'id': '4e-frase',    'janela': (15.0, 18.0), 'ancora': 'Só', 'em': 15.05,
+     'texto': 'Só o básico… bem feito.'},
     # entra com a noite (18,0): a notificação (19,2) cai na pausa natural depois de "trabalha"
     {'id': '5-trabalha', 'janela': (18.0, 25.8), 'ancora': 'E o site', 'em': 18.00,
      'texto': 'E o site trabalha até quando você não pode atender. A consulta chega à noite… '
@@ -116,56 +124,20 @@ def fronteiras(x, limiar_db=-38):
     return on[0] / SR, on[-1] / SR
 
 
-def encurta_pausas(x, pausa_max, limiar_db=-36, xf=0.015):
-    """Pausas internas mais longas que pausa_max ficam com pausa_max: tira o meio do silêncio,
-    com transição de xf. Devolve o sinal e os cortes [(instante no original, segundos tirados)]."""
-    e = envelope(x, 0.02)
-    mudo = e < e.max() * 10 ** (limiar_db / 20)
-    ini, fim = fronteiras(x)
-    cortes, i, n = [], int(ini * SR), int(fim * SR)
-    while i < n:
-        if not mudo[i]:
-            i += 1
-            continue
-        j = i
-        while j < n and mudo[j]:
-            j += 1
-        if (j - i) / SR > pausa_max:
-            cortes.append((i + int(pausa_max / 2 * SR), (j - i) - int(pausa_max * SR)))
-        i = j
-    y, k, nx = [], 0, int(xf * SR)
-    for a, tira in cortes:
-        y.append(x[k:a])
-        k = a + tira
-    y.append(x[k:])
-    out = y[0]
-    rampa = np.sin(np.linspace(0, np.pi / 2, nx)) ** 2
-    for seg in y[1:]:                                   # emenda com transição de potência constante
-        out = np.concatenate([out[:-nx], out[-nx:] * (1 - rampa) + seg[:nx] * rampa, seg[nx:]])
-    return out, [(a / SR, tira / SR) for a, tira in cortes]
-
-
 def carregar(f, base=None):
-    """Sinal pronto da fala (48 kHz mono), com as pausas encurtadas se a fala pedir, e os cortes."""
-    x = decodifica((base or os.path.join(DIR, f['id'])) + '.mp3')
-    if f.get('pausa_max'):
-        return encurta_pausas(x, f['pausa_max'])
-    return x, []
+    """Sinal da fala (48 kHz mono)."""
+    return decodifica((base or os.path.join(DIR, f['id'])) + '.mp3')
 
 
-def no_editado(t, cortes):
-    return t - sum(tira for a, tira in cortes if a < t)
-
-
-def ancora_em(f, meta, x, cortes=()):
+def ancora_em(f, meta, x):
     """Instante (no arquivo) em que a âncora começa a soar: alinhamento + ataque acústico logo depois."""
     al = meta['alinhamento']
     txt = ''.join(al['characters'])
     k = txt.find(api_texto(f['ancora']))
-    t_al = no_editado(al['character_start_times_seconds'][k], cortes)
+    t_al = al['character_start_times_seconds'][k]
     ini, _ = fronteiras(x)
     if k == 0 or t_al <= ini + 0.05:
-        return ini
+        return ini                                     # a âncora é a 1ª palavra falada
     # dentro da fala: o ataque é o ponto de energia mais baixa antes da subida, perto do alinhamento
     e = envelope(x, 0.02)
     a, b = int((t_al - 0.15) * SR), int((t_al + 0.12) * SR)
@@ -176,13 +148,12 @@ def ancora_em(f, meta, x, cortes=()):
 
 def medir(f, base):
     meta = json.load(open(base + '.json'))
-    x, cortes = carregar(f, base)
+    x = carregar(f, base)
     ini, fim = fronteiras(x)
-    t_anc = ancora_em(f, meta, x, cortes)
+    t_anc = ancora_em(f, meta, x)
     t0 = f['em'] - t_anc                       # onde o arquivo começa na timeline do Reel
     return {'arquivo_ini': round(t0, 3), 'fala_ini': round(t0 + ini, 3), 'fala_fim': round(t0 + fim, 3),
-            'duracao_fala': round(fim - ini, 3), 'ancora': f['ancora'], 'ancora_em': f['em'],
-            'pausas_encurtadas': [{'em': round(a, 3), 'tirado': round(t, 3)} for a, t in cortes]}
+            'duracao_fala': round(fim - ini, 3), 'ancora': f['ancora'], 'ancora_em': f['em']}
 
 
 def posicionar():
@@ -272,7 +243,7 @@ def trilha_da_voz(n):
     hp = butter(2, 80, 'high', fs=SR, output='sos')
     for fm in man['falas']:
         f = next(x for x in FALAS if x['id'] == fm['id'])
-        x, _ = carregar(f)
+        x = carregar(f)
         x = sosfilt(hp, x)
         e = envelope(x, 0.05)
         ativo = e > e.max() * 10 ** (-30 / 20)
@@ -322,7 +293,6 @@ def cobertura(cama, voz_mix):
     for fm in man['falas']:
         f = next(x for x in FALAS if x['id'] == fm['id'])
         meta = json.load(open(os.path.join(DIR, f['id'] + '.json')))
-        x, cortes = carregar(f)
         al = meta['alinhamento']
         ch, t0s, t1s = al['characters'], al['character_start_times_seconds'], al['character_end_times_seconds']
         palavra, a = '', None
@@ -334,8 +304,8 @@ def cobertura(cama, voz_mix):
                 continue
             if palavra:
                 # o alinhamento erra ~50 ms: mede só os quadros de 10 ms em que a voz soa, no trecho ±40 ms
-                i0 = int((fm['arquivo_ini'] + no_editado(a, cortes) - 0.04) * SR)
-                i1 = int((fm['arquivo_ini'] + no_editado(fim, cortes) + 0.04) * SR)
+                i0 = int((fm['arquivo_ini'] + a - 0.04) * SR)
+                i1 = int((fm['arquivo_ini'] + fim + 0.04) * SR)
                 q = SR // 100
                 pv = (vb[i0:i1][: (i1 - i0) // q * q] ** 2).reshape(-1, q).mean(1)
                 pc = (cb[i0:i1][: (i1 - i0) // q * q] ** 2).reshape(-1, q).mean(1)

@@ -133,17 +133,24 @@ Se for preciso, a grafia enviada à API fica em `FAZLO_API` no `scripts/voz.py`.
 | 1 | "Site é coisa de pousada grande?" | 0,30–2,33 s |
 | 2 | "Tem gente que acha que é luxo…" | 4,50–6,24 s |
 | 3 | "Não é." | **6,60** (no golpe)–7,16 s |
-| 4 | "Uma pousada pequena precisa do básico bem feito: fotos de cada quarto, consulta de datas, como chegar… e o WhatsApp à vista." | 9,02–17,68 s |
+| 4a | "Fotos…" | 10,25–11,04 s (pouso do bloco 1 em 10,2) |
+| 4b | "datas…" | 11,45–12,16 s (bloco 2 em 11,4) |
+| 4c | "como chegar…" | 12,65–13,53 s (bloco 3 em 12,6) |
+| 4d | "e o WhatsApp." | 13,85–14,74 s (bloco 4 em 13,8) |
+| 4e | "Só o básico… bem feito." | 15,05–17,39 s (com UMA POUSADA PEQUENA / PRECISA DO BÁSICO / BEM FEITO. na tela) |
 | 5 | "E o site trabalha até quando você não pode atender. A consulta chega à noite… e de manhã é só responder." | 18,00–25,33 s |
 | 6 | "Não é luxo. É ser encontrada." | 26,75–29,13 s ("É ser" em 27,95 s, logo depois do golpe) |
 | 7 | "Fale com a FAZLO. Link na bio." | 30,35–32,64 s |
 
-**Encaixe nos tempos (sem esticar a voz, sem mudar texto nem duração):**
+**Encaixe nos tempos (sem esticar a voz e sem cortar pausas):**
 
-- **Fala 4:** em 6 tomadas, ela durou de 9,03 a 9,66 s, mais que a cena. As duas pausas expressivas (depois de "bem feito:" e de "como chegar…") foram de ~0,47 s para **0,30 s**, cortando só o silêncio, com emenda de 15 ms. Com isso, a fala tem 8,66 s.
+- **Cena 3 (a voz segue a tela):**
+  - Cada item curto entra 50 ms depois do pouso do seu bloco, então a batida do pouso passa inteira.
+  - As falas vizinhas vão como contexto, para soar como uma lista contínua.
+  - Os itens cabem com folga: duram de 0,71 a 0,89 s, com 0,31 a 0,49 s de respiro antes do próximo.
+  - Por que os itens são curtos: no ritmo natural da voz, os nomes inteiros das etiquetas não cabiam nos 1,2 s de cada bloco. "Fotos de cada quarto…" durava 1,8 a 2,1 s.
 - **Fala 5:** começa com a noite (18,0 s). Assim, a notificação (19,2 s) cai na pausa natural depois de "trabalha".
 - **Fala 7:** termina antes do fade final.
-- **Ordem da cena 3:** a fala diz a frase primeiro e depois os itens, e a tela mostra o contrário (os blocos pousam de 10,2 a 13,8 s e a frase aparece em 15,0 s). Cada item é falado cerca de 2 s depois do seu bloco pousar.
 
 ### Mixagem
 
@@ -162,17 +169,17 @@ Se for preciso, a grafia enviada à API fica em `FAZLO_API` no `scripts/voz.py`.
 
 - **Técnica:**
   - 1080×1920, 60 fps, 33,000 s de vídeo e de áudio (Δ 0 ms);
-  - **−14,0 LUFS** e pico real **−3,0 dBTP**;
+  - **−14,0 LUFS** e pico real **−3,1 dBTP**;
   - sem trechos pretos nem imagem congelada.
 - **Sincronização:** os **9 efeitos-chave** caem no instante do evento visual, com **desvio máximo de 6,8 ms**. A imagem reage nos 5 golpes principais.
-- **Palavras cobertas:** nenhuma. Nas 71 palavras, na faixa 300 Hz–4 kHz, a voz fica no mínimo **+8,6 dB** acima da trilha e dos efeitos (mediana +21,8 dB). O detalhe por palavra está em [`audio/voz/mix.json`](audio/voz/mix.json).
-- **Master:** a parte não linear (saturação e limitador) é a mesma da versão sem voz: −38,8 dB de mediana, contra −38,4 dB. A voz não ganha distorção.
+- **Palavras cobertas:** nenhuma. Nas 61 palavras, na faixa 300 Hz–4 kHz, a voz fica no mínimo **+8,5 dB** acima da trilha e dos efeitos (mediana +22,4 dB). O detalhe por palavra está em [`audio/voz/mix.json`](audio/voz/mix.json).
+- **Master:** a parte não linear (saturação e limitador) é a mesma da versão sem voz: −40,3 dB de mediana, contra −38,4 dB. A voz não ganha distorção.
 
 ### Comandos
 
 ```bash
 python3 reels/site-nao-e-luxo/scripts/voz.py gerar        # falas que faltam (API) + posição de cada uma
-python3 reels/site-nao-e-luxo/scripts/voz.py takes 4-basico 7,11,23 /tmp/takes   # tomadas extras, para escolher
+python3 reels/site-nao-e-luxo/scripts/voz.py takes 4a-fotos 7,11,23 /tmp/takes   # tomadas extras, para escolher
 python3 reels/site-nao-e-luxo/scripts/audio.py --voz      # audio/trilha-voz.wav
 python3 reels/site-nao-e-luxo/scripts/voz.py video        # output/site-nao-e-luxo-voz.mp4
 ```
@@ -187,7 +194,7 @@ reels/site-nao-e-luxo/
   scripts/voz.py       # narração (teste): falas no ElevenLabs, posição, ducking, MP4 com voz
   audio/cues.json      # 38 eventos de som exportados da animação
   audio/trilha.wav
-  audio/voz/           # as 7 falas (MP3 + alinhamento), voz.json (posição) e mix.json (cobertura por palavra)
+  audio/voz/           # as 11 falas (MP3 + alinhamento), voz.json (posição) e mix.json (cobertura por palavra)
   audio/trilha-voz.wav
   output/              # vídeo, capa, storyboard, revisão (inclui as folhas de teste das cenas); revisao-voz/
 ```
