@@ -1,0 +1,18 @@
+{
+  "id": "fundos",
+  "title": "Fundos de Stories para enquete e caixinha (figurinhas feitas no app)",
+  "status": "concluído · em avaliação",
+  "format": { "width": 1080, "height": 1920 },
+  "cores": { "fundo": "#050606", "detalhe": "#C6FA41" },
+  "zonas": {
+    "app": [0, 250],
+    "centro": [700, 1300],
+    "rodape": [1650, 1920]
+  },
+  "logo": { "arquivo": "brand/logo/kit/FAZLO-DIGITAL-branca-transparente.svg", "largura": 360, "topo": 310 },
+  "barra": { "inclinacao": -0.966, "proporcao": 0.438 },
+  "pecas": [
+    { "id": "fundo-enquete", "uso": "enquete", "barras": [{ "x": 1020, "topo": 1400, "altura": 210 }] },
+    { "id": "fundo-caixinha", "uso": "caixinha de perguntas", "barras": [{ "x": 150, "topo": 1400, "altura": 210 }] }
+  ]
+}

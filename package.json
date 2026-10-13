@@ -20,6 +20,7 @@
     "qa": "python3 tools/qa.py",
     "carousel": "node tools/carousel.cjs",
     "destaques": "node tools/destaques.cjs",
+    "stories": "node tools/stories.cjs",
     "test": "node tools/build.cjs _calibracao"
   },
   "devDependencies": {

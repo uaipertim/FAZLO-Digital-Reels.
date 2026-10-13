@@ -2,7 +2,7 @@
 
 Produção dos Reels do Instagram da **FAZLO Digital**: motion graphics 9:16 animados em código, renderizados quadro a quadro e com trilha e efeitos sintetizados e sincronizados à imagem. Também os **carrosséis** estáticos do feed, desenhados com o mesmo código e a mesma identidade ([`carrosseis/`](carrosseis)).
 
-> **Status:** **Reel 00 · "Da ideia ao digital."**, **Reel 001 · "Seu negócio já é bom. Seu digital precisa parecer isso."**, **Reel 002 · "Muito além de um site."**, **Reel 003 · "Ideias que ganham forma."**, **"Instagram não é site."**, **"Como funciona o raio-x."**, **"Conheça o site da Pousada Vale dos Canteiros."**, **"Site não é luxo."** e a collab com o FAZLO Hospeda **"Mandou mensagem e ninguém respondeu."** concluídos e em avaliação ([`reels/`](reels)). Carrossel **"O que o hóspede procura antes de reservar"** concluído e aprovado ([`carrosseis/`](carrosseis)). Capas dos **destaques do perfil** (Sites, Raio-x, Hospeda, Contato) concluídas e aprovadas ([`destaques/`](destaques)). Identidade audiovisual em [`brand/`](brand): kit oficial de logos em SVG (com o símbolo FZ corrigido), verde-limão `#C6FA41`, fontes Unbounded + Sora e assinatura sonora.
+> **Status:** **Reel 00 · "Da ideia ao digital."**, **Reel 001 · "Seu negócio já é bom. Seu digital precisa parecer isso."**, **Reel 002 · "Muito além de um site."**, **Reel 003 · "Ideias que ganham forma."**, **"Instagram não é site."**, **"Como funciona o raio-x."**, **"Conheça o site da Pousada Vale dos Canteiros."**, **"Site não é luxo."** e a collab com o FAZLO Hospeda **"Mandou mensagem e ninguém respondeu."** concluídos e em avaliação ([`reels/`](reels)). Carrossel **"O que o hóspede procura antes de reservar"** concluído e aprovado ([`carrosseis/`](carrosseis)). Capas dos **destaques do perfil** (Sites, Raio-x, Hospeda, Contato) concluídas e aprovadas ([`destaques/`](destaques)). **Fundos de Stories** para enquete e caixinha concluídos e em avaliação ([`stories/fundos/`](stories/fundos)). Identidade audiovisual em [`brand/`](brand): kit oficial de logos em SVG (com o símbolo FZ corrigido), verde-limão `#C6FA41`, fontes Unbounded + Sora e assinatura sonora.
 
 ## Padrão de entrega
 
@@ -14,6 +14,7 @@ Produção dos Reels do Instagram da **FAZLO Digital**: motion graphics 9:16 ani
 | Revisão | relatório técnico, sincronia som × imagem, zonas seguras da interface do Reels, storyboard |
 | Carrossel | PNG **1080×1350 (4:5)** por slide, opaco; topo abaixo do contador nativo do Instagram; capa conferida no recorte 3:4 da grade do perfil; prévia e folha em tamanho real |
 | Capa de destaque | PNG **1080×1920**, fundo liso, ícone no círculo seguro (centro 540, 960; Ø 720 px); prévia do perfil em tema escuro e claro ([`destaques/`](destaques)) |
+| Fundo de Stories | PNG **1080×1920**, logo abaixo da faixa do app (y 0–250), centro (y 700–1300) e rodapé (y 1650–1920) livres para texto e figurinhas ([`stories/`](stories)) |
 
 ## Requisitos
 
@@ -92,6 +93,8 @@ reels/
 carrosseis/
   o-que-o-hospede-procura/     # um carrossel por pasta (ver carrosseis/README.md)
 destaques/                     # capas dos destaques do perfil (ver destaques/README.md)
+stories/
+  fundos/                      # fundos para enquete e caixinha (ver stories/fundos/README.md)
 ```
 
 Cada Reel:
