@@ -2,7 +2,7 @@
 
 Reel da collab @fazlodigital + @fazlohospeda (pasta `mandou-mensagem`). Usa a mesma identidade, o mesmo motor e a mesma linguagem de trilha dos Reels da FAZLO Digital.
 
-**Status: concluído · em avaliação.** A logo oficial do FAZLO Hospeda ainda não chegou: no CTA está, provisoriamente, a marca "FAZLO | HOSPEDA" recortada do próprio app (do print do painel).
+**Status: concluído · em avaliação.**
 
 **Formato:** 9:16 (1080×1920), **35,4 s**, 60 fps, H.264 + AAC 48 kHz, áudio em −14 LUFS. 100% motion graphics.
 
@@ -30,7 +30,7 @@ Um **fio lima** conecta as duas pontas. Ele nasce na consulta do site, passa pel
 | 9,0–15,0 s | **O site organiza** | O celular sobe com um **site genérico** (sem nome de pousada) e o balão voa para dentro do formulário: a pergunta solta vira campos. Um campo por tempo: **Entrada 05/11/2026 · Saída 08/11/2026** (9,6), **2 adultos · 1 criança** (10,2), **Chalé Serra 01** (10,8). Toque em **"Enviar consulta"** (11,4): **o fio nasce**. A conversa recriada (ícone genérico, avatar em silhueta, sem número) recebe a mensagem organizada (12,0) e o fio a contorna. **O SITE ORGANIZA / A PERGUNTA.** |
 | 15,0–27,0 s | **O Hospeda organiza** | **Painel (01):** só os cards do topo; o fio contorna a marca do app. **Calendário antes (02):** o fio contorna **"5 livre(s) no período"**, a tela rola até a grade e ele contorna **os dias 5 a 8, LIVRE**. **A POUSADA VÊ / NA HORA O QUE / ESTÁ LIVRE.** **Etapa 4 (03):** **Canal de Origem: WhatsApp** e **Status: CONFIRMADA**. **Revisão (04):** **"Pronto para salvar!"** e o toque da pousada em **"Confirmar reserva"** (25,8). **E LANÇA A RESERVA / NO SISTEMA.** |
 | 27,0–31,2 s | **O ciclo fecha** | **Detalhes (05), sem zoom:** o fio contorna o selo **CONFIRMADA** (reserva FHZ-F9B2I2) e **"Origem / Canal: WhatsApp"**. **Antes → depois:** o calendário 02 volta com o mesmo enquadramento e, em 29,4 s, uma faixa lima varre a tela e revela o 06: **"4 livre(s) no período"**, dia **5 CHEGADA**, **6 e 7 reservados** (1 RES), **8 SAÍDA**; o fio contorna cada um. **DA MENSAGEM À RESERVA, / SEM PERDER NADA.** |
-| 31,2–35,4 s | **CTA** | A barra lima da logo ("o corte") varre a tela. **FAZLO DIGITAL** (SVG do kit) e **FAZLO HOSPEDA** lado a lado, ligadas pelo fio, com um laço entre elas. **Site para ser encontrada. / Sistema para se organizar.** e a pílula lima **Fale com a FAZLO · link na bio**. |
+| 31,2–35,4 s | **CTA** | A barra lima da logo ("o corte") varre a tela. **FAZLO DIGITAL** (SVG do kit) e a **logo oficial do FAZLO Hospeda** (o círculo com a casa e a cama) lado a lado, ligadas pelo fio, com um laço entre elas. **Site para ser encontrada. / Sistema para se organizar.** e a pílula lima **Fale com a FAZLO · link na bio**. |
 
 ## Telas do Hospeda: só os prints reais
 
@@ -42,6 +42,7 @@ Um **fio lima** conecta as duas pontas. Ele nasce na consulta do site, passa pel
 - **Antes e depois (02 → 06):** o 06 foi alinhado ao 02 pelo conteúdo (bloco escuro de indicadores, escala 1,582); a grade bate a menos de 3 px, então só mudam os valores.
 - **Apresentação:** os recortes aparecem como **cartões ampliados** (~1,4× a tela do celular, o zoom aprovado), com o título real da tela numa etiqueta ("Calendário de ocupação", "Nova reserva", "Detalhes da reserva"). Cada cartão entra opaco, de baixo, por cima do anterior.
 - **Nada inventado:** nenhuma tela, botão, função ou aviso de sucesso; o único toque no Hospeda é em "Confirmar reserva".
+- **Logo do FAZLO Hospeda:** a oficial, enviada pela @fazlohospeda. O desenho (casa e cama) é usado como veio; só o círculo preto foi redesenhado liso, porque o arquivo tem a borda serrilhada. No CTA, um brilho branco suave atrás dela separa o círculo preto do fundo escuro.
 
 ## Direção de arte
 
@@ -82,6 +83,7 @@ Trilha e efeitos **sintetizados do zero** (numpy/scipy), seguindo os cues da ani
 - **Transições dos recortes:** o cartão novo entra opaco por cima do anterior, e os contornos do cartão que sai somem na hora (antes, os dois cartões ficavam meio transparentes um sobre o outro).
 - **Imagem congelada:** o QA acusou a pausa da conversa (12,98 s); o celular passou a respirar devagar (±7 px).
 - **Antes → depois:** como só os valores mudam, a troca quase não mexia a imagem; agora uma faixa lima varre o cartão junto com o fio.
+- **Logo oficial no CTA:** substituiu a marca "FAZLO | HOSPEDA" recortada do app, usada até a logo chegar.
 
 ## Arquivos-fonte
 
@@ -89,8 +91,8 @@ Trilha e efeitos **sintetizados do zero** (numpy/scipy), seguindo os cues da ani
 reels/mandou-mensagem/
   reel.json                # metadados, fontes, assets (recortes tratados), QA, storyboard
   src/anim.js              # balão, rotina, site e conversa recriados, cartões do Hospeda, o fio, CTA, capa, cues
-  src/assets/hospeda/      # recortes tratados (01–06), manifest.json e a marca do app (provisória no CTA)
-  scripts/prints.py        # recortes recebidos -> assets (telefone coberto se vier à vista; 06 alinhado ao 02)
+  src/assets/hospeda/      # recortes tratados (01–06), a logo oficial do Hospeda e manifest.json
+  scripts/prints.py        # recebidos -> assets (telefone coberto se vier à vista; 06 alinhado ao 02; círculo da logo liso)
   scripts/audio.py         # trilha e efeitos por cue, master
   audio/cues.json          # 55 eventos de som exportados da animação
   audio/trilha.wav

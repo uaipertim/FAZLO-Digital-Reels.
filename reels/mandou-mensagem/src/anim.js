@@ -510,11 +510,13 @@
     return P[0];
   }
   // o fio no CTA: passa por baixo das duas logos, com um laço entre elas
-  const LINK = { y: 975, t0: T.cta + 0.4, t1: T.cta + 1.0 };
+  // as duas marcas no CTA: FAZLO DIGITAL (SVG do kit) e a logo oficial do FAZLO Hospeda (círculo)
+  const MK = { y: 880, dig: { x: 365, w: 400 }, hos: { x: 785, d: 260 }, laco: 610 };
+  const LINK = { y: 1052, t0: T.cta + 0.4, t1: T.cta + 1.0 };
   function linkPoly() {
-    const P = [{ x: 96, y: LINK.y }];
-    for (let k = 0; k <= 24; k++) { const a = Math.PI / 2 - (k / 24) * TAU; P.push({ x: 540 + Math.cos(a) * 34, y: LINK.y - 34 + Math.sin(a) * 34 }); }
-    P.push({ x: 984, y: LINK.y });
+    const P = [{ x: 150, y: LINK.y }];
+    for (let k = 0; k <= 24; k++) { const a = Math.PI / 2 - (k / 24) * TAU; P.push({ x: MK.laco + Math.cos(a) * 34, y: LINK.y - 34 + Math.sin(a) * 34 }); }
+    P.push({ x: 930, y: LINK.y });
     return P;
   }
   // posição da cabeça do fio no instante t (null antes de nascer)
@@ -642,21 +644,22 @@
     if (t < T.cta - 0.1) return;
     const gp = prog(t, T.cta, T.cta + 1.0);
     glow(c, 540, 900, 560, 0.09 * gp + 0.03 * Math.sin(t * 3) * gp);
-    drawLogo(c, 292, 880, 400, t, T.cta + 0.02);
-    const hp = E.outBack(prog(t, T.cta + 0.25, T.cta + 0.6), 1.5);   // FAZLO HOSPEDA (provisória: a marca do app)
-    const pill = IMG['hospeda-pilula'];
-    if (hp > 0 && pill) {
-      const w = 392, h = w * pill.height / pill.width;
-      c.save(); c.globalAlpha *= clamp(hp); c.translate(786, 880); c.scale(hp, hp);
-      c.drawImage(pill, -w / 2, -h / 2, w, h); c.restore();
+    drawLogo(c, MK.dig.x, MK.y, MK.dig.w, t, T.cta + 0.02);
+    const hp = E.outBack(prog(t, T.cta + 0.25, T.cta + 0.6), 1.5);   // FAZLO HOSPEDA: a logo oficial
+    const lg = IMG['hospeda-logo'];
+    if (hp > 0 && lg) {
+      const d = MK.hos.d;
+      c.save(); c.globalAlpha *= clamp(hp); c.translate(MK.hos.x, MK.y); c.scale(hp, hp); c.rotate((1 - clamp(hp)) * -0.4);
+      glow(c, 0, 0, d * 0.75, 0.08, '#FFFFFF');
+      c.drawImage(lg, -d / 2, -d / 2, d, d); c.restore();
     }
     const s1 = E.outCubic(prog(t, T.cta + 0.9, T.cta + 1.3)), s2 = E.outCubic(prog(t, T.cta + 1.1, T.cta + 1.5));
-    text(c, 'Site para ser encontrada.', W / 2, 1100 + (1 - s1) * 24, { size: 40, weight: 500, color: C.soft, align: 'center', alpha: s1 });
-    text(c, 'Sistema para se organizar.', W / 2, 1156 + (1 - s2) * 24, { size: 40, weight: 500, color: C.soft, align: 'center', alpha: s2 });
+    text(c, 'Site para ser encontrada.', W / 2, 1140 + (1 - s1) * 24, { size: 40, weight: 500, color: C.soft, align: 'center', alpha: s1 });
+    text(c, 'Sistema para se organizar.', W / 2, 1196 + (1 - s2) * 24, { size: 40, weight: 500, color: C.soft, align: 'center', alpha: s2 });
     const s3 = E.outBack(prog(t, T.cta + 1.6, T.cta + 2.0), 1.6);
     if (s3 > 0) {
       const lbl = 'Fale com a FAZLO · link na bio', fw = measure(lbl, TEXT, 34, 600) + 120;
-      c.save(); c.translate(W / 2, 1282); c.scale(s3, s3);
+      c.save(); c.translate(W / 2, 1318); c.scale(s3, s3);
       rrect(c, -fw / 2, -38, fw, 76, 38); c.fillStyle = C.lime; c.fill();
       text(c, lbl, -fw / 2 + 40, 12, { size: 34, weight: 600, color: C.ink });
       icon(c, 'arrow', fw / 2 - 44, -2 - 4 * Math.sin(t * 6), 34, C.ink, 0.12);

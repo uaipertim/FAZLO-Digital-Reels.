@@ -12,11 +12,14 @@ src/assets/hospeda/ só as versões tratadas:
   - 06 (calendário depois): alinhado ao 02 pelo conteúdo (bloco escuro de indicadores), na
     mesma tela de 1290 x altura do 02, para a troca antes -> depois ser direta.
   - 01 (painel): só os cards do topo (o recorte já termina em "A receber hoje").
+  - hospeda-logo.png (logo oficial do FAZLO Hospeda, recortada no círculo): o desenho (casa e
+    cama) é mantido como veio; só o círculo preto é redesenhado liso (o arquivo tem a borda
+    serrilhada).
 
     python3 reels/mandou-mensagem/scripts/prints.py <pasta-dos-recortes>
 
-A pasta deve ter: 01-painel.jpg 02-calendario-antes.jpg 03-etapa4.jpg 04-revisao.jpg
-05-detalhes.jpg (e 06-calendario-depois.jpg quando chegar).
+A pasta deve ter: 01-painel, 02-calendario-antes, 03-etapa4, 04-revisao, 05-detalhes,
+06-calendario-depois (.png ou .jpg) e hospeda-logo.png.
 """
 import json
 import os
@@ -52,16 +55,30 @@ for name in ['01-painel', '02-calendario-antes', '03-etapa4', '04-revisao', '05-
     im.save(out, quality=93, subsampling=0)
     manifest[name] = {'w': im.width, 'h': im.height}
     print(f'ok {name}: {im.width}x{im.height}' + ('  (telefone coberto)' if name in TELEFONE else ''))
-# a marca do Hospeda como aparece no app (pílula do topo do painel): provisória no CTA até chegar a logo oficial
-pill_src = os.path.join(OUT, '01-painel.jpg')
-if os.path.exists(pill_src):
-    pill = Image.open(pill_src).convert('RGBA').crop((36, 36, 469, 108))
-    mask = Image.new('L', pill.size, 0)
-    ImageDraw.Draw(mask).rounded_rectangle((0, 0, pill.width - 1, pill.height - 1), radius=pill.height // 2, fill=255)
-    pill.putalpha(mask)
-    pill.save(os.path.join(OUT, 'hospeda-pilula.png'))
-    manifest['hospeda-pilula'] = {'w': pill.width, 'h': pill.height}
-    print(f'ok hospeda-pilula: {pill.width}x{pill.height} (marca do app, provisória no CTA)')
+# logo oficial do FAZLO Hospeda: círculo preto redesenhado liso + o desenho original por dentro
+logo_src = os.path.join(SRC, 'hospeda-logo.png')
+if os.path.exists(logo_src):
+    import numpy as np
+    lg = Image.open(logo_src).convert('RGBA')
+    a = np.asarray(lg).astype(int)
+    preto = (a[..., :3].mean(2) < 40) & (a[..., 3] > 200)
+    ys, xs = np.where(preto)
+    cx, cy = (xs.min() + xs.max()) / 2, (ys.min() + ys.max()) / 2
+    r = ((xs.max() - xs.min()) + (ys.max() - ys.min())) / 4
+    SS = 4                                                       # círculo com antisserrilhado (supersample)
+    big = Image.new('L', (lg.width * SS, lg.height * SS), 0)
+    ImageDraw.Draw(big).ellipse(((cx - r) * SS, (cy - r) * SS, (cx + r) * SS, (cy + r) * SS), fill=255)
+    disco = big.resize(lg.size, Image.LANCZOS)
+    out = Image.new('RGBA', lg.size, (0, 0, 0, 0))
+    out.paste((0, 0, 0, 255), (0, 0), disco)
+    dentro = Image.new('L', lg.size, 0)
+    ImageDraw.Draw(dentro).ellipse((cx - r + 10, cy - r + 10, cx + r - 10, cy + r - 10), fill=255)
+    out.paste(lg.convert('RGB'), (0, 0), dentro)
+    caixa = (int(cx - r) - 2, int(cy - r) - 2, int(cx + r) + 3, int(cy + r) + 3)
+    out = out.crop(caixa)
+    out.save(os.path.join(OUT, 'hospeda-logo.png'))
+    manifest['hospeda-logo'] = {'w': out.width, 'h': out.height}
+    print(f'ok hospeda-logo: {out.width}x{out.height} (círculo redesenhado, desenho original)')
 # 06 alinhado ao 02 pelo bloco escuro de indicadores (mesma escala e posição)
 def bloco_escuro(im):
     import numpy as np
