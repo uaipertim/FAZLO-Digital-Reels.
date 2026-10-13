@@ -19,6 +19,7 @@
     "storyboard": "python3 tools/storyboard.py",
     "qa": "python3 tools/qa.py",
     "carousel": "node tools/carousel.cjs",
+    "destaques": "node tools/destaques.cjs",
     "test": "node tools/build.cjs _calibracao"
   },
   "devDependencies": {

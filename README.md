@@ -13,6 +13,7 @@ Produção dos Reels do Instagram da **FAZLO Digital**: motion graphics 9:16 ani
 | Capa | PNG 1080×1920, conferida também no recorte 3:4 do perfil |
 | Revisão | relatório técnico, sincronia som × imagem, zonas seguras da interface do Reels, storyboard |
 | Carrossel | PNG **1080×1350 (4:5)** por slide, opaco; topo abaixo do contador nativo do Instagram; capa conferida no recorte 3:4 da grade do perfil; prévia e folha em tamanho real |
+| Capa de destaque | PNG **1080×1920**, fundo liso, ícone no círculo seguro (centro 540, 960; Ø 720 px); prévia do perfil em tema escuro e claro ([`destaques/`](destaques)) |
 
 ## Requisitos
 
@@ -90,6 +91,7 @@ reels/
   _calibracao/                 # cartela técnica que valida o pipeline
 carrosseis/
   o-que-o-hospede-procura/     # um carrossel por pasta (ver carrosseis/README.md)
+destaques/                     # capas dos destaques do perfil (ver destaques/README.md)
 ```
 
 Cada Reel:

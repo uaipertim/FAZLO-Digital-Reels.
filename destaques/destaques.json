@@ -1,0 +1,15 @@
+{
+  "id": "destaques",
+  "title": "Capas de destaques do perfil @fazlodigital",
+  "status": "prévia · aguardando aprovação",
+  "format": { "width": 1080, "height": 1920 },
+  "cores": { "fundo": "#050606", "icone": "#C6FA41" },
+  "circuloSeguro": { "cx": 540, "cy": 960, "d": 720 },
+  "icone": { "fracao": 0.45, "escala": 3.0, "traco": 9 },
+  "capas": [
+    { "id": "sites", "nome": "Sites", "icone": "navegador" },
+    { "id": "raio-x", "nome": "Raio-x", "icone": "ficha-scan" },
+    { "id": "hospeda", "nome": "Hospeda", "icone": "calendario-check" },
+    { "id": "fale-com-a-fazlo", "nome": "Fale com a FAZLO", "icone": "balao" }
+  ]
+}

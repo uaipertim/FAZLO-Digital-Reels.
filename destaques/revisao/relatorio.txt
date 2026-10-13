@@ -1,0 +1,41 @@
+DESTAQUES — revisão das capas
+
+sites.png  (destaque "Sites")
+OK     1080x1920
+OK     opaca
+OK     fundo liso #050606
+OK     só fundo e lima (desvio máximo 1.6/255)
+OK     ícone dentro do círculo seguro (até 192 px do centro; raio 360)
+OK     ícone 328x268 px = 45.6% do diâmetro (alvo ~45%)
+OK     centrado (-0.5, -0.5 px)
+
+raio-x.png  (destaque "Raio-x")
+OK     1080x1920
+OK     opaca
+OK     fundo liso #050606
+OK     só fundo e lima (desvio máximo 1.5/255)
+OK     ícone dentro do círculo seguro (até 188 px do centro; raio 360)
+OK     ícone 340x328 px = 47.2% do diâmetro (alvo ~45%)
+OK     centrado (-0.5, -0.5 px)
+
+hospeda.png  (destaque "Hospeda")
+OK     1080x1920
+OK     opaca
+OK     fundo liso #050606
+OK     só fundo e lima (desvio máximo 1.6/255)
+OK     ícone dentro do círculo seguro (até 198 px do centro; raio 360)
+OK     ícone 304x316 px = 43.9% do diâmetro (alvo ~45%)
+OK     centrado (-0.5, -0.5 px)
+
+fale-com-a-fazlo.png  (destaque "Fale com a FAZLO")
+OK     1080x1920
+OK     opaca
+OK     fundo liso #050606
+OK     só fundo e lima (desvio máximo 1.5/255)
+OK     ícone dentro do círculo seguro (até 190 px do centro; raio 360)
+OK     ícone 328x286 px = 45.6% do diâmetro (alvo ~45%)
+OK     centrado (-0.5, -0.5 px)
+
+traço: 27 px em todas (mesma escala e mesma espessura no SVG); sem texto nas capas
+
+RESULTADO: aprovado
