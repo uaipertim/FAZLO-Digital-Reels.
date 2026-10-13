@@ -7,7 +7,7 @@ OK     app y 0–250 livre (só fundo #050606)
 OK     centro y 700–1300 livre (só fundo #050606)
 OK     rodape y 1650–1920 livre (só fundo #050606)
 OK     só as cores da marca (desvio máximo 2.1/255)
-OK     logo y 325–398, abaixo da faixa do app (y 250)
+OK     logo y 324–372, abaixo da faixa do app (y 250)
        detalhe lima: x 817–1079, y 1400–1609 (corta a borda)
 
 fundo-caixinha.png  (caixinha de perguntas)
@@ -17,7 +17,7 @@ OK     app y 0–250 livre (só fundo #050606)
 OK     centro y 700–1300 livre (só fundo #050606)
 OK     rodape y 1650–1920 livre (só fundo #050606)
 OK     só as cores da marca (desvio máximo 2.1/255)
-OK     logo y 325–398, abaixo da faixa do app (y 250)
+OK     logo y 324–372, abaixo da faixa do app (y 250)
        detalhe lima: x 0–241, y 1400–1609 (corta a borda)
 
 RESULTADO: aprovado

@@ -2,7 +2,7 @@
 
 Fundos para Stories da @fazlodigital. A enquete e a caixinha de perguntas são figurinhas feitas no próprio app, por cima do fundo.
 
-**Status: concluído · em avaliação.**
+**Status: concluído · aprovado.**
 
 | Arquivo | Uso | Detalhe lima |
 |---|---|---|
@@ -14,7 +14,7 @@ Fundos para Stories da @fazlodigital. A enquete e a caixinha de perguntas são f
 ## Regras
 
 - **Formato:** PNG 1080×1920, fundo `#050606` liso.
-- **Logo:** FAZLO DIGITAL do kit oficial (`brand/logo/kit/FAZLO-DIGITAL-branca-transparente.svg`), embutida como vetor, sem redesenhar. Tem 360 px de largura, fica centralizada e ocupa y 325–398, abaixo da faixa que o app cobre (y 0–250).
+- **Logo:** a compacta "FAZLO" do kit oficial (`brand/logo/kit/FAZLO-logo-branca-transparente.svg`), a mesma dos slides internos dos carrosséis. Vai embutida como vetor, sem redesenhar, com 300 px de largura, centralizada, em y 324–372, abaixo da faixa que o app cobre (y 0–250).
 - **Detalhe lima `#C6FA41`:** a barra do Z, com a geometria da marca:
   - inclinação dx/dy = −0,966 e largura = 0,438 × altura;
   - 210 px de altura, entre y 1400 e 1610;
