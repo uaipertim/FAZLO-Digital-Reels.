@@ -2,7 +2,7 @@
 
 Capas dos destaques do perfil da @fazlodigital. O Instagram usa um Story (1080×1920) como capa e recorta um **círculo** no centro.
 
-**Status: prévia · aguardando aprovação.**
+**Status: concluído · aprovado.**
 
 ![prévia no perfil](previa-perfil.png)
 
@@ -11,7 +11,7 @@ Capas dos destaques do perfil da @fazlodigital. O Instagram usa um Story (1080×
 | **Sites** | janela de navegador: barra de cima (com os 3 botões) e um bloco de conteúdo | [`sites.png`](sites.png) |
 | **Raio-x** | ficha atravessada por uma linha de scan horizontal, que passa das bordas | [`raio-x.png`](raio-x.png) |
 | **Hospeda** | calendário com um check (ícone FAZLO, não a logo do Hospeda) | [`hospeda.png`](hospeda.png) |
-| **Fale com a FAZLO** | balão de conversa genérico com três pontinhos (sem logo de app) | [`fale-com-a-fazlo.png`](fale-com-a-fazlo.png) |
+| **Contato** | balão de conversa genérico com três pontinhos (sem logo de app) | [`contato.png`](contato.png) |
 
 ## Regras
 
@@ -26,9 +26,9 @@ Capas dos destaques do perfil da @fazlodigital. O Instagram usa um Story (1080×
   | Sites | 328×268 px | 45,6% |
   | Raio-x | 340×328 px | 47,2% (a linha de scan passa das bordas) |
   | Hospeda | 304×316 px | 43,9% |
-  | Fale com a FAZLO | 328×286 px | 45,6% |
+  | Contato | 328×286 px | 45,6% |
 
-- **Nome do destaque:** o Instagram aceita até **15 caracteres** e mostra cerca de 9 a 10 embaixo do círculo. "Fale com a FAZLO" tem 16, então não cabe no limite. Na prévia, o nome aparece cortado como no app ("Fale com a…").
+- **Nome do destaque:** o Instagram aceita até **15 caracteres** e mostra cerca de 9 a 10 embaixo do círculo. Os 4 nomes (Sites, Raio-x, Hospeda, Contato) aparecem inteiros. O 4º se chamaria "Fale com a FAZLO", mas tem 16 caracteres e virou **"Contato"**.
 
 ## Prévia e revisão
 

@@ -27,7 +27,7 @@ OK     ícone dentro do círculo seguro (até 198 px do centro; raio 360)
 OK     ícone 304x316 px = 43.9% do diâmetro (alvo ~45%)
 OK     centrado (-0.5, -0.5 px)
 
-fale-com-a-fazlo.png  (destaque "Fale com a FAZLO")
+contato.png  (destaque "Contato")
 OK     1080x1920
 OK     opaca
 OK     fundo liso #050606
