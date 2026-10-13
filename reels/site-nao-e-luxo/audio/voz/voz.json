@@ -1,0 +1,158 @@
+{
+  "voz": {
+    "id": "GDzHdQOi6jjf8zaXhCYD",
+    "nome": "Raquel - Expressive and Energetic"
+  },
+  "modelo": "eleven_v4",
+  "ajustes": {
+    "stability": 0.5,
+    "similarity_boost": 0.75
+  },
+  "formato": "mp3_44100_128",
+  "contexto": "previous_text / next_text",
+  "fazlo_api": "FAZLO",
+  "falas": [
+    {
+      "id": "1-gancho",
+      "texto": "Site é coisa de pousada grande?",
+      "texto_api": "Site é coisa de pousada grande?",
+      "semente": 2026,
+      "arquivo": "1-gancho.mp3",
+      "janela": [
+        0.0,
+        4.2
+      ],
+      "arquivo_ini": 0.287,
+      "fala_ini": 0.3,
+      "fala_fim": 2.325,
+      "duracao_fala": 2.025,
+      "ancora": "Site",
+      "ancora_em": 0.3,
+      "pausas_encurtadas": [],
+      "cabe": true
+    },
+    {
+      "id": "2-mito",
+      "texto": "Tem gente que acha que é luxo…",
+      "texto_api": "Tem gente que acha que é luxo…",
+      "semente": 7,
+      "arquivo": "2-mito.mp3",
+      "janela": [
+        4.2,
+        6.6
+      ],
+      "arquivo_ini": 4.463,
+      "fala_ini": 4.5,
+      "fala_fim": 6.236,
+      "duracao_fala": 1.736,
+      "ancora": "Tem",
+      "ancora_em": 4.5,
+      "pausas_encurtadas": [],
+      "cabe": true
+    },
+    {
+      "id": "3-nao-e",
+      "texto": "Não é.",
+      "texto_api": "Não é.",
+      "semente": 2026,
+      "arquivo": "3-nao-e.mp3",
+      "janela": [
+        6.6,
+        9.0
+      ],
+      "arquivo_ini": 6.579,
+      "fala_ini": 6.6,
+      "fala_fim": 7.156,
+      "duracao_fala": 0.556,
+      "ancora": "Não",
+      "ancora_em": 6.6,
+      "pausas_encurtadas": [],
+      "cabe": true
+    },
+    {
+      "id": "4-basico",
+      "texto": "Uma pousada pequena precisa do básico bem feito: fotos de cada quarto, consulta de datas, como chegar… e o WhatsApp à vista.",
+      "texto_api": "Uma pousada pequena precisa do básico bem feito: fotos de cada quarto, consulta de datas, como chegar… e o WhatsApp à vista.",
+      "semente": 2026,
+      "arquivo": "4-basico.mp3",
+      "janela": [
+        9.0,
+        18.0
+      ],
+      "arquivo_ini": 8.988,
+      "fala_ini": 9.02,
+      "fala_fim": 17.682,
+      "duracao_fala": 8.662,
+      "ancora": "Uma",
+      "ancora_em": 9.02,
+      "pausas_encurtadas": [
+        {
+          "em": 3.2,
+          "tirado": 0.18
+        },
+        {
+          "em": 7.404,
+          "tirado": 0.153
+        }
+      ],
+      "cabe": true
+    },
+    {
+      "id": "5-trabalha",
+      "texto": "E o site trabalha até quando você não pode atender. A consulta chega à noite… e de manhã é só responder.",
+      "texto_api": "E o site trabalha até quando você não pode atender. A consulta chega à noite… e de manhã é só responder.",
+      "semente": 2026,
+      "arquivo": "5-trabalha.mp3",
+      "janela": [
+        18.0,
+        25.8
+      ],
+      "arquivo_ini": 17.974,
+      "fala_ini": 18.0,
+      "fala_fim": 25.326,
+      "duracao_fala": 7.326,
+      "ancora": "E o site",
+      "ancora_em": 18.0,
+      "pausas_encurtadas": [],
+      "cabe": true
+    },
+    {
+      "id": "6-virada",
+      "texto": "Não é luxo. É ser encontrada.",
+      "texto_api": "Não é luxo. É ser encontrada.",
+      "semente": 2026,
+      "arquivo": "6-virada.mp3",
+      "janela": [
+        25.8,
+        30.0
+      ],
+      "arquivo_ini": 26.724,
+      "fala_ini": 26.754,
+      "fala_fim": 29.13,
+      "duracao_fala": 2.376,
+      "ancora": "É ser",
+      "ancora_em": 27.95,
+      "pausas_encurtadas": [],
+      "cabe": true
+    },
+    {
+      "id": "7-cta",
+      "texto": "Fale com a FAZLO. Link na bio.",
+      "texto_api": "Fale com a FAZLO. Link na bio.",
+      "semente": 2026,
+      "arquivo": "7-cta.mp3",
+      "janela": [
+        30.0,
+        33.0
+      ],
+      "arquivo_ini": 30.328,
+      "fala_ini": 30.35,
+      "fala_fim": 32.641,
+      "duracao_fala": 2.291,
+      "ancora": "Fale",
+      "ancora_em": 30.35,
+      "pausas_encurtadas": [],
+      "cabe": true
+    }
+  ]
+}

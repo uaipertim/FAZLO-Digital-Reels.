@@ -7,6 +7,9 @@ Revisão técnica e de sincronização do vídeo final (roda depois do render).
                                      reels/<id>/output/revisao/zonas-seguras.jpg
                                      reels/<id>/output/revisao/capa-no-feed.jpg
 
+    Outra versão do mesmo Reel (ex.: com narração), caminhos relativos à pasta do Reel:
+    python3 tools/qa.py <reel> --video output/x.mp4 --track audio/x.wav --revisao revisao-x
+
 Técnica: formato (1080x1920, 60 fps, H.264 yuv420p, AAC 48 kHz estéreo),
 duração de vídeo e áudio, loudness (-14 LUFS ±1), pico real (≤ -1 dBTP),
 quadros pretos e congelados, 1º quadro com imagem, capa 1080x1920.
@@ -36,8 +39,16 @@ import reelcfg  # noqa: E402
 R = reelcfg.resolve()
 CFG, QA = R['cfg'], R['cfg'].get('qa', {})
 FMT = CFG.get('format', {'width': 1080, 'height': 1920, 'fps': 60})
-VIDEO, COVER, TRACK = R['video'], R['cover'], R['track']
-OUT = os.path.join(R['root'], 'output', 'revisao')
+
+
+def _opt(nome):
+    return sys.argv[sys.argv.index(nome) + 1] if nome in sys.argv[:-1] else None
+
+
+VIDEO = os.path.join(R['root'], _opt('--video')) if _opt('--video') else R['video']
+TRACK = os.path.join(R['root'], _opt('--track')) if _opt('--track') else R['track']
+COVER = R['cover']
+OUT = os.path.join(R['root'], 'output', _opt('--revisao') or 'revisao')
 ZONES = reelcfg.safe_zones()
 os.makedirs(OUT, exist_ok=True)
 if not os.path.exists(VIDEO):

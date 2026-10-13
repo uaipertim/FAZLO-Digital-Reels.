@@ -18,7 +18,10 @@ da marca ("o corte" e o motivo Lá bemol 5 -> Mi bemol 6).
   CTA         a assinatura completa na logo; Lá bemol maior
 
     python3 reels/site-nao-e-luxo/scripts/audio.py   -> audio/trilha.wav (48 kHz, estéreo, -14 LUFS)
+    python3 reels/site-nao-e-luxo/scripts/audio.py --voz   -> audio/trilha-voz.wav (com a narração de
+                                                            scripts/voz.py; a trilha.wav não muda)
 """
+import json
 import os
 import sys
 import numpy as np
@@ -27,6 +30,9 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(ROOT, '..', '..', 'tools', 'audio'))
 from fzaudio import *  # noqa: E402,F403
 from fzbrand import sig_cut, sig_motif  # noqa: E402
+
+VOZ = '--voz' in sys.argv                                     # versão narrada (teste)
+DR = 'drums_fx' if VOZ else 'drums'                           # batidas dos golpes: com voz, num barramento próprio
 
 seed(1105)
 DATA = load_cues(ROOT)
@@ -348,7 +354,7 @@ def fx(c):
         mix.place('sfx', shatter(0.9, 30), t, 0.13)
         mix.place('send', shatter(0.9, 30), t, 0.05)
         mix.place('sfx', filt(impact(1.6, 1.3), 40, 'high'), t, 0.32)
-        mix.place('drums', kk(), t, 0.45)
+        mix.place(DR, kk(), t, 0.45)
     elif ty == 'gather':                                # as peças se organizam
         mix.place_pan('sfx', whoosh(d, 600, 3000, 0.6, 1.3), t, 0.05, 0.5, -0.5)
     elif ty == 'rise':                                  # o celular sobe
@@ -362,7 +368,7 @@ def fx(c):
     elif ty == 'fall':                                  # a queda: sopro que desce
         mix.place('sfx', whoosh(d, 3000, 600, 0.75, 1.2), t, 0.06)
     elif ty == 'drop':                                  # pouso: batida grave + bloco afinado (notas sobem)
-        mix.place('drums', kk(), t, 0.42)
+        mix.place(DR, kk(), t, 0.42)
         mix.place('sfx', block(midi(DROP_N[k]), 0.35), t, 0.24, 0.15)
         mix.place('sfx', glass(midi(DROP_N[k] + 12), 0.6), t + 0.01, 0.06)
         mix.place('send', block(midi(DROP_N[k]), 0.35), t, 0.06)
@@ -407,8 +413,8 @@ def fx(c):
     elif ty == 'hit':                                   # É SER ENCONTRADA.
         mix.place('sfx', imp(2.0, 1.0), t, 0.42)
         mix.place('send', imp(2.0, 1.0), t, 0.12)
-        mix.place('drums', kk(), t, 0.5)
-        mix.place('drums', clap(), t, 0.4)
+        mix.place(DR, kk(), t, 0.5)
+        mix.place(DR, clap(), t, 0.4)
         mix.place('sfx', crash(1.8), t, 0.1)
         for j, n in enumerate([80, 87, 92]):            # "ping" de ser encontrada
             mix.place('sfx', bell(midi(n), 1.0), t + j * 0.08, 0.06, -0.3 + 0.3 * j)
@@ -427,17 +433,44 @@ def fx(c):
 for c in CUES:
     fx(c)
 
-out = mix.render(levels={'music': 0.82, 'drums': 0.72, 'sfx': 1.0}, reverb={'send': 0.55, 'sfx': 0.1, 'music': 0.12})
-# respiro antes dos golpes principais: 60 ms em -14 dB
-g = np.ones(out.shape[1])
-for c in CUES:
-    if c['type'] in ('slash', 'hit', 'logo'):
-        i1 = int(c['t'] * SR)
-        i0, i_ = i1 - int(0.075 * SR), i1 - int(0.06 * SR)
-        g[i0:i_] = np.minimum(g[i0:i_], np.linspace(1, 0.2, i_ - i0))
-        g[i_:i1 - 192] = np.minimum(g[i_:i1 - 192], 0.2)
-        g[i1 - 192:i1] = np.minimum(g[i1 - 192:i1], np.linspace(0.2, 1, 192))
-out = out * g
-out = filt(out, 28, 'high')
-out = out - 0.4 * filt(out, 70, 'low') + 0.25 * filt(out, [500, 1500], 'band') + 0.3 * filt(out, [1500, 6000], 'band')
-master(out, os.path.join(ROOT, 'audio', 'trilha.wav'), ceiling_db=-3.3)   # folga para o AAC nos golpes
+LEVELS = {'music': 0.82, 'drums': 0.72, 'drums_fx': 0.72, 'sfx': 1.0}
+
+
+def cama(m):
+    out = m.render(levels=LEVELS, reverb={'send': 0.55, 'sfx': 0.1, 'music': 0.12})
+    # respiro antes dos golpes principais: 60 ms em -14 dB
+    g = np.ones(out.shape[1])
+    for c in CUES:
+        if c['type'] in ('slash', 'hit', 'logo'):
+            i1 = int(c['t'] * SR)
+            i0, i_ = i1 - int(0.075 * SR), i1 - int(0.06 * SR)
+            g[i0:i_] = np.minimum(g[i0:i_], np.linspace(1, 0.2, i_ - i0))
+            g[i_:i1 - 192] = np.minimum(g[i_:i1 - 192], 0.2)
+            g[i1 - 192:i1] = np.minimum(g[i1 - 192:i1], np.linspace(0.2, 1, 192))
+    out = out * g
+    out = filt(out, 28, 'high')
+    return out - 0.4 * filt(out, 70, 'low') + 0.25 * filt(out, [500, 1500], 'band') + 0.3 * filt(out, [1500, 6000], 'band')
+
+
+if not VOZ:
+    master(cama(mix), os.path.join(ROOT, 'audio', 'trilha.wav'), ceiling_db=-3.3)   # folga para o AAC nos golpes
+else:
+    # narração: a trilha abaixa sob a voz e volta nos respiros; os golpes ficam, sem cobrir palavras
+    import copy
+    import voz
+    v = voz.trilha_da_voz(mix.N)
+    cheia = cama(copy.deepcopy(mix))
+    g_trilha = voz.abaixa_sob_a_voz(mix, v)
+    base = cama(mix)
+    alvo = measure_lufs(cheia.T) + voz.VOZ_ACIMA
+    total, vm = voz.soma_voz(base, v, alvo, measure_lufs)
+    cob = voz.cobertura(base, vm)
+    pior = min(cob, key=lambda w: w[2])
+    print(f'voz: {alvo:.1f} LUFS (trilha cheia {alvo - voz.VOZ_ACIMA:.1f}) · trilha sob a voz {20 * np.log10(g_trilha.min()):.1f} dB')
+    print(f'cobertura: {len(cob)} palavras, voz acima da cama (300 Hz–4 kHz) no mínimo {pior[2]:+.1f} dB ("{pior[1]}", {pior[3]:.2f} s)')
+    for w in sorted(cob, key=lambda w: w[2])[:6]:
+        print(f'   {w[2]:+5.1f} dB  {w[3]:6.2f} s  {w[0]:11} {w[1]}')
+    json.dump({'voz_lufs_pre_master': round(alvo, 2), 'trilha_sob_a_voz_db': round(20 * np.log10(g_trilha.min()), 2),
+               'cobertura_db': [{'fala': w[0], 'palavra': w[1], 't': w[3], 'db': w[2]} for w in cob]},
+              open(os.path.join(ROOT, 'audio', 'voz', 'mix.json'), 'w'), ensure_ascii=False, indent=1)
+    master(total, os.path.join(ROOT, 'audio', 'trilha-voz.wav'), ceiling_db=-3.3, fade_out=0.25)

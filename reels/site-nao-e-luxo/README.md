@@ -7,6 +7,7 @@ Reel da @fazlodigital (pasta `site-nao-e-luxo`). Usa a mesma identidade, o mesmo
 **Formato:** 9:16 (1080×1920), **33,0 s**, 60 fps, H.264 + AAC 48 kHz, áudio em −14 LUFS. 100% motion graphics. Todas as interfaces são **ilustrativas e genéricas**: nenhuma pousada real, nenhum número inventado (valores, datas e endereço aparecem como barras), nenhuma promessa de preço.
 
 ▶ **Vídeo:** [`output/fazlo-digital-site-nao-e-luxo.mp4`](output/fazlo-digital-site-nao-e-luxo.mp4)
+🎙 **Teste com narração (ElevenLabs):** [`output/site-nao-e-luxo-voz.mp4`](output/site-nao-e-luxo-voz.mp4) · [detalhes](#versão-com-narração-teste)
 🖼 **Capa:** [`output/capa.png`](output/capa.png) · Storyboard: [`output/storyboard.jpg`](output/storyboard.jpg) · Revisão: [`output/revisao/`](output/revisao)
 
 ![storyboard](output/storyboard.jpg)
@@ -103,16 +104,92 @@ Trilha e efeitos **sintetizados do zero** (numpy/scipy), seguindo os cues da ani
 - **Imagem congelada:** o QA acusou as pausas de leitura (gancho, site montado, frase, noite). Agora o gancho tem uma aproximação lenta e o celular respira devagar (±7 px e 1% de escala) depois do último pouso, sem mexer na leitura.
 - **Trechos escuros:** o QA acusou 0,15 s em 18,2 s (a tela apagando à noite) e 0,2 s em 30,1 s (a passagem para a logo). Agora a tela escurece e passa direto para a tela de bloqueio, e no CTA a barra lima da logo ("o corte") varre a tela enquanto o celular sai e a logo se monta.
 
+## Versão com narração (teste)
+
+Arquivo **novo**: [`output/site-nao-e-luxo-voz.mp4`](output/site-nao-e-luxo-voz.mp4). A imagem é a mesma do MP4 sem voz (o fluxo de vídeo é copiado, sem renderizar de novo), então os textos na tela não mudam. A versão sem voz continua intacta: `audio/trilha.wav` sai idêntica (mesmo MD5) e o MP4 dela não foi tocado.
+
+### Voz e modelo
+
+| | |
+|---|---|
+| **Voz** | **Raquel - Expressive and Energetic** (biblioteca do ElevenLabs, português do Brasil), `voice_id` `GDzHdQOi6jjf8zaXhCYD`. Escolhida entre 4 amostras: Lucas, Ale Garcia, Raquel e Malu. |
+| **Modelo** | **Eleven v4** (`eleven_v4`, lançado em 28/09/2026), o modelo mais natural do ElevenLabs, com `language_code: pt`. |
+| **Ajustes** | estabilidade **0,5** · similaridade **0,75**. O v4 não tem os controles de estilo e velocidade. |
+| **Semente** | **2026** em todas as falas (a mesma da amostra aprovada), menos "Tem gente que acha que é luxo…", que usa a **7**: com a 2026 a fala passava do golpe. |
+| **Contexto** | cada fala vai com a anterior e a seguinte (`previous_text` / `next_text`), para a entonação continuar de um arquivo para o outro. |
+| **Formato** | MP3 44,1 kHz 128 kbps, o máximo do plano Starter (uso comercial liberado), com alinhamento por caractere (`/with-timestamps`). |
+| **Chave** | **não está no repositório.** No ambiente de nuvem ela fica nos Segredos de rede e o proxy injeta o cabeçalho `xi-api-key`. Para rodar fora dele, exporte `ELEVENLABS_API_KEY` (nunca em arquivo). |
+
+**Pronúncia de FAZLO:** a palavra foi enviada como "FAZLO", sem mudar a grafia, porque já saiu certa. A medição no áudio confirma:
+- é lida como palavra (0,48 s), sem soletrar;
+- "FAZ" sai 12 dB mais forte e dura o dobro de "lo", ou seja, **FÁZ-lo**.
+
+Se for preciso, a grafia enviada à API fica em `FAZLO_API` no `scripts/voz.py`. Na tela continua "FAZLO".
+
+### As falas (uma por arquivo, em `audio/voz/`)
+
+| Fala | Texto | No Reel |
+|---|---|---|
+| 1 | "Site é coisa de pousada grande?" | 0,30–2,33 s |
+| 2 | "Tem gente que acha que é luxo…" | 4,50–6,24 s |
+| 3 | "Não é." | **6,60** (no golpe)–7,16 s |
+| 4 | "Uma pousada pequena precisa do básico bem feito: fotos de cada quarto, consulta de datas, como chegar… e o WhatsApp à vista." | 9,02–17,68 s |
+| 5 | "E o site trabalha até quando você não pode atender. A consulta chega à noite… e de manhã é só responder." | 18,00–25,33 s |
+| 6 | "Não é luxo. É ser encontrada." | 26,75–29,13 s ("É ser" em 27,95 s, logo depois do golpe) |
+| 7 | "Fale com a FAZLO. Link na bio." | 30,35–32,64 s |
+
+**Encaixe nos tempos (sem esticar a voz, sem mudar texto nem duração):**
+
+- **Fala 4:** em 6 tomadas, ela durou de 9,03 a 9,66 s, mais que a cena. As duas pausas expressivas (depois de "bem feito:" e de "como chegar…") foram de ~0,47 s para **0,30 s**, cortando só o silêncio, com emenda de 15 ms. Com isso, a fala tem 8,66 s.
+- **Fala 5:** começa com a noite (18,0 s). Assim, a notificação (19,2 s) cai na pausa natural depois de "trabalha".
+- **Fala 7:** termina antes do fade final.
+- **Ordem da cena 3:** a fala diz a frase primeiro e depois os itens, e a tela mostra o contrário (os blocos pousam de 10,2 a 13,8 s e a frase aparece em 15,0 s). Cada item é falado cerca de 2 s depois do seu bloco pousar.
+
+### Mixagem
+
+- **Voz:** filtro de graves em 80 Hz, o mesmo nível de fala em todas as falas, no centro e sem reverb. Ela fica **2 dB acima da trilha cheia**.
+- **Trilha (música e groove):** abaixa **9 dB sob a voz** (ataque de 60 ms, começa 80 ms antes da fala, volta em 300 ms). Volta nos respiros: pausas de 0,25 s ou mais contam como respiro.
+- **Efeitos e golpes:** continuam, mas sem cobrir palavras.
+  - Sob a voz, abaixam **12 dB só na faixa da fala** (200 Hz–6 kHz) e 3 dB no resto.
+  - Esse ducking não é antecipado: o ataque dos golpes passa inteiro, e o grave e o brilho ficam.
+  - O envio para o reverb abaixa 150 ms antes da fala, para a cauda de um efeito não lavar a palavra.
+  - As batidas dos golpes vão num barramento próprio e são tratadas como efeito.
+- **Master:** **−14 LUFS**, teto de pico de −3,3 dBTP (folga para o AAC) e fade final de 0,25 s (0,6 s na versão sem voz).
+
+### Revisão (aprovada)
+
+`python3 tools/qa.py site-nao-e-luxo --video output/site-nao-e-luxo-voz.mp4 --track audio/trilha-voz.wav --revisao revisao-voz` gera os relatórios em [`output/revisao-voz/`](output/revisao-voz).
+
+- **Técnica:**
+  - 1080×1920, 60 fps, 33,000 s de vídeo e de áudio (Δ 0 ms);
+  - **−14,0 LUFS** e pico real **−3,0 dBTP**;
+  - sem trechos pretos nem imagem congelada.
+- **Sincronização:** os **9 efeitos-chave** caem no instante do evento visual, com **desvio máximo de 6,8 ms**. A imagem reage nos 5 golpes principais.
+- **Palavras cobertas:** nenhuma. Nas 71 palavras, na faixa 300 Hz–4 kHz, a voz fica no mínimo **+8,6 dB** acima da trilha e dos efeitos (mediana +21,8 dB). O detalhe por palavra está em [`audio/voz/mix.json`](audio/voz/mix.json).
+- **Master:** a parte não linear (saturação e limitador) é a mesma da versão sem voz: −38,8 dB de mediana, contra −38,4 dB. A voz não ganha distorção.
+
+### Comandos
+
+```bash
+python3 reels/site-nao-e-luxo/scripts/voz.py gerar        # falas que faltam (API) + posição de cada uma
+python3 reels/site-nao-e-luxo/scripts/voz.py takes 4-basico 7,11,23 /tmp/takes   # tomadas extras, para escolher
+python3 reels/site-nao-e-luxo/scripts/audio.py --voz      # audio/trilha-voz.wav
+python3 reels/site-nao-e-luxo/scripts/voz.py video        # output/site-nao-e-luxo-voz.mp4
+```
+
 ## Arquivos-fonte
 
 ```
 reels/site-nao-e-luxo/
   reel.json            # metadados, fontes, parâmetros de QA e storyboard
   src/anim.js          # LUXO (contorno, brilho, rachadura, peças), celular e site, noite/manhã, virada, CTA, capa, cues
-  scripts/audio.py     # trilha e efeitos por cue, master
+  scripts/audio.py     # trilha e efeitos por cue, master (--voz: versão narrada)
+  scripts/voz.py       # narração (teste): falas no ElevenLabs, posição, ducking, MP4 com voz
   audio/cues.json      # 38 eventos de som exportados da animação
   audio/trilha.wav
-  output/              # vídeo, capa, storyboard, revisão (inclui as folhas de teste das cenas)
+  audio/voz/           # as 7 falas (MP3 + alinhamento), voz.json (posição) e mix.json (cobertura por palavra)
+  audio/trilha-voz.wav
+  output/              # vídeo, capa, storyboard, revisão (inclui as folhas de teste das cenas); revisao-voz/
 ```
 
 ### Comandos (na raiz do repositório)
