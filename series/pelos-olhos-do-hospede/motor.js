@@ -1,6 +1,6 @@
 /* =====================================================================
    FAZLO Digital — série "PELOS OLHOS DO HÓSPEDE" · o modelo
-   9:16 (1080x1920), 60 fps, 10–14 s
+   9:16 (1080x1920), 60 fps · sem voz: 10–14 s · com voz: 25–30 s
 
    Um motion só. Cada episódio troca apenas o roteiro, um JSON em
    series/pelos-olhos-do-hospede/episodios/<id>.json, e a pasta do Reel
@@ -23,6 +23,13 @@
    Áreas seguras: conteúdo em y 265–1456; nada em x ≥ 950 entre y 1060 e
    1560 (coluna de botões); título do quadro 0 dentro do recorte 3:4.
    Sem telas inventadas, números, logos de apps ou emojis.
+
+   COM VOZ (roteiro com o campo "voz" e reels/<id>/audio/voz/voz.json, gerado por voz.py):
+   a voz manda no tempo. Cada cena dura a sua fala + um respiro curto; a fala do título começa
+   no quadro 0 e a batida lima cai na palavra da parte lima. Os cards ficam o tempo da sua fala,
+   flutuam de leve e o card da vez ganha um contorno lima enquanto é falado. Se o total ficar
+   abaixo de 25 s, a diferença vai para os respiros; acima de 30 s, tools/episodio.cjs avisa
+   antes de renderizar (nada é acelerado nem cortado).
    ===================================================================== */
 (function () {
   'use strict';
@@ -220,6 +227,16 @@
   const CUT = 0.2;                                  // a barra atravessa a pilha antes do carimbo
   const FECHO_D = 2.0;                              // "Manda pra quem…" + logo (pedido de 16/10: 2,0 s em todos os episódios)
   const DMIN = 10 + (FECHO_D - 1.6), DMAX = 14 + (FECHO_D - 1.6);   // o fecho maior não encurta a situação
+  // com voz
+  const V = {
+    resp: 0.55,          // respiro depois de cada fala
+    head: 0.35,          // fim da fala do título -> o título vira cabeçalho
+    entra: 0.25,         // o card entra (toque de vidro) e a fala começa depois que o toque baixa
+    virada: 0.35,        // idem para o acorde da virada
+    cauda: 1.7,          // a logo se monta no fim da fala do fecho; depois, a assinatura soa sozinha
+    min: 25,             // abaixo disso, a diferença vai para os respiros (os cards ficam mais tempo)
+  };
+  let VZ = null;         // durações das falas (reels/<id>/audio/voz/voz.json)
 
   function measureCard(c) {
     const k = { ...c };
@@ -282,6 +299,7 @@
     const fin = { vTop0: VIRADA.cy - vb.h / 2, vTop: fTop, fTop: fTop + vb.h + FECHO.gap, logoCy: fTop + total - lh / 2 };
     L = { title, tb, serie, chipW, top, rowsTop, head, cards, CY, groupH, zoneTop, zoneBot, stampS, ss, stampW, stampH, virada, vb, fRows, fs, fin };
 
+    if (VZ) { timelineVoz(cards); return; }
     // ---- linha do tempo: cada card fica o tempo de leitura do seu texto
     const gapOf = (k) => clamp(0.5 + 0.036 * k.chars, 0.85, 1.7);
     const vRead = clamp(1.9 + 0.012 * ep.virada.join(' ').replace(/\*/g, '').length, 2.3, 2.7);
@@ -302,6 +320,49 @@
     t.logo = t.fecho + 0.32;
     DURATION = Math.round((t.fecho + FECHO_D) * 60) / 60;
     t.fade = DURATION - 0.3;
+    T = t;
+  }
+
+  // a voz manda no tempo: cada cena = a sua fala + um respiro (fala do título a partir do quadro 0)
+  function timelineVoz(cards) {
+    const d = (c) => VZ[c].dur;
+    const build = (extra) => {
+      const r = V.resp + extra, t = { knock: VZ.titulo.marca ?? 0.7, cards: [], voz: { titulo: 0 } };
+      t.rise = d('titulo') + V.head;
+      let x = t.rise + 0.45;
+      cards.forEach((_, k) => { t.cards.push(x); t.voz[`card${k + 1}`] = x + V.entra; x = x + V.entra + d(`card${k + 1}`) + r; });
+      t.cut = x;
+      t.stamp = x + CUT;
+      t.voz.carimbo = t.stamp + 0.15;
+      t.exit = Math.max(t.stamp + 1.6, t.voz.carimbo + d('carimbo') + r);
+      t.virada = t.exit + 0.35;
+      t.voz.virada = t.virada + V.virada;
+      t.fecho = t.voz.virada + d('virada') + r;
+      t.voz.fecho = t.fecho + 0.2;
+      t.logo = Math.max(t.fecho + 0.32, t.voz.fecho + d('fecho') - 0.25);   // a assinatura não cobre a fala
+      t.end = Math.max(t.fecho + FECHO_D, t.logo + V.cauda);
+      return t;
+    };
+    let t = build(0);
+    if (t.end < V.min) t = build((V.min - t.end) / (cards.length + 2));   // respiros: depois de cada card, do carimbo e da virada
+    DURATION = Math.ceil(t.end * 60) / 60;
+    t.fade = DURATION - 0.3;
+    // a virada: as linhas brancas entram juntas; cada linha lima entra quando a voz chega na 1ª palavra dela
+    // (procura em ordem; sem achar, segue a anterior)
+    const norm = (w) => w.toLocaleLowerCase('pt-BR').replace(/[^a-zà-ú0-9]/g, '');
+    const pal = VZ.virada.palavras || [];
+    const lime0 = L.virada.rows.findIndex((r) => r.some((w) => w.c === C.lime));
+    let j = 0, prev = t.virada;
+    t.viradaRows = L.virada.rows.map((row, i) => {
+      let at = t.virada + i * 0.08;
+      if (lime0 >= 0 && i >= lime0) {
+        at = prev + 0.08;
+        const k = pal.findIndex((w, q) => q >= j && norm(w[0]) === norm(row[0].s));
+        if (k >= 0) { at = Math.max(at, t.voz.virada + pal[k][1] - 0.12); j = k + 1; }
+      }
+      prev = at;
+      return at;
+    });
     T = t;
   }
 
@@ -361,7 +422,16 @@
 
   // ---------------------------------------------------------------- cards
   const DRIFT = 50;                                 // a pilha sobe devagar até a saída: a cena nunca fica parada
-  const groupDrift = (t) => -DRIFT * p(t, T.cards[0], T.exit);
+  const groupDrift = (t) => -(VZ ? 90 : DRIFT) * E.inOutSine(p(t, T.cards[0], T.exit));
+  // com voz os cards ficam mais tempo: cada um flutua de leve (fase própria), já assentado
+  const floatY = (i, t) => (VZ ? 6 * Math.sin(TAU * (t - T.cards[i]) / 3.4 + i * 1.9) * p(t, T.cards[i] + 0.3, T.cards[i] + 1.0) : 0);
+  const floatR = (i, t) => (VZ ? 0.45 * DEG * Math.sin(TAU * (t - T.cards[i]) / 4.6 + i * 2.7) * p(t, T.cards[i] + 0.3, T.cards[i] + 1.0) : 0);
+  // o card da vez: contorno lima enquanto a sua fala soa
+  function falando(i, t) {
+    if (!VZ) return 0;
+    const t0 = T.voz[`card${i + 1}`], t1 = t0 + VZ[`card${i + 1}`].dur;
+    return p(t, t0 - 0.1, t0 + 0.2) * (1 - p(t, t1 + 0.1, t1 + 0.5));
+  }
   const arrive = (j, t) => E.outBack(p(t, T.cards[j], T.cards[j] + 0.45), 1.3);
   function pileJolt(t) {
     const x = t - T.stamp;
@@ -401,9 +471,9 @@
       let after = 0;
       for (let j = i + 1; j < n; j++) after += p(t, T.cards[j], T.cards[j] + 0.4);
       const dim = clamp(after * 0.12, 0, 0.36) + stampDim;
-      let y = tops[i] + (1 - inE) * 150 + jolt * (1 - 0.1 * (n - 1 - i));
+      let y = tops[i] + (1 - inE) * 150 + jolt * (1 - 0.1 * (n - 1 - i)) + floatY(i, t);
       const sc = lerp(0.96, 1, inE);
-      let rot = 0;
+      let rot = floatR(i, t);
       const d = 0.04 * (n - 1 - i), ex = p(t, T.exit + d, T.exit + d + 0.42);
       if (ex > 0) { y += 1500 * E.inCubic(ex); rot = (hash(i, 7) - 0.5) * 14 * DEG * ex; }
       if (y > H + 40) return;
@@ -414,7 +484,12 @@
       c.shadowColor = 'rgba(0,0,0,0.55)'; c.shadowBlur = 30; c.shadowOffsetY = 10;
       rr(c, x, 0, k.w, k.h, k.kind === 'chip' ? k.h / 2 : CARD.r); c.fillStyle = C.card; c.fill();
       c.shadowColor = 'transparent';
-      cardBody(c, k, i, x, t, dim);
+      cardBody(c, k, i, x, t, dim * (1 - 0.6 * falando(i, t)));
+      const fa = falando(i, t) * (1 - stampDim / 0.4);
+      if (fa > 0.01) {
+        rr(c, x, 0, k.w, k.h, k.kind === 'chip' ? k.h / 2 : CARD.r);
+        c.strokeStyle = rgba(C.lime, 0.75 * fa); c.lineWidth = 3; c.stroke();
+      }
       c.restore();
     });
   }
@@ -456,9 +531,13 @@
     const { virada, vb, fin, fRows } = L;
     const up = E.inOutCubic(p(t, T.fecho, T.fecho + 0.5));
     const vTop = lerp(fin.vTop0, fin.vTop, up);
-    const drift = 1 + 0.025 * E.inOutSine(p(t, T.virada + 0.3, DURATION));
+    const drift = VZ ? 1 + 0.06 * E.inOutSine(p(t, T.virada, T.fecho)) - 0.02 * E.inOutSine(p(t, T.fecho, DURATION))
+      : 1 + 0.025 * E.inOutSine(p(t, T.virada + 0.3, DURATION));
     c.save(); c.translate(CX, 960); c.scale(drift, drift); c.translate(-CX, -960);
-    virada.rows.forEach((row, i) => riseRow(c, row, CX, vTop + vb.base[i], virada.size, p(t, T.virada + i * 0.08, T.virada + i * 0.08 + 0.36)));
+    virada.rows.forEach((row, i) => {
+      const t0 = T.viradaRows ? T.viradaRows[i] : T.virada + i * 0.08;
+      riseRow(c, row, CX, vTop + vb.base[i], virada.size, p(t, t0, t0 + 0.36));
+    });
     if (t >= T.fecho) {
       const s = L.fs, ls = -0.01 * s;
       fRows.forEach((r, i) => {
@@ -525,10 +604,12 @@
     out.push({ el: 'cabeçalho', t: T.stamp, x0: W / 2 - hw / 2, x1: W / 2 + hw / 2, y0: HEAD.top, y1: L.head.bottom });
     const G = (t, x0, x1, y0, y1) => { const d = groupDrift(t); return { x0, x1, y0: y0 + d, y1: y1 + d }; };
     const tc = T.cut - 0.05, tops = cardTops(tc);
-    L.cards.forEach((k, i) => out.push({ el: `card ${i + 1}`, t: tc, ...G(tc, CARD.x, CARD.x + k.w, tops[i], tops[i] + k.h) }));
+    const fl = VZ ? 8 : 0;                          // flutuação (±6 px) e giro (±0,45°) no pior caso
+    L.cards.forEach((k, i) => out.push({ el: `card ${i + 1}`, t: tc, ...G(tc, CARD.x - 2, CARD.x + k.w + 2, tops[i] - fl, tops[i] + k.h + fl) }));
     const a = STAMP.rot * DEG, ex = (Math.abs(Math.cos(a)) * L.stampW + Math.abs(Math.sin(a)) * L.stampH) / 2, ey = (Math.abs(Math.sin(a)) * L.stampW + Math.abs(Math.cos(a)) * L.stampH) / 2;
     out.push({ el: 'carimbo', t: T.stamp + 0.5, ...G(T.stamp + 0.5, STAMP.cx - ex, STAMP.cx + ex, L.CY + 10 - ey, L.CY + 10 + ey) });
-    const dr = (t) => 1 + 0.025 * E.inOutSine(p(t, T.virada + 0.3, DURATION));
+    const dr = (t) => (VZ ? 1 + 0.06 * E.inOutSine(p(t, T.virada, T.fecho)) - 0.02 * E.inOutSine(p(t, T.fecho, DURATION))
+      : 1 + 0.025 * E.inOutSine(p(t, T.virada + 0.3, DURATION)));
     const Dz = (t, x0, x1, y0, y1) => { const g = dr(t); return { t, x0: CX + (x0 - CX) * g, x1: CX + (x1 - CX) * g, y0: 960 + (y0 - 960) * g, y1: 960 + (y1 - 960) * g }; };
     const tv = T.fecho - 0.1, tf = DURATION - 0.35, vs = L.virada.size;
     L.virada.rows.forEach((r, i) => {
@@ -551,6 +632,12 @@
     const x = new XMLHttpRequest(); x.open('GET', `${SERIE_BASE}/episodios/${id}.json`, false); x.send();
     if (x.status !== 200) throw new Error(`roteiro não encontrado: ${SERIE_BASE}/episodios/${id}.json`);
     EP = JSON.parse(x.responseText);
+    VZ = null;
+    if (EP.voz) {
+      const v = new XMLHttpRequest(); v.open('GET', `/reels/${id}/audio/voz/voz.json`, false); v.send();
+      if (v.status !== 200) throw new Error(`o roteiro tem voz, mas falta reels/${id}/audio/voz/voz.json (rode o voz.py da série)`);
+      VZ = {}; JSON.parse(v.responseText).cenas.forEach((c) => { VZ[c.cena] = c; });
+    }
     loadLogo();
     layout(EP);
     const fast = [[T.rise, T.rise + 0.5, 8, 1 / 60]]
@@ -578,10 +665,11 @@
         cue(T.logo, 'logo');
         cue(T.logo + 0.2, 'slash');
         cue(T.fade, 'fade', { d: DURATION - T.fade });
+        if (VZ) Object.entries(T.voz).forEach(([cena, tv]) => cue(tv, 'voz', { cena, d: VZ[cena].dur }));
       },
     });
     window.FZS_EP = {
-      boxes, roteiro: EP, T: () => ({ ...T, duration: DURATION }),
+      boxes, roteiro: EP, T: () => ({ ...T, duration: DURATION }), voz: () => VZ,
       layout: () => ({ titulo: { size: L.title.size, linhas: L.title.rows.map(rowText) }, cabecalho: L.head.s, virada: { size: L.virada.size, linhas: L.virada.rows.map(rowText) }, fecho: [L.fs, ...L.fRows], carimbo: L.ss, duracao: DURATION }),
       capa: () => COVER,
     };

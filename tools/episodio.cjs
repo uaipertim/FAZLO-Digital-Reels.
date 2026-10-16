@@ -5,6 +5,9 @@
  *   npm run episodio -- nao-achou-o-preco
  *
  * Lê series/pelos-olhos-do-hospede/episodios/<id>.json e:
+ *   0. se o roteiro tem o campo "voz": gera a narração (series/pelos-olhos-do-hospede/voz.py,
+ *      ElevenLabs; só refaz as falas que mudaram) e guarda o vídeo curto sem voz que já existir
+ *      como output/fazlo-digital-<id>-curto.mp4;
  *   1. cria (ou atualiza) a pasta do Reel reels/<id>/ (reel.json, src/anim.js
  *      de uma linha, scripts/audio.py que chama o som da série);
  *   2. exporta os cues e completa o reel.json com os instantes de revisão e
@@ -13,7 +16,10 @@
  *   4. confere as áreas seguras elemento a elemento
  *      (output/revisao/areas-seguras.txt; sai com erro se algo ficar de fora).
  *
- * Opções: --steps audio,video,...  (só alguns passos do pipeline do item 3)
+ * Com voz, a duração vem das falas (25–30 s). Se passar de 30 s, o comando para antes do
+ * render e avisa: nada é acelerado nem cortado sem aprovação (--forcar renderiza assim mesmo).
+ *
+ * Opções: --steps audio,video,...  (só alguns passos do pipeline do item 3) · --forcar
  */
 const fs = require('fs');
 const path = require('path');
@@ -30,6 +36,18 @@ const ep = JSON.parse(fs.readFileSync(epPath, 'utf8'));
 const dir = path.join(ROOT, 'reels', id);
 const W = (rel, s) => { const f = path.join(dir, rel); fs.mkdirSync(path.dirname(f), { recursive: true }); fs.writeFileSync(f, s); };
 const titulo = ep.titulo.map((s) => s.replace(/\*/g, '')).join(' ');
+const comVoz = !!ep.voz;
+const run = (cmd, args) => {
+  const r = spawnSync(cmd, args, { stdio: 'inherit', cwd: ROOT });
+  if (r.status !== 0) { console.error(`\n${id}: falhou: ${cmd} ${args.join(' ')}`); process.exit(r.status || 1); }
+};
+
+// ---------------------------------------------------------------- 0. voz (e a versão curta sem voz guardada)
+if (comVoz) {
+  const v = path.join(dir, 'output', `fazlo-digital-${id}.mp4`), curto = path.join(dir, 'output', `fazlo-digital-${id}-curto.mp4`);
+  if (fs.existsSync(v) && !fs.existsSync(curto)) { fs.renameSync(v, curto); console.log(`versão curta sem voz guardada: ${path.relative(ROOT, curto)}`); }
+  run(process.env.PYTHON || 'python3', [path.join(SERIE, 'voz.py'), id]);
+}
 
 // ---------------------------------------------------------------- 1. pasta do Reel
 const cfgPath = path.join(dir, 'reel.json');
@@ -38,12 +56,12 @@ const cfg = {
   id, title: titulo, serie: 'Pelos olhos do hóspede',
   status: old.status || 'em produção',
   format: { width: 1080, height: 1920, fps: 60 },
-  output: { video: `output/fazlo-digital-${id}.mp4`, cover: 'output/capa.png' },
+  output: { video: `output/fazlo-digital-${id}.mp4`, cover: 'output/capa.png', ...(comVoz ? { curto: `output/fazlo-digital-${id}-curto.mp4` } : {}) },
   fonts: ["900 100px 'FZD Display'", "800 100px 'FZD Display'", "600 100px 'FZD Text'", "700 100px 'FZD Text'"],
   scripts: ['../../series/pelos-olhos-do-hospede/motor.js'],
   assets: {},
   qa: {
-    duration: [10.4, 14.5], lufs: -16,
+    duration: comVoz ? [25, 30.05] : [10.4, 14.5], lufs: comVoz ? -14 : -16,
     syncCues: ['ping', 'stamp'], visualCues: ['ping', 'stamp'],
     checkTimes: old.qa?.checkTimes || [],
     coverClear: [[860, 240, 1080, 440], [0, 1560, 1080, 1680]],
@@ -63,11 +81,6 @@ sys.argv = [sys.argv[0], ROOT]
 runpy.run_path(os.path.join(ROOT, '..', '..', 'series', 'pelos-olhos-do-hospede', 'audio.py'), run_name='__main__')
 `);
 
-const run = (cmd, args) => {
-  const r = spawnSync(cmd, args, { stdio: 'inherit', cwd: ROOT });
-  if (r.status !== 0) { console.error(`\n${id}: falhou: ${cmd} ${args.join(' ')}`); process.exit(r.status || 1); }
-};
-
 // ---------------------------------------------------------------- 2. cues -> instantes de revisão e do storyboard
 run('node', [path.join(__dirname, 'render.cjs'), 'cues', id]);
 const cues = JSON.parse(fs.readFileSync(path.join(dir, 'audio', 'cues.json'), 'utf8'));
@@ -80,6 +93,11 @@ cfg.storyboard = [[0, 'TÍTULO-DOR'], [r2(rise + 0.7), 'CABEÇALHO'], ...at('pin
   [r2(stamp - 0.08), 'O CORTE'], [r2(stamp + 0.6), 'CARIMBO'], [r2(virada + 1.2), 'VIRADA'], [r2(fecho + 1.3), 'MANDA PRA QUEM…'], [r2(D - 0.35), 'LOGO']];
 W('reel.json', JSON.stringify(cfg, null, 2) + '\n');
 console.log(`${id}: ${D.toFixed(2)} s`);
+if (comVoz && D > 30 && !opt.forcar) {
+  console.error(`\n${id}: com as falas, o episódio fica com ${D.toFixed(2)} s (mais de 30 s).`);
+  console.error('Nada foi acelerado nem cortado. Encurte as falas no roteiro ou rode com --forcar para renderizar assim.');
+  process.exit(3);
+}
 
 // ---------------------------------------------------------------- 3. pipeline
 const steps = opt.steps ? String(opt.steps) : 'audio,video,cover,storyboard,qa';

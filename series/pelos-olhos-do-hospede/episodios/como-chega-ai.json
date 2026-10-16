@@ -8,5 +8,16 @@
   ],
   "carimbo": "Ainda sem resposta",
   "virada": ["Mapa e distância dos passeios", "*no site, antes da pergunta.*"],
-  "fecho": "Manda pra quem explica o caminho toda vez pelo direct."
+  "fecho": "Manda pra quem explica o caminho toda vez pelo direct.",
+  "voz": {
+    "titulo": "Como chega aí? Ele perguntou de novo.",
+    "cards": [
+      "No direct: como chega aí? A estrada é boa?",
+      "Mandaram o pin… sem o caminho.",
+      "E a cachoeira? Fica longe?"
+    ],
+    "carimbo": "E a pergunta continua sem resposta.",
+    "virada": "Mapa, caminho e a distância dos passeios: no site, antes da pergunta.",
+    "fecho": "Manda pra quem explica o caminho toda vez pelo direct."
+  }
 }

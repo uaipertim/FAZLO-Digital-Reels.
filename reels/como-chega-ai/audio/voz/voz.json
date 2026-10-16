@@ -1,0 +1,311 @@
+{
+ "voz": {
+  "id": "GDzHdQOi6jjf8zaXhCYD",
+  "nome": "Raquel - For Conversational"
+ },
+ "modelo": "eleven_multilingual_v2",
+ "ajustes": {
+  "stability": 0.4,
+  "similarity_boost": 0.8,
+  "style": 0.35,
+  "use_speaker_boost": true,
+  "speed": 1.0
+ },
+ "formato": "mp3_44100_128",
+ "semente": 2026,
+ "contexto": "previous_text / next_text",
+ "cenas": [
+  {
+   "cena": "titulo",
+   "texto": "Como chega aí? Ele perguntou de novo.",
+   "arquivo": "titulo.mp3",
+   "ini": 0.091,
+   "fim": 1.718,
+   "dur": 1.628,
+   "palavras": [
+    [
+     "como",
+     0.0
+    ],
+    [
+     "chega",
+     0.211
+    ],
+    [
+     "aí",
+     0.501
+    ],
+    [
+     "ele",
+     0.652
+    ],
+    [
+     "perguntou",
+     0.803
+    ],
+    [
+     "de",
+     1.174
+    ],
+    [
+     "novo",
+     1.291
+    ]
+   ],
+   "marca": 0.652
+  },
+  {
+   "cena": "card1",
+   "texto": "No direct: como chega aí? A estrada é boa?",
+   "arquivo": "card1.mp3",
+   "ini": 0.076,
+   "fim": 2.184,
+   "dur": 2.108,
+   "palavras": [
+    [
+     "no",
+     0.0
+    ],
+    [
+     "direct",
+     0.098
+    ],
+    [
+     "como",
+     0.493
+    ],
+    [
+     "chega",
+     0.702
+    ],
+    [
+     "aí",
+     0.981
+    ],
+    [
+     "a",
+     1.213
+    ],
+    [
+     "estrada",
+     1.271
+    ],
+    [
+     "é",
+     1.619
+    ],
+    [
+     "boa",
+     1.689
+    ]
+   ]
+  },
+  {
+   "cena": "card2",
+   "texto": "Mandaram o pin… sem o caminho.",
+   "arquivo": "card2.mp3",
+   "ini": 0.049,
+   "fim": 2.274,
+   "dur": 2.225,
+   "palavras": [
+    [
+     "mandaram",
+     0.0
+    ],
+    [
+     "o",
+     0.392
+    ],
+    [
+     "pin",
+     0.497
+    ],
+    [
+     "sem",
+     1.6
+    ],
+    [
+     "o",
+     1.774
+    ],
+    [
+     "caminho",
+     1.82
+    ]
+   ]
+  },
+  {
+   "cena": "card3",
+   "texto": "E a cachoeira? Fica longe?",
+   "arquivo": "card3.mp3",
+   "ini": 0.083,
+   "fim": 1.261,
+   "dur": 1.178,
+   "palavras": [
+    [
+     "e",
+     0.0
+    ],
+    [
+     "a",
+     0.08
+    ],
+    [
+     "cachoeira",
+     0.149
+    ],
+    [
+     "fica",
+     0.637
+    ],
+    [
+     "longe",
+     0.857
+    ]
+   ]
+  },
+  {
+   "cena": "carimbo",
+   "texto": "E a pergunta continua sem resposta.",
+   "arquivo": "carimbo.mp3",
+   "ini": 0.062,
+   "fim": 2.17,
+   "dur": 2.108,
+   "palavras": [
+    [
+     "e",
+     0.0
+    ],
+    [
+     "a",
+     0.135
+    ],
+    [
+     "pergunta",
+     0.217
+    ],
+    [
+     "continua",
+     0.774
+    ],
+    [
+     "sem",
+     1.296
+    ],
+    [
+     "resposta",
+     1.471
+    ]
+   ]
+  },
+  {
+   "cena": "virada",
+   "texto": "Mapa, caminho e a distância dos passeios: no site, antes da pergunta.",
+   "arquivo": "virada.mp3",
+   "ini": 0.051,
+   "fim": 4.848,
+   "dur": 4.798,
+   "palavras": [
+    [
+     "mapa",
+     0.0
+    ],
+    [
+     "caminho",
+     0.889
+    ],
+    [
+     "e",
+     1.551
+    ],
+    [
+     "a",
+     1.644
+    ],
+    [
+     "distância",
+     1.725
+    ],
+    [
+     "dos",
+     2.201
+    ],
+    [
+     "passeios",
+     2.364
+    ],
+    [
+     "no",
+     3.386
+    ],
+    [
+     "site",
+     3.548
+    ],
+    [
+     "antes",
+     3.978
+    ],
+    [
+     "da",
+     4.21
+    ],
+    [
+     "pergunta",
+     4.326
+    ]
+   ]
+  },
+  {
+   "cena": "fecho",
+   "texto": "Manda pra quem explica o caminho toda vez pelo direct.",
+   "arquivo": "fecho.mp3",
+   "ini": 0.068,
+   "fim": 2.565,
+   "dur": 2.497,
+   "palavras": [
+    [
+     "manda",
+     0.0
+    ],
+    [
+     "pra",
+     0.245
+    ],
+    [
+     "quem",
+     0.396
+    ],
+    [
+     "explica",
+     0.571
+    ],
+    [
+     "o",
+     0.942
+    ],
+    [
+     "caminho",
+     1.012
+    ],
+    [
+     "toda",
+     1.348
+    ],
+    [
+     "vez",
+     1.592
+    ],
+    [
+     "pelo",
+     1.755
+    ],
+    [
+     "direct",
+     1.975
+    ]
+   ]
+  }
+ ],
+ "fala_total": 16.54
+}

@@ -2,8 +2,11 @@
 """
 Série "Pelos olhos do hóspede" — efeitos sintetizados (sem música).
 
-A música entra pelo Instagram, então aqui ficam só os efeitos, em −16 LUFS,
-todos colocados nos instantes exportados pela animação (audio/cues.json):
+Sem voz, a música entra pelo Instagram: aqui ficam só os efeitos, em −16 LUFS.
+Com voz (cues "voz" + audio/voz/voz.json, gerados por voz.py e pelo motor), a narração entra
+no centro, os efeitos abaixam ~9 dB sob a fala (a partir de 0,12 s antes dela; o ataque de cada
+efeito passa inteiro) e o master vai a −14 LUFS, sem espaço para música do Instagram.
+Os efeitos ficam nos instantes exportados pela animação (audio/cues.json):
 
   hook      um sopro grave curto que abre o quadro 0
   knock     a batida seca na parte lima do título
@@ -100,5 +103,30 @@ for c in DATA['cues']:
 # tom de sala quase inaudível, para nunca haver silêncio digital
 mix.place('room', filt(noise(DUR), 900, 'low') * db(-56) * 8, 0, 1.0)
 
-master(mix.render(levels={'sfx': 1.0, 'room': 1.0}, reverb={'send': 0.55, 'sfx': 0.06}),
-       os.path.join(ROOT, 'audio', 'trilha.wav'), lufs=-16.0, fade_out=0.3)
+LEVELS, REVERB = {'sfx': 1.0, 'room': 1.0}, {'send': 0.55, 'sfx': 0.06}
+COM_VOZ = any(c['type'] == 'voz' for c in DATA['cues'])
+if not COM_VOZ:
+    master(mix.render(levels=LEVELS, reverb=REVERB), os.path.join(ROOT, 'audio', 'trilha.wav'), lufs=-16.0, fade_out=0.3)
+else:
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    import voz  # noqa: E402
+    VOZ_ACIMA = 3.0                                # a fala fica 3 dB acima dos efeitos cheios
+    v = voz.trilha_da_voz(ROOT, DATA['cues'], mix.N)
+    cheia = mix.render(levels=LEVELS, reverb=REVERB)
+    g = voz.ganho_sob_a_voz(v, -9.0)
+    fx = cheia * g                                 # depois do reverb: as caudas também abaixam sob a fala
+    vv = np.stack([v, v])
+    ativo = np.abs(v) > 1e-6
+    k = db(measure_lufs(cheia.T) + VOZ_ACIMA - measure_lufs(vv[:, ativo].T))
+    # conferência: em cada janela de 50 ms com fala, quanto a voz fica acima dos efeitos (300 Hz–4 kHz)
+    from scipy.signal import butter, sosfiltfilt
+    sos = butter(2, (300, 4000), 'band', fs=SR, output='sos')
+    vb, fb = sosfiltfilt(sos, v * k), sosfiltfilt(sos, fx.mean(0))
+    q = int(0.05 * SR)
+    pv = (vb[: len(vb) // q * q] ** 2).reshape(-1, q).mean(1)
+    pf = (fb[: len(fb) // q * q] ** 2).reshape(-1, q).mean(1)
+    fala = pv > pv.max() * 10 ** (-25 / 10)
+    r = 10 * np.log10(pv[fala] / (pf[fala] + 1e-12))
+    print(f'voz: efeitos {20 * np.log10(g.min()):.1f} dB sob a fala · voz acima dos efeitos: mínimo {r.min():+.1f} dB, '
+          f'10% {np.percentile(r, 10):+.1f} dB, mediana {np.median(r):+.1f} dB')
+    master(fx + vv * k, os.path.join(ROOT, 'audio', 'trilha.wav'), lufs=-14.0, fade_out=0.3)

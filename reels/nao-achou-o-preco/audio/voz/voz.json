@@ -1,0 +1,327 @@
+{
+ "voz": {
+  "id": "GDzHdQOi6jjf8zaXhCYD",
+  "nome": "Raquel - For Conversational"
+ },
+ "modelo": "eleven_multilingual_v2",
+ "ajustes": {
+  "stability": 0.4,
+  "similarity_boost": 0.8,
+  "style": 0.35,
+  "use_speaker_boost": true,
+  "speed": 1.0
+ },
+ "formato": "mp3_44100_128",
+ "semente": 2026,
+ "contexto": "previous_text / next_text",
+ "cenas": [
+  {
+   "cena": "titulo",
+   "texto": "Ele achou sua pousada… mas não achou o preço.",
+   "arquivo": "titulo.mp3",
+   "ini": 0.062,
+   "fim": 2.871,
+   "dur": 2.809,
+   "palavras": [
+    [
+     "ele",
+     0.0
+    ],
+    [
+     "achou",
+     0.193
+    ],
+    [
+     "sua",
+     0.426
+    ],
+    [
+     "pousada",
+     0.577
+    ],
+    [
+     "mas",
+     1.738
+    ],
+    [
+     "não",
+     1.923
+    ],
+    [
+     "achou",
+     2.063
+    ],
+    [
+     "o",
+     2.295
+    ],
+    [
+     "preço",
+     2.364
+    ]
+   ],
+   "marca": 1.923
+  },
+  {
+   "cena": "card1",
+   "texto": "Viu as fotos da piscina, do café, da vista.",
+   "arquivo": "card1.mp3",
+   "ini": 0.021,
+   "fim": 2.475,
+   "dur": 2.455,
+   "palavras": [
+    [
+     "viu",
+     0.0
+    ],
+    [
+     "as",
+     0.176
+    ],
+    [
+     "fotos",
+     0.304
+    ],
+    [
+     "da",
+     0.571
+    ],
+    [
+     "piscina",
+     0.699
+    ],
+    [
+     "do",
+     1.268
+    ],
+    [
+     "café",
+     1.372
+    ],
+    [
+     "da",
+     1.848
+    ],
+    [
+     "vista",
+     1.988
+    ]
+   ]
+  },
+  {
+   "cena": "card2",
+   "texto": "E a diária? Nenhum valor à vista.",
+   "arquivo": "card2.mp3",
+   "ini": 0.0,
+   "fim": 2.088,
+   "dur": 2.088,
+   "palavras": [
+    [
+     "e",
+     0.0
+    ],
+    [
+     "a",
+     0.116
+    ],
+    [
+     "diária",
+     0.197
+    ],
+    [
+     "nenhum",
+     0.906
+    ],
+    [
+     "valor",
+     1.289
+    ],
+    [
+     "à",
+     1.614
+    ],
+    [
+     "vista",
+     1.683
+    ]
+   ]
+  },
+  {
+   "cena": "card3",
+   "texto": "Aí ele pergunta no direct… e espera.",
+   "arquivo": "card3.mp3",
+   "ini": 0.036,
+   "fim": 1.97,
+   "dur": 1.934,
+   "palavras": [
+    [
+     "aí",
+     0.0
+    ],
+    [
+     "ele",
+     0.161
+    ],
+    [
+     "pergunta",
+     0.336
+    ],
+    [
+     "no",
+     0.695
+    ],
+    [
+     "direct",
+     0.812
+    ],
+    [
+     "e",
+     1.404
+    ],
+    [
+     "espera",
+     1.497
+    ]
+   ]
+  },
+  {
+   "cena": "carimbo",
+   "texto": "Enquanto isso, foi ver outra.",
+   "arquivo": "carimbo.mp3",
+   "ini": 0.067,
+   "fim": 1.904,
+   "dur": 1.837,
+   "palavras": [
+    [
+     "enquanto",
+     0.0
+    ],
+    [
+     "isso",
+     0.421
+    ],
+    [
+     "foi",
+     0.618
+    ],
+    [
+     "ver",
+     0.781
+    ],
+    [
+     "outra",
+     1.001
+    ]
+   ]
+  },
+  {
+   "cena": "virada",
+   "texto": "Um valor de referência, um simples 'a partir de', responde antes da pergunta.",
+   "arquivo": "virada.mp3",
+   "ini": 0.062,
+   "fim": 5.292,
+   "dur": 5.23,
+   "palavras": [
+    [
+     "um",
+     0.0
+    ],
+    [
+     "valor",
+     0.147
+    ],
+    [
+     "de",
+     0.565
+    ],
+    [
+     "referência",
+     0.693
+    ],
+    [
+     "um",
+     1.343
+    ],
+    [
+     "simples",
+     1.482
+    ],
+    [
+     "a",
+     2.318
+    ],
+    [
+     "partir",
+     2.423
+    ],
+    [
+     "de",
+     3.073
+    ],
+    [
+     "responde",
+     3.688
+    ],
+    [
+     "antes",
+     4.28
+    ],
+    [
+     "da",
+     4.559
+    ],
+    [
+     "pergunta",
+     4.675
+    ]
+   ]
+  },
+  {
+   "cena": "fecho",
+   "texto": "Manda pra quem só passa o preço no direct.",
+   "arquivo": "fecho.mp3",
+   "ini": 0.037,
+   "fim": 1.887,
+   "dur": 1.85,
+   "palavras": [
+    [
+     "manda",
+     0.0
+    ],
+    [
+     "pra",
+     0.242
+    ],
+    [
+     "quem",
+     0.381
+    ],
+    [
+     "só",
+     0.543
+    ],
+    [
+     "passa",
+     0.706
+    ],
+    [
+     "o",
+     0.938
+    ],
+    [
+     "preço",
+     1.008
+    ],
+    [
+     "no",
+     1.287
+    ],
+    [
+     "direct",
+     1.403
+    ]
+   ]
+  }
+ ],
+ "fala_total": 18.2
+}

@@ -8,5 +8,16 @@
   ],
   "carimbo": "Foi ver outra",
   "virada": ["Um valor de referência", "*responde antes da pergunta.*"],
-  "fecho": "Manda pra quem só passa o preço no direct."
+  "fecho": "Manda pra quem só passa o preço no direct.",
+  "voz": {
+    "titulo": "Ele achou sua pousada… mas não achou o preço.",
+    "cards": [
+      "Viu as fotos da piscina, do café, da vista.",
+      "E a diária? Nenhum valor à vista.",
+      "Aí ele pergunta no direct… e espera."
+    ],
+    "carimbo": "Enquanto isso, foi ver outra.",
+    "virada": "Um valor de referência, um simples 'a partir de', responde antes da pergunta.",
+    "fecho": "Manda pra quem só passa o preço no direct."
+  }
 }
