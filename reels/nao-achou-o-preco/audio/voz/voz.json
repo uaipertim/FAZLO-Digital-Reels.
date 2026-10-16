@@ -17,11 +17,19 @@
  "cenas": [
   {
    "cena": "titulo",
-   "texto": "Ele achou sua pousada… mas não achou o preço.",
+   "texto": "Ele achou sua pousada. Mas não achou o preço.",
    "arquivo": "titulo.mp3",
-   "ini": 0.062,
-   "fim": 2.871,
-   "dur": 2.809,
+   "ini": 0.063,
+   "fim": 2.511,
+   "dur": 2.448,
+   "partes": [
+    {
+     "texto": "Ele achou sua pousada. Mas não achou o preço.",
+     "arquivo": "titulo.mp3",
+     "semente": 2026,
+     "sobe": []
+    }
+   ],
    "palavras": [
     [
      "ele",
@@ -29,46 +37,54 @@
     ],
     [
      "achou",
-     0.193
+     0.192
     ],
     [
      "sua",
-     0.426
+     0.425
     ],
     [
      "pousada",
-     0.577
+     0.576
     ],
     [
      "mas",
-     1.738
+     1.4
     ],
     [
      "não",
-     1.923
+     1.586
     ],
     [
      "achou",
-     2.063
+     1.737
     ],
     [
      "o",
-     2.295
+     1.98
     ],
     [
      "preço",
-     2.364
+     2.05
     ]
    ],
-   "marca": 1.923
+   "marca": 1.4
   },
   {
    "cena": "card1",
    "texto": "Viu as fotos da piscina, do café, da vista.",
    "arquivo": "card1.mp3",
-   "ini": 0.021,
-   "fim": 2.475,
-   "dur": 2.455,
+   "ini": 0.09,
+   "fim": 2.728,
+   "dur": 2.637,
+   "partes": [
+    {
+     "texto": "Viu as fotos da piscina, do café, da vista.",
+     "arquivo": "card1.mp3",
+     "semente": 2026,
+     "sobe": []
+    }
+   ],
    "palavras": [
     [
      "viu",
@@ -76,45 +92,61 @@
     ],
     [
      "as",
-     0.176
+     0.154
     ],
     [
      "fotos",
-     0.304
+     0.282
     ],
     [
      "da",
-     0.571
+     0.537
     ],
     [
      "piscina",
-     0.699
+     0.676
     ],
     [
      "do",
-     1.268
+     1.28
     ],
     [
      "café",
-     1.372
+     1.384
     ],
     [
      "da",
-     1.848
+     2.011
     ],
     [
      "vista",
-     1.988
+     2.151
     ]
    ]
   },
   {
    "cena": "card2",
    "texto": "E a diária? Nenhum valor à vista.",
-   "arquivo": "card2.mp3",
-   "ini": 0.0,
-   "fim": 2.088,
-   "dur": 2.088,
+   "arquivo": "card2.wav",
+   "ini": 0.03,
+   "fim": 2.184,
+   "dur": 2.154,
+   "partes": [
+    {
+     "texto": "E a diária?",
+     "arquivo": "card2-1.mp3",
+     "semente": 42,
+     "sobe": [
+      0.185
+     ]
+    },
+    {
+     "texto": "Nenhum valor à vista.",
+     "arquivo": "card2-2.mp3",
+     "semente": 2026,
+     "sobe": []
+    }
+   ],
    "palavras": [
     [
      "e",
@@ -122,27 +154,27 @@
     ],
     [
      "a",
-     0.116
+     0.141
     ],
     [
      "diária",
-     0.197
+     0.246
     ],
     [
      "nenhum",
-     0.906
+     1.131
     ],
     [
      "valor",
-     1.289
+     1.445
     ],
     [
      "à",
-     1.614
+     1.747
     ],
     [
      "vista",
-     1.683
+     1.817
     ]
    ]
   },
@@ -153,6 +185,14 @@
    "ini": 0.036,
    "fim": 1.97,
    "dur": 1.934,
+   "partes": [
+    {
+     "texto": "Aí ele pergunta no direct… e espera.",
+     "arquivo": "card3.mp3",
+     "semente": 2026,
+     "sobe": []
+    }
+   ],
    "palavras": [
     [
      "aí",
@@ -191,6 +231,14 @@
    "ini": 0.067,
    "fim": 1.904,
    "dur": 1.837,
+   "partes": [
+    {
+     "texto": "Enquanto isso, foi ver outra.",
+     "arquivo": "carimbo.mp3",
+     "semente": 2026,
+     "sobe": []
+    }
+   ],
    "palavras": [
     [
      "enquanto",
@@ -218,9 +266,17 @@
    "cena": "virada",
    "texto": "Um valor de referência, um simples 'a partir de', responde antes da pergunta.",
    "arquivo": "virada.mp3",
-   "ini": 0.062,
-   "fim": 5.292,
-   "dur": 5.23,
+   "ini": 0.059,
+   "fim": 5.352,
+   "dur": 5.293,
+   "partes": [
+    {
+     "texto": "Um valor de referência, um simples 'a partir de', responde antes da pergunta.",
+     "arquivo": "virada.mp3",
+     "semente": 2026,
+     "sobe": []
+    }
+   ],
    "palavras": [
     [
      "um",
@@ -228,61 +284,69 @@
     ],
     [
      "valor",
-     0.147
+     0.173
     ],
     [
      "de",
-     0.565
+     0.591
     ],
     [
      "referência",
-     0.693
+     0.719
     ],
     [
      "um",
-     1.343
+     1.369
     ],
     [
      "simples",
-     1.482
+     1.508
     ],
     [
      "a",
-     2.318
+     2.356
     ],
     [
      "partir",
-     2.423
+     2.449
     ],
     [
      "de",
-     3.073
+     3.064
     ],
     [
      "responde",
-     3.688
+     3.668
     ],
     [
      "antes",
-     4.28
+     4.295
     ],
     [
      "da",
-     4.559
+     4.62
     ],
     [
      "pergunta",
-     4.675
+     4.736
     ]
    ]
   },
   {
    "cena": "fecho",
-   "texto": "Manda pra quem só passa o preço no direct.",
+   "texto": "Manda pra aquela pousada que só passa o preço pelo direct.",
    "arquivo": "fecho.mp3",
-   "ini": 0.037,
-   "fim": 1.887,
-   "dur": 1.85,
+   "ini": 0.08,
+   "fim": 2.755,
+   "dur": 2.675,
+   "partes": [
+    {
+     "texto": "Manda pra aquela pousada que só passa o preço pelo direct.",
+     "arquivo": "fecho.mp3",
+     "semente": 2026,
+     "sobe": []
+    }
+   ],
    "palavras": [
     [
      "manda",
@@ -290,38 +354,46 @@
     ],
     [
      "pra",
-     0.242
+     0.222
     ],
     [
-     "quem",
-     0.381
+     "aquela",
+     0.35
+    ],
+    [
+     "pousada",
+     0.64
+    ],
+    [
+     "que",
+     1.104
     ],
     [
      "só",
-     0.543
+     1.197
     ],
     [
      "passa",
-     0.706
+     1.406
     ],
     [
      "o",
-     0.938
+     1.627
     ],
     [
      "preço",
-     1.008
+     1.696
     ],
     [
-     "no",
-     1.287
+     "pelo",
+     1.917
     ],
     [
      "direct",
-     1.403
+     2.138
     ]
    ]
   }
  ],
- "fala_total": 18.2
+ "fala_total": 18.98
 }

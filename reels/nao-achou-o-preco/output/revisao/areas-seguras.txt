@@ -3,39 +3,43 @@ NAO-ACHOU-O-PRECO — áreas seguras, elemento a elemento
 Regras: conteúdo entre y 265 e 1456; nada em x ≥ 950 entre y 1060 e 1560 (coluna de botões);
 título do quadro 0 dentro do recorte 3:4 (y 240–1680).
 
-OK     chip da série            t= 0.00 s   x  267–783   y  668–724
-OK     título 1                 t= 0.00 s   x  208–842   y  770–841
-OK     título 2                 t= 0.00 s   x  108–942   y  867–938
-OK     título 3                 t= 0.00 s   x  186–864   y  964–1035
-OK     título 4                 t= 0.00 s   x  269–781   y 1061–1132
-OK     cabeçalho                t=12.69 s   x  332–748   y  285–466
-OK     card 1                   t=12.44 s   x   78–942   y  663–855
-OK     card 2                   t=12.44 s   x   78–942   y  863–1003
-OK     card 3                   t=12.44 s   x   78–942   y 1011–1151
-OK     carimbo                  t=13.19 s   x  245–785   y  837–986
-OK     virada 1                 t=21.60 s   x  196–854   y  714–776
-OK     virada 1 (no fecho)      t=24.67 s   x  202–848   y  532–593
-OK     virada 2                 t=21.60 s   x  215–835   y  801–863
-OK     virada 2 (no fecho)      t=24.67 s   x  221–829   y  618–678
-OK     virada 3                 t=21.60 s   x   82–968   y  888–950
-OK     virada 3 (no fecho)      t=24.67 s   x   90–960   y  703–764
-OK     virada 4                 t=21.60 s   x  169–881   y  975–1037
-OK     virada 4 (no fecho)      t=24.67 s   x  175–875   y  789–849
-OK     fecho 1                  t=24.67 s   x  257–793   y  922–975
-OK     fecho 2                  t=24.67 s   x  199–851   y  989–1042
-OK     logo                     t=24.67 s   x  353–697   y 1115–1221
+OK     chip da série            t= 0.00 s   x  267–783   y  689–745
+OK     título 1                 t= 0.00 s   x  244–806   y  791–854
+OK     título 2                 t= 0.00 s   x  156–894   y  877–940
+OK     título 3                 t= 0.00 s   x  286–764   y  962–1025
+OK     título 4                 t= 0.00 s   x  109–941   y 1048–1111
+OK     cabeçalho                t=12.57 s   x  332–748   y  285–445
+OK     card 1                   t=12.32 s   x   78–942   y  652–844
+OK     card 2                   t=12.32 s   x   78–942   y  852–992
+OK     card 3                   t=12.32 s   x   78–942   y 1000–1140
+OK     carimbo                  t=13.07 s   x  245–785   y  827–976
+OK     virada 1                 t=21.55 s   x  196–854   y  627–689
+OK     virada 1 (no fecho)      t=25.43 s   x  202–848   y  447–508
+OK     virada 2                 t=21.55 s   x  204–846   y  714–776
+OK     virada 2 (no fecho)      t=25.43 s   x  209–841   y  532–593
+OK     virada 3                 t=21.55 s   x  218–832   y  801–863
+OK     virada 3 (no fecho)      t=25.43 s   x  224–826   y  618–679
+OK     virada 4                 t=21.55 s   x  188–862   y  888–950
+OK     virada 4 (no fecho)      t=25.43 s   x  194–856   y  703–764
+OK     virada 5                 t=21.55 s   x   83–967   y  975–1037
+OK     virada 5 (no fecho)      t=25.43 s   x   90–960   y  789–849
+OK     virada 6                 t=21.55 s   x  169–881   y 1062–1123
+OK     virada 6 (no fecho)      t=25.43 s   x  176–874   y  874–935
+OK     fecho 1                  t=25.43 s   x  100–950   y 1008–1060
+OK     fecho 2                  t=25.43 s   x  134–916   y 1075–1127
+OK     logo                     t=25.43 s   x  353–697   y 1200–1306
 
-OK     capa: bloco (chip + título) em y 724–1196, centro em y = 960.0 (recorte 3:4: 960)
+OK     capa: bloco (chip + título) em y 745–1175, centro em y = 960.0 (recorte 3:4: 960)
 
 Layout calculado:
 {
  "titulo": {
-  "size": 88,
+  "size": 78,
   "linhas": [
    "ELE ACHOU",
    "SUA POUSADA.",
-   "NÃO ACHOU",
-   "O PREÇO."
+   "MAS NÃO",
+   "ACHOU O PREÇO."
   ]
  },
  "cabecalho": 0.5,
@@ -43,18 +47,20 @@ Layout calculado:
   "size": 72,
   "linhas": [
    "UM VALOR DE",
-   "REFERÊNCIA",
+   "REFERÊNCIA,",
+   "UM SIMPLES",
+   "“A PARTIR DE”",
    "RESPONDE ANTES",
    "DA PERGUNTA."
   ]
  },
  "fecho": [
   52,
-  "Manda pra quem só",
-  "passa o preço no direct."
+  "Manda pra aquela pousada que",
+  "só passa o preço pelo direct."
  ],
  "carimbo": 46,
- "duracao": 25.016666666666666
+ "duracao": 25.783333333333335
 }
 
 RESULTADO: aprovado

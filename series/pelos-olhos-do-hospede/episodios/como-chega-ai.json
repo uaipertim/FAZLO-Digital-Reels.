@@ -1,23 +1,23 @@
 {
   "id": "como-chega-ai",
-  "titulo": ["Como chega aí?", "Ele perguntou de novo."],
+  "titulo": ["Como chega aí?", "*Ele perguntou de novo!*"],
   "cards": [
     { "rotulo": "No direct", "texto": "Como chega aí? A estrada é boa?" },
     { "texto": "Mandaram o pin. Sem o caminho." },
     { "texto": "E a cachoeira? Fica longe?" }
   ],
   "carimbo": "Ainda sem resposta",
-  "virada": ["Mapa e distância dos passeios", "*no site, antes da pergunta.*"],
-  "fecho": "Manda pra quem explica o caminho toda vez pelo direct.",
+  "virada": ["Mapa, caminho e passeios:", "*no site já tem tudo,*", "*antes da pergunta.*"],
+  "fecho": "Manda pra pousada que manda tudo pelo direct.",
   "voz": {
-    "titulo": "Como chega aí? Ele perguntou de novo.",
+    "titulo": ["Como chega aí?", "Ele perguntou de novo!"],
     "cards": [
-      "No direct: como chega aí? A estrada é boa?",
+      ["Como chega aí?", "A estrada é boa?"],
       "Mandaram o pin… sem o caminho.",
-      "E a cachoeira? Fica longe?"
+      ["E a cachoeira?", "Fica longe?"]
     ],
     "carimbo": "E a pergunta continua sem resposta.",
-    "virada": "Mapa, caminho e a distância dos passeios: no site, antes da pergunta.",
-    "fecho": "Manda pra quem explica o caminho toda vez pelo direct."
+    "virada": "Mapa, caminho e a distância dos passeios: no site já tem tudo, antes da pergunta.",
+    "fecho": "Manda pra pousada que manda tudo pelo direct."
   }
 }

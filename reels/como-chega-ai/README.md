@@ -4,26 +4,26 @@
 
 2º episódio da série [`Pelos olhos do hóspede`](../../series/pelos-olhos-do-hospede), agora **com voz**. Esta pasta é gerada por `npm run episodio -- como-chega-ai` a partir do roteiro [`episodios/como-chega-ai.json`](../../series/pelos-olhos-do-hospede/episodios/como-chega-ai.json). Para mudar o texto da tela ou uma fala, edite o roteiro e rode o comando de novo. Só as falas que mudaram são geradas outra vez.
 
-Texto na tela (igual ao da versão curta):
-- **Título-dor:** "Como chega aí? / Ele perguntou de novo."
+Texto na tela (acompanha a voz; correções de 16/10):
+- **Título-dor:** "Como chega aí? / *Ele perguntou de novo!*". Na voz, a pergunta e a exclamação são geradas em chamadas separadas.
 - **Cards:** "No direct · Como chega aí? A estrada é boa?" → "Mandaram o pin. Sem o caminho." → "E a cachoeira? Fica longe?"
 - **Carimbo:** "Ainda sem resposta"
-- **Virada:** "Mapa e distância dos passeios *no site, antes da pergunta.*"
-- **Fecho:** "Manda pra quem explica o caminho toda vez pelo direct." + logo FAZLO DIGITAL
+- **Virada:** "Mapa, caminho e passeios: / *no site já tem tudo,* / *antes da pergunta.*". As palavras lima entram quando a voz as diz.
+- **Fecho:** "Manda pra pousada que manda tudo pelo direct." (tela e voz) + logo FAZLO DIGITAL
 
 ## Voz (25,0 s)
 
-A voz manda no tempo: cada cena dura a sua fala mais um respiro, e a fala do título começa no quadro 0. As falas somam 16,54 s.
+A voz manda no tempo: cada cena dura a sua fala mais um respiro, e a fala do título começa no quadro 0. As falas somam 16,70 s.
 
 | Cena | Fala | Entra em | Dura |
 |---|---|---|---|
-| titulo | "Como chega aí? Ele perguntou de novo." | 0,00 s | 1,63 s |
-| card1 | "No direct: como chega aí? A estrada é boa?" | 2,68 s | 2,11 s |
-| card2 | "Mandaram o pin… sem o caminho." | 5,92 s | 2,23 s |
-| card3 | "E a cachoeira? Fica longe?" | 9,27 s | 1,18 s |
-| carimbo | "E a pergunta continua sem resposta." | 11,68 s | 2,11 s |
-| virada | "Mapa, caminho e a distância dos passeios: no site, antes da pergunta." | 15,37 s | 4,80 s |
-| fecho | "Manda pra quem explica o caminho toda vez pelo direct." | 21,25 s | 2,50 s |
+| titulo | "Como chega aí?" + "Ele perguntou de novo!" (partes geradas separadas, para a pergunta subir) | 0,00 s | 1,87 s |
+| card1 | "Como chega aí?" + "A estrada é boa?" (partes geradas separadas, para a pergunta subir) | 2,92 s | 1,88 s |
+| card2 | "Mandaram o pin… sem o caminho." | 5,90 s | 1,77 s |
+| card3 | "E a cachoeira?" + "Fica longe?" (partes geradas separadas, para a pergunta subir) | 8,78 s | 1,55 s |
+| carimbo | "E a pergunta continua sem resposta." | 11,53 s | 2,11 s |
+| virada | "Mapa, caminho e a distância dos passeios: no site já tem tudo, antes da pergunta." | 15,18 s | 5,53 s |
+| fecho | "Manda pra pousada que manda tudo pelo direct." | 21,77 s | 1,98 s |
 
 | | |
 |---|---|
@@ -38,7 +38,7 @@ A voz manda no tempo: cada cena dura a sua fala mais um respiro, e a fala do tí
 
 | Entrega | Arquivo |
 |---|---|
-| **Vídeo com voz** (25,0 s,0 s, 60 fps, −14 LUFS) | [`output/fazlo-digital-como-chega-ai.mp4`](output/fazlo-digital-como-chega-ai.mp4) |
+| **Vídeo com voz** (25,0 s,0 s,0 s, 60 fps, −14 LUFS) | [`output/fazlo-digital-como-chega-ai.mp4`](output/fazlo-digital-como-chega-ai.mp4) |
 | Versão curta sem voz (a anterior, só efeitos em −16 LUFS) | [`output/fazlo-digital-como-chega-ai-curto.mp4`](output/fazlo-digital-como-chega-ai-curto.mp4) |
 | Capa | [`output/capa.png`](output/capa.png) |
 | Storyboard | [`output/storyboard.jpg`](output/storyboard.jpg) |
@@ -49,9 +49,10 @@ A voz manda no tempo: cada cena dura a sua fala mais um respiro, e a fala do tí
 ## Revisão (aprovada)
 
 - 1080×1920, 60 fps, **25,0 s**, H.264 + AAC 48 kHz;
-- **−14,0 LUFS** e pico real **−3,3 dBTP**;
+- **−14,1 LUFS** e pico real **−3,3 dBTP**;
 - sem trechos pretos nem imagem congelada;
-- os 4 efeitos-chave no instante do evento, com desvio máximo de 4,8 ms;
+- os 4 efeitos-chave no instante do evento, com desvio máximo de 4,9 ms;
 - áreas seguras aprovadas elemento a elemento;
-- a logo FAZLO DIGITAL se monta durante "Manda pra quem…" e fica **2,2 s** pronta na tela antes do fade (mínimo pedido: 1,2 s);
-- a batida lima do título cai em 0,65 s, no "Ele" da fala.
+- a batida lima do título cai em 0,96 s, no "Ele" da fala;
+- todas as perguntas sobem na tônica final, medido no áudio: "Como chega aí?" +38% (título) e +83% (card 1), "A estrada é boa?" +26%, "E a cachoeira?" +107%, "Fica longe?" +15%;
+- a logo FAZLO DIGITAL se monta durante "Manda pra pousada…" (a partir de 22,17 s) e fica **1,7 s** pronta na tela antes do fade (mínimo pedido: 1,2 s).

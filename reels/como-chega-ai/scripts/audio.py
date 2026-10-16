@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Efeitos do episódio "Como chega aí? Ele perguntou de novo.": o som é o da série (series/pelos-olhos-do-hospede/audio.py)."""
+"""Efeitos do episódio "Como chega aí? Ele perguntou de novo!": o som é o da série (series/pelos-olhos-do-hospede/audio.py)."""
 import os
 import runpy
 import sys

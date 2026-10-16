@@ -9,7 +9,10 @@ Série "Pelos olhos do hóspede" — a narração (ElevenLabs), uma fala por cen
   saída     MP3 44,1 kHz 128 kbps + alinhamento por caractere
 
 As falas saem do campo "voz" do roteiro (episodios/<id>.json): titulo, cards[], carimbo, virada,
-fecho. O texto na tela continua o do roteiro. A chave NÃO passa por aqui: no ambiente de nuvem ela
+fecho. O texto na tela continua o do roteiro. Uma fala pode ser uma lista de partes (ex.: o título
+"Como chega aí?" + "Ele perguntou de novo!"): cada parte é uma chamada, e elas são emendadas com
+0,25 s de pausa. Em toda frase com "?", a entonação é conferida no áudio (a altura da voz precisa
+subir no fim); se sair como afirmação, outras sementes são tentadas. A chave NÃO passa por aqui: no ambiente de nuvem ela
 fica nos Segredos de rede e o proxy injeta o cabeçalho xi-api-key; fora dele, exporte
 ELEVENLABS_API_KEY (nunca em arquivo).
 
@@ -72,9 +75,13 @@ def fronteiras(x, limiar_db=-38):
     return on[0] / SR, on[-1] / SR
 
 
-def gerar(texto, prev, nxt, destino):
+SEMENTES_PERGUNTA = [SEMENTE, 7, 11, 23, 42, 77]   # tentadas em ordem até a pergunta subir
+SOBE_MIN = 0.10                                      # +10% de altura na tônica final da pergunta
+
+
+def gerar(texto, prev, nxt, destino, semente=SEMENTE):
     import requests
-    body = {'text': api_texto(texto), 'model_id': MODELO, 'language_code': 'pt', 'voice_settings': AJUSTES, 'seed': SEMENTE}
+    body = {'text': api_texto(texto), 'model_id': MODELO, 'language_code': 'pt', 'voice_settings': AJUSTES, 'seed': semente}
     if prev:
         body['previous_text'] = api_texto(prev)
     if nxt:
@@ -91,18 +98,93 @@ def gerar(texto, prev, nxt, destino):
         raise SystemExit(f'{os.path.basename(destino)}: HTTP {r.status_code} {r.text[:300]}')
     d = r.json()
     open(destino + '.mp3', 'wb').write(base64.b64decode(d['audio_base64']))
-    json.dump({'chave': chave, 'texto_api': body['text'], 'alinhamento': d['alignment']}, open(destino + '.json', 'w'), ensure_ascii=False)
+    json.dump({'chave': chave, 'base': chave_base(texto, prev, nxt), 'semente': semente, 'texto_api': body['text'],
+               'alinhamento': d['alignment']}, open(destino + '.json', 'w'), ensure_ascii=False)
     return True
 
 
-def marca_do_titulo(ep, meta, ini):
+def chave_base(texto, prev, nxt):
+    """Identifica a fala sem a semente (para reaproveitar a tomada escolhida numa nova rodada)."""
+    return hashlib.sha1(json.dumps([texto, prev, nxt, MODELO, AJUSTES, VOZ['id'], FORMATO], sort_keys=True).encode()).hexdigest()
+
+
+def f0(x):
+    """Altura da voz (Hz) em quadros de 40 ms a cada 10 ms (autocorrelação); NaN onde não há voz."""
+    n, h = int(0.04 * SR), int(0.01 * SR)
+    out = []
+    for i in range(0, len(x) - n, h):
+        w = x[i:i + n] * np.hanning(n)
+        if np.sqrt(np.mean(w ** 2)) < 0.008:
+            out.append(np.nan)
+            continue
+        ac = np.correlate(w, w, 'full')[n - 1:]
+        lo, hi = int(SR / 420), int(SR / 120)
+        k = lo + int(np.argmax(ac[lo:hi]))
+        out.append(SR / k if ac[k] / (ac[0] + 1e-9) > 0.5 else np.nan)
+    return np.array(out)
+
+
+def perguntas(texto, meta, x):
+    """Para cada "?" da fala: quanto a altura sobe na pergunta. Na pergunta brasileira a voz sobe até a tônica
+    final e pode cair nas sílabas depois dela ("E a di-Á-ria?", "a es-tra-da é BO-a?"): mede, dentro da
+    própria pergunta (do sinal de pontuação anterior até o "?"), o pico dos últimos 60% contra a mediana
+    dos primeiros 40%."""
+    al = meta['alinhamento']
+    ch, t0, t1 = al['characters'], al['character_start_times_seconds'], al['character_end_times_seconds']
+    fz = f0(x)
+    tq = lambda t: int(t / 0.01)
+    out, ini = [], 0
+    for i, c in enumerate(ch):
+        if c in '.!,;:…':
+            ini = i + 1
+        if c != '?':
+            continue
+        letras = [k for k in range(ini, i) if re.match(r'[\wÀ-ú]', ch[k])]
+        ini = i + 1
+        if not letras:
+            out.append(None)
+            continue
+        a, b = t0[letras[0]], t1[letras[-1]] + 0.04
+        seg = fz[tq(a):tq(b)]
+        corte = int(len(seg) * 0.4)
+        corpo, cauda = seg[:corte], seg[corte:]
+        corpo, cauda = corpo[~np.isnan(corpo)], cauda[~np.isnan(cauda)]
+        if len(cauda) < 3 or len(corpo) < 2:
+            out.append(None)
+            continue
+        out.append(round(float(np.percentile(cauda, 90) / np.median(corpo) - 1), 3))
+    return out
+
+
+def gerar_parte(texto, prev, nxt, destino):
+    """Uma parte da fala. Com "?", confere a subida no fim e, se precisar, tenta outras sementes."""
+    if os.path.exists(destino + '.json'):
+        m = json.load(open(destino + '.json'))
+        if m.get('base') == chave_base(texto, prev, nxt):
+            sb = perguntas(texto, m, decodifica(destino + '.mp3'))
+            if all(v is not None and v >= SOBE_MIN for v in sb):
+                return False, m.get('semente', SEMENTE), sb
+    melhor = None
+    for sem in (SEMENTES_PERGUNTA if '?' in texto else [SEMENTE]):
+        gerar(texto, prev, nxt, destino, sem)
+        m = json.load(open(destino + '.json'))
+        sb = perguntas(texto, m, decodifica(destino + '.mp3'))
+        nota = min([v if v is not None else -1 for v in sb] or [1])
+        if melhor is None or nota > melhor[0]:
+            melhor = (nota, sem)
+        if nota >= SOBE_MIN:
+            return True, sem, sb
+        print(f'      semente {sem}: a pergunta não subiu ({sb}), tentando outra')
+    gerar(texto, prev, nxt, destino, melhor[1])          # fica a que mais subiu
+    m = json.load(open(destino + '.json'))
+    return True, melhor[1], perguntas(texto, m, decodifica(destino + '.mp3'))
+
+
+def marca_do_titulo(ep, pal):
     """Onde começa, na fala do título, a 1ª palavra da parte lima (para a batida cair nela)."""
     lin = next((ln for ln in ep['titulo'] if '*' in ln), ep['titulo'][-1])
-    alvo = re.sub(r'[*.,!?…:;]', '', lin.split('*')[1] if '*' in lin else lin).split()[0].lower()
-    al = meta['alinhamento']
-    txt = ''.join(al['characters']).lower()
-    m = re.search(r'(?<![\wÀ-ú])' + re.escape(alvo) + r'(?![\wÀ-ú])', txt)
-    return None if not m else round(al['character_start_times_seconds'][m.start()] - ini, 3)
+    alvo = re.sub(r'[*.,!?…:;“”"\']', '', lin.split('*')[1] if '*' in lin else lin).split()[0].lower()
+    return next((t for w, t in pal if w == alvo), None)
 
 
 def palavras(meta, ini):
@@ -126,20 +208,50 @@ def main(eid):
     dir_ = os.path.join(REPO, 'reels', eid, 'audio', 'voz')
     os.makedirs(dir_, exist_ok=True)
     cs = cenas(ep)
+    junta = lambda v: v if isinstance(v, str) else ' '.join(v)
     out = {'voz': VOZ, 'modelo': MODELO, 'ajustes': AJUSTES, 'formato': FORMATO, 'semente': SEMENTE,
            'contexto': 'previous_text / next_text', 'cenas': []}
-    for i, (cena, texto) in enumerate(cs):
-        base = os.path.join(dir_, cena)
-        novo = gerar(texto, cs[i - 1][1] if i else None, cs[i + 1][1] if i + 1 < len(cs) else None, base)
-        x = decodifica(base + '.mp3')
-        ini, fim = fronteiras(x)
-        item = {'cena': cena, 'texto': texto, 'arquivo': f'{cena}.mp3', 'ini': round(ini, 3), 'fim': round(fim, 3), 'dur': round(fim - ini, 3)}
-        meta = json.load(open(base + '.json'))
-        item['palavras'] = palavras(meta, ini)
+    for i, (cena, fala) in enumerate(cs):
+        partes = [fala] if isinstance(fala, str) else fala
+        antes, depois = (junta(cs[i - 1][1]) if i else None), (junta(cs[i + 1][1]) if i + 1 < len(cs) else None)
+        sinais, pal, info, novo, t = [], [], [], False, 0.0
+        for k, texto in enumerate(partes):
+            base = os.path.join(dir_, cena if len(partes) == 1 else f'{cena}-{k + 1}')
+            prev = partes[k - 1] if k else antes
+            nxt = partes[k + 1] if k + 1 < len(partes) else depois
+            nv, sem, sb = gerar_parte(texto, prev, nxt, base)
+            novo |= nv
+            x = decodifica(base + '.mp3')
+            ini, fim = fronteiras(x)
+            meta = json.load(open(base + '.json'))
+            info.append({'texto': texto, 'arquivo': os.path.basename(base) + '.mp3', 'semente': sem, 'sobe': sb})
+            if len(partes) == 1:
+                sinais, pal = [x], palavras(meta, ini)
+                cena_ini, cena_fim = ini, fim
+            else:                                      # emenda: cada parte aparada, 0,25 s entre elas
+                a, b = max(0, int((ini - 0.03) * SR)), int((fim + 0.06) * SR)
+                if k:
+                    sinais.append(np.zeros(int(0.25 * SR)))
+                    t += 0.25
+                pal += [[w, round(tw + t + (0.03 if k else 0), 3)] for w, tw in palavras(meta, ini)]
+                sinais.append(x[a:b])
+                t += (b - a) / SR - 0.03 if k == 0 else (b - a) / SR
+        if len(partes) > 1:
+            y = np.concatenate(sinais)
+            from scipy.io import wavfile
+            wavfile.write(os.path.join(dir_, f'{cena}.wav'), SR, np.round(np.clip(y, -1, 1) * 32767).astype(np.int16))
+            cena_ini, cena_fim = fronteiras(y)
+            arq = f'{cena}.wav'
+        else:
+            arq = f'{cena}.mp3'
+        item = {'cena': cena, 'texto': junta(fala), 'arquivo': arq, 'ini': round(cena_ini, 3), 'fim': round(cena_fim, 3),
+                'dur': round(cena_fim - cena_ini, 3), 'partes': info, 'palavras': pal}
         if cena == 'titulo':
-            item['marca'] = marca_do_titulo(ep, meta, ini)
+            item['marca'] = marca_do_titulo(ep, pal)
         out['cenas'].append(item)
-        print(f"{'nova ' if novo else 'ok   '} {cena:8} {item['dur']:5.2f} s  \"{texto}\"")
+        perg = ' · '.join(f"pergunta {'sobe' if v is not None and v >= SOBE_MIN else 'NÃO sobe'} {v:+.0%}" if v is not None else 'pergunta: sem medida'
+                          for p_ in info for v in p_['sobe'])
+        print(f"{'nova ' if novo else 'ok   '} {cena:8} {item['dur']:5.2f} s  \"{junta(fala)}\"" + (f'  [{perg}]' if perg else ''))
     total = sum(c['dur'] for c in out['cenas'])
     out['fala_total'] = round(total, 2)
     json.dump(out, open(os.path.join(dir_, 'voz.json'), 'w'), ensure_ascii=False, indent=1)

@@ -17,11 +17,27 @@
  "cenas": [
   {
    "cena": "titulo",
-   "texto": "Como chega aí? Ele perguntou de novo.",
-   "arquivo": "titulo.mp3",
-   "ini": 0.091,
-   "fim": 1.718,
-   "dur": 1.628,
+   "texto": "Como chega aí? Ele perguntou de novo!",
+   "arquivo": "titulo.wav",
+   "ini": 0.03,
+   "fim": 1.898,
+   "dur": 1.868,
+   "partes": [
+    {
+     "texto": "Como chega aí?",
+     "arquivo": "titulo-1.mp3",
+     "semente": 7,
+     "sobe": [
+      0.377
+     ]
+    },
+    {
+     "texto": "Ele perguntou de novo!",
+     "arquivo": "titulo-2.mp3",
+     "semente": 2026,
+     "sobe": []
+    }
+   ],
    "palavras": [
     [
      "como",
@@ -29,74 +45,84 @@
     ],
     [
      "chega",
-     0.211
+     0.212
     ],
     [
      "aí",
-     0.501
+     0.514
     ],
     [
      "ele",
-     0.652
+     0.963
     ],
     [
      "perguntou",
-     0.803
+     1.16
     ],
     [
      "de",
-     1.174
+     1.497
     ],
     [
      "novo",
-     1.291
+     1.613
     ]
    ],
-   "marca": 0.652
+   "marca": 0.963
   },
   {
    "cena": "card1",
-   "texto": "No direct: como chega aí? A estrada é boa?",
-   "arquivo": "card1.mp3",
-   "ini": 0.076,
-   "fim": 2.184,
-   "dur": 2.108,
+   "texto": "Como chega aí? A estrada é boa?",
+   "arquivo": "card1.wav",
+   "ini": 0.03,
+   "fim": 1.915,
+   "dur": 1.884,
+   "partes": [
+    {
+     "texto": "Como chega aí?",
+     "arquivo": "card1-1.mp3",
+     "semente": 2026,
+     "sobe": [
+      0.832
+     ]
+    },
+    {
+     "texto": "A estrada é boa?",
+     "arquivo": "card1-2.mp3",
+     "semente": 2026,
+     "sobe": [
+      0.255
+     ]
+    }
+   ],
    "palavras": [
     [
-     "no",
+     "como",
      0.0
     ],
     [
-     "direct",
-     0.098
-    ],
-    [
-     "como",
-     0.493
-    ],
-    [
      "chega",
-     0.702
+     0.207
     ],
     [
      "aí",
-     0.981
+     0.474
     ],
     [
      "a",
-     1.213
+     0.988
     ],
     [
      "estrada",
-     1.271
+     1.092
     ],
     [
      "é",
-     1.619
+     1.441
     ],
     [
      "boa",
-     1.689
+     1.51
     ]
    ]
   },
@@ -104,9 +130,17 @@
    "cena": "card2",
    "texto": "Mandaram o pin… sem o caminho.",
    "arquivo": "card2.mp3",
-   "ini": 0.049,
-   "fim": 2.274,
-   "dur": 2.225,
+   "ini": 0.0,
+   "fim": 1.773,
+   "dur": 1.773,
+   "partes": [
+    {
+     "texto": "Mandaram o pin… sem o caminho.",
+     "arquivo": "card2.mp3",
+     "semente": 2026,
+     "sobe": []
+    }
+   ],
    "palavras": [
     [
      "mandaram",
@@ -114,33 +148,51 @@
     ],
     [
      "o",
-     0.392
+     0.453
     ],
     [
      "pin",
-     0.497
+     0.546
     ],
     [
      "sem",
-     1.6
+     1.022
     ],
     [
      "o",
-     1.774
+     1.207
     ],
     [
      "caminho",
-     1.82
+     1.265
     ]
    ]
   },
   {
    "cena": "card3",
    "texto": "E a cachoeira? Fica longe?",
-   "arquivo": "card3.mp3",
-   "ini": 0.083,
-   "fim": 1.261,
-   "dur": 1.178,
+   "arquivo": "card3.wav",
+   "ini": 0.03,
+   "fim": 1.58,
+   "dur": 1.55,
+   "partes": [
+    {
+     "texto": "E a cachoeira?",
+     "arquivo": "card3-1.mp3",
+     "semente": 11,
+     "sobe": [
+      1.07
+     ]
+    },
+    {
+     "texto": "Fica longe?",
+     "arquivo": "card3-2.mp3",
+     "semente": 2026,
+     "sobe": [
+      0.147
+     ]
+    }
+   ],
    "palavras": [
     [
      "e",
@@ -148,19 +200,19 @@
     ],
     [
      "a",
-     0.08
+     0.116
     ],
     [
      "cachoeira",
-     0.149
+     0.185
     ],
     [
      "fica",
-     0.637
+     0.99
     ],
     [
      "longe",
-     0.857
+     1.291
     ]
    ]
   },
@@ -171,6 +223,14 @@
    "ini": 0.062,
    "fim": 2.17,
    "dur": 2.108,
+   "partes": [
+    {
+     "texto": "E a pergunta continua sem resposta.",
+     "arquivo": "carimbo.mp3",
+     "semente": 2026,
+     "sobe": []
+    }
+   ],
    "palavras": [
     [
      "e",
@@ -200,11 +260,19 @@
   },
   {
    "cena": "virada",
-   "texto": "Mapa, caminho e a distância dos passeios: no site, antes da pergunta.",
+   "texto": "Mapa, caminho e a distância dos passeios: no site já tem tudo, antes da pergunta.",
    "arquivo": "virada.mp3",
-   "ini": 0.051,
-   "fim": 4.848,
-   "dur": 4.798,
+   "ini": 0.019,
+   "fim": 5.55,
+   "dur": 5.532,
+   "partes": [
+    {
+     "texto": "Mapa, caminho e a distância dos passeios: no site já tem tudo, antes da pergunta.",
+     "arquivo": "virada.mp3",
+     "semente": 2026,
+     "sobe": []
+    }
+   ],
    "palavras": [
     [
      "mapa",
@@ -212,57 +280,77 @@
     ],
     [
      "caminho",
-     0.889
+     0.538
     ],
     [
      "e",
-     1.551
+     1.038
     ],
     [
      "a",
-     1.644
+     1.107
     ],
     [
      "distância",
-     1.725
+     1.177
     ],
     [
      "dos",
-     2.201
+     1.618
     ],
     [
      "passeios",
-     2.364
+     1.781
     ],
     [
      "no",
-     3.386
+     2.907
     ],
     [
      "site",
-     3.548
+     3.058
+    ],
+    [
+     "já",
+     3.394
+    ],
+    [
+     "tem",
+     3.557
+    ],
+    [
+     "tudo",
+     3.777
     ],
     [
      "antes",
-     3.978
+     4.613
     ],
     [
      "da",
-     4.21
+     4.938
     ],
     [
      "pergunta",
-     4.326
+     5.043
     ]
    ]
   },
   {
    "cena": "fecho",
-   "texto": "Manda pra quem explica o caminho toda vez pelo direct.",
+   "texto": "Manda pra pousada que manda tudo pelo direct.",
    "arquivo": "fecho.mp3",
-   "ini": 0.068,
-   "fim": 2.565,
-   "dur": 2.497,
+   "ini": 0.0,
+   "fim": 1.984,
+   "dur": 1.984,
+   "partes": [
+    {
+     "texto": "Manda pra pousada que manda tudo pelo direct.",
+     "arquivo": "fecho.mp3",
+     "semente": 2026,
+     "sobe": []
+    }
+   ],
    "palavras": [
     [
      "manda",
@@ -270,42 +358,34 @@
     ],
     [
      "pra",
-     0.245
+     0.267
     ],
     [
-     "quem",
-     0.396
+     "pousada",
+     0.406
     ],
     [
-     "explica",
-     0.571
+     "que",
+     0.766
     ],
     [
-     "o",
-     0.942
+     "manda",
+     0.882
     ],
     [
-     "caminho",
-     1.012
-    ],
-    [
-     "toda",
-     1.348
-    ],
-    [
-     "vez",
-     1.592
+     "tudo",
+     1.103
     ],
     [
      "pelo",
-     1.755
+     1.324
     ],
     [
      "direct",
-     1.975
+     1.544
     ]
    ]
   }
  ],
- "fala_total": 16.54
+ "fala_total": 16.7
 }

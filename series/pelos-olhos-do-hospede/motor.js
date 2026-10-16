@@ -130,6 +130,20 @@
     drawRow(c, row, cx, y + off, size);
     c.restore();
   }
+  // a linha sobe pela fenda palavra a palavra (cada palavra com o seu instante)
+  function riseWords(c, row, cx, y, size, pins) {
+    if (pins.every((q) => q <= 0)) return;
+    const ls = LS_D * size, w = rowW100(row) * size / 100;
+    c.save(); c.beginPath(); c.rect(cx - w / 2 - 60, y - size * 1.05, w + 120, size * 1.32); c.clip();
+    setFont(c, DISPLAY, size, 900, 'left', ls);
+    let x = cx - w / 2;
+    row.forEach((wd, i) => {
+      const adv = c.measureText(wd.s + (i < row.length - 1 ? ' ' : '')).width;
+      if (pins[i] > 0) { c.fillStyle = wd.c; c.fillText(wd.s, x, y + (1 - E.outExpo(clamp(pins[i]))) * size * 1.25); }
+      x += adv;
+    });
+    c.restore();
+  }
   function wrap(s, fam, size, weight, ls, maxW) {
     const out = []; let cur = '';
     s.split(/\s+/).forEach((w) => {
@@ -351,22 +365,25 @@
     if (t.end < V.min) t = build((V.min - t.end) / (cards.length + 2));   // respiros: depois de cada card, do carimbo e da virada
     DURATION = Math.ceil(t.end * 60) / 60;
     t.fade = DURATION - 0.3;
-    // a virada: as linhas brancas entram juntas; cada linha lima entra quando a voz chega na 1ª palavra dela
-    // (procura em ordem; sem achar, segue a anterior)
+    // a virada: as linhas antes da 1ª palavra lima entram juntas; dali em diante, cada palavra entra quando
+    // a voz chega nela (procura em ordem; sem achar, entra logo depois da anterior)
     const norm = (w) => w.toLocaleLowerCase('pt-BR').replace(/[^a-zà-ú0-9]/g, '');
     const pal = VZ.virada.palavras || [];
     const lime0 = L.virada.rows.findIndex((r) => r.some((w) => w.c === C.lime));
     let j = 0, prev = t.virada;
-    t.viradaRows = L.virada.rows.map((row, i) => {
+    t.viradaWords = L.virada.rows.map((row, i) => row.map((w) => {
       let at = t.virada + i * 0.08;
       if (lime0 >= 0 && i >= lime0) {
-        at = prev + 0.08;
-        const k = pal.findIndex((w, q) => q >= j && norm(w[0]) === norm(row[0].s));
-        if (k >= 0) { at = Math.max(at, t.voz.virada + pal[k][1] - 0.12); j = k + 1; }
+        at = prev + 0.06;
+        const k = pal.findIndex((q, n) => n >= j && norm(q[0]) === norm(w.s));
+        if (k >= 0) { at = Math.max(at, t.voz.virada + pal[k][1] - 0.1); j = k + 1; }
+      } else {
+        const k = pal.findIndex((q, n) => n >= j && norm(q[0]) === norm(w.s));
+        if (k >= 0) j = k + 1;                       // acompanha a fala, para a busca seguir dali
       }
       prev = at;
       return at;
-    });
+    }));
     T = t;
   }
 
@@ -535,12 +552,12 @@
     const { virada, vb, fin, fRows } = L;
     const up = E.inOutCubic(p(t, T.fecho, T.fecho + 0.5));
     const vTop = lerp(fin.vTop0, fin.vTop, up);
-    const drift = VZ ? 1 + 0.06 * E.inOutSine(p(t, T.virada, T.fecho)) - 0.02 * E.inOutSine(p(t, T.fecho, DURATION))
+    const drift = VZ ? 1 + 0.06 * p(t, T.virada, T.fecho) - 0.02 * E.inOutSine(p(t, T.fecho, DURATION))
       : 1 + 0.025 * E.inOutSine(p(t, T.virada + 0.3, DURATION));
     c.save(); c.translate(CX, 960); c.scale(drift, drift); c.translate(-CX, -960);
     virada.rows.forEach((row, i) => {
-      const t0 = T.viradaRows ? T.viradaRows[i] : T.virada + i * 0.08;
-      riseRow(c, row, CX, vTop + vb.base[i], virada.size, p(t, t0, t0 + 0.36));
+      if (T.viradaWords) riseWords(c, row, CX, vTop + vb.base[i], virada.size, T.viradaWords[i].map((t0) => p(t, t0, t0 + 0.36)));
+      else riseRow(c, row, CX, vTop + vb.base[i], virada.size, p(t, T.virada + i * 0.08, T.virada + i * 0.08 + 0.36));
     });
     if (t >= T.fecho) {
       const s = L.fs, ls = -0.01 * s;
@@ -612,7 +629,7 @@
     L.cards.forEach((k, i) => out.push({ el: `card ${i + 1}`, t: tc, ...G(tc, CARD.x - 2, CARD.x + k.w + 2, tops[i] - fl, tops[i] + k.h + fl) }));
     const a = STAMP.rot * DEG, ex = (Math.abs(Math.cos(a)) * L.stampW + Math.abs(Math.sin(a)) * L.stampH) / 2, ey = (Math.abs(Math.sin(a)) * L.stampW + Math.abs(Math.cos(a)) * L.stampH) / 2;
     out.push({ el: 'carimbo', t: T.stamp + 0.5, ...G(T.stamp + 0.5, STAMP.cx - ex, STAMP.cx + ex, L.CY + 10 - ey, L.CY + 10 + ey) });
-    const dr = (t) => (VZ ? 1 + 0.06 * E.inOutSine(p(t, T.virada, T.fecho)) - 0.02 * E.inOutSine(p(t, T.fecho, DURATION))
+    const dr = (t) => (VZ ? 1 + 0.06 * p(t, T.virada, T.fecho) - 0.02 * E.inOutSine(p(t, T.fecho, DURATION))
       : 1 + 0.025 * E.inOutSine(p(t, T.virada + 0.3, DURATION)));
     const Dz = (t, x0, x1, y0, y1) => { const g = dr(t); return { t, x0: CX + (x0 - CX) * g, x1: CX + (x1 - CX) * g, y0: 960 + (y0 - 960) * g, y1: 960 + (y1 - 960) * g }; };
     const tv = T.fecho - 0.1, tf = DURATION - 0.35, vs = L.virada.size;

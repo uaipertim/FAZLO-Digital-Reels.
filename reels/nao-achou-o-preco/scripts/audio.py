@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Efeitos do episódio "Ele achou sua pousada. Não achou o preço.": o som é o da série (series/pelos-olhos-do-hospede/audio.py)."""
+"""Efeitos do episódio "Ele achou sua pousada. Mas não achou o preço.": o som é o da série (series/pelos-olhos-do-hospede/audio.py)."""
 import os
 import runpy
 import sys

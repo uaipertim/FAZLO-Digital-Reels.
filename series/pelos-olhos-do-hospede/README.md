@@ -14,8 +14,8 @@ A estrutura (título-dor → cards → carimbo → virada → "Manda pra quem…
 
 | Episódio | Título | Duração | Pasta do Reel | Status |
 |---|---|---|---|---|
-| Não achou o preço | "Ele achou sua pousada. / Não achou o preço." | 25,0 s com voz (curta: 14,4 s) | [`reels/nao-achou-o-preco/`](../../reels/nao-achou-o-preco) | com voz · aguardando aprovação · 17/10, 17h |
-| Como chega aí | "Como chega aí? / Ele perguntou de novo." | 25,0 s com voz (curta: 14,2 s) | [`reels/como-chega-ai/`](../../reels/como-chega-ai) | com voz · em avaliação · 18/10, 9h30 |
+| Não achou o preço | "Ele achou sua pousada. / Mas não achou o preço." | 25,8 s com voz (curta: 14,4 s) | [`reels/nao-achou-o-preco/`](../../reels/nao-achou-o-preco) | com voz · aguardando aprovação · 17/10, 17h |
+| Como chega aí | "Como chega aí? / Ele perguntou de novo!" | 25,0 s com voz (curta: 14,2 s) | [`reels/como-chega-ai/`](../../reels/como-chega-ai) | com voz · em avaliação · 18/10, 9h30 |
 
 As versões curtas sem voz ficam em `reels/<id>/output/fazlo-digital-<id>-curto.mp4`.
 
@@ -73,7 +73,11 @@ Sai com erro se a revisão técnica ou as áreas seguras falharem.
   }
   ```
 
-  É uma fala por card, na mesma ordem. "FAZLO" é enviado à API como "Fázlo" ("FÁZ-lo"); na tela continua FAZLO.
+  É uma fala por card, na mesma ordem. Uma fala pode ser uma **lista de partes**, por exemplo `["Como chega aí?", "A estrada é boa?"]`. Cada parte é uma chamada, e elas são emendadas com 0,25 s de pausa.
+  - Use partes para acertar a entonação, porque duas perguntas na mesma chamada tendem a sair como afirmação.
+  - "FAZLO" é enviado à API como "Fázlo" ("FÁZ-lo"); na tela continua FAZLO.
+  - "direct" fica "direct": foi a grafia escolhida nas amostras de 16/10.
+- **Entonação de pergunta:** em toda frase com "?", o `voz.py` mede a altura da voz no próprio áudio. Na pergunta, ela tem de subir pelo menos 10% na parte final, onde fica a tônica. Na pergunta brasileira, a voz sobe até a tônica e pode cair nas sílabas depois dela ("di-Á-ria?"). Se a pergunta sair como afirmação, ele tenta outras sementes e avisa se nenhuma subir.
 - Opcional: **`serie`** troca o texto do chip (ex.: "Pelos olhos do cliente", para os episódios de negócios em geral).
 - Aspas retas viram tipográficas no desenho.
 - Nada de números, telas inventadas, "automático", logos de WhatsApp, Instagram ou Pix.
@@ -99,7 +103,7 @@ O fecho tem 2,0 s em todos os episódios (ajuste de 16/10). Se o roteiro passar 
 | **Título** | A fala começa no **quadro 0**, junto com o título. A batida lima cai na palavra da parte lima (ex.: o "não" de "mas não achou o preço"). O título vira cabeçalho 0,35 s depois do fim da fala. |
 | **Cards** | Cada card entra com o toque de vidro, e a fala dele começa 0,25 s depois, quando o toque já baixou. O card fica a fala inteira mais um respiro de 0,55 s, com um **contorno lima enquanto é falado**. A pilha não fica parada: sobe 90 px até a saída, e cada card flutua de leve (±6 px, ±0,45°). |
 | **Carimbo** | A fala começa 0,15 s depois do baque. O carimbo fica pelo menos 1,6 s, ou a fala mais o respiro. |
-| **Virada** | As linhas brancas entram juntas. Cada linha lima entra **quando a voz chega na palavra dela** (alinhamento por caractere). A frase se aproxima 6% enquanto é falada. |
+| **Virada** | As linhas antes da 1ª palavra lima entram juntas. Daí em diante, **cada palavra entra quando a voz a diz** (alinhamento por caractere), como "“a partir de”". A frase se aproxima 6%, em ritmo constante, enquanto é falada. |
 | **Fecho** | "Manda pra quem…" entra, e a fala começa 0,2 s depois. A logo começa a se montar 0,4 s depois do início da fala e, pronta, fica **pelo menos 1,4 s na tela** antes do fade (ajuste de 16/10: mínimo de 1,2 s). A assinatura sonora soa logo depois da fala, sem cobri-la, e tem 1,2 s para soar inteira. O fecho tem pelo menos 2,0 s. |
 
 Se o total ficar abaixo de 25 s, a diferença vai para os respiros: os cards ficam mais tempo. Acima de 30 s, o comando avisa antes de renderizar.

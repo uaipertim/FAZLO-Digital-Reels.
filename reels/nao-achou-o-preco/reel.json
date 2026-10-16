@@ -1,6 +1,6 @@
 {
   "id": "nao-achou-o-preco",
-  "title": "Ele achou sua pousada. Não achou o preço.",
+  "title": "Ele achou sua pousada. Mas não achou o preço.",
   "serie": "Pelos olhos do hóspede",
   "status": "com voz · em avaliação",
   "format": {
@@ -39,14 +39,14 @@
     ],
     "checkTimes": [
       0,
-      3.86,
-      4.11,
-      7.36,
-      10.25,
-      13.29,
-      16.77,
-      23,
-      24.67
+      3.5,
+      3.75,
+      7.19,
+      10.14,
+      13.17,
+      16.66,
+      22.95,
+      25.43
     ],
     "coverClear": [
       [
@@ -69,39 +69,39 @@
       "TÍTULO-DOR"
     ],
     [
-      3.86,
+      3.5,
       "CABEÇALHO"
     ],
     [
-      4.11,
+      3.75,
       "CARD 1"
     ],
     [
-      7.36,
+      7.19,
       "CARD 2"
     ],
     [
-      10.25,
+      10.14,
       "CARD 3"
     ],
     [
-      12.61,
+      12.49,
       "O CORTE"
     ],
     [
-      13.29,
+      13.17,
       "CARIMBO"
     ],
     [
-      16.77,
+      16.66,
       "VIRADA"
     ],
     [
-      23,
+      22.95,
       "MANDA PRA QUEM…"
     ],
     [
-      24.67,
+      25.43,
       "LOGO"
     ]
   ]
