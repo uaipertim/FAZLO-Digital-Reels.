@@ -43,7 +43,7 @@ const cfg = {
   scripts: ['../../series/pelos-olhos-do-hospede/motor.js'],
   assets: {},
   qa: {
-    duration: [10, 14.1], lufs: -16,
+    duration: [10.4, 14.5], lufs: -16,
     syncCues: ['ping', 'stamp'], visualCues: ['ping', 'stamp'],
     checkTimes: old.qa?.checkTimes || [],
     coverClear: [[860, 240, 1080, 440], [0, 1560, 1080, 1680]],

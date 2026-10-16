@@ -2,7 +2,7 @@
 
 Produção dos Reels do Instagram da **FAZLO Digital**: motion graphics 9:16 animados em código, renderizados quadro a quadro e com trilha e efeitos sintetizados e sincronizados à imagem. Também os **carrosséis** estáticos do feed, desenhados com o mesmo código e a mesma identidade ([`carrosseis/`](carrosseis)).
 
-> **Status:** **Reel 00 · "Da ideia ao digital."**, **Reel 001 · "Seu negócio já é bom. Seu digital precisa parecer isso."**, **Reel 002 · "Muito além de um site."**, **Reel 003 · "Ideias que ganham forma."**, **"Instagram não é site."**, **"Como funciona o raio-x."**, **"Conheça o site da Pousada Vale dos Canteiros."**, **"Site não é luxo."** e a collab com o FAZLO Hospeda **"Mandou mensagem e ninguém respondeu."** concluídos e em avaliação ([`reels/`](reels)). Estratégia de volume (out/2026): modelo da série **"Pelos olhos do hóspede"** ([`series/`](series/pelos-olhos-do-hospede)) com o 1º episódio, **"Não achou o preço"**, e o **corte curto de "Instagram não é site"** (15 s), aguardando aprovação. Carrossel **"O que o hóspede procura antes de reservar"** concluído e aprovado ([`carrosseis/`](carrosseis)). Capas dos **destaques do perfil** (Sites, Raio-x, Hospeda, Contato) concluídas e aprovadas ([`destaques/`](destaques)). **Fundos de Stories** para enquete e caixinha concluídos e aprovados ([`stories/fundos/`](stories/fundos)). Identidade audiovisual em [`brand/`](brand): kit oficial de logos em SVG (com o símbolo FZ corrigido), verde-limão `#C6FA41`, fontes Unbounded + Sora e assinatura sonora.
+> **Status:** **Reel 00 · "Da ideia ao digital."**, **Reel 001 · "Seu negócio já é bom. Seu digital precisa parecer isso."**, **Reel 002 · "Muito além de um site."**, **Reel 003 · "Ideias que ganham forma."**, **"Instagram não é site."**, **"Como funciona o raio-x."**, **"Conheça o site da Pousada Vale dos Canteiros."**, **"Site não é luxo."** e a collab com o FAZLO Hospeda **"Mandou mensagem e ninguém respondeu."** concluídos e em avaliação ([`reels/`](reels)). Estratégia de volume (out/2026): modelo da série **"Pelos olhos do hóspede"** ([`series/`](series/pelos-olhos-do-hospede)) aprovado, com **"Não achou o preço"** (aprovado) e **"Como chega aí"** (em avaliação), e o **corte curto de "Instagram não é site"** (15 s, aprovado). Carrossel **"O que o hóspede procura antes de reservar"** concluído e aprovado ([`carrosseis/`](carrosseis)). Capas dos **destaques do perfil** (Sites, Raio-x, Hospeda, Contato) concluídas e aprovadas ([`destaques/`](destaques)). **Fundos de Stories** para enquete e caixinha concluídos e aprovados ([`stories/fundos/`](stories/fundos)). Identidade audiovisual em [`brand/`](brand): kit oficial de logos em SVG (com o símbolo FZ corrigido), verde-limão `#C6FA41`, fontes Unbounded + Sora e assinatura sonora.
 
 ## Padrão de entrega
 
@@ -93,7 +93,8 @@ reels/
   site-nao-e-luxo/             # o LUXO racha e vira os blocos de um site simples (interfaces genéricas)
   mandou-mensagem/             # collab com o FAZLO Hospeda: o fio da consulta até a reserva (prints reais)
   instagram-nao-e-site-corte/  # versão de 15 s com gancho novo (reaproveita a animação e a trilha do original)
-  nao-achou-o-preco/           # 1º episódio da série "Pelos olhos do hóspede" (pasta gerada por npm run episodio)
+  nao-achou-o-preco/           # episódios da série "Pelos olhos do hóspede" (pastas geradas por npm run episodio)
+  como-chega-ai/
   _calibracao/                 # cartela técnica que valida o pipeline
 carrosseis/
   o-que-o-hospede-procura/     # um carrossel por pasta (ver carrosseis/README.md)

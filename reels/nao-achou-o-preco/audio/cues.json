@@ -2,7 +2,7 @@
  "id": "nao-achou-o-preco",
  "bpm": null,
  "fps": 60,
- "duration": 14,
+ "duration": 14.4,
  "sections": {
   "gancho": 0,
   "situacao": 2.25,
@@ -73,7 +73,7 @@
    "type": "slash"
   },
   {
-   "t": 13.7,
+   "t": 14.1,
    "type": "fade",
    "d": 0.3000000000000007
   }

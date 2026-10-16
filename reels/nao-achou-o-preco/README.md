@@ -1,6 +1,6 @@
 # FAZLO Digital — "Não achou o preço" · série "Pelos olhos do hóspede"
 
-**Status: concluído · aguardando aprovação do modelo.**
+**Status: concluído · aprovado (16/10). Postar em 17/10, às 17h.**
 
 1º episódio da série [`Pelos olhos do hóspede`](../../series/pelos-olhos-do-hospede). Esta pasta é gerada por `npm run episodio -- nao-achou-o-preco` a partir do roteiro [`episodios/nao-achou-o-preco.json`](../../series/pelos-olhos-do-hospede/episodios/nao-achou-o-preco.json); para mudar o texto, edite o roteiro e rode o comando de novo.
 
@@ -12,7 +12,7 @@
 
 | Entrega | Arquivo |
 |---|---|
-| Vídeo (14,0 s, 60 fps, só efeitos em −16 LUFS) | [`output/fazlo-digital-nao-achou-o-preco.mp4`](output/fazlo-digital-nao-achou-o-preco.mp4) |
+| Vídeo (14,4 s, fecho de 2,0 s, 60 fps, só efeitos em −16 LUFS) | [`output/fazlo-digital-nao-achou-o-preco.mp4`](output/fazlo-digital-nao-achou-o-preco.mp4) |
 | Capa | [`output/capa.png`](output/capa.png) |
 | Storyboard | [`output/storyboard.jpg`](output/storyboard.jpg) |
 | Revisão técnica e de sincronia | [`output/revisao/`](output/revisao) |

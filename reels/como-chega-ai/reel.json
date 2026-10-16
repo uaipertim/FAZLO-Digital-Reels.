@@ -1,0 +1,107 @@
+{
+  "id": "como-chega-ai",
+  "title": "Como chega aí? Ele perguntou de novo.",
+  "serie": "Pelos olhos do hóspede",
+  "status": "em produção",
+  "format": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 60
+  },
+  "output": {
+    "video": "output/fazlo-digital-como-chega-ai.mp4",
+    "cover": "output/capa.png"
+  },
+  "fonts": [
+    "900 100px 'FZD Display'",
+    "800 100px 'FZD Display'",
+    "600 100px 'FZD Text'",
+    "700 100px 'FZD Text'"
+  ],
+  "scripts": [
+    "../../series/pelos-olhos-do-hospede/motor.js"
+  ],
+  "assets": {},
+  "qa": {
+    "duration": [
+      10.4,
+      14.5
+    ],
+    "lufs": -16,
+    "syncCues": [
+      "ping",
+      "stamp"
+    ],
+    "visualCues": [
+      "ping",
+      "stamp"
+    ],
+    "checkTimes": [
+      0,
+      2.5,
+      2.75,
+      4.45,
+      6.03,
+      7.77,
+      10.82,
+      13.5,
+      13.85
+    ],
+    "coverClear": [
+      [
+        860,
+        240,
+        1080,
+        440
+      ],
+      [
+        0,
+        1560,
+        1080,
+        1680
+      ]
+    ]
+  },
+  "storyboard": [
+    [
+      0,
+      "TÍTULO-DOR"
+    ],
+    [
+      2.5,
+      "CABEÇALHO"
+    ],
+    [
+      2.75,
+      "CARD 1"
+    ],
+    [
+      4.45,
+      "CARD 2"
+    ],
+    [
+      6.03,
+      "CARD 3"
+    ],
+    [
+      7.09,
+      "O CORTE"
+    ],
+    [
+      7.77,
+      "CARIMBO"
+    ],
+    [
+      10.82,
+      "VIRADA"
+    ],
+    [
+      13.5,
+      "MANDA PRA QUEM…"
+    ],
+    [
+      13.85,
+      "LOGO"
+    ]
+  ]
+}

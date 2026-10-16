@@ -1,0 +1,81 @@
+{
+ "id": "como-chega-ai",
+ "bpm": null,
+ "fps": 60,
+ "duration": 14.2,
+ "sections": {
+  "gancho": 0,
+  "situacao": 2.25,
+  "corte": 6.966,
+  "virada": 9.616,
+  "fecho": 12.2
+ },
+ "cues": [
+  {
+   "t": 0,
+   "type": "hook"
+  },
+  {
+   "t": 0.7,
+   "type": "knock"
+  },
+  {
+   "t": 1.8,
+   "type": "rise",
+   "d": 0.5
+  },
+  {
+   "t": 2.25,
+   "type": "ping",
+   "k": 0,
+   "n": 3
+  },
+  {
+   "t": 3.95,
+   "type": "ping",
+   "k": 1,
+   "n": 3
+  },
+  {
+   "t": 5.53,
+   "type": "ping",
+   "k": 2,
+   "n": 3
+  },
+  {
+   "t": 6.966,
+   "type": "cut",
+   "d": 0.2
+  },
+  {
+   "t": 7.166,
+   "type": "stamp"
+  },
+  {
+   "t": 9.266,
+   "type": "exit",
+   "d": 0.5
+  },
+  {
+   "t": 9.616,
+   "type": "virada"
+  },
+  {
+   "t": 12.2,
+   "type": "fecho"
+  },
+  {
+   "t": 12.52,
+   "type": "logo"
+  },
+  {
+   "t": 12.72,
+   "type": "slash"
+  },
+  {
+   "t": 13.9,
+   "type": "fade",
+   "d": 0.3000000000000007
+  }
+ ]
+}

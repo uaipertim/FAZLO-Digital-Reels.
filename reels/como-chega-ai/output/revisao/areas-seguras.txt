@@ -1,0 +1,60 @@
+COMO-CHEGA-AI — áreas seguras, elemento a elemento
+
+Regras: conteúdo entre y 265 e 1456; nada em x ≥ 950 entre y 1060 e 1560 (coluna de botões);
+título do quadro 0 dentro do recorte 3:4 (y 240–1680).
+
+OK     chip da série            t= 0.00 s   x  267–783   y  685–741
+OK     título 1                 t= 0.00 s   x  360–690   y  787–851
+OK     título 2                 t= 0.00 s   x  251–799   y  875–939
+OK     título 3                 t= 0.00 s   x  107–943   y  963–1027
+OK     título 4                 t= 0.00 s   x  286–764   y 1051–1115
+OK     cabeçalho                t= 7.17 s   x  331–749   y  285–449
+OK     card 1                   t= 6.92 s   x   80–940   y  707–883
+OK     card 2                   t= 6.92 s   x   80–940   y  907–1031
+OK     card 3                   t= 6.92 s   x   80–940   y 1055–1179
+OK     carimbo                  t= 7.67 s   x  137–893   y  866–1030
+OK     virada 1                 t=12.10 s   x  104–946   y  733–789
+OK     virada 1 (no fecho)      t=13.85 s   x   99–951   y  548–604
+OK     virada 2                 t=12.10 s   x  205–845   y  812–868
+OK     virada 2 (no fecho)      t=13.85 s   x  201–849   y  627–683
+OK     virada 3                 t=12.10 s   x  183–867   y  890–946
+OK     virada 3 (no fecho)      t=13.85 s   x  179–871   y  706–763
+OK     virada 4                 t=12.10 s   x  204–846   y  969–1025
+OK     virada 4 (no fecho)      t=13.85 s   x  200–850   y  786–842
+OK     fecho 1                  t=13.85 s   x  172–878   y  914–966
+OK     fecho 2                  t=13.85 s   x  128–922   y  980–1032
+OK     logo                     t=13.85 s   x  356–694   y 1103–1208
+
+OK     capa: bloco (chip + título) em y 740–1180, centro em y = 960.0 (recorte 3:4: 960)
+
+Layout calculado:
+{
+ "titulo": {
+  "size": 80,
+  "linhas": [
+   "COMO",
+   "CHEGA AÍ?",
+   "ELE PERGUNTOU",
+   "DE NOVO."
+  ]
+ },
+ "cabecalho": 0.5,
+ "virada": {
+  "size": 68,
+  "linhas": [
+   "MAPA E DISTÂNCIA",
+   "DOS PASSEIOS",
+   "NO SITE, ANTES",
+   "DA PERGUNTA."
+  ]
+ },
+ "fecho": [
+  52,
+  "Manda pra quem explica o",
+  "caminho toda vez pelo direct."
+ ],
+ "carimbo": 46,
+ "duracao": 14.2
+}
+
+RESULTADO: aprovado

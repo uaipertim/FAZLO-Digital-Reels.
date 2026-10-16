@@ -3,15 +3,15 @@ output/fazlo-digital-nao-achou-o-preco.mp4
 
 OK     vídeo h264 High yuv420p
 OK     resolução 1080x1920 (9:16)
-OK     60 fps, 840 quadros
-OK     duração do vídeo 14.000 s (alvo 10–14.1 s)
-OK     arquivo 4.7 MB, 2.7 Mb/s
+OK     60 fps, 864 quadros
+OK     duração do vídeo 14.400 s (alvo 10.4–14.5 s)
+OK     arquivo 4.9 MB, 2.7 Mb/s
 OK     faixa de áudio presente
 OK     áudio aac 48000 Hz, 2 canais, 253 kb/s
 OK     vídeo e áudio com a mesma duração (Δ 0 ms)
 OK     loudness integrado -16.0 LUFS (alvo -16)
-OK     pico real -4.3 dBTP (limite -1)
-       faixa de loudness (LRA) 10.1 LU
+OK     pico real -4.9 dBTP (limite -1)
+       faixa de loudness (LRA) 13.1 LU
 OK     sem trechos pretos ≥ 0,1 s
 OK     sem imagem congelada ≥ 0,75 s
 OK     o 1º quadro já tem imagem (luminância média 19.3), sem abertura preta
@@ -21,7 +21,7 @@ OK     capa: conteúdo dentro do recorte 3:4 (y 240–1680)
 
 Sincronização (detalhes em sincronia.txt):
 OK     áudio do MP4 = trilha, sem deslocamento (+0.0, +0.0, +0.0 ms)
-OK     4 efeitos-chave com ataque no instante do evento (desvio médio 4.1 ms, máximo 5.4 ms; 1 quadro = 16,7 ms)
+OK     4 efeitos-chave com ataque no instante do evento (desvio médio 4.7 ms, máximo 6.8 ms; 1 quadro = 16,7 ms)
 OK     a imagem reage em 4/4 golpes principais (pico de movimento a ≤ 8 quadros do som)
 
 RESULTADO: aprovado

@@ -1,6 +1,6 @@
 # FAZLO Digital — "Instagram não é site" · corte curto
 
-**Status: concluído · aguardando aprovação.**
+**Status: concluído · aprovado (16/10). Postar em 17/10, às 9h30.**
 
 Versão de 15 s do Reel [`instagram-nao-e-site`](../instagram-nao-e-site), para a estratégia de volume. Tem um **gancho novo no quadro 0** (vale como capa) e três trechos do Reel original, sem redesenhar nada: o motion e a trilha vêm do próprio Reel.
 

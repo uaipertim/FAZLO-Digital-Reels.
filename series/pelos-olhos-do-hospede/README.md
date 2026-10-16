@@ -7,14 +7,15 @@ A estrutura (título-dor → cards → carimbo → virada → "Manda pra quem…
 É **um motion só**: cada episódio troca apenas o roteiro, um JSON em [`episodios/`](episodios). Depois do modelo aprovado, um episódio novo sai com um comando.
 
 **Formato:**
-- 9:16 (1080×1920), 60 fps, **10–14 s** (a duração se ajusta ao roteiro).
+- 9:16 (1080×1920), 60 fps, **10,4–14,4 s** (a duração se ajusta ao roteiro).
 - H.264 + AAC 48 kHz.
 - **Só efeitos sintetizados**, em −16 LUFS: a música entra pelo Instagram.
 - Identidade da FAZLO Digital: Unbounded + Sora, lima `#C6FA41`, fundo `#050606` com a grade de pontos, logo FAZLO DIGITAL do kit oficial.
 
 | Episódio | Título | Duração | Pasta do Reel | Status |
 |---|---|---|---|---|
-| Não achou o preço | "Ele achou sua pousada. / Não achou o preço." | 14,0 s | [`reels/nao-achou-o-preco/`](../../reels/nao-achou-o-preco) | concluído · aguardando aprovação do modelo |
+| Não achou o preço | "Ele achou sua pousada. / Não achou o preço." | 14,4 s | [`reels/nao-achou-o-preco/`](../../reels/nao-achou-o-preco) | aprovado · 17/10, 17h |
+| Como chega aí | "Como chega aí? / Ele perguntou de novo." | 14,2 s | [`reels/como-chega-ai/`](../../reels/como-chega-ai) | em avaliação · 18/10, 9h30 |
 
 ## Episódio novo: só o JSON
 
@@ -71,9 +72,9 @@ Sai com erro se a revisão técnica ou as áreas seguras falharem.
 | depois do último card | **O corte** | A barra lima da marca (46°) atravessa a pilha com a varredura da assinatura sonora e deixa o **carimbo** lima, com tranco, tremor e brilho. Ele fica 2,1 s. |
 | +2,1 s | **Saída** | Os cards e o carimbo caem em cascata; o cabeçalho sai pelo topo. |
 | +0,35 s | **A virada** | A frase sobe linha a linha e fica parada 2,3–2,7 s (pelo tamanho do texto). |
-| últimos 1,6 s | **Fecho** | A virada sobe; entra "Manda pra quem…" e a logo FAZLO DIGITAL se monta pelas formas, com a assinatura completa. Fade curto no fim. |
+| últimos 2,0 s | **Fecho** | A virada sobe; entra "Manda pra quem…" e a logo FAZLO DIGITAL se monta pelas formas, com a assinatura completa. Fade curto no fim. |
 
-Se o roteiro passar de 14 s (ou ficar abaixo de 10 s), os intervalos entre os cards se ajustam para caber.
+O fecho tem 2,0 s em todos os episódios (ajuste de 16/10). Se o roteiro passar de 14,4 s (ou ficar abaixo de 10,4 s), os intervalos entre os cards se ajustam para caber.
 
 ## Áreas seguras
 

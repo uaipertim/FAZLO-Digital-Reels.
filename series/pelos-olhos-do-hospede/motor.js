@@ -15,7 +15,7 @@
      3. o corte: a barra lima da marca (46°) atravessa a pilha e deixa o
         carimbo lima;
      4. a virada: frase branca com um trecho lima, parada ≥ 1,8 s;
-     5. últimos 1,6 s: "Manda pra quem…" + logo FAZLO DIGITAL (kit oficial),
+     5. últimos 2,0 s: "Manda pra quem…" + logo FAZLO DIGITAL (kit oficial),
         montada pelas formas, com a assinatura sonora.
 
    Identidade da FAZLO Digital: fundo #050606 com a grade de pontos, lima
@@ -218,6 +218,8 @@
   const FECHO = { size: 52, weight: 700, maxW: 820, lead: 1.24, gap: 70 };
   const LOCK = { w: 330, before: 70 };
   const CUT = 0.2;                                  // a barra atravessa a pilha antes do carimbo
+  const FECHO_D = 2.0;                              // "Manda pra quem…" + logo (pedido de 16/10: 2,0 s em todos os episódios)
+  const DMIN = 10 + (FECHO_D - 1.6), DMAX = 14 + (FECHO_D - 1.6);   // o fecho maior não encurta a situação
 
   function measureCard(c) {
     const k = { ...c };
@@ -286,10 +288,10 @@
     const t = { knock: 0.7, rise: 1.8, cards: [] };
     let x = 2.25;
     cards.forEach((k) => { t.cards.push(x); x += gapOf(k); });
-    const tail = CUT + 2.1 + 0.35 + vRead + 1.6;
+    const tail = CUT + 2.1 + 0.35 + vRead + FECHO_D;
     let end = x + tail;
-    if (end > 14 || end < 10) {                     // a duração fica entre 10 e 14 s
-      const target = clamp(end, 10, 14), span = x - 2.25, f = (target - tail - 2.25) / span;
+    if (end > DMAX || end < DMIN) {                 // a duração fica entre 10,4 e 14,4 s
+      const target = clamp(end, DMIN, DMAX), span = x - 2.25, f = (target - tail - 2.25) / span;
       t.cards = t.cards.map((c) => 2.25 + (c - 2.25) * f); x = 2.25 + span * f;
     }
     t.cut = x;
@@ -298,7 +300,7 @@
     t.virada = t.exit + 0.35;
     t.fecho = t.virada + vRead;
     t.logo = t.fecho + 0.32;
-    DURATION = Math.round((t.fecho + 1.6) * 60) / 60;
+    DURATION = Math.round((t.fecho + FECHO_D) * 60) / 60;
     t.fade = DURATION - 0.3;
     T = t;
   }
