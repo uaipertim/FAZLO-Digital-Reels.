@@ -1,0 +1,12 @@
+{
+  "id": "nao-achou-o-preco",
+  "titulo": ["Ele achou sua pousada.", "Não achou o preço."],
+  "cards": [
+    { "rotulo": "No perfil", "texto": "Fotos da piscina, do café e da vista." },
+    { "texto": "E a diária? Nenhum valor à vista." },
+    { "texto": "Perguntar no direct… e esperar." }
+  ],
+  "carimbo": "Foi ver outra",
+  "virada": ["Um valor de referência", "*responde antes da pergunta.*"],
+  "fecho": "Manda pra quem só passa o preço no direct."
+}

@@ -1,0 +1,81 @@
+{
+ "id": "nao-achou-o-preco",
+ "bpm": null,
+ "fps": 60,
+ "duration": 14,
+ "sections": {
+  "gancho": 0,
+  "situacao": 2.25,
+  "corte": 7.25,
+  "virada": 9.9,
+  "fecho": 12.4
+ },
+ "cues": [
+  {
+   "t": 0,
+   "type": "hook"
+  },
+  {
+   "t": 0.7,
+   "type": "knock"
+  },
+  {
+   "t": 1.8,
+   "type": "rise",
+   "d": 0.5
+  },
+  {
+   "t": 2.25,
+   "type": "ping",
+   "k": 0,
+   "n": 3
+  },
+  {
+   "t": 3.9486,
+   "type": "ping",
+   "k": 1,
+   "n": 3
+  },
+  {
+   "t": 5.6353,
+   "type": "ping",
+   "k": 2,
+   "n": 3
+  },
+  {
+   "t": 7.25,
+   "type": "cut",
+   "d": 0.2
+  },
+  {
+   "t": 7.45,
+   "type": "stamp"
+  },
+  {
+   "t": 9.55,
+   "type": "exit",
+   "d": 0.5
+  },
+  {
+   "t": 9.9,
+   "type": "virada"
+  },
+  {
+   "t": 12.4,
+   "type": "fecho"
+  },
+  {
+   "t": 12.72,
+   "type": "logo"
+  },
+  {
+   "t": 12.92,
+   "type": "slash"
+  },
+  {
+   "t": 13.7,
+   "type": "fade",
+   "d": 0.3000000000000007
+  }
+ ]
+}

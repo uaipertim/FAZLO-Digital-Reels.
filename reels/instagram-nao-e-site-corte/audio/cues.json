@@ -1,0 +1,26 @@
+{
+ "id": "instagram-nao-e-site-corte",
+ "bpm": null,
+ "fps": 60,
+ "duration": 15,
+ "sections": {
+  "gancho": 0,
+  "baloes": 1.8,
+  "site": 4.8,
+  "sintese": 9
+ },
+ "cues": [
+  {
+   "t": 0.6,
+   "type": "knock"
+  },
+  {
+   "t": 1.8,
+   "type": "wipe"
+  },
+  {
+   "t": 9,
+   "type": "wipe"
+  }
+ ]
+}

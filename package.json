@@ -4,7 +4,9 @@
   "private": true,
   "description": "FAZLO Digital — Motion Graphics: Reels 9:16 (1080x1920, 60 fps) em Canvas 2D, render no Chromium headless e trilha sintetizada",
   "license": "UNLICENSED",
-  "engines": { "node": ">=18" },
+  "engines": {
+    "node": ">=18"
+  },
   "scripts": {
     "dev": "node tools/serve.cjs",
     "doctor": "node tools/doctor.cjs",
@@ -21,7 +23,8 @@
     "carousel": "node tools/carousel.cjs",
     "destaques": "node tools/destaques.cjs",
     "stories": "node tools/stories.cjs",
-    "test": "node tools/build.cjs _calibracao"
+    "test": "node tools/build.cjs _calibracao",
+    "episodio": "node tools/episodio.cjs"
   },
   "devDependencies": {
     "playwright": "1.56.1"

@@ -1,0 +1,29 @@
+{
+  "id": "instagram-nao-e-site-corte",
+  "title": "Instagram não é site (corte curto)",
+  "status": "em produção",
+  "format": { "width": 1080, "height": 1920, "fps": 60 },
+  "output": {
+    "video": "output/fazlo-digital-instagram-nao-e-site-corte.mp4",
+    "cover": "output/capa.png"
+  },
+  "fonts": [
+    "800 100px 'FZD Display'", "900 100px 'FZD Display'",
+    "400 100px 'FZD Text'", "500 100px 'FZD Text'", "600 100px 'FZD Text'", "700 100px 'FZD Text'"
+  ],
+  "scripts": ["../instagram-nao-e-site/src/anim.js"],
+  "assets": { "logo": "brand/logo/kit/FAZLO-DIGITAL-branca-transparente.svg" },
+  "qa": {
+    "duration": [14.9, 15.1],
+    "lufs": -14,
+    "syncCues": ["knock", "wipe"],
+    "visualCues": ["knock", "wipe"],
+    "checkTimes": [0, 0.9, 2.4, 3.6, 4.6, 5.6, 6.6, 8.2, 9.6, 11.0, 12.6, 14.6],
+    "coverClear": [[860, 240, 1080, 440], [0, 1560, 1080, 1680]]
+  },
+  "storyboard": [
+    [0, "GANCHO NOVO"], [0.9, "FICOU NO DIRECT"], [2.0, "OS BALÕES"], [3.6, "AS FOTOS ENCANTAM"],
+    [4.7, "A ESPERA"], [5.4, "A BARRA LIMA"], [6.6, "O SITE"], [8.4, "PERÍODO: DIA 20"],
+    [9.1, "O CORTE"], [10.8, "ATRAI x RESPONDE"], [13.4, "A LOGO"], [14.8, "FALE COM A FAZLO"]
+  ]
+}

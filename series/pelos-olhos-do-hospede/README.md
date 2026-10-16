@@ -1,0 +1,109 @@
+# FAZLO Digital — série "Pelos olhos do hóspede" · o modelo
+
+Série de Reels curtos da @fazlodigital, criada para a estratégia de volume (2 posts por dia). Cada episódio mostra uma dúvida que o hóspede tem antes de reservar e que o site da pousada poderia responder. Os temas saem dos 7 pontos do carrossel "O que o hóspede procura antes de reservar".
+
+A estrutura (título-dor → cards → carimbo → virada → "Manda pra quem…") vem da estratégia de volume decidida em 16/10/2026; o desenho, as fontes, as cores, a logo e o som são os da FAZLO Digital, e o código é próprio deste repositório.
+
+É **um motion só**: cada episódio troca apenas o roteiro, um JSON em [`episodios/`](episodios). Depois do modelo aprovado, um episódio novo sai com um comando.
+
+**Formato:**
+- 9:16 (1080×1920), 60 fps, **10–14 s** (a duração se ajusta ao roteiro).
+- H.264 + AAC 48 kHz.
+- **Só efeitos sintetizados**, em −16 LUFS: a música entra pelo Instagram.
+- Identidade da FAZLO Digital: Unbounded + Sora, lima `#C6FA41`, fundo `#050606` com a grade de pontos, logo FAZLO DIGITAL do kit oficial.
+
+| Episódio | Título | Duração | Pasta do Reel | Status |
+|---|---|---|---|---|
+| Não achou o preço | "Ele achou sua pousada. / Não achou o preço." | 14,0 s | [`reels/nao-achou-o-preco/`](../../reels/nao-achou-o-preco) | concluído · aguardando aprovação do modelo |
+
+## Episódio novo: só o JSON
+
+```bash
+# 1. escreva series/pelos-olhos-do-hospede/episodios/<id>.json
+npm run episodio -- <id>
+```
+
+O comando:
+1. cria (ou atualiza) `reels/<id>/` (`reel.json`, `src/anim.js` de uma linha, `scripts/audio.py`);
+2. exporta os cues e completa o `reel.json` com os instantes da revisão e do storyboard;
+3. roda o pipeline normal: áudio → vídeo → capa → storyboard → QA;
+4. confere as áreas seguras elemento a elemento (`output/revisao/areas-seguras.txt`).
+
+Sai com erro se a revisão técnica ou as áreas seguras falharem.
+
+### O formato do roteiro
+
+```json
+{
+  "id": "nao-achou-o-preco",
+  "titulo": ["Ele achou sua pousada.", "Não achou o preço."],
+  "cards": [
+    { "rotulo": "No perfil", "texto": "Fotos da piscina, do café e da vista." },
+    { "texto": "E a diária? Nenhum valor à vista." },
+    { "texto": "Perguntar no direct… e esperar." }
+  ],
+  "carimbo": "Foi ver outra",
+  "virada": ["Um valor de referência", "*responde antes da pergunta.*"],
+  "fecho": "Manda pra quem só passa o preço no direct."
+}
+```
+
+- **`titulo`**: duas linhas, em maiúsculas no desenho. A 1ª sai branca e a 2ª lima. Se alguma linha tiver `*asteriscos*`, só esse trecho fica lima.
+- **`cards`**: de 2 a 4, em três desenhos:
+  - **`rotulo` + `texto`**: rótulo pequeno em Sora maiúscula cinza, texto em Sora 600;
+  - **só `texto`**: card mais baixo, com o ponto lima ao lado;
+  - **`chip`**: pílula com texto em maiúsculas, para listas curtas.
+  - O texto fica numa linha só se couber até 42 px; senão quebra em duas.
+- **`carimbo`**: a pílula lima carimbada sobre a pilha (Unbounded 800, diminui sozinha se passar de 840 px).
+- **`virada`**: uma ou mais linhas; o trecho entre `*asteriscos*` sai em lima.
+- **`fecho`**: o "Manda pra quem…", em até duas linhas.
+- Opcional: **`serie`** troca o texto do chip (ex.: "Pelos olhos do cliente", para os episódios de negócios em geral).
+- Aspas retas viram tipográficas no desenho.
+- Nada de números, telas inventadas, "automático", logos de WhatsApp, Instagram ou Pix.
+
+## Estrutura (fixa) e tempos
+
+| Tempo | Cena | O que acontece |
+|---|---|---|
+| 0–1,8 s | **Título-dor** | **Já no quadro 0** (vale como capa): o chip "PELOS OLHOS DO HÓSPEDE" e o título em Unbounded 900, no maior tamanho que cabe em 840 px. Em 0,7 s a parte lima leva uma batida seca. |
+| 1,8–2,3 s | **Vira cabeçalho** | O título sobe e encolhe para o alto (topo em y 285); o chip sai. |
+| 2,25 s → | **A situação** | Os cards entram um a um com um toque de vidro, de baixo para cima, com mola; o novo empurra os anteriores. Cada card fica o tempo de leitura do seu texto (0,85–1,7 s). A pilha sobe devagar (50 px), para a cena nunca ficar parada. |
+| depois do último card | **O corte** | A barra lima da marca (46°) atravessa a pilha com a varredura da assinatura sonora e deixa o **carimbo** lima, com tranco, tremor e brilho. Ele fica 2,1 s. |
+| +2,1 s | **Saída** | Os cards e o carimbo caem em cascata; o cabeçalho sai pelo topo. |
+| +0,35 s | **A virada** | A frase sobe linha a linha e fica parada 2,3–2,7 s (pelo tamanho do texto). |
+| últimos 1,6 s | **Fecho** | A virada sobe; entra "Manda pra quem…" e a logo FAZLO DIGITAL se monta pelas formas, com a assinatura completa. Fade curto no fim. |
+
+Se o roteiro passar de 14 s (ou ficar abaixo de 10 s), os intervalos entre os cards se ajustam para caber.
+
+## Áreas seguras
+
+O motor calcula a caixa de cada elemento no seu instante de leitura, e o `npm run episodio` confere:
+- todo o conteúdo entre **y 265 e 1456**;
+- nada na coluna de botões (**x ≥ 950, y 1060–1560**): textos centrados em x = 525 com até 840 px, cards em x 80–940;
+- o título do quadro 0 dentro do **recorte 3:4**.
+
+## Capa
+
+Gerada pelo próprio motor: fundo preto com a grade de pontos, a logo pequena no topo ao centro (y ≈ 322–390), o chip da série e o título **centralizados na vertical do recorte 3:4** (centro em y = 960), com o canto do ícone de play e a faixa do contador livres.
+
+## Som
+
+`audio.py` (efeitos sintetizados, sem samples), nos instantes exportados pela animação:
+- uma batida seca na parte lima do título;
+- um sopro quando o título vira cabeçalho;
+- um **toque de vidro** a cada card, subindo na pentatônica de Lá bemol;
+- **"o corte"** da marca (a varredura) junto com a barra, e o **carimbo** (baque grave, tapa, a pilha chacoalhando);
+- sopros na saída, na virada e no fecho; um acorde de vidro na virada;
+- a **assinatura completa** (varredura + Lá bemol 5 → Mi bemol 6) na logo;
+- tom de sala quase inaudível.
+
+## Arquivos
+
+```
+series/pelos-olhos-do-hospede/
+  motor.js                 o motion (layout e linha do tempo calculados a partir do roteiro)
+  audio.py                 os efeitos da série
+  episodios/<id>.json      o roteiro de cada episódio (a única coisa que muda)
+tools/episodio.cjs         um episódio inteiro, do roteiro à revisão (npm run episodio -- <id>)
+reels/<id>/                a pasta gerada do episódio (vídeo, capa, storyboard, revisão)
+```
