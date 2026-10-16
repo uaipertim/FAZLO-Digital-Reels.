@@ -37,6 +37,9 @@ DATA = load_cues(ROOT)
 DUR = float(DATA['duration'])
 mix = Mix(DUR)
 PENTA = [80, 84, 87, 89, 92]                      # Lá bemol 5, Dó 6, Mi bemol 6, Fá 6, Lá bemol 6
+COM_VOZ = any(c['type'] == 'voz' for c in DATA['cues'])
+# com voz, o baque do carimbo fica um pouco mais baixo: grave saturado, o AAC passava do pico permitido
+G_STAMP = 0.7 if COM_VOZ else 0.95
 
 
 def glass(f, d=0.6, vel=1.0):
@@ -82,7 +85,7 @@ for c in DATA['cues']:
     elif ty == 'cut':
         sig_cut(mix, t + 0.02, g=1.0, big=True)
     elif ty == 'stamp':
-        mix.place('sfx', thud(0.6, 58), t, 0.95)
+        mix.place('sfx', thud(0.6, 58), t, G_STAMP)
         mix.place('sfx', impact(1.0, 0.5), t, 0.28)
         mix.place('sfx', rattle(0.3), t + 0.01, 0.3)
         mix.place('send', thud(0.6, 58), t, 0.18)
@@ -104,7 +107,6 @@ for c in DATA['cues']:
 mix.place('room', filt(noise(DUR), 900, 'low') * db(-56) * 8, 0, 1.0)
 
 LEVELS, REVERB = {'sfx': 1.0, 'room': 1.0}, {'send': 0.55, 'sfx': 0.06}
-COM_VOZ = any(c['type'] == 'voz' for c in DATA['cues'])
 if not COM_VOZ:
     master(mix.render(levels=LEVELS, reverb=REVERB), os.path.join(ROOT, 'audio', 'trilha.wav'), lufs=-16.0, fade_out=0.3)
 else:
@@ -129,4 +131,4 @@ else:
     r = 10 * np.log10(pv[fala] / (pf[fala] + 1e-12))
     print(f'voz: efeitos {20 * np.log10(g.min()):.1f} dB sob a fala · voz acima dos efeitos: mínimo {r.min():+.1f} dB, '
           f'10% {np.percentile(r, 10):+.1f} dB, mediana {np.median(r):+.1f} dB')
-    master(fx + vv * k, os.path.join(ROOT, 'audio', 'trilha.wav'), lufs=-14.0, fade_out=0.3)
+    master(fx + vv * k, os.path.join(ROOT, 'audio', 'trilha.wav'), lufs=-14.0, fade_out=0.3, ceiling_db=-3.3)   # folga para o AAC

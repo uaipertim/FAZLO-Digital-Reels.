@@ -14,7 +14,7 @@ A estrutura (título-dor → cards → carimbo → virada → "Manda pra quem…
 
 | Episódio | Título | Duração | Pasta do Reel | Status |
 |---|---|---|---|---|
-| Não achou o preço | "Ele achou sua pousada. / Não achou o preço." | 25,2 s com voz (curta: 14,4 s) | [`reels/nao-achou-o-preco/`](../../reels/nao-achou-o-preco) | com voz · aguardando aprovação · 17/10, 17h |
+| Não achou o preço | "Ele achou sua pousada. / Não achou o preço." | 25,0 s com voz (curta: 14,4 s) | [`reels/nao-achou-o-preco/`](../../reels/nao-achou-o-preco) | com voz · aguardando aprovação · 17/10, 17h |
 | Como chega aí | "Como chega aí? / Ele perguntou de novo." | 25,0 s com voz (curta: 14,2 s) | [`reels/como-chega-ai/`](../../reels/como-chega-ai) | com voz · em avaliação · 18/10, 9h30 |
 
 As versões curtas sem voz ficam em `reels/<id>/output/fazlo-digital-<id>-curto.mp4`.
@@ -100,7 +100,7 @@ O fecho tem 2,0 s em todos os episódios (ajuste de 16/10). Se o roteiro passar 
 | **Cards** | Cada card entra com o toque de vidro, e a fala dele começa 0,25 s depois, quando o toque já baixou. O card fica a fala inteira mais um respiro de 0,55 s, com um **contorno lima enquanto é falado**. A pilha não fica parada: sobe 90 px até a saída, e cada card flutua de leve (±6 px, ±0,45°). |
 | **Carimbo** | A fala começa 0,15 s depois do baque. O carimbo fica pelo menos 1,6 s, ou a fala mais o respiro. |
 | **Virada** | As linhas brancas entram juntas. Cada linha lima entra **quando a voz chega na palavra dela** (alinhamento por caractere). A frase se aproxima 6% enquanto é falada. |
-| **Fecho** | "Manda pra quem…" entra e a fala começa 0,2 s depois. A logo se monta no fim da fala, para a assinatura sonora não cobrir a voz. O fecho tem pelo menos 2,0 s e termina 1,7 s depois da logo. |
+| **Fecho** | "Manda pra quem…" entra, e a fala começa 0,2 s depois. A logo começa a se montar 0,4 s depois do início da fala e, pronta, fica **pelo menos 1,4 s na tela** antes do fade (ajuste de 16/10: mínimo de 1,2 s). A assinatura sonora soa logo depois da fala, sem cobri-la, e tem 1,2 s para soar inteira. O fecho tem pelo menos 2,0 s. |
 
 Se o total ficar abaixo de 25 s, a diferença vai para os respiros: os cards ficam mais tempo. Acima de 30 s, o comando avisa antes de renderizar.
 
@@ -114,7 +114,7 @@ Se o total ficar abaixo de 25 s, a diferença vai para os respiros: os cards fic
 **Mixagem** (`audio.py`):
 - voz no centro, com filtro de graves em 80 Hz e o mesmo nível em todas as falas, 3 dB acima dos efeitos cheios;
 - os efeitos (com as caudas de reverb) abaixam 9 dB enquanto há fala, a partir de 0,12 s antes dela. O ataque de cada toque ou golpe passa inteiro;
-- master em −14 LUFS.
+- master em −14 LUFS, com teto de −3,3 dBTP de folga para o AAC. Com voz, o baque do carimbo fica um pouco mais baixo (0,7), porque o grave saturado passava do pico depois do AAC.
 
 ## Áreas seguras
 

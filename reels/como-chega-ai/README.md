@@ -19,11 +19,11 @@ A voz manda no tempo: cada cena dura a sua fala mais um respiro, e a fala do tí
 |---|---|---|---|
 | titulo | "Como chega aí? Ele perguntou de novo." | 0,00 s | 1,63 s |
 | card1 | "No direct: como chega aí? A estrada é boa?" | 2,68 s | 2,11 s |
-| card2 | "Mandaram o pin… sem o caminho." | 5,88 s | 2,23 s |
-| card3 | "E a cachoeira? Fica longe?" | 9,19 s | 1,18 s |
-| carimbo | "E a pergunta continua sem resposta." | 11,56 s | 2,11 s |
-| virada | "Mapa, caminho e a distância dos passeios: no site, antes da pergunta." | 15,21 s | 4,80 s |
-| fecho | "Manda pra quem explica o caminho toda vez pelo direct." | 21,05 s | 2,50 s |
+| card2 | "Mandaram o pin… sem o caminho." | 5,92 s | 2,23 s |
+| card3 | "E a cachoeira? Fica longe?" | 9,27 s | 1,18 s |
+| carimbo | "E a pergunta continua sem resposta." | 11,68 s | 2,11 s |
+| virada | "Mapa, caminho e a distância dos passeios: no site, antes da pergunta." | 15,37 s | 4,80 s |
+| fecho | "Manda pra quem explica o caminho toda vez pelo direct." | 21,25 s | 2,50 s |
 
 | | |
 |---|---|
@@ -38,7 +38,7 @@ A voz manda no tempo: cada cena dura a sua fala mais um respiro, e a fala do tí
 
 | Entrega | Arquivo |
 |---|---|
-| **Vídeo com voz** (25,0 s, 60 fps, −14 LUFS) | [`output/fazlo-digital-como-chega-ai.mp4`](output/fazlo-digital-como-chega-ai.mp4) |
+| **Vídeo com voz** (25,0 s,0 s, 60 fps, −14 LUFS) | [`output/fazlo-digital-como-chega-ai.mp4`](output/fazlo-digital-como-chega-ai.mp4) |
 | Versão curta sem voz (a anterior, só efeitos em −16 LUFS) | [`output/fazlo-digital-como-chega-ai-curto.mp4`](output/fazlo-digital-como-chega-ai-curto.mp4) |
 | Capa | [`output/capa.png`](output/capa.png) |
 | Storyboard | [`output/storyboard.jpg`](output/storyboard.jpg) |
@@ -49,8 +49,9 @@ A voz manda no tempo: cada cena dura a sua fala mais um respiro, e a fala do tí
 ## Revisão (aprovada)
 
 - 1080×1920, 60 fps, **25,0 s**, H.264 + AAC 48 kHz;
-- **−13,9 LUFS** e pico real **−2,4 dBTP**;
+- **−14,0 LUFS** e pico real **−3,3 dBTP**;
 - sem trechos pretos nem imagem congelada;
-- os 4 efeitos-chave no instante do evento, com desvio máximo de 5,6 ms;
+- os 4 efeitos-chave no instante do evento, com desvio máximo de 4,8 ms;
 - áreas seguras aprovadas elemento a elemento;
+- a logo FAZLO DIGITAL se monta durante "Manda pra quem…" e fica **2,2 s** pronta na tela antes do fade (mínimo pedido: 1,2 s);
 - a batida lima do título cai em 0,65 s, no "Ele" da fala.

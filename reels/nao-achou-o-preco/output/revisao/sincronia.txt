@@ -1,14 +1,14 @@
 NAO-ACHOU-O-PRECO — sincronização som x imagem
 
 OK     áudio do MP4 = trilha, sem deslocamento (+0.0, +0.0, +0.0 ms)
-OK     4 efeitos-chave com ataque no instante do evento (desvio médio 4.6 ms, máximo 7.8 ms; 1 quadro = 16,7 ms)
+OK     4 efeitos-chave com ataque no instante do evento (desvio médio 4.0 ms, máximo 5.8 ms; 1 quadro = 16,7 ms)
 OK     a imagem reage em 4/4 golpes principais (pico de movimento a ≤ 8 quadros do som)
 
 Evento a evento (instante do evento visual, desvio medido):
-           3.609 s  ping        áudio   -3.3 ms
+           3.609 s  ping        áudio   -5.8 ms
            6.864 s  ping        áudio   -3.3 ms
            9.752 s  ping        áudio   -3.8 ms
-          12.686 s  stamp       áudio   -7.8 ms
+          12.686 s  stamp       áudio   -2.8 ms
            3.609 s  ping        imagem: movimento   2.4 (antes  0.1), pico a -3 quadro(s)
            6.864 s  ping        imagem: movimento   2.2 (antes  0.1), pico a +6 quadro(s)
            9.752 s  ping        imagem: movimento   2.9 (antes  0.1), pico a +5 quadro(s)

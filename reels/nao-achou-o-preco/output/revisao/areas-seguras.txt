@@ -14,16 +14,16 @@ OK     card 2                   t=12.44 s   x   78–942   y  863–1003
 OK     card 3                   t=12.44 s   x   78–942   y 1011–1151
 OK     carimbo                  t=13.19 s   x  245–785   y  837–986
 OK     virada 1                 t=21.60 s   x  196–854   y  714–776
-OK     virada 1 (no fecho)      t=24.87 s   x  202–848   y  532–593
+OK     virada 1 (no fecho)      t=24.67 s   x  202–848   y  532–593
 OK     virada 2                 t=21.60 s   x  215–835   y  801–863
-OK     virada 2 (no fecho)      t=24.87 s   x  221–829   y  618–678
+OK     virada 2 (no fecho)      t=24.67 s   x  221–829   y  618–678
 OK     virada 3                 t=21.60 s   x   82–968   y  888–950
-OK     virada 3 (no fecho)      t=24.87 s   x   90–960   y  703–764
+OK     virada 3 (no fecho)      t=24.67 s   x   90–960   y  703–764
 OK     virada 4                 t=21.60 s   x  169–881   y  975–1037
-OK     virada 4 (no fecho)      t=24.87 s   x  175–875   y  789–849
-OK     fecho 1                  t=24.87 s   x  257–793   y  922–975
-OK     fecho 2                  t=24.87 s   x  199–851   y  989–1042
-OK     logo                     t=24.87 s   x  353–697   y 1115–1221
+OK     virada 4 (no fecho)      t=24.67 s   x  175–875   y  789–849
+OK     fecho 1                  t=24.67 s   x  257–793   y  922–975
+OK     fecho 2                  t=24.67 s   x  199–851   y  989–1042
+OK     logo                     t=24.67 s   x  353–697   y 1115–1221
 
 OK     capa: bloco (chip + título) em y 724–1196, centro em y = 960.0 (recorte 3:4: 960)
 
@@ -54,7 +54,7 @@ Layout calculado:
   "passa o preço no direct."
  ],
  "carimbo": 46,
- "duracao": 25.216666666666665
+ "duracao": 25.016666666666666
 }
 
 RESULTADO: aprovado

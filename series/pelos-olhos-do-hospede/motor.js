@@ -233,7 +233,9 @@
     head: 0.35,          // fim da fala do título -> o título vira cabeçalho
     entra: 0.25,         // o card entra (toque de vidro) e a fala começa depois que o toque baixa
     virada: 0.35,        // idem para o acorde da virada
-    cauda: 1.7,          // a logo se monta no fim da fala do fecho; depois, a assinatura soa sozinha
+    logo: 0.4,           // a logo começa a se montar 0,4 s depois do início da fala do fecho
+    logoNaTela: 1.4,     // depois de pronta, a logo fica pelo menos 1,2 s na tela antes do fade (ajuste de 16/10; 1,4 s com folga)
+    cauda: 1.2,          // depois da fala do fecho, a assinatura (duas notas) soa inteira antes do fim
     min: 25,             // abaixo disso, a diferença vai para os respiros (os cards ficam mais tempo)
   };
   let VZ = null;         // durações das falas (reels/<id>/audio/voz/voz.json)
@@ -339,8 +341,10 @@
       t.voz.virada = t.virada + V.virada;
       t.fecho = t.voz.virada + d('virada') + r;
       t.voz.fecho = t.fecho + 0.2;
-      t.logo = Math.max(t.fecho + 0.32, t.voz.fecho + d('fecho') - 0.25);   // a assinatura não cobre a fala
-      t.end = Math.max(t.fecho + FECHO_D, t.logo + V.cauda);
+      t.logo = t.voz.fecho + V.logo;                                   // a logo se monta durante "Manda pra quem…"
+      t.logoPronta = t.logo + 0.85;                                    // letras, barra e DIGITAL no lugar
+      t.som = Math.max(t.logo + 0.2, t.voz.fecho + d('fecho') + 0.05);  // a assinatura sonora soa depois da fala
+      t.end = Math.max(t.fecho + FECHO_D, t.logoPronta + V.logoNaTela + 0.3, t.som + V.cauda);
       return t;
     };
     let t = build(0);
@@ -662,7 +666,7 @@
         cue(T.exit, 'exit', { d: 0.5 });
         cue(T.virada, 'virada');
         cue(T.fecho, 'fecho');
-        cue(T.logo, 'logo');
+        cue(VZ ? T.som - 0.2 : T.logo, 'logo');                      // com voz: a assinatura depois da fala
         cue(T.logo + 0.2, 'slash');
         cue(T.fade, 'fade', { d: DURATION - T.fade });
         if (VZ) Object.entries(T.voz).forEach(([cena, tv]) => cue(tv, 'voz', { cena, d: VZ[cena].dur }));

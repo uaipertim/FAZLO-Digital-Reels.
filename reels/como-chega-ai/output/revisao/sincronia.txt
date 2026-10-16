@@ -1,15 +1,15 @@
 COMO-CHEGA-AI — sincronização som x imagem
 
 OK     áudio do MP4 = trilha, sem deslocamento (+0.0, +0.0, +0.0 ms)
-OK     4 efeitos-chave com ataque no instante do evento (desvio médio 4.6 ms, máximo 5.6 ms; 1 quadro = 16,7 ms)
+OK     4 efeitos-chave com ataque no instante do evento (desvio médio 4.0 ms, máximo 4.8 ms; 1 quadro = 16,7 ms)
 OK     a imagem reage em 4/4 golpes principais (pico de movimento a ≤ 8 quadros do som)
 
 Evento a evento (instante do evento visual, desvio medido):
            2.428 s  ping        áudio   -4.8 ms
-           5.628 s  ping        áudio   -4.4 ms
-           8.944 s  ping        áudio   -3.5 ms
-          11.414 s  stamp       áudio   -5.6 ms
+           5.668 s  ping        áudio   -4.4 ms
+           9.024 s  ping        áudio   -3.5 ms
+          11.534 s  stamp       áudio   -3.1 ms
            2.428 s  ping        imagem: movimento   1.9 (antes  0.1), pico a -3 quadro(s)
-           5.628 s  ping        imagem: movimento   2.2 (antes  0.1), pico a +5 quadro(s)
-           8.944 s  ping        imagem: movimento   2.9 (antes  0.1), pico a +3 quadro(s)
-          11.414 s  stamp       imagem: movimento  14.1 (antes  0.1), pico a -2 quadro(s)
+           5.668 s  ping        imagem: movimento   2.2 (antes  0.1), pico a +6 quadro(s)
+           9.024 s  ping        imagem: movimento   2.9 (antes  0.1), pico a +5 quadro(s)
+          11.534 s  stamp       imagem: movimento  14.5 (antes  0.1), pico a -2 quadro(s)

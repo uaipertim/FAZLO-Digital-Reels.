@@ -11,7 +11,7 @@ Texto na tela (igual ao da versão curta):
 - **Virada:** "Um valor de referência *responde antes da pergunta.*"
 - **Fecho:** "Manda pra quem só passa o preço no direct." + logo FAZLO DIGITAL
 
-## Voz (25,2 s)
+## Voz (25,0 s)
 
 A voz manda no tempo: cada cena dura a sua fala mais um respiro, e a fala do título começa no quadro 0. As falas somam 18,20 s.
 
@@ -38,7 +38,7 @@ A voz manda no tempo: cada cena dura a sua fala mais um respiro, e a fala do tí
 
 | Entrega | Arquivo |
 |---|---|
-| **Vídeo com voz** (25,2 s, 60 fps, −14 LUFS) | [`output/fazlo-digital-nao-achou-o-preco.mp4`](output/fazlo-digital-nao-achou-o-preco.mp4) |
+| **Vídeo com voz** (25,0 s,2 s, 60 fps, −14 LUFS) | [`output/fazlo-digital-nao-achou-o-preco.mp4`](output/fazlo-digital-nao-achou-o-preco.mp4) |
 | Versão curta sem voz (a anterior, só efeitos em −16 LUFS) | [`output/fazlo-digital-nao-achou-o-preco-curto.mp4`](output/fazlo-digital-nao-achou-o-preco-curto.mp4) |
 | Capa | [`output/capa.png`](output/capa.png) |
 | Storyboard | [`output/storyboard.jpg`](output/storyboard.jpg) |
@@ -48,9 +48,10 @@ A voz manda no tempo: cada cena dura a sua fala mais um respiro, e a fala do tí
 
 ## Revisão (aprovada)
 
-- 1080×1920, 60 fps, **25,2 s**, H.264 + AAC 48 kHz;
-- **−14,0 LUFS** e pico real **−1,8 dBTP**;
+- 1080×1920, 60 fps, **25,0 s**, H.264 + AAC 48 kHz;
+- **−14,0 LUFS** e pico real **−3,3 dBTP**;
 - sem trechos pretos nem imagem congelada;
-- os 4 efeitos-chave (toques dos cards e carimbo) no instante do evento, com desvio máximo de 7,8 ms;
+- os 4 efeitos-chave (toques dos cards e carimbo) no instante do evento, com desvio máximo de 5,8 ms;
 - áreas seguras aprovadas elemento a elemento;
+- a logo FAZLO DIGITAL se monta durante "Manda pra quem…" e fica **1,56 s** pronta na tela antes do fade (mínimo pedido: 1,2 s);
 - a batida lima do título cai em 1,92 s, no "não" da fala.
