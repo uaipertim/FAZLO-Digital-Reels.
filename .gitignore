@@ -13,3 +13,6 @@ __pycache__/
 # calibração técnica: saídas regeneráveis, não versionadas
 reels/_calibracao/audio/
 reels/_calibracao/output/
+
+# gerado pelo npm install local (o repositório fixa só a versão do Playwright no package.json)
+package-lock.json
