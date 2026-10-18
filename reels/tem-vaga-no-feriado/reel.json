@@ -10,8 +10,7 @@
   },
   "output": {
     "video": "output/fazlo-digital-tem-vaga-no-feriado.mp4",
-    "cover": "output/capa.png",
-    "curto": "output/fazlo-digital-tem-vaga-no-feriado-curto.mp4"
+    "cover": "output/capa.png"
   },
   "fonts": [
     "900 100px 'FZD Display'",
@@ -104,5 +103,6 @@
       26.28,
       "LOGO"
     ]
-  ]
+  ],
+  "voz": true
 }

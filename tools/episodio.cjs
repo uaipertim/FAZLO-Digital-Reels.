@@ -45,7 +45,9 @@ const run = (cmd, args) => {
 // ---------------------------------------------------------------- 0. voz (e a versão curta sem voz guardada)
 if (comVoz) {
   const v = path.join(dir, 'output', `fazlo-digital-${id}.mp4`), curto = path.join(dir, 'output', `fazlo-digital-${id}-curto.mp4`);
-  if (fs.existsSync(v) && !fs.existsSync(curto)) { fs.renameSync(v, curto); console.log(`versão curta sem voz guardada: ${path.relative(ROOT, curto)}`); }
+  // o vídeo que já existe é a versão curta sem voz só se este Reel ainda não foi gerado com voz (reel.json: "voz": true)
+  const jaTinhaVoz = fs.existsSync(path.join(dir, 'reel.json')) && JSON.parse(fs.readFileSync(path.join(dir, 'reel.json'), 'utf8')).voz === true;
+  if (fs.existsSync(v) && !fs.existsSync(curto) && !jaTinhaVoz) { fs.renameSync(v, curto); console.log(`versão curta sem voz guardada: ${path.relative(ROOT, curto)}`); }
   run(process.env.PYTHON || 'python3', [path.join(SERIE, 'voz.py'), id]);
 }
 
@@ -53,10 +55,10 @@ if (comVoz) {
 const cfgPath = path.join(dir, 'reel.json');
 const old = fs.existsSync(cfgPath) ? JSON.parse(fs.readFileSync(cfgPath, 'utf8')) : {};
 const cfg = {
-  id, title: titulo, serie: 'Pelos olhos do hóspede',
+  id, title: titulo, serie: 'Pelos olhos do hóspede', ...(comVoz ? { voz: true } : {}),
   status: old.status || 'em produção',
   format: { width: 1080, height: 1920, fps: 60 },
-  output: { video: `output/fazlo-digital-${id}.mp4`, cover: 'output/capa.png', ...(comVoz ? { curto: `output/fazlo-digital-${id}-curto.mp4` } : {}) },
+  output: { video: `output/fazlo-digital-${id}.mp4`, cover: 'output/capa.png', ...(comVoz && fs.existsSync(path.join(dir, 'output', `fazlo-digital-${id}-curto.mp4`)) ? { curto: `output/fazlo-digital-${id}-curto.mp4` } : {}) },
   fonts: ["900 100px 'FZD Display'", "800 100px 'FZD Display'", "600 100px 'FZD Text'", "700 100px 'FZD Text'"],
   scripts: ['../../series/pelos-olhos-do-hospede/motor.js'],
   assets: {},

@@ -120,7 +120,7 @@ Se o total ficar abaixo de 25 s, a diferença vai para os respiros: os cards fic
 **Mixagem** (`audio.py`):
 - voz no centro, com filtro de graves em 80 Hz e o mesmo nível em todas as falas, 3 dB acima dos efeitos cheios;
 - os efeitos (com as caudas de reverb) abaixam 9 dB enquanto há fala, a partir de 0,12 s antes dela. O ataque de cada toque ou golpe passa inteiro;
-- master em −14 LUFS, com teto de −3,3 dBTP de folga para o AAC. Com voz, o baque do carimbo fica um pouco mais baixo (0,7), porque o grave saturado passava do pico depois do AAC.
+- master em −14 LUFS, com teto de −3,3 dBTP de folga para o AAC. Com voz, o baque do carimbo (0,7) e a batida do título ficam mais suaves, porque o grave saturado e o estalo agudo passavam do pico depois do AAC.
 
 ## Áreas seguras
 

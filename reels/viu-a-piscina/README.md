@@ -48,7 +48,7 @@ A voz manda no tempo: cada cena dura a sua fala mais um respiro, e a fala do tí
 ## Revisão (aprovada)
 
 - 1080×1920, 60 fps, **25,0 s**, H.264 + AAC 48 kHz;
-- **−14,0 LUFS** e pico real **−1,3 dBTP** (dentro do limite de −1, com pouca folga);
+- **−14,0 LUFS** e pico real **−3,3 dBTP**. Na 1ª versão o pico do MP4 era −1,3 dBTP: a batida do título tinha um estalo agudo que passava 3 dB no AAC. Na versão com voz, essa batida ficou mais suave;
 - sem trechos pretos nem imagem congelada;
 - os 4 efeitos-chave no instante do evento, com desvio máximo de 5,3 ms;
 - áreas seguras aprovadas elemento a elemento;

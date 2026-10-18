@@ -2,6 +2,7 @@
   "id": "viu-a-piscina",
   "title": "Ele viu a piscina. Mas não viu o quarto.",
   "serie": "Pelos olhos do hóspede",
+  "voz": true,
   "status": "com voz · aguardando aprovação",
   "format": {
     "width": 1080,
@@ -10,8 +11,7 @@
   },
   "output": {
     "video": "output/fazlo-digital-viu-a-piscina.mp4",
-    "cover": "output/capa.png",
-    "curto": "output/fazlo-digital-viu-a-piscina-curto.mp4"
+    "cover": "output/capa.png"
   },
   "fonts": [
     "900 100px 'FZD Display'",

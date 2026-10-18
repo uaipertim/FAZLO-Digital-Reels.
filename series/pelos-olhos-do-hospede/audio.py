@@ -22,6 +22,7 @@ Os efeitos ficam nos instantes exportados pela animação (audio/cues.json):
 
     python3 series/pelos-olhos-do-hospede/audio.py reels/<id>   -> reels/<id>/audio/trilha.wav
 """
+import json
 import os
 import sys
 import numpy as np
@@ -40,6 +41,8 @@ PENTA = [80, 84, 87, 89, 92]                      # Lá bemol 5, Dó 6, Mi bemol
 COM_VOZ = any(c['type'] == 'voz' for c in DATA['cues'])
 # com voz, o baque do carimbo fica um pouco mais baixo: grave saturado, o AAC passava do pico permitido
 G_STAMP = 0.7 if COM_VOZ else 0.95
+# idem a batida do título: o estalo agudo passava 3 dB no AAC (ep. 4: -1,3 dBTP no MP4 com o WAV em -3,3)
+G_KNOCK, G_KNOCK_CLICK = (0.45, 0.08) if COM_VOZ else (0.55, 0.25)
 
 
 def glass(f, d=0.6, vel=1.0):
@@ -71,8 +74,8 @@ for c in DATA['cues']:
     if ty == 'hook':
         mix.place('sfx', filt(whoosh(0.5, 120, 900, 0.15), 1800, 'low'), t, 0.35)
     elif ty == 'knock':
-        mix.place('sfx', thud(0.35, 80), t, 0.55)
-        mix.place('sfx', click(4200, 0.02), t, 0.25)
+        mix.place('sfx', thud(0.35, 80), t, G_KNOCK)
+        mix.place('sfx', click(4200, 0.02), t, G_KNOCK_CLICK)
     elif ty == 'rise':
         mix.place_pan('sfx', whoosh(c.get('d', 0.5), 400, 3200, 0.55), t, 0.32, -0.2, 0.2)
     elif ty == 'ping':
@@ -131,4 +134,7 @@ else:
     r = 10 * np.log10(pv[fala] / (pf[fala] + 1e-12))
     print(f'voz: efeitos {20 * np.log10(g.min()):.1f} dB sob a fala · voz acima dos efeitos: mínimo {r.min():+.1f} dB, '
           f'10% {np.percentile(r, 10):+.1f} dB, mediana {np.median(r):+.1f} dB')
-    master(fx + vv * k, os.path.join(ROOT, 'audio', 'trilha.wav'), lufs=-14.0, fade_out=0.3, ceiling_db=-3.3)   # folga para o AAC
+    # teto de pico do master: -3,3 dBTP (folga para o AAC); o roteiro pode baixar com "master": {"teto_db": -4.6}
+    ep_json = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'episodios', os.path.basename(ROOT) + '.json')
+    teto = (json.load(open(ep_json)).get('master') or {}).get('teto_db', -3.3) if os.path.exists(ep_json) else -3.3
+    master(fx + vv * k, os.path.join(ROOT, 'audio', 'trilha.wav'), lufs=-14.0, fade_out=0.3, ceiling_db=teto)
