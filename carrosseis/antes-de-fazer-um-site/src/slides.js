@@ -397,25 +397,25 @@
 
   // ---------------------------------------------------------------- as 6 ilustrações (x, y, w: caixa; altura natural nat)
   const ART = [
-    { nat: 520, draw(c, x, y, w) {                           // 1. o logo
+    { nat: 634, k: 1.22, draw(c, x, y, w) {                  // 1. o logo (ampliado 22%)
       panel(c, x, y, w, 520);
-      const tx = x + 44, ty = y + 44;
-      fillR(c, tx, ty, 360, 360, 36, C.card2);
-      c.beginPath(); c.arc(tx + 180, ty + 180, 118, 0, TAU); c.fillStyle = C.lime; c.fill();
-      c.beginPath(); c.arc(tx + 180, ty + 180, 58, 0, TAU); c.fillStyle = C.card2; c.fill();
+      const T = 330, tx = x + 40, ty = y + 40, m = T / 2;
+      fillR(c, tx, ty, T, T, 34, C.card2);
+      c.beginPath(); c.arc(tx + m, ty + m, 108, 0, TAU); c.fillStyle = C.lime; c.fill();
+      c.beginPath(); c.arc(tx + m, ty + m, 53, 0, TAU); c.fillStyle = C.card2; c.fill();
       c.strokeStyle = C.white; c.lineWidth = 10; c.lineCap = 'round';
-      c.beginPath(); c.arc(tx + 180, ty + 180, 150, -0.9, 0.5); c.stroke();
+      c.beginPath(); c.arc(tx + m, ty + m, 137, -0.9, 0.5); c.stroke();
       c.strokeStyle = C.lime; c.lineWidth = 6;                // marcas de corte
-      [[0, 0, 1, 1], [1, 0, -1, 1], [0, 1, 1, -1], [1, 1, -1, -1]].forEach(([a, b, dx, dy]) => { const cx = tx + a * 360 + dx * 14, cy = ty + b * 360 + dy * 14; c.beginPath(); c.moveTo(cx, cy + dy * 26); c.lineTo(cx, cy); c.lineTo(cx + dx * 26, cy); c.stroke(); });
-      text(c, 'Seu logo', tx, ty + 360 + 62, { size: 34, weight: 700, color: C.white });
-      fillR(c, tx, ty + 360 + 84, 220, 12, 6, C.bar);
-      const rx = x + 44 + 360 + 44, rw = w - (rx - x) - 44;
-      pill(c, rx, y + 44, rw, 78, 'PNG', 'image', true);
-      pill(c, rx, y + 44 + 96, rw, 78, 'SVG', 'image', false);
-      pill(c, rx, y + 44 + 192, rw, 78, 'Fundo transparente', 'check', false, 24);
-      dashed(c, rx, y + 44 + 306, rw, 98, 22, rgba(C.lime, 0.55));
-      iconX(c, 'mark', rx + 48, y + 44 + 355, 44, C.lime, 0.1);
-      text(c, 'Sem logo? Tudo bem.', rx + 90, y + 44 + 366, { size: 26, weight: 600, color: C.soft });
+      [[0, 0, 1, 1], [1, 0, -1, 1], [0, 1, 1, -1], [1, 1, -1, -1]].forEach(([a, b, dx, dy]) => { const cx = tx + a * T + dx * 14, cy = ty + b * T + dy * 14; c.beginPath(); c.moveTo(cx, cy + dy * 26); c.lineTo(cx, cy); c.lineTo(cx + dx * 26, cy); c.stroke(); });
+      text(c, 'Seu logo', tx, ty + T + 62, { size: 34, weight: 700, color: C.white });
+      fillR(c, tx, ty + T + 84, 220, 12, 6, C.bar);
+      const rx = tx + T + 36, rw = x + w - 40 - rx, ph = 74;
+      pill(c, rx, y + 40, rw, ph, 'PNG', 'image', true);
+      pill(c, rx, y + 40 + 92, rw, ph, 'SVG', 'image', false);
+      pill(c, rx, y + 40 + 184, rw, ph, 'Fundo transparente', 'check', false, 23);
+      dashed(c, rx, y + 40 + 290, rw, 80, 22, rgba(C.lime, 0.55));
+      iconX(c, 'mark', rx + 42, y + 40 + 330, 40, C.lime, 0.1);
+      text(c, 'Sem logo? Tudo bem.', rx + 76, y + 40 + 339, { size: 21, weight: 600, color: C.soft });
     } },
     { nat: 600, draw(c, x, y, w) {                           // 2. fotos de cada quarto
       const bw = 520, gap = 24, sw = w - bw - gap;
@@ -469,26 +469,27 @@
         text(c, lb, tx + 90, ty + 75, { size: 26, weight: 600, color: C.white });
       });
     } },
-    { nat: 560, draw(c, x, y, w) {                           // 6. o WhatsApp que atende
-      const cw = 392, ch = 560;
+    { nat: 672, k: 1.2, draw(c, x, y, w) {                   // 6. o WhatsApp que atende (ampliado 20%)
+      const cw = Math.floor((w - 100) / 2), ch = 560;
       panel(c, x, y, cw, ch);
-      text(c, 'Consulta de datas', x + 30, y + 58, { size: 27, weight: 700, color: C.white });
-      [0, 1].forEach((i) => { fillR(c, x + 30 + i * 172, y + 86, 160, 66, 14, C.card2); iconX(c, 'cal', x + 62 + i * 172, y + 119, 26, C.soft, 0.1); fillR(c, x + 90 + i * 172, y + 114, 70, 10, 5, C.bar2); });
-      fillR(c, x + 30, y + 172, cw - 60, 66, 14, C.card2); fillR(c, x + 54, y + 198, 130, 10, 5, C.bar2);
-      bars(c, x + 30, y + 268, [cw - 120, cw - 200], 10, 22);
-      c.save(); c.shadowColor = rgba(C.lime, 0.5); c.shadowBlur = 24; fillR(c, x + 30, y + ch - 118, cw - 60, 70, 20, C.lime); c.restore();
-      text(c, 'Enviar consulta', x + 62, y + ch - 73, { size: 26, weight: 800, color: C.ink });
-      const ax = x + cw + 20, aw = w - 2 * cw - 40;                // seta
+      text(c, 'Consulta de datas', x + 28, y + 58, { size: 26, weight: 700, color: C.white });
+      const dw = (cw - 56 - 12) / 2;
+      [0, 1].forEach((i) => { const dx = x + 28 + i * (dw + 12); fillR(c, dx, y + 86, dw, 66, 14, C.card2); iconX(c, 'cal', dx + 30, y + 119, 26, C.soft, 0.1); fillR(c, dx + 56, y + 114, dw - 78, 10, 5, C.bar2); });
+      fillR(c, x + 28, y + 172, cw - 56, 66, 14, C.card2); fillR(c, x + 52, y + 198, 110, 10, 5, C.bar2);
+      bars(c, x + 28, y + 268, [cw - 110, cw - 180], 10, 22);
+      c.save(); c.shadowColor = rgba(C.lime, 0.5); c.shadowBlur = 24; fillR(c, x + 28, y + ch - 118, cw - 56, 70, 20, C.lime); c.restore();
+      text(c, 'Enviar consulta', x + 56, y + ch - 73, { size: 25, weight: 800, color: C.ink });
+      const ax = x + cw + 14, aw = w - 2 * cw - 28;                // seta
       c.strokeStyle = C.lime; c.lineWidth = 9; c.lineCap = 'round'; c.lineJoin = 'round';
-      c.beginPath(); c.moveTo(ax + 6, y + ch / 2); c.lineTo(ax + aw - 8, y + ch / 2); c.moveTo(ax + aw - 36, y + ch / 2 - 28); c.lineTo(ax + aw - 8, y + ch / 2); c.lineTo(ax + aw - 36, y + ch / 2 + 28); c.stroke();
+      c.beginPath(); c.moveTo(ax + 2, y + ch / 2); c.lineTo(ax + aw - 4, y + ch / 2); c.moveTo(ax + aw - 28, y + ch / 2 - 26); c.lineTo(ax + aw - 4, y + ch / 2); c.lineTo(ax + aw - 28, y + ch / 2 + 26); c.stroke();
       const rx = x + w - cw;
       panel(c, rx, y, cw, ch);
-      c.beginPath(); c.arc(rx + 62, y + 62, 30, 0, TAU); c.fillStyle = C.lime; c.fill(); iconX(c, 'chat', rx + 62, y + 62, 34, C.ink, 0.1);
-      fillR(c, rx + 108, y + 40, 160, 12, 6, C.soft); fillR(c, rx + 108, y + 66, 100, 9, 4.5, C.bar);
-      fillR(c, rx + 28, y + 118, cw - 100, 170, 24, C.card2); strokeR(c, rx + 28, y + 118, cw - 100, 170, 24, rgba(C.lime, 0.6), 2);
-      text(c, 'Consulta pelo site', rx + 52, y + 164, { size: 24, weight: 700, color: C.lime });
-      bars(c, rx + 52, y + 190, [cw - 170, cw - 230, cw - 200], 10, 28);
-      fillR(c, rx + 28, y + 320, cw - 150, 60, 24, C.lime); bars(c, rx + 56, y + 344, [cw - 230], 11, 20, rgba(C.ink, 0.5));
+      c.beginPath(); c.arc(rx + 58, y + 62, 30, 0, TAU); c.fillStyle = C.lime; c.fill(); iconX(c, 'chat', rx + 58, y + 62, 34, C.ink, 0.1);
+      fillR(c, rx + 104, y + 40, 150, 12, 6, C.soft); fillR(c, rx + 104, y + 66, 96, 9, 4.5, C.bar);
+      fillR(c, rx + 26, y + 118, cw - 76, 190, 24, C.card2); strokeR(c, rx + 26, y + 118, cw - 76, 190, 24, rgba(C.lime, 0.6), 2);
+      text(c, 'Consulta pelo site', rx + 48, y + 166, { size: 23, weight: 700, color: C.lime });
+      bars(c, rx + 48, y + 196, [cw - 150, cw - 205, cw - 180], 10, 30);
+      fillR(c, rx + 26, y + 336, cw - 130, 64, 24, C.lime); bars(c, rx + 54, y + 362, [cw - 200], 11, 20, rgba(C.ink, 0.5));
       checkBadge(c, rx + cw - 44, y + ch - 44, 22);
     } },
   ];
@@ -516,7 +517,8 @@
     const top = yl + 72 + (bl.length - 1) * 50 + 56, bot = 1270;
     const ay = top + Math.max(0, (bot - top - art.nat) / 2);
     glow(c, 540, ay + art.nat / 2, 600, 0.07);
-    art.draw(c, M, ay, W - 2 * M);
+    const k = art.k || 1;                                   // ilustrações com escala: desenhadas numa caixa menor e ampliadas
+    c.save(); c.translate(M, ay); c.scale(k, k); art.draw(c, 0, 0, (W - 2 * M) / k); c.restore();
   }
   function slideCover(c) {
     background(c);
