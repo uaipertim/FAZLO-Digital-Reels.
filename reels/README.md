@@ -16,6 +16,8 @@ Cada Reel vive numa pasta independente (`reel-NN/` ou, a partir de "Instagram n�
 | — | **"Instagram não é site" · corte curto.** Versão de 15 s para a estratégia de volume: gancho novo no quadro 0 (TEM VAGA? QUANTO É? FICOU NO DIRECT.) e três trechos do Reel original, emendados com a barra lima | 15,0 s | concluído · aprovado | [`instagram-nao-e-site-corte/`](instagram-nao-e-site-corte) |
 | — | **"Não achou o preço."** 1º episódio da série **"Pelos olhos do hóspede"** ([`../series/pelos-olhos-do-hospede/`](../series/pelos-olhos-do-hospede)): título-dor no quadro 0, cards da situação, o corte da barra lima e o carimbo, a virada e "Manda pra quem…". Pasta gerada a partir do roteiro em JSON. **Com voz** (a versão curta sem voz fica como `-curto.mp4`) | 25,8 s | com voz · aguardando aprovação | [`nao-achou-o-preco/`](nao-achou-o-preco) |
 | — | **"Como chega aí."** 2º episódio da série "Pelos olhos do hóspede": o caminho e a distância dos passeios que só aparecem no direct. **Com voz** (curta sem voz: `-curto.mp4`) | 25,0 s | com voz · em avaliação | [`como-chega-ai/`](como-chega-ai) |
+| — | **"Tem vaga no feriado?"** 3º episódio da série "Pelos olhos do hóspede", com voz: a mesma pergunta em três lugares e a consulta de datas do site | 26,6 s | com voz · aguardando aprovação | [`tem-vaga-no-feriado/`](tem-vaga-no-feriado) |
+| — | **"Ele viu a piscina."** 4º episódio da série "Pelos olhos do hóspede", com voz: ele viu a piscina, mas não viu o quarto | 25,0 s | com voz · aguardando aprovação | [`viu-a-piscina/`](viu-a-piscina) |
 
 Episódios da série "Pelos olhos do hóspede": `npm run episodio -- <id>` (só o roteiro em JSON, ver [`../series/pelos-olhos-do-hospede/`](../series/pelos-olhos-do-hospede)).
 

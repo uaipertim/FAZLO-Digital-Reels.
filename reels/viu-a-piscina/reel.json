@@ -1,0 +1,108 @@
+{
+  "id": "viu-a-piscina",
+  "title": "Ele viu a piscina. Mas não viu o quarto.",
+  "serie": "Pelos olhos do hóspede",
+  "status": "com voz · aguardando aprovação",
+  "format": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 60
+  },
+  "output": {
+    "video": "output/fazlo-digital-viu-a-piscina.mp4",
+    "cover": "output/capa.png",
+    "curto": "output/fazlo-digital-viu-a-piscina-curto.mp4"
+  },
+  "fonts": [
+    "900 100px 'FZD Display'",
+    "800 100px 'FZD Display'",
+    "600 100px 'FZD Text'",
+    "700 100px 'FZD Text'"
+  ],
+  "scripts": [
+    "../../series/pelos-olhos-do-hospede/motor.js"
+  ],
+  "assets": {},
+  "qa": {
+    "duration": [
+      25,
+      30.05
+    ],
+    "lufs": -14,
+    "syncCues": [
+      "ping",
+      "stamp"
+    ],
+    "visualCues": [
+      "ping",
+      "stamp"
+    ],
+    "checkTimes": [
+      0,
+      3.22,
+      3.47,
+      6.84,
+      9.61,
+      13.28,
+      17.53,
+      23.06,
+      24.65
+    ],
+    "coverClear": [
+      [
+        860,
+        240,
+        1080,
+        440
+      ],
+      [
+        0,
+        1560,
+        1080,
+        1680
+      ]
+    ]
+  },
+  "storyboard": [
+    [
+      0,
+      "TÍTULO-DOR"
+    ],
+    [
+      3.22,
+      "CABEÇALHO"
+    ],
+    [
+      3.47,
+      "CARD 1"
+    ],
+    [
+      6.84,
+      "CARD 2"
+    ],
+    [
+      9.61,
+      "CARD 3"
+    ],
+    [
+      12.6,
+      "O CORTE"
+    ],
+    [
+      13.28,
+      "CARIMBO"
+    ],
+    [
+      17.53,
+      "VIRADA"
+    ],
+    [
+      23.06,
+      "MANDA PRA QUEM…"
+    ],
+    [
+      24.65,
+      "LOGO"
+    ]
+  ]
+}

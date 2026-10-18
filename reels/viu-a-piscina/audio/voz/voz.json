@@ -1,0 +1,403 @@
+{
+ "voz": {
+  "id": "GDzHdQOi6jjf8zaXhCYD",
+  "nome": "Raquel - For Conversational"
+ },
+ "modelo": "eleven_multilingual_v2",
+ "ajustes": {
+  "stability": 0.4,
+  "similarity_boost": 0.8,
+  "style": 0.35,
+  "use_speaker_boost": true,
+  "speed": 1.0
+ },
+ "formato": "mp3_44100_128",
+ "semente": 2026,
+ "contexto": "previous_text / next_text",
+ "cenas": [
+  {
+   "cena": "titulo",
+   "texto": "Ele viu a piscina. Mas não viu o quarto.",
+   "arquivo": "titulo.wav",
+   "ini": 0.03,
+   "fim": 2.196,
+   "dur": 2.166,
+   "partes": [
+    {
+     "texto": "Ele viu a piscina.",
+     "arquivo": "titulo-1.mp3",
+     "semente": 2026,
+     "sobe": []
+    },
+    {
+     "texto": "Mas não viu o quarto.",
+     "arquivo": "titulo-2.mp3",
+     "semente": 2026,
+     "sobe": []
+    }
+   ],
+   "palavras": [
+    [
+     "ele",
+     0.0
+    ],
+    [
+     "viu",
+     0.19
+    ],
+    [
+     "a",
+     0.353
+    ],
+    [
+     "piscina",
+     0.423
+    ],
+    [
+     "mas",
+     1.222
+    ],
+    [
+     "não",
+     1.403
+    ],
+    [
+     "viu",
+     1.531
+    ],
+    [
+     "o",
+     1.717
+    ],
+    [
+     "quarto",
+     1.786
+    ]
+   ],
+   "marca": 1.222
+  },
+  {
+   "cena": "card1",
+   "texto": "No perfil: piscina, café e pôr do sol.",
+   "arquivo": "card1.mp3",
+   "ini": 0.077,
+   "fim": 2.235,
+   "dur": 2.159,
+   "partes": [
+    {
+     "texto": "No perfil: piscina, café e pôr do sol.",
+     "arquivo": "card1.mp3",
+     "semente": 2026,
+     "sobe": []
+    }
+   ],
+   "palavras": [
+    [
+     "no",
+     0.0
+    ],
+    [
+     "perfil",
+     0.12
+    ],
+    [
+     "piscina",
+     0.457
+    ],
+    [
+     "café",
+     1.038
+    ],
+    [
+     "e",
+     1.444
+    ],
+    [
+     "pôr",
+     1.514
+    ],
+    [
+     "do",
+     1.711
+    ],
+    [
+     "sol",
+     1.839
+    ]
+   ]
+  },
+  {
+   "cena": "card2",
+   "texto": "E a cama? E o banheiro?",
+   "arquivo": "card2.wav",
+   "ini": 0.03,
+   "fim": 1.594,
+   "dur": 1.564,
+   "partes": [
+    {
+     "texto": "E a cama?",
+     "arquivo": "card2-1.mp3",
+     "semente": 7,
+     "sobe": [
+      0.557
+     ]
+    },
+    {
+     "texto": "E o banheiro?",
+     "arquivo": "card2-2.mp3",
+     "semente": 7,
+     "sobe": [
+      0.464
+     ]
+    }
+   ],
+   "palavras": [
+    [
+     "e",
+     0.0
+    ],
+    [
+     "a",
+     0.141
+    ],
+    [
+     "cama",
+     0.246
+    ],
+    [
+     "e",
+     1.05
+    ],
+    [
+     "o",
+     1.154
+    ],
+    [
+     "banheiro",
+     1.224
+    ]
+   ]
+  },
+  {
+   "cena": "card3",
+   "texto": "Foto do quarto? Só pedindo no direct.",
+   "arquivo": "card3.wav",
+   "ini": 0.002,
+   "fim": 2.154,
+   "dur": 2.153,
+   "partes": [
+    {
+     "texto": "Foto do quarto?",
+     "arquivo": "card3-1.mp3",
+     "semente": 7,
+     "sobe": [
+      0.287
+     ]
+    },
+    {
+     "texto": "Só pedindo no direct.",
+     "arquivo": "card3-2.mp3",
+     "semente": 2026,
+     "sobe": []
+    }
+   ],
+   "palavras": [
+    [
+     "foto",
+     0.0
+    ],
+    [
+     "do",
+     0.277
+    ],
+    [
+     "quarto",
+     0.381
+    ],
+    [
+     "só",
+     1.053
+    ],
+    [
+     "pedindo",
+     1.25
+    ],
+    [
+     "no",
+     1.564
+    ],
+    [
+     "direct",
+     1.703
+    ]
+   ]
+  },
+  {
+   "cena": "carimbo",
+   "texto": "E na dúvida… ele não reservou.",
+   "arquivo": "carimbo.mp3",
+   "ini": 0.1,
+   "fim": 2.29,
+   "dur": 2.19,
+   "partes": [
+    {
+     "texto": "E na dúvida… ele não reservou.",
+     "arquivo": "carimbo.mp3",
+     "semente": 2026,
+     "sobe": []
+    }
+   ],
+   "palavras": [
+    [
+     "e",
+     0.0
+    ],
+    [
+     "na",
+     0.086
+    ],
+    [
+     "dúvida",
+     0.225
+    ],
+    [
+     "ele",
+     1.096
+    ],
+    [
+     "não",
+     1.374
+    ],
+    [
+     "reservou",
+     1.572
+    ]
+   ]
+  },
+  {
+   "cena": "virada",
+   "texto": "No site, fotos de cada quarto mostram onde ele vai dormir, antes da pergunta.",
+   "arquivo": "virada.mp3",
+   "ini": 0.079,
+   "fim": 4.195,
+   "dur": 4.116,
+   "partes": [
+    {
+     "texto": "No site, fotos de cada quarto mostram onde ele vai dormir, antes da pergunta.",
+     "arquivo": "virada.mp3",
+     "semente": 2026,
+     "sobe": []
+    }
+   ],
+   "palavras": [
+    [
+     "no",
+     0.0
+    ],
+    [
+     "site",
+     0.176
+    ],
+    [
+     "fotos",
+     0.641
+    ],
+    [
+     "de",
+     1.024
+    ],
+    [
+     "cada",
+     1.128
+    ],
+    [
+     "quarto",
+     1.384
+    ],
+    [
+     "mostram",
+     1.802
+    ],
+    [
+     "onde",
+     2.301
+    ],
+    [
+     "ele",
+     2.475
+    ],
+    [
+     "vai",
+     2.615
+    ],
+    [
+     "dormir",
+     2.777
+    ],
+    [
+     "antes",
+     3.241
+    ],
+    [
+     "da",
+     3.439
+    ],
+    [
+     "pergunta",
+     3.578
+    ]
+   ]
+  },
+  {
+   "cena": "fecho",
+   "texto": "Manda pra pousada que só posta a piscina.",
+   "arquivo": "fecho.mp3",
+   "ini": 0.038,
+   "fim": 1.828,
+   "dur": 1.789,
+   "partes": [
+    {
+     "texto": "Manda pra pousada que só posta a piscina.",
+     "arquivo": "fecho.mp3",
+     "semente": 2026,
+     "sobe": []
+    }
+   ],
+   "palavras": [
+    [
+     "manda",
+     0.0
+    ],
+    [
+     "pra",
+     0.252
+    ],
+    [
+     "pousada",
+     0.392
+    ],
+    [
+     "que",
+     0.763
+    ],
+    [
+     "só",
+     0.868
+    ],
+    [
+     "posta",
+     1.03
+    ],
+    [
+     "a",
+     1.262
+    ],
+    [
+     "piscina",
+     1.32
+    ]
+   ]
+  }
+ ],
+ "fala_total": 16.14
+}

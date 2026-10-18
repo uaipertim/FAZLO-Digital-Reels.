@@ -16,6 +16,8 @@ A estrutura (título-dor → cards → carimbo → virada → "Manda pra quem…
 |---|---|---|---|---|
 | Não achou o preço | "Ele achou sua pousada. / Mas não achou o preço." | 25,8 s com voz (curta: 14,4 s) | [`reels/nao-achou-o-preco/`](../../reels/nao-achou-o-preco) | com voz · aguardando aprovação · 17/10, 17h |
 | Como chega aí | "Como chega aí? / Ele perguntou de novo!" | 25,0 s com voz (curta: 14,2 s) | [`reels/como-chega-ai/`](../../reels/como-chega-ai) | com voz · em avaliação · 18/10, 9h30 |
+| Tem vaga no feriado | "Tem vaga no feriado? / Ele perguntou em três lugares." | 26,6 s | [`reels/tem-vaga-no-feriado/`](../../reels/tem-vaga-no-feriado) | com voz · aguardando aprovação · 19/10, 9h30 |
+| Ele viu a piscina | "Ele viu a piscina. / Mas não viu o quarto." | 25,0 s | [`reels/viu-a-piscina/`](../../reels/viu-a-piscina) | com voz · aguardando aprovação · 20/10, 9h30 |
 
 As versões curtas sem voz ficam em `reels/<id>/output/fazlo-digital-<id>-curto.mp4`.
 

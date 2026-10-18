@@ -1,0 +1,23 @@
+{
+  "id": "viu-a-piscina",
+  "titulo": ["Ele viu a piscina.", "*Mas não viu o quarto.*"],
+  "cards": [
+    { "rotulo": "No perfil", "texto": "Piscina, café e pôr do sol." },
+    { "texto": "E a cama? E o banheiro?" },
+    { "texto": "Foto do quarto? Só pedindo no direct." }
+  ],
+  "carimbo": "Ficou na dúvida",
+  "virada": ["Fotos de cada quarto", "*mostram onde ele vai dormir.*"],
+  "fecho": "Manda pra pousada que só posta a piscina.",
+  "voz": {
+    "titulo": ["Ele viu a piscina.", "Mas não viu o quarto."],
+    "cards": [
+      "No perfil: piscina, café e pôr do sol.",
+      ["E a cama?", "E o banheiro?"],
+      ["Foto do quarto?", "Só pedindo no direct."]
+    ],
+    "carimbo": "E na dúvida… ele não reservou.",
+    "virada": "No site, fotos de cada quarto mostram onde ele vai dormir, antes da pergunta.",
+    "fecho": "Manda pra pousada que só posta a piscina."
+  }
+}

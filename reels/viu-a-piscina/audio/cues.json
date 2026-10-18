@@ -1,0 +1,123 @@
+{
+ "id": "viu-a-piscina",
+ "bpm": null,
+ "fps": 60,
+ "duration": 25,
+ "sections": {
+  "gancho": 0,
+  "situacao": 2.966,
+  "corte": 12.479800000000001,
+  "virada": 16.3324,
+  "fecho": 21.761
+ },
+ "cues": [
+  {
+   "t": 0,
+   "type": "hook"
+  },
+  {
+   "t": 0,
+   "type": "voz",
+   "cena": "titulo",
+   "d": 2.166
+  },
+  {
+   "t": 1.222,
+   "type": "knock"
+  },
+  {
+   "t": 2.516,
+   "type": "rise",
+   "d": 0.5
+  },
+  {
+   "t": 2.966,
+   "type": "ping",
+   "k": 0,
+   "n": 3
+  },
+  {
+   "t": 3.216,
+   "type": "voz",
+   "cena": "card1",
+   "d": 2.159
+  },
+  {
+   "t": 6.3376,
+   "type": "ping",
+   "k": 1,
+   "n": 3
+  },
+  {
+   "t": 6.5876,
+   "type": "voz",
+   "cena": "card2",
+   "d": 1.564
+  },
+  {
+   "t": 9.1142,
+   "type": "ping",
+   "k": 2,
+   "n": 3
+  },
+  {
+   "t": 9.3642,
+   "type": "voz",
+   "cena": "card3",
+   "d": 2.153
+  },
+  {
+   "t": 12.4798,
+   "type": "cut",
+   "d": 0.2
+  },
+  {
+   "t": 12.6798,
+   "type": "stamp"
+  },
+  {
+   "t": 12.8298,
+   "type": "voz",
+   "cena": "carimbo",
+   "d": 2.19
+  },
+  {
+   "t": 15.9824,
+   "type": "exit",
+   "d": 0.5
+  },
+  {
+   "t": 16.3324,
+   "type": "virada"
+  },
+  {
+   "t": 16.6824,
+   "type": "voz",
+   "cena": "virada",
+   "d": 4.116
+  },
+  {
+   "t": 21.761,
+   "type": "fecho"
+  },
+  {
+   "t": 21.961,
+   "type": "voz",
+   "cena": "fecho",
+   "d": 1.789
+  },
+  {
+   "t": 22.561,
+   "type": "slash"
+  },
+  {
+   "t": 23.6,
+   "type": "logo"
+  },
+  {
+   "t": 24.7,
+   "type": "fade",
+   "d": 0.3000000000000007
+  }
+ ]
+}

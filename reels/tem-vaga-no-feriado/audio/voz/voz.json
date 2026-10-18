@@ -1,0 +1,401 @@
+{
+ "voz": {
+  "id": "GDzHdQOi6jjf8zaXhCYD",
+  "nome": "Raquel - For Conversational"
+ },
+ "modelo": "eleven_multilingual_v2",
+ "ajustes": {
+  "stability": 0.4,
+  "similarity_boost": 0.8,
+  "style": 0.35,
+  "use_speaker_boost": true,
+  "speed": 1.0
+ },
+ "formato": "mp3_44100_128",
+ "semente": 2026,
+ "contexto": "previous_text / next_text",
+ "cenas": [
+  {
+   "cena": "titulo",
+   "texto": "Tem vaga no feriado? Ele perguntou em três lugares.",
+   "arquivo": "titulo.wav",
+   "ini": 0.03,
+   "fim": 2.671,
+   "dur": 2.641,
+   "partes": [
+    {
+     "texto": "Tem vaga no feriado?",
+     "arquivo": "titulo-1.mp3",
+     "semente": 7,
+     "sobe": [
+      0.357
+     ]
+    },
+    {
+     "texto": "Ele perguntou em três lugares.",
+     "arquivo": "titulo-2.mp3",
+     "semente": 2026,
+     "sobe": []
+    }
+   ],
+   "palavras": [
+    [
+     "tem",
+     0.0
+    ],
+    [
+     "vaga",
+     0.152
+    ],
+    [
+     "no",
+     0.385
+    ],
+    [
+     "feriado",
+     0.489
+    ],
+    [
+     "ele",
+     1.351
+    ],
+    [
+     "perguntou",
+     1.548
+    ],
+    [
+     "em",
+     1.897
+    ],
+    [
+     "três",
+     1.99
+    ],
+    [
+     "lugares",
+     2.233
+    ]
+   ],
+   "marca": 1.351
+  },
+  {
+   "cena": "card1",
+   "texto": "No direct: tem vaga de sexta a domingo?",
+   "arquivo": "card1.mp3",
+   "ini": 0.043,
+   "fim": 2.189,
+   "dur": 2.146,
+   "partes": [
+    {
+     "texto": "No direct: tem vaga de sexta a domingo?",
+     "arquivo": "card1.mp3",
+     "semente": 2026,
+     "sobe": [
+      1.024
+     ]
+    }
+   ],
+   "palavras": [
+    [
+     "no",
+     0.0
+    ],
+    [
+     "direct",
+     0.131
+    ],
+    [
+     "tem",
+     0.572
+    ],
+    [
+     "vaga",
+     0.77
+    ],
+    [
+     "de",
+     1.072
+    ],
+    [
+     "sexta",
+     1.246
+    ],
+    [
+     "a",
+     1.606
+    ],
+    [
+     "domingo",
+     1.675
+    ]
+   ]
+  },
+  {
+   "cena": "card2",
+   "texto": "No WhatsApp, a mesma pergunta.",
+   "arquivo": "card2.mp3",
+   "ini": 0.044,
+   "fim": 1.546,
+   "dur": 1.502,
+   "partes": [
+    {
+     "texto": "No WhatsApp, a mesma pergunta.",
+     "arquivo": "card2.mp3",
+     "semente": 2026,
+     "sobe": []
+    }
+   ],
+   "palavras": [
+    [
+     "no",
+     0.0
+    ],
+    [
+     "whatsapp",
+     0.107
+    ],
+    [
+     "a",
+     0.629
+    ],
+    [
+     "mesma",
+     0.687
+    ],
+    [
+     "pergunta",
+     1.001
+    ]
+   ]
+  },
+  {
+   "cena": "card3",
+   "texto": "E nos comentários do post.",
+   "arquivo": "card3.mp3",
+   "ini": 0.088,
+   "fim": 1.502,
+   "dur": 1.414,
+   "partes": [
+    {
+     "texto": "E nos comentários do post.",
+     "arquivo": "card3.mp3",
+     "semente": 2026,
+     "sobe": []
+    }
+   ],
+   "palavras": [
+    [
+     "e",
+     0.0
+    ],
+    [
+     "nos",
+     0.086
+    ],
+    [
+     "comentários",
+     0.249
+    ],
+    [
+     "do",
+     0.783
+    ],
+    [
+     "post",
+     0.91
+    ]
+   ]
+  },
+  {
+   "cena": "carimbo",
+   "texto": "Quem respondeu primeiro… levou a reserva.",
+   "arquivo": "carimbo.mp3",
+   "ini": 0.063,
+   "fim": 2.949,
+   "dur": 2.886,
+   "partes": [
+    {
+     "texto": "Quem respondeu primeiro… levou a reserva.",
+     "arquivo": "carimbo.mp3",
+     "semente": 2026,
+     "sobe": []
+    }
+   ],
+   "palavras": [
+    [
+     "quem",
+     0.0
+    ],
+    [
+     "respondeu",
+     0.25
+    ],
+    [
+     "primeiro",
+     0.819
+    ],
+    [
+     "levou",
+     1.887
+    ],
+    [
+     "a",
+     2.213
+    ],
+    [
+     "reserva",
+     2.282
+    ]
+   ]
+  },
+  {
+   "cena": "virada",
+   "texto": "Com a consulta de datas no site, ele escolhe entrada e saída, e a pergunta chega pronta no seu WhatsApp.",
+   "arquivo": "virada.mp3",
+   "ini": 0.106,
+   "fim": 7.059,
+   "dur": 6.953,
+   "partes": [
+    {
+     "texto": "Com a consulta de datas no site, ele escolhe entrada e saída, e a pergunta chega pronta no seu WhatsApp.",
+     "arquivo": "virada.mp3",
+     "semente": 2026,
+     "sobe": []
+    }
+   ],
+   "palavras": [
+    [
+     "com",
+     0.0
+    ],
+    [
+     "a",
+     0.149
+    ],
+    [
+     "consulta",
+     0.207
+    ],
+    [
+     "de",
+     0.695
+    ],
+    [
+     "datas",
+     0.834
+    ],
+    [
+     "no",
+     1.299
+    ],
+    [
+     "site",
+     1.461
+    ],
+    [
+     "ele",
+     1.949
+    ],
+    [
+     "escolhe",
+     2.088
+    ],
+    [
+     "entrada",
+     2.529
+    ],
+    [
+     "e",
+     3.029
+    ],
+    [
+     "saída",
+     3.098
+    ],
+    [
+     "e",
+     3.737
+    ],
+    [
+     "a",
+     3.876
+    ],
+    [
+     "pergunta",
+     3.957
+    ],
+    [
+     "chega",
+     4.387
+    ],
+    [
+     "pronta",
+     4.677
+    ],
+    [
+     "no",
+     5.037
+    ],
+    [
+     "seu",
+     5.142
+    ],
+    [
+     "whatsapp",
+     5.304
+    ]
+   ]
+  },
+  {
+   "cena": "fecho",
+   "texto": "Manda pra pousada que perde reserva no feriado.",
+   "arquivo": "fecho.mp3",
+   "ini": 0.028,
+   "fim": 2.314,
+   "dur": 2.286,
+   "partes": [
+    {
+     "texto": "Manda pra pousada que perde reserva no feriado.",
+     "arquivo": "fecho.mp3",
+     "semente": 2026,
+     "sobe": []
+    }
+   ],
+   "palavras": [
+    [
+     "manda",
+     0.0
+    ],
+    [
+     "pra",
+     0.274
+    ],
+    [
+     "pousada",
+     0.425
+    ],
+    [
+     "que",
+     0.843
+    ],
+    [
+     "perde",
+     0.959
+    ],
+    [
+     "reserva",
+     1.249
+    ],
+    [
+     "no",
+     1.632
+    ],
+    [
+     "feriado",
+     1.737
+    ]
+   ]
+  }
+ ],
+ "fala_total": 19.83
+}

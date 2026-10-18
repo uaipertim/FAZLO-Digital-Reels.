@@ -1,0 +1,123 @@
+{
+ "id": "tem-vaga-no-feriado",
+ "bpm": null,
+ "fps": 60,
+ "duration": 26.633333333333333,
+ "sections": {
+  "gancho": 0,
+  "situacao": 3.4410000000000003,
+  "corte": 10.903,
+  "virada": 15.039,
+  "fecho": 22.892
+ },
+ "cues": [
+  {
+   "t": 0,
+   "type": "hook"
+  },
+  {
+   "t": 0,
+   "type": "voz",
+   "cena": "titulo",
+   "d": 2.641
+  },
+  {
+   "t": 1.351,
+   "type": "knock"
+  },
+  {
+   "t": 2.991,
+   "type": "rise",
+   "d": 0.5
+  },
+  {
+   "t": 3.441,
+   "type": "ping",
+   "k": 0,
+   "n": 3
+  },
+  {
+   "t": 3.691,
+   "type": "voz",
+   "cena": "card1",
+   "d": 2.146
+  },
+  {
+   "t": 6.387,
+   "type": "ping",
+   "k": 1,
+   "n": 3
+  },
+  {
+   "t": 6.637,
+   "type": "voz",
+   "cena": "card2",
+   "d": 1.502
+  },
+  {
+   "t": 8.689,
+   "type": "ping",
+   "k": 2,
+   "n": 3
+  },
+  {
+   "t": 8.939,
+   "type": "voz",
+   "cena": "card3",
+   "d": 1.414
+  },
+  {
+   "t": 10.903,
+   "type": "cut",
+   "d": 0.2
+  },
+  {
+   "t": 11.103,
+   "type": "stamp"
+  },
+  {
+   "t": 11.253,
+   "type": "voz",
+   "cena": "carimbo",
+   "d": 2.886
+  },
+  {
+   "t": 14.689,
+   "type": "exit",
+   "d": 0.5
+  },
+  {
+   "t": 15.039,
+   "type": "virada"
+  },
+  {
+   "t": 15.389,
+   "type": "voz",
+   "cena": "virada",
+   "d": 6.953
+  },
+  {
+   "t": 22.892,
+   "type": "fecho"
+  },
+  {
+   "t": 23.092,
+   "type": "voz",
+   "cena": "fecho",
+   "d": 2.286
+  },
+  {
+   "t": 23.692,
+   "type": "slash"
+  },
+  {
+   "t": 25.228,
+   "type": "logo"
+  },
+  {
+   "t": 26.3333,
+   "type": "fade",
+   "d": 0.3000000000000007
+  }
+ ]
+}

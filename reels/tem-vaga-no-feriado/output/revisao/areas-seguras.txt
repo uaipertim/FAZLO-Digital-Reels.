@@ -1,0 +1,66 @@
+TEM-VAGA-NO-FERIADO — áreas seguras, elemento a elemento
+
+Regras: conteúdo entre y 265 e 1456; nada em x ≥ 950 entre y 1060 e 1560 (coluna de botões);
+título do quadro 0 dentro do recorte 3:4 (y 240–1680).
+
+OK     chip da série            t= 0.00 s   x  267–783   y  707–763
+OK     título 1                 t= 0.00 s   x  292–758   y  809–865
+OK     título 2                 t= 0.00 s   x  231–819   y  885–941
+OK     título 3                 t= 0.00 s   x  164–886   y  961–1017
+OK     título 4                 t= 0.00 s   x  106–944   y 1037–1093
+OK     cabeçalho                t=11.10 s   x  330–750   y  285–427
+OK     card 1                   t=10.85 s   x   78–942   y  655–847
+OK     card 2                   t=10.85 s   x   78–942   y  855–995
+OK     card 3                   t=10.85 s   x   78–942   y 1003–1143
+OK     carimbo                  t=11.60 s   x  150–880   y  820–982
+OK     virada 1                 t=22.79 s   x  188–862   y  627–689
+OK     virada 1 (no fecho)      t=26.28 s   x  194–856   y  447–508
+OK     virada 2                 t=22.79 s   x  153–897   y  714–776
+OK     virada 2 (no fecho)      t=26.28 s   x  159–891   y  532–593
+OK     virada 3                 t=22.79 s   x  197–853   y  801–863
+OK     virada 3 (no fecho)      t=26.28 s   x  203–847   y  618–678
+OK     virada 4                 t=22.79 s   x  286–764   y  888–950
+OK     virada 4 (no fecho)      t=26.28 s   x  291–759   y  703–764
+OK     virada 5                 t=22.79 s   x  176–874   y  975–1037
+OK     virada 5 (no fecho)      t=26.28 s   x  182–868   y  789–849
+OK     virada 6                 t=22.79 s   x  129–921   y 1062–1124
+OK     virada 6 (no fecho)      t=26.28 s   x  136–914   y  874–935
+OK     fecho 1                  t=26.28 s   x  197–853   y 1008–1060
+OK     fecho 2                  t=26.28 s   x  183–867   y 1075–1127
+OK     logo                     t=26.28 s   x  353–697   y 1200–1307
+
+OK     capa: bloco (chip + título) em y 765–1155, centro em y = 960.0 (recorte 3:4: 960)
+
+Layout calculado:
+{
+ "titulo": {
+  "size": 69,
+  "linhas": [
+   "TEM VAGA",
+   "NO FERIADO?",
+   "ELE PERGUNTOU",
+   "EM TRÊS LUGARES."
+  ]
+ },
+ "cabecalho": 0.5,
+ "virada": {
+  "size": 72,
+  "linhas": [
+   "CONSULTA DE",
+   "DATAS NO SITE:",
+   "ELE ESCOLHE",
+   "AS DATAS",
+   "E A PERGUNTA",
+   "CHEGA PRONTA."
+  ]
+ },
+ "fecho": [
+  52,
+  "Manda pra pousada que",
+  "perde reserva no feriado."
+ ],
+ "carimbo": 46,
+ "duracao": 26.633333333333333
+}
+
+RESULTADO: aprovado
