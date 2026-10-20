@@ -8,6 +8,7 @@ Peças estáticas do feed da @fazlodigital. Cada carrossel vive numa pasta indep
 | **"Por que a consulta de datas vem primeiro"** | O que a FAZLO decide antes de desenhar: a consulta de datas logo abaixo do topo. Slides 04–07 com **capturas reais** do site da Pousada Vale dos Canteiros (calendário do site, a mensagem que chega organizada, os chalés) | 8 × 1080×1350 | concluído · aprovado | [`consulta-de-datas-primeiro/`](consulta-de-datas-primeiro) |
 | **"Seu cliente não acha seu horário"** | Para negócios em geral: as 6 informações que todo negócio deixa difíceis de achar, cada uma na mini tela de um negócio diferente (padaria, loja de roupas, clínica, restaurante, pousada, pet shop); valores como barras, e checklist no fechamento | 8 × 1080×1350 | concluído · aprovado | [`seu-cliente-nao-acha-seu-horario/`](seu-cliente-nao-acha-seu-horario) |
 | **"Antes de fazer um site: o que separar"** | O que a FAZLO pede ao dono da pousada antes de desenhar qualquer tela: logo, fotos de cada quarto, o que está incluso, regras, como chegar e o WhatsApp que atende; fecha com "o site começa pelo raio-x" | 8 × 1080×1350 | concluído · aprovado | [`antes-de-fazer-um-site/`](antes-de-fazer-um-site) |
+| **"O que colocar no link da bio da sua pousada"** | Por que uma lista de 9 botões não resolve e os 4 itens que o link da bio deve ter: consulta de datas, quartos com valor de referência, como chegar e WhatsApp com mensagem pronta; fecha com "um link só: o site da pousada" | 8 × 1080×1350 | concluído · em avaliação | [`link-da-bio/`](link-da-bio) |
 
 ## Como funciona
 

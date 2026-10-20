@@ -1,0 +1,38 @@
+O QUE COLOCAR NO LINK DA BIO DA SUA POUSADA — revisão do carrossel
+
+OK     8 slides em output/
+OK     01: 1080x1350 (alvo 1080x1350)
+OK     01: imagem opaca
+OK     01: bordas livres (40 px)
+OK     01: canto do contador nativo do Instagram livre (0.00%)
+OK     capa: conteúdo dentro do recorte 3:4 da grade do perfil (x 34–1046)
+OK     02: 1080x1350 (alvo 1080x1350)
+OK     02: imagem opaca
+OK     02: bordas livres (40 px)
+OK     02: canto do contador nativo do Instagram livre (0.00%)
+OK     03: 1080x1350 (alvo 1080x1350)
+OK     03: imagem opaca
+OK     03: bordas livres (40 px)
+OK     03: canto do contador nativo do Instagram livre (0.00%)
+OK     04: 1080x1350 (alvo 1080x1350)
+OK     04: imagem opaca
+OK     04: bordas livres (40 px)
+OK     04: canto do contador nativo do Instagram livre (0.00%)
+OK     05: 1080x1350 (alvo 1080x1350)
+OK     05: imagem opaca
+OK     05: bordas livres (40 px)
+OK     05: canto do contador nativo do Instagram livre (0.00%)
+OK     06: 1080x1350 (alvo 1080x1350)
+OK     06: imagem opaca
+OK     06: bordas livres (40 px)
+OK     06: canto do contador nativo do Instagram livre (0.00%)
+OK     07: 1080x1350 (alvo 1080x1350)
+OK     07: imagem opaca
+OK     07: bordas livres (40 px)
+OK     07: canto do contador nativo do Instagram livre (0.00%)
+OK     08: 1080x1350 (alvo 1080x1350)
+OK     08: imagem opaca
+OK     08: bordas livres (40 px)
+OK     08: canto do contador nativo do Instagram livre (0.00%)
+
+RESULTADO: aprovado
