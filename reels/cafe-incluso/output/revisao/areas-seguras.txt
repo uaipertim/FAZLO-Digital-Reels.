@@ -1,0 +1,60 @@
+CAFE-INCLUSO — áreas seguras, elemento a elemento
+
+Regras: conteúdo entre y 265 e 1456; nada em x ≥ 950 entre y 1060 e 1560 (coluna de botões);
+título do quadro 0 dentro do recorte 3:4 (y 240–1680).
+
+OK     chip da série            t= 0.00 s   x  267–783   y  685–741
+OK     título 1                 t= 0.00 s   x  200–850   y  787–851
+OK     título 2                 t= 0.00 s   x  269–781   y  875–939
+OK     título 3                 t= 0.00 s   x  107–943   y  963–1027
+OK     título 4                 t= 0.00 s   x  245–805   y 1051–1115
+OK     cabeçalho                t=14.09 s   x  331–749   y  285–449
+OK     card 1                   t=13.84 s   x   78–942   y  652–844
+OK     card 2                   t=13.84 s   x   78–942   y  852–992
+OK     card 3                   t=13.84 s   x   78–942   y 1000–1140
+OK     carimbo                  t=14.59 s   x  182–848   y  823–980
+OK     virada 1                 t=24.06 s   x  276–774   y  665–745
+OK     virada 1 (no fecho)      t=27.93 s   x  280–770   y  484–563
+OK     virada 2                 t=24.06 s   x   81–969   y  778–859
+OK     virada 2 (no fecho)      t=27.93 s   x   89–961   y  596–675
+OK     virada 3                 t=24.06 s   x   89–961   y  892–972
+OK     virada 3 (no fecho)      t=27.93 s   x   97–953   y  707–786
+OK     virada 4                 t=24.06 s   x  261–789   y 1005–1086
+OK     virada 4 (no fecho)      t=27.93 s   x  266–784   y  818–898
+OK     fecho 1                  t=27.93 s   x  138–912   y  971–1023
+OK     fecho 2                  t=27.93 s   x  133–917   y 1038–1090
+OK     logo                     t=27.93 s   x  353–697   y 1163–1270
+
+OK     capa: bloco (chip + título) em y 740–1180, centro em y = 960.0 (recorte 3:4: 960)
+
+Layout calculado:
+{
+ "titulo": {
+  "size": 80,
+  "linhas": [
+   "O CAFÉ ESTÁ",
+   "INCLUSO?",
+   "ELE PERGUNTOU",
+   "NO DIRECT."
+  ]
+ },
+ "cabecalho": 0.5,
+ "virada": {
+  "size": 94,
+  "linhas": [
+   "O QUE A",
+   "DIÁRIA INCLUI",
+   "FICA ESCRITO",
+   "NO SITE."
+  ]
+ },
+ "fecho": [
+  52,
+  "Manda pra pousada que tem",
+  "o café mais bonito da região."
+ ],
+ "carimbo": 46,
+ "duracao": 28.283333333333335
+}
+
+RESULTADO: aprovado

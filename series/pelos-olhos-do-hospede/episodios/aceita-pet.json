@@ -1,0 +1,23 @@
+{
+  "id": "aceita-pet",
+  "titulo": ["Aceita pet?", "*Ele não quis arriscar.*"],
+  "cards": [
+    { "rotulo": "Na viagem", "texto": "O casal, as malas e o cachorro." },
+    { "texto": "Aceita pet? Tem taxa? Qual porte?" },
+    { "texto": "No perfil, nenhuma palavra sobre isso." }
+  ],
+  "carimbo": "Foi pra outra",
+  "virada": ["Regras de pet no site", "*e ele já chega decidido.*"],
+  "fecho": "Manda pra pousada que aceita pet e ninguém sabe.",
+  "voz": {
+    "titulo": ["Aceita pet?", "Ele não quis arriscar."],
+    "cards": [
+      "Na viagem vão o casal, as malas… e o cachorro.",
+      ["Aceita pet?", "Tem taxa?", "Qual porte?"],
+      "No perfil, nenhuma palavra sobre isso."
+    ],
+    "carimbo": "Na dúvida, ele foi para outra pousada.",
+    "virada": "No site, as regras de pet ficam claras, e quem viaja com ele já chega decidido.",
+    "fecho": "Manda pra pousada que aceita pet e ninguém sabe."
+  }
+}

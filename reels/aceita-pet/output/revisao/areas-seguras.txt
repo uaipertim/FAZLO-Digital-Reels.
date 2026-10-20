@@ -1,0 +1,58 @@
+ACEITA-PET — áreas seguras, elemento a elemento
+
+Regras: conteúdo entre y 265 e 1456; nada em x ≥ 950 entre y 1060 e 1560 (coluna de botões);
+título do quadro 0 dentro do recorte 3:4 (y 240–1680).
+
+OK     chip da série            t= 0.00 s   x  267–783   y  705–761
+OK     título 1                 t= 0.00 s   x  138–912   y  807–884
+OK     título 2                 t= 0.00 s   x  108–942   y  912–990
+OK     título 3                 t= 0.00 s   x  192–858   y 1018–1095
+OK     cabeçalho                t=12.72 s   x  331–749   y  285–429
+OK     card 1                   t=12.47 s   x   78–942   y  614–806
+OK     card 2                   t=12.47 s   x   78–942   y  814–954
+OK     card 3                   t=12.47 s   x   78–942   y  962–1164
+OK     carimbo                  t=13.22 s   x  244–786   y  819–968
+OK     virada 1                 t=21.36 s   x  210–840   y  689–761
+OK     virada 1 (no fecho)      t=24.65 s   x  215–835   y  508–578
+OK     virada 2                 t=21.36 s   x  190–860   y  790–861
+OK     virada 2 (no fecho)      t=24.65 s   x  196–854   y  607–677
+OK     virada 3                 t=21.36 s   x   81–969   y  890–961
+OK     virada 3 (no fecho)      t=24.65 s   x   89–961   y  705–775
+OK     virada 4                 t=21.36 s   x  241–809   y  990–1061
+OK     virada 4 (no fecho)      t=24.65 s   x  246–804   y  804–873
+OK     fecho 1                  t=24.65 s   x  197–853   y  946–999
+OK     fecho 2                  t=24.65 s   x  160–890   y 1013–1066
+OK     logo                     t=24.65 s   x  353–697   y 1139–1245
+
+OK     capa: bloco (chip + título) em y 762–1158, centro em y = 960.0 (recorte 3:4: 960)
+
+Layout calculado:
+{
+ "titulo": {
+  "size": 96,
+  "linhas": [
+   "ACEITA PET?",
+   "ELE NÃO QUIS",
+   "ARRISCAR."
+  ]
+ },
+ "cabecalho": 0.5,
+ "virada": {
+  "size": 83,
+  "linhas": [
+   "REGRAS DE",
+   "PET NO SITE",
+   "E ELE JÁ CHEGA",
+   "DECIDIDO."
+  ]
+ },
+ "fecho": [
+  52,
+  "Manda pra pousada que",
+  "aceita pet e ninguém sabe."
+ ],
+ "carimbo": 46,
+ "duracao": 25
+}
+
+RESULTADO: aprovado

@@ -1,0 +1,15 @@
+ACEITA-PET — sincronização som x imagem
+
+OK     áudio do MP4 = trilha, sem deslocamento (+0.0, +0.0, +0.0 ms)
+OK     4 efeitos-chave com ataque no instante do evento (desvio médio 3.9 ms, máximo 4.6 ms; 1 quadro = 16,7 ms)
+OK     a imagem reage em 4/4 golpes principais (pico de movimento a ≤ 8 quadros do som)
+
+Evento a evento (instante do evento visual, desvio medido):
+           2.762 s  ping        áudio   -3.8 ms
+           6.684 s  ping        áudio   -3.7 ms
+           9.948 s  ping        áudio   -4.6 ms
+          12.719 s  stamp       áudio   -3.5 ms
+           2.762 s  ping        imagem: movimento   2.2 (antes  0.1), pico a -3 quadro(s)
+           6.684 s  ping        imagem: movimento   2.2 (antes  0.0), pico a +6 quadro(s)
+           9.948 s  ping        imagem: movimento   3.9 (antes  0.1), pico a +5 quadro(s)
+          12.719 s  stamp       imagem: movimento  13.0 (antes  0.1), pico a -2 quadro(s)

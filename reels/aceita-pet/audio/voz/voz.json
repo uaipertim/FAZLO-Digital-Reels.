@@ -1,0 +1,413 @@
+{
+ "voz": {
+  "id": "GDzHdQOi6jjf8zaXhCYD",
+  "nome": "Raquel - For Conversational"
+ },
+ "modelo": "eleven_multilingual_v2",
+ "ajustes": {
+  "stability": 0.4,
+  "similarity_boost": 0.8,
+  "style": 0.35,
+  "use_speaker_boost": true,
+  "speed": 1.0
+ },
+ "formato": "mp3_44100_128",
+ "semente": 2026,
+ "contexto": "previous_text / next_text",
+ "cenas": [
+  {
+   "cena": "titulo",
+   "texto": "Aceita pet? Ele não quis arriscar.",
+   "arquivo": "titulo.wav",
+   "ini": 0.03,
+   "fim": 1.992,
+   "dur": 1.962,
+   "partes": [
+    {
+     "texto": "Aceita pet?",
+     "arquivo": "titulo-1.mp3",
+     "semente": 2026,
+     "sobe": [
+      0.139
+     ]
+    },
+    {
+     "texto": "Ele não quis arriscar.",
+     "arquivo": "titulo-2.mp3",
+     "semente": 2026,
+     "sobe": []
+    }
+   ],
+   "palavras": [
+    [
+     "aceita",
+     0.0
+    ],
+    [
+     "pet",
+     0.426
+    ],
+    [
+     "ele",
+     1.079
+    ],
+    [
+     "não",
+     1.253
+    ],
+    [
+     "quis",
+     1.392
+    ],
+    [
+     "arriscar",
+     1.59
+    ]
+   ],
+   "marca": 1.079
+  },
+  {
+   "cena": "card1",
+   "texto": "Na viagem vão o casal, as malas… e o cachorro.",
+   "arquivo": "card1.mp3",
+   "ini": 0.073,
+   "fim": 3.102,
+   "dur": 3.029,
+   "partes": [
+    {
+     "texto": "Na viagem vão o casal, as malas… e o cachorro.",
+     "arquivo": "card1.mp3",
+     "semente": 2026,
+     "sobe": []
+    }
+   ],
+   "palavras": [
+    [
+     "na",
+     0.0
+    ],
+    [
+     "viagem",
+     0.159
+    ],
+    [
+     "vão",
+     0.612
+    ],
+    [
+     "o",
+     0.821
+    ],
+    [
+     "casal",
+     0.891
+    ],
+    [
+     "as",
+     1.494
+    ],
+    [
+     "malas",
+     1.692
+    ],
+    [
+     "e",
+     2.295
+    ],
+    [
+     "o",
+     2.446
+    ],
+    [
+     "cachorro",
+     2.539
+    ]
+   ]
+  },
+  {
+   "cena": "card2",
+   "texto": "Aceita pet? Tem taxa? Qual porte?",
+   "arquivo": "card2.wav",
+   "ini": 0.03,
+   "fim": 2.401,
+   "dur": 2.37,
+   "partes": [
+    {
+     "texto": "Aceita pet?",
+     "arquivo": "card2-1.mp3",
+     "semente": 7,
+     "sobe": [
+      0.827
+     ]
+    },
+    {
+     "texto": "Tem taxa?",
+     "arquivo": "card2-2.mp3",
+     "semente": 2026,
+     "sobe": [
+      0.211
+     ]
+    },
+    {
+     "texto": "Qual porte?",
+     "arquivo": "card2-3.mp3",
+     "semente": 42,
+     "sobe": [
+      0.203
+     ]
+    }
+   ],
+   "palavras": [
+    [
+     "aceita",
+     0.0
+    ],
+    [
+     "pet",
+     0.396
+    ],
+    [
+     "tem",
+     1.049
+    ],
+    [
+     "taxa",
+     1.258
+    ],
+    [
+     "qual",
+     1.863
+    ],
+    [
+     "porte",
+     2.084
+    ]
+   ]
+  },
+  {
+   "cena": "card3",
+   "texto": "No perfil, nenhuma palavra sobre isso.",
+   "arquivo": "card3.mp3",
+   "ini": 0.087,
+   "fim": 1.765,
+   "dur": 1.678,
+   "partes": [
+    {
+     "texto": "No perfil, nenhuma palavra sobre isso.",
+     "arquivo": "card3.mp3",
+     "semente": 2026,
+     "sobe": []
+    }
+   ],
+   "palavras": [
+    [
+     "no",
+     0.0
+    ],
+    [
+     "perfil",
+     0.122
+    ],
+    [
+     "nenhuma",
+     0.47
+    ],
+    [
+     "palavra",
+     0.737
+    ],
+    [
+     "sobre",
+     1.086
+    ],
+    [
+     "isso",
+     1.399
+    ]
+   ]
+  },
+  {
+   "cena": "carimbo",
+   "texto": "Na dúvida, ele foi para outra pousada.",
+   "arquivo": "carimbo.mp3",
+   "ini": 0.054,
+   "fim": 2.065,
+   "dur": 2.011,
+   "partes": [
+    {
+     "texto": "Na dúvida, ele foi para outra pousada.",
+     "arquivo": "carimbo.mp3",
+     "semente": 2026,
+     "sobe": []
+    }
+   ],
+   "palavras": [
+    [
+     "na",
+     0.0
+    ],
+    [
+     "dúvida",
+     0.155
+    ],
+    [
+     "ele",
+     0.445
+    ],
+    [
+     "foi",
+     0.608
+    ],
+    [
+     "para",
+     0.782
+    ],
+    [
+     "outra",
+     0.991
+    ],
+    [
+     "pousada",
+     1.328
+    ]
+   ]
+  },
+  {
+   "cena": "virada",
+   "texto": "No site, as regras de pet ficam claras, e quem viaja com ele já chega decidido.",
+   "arquivo": "virada.mp3",
+   "ini": 0.07,
+   "fim": 4.667,
+   "dur": 4.597,
+   "partes": [
+    {
+     "texto": "No site, as regras de pet ficam claras, e quem viaja com ele já chega decidido.",
+     "arquivo": "virada.mp3",
+     "semente": 2026,
+     "sobe": []
+    }
+   ],
+   "palavras": [
+    [
+     "no",
+     0.0
+    ],
+    [
+     "site",
+     0.162
+    ],
+    [
+     "as",
+     0.569
+    ],
+    [
+     "regras",
+     0.719
+    ],
+    [
+     "de",
+     1.045
+    ],
+    [
+     "pet",
+     1.195
+    ],
+    [
+     "ficam",
+     1.683
+    ],
+    [
+     "claras",
+     2.008
+    ],
+    [
+     "e",
+     2.542
+    ],
+    [
+     "quem",
+     2.612
+    ],
+    [
+     "viaja",
+     2.809
+    ],
+    [
+     "com",
+     3.158
+    ],
+    [
+     "ele",
+     3.378
+    ],
+    [
+     "já",
+     3.587
+    ],
+    [
+     "chega",
+     3.75
+    ],
+    [
+     "decidido",
+     4.028
+    ]
+   ]
+  },
+  {
+   "cena": "fecho",
+   "texto": "Manda pra pousada que aceita pet e ninguém sabe.",
+   "arquivo": "fecho.mp3",
+   "ini": 0.074,
+   "fim": 2.159,
+   "dur": 2.086,
+   "partes": [
+    {
+     "texto": "Manda pra pousada que aceita pet e ninguém sabe.",
+     "arquivo": "fecho.mp3",
+     "semente": 2026,
+     "sobe": []
+    }
+   ],
+   "palavras": [
+    [
+     "manda",
+     0.0
+    ],
+    [
+     "pra",
+     0.216
+    ],
+    [
+     "pousada",
+     0.356
+    ],
+    [
+     "que",
+     0.739
+    ],
+    [
+     "aceita",
+     0.832
+    ],
+    [
+     "pet",
+     1.18
+    ],
+    [
+     "e",
+     1.424
+    ],
+    [
+     "ninguém",
+     1.482
+    ],
+    [
+     "sabe",
+     1.737
+    ]
+   ]
+  }
+ ],
+ "fala_total": 17.73
+}

@@ -1,0 +1,445 @@
+{
+ "voz": {
+  "id": "GDzHdQOi6jjf8zaXhCYD",
+  "nome": "Raquel - For Conversational"
+ },
+ "modelo": "eleven_multilingual_v2",
+ "ajustes": {
+  "stability": 0.4,
+  "similarity_boost": 0.8,
+  "style": 0.35,
+  "use_speaker_boost": true,
+  "speed": 1.0
+ },
+ "formato": "mp3_44100_128",
+ "semente": 2026,
+ "contexto": "previous_text / next_text",
+ "cenas": [
+  {
+   "cena": "titulo",
+   "texto": "O café está incluso? Ele perguntou no direct.",
+   "arquivo": "titulo.wav",
+   "ini": 0.03,
+   "fim": 2.48,
+   "dur": 2.45,
+   "partes": [
+    {
+     "texto": "O café está incluso?",
+     "arquivo": "titulo-1.mp3",
+     "semente": 7,
+     "sobe": [
+      0.611
+     ]
+    },
+    {
+     "texto": "Ele perguntou no direct.",
+     "arquivo": "titulo-2.mp3",
+     "semente": 2026,
+     "sobe": []
+    }
+   ],
+   "palavras": [
+    [
+     "o",
+     0.0
+    ],
+    [
+     "café",
+     0.086
+    ],
+    [
+     "está",
+     0.353
+    ],
+    [
+     "incluso",
+     0.562
+    ],
+    [
+     "ele",
+     1.39
+    ],
+    [
+     "perguntou",
+     1.599
+    ],
+    [
+     "no",
+     1.994
+    ],
+    [
+     "direct",
+     2.11
+    ]
+   ],
+   "marca": 1.39
+  },
+  {
+   "cena": "card1",
+   "texto": "No perfil, a foto da mesa de café. Linda.",
+   "arquivo": "card1.mp3",
+   "ini": 0.042,
+   "fim": 2.318,
+   "dur": 2.276,
+   "partes": [
+    {
+     "texto": "No perfil, a foto da mesa de café. Linda.",
+     "arquivo": "card1.mp3",
+     "semente": 2026,
+     "sobe": []
+    }
+   ],
+   "palavras": [
+    [
+     "no",
+     0.0
+    ],
+    [
+     "perfil",
+     0.121
+    ],
+    [
+     "a",
+     0.446
+    ],
+    [
+     "foto",
+     0.527
+    ],
+    [
+     "da",
+     0.806
+    ],
+    [
+     "mesa",
+     0.91
+    ],
+    [
+     "de",
+     1.142
+    ],
+    [
+     "café",
+     1.235
+    ],
+    [
+     "linda",
+     1.897
+    ]
+   ]
+  },
+  {
+   "cena": "card2",
+   "texto": "Mas está incluso na diária? Até que horas é servido?",
+   "arquivo": "card2.wav",
+   "ini": 0.03,
+   "fim": 3.329,
+   "dur": 3.299,
+   "partes": [
+    {
+     "texto": "Mas está incluso na diária?",
+     "arquivo": "card2-1.mp3",
+     "semente": 77,
+     "sobe": [
+      0.26
+     ]
+    },
+    {
+     "texto": "Até que horas é servido?",
+     "arquivo": "card2-2.mp3",
+     "semente": 7,
+     "sobe": [
+      0.734
+     ]
+    }
+   ],
+   "palavras": [
+    [
+     "mas",
+     0.0
+    ],
+    [
+     "está",
+     0.168
+    ],
+    [
+     "incluso",
+     0.365
+    ],
+    [
+     "na",
+     0.76
+    ],
+    [
+     "diária",
+     0.899
+    ],
+    [
+     "até",
+     1.895
+    ],
+    [
+     "que",
+     2.156
+    ],
+    [
+     "horas",
+     2.296
+    ],
+    [
+     "é",
+     2.586
+    ],
+    [
+     "servido",
+     2.656
+    ]
+   ]
+  },
+  {
+   "cena": "card3",
+   "texto": "E a resposta só vem quando alguém vê a mensagem.",
+   "arquivo": "card3.mp3",
+   "ini": 0.061,
+   "fim": 2.722,
+   "dur": 2.661,
+   "partes": [
+    {
+     "texto": "E a resposta só vem quando alguém vê a mensagem.",
+     "arquivo": "card3.mp3",
+     "semente": 2026,
+     "sobe": []
+    }
+   ],
+   "palavras": [
+    [
+     "e",
+     0.0
+    ],
+    [
+     "a",
+     0.125
+    ],
+    [
+     "resposta",
+     0.183
+    ],
+    [
+     "só",
+     0.659
+    ],
+    [
+     "vem",
+     0.856
+    ],
+    [
+     "quando",
+     1.239
+    ],
+    [
+     "alguém",
+     1.53
+    ],
+    [
+     "vê",
+     1.866
+    ],
+    [
+     "a",
+     1.982
+    ],
+    [
+     "mensagem",
+     2.064
+    ]
+   ]
+  },
+  {
+   "cena": "carimbo",
+   "texto": "Enquanto isso, ele continua esperando.",
+   "arquivo": "carimbo.mp3",
+   "ini": 0.065,
+   "fim": 1.861,
+   "dur": 1.796,
+   "partes": [
+    {
+     "texto": "Enquanto isso, ele continua esperando.",
+     "arquivo": "carimbo.mp3",
+     "semente": 2026,
+     "sobe": []
+    }
+   ],
+   "palavras": [
+    [
+     "enquanto",
+     0.0
+    ],
+    [
+     "isso",
+     0.411
+    ],
+    [
+     "ele",
+     0.62
+    ],
+    [
+     "continua",
+     0.864
+    ],
+    [
+     "esperando",
+     1.27
+    ]
+   ]
+  },
+  {
+   "cena": "virada",
+   "texto": "No site, o que a diária inclui já fica escrito, com horário e tudo, antes da pergunta.",
+   "arquivo": "virada.mp3",
+   "ini": 0.035,
+   "fim": 6.367,
+   "dur": 6.332,
+   "partes": [
+    {
+     "texto": "No site, o que a diária inclui já fica escrito, com horário e tudo, antes da pergunta.",
+     "arquivo": "virada.mp3",
+     "semente": 2026,
+     "sobe": []
+    }
+   ],
+   "palavras": [
+    [
+     "no",
+     0.0
+    ],
+    [
+     "site",
+     0.209
+    ],
+    [
+     "o",
+     0.65
+    ],
+    [
+     "que",
+     0.72
+    ],
+    [
+     "a",
+     0.836
+    ],
+    [
+     "diária",
+     0.917
+    ],
+    [
+     "inclui",
+     1.405
+    ],
+    [
+     "já",
+     2.31
+    ],
+    [
+     "fica",
+     2.519
+    ],
+    [
+     "escrito",
+     2.751
+    ],
+    [
+     "com",
+     3.738
+    ],
+    [
+     "horário",
+     3.982
+    ],
+    [
+     "e",
+     4.574
+    ],
+    [
+     "tudo",
+     4.725
+    ],
+    [
+     "antes",
+     5.48
+    ],
+    [
+     "da",
+     5.77
+    ],
+    [
+     "pergunta",
+     5.886
+    ]
+   ]
+  },
+  {
+   "cena": "fecho",
+   "texto": "Manda pra pousada que tem o café mais bonito da região.",
+   "arquivo": "fecho.mp3",
+   "ini": 0.027,
+   "fim": 2.688,
+   "dur": 2.661,
+   "partes": [
+    {
+     "texto": "Manda pra pousada que tem o café mais bonito da região.",
+     "arquivo": "fecho.mp3",
+     "semente": 2026,
+     "sobe": []
+    }
+   ],
+   "palavras": [
+    [
+     "manda",
+     0.0
+    ],
+    [
+     "pra",
+     0.252
+    ],
+    [
+     "pousada",
+     0.403
+    ],
+    [
+     "que",
+     0.809
+    ],
+    [
+     "tem",
+     0.937
+    ],
+    [
+     "o",
+     1.169
+    ],
+    [
+     "café",
+     1.238
+    ],
+    [
+     "mais",
+     1.564
+    ],
+    [
+     "bonito",
+     1.761
+    ],
+    [
+     "da",
+     2.074
+    ],
+    [
+     "região",
+     2.179
+    ]
+   ]
+  }
+ ],
+ "fala_total": 21.48
+}

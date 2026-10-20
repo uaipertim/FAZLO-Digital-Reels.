@@ -1,0 +1,108 @@
+{
+  "id": "cafe-incluso",
+  "title": "O café está incluso? Ele perguntou no direct.",
+  "serie": "Pelos olhos do hóspede",
+  "voz": true,
+  "status": "com voz · aguardando aprovação",
+  "format": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 60
+  },
+  "output": {
+    "video": "output/fazlo-digital-cafe-incluso.mp4",
+    "cover": "output/capa.png"
+  },
+  "fonts": [
+    "900 100px 'FZD Display'",
+    "800 100px 'FZD Display'",
+    "600 100px 'FZD Text'",
+    "700 100px 'FZD Text'"
+  ],
+  "scripts": [
+    "../../series/pelos-olhos-do-hospede/motor.js"
+  ],
+  "assets": {},
+  "qa": {
+    "duration": [
+      25,
+      30.05
+    ],
+    "lufs": -14,
+    "syncCues": [
+      "ping",
+      "stamp"
+    ],
+    "visualCues": [
+      "ping",
+      "stamp"
+    ],
+    "checkTimes": [
+      0,
+      3.5,
+      3.75,
+      6.83,
+      10.93,
+      14.69,
+      18.13,
+      25.46,
+      27.93
+    ],
+    "coverClear": [
+      [
+        860,
+        240,
+        1080,
+        440
+      ],
+      [
+        0,
+        1560,
+        1080,
+        1680
+      ]
+    ]
+  },
+  "storyboard": [
+    [
+      0,
+      "TÍTULO-DOR"
+    ],
+    [
+      3.5,
+      "CABEÇALHO"
+    ],
+    [
+      3.75,
+      "CARD 1"
+    ],
+    [
+      6.83,
+      "CARD 2"
+    ],
+    [
+      10.93,
+      "CARD 3"
+    ],
+    [
+      14.01,
+      "O CORTE"
+    ],
+    [
+      14.69,
+      "CARIMBO"
+    ],
+    [
+      18.13,
+      "VIRADA"
+    ],
+    [
+      25.46,
+      "MANDA PRA QUEM…"
+    ],
+    [
+      27.93,
+      "LOGO"
+    ]
+  ]
+}

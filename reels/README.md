@@ -18,6 +18,8 @@ Cada Reel vive numa pasta independente (`reel-NN/` ou, a partir de "Instagram n�
 | — | **"Como chega aí."** 2º episódio da série "Pelos olhos do hóspede": o caminho e a distância dos passeios que só aparecem no direct. **Com voz** (curta sem voz: `-curto.mp4`) | 25,0 s | com voz · em avaliação | [`como-chega-ai/`](como-chega-ai) |
 | — | **"Tem vaga no feriado?"** 3º episódio da série "Pelos olhos do hóspede", com voz: a mesma pergunta em três lugares e a consulta de datas do site | 26,6 s | com voz · aguardando aprovação | [`tem-vaga-no-feriado/`](tem-vaga-no-feriado) |
 | — | **"Ele viu a piscina."** 4º episódio da série "Pelos olhos do hóspede", com voz: ele viu a piscina, mas não viu o quarto | 25,0 s | com voz · aguardando aprovação | [`viu-a-piscina/`](viu-a-piscina) |
+| — | **"O café está incluso?"** 5º episódio da série "Pelos olhos do hóspede", com voz: a foto da mesa de café e a pergunta sem resposta | 28,3 s | com voz · aguardando aprovação | [`cafe-incluso/`](cafe-incluso) |
+| — | **"Aceita pet?"** 6º episódio da série "Pelos olhos do hóspede", com voz: ele não quis arriscar a viagem com o cachorro | 25,0 s | com voz · aguardando aprovação | [`aceita-pet/`](aceita-pet) |
 
 Episódios da série "Pelos olhos do hóspede": `npm run episodio -- <id>` (só o roteiro em JSON, ver [`../series/pelos-olhos-do-hospede/`](../series/pelos-olhos-do-hospede)).
 
