@@ -1,15 +1,15 @@
 CAFE-INCLUSO — sincronização som x imagem
 
 OK     áudio do MP4 = trilha, sem deslocamento (+0.0, +0.0, +0.0 ms)
-OK     4 efeitos-chave com ataque no instante do evento (desvio médio 3.6 ms, máximo 4.3 ms; 1 quadro = 16,7 ms)
+OK     4 efeitos-chave com ataque no instante do evento (desvio médio 4.2 ms, máximo 5.3 ms; 1 quadro = 16,7 ms)
 OK     a imagem reage em 4/4 golpes principais (pico de movimento a ≤ 8 quadros do som)
 
 Evento a evento (instante do evento visual, desvio medido):
            3.250 s  ping        áudio   -4.3 ms
-           6.326 s  ping        áudio   -2.8 ms
+           6.326 s  ping        áudio   -5.3 ms
           10.425 s  ping        áudio   -4.3 ms
           14.086 s  stamp       áudio   -2.8 ms
            3.250 s  ping        imagem: movimento   2.3 (antes  0.0), pico a -3 quadro(s)
            6.326 s  ping        imagem: movimento   2.2 (antes  0.1), pico a +5 quadro(s)
-          10.425 s  ping        imagem: movimento   3.0 (antes  0.1), pico a +4 quadro(s)
+          10.425 s  ping        imagem: movimento   3.1 (antes  0.1), pico a +4 quadro(s)
           14.086 s  stamp       imagem: movimento  13.7 (antes  0.1), pico a -2 quadro(s)

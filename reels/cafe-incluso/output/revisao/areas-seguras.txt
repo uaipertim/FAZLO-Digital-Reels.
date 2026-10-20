@@ -14,16 +14,16 @@ OK     card 2                   t=13.84 s   x   78–942   y  852–992
 OK     card 3                   t=13.84 s   x   78–942   y 1000–1140
 OK     carimbo                  t=14.59 s   x  182–848   y  823–980
 OK     virada 1                 t=24.06 s   x  276–774   y  665–745
-OK     virada 1 (no fecho)      t=27.93 s   x  280–770   y  484–563
+OK     virada 1 (no fecho)      t=28.22 s   x  280–770   y  484–563
 OK     virada 2                 t=24.06 s   x   81–969   y  778–859
-OK     virada 2 (no fecho)      t=27.93 s   x   89–961   y  596–675
+OK     virada 2 (no fecho)      t=28.22 s   x   89–961   y  596–675
 OK     virada 3                 t=24.06 s   x   89–961   y  892–972
-OK     virada 3 (no fecho)      t=27.93 s   x   97–953   y  707–786
+OK     virada 3 (no fecho)      t=28.22 s   x   97–953   y  707–786
 OK     virada 4                 t=24.06 s   x  261–789   y 1005–1086
-OK     virada 4 (no fecho)      t=27.93 s   x  266–784   y  818–898
-OK     fecho 1                  t=27.93 s   x  138–912   y  971–1023
-OK     fecho 2                  t=27.93 s   x  133–917   y 1038–1090
-OK     logo                     t=27.93 s   x  353–697   y 1163–1270
+OK     virada 4 (no fecho)      t=28.22 s   x  266–784   y  819–898
+OK     fecho 1                  t=28.22 s   x  138–912   y  971–1023
+OK     fecho 2                  t=28.22 s   x  131–919   y 1038–1090
+OK     logo                     t=28.22 s   x  353–697   y 1163–1269
 
 OK     capa: bloco (chip + título) em y 740–1180, centro em y = 960.0 (recorte 3:4: 960)
 
@@ -51,10 +51,10 @@ Layout calculado:
  "fecho": [
   52,
   "Manda pra pousada que tem",
-  "o café mais bonito da região."
+  "o café mais bonito da região!"
  ],
  "carimbo": 46,
- "duracao": 28.283333333333335
+ "duracao": 28.566666666666666
 }
 
 RESULTADO: aprovado

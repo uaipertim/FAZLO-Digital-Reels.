@@ -6,14 +6,14 @@
 
 Texto na tela (acompanha a voz):
 - **Título-dor:** "O café está incluso? / *Ele perguntou no direct.*" (duas chamadas)
-- **Cards:** "No perfil · A foto da mesa de café, linda." → "Está na diária? Até que horas?" (voz: duas perguntas separadas) → "Resposta? Só quando alguém vir."
+- **Cards:** "No perfil · A foto da mesa de café, linda." → "Está na diária? Até que horas?" (voz: duas perguntas separadas) → "Resposta? Só quando alguém ver."
 - **Carimbo:** "Ainda esperando"
 - **Virada:** "O que a diária inclui / *fica escrito no site.*"
-- **Fecho:** "Manda pra pousada que tem o café mais bonito da região." + logo FAZLO DIGITAL
+- **Fecho:** "Manda pra pousada que tem o café mais bonito da região!" + logo FAZLO DIGITAL
 
-## Voz (28,3 s)
+## Voz (28,6 s)
 
-A voz manda no tempo: cada cena dura a sua fala mais um respiro, e a fala do título começa no quadro 0. As falas somam 21,48 s.
+A voz manda no tempo: cada cena dura a sua fala mais um respiro, e a fala do título começa no quadro 0. As falas somam 21,76 s.
 
 | Cena | Fala | Entra em | Dura |
 |---|---|---|---|
@@ -23,7 +23,7 @@ A voz manda no tempo: cada cena dura a sua fala mais um respiro, e a fala do tí
 | card3 | "E a resposta só vem quando alguém vê a mensagem." | 10,68 s | 2,66 s |
 | carimbo | "Enquanto isso, ele continua esperando." | 14,24 s | 1,80 s |
 | virada | "No site, o que a diária inclui já fica escrito, com horário e tudo, antes da pergunta." | 17,28 s | 6,33 s |
-| fecho | "Manda pra pousada que tem o café mais bonito da região." | 24,36 s | 2,66 s |
+| fecho | "Manda pra pousada que tem o café mais bonito da região!" | 24,36 s | 2,95 s |
 
 | | |
 |---|---|
@@ -38,7 +38,7 @@ A voz manda no tempo: cada cena dura a sua fala mais um respiro, e a fala do tí
 
 | Entrega | Arquivo |
 |---|---|
-| **Vídeo com voz** (28,3 s, 60 fps, −14 LUFS) | [`output/fazlo-digital-cafe-incluso.mp4`](output/fazlo-digital-cafe-incluso.mp4) |
+| **Vídeo com voz** (28,6 s, 60 fps, −14 LUFS) | [`output/fazlo-digital-cafe-incluso.mp4`](output/fazlo-digital-cafe-incluso.mp4) |
 | Capa | [`output/capa.png`](output/capa.png) |
 | Storyboard | [`output/storyboard.jpg`](output/storyboard.jpg) |
 | Revisão técnica e de sincronia | [`output/revisao/`](output/revisao) |
@@ -47,10 +47,11 @@ A voz manda no tempo: cada cena dura a sua fala mais um respiro, e a fala do tí
 
 ## Revisão (aprovada)
 
-- 1080×1920, 60 fps, **28,3 s**, H.264 + AAC 48 kHz;
-- **−14,0 LUFS** e pico real **−3,3 dBTP**;
-- sem trechos pretos nem imagem congelada; os 4 efeitos-chave no instante do evento (máximo 4,3 ms);
+- 1080×1920, 60 fps, **28,6 s**, H.264 + AAC 48 kHz;
+- **−13,9 LUFS** e pico real **−3,3 dBTP**;
+- sem trechos pretos nem imagem congelada; os 4 efeitos-chave no instante do evento (máximo 5,3 ms);
 - áreas seguras e recorte 3:4 da capa aprovados;
 - perguntas sobem na tônica final: título +61%, "Mas está incluso na diária?" +26%, "Até que horas é servido?" +73%;
-- a logo fica **2,4 s** pronta na tela antes do fade (mínimo: 1,2 s);
+- **fecho (ajuste de 21/10):** a fala termina em frase concluída, com final firme e completo. O `voz.py` confere o final no áudio (a queda de energia depois da última sílaba leva 175 ms, sem parada seca, e a altura da voz não sobe). A 1ª tentativa (semente 2026) saiu cortada, com queda de 54 ms, e a 2ª (semente 7) passou. Depois de "região" há **1,25 s** até o fim do vídeo (0,95 s até o início do fade);
+- a logo fica **2,65 s** pronta na tela antes do fade (mínimo: 1,2 s);
 - ponto de atenção: em ~6,8 s a cauda do toque do card 2 fica 1,9 dB acima da voz por ~0,3 s.

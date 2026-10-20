@@ -75,7 +75,8 @@ def fronteiras(x, limiar_db=-38):
     return on[0] / SR, on[-1] / SR
 
 
-SEMENTES_PERGUNTA = [SEMENTE, 7, 11, 23, 42, 77]   # tentadas em ordem até a pergunta subir
+SEMENTES_PERGUNTA = [SEMENTE, 7, 11, 23, 42, 77, 101, 202]   # tentadas em ordem até a pergunta subir (ou o final fechar bem)
+ULTIMA = {}                                          # dados da última geração de cada fala (tentativas, final)
 SOBE_MIN = 0.10                                      # +10% de altura na tônica final da pergunta
 
 
@@ -156,27 +157,58 @@ def perguntas(texto, meta, x):
     return out
 
 
-def gerar_parte(texto, prev, nxt, destino):
+def termina_bem(x, texto):
+    """Confere o final de uma frase concluída (ponto ou exclamação): a última sílaba tem de ir até o fim e a
+    voz não pode subir nem ficar suspensa.
+      - sem corte: depois da última palavra a energia cai aos poucos (queda de -20 a -40 dB em >= 90 ms, ou já
+        está a -26 dB ou menos 50 ms antes do fim); uma parada seca (<= 60 ms, ainda forte) é corte;
+      - firme: a altura da voz nos últimos 300 ms da fala não passa da mediana dos 600 ms anteriores.
+    Devolve (ok, dados)."""
+    e = envelope(x, 0.01)
+    pk = e.max()
+    fim = int(np.where(e > pk * 10 ** (-40 / 20))[0][-1])
+    a = int(np.where(e[:fim] > pk * 10 ** (-20 / 20))[0][-1])
+    queda_ms = (fim - a) / SR * 1000
+    r50 = 20 * np.log10(e[max(0, fim - int(0.05 * SR))] / pk)
+    sem_corte = queda_ms >= 90 or r50 <= -26
+    fz = f0(x)
+    t = fim / SR
+    seg = lambda t0, t1: (lambda v: v[~np.isnan(v)])(fz[int(max(0, t0) / 0.01):int(t1 / 0.01)])
+    fin, antes = seg(t - 0.3, t), seg(t - 0.9, t - 0.3)
+    razao = float(np.median(fin) / np.median(antes)) if len(fin) >= 3 and len(antes) >= 3 else None
+    firme = razao is None or razao <= 1.0
+    return sem_corte and firme, {'queda_ms': round(queda_ms), 'r50_db': round(float(r50), 1), 'altura_final': None if razao is None else round(razao, 2)}
+
+
+def gerar_parte(texto, prev, nxt, destino, concluida=False):
     """Uma parte da fala. Com "?", confere a subida no fim e, se precisar, tenta outras sementes."""
     if os.path.exists(destino + '.json'):
         m = json.load(open(destino + '.json'))
         if m.get('base') == chave_base(texto, prev, nxt):
             sb = perguntas(texto, m, decodifica(destino + '.mp3'))
-            if all(v is not None and v >= SOBE_MIN for v in sb):
+            if all(v is not None and v >= SOBE_MIN for v in sb) and (not concluida or termina_bem(decodifica(destino + '.mp3'), texto)[0]):
                 return False, m.get('semente', SEMENTE), sb
     melhor = None
-    for sem in (SEMENTES_PERGUNTA if '?' in texto else [SEMENTE]):
+    for tent, sem in enumerate(SEMENTES_PERGUNTA if ('?' in texto or concluida) else [SEMENTE], 1):
         gerar(texto, prev, nxt, destino, sem)
         m = json.load(open(destino + '.json'))
-        sb = perguntas(texto, m, decodifica(destino + '.mp3'))
+        x = decodifica(destino + '.mp3')
+        sb = perguntas(texto, m, x)
         nota = min([v if v is not None else -1 for v in sb] or [1])
+        bem, dados = termina_bem(x, texto) if concluida else (True, None)
+        if concluida:
+            print(f'      fecho, tentativa {tent} (semente {sem}): {"final firme e completo" if bem else "final cortado ou suspenso"} {dados}')
+            nota = nota if bem else -9
         if melhor is None or nota > melhor[0]:
             melhor = (nota, sem)
-        if nota >= SOBE_MIN:
+        if nota >= SOBE_MIN or (concluida and bem and '?' not in texto):
+            ULTIMA[os.path.basename(destino)] = {'tentativas': tent, 'final': dados}
             return True, sem, sb
-        print(f'      semente {sem}: a pergunta não subiu ({sb}), tentando outra')
+        if not concluida:
+            print(f'      semente {sem}: a pergunta não subiu ({sb}), tentando outra')
     gerar(texto, prev, nxt, destino, melhor[1])          # fica a que mais subiu
     m = json.load(open(destino + '.json'))
+    ULTIMA[os.path.basename(destino)] = {'tentativas': len(SEMENTES_PERGUNTA), 'final': termina_bem(decodifica(destino + '.mp3'), texto)[1] if concluida else None, 'sem_aprovada': True}
     return True, melhor[1], perguntas(texto, m, decodifica(destino + '.mp3'))
 
 
@@ -219,7 +251,7 @@ def main(eid):
             base = os.path.join(dir_, cena if len(partes) == 1 else f'{cena}-{k + 1}')
             prev = partes[k - 1] if k else antes
             nxt = partes[k + 1] if k + 1 < len(partes) else depois
-            nv, sem, sb = gerar_parte(texto, prev, nxt, base)
+            nv, sem, sb = gerar_parte(texto, prev, nxt, base, concluida=(cena == 'fecho' and not texto.rstrip().endswith('?')))
             novo |= nv
             x = decodifica(base + '.mp3')
             ini, fim = fronteiras(x)

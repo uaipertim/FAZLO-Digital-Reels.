@@ -4,11 +4,11 @@
   "cards": [
     { "rotulo": "No perfil", "texto": "A foto da mesa de café, linda." },
     { "texto": "Está na diária? Até que horas?" },
-    { "texto": "Resposta? Só quando alguém vir." }
+    { "texto": "Resposta? Só quando alguém ver." }
   ],
   "carimbo": "Ainda esperando",
   "virada": ["O que a diária inclui", "*fica escrito no site.*"],
-  "fecho": "Manda pra pousada que tem o café mais bonito da região.",
+  "fecho": "Manda pra pousada que tem o café mais bonito da região!",
   "voz": {
     "titulo": ["O café está incluso?", "Ele perguntou no direct."],
     "cards": [
@@ -18,6 +18,6 @@
     ],
     "carimbo": "Enquanto isso, ele continua esperando.",
     "virada": "No site, o que a diária inclui já fica escrito, com horário e tudo, antes da pergunta.",
-    "fecho": "Manda pra pousada que tem o café mais bonito da região."
+    "fecho": "Manda pra pousada que tem o café mais bonito da região!"
   }
 }

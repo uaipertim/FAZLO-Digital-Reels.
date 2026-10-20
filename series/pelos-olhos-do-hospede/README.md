@@ -18,7 +18,7 @@ A estrutura (título-dor → cards → carimbo → virada → "Manda pra quem…
 | Como chega aí | "Como chega aí? / Ele perguntou de novo!" | 25,0 s com voz (curta: 14,2 s) | [`reels/como-chega-ai/`](../../reels/como-chega-ai) | com voz · em avaliação · 18/10, 9h30 |
 | Tem vaga no feriado | "Tem vaga no feriado? / Ele perguntou em três lugares." | 26,6 s | [`reels/tem-vaga-no-feriado/`](../../reels/tem-vaga-no-feriado) | com voz · aguardando aprovação · 19/10, 9h30 |
 | Ele viu a piscina | "Ele viu a piscina. / Mas não viu o quarto." | 25,0 s | [`reels/viu-a-piscina/`](../../reels/viu-a-piscina) | com voz · aguardando aprovação · 20/10, 9h30 |
-| O café está incluso? | "O café está incluso? / Ele perguntou no direct." | 28,3 s | [`reels/cafe-incluso/`](../../reels/cafe-incluso) | com voz · aguardando aprovação · qua 21/10, 9h30 |
+| O café está incluso? | "O café está incluso? / Ele perguntou no direct." | 28,6 s | [`reels/cafe-incluso/`](../../reels/cafe-incluso) | com voz · aguardando aprovação · qua 21/10, 9h30 |
 | Aceita pet? | "Aceita pet? / Ele não quis arriscar." | 25,0 s | [`reels/aceita-pet/`](../../reels/aceita-pet) | com voz · aguardando aprovação · qui 22/10, 9h30 |
 
 As versões curtas sem voz ficam em `reels/<id>/output/fazlo-digital-<id>-curto.mp4`.
@@ -81,6 +81,7 @@ Sai com erro se a revisão técnica ou as áreas seguras falharem.
   - Use partes para acertar a entonação, porque duas perguntas na mesma chamada tendem a sair como afirmação.
   - "FAZLO" é enviado à API como "Fázlo" ("FÁZ-lo"); na tela continua FAZLO.
   - "direct" fica "direct": foi a grafia escolhida nas amostras de 16/10.
+- **Final de frase concluída:** na fala do fecho (ponto ou exclamação), o `voz.py` confere o final no áudio: a energia tem de cair aos poucos depois da última sílaba (sem parada seca) e a altura da voz não pode subir. Se falhar, tenta outras sementes. Depois da última palavra o vídeo tem pelo menos 0,4 s de respiro.
 - **Entonação de pergunta:** em toda frase com "?", o `voz.py` mede a altura da voz no próprio áudio. Na pergunta, ela tem de subir pelo menos 10% na parte final, onde fica a tônica. Na pergunta brasileira, a voz sobe até a tônica e pode cair nas sílabas depois dela ("di-Á-ria?"). Se a pergunta sair como afirmação, ele tenta outras sementes e avisa se nenhuma subir.
 - Opcional: **`serie`** troca o texto do chip (ex.: "Pelos olhos do cliente", para os episódios de negócios em geral).
 - Aspas retas viram tipográficas no desenho.
