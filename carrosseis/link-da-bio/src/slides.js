@@ -395,12 +395,13 @@
   function panel(c, x, y, w, h) { fillR(c, x, y, w, h, 28, C.card); strokeR(c, x, y, w, h, 28, C.line, 2); }
 
   // ---------------------------------------------------------------- título com *trechos em lima* (o estado do * passa de uma linha à outra)
+  // glue: a pontuação logo depois de um trecho lima cola na palavra anterior (sem espaço); entre palavras o espaço fica
   function titleRich(c, lines, x, y, size, o = {}) {
     const lh = size * (o.lh || 1.1), ls = -size * 0.02, wt = 900, sp = measure(' ', size, wt, DISPLAY, ls);
     let lime = false;
     lines.forEach((line, i) => {
       const words = [];
-      line.split('*').forEach((part, k) => { if (k > 0) lime = !lime; part.split(' ').filter(Boolean).forEach((w, q) => words.push({ w, lime, glue: q === 0 && k > 0 && part[0] !== ' ' })); });
+      line.split('*').forEach((part, k) => { if (k > 0) lime = !lime; part.split(' ').filter(Boolean).forEach((w, q) => words.push({ w, lime, glue: q === 0 && k > 0 && /^[,.:;!?]/.test(part) })); });
       let xx = x;
       words.forEach((wd) => { if (wd.glue && xx > x) xx -= sp; text(c, wd.w, xx, y + i * lh, { fam: DISPLAY, size, weight: wt, color: wd.lime ? C.lime : C.white, ls }); xx += measure(wd.w, size, wt, DISPLAY, ls) + sp; });
     });
