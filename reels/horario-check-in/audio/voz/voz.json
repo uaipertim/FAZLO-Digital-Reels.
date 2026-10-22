@@ -33,7 +33,9 @@
      "final": {
       "queda_de_-15_ao_silencio_ms": 127,
       "nivel_35ms_antes_db": -20.4,
-      "altura_final": 0.76
+      "altura_final": 0.76,
+      "ultima_letra": "n",
+      "regra": "consoante >= 35 ms"
      }
     },
     {
@@ -44,7 +46,9 @@
      "final": {
       "queda_de_-15_ao_silencio_ms": 84,
       "nivel_35ms_antes_db": -25.4,
-      "altura_final": 0.8
+      "altura_final": 0.8,
+      "ultima_letra": "u",
+      "regra": "vogal >= 55 ms"
      }
     }
    ],
@@ -111,7 +115,9 @@
      "final": {
       "queda_de_-15_ao_silencio_ms": 55,
       "nivel_35ms_antes_db": -27.7,
-      "altura_final": 1.12
+      "altura_final": 1.12,
+      "ultima_letra": "a",
+      "regra": "vogal >= 55 ms"
      }
     }
    ],
@@ -165,7 +171,9 @@
      "final": {
       "queda_de_-15_ao_silencio_ms": 695,
       "nivel_35ms_antes_db": -68.6,
-      "altura_final": null
+      "altura_final": null,
+      "ultima_letra": "e",
+      "regra": "vogal >= 55 ms"
      }
     }
    ],
@@ -236,7 +244,9 @@
      "final": {
       "queda_de_-15_ao_silencio_ms": 218,
       "nivel_35ms_antes_db": -33.3,
-      "altura_final": 0.66
+      "altura_final": 0.66,
+      "ultima_letra": "o",
+      "regra": "vogal >= 55 ms"
      }
     }
    ],
@@ -295,7 +305,9 @@
      "final": {
       "queda_de_-15_ao_silencio_ms": 144,
       "nivel_35ms_antes_db": -23.4,
-      "altura_final": 1.05
+      "altura_final": 1.05,
+      "ultima_letra": "o",
+      "regra": "vogal >= 55 ms"
      }
     }
    ],
@@ -334,7 +346,9 @@
      "final": {
       "queda_de_-15_ao_silencio_ms": 229,
       "nivel_35ms_antes_db": -34.4,
-      "altura_final": 0.7
+      "altura_final": 0.7,
+      "ultima_letra": "o",
+      "regra": "vogal >= 55 ms"
      }
     }
    ],
@@ -417,7 +431,9 @@
      "final": {
       "queda_de_-15_ao_silencio_ms": 190,
       "nivel_35ms_antes_db": -29.5,
-      "altura_final": 0.78
+      "altura_final": 0.78,
+      "ultima_letra": "m",
+      "regra": "consoante >= 35 ms"
      }
     }
    ],
