@@ -56,7 +56,8 @@
       "modo": "firme"
     }
   },
-  "voz_excecoes": [
+  "voz_excecoes": [],
+  "voz_sem_next": [
     "card2"
   ]
 }

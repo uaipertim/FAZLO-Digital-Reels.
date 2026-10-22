@@ -44,7 +44,6 @@
     "titulo": 0.81
   },
   "voz_manter": [
-    "titulo-1",
     "titulo-2",
     "card1",
     "card3",
@@ -55,5 +54,16 @@
   "voz_excecoes": [
     "titulo-2",
     "card2-3"
-  ]
+  ],
+  "voz_criterios": {
+    "titulo-1": {
+      "sobe_min": 0.15
+    },
+    "card2-1": {
+      "sobe_min": 0.15
+    },
+    "card2-2": {
+      "sobe_min": 0.15
+    }
+  }
 }

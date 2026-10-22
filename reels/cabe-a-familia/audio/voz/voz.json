@@ -20,8 +20,8 @@
    "texto": "Cabe a família toda? Ele não teve certeza.",
    "arquivo": "titulo.wav",
    "ini": 0.03,
-   "fim": 3.057,
-   "dur": 3.027,
+   "fim": 2.973,
+   "dur": 2.943,
    "partes": [
     {
      "texto": "Cabe a família toda?",
@@ -34,6 +34,8 @@
       "queda_de_-15_ao_silencio_ms": 114,
       "nivel_35ms_antes_db": -32.9,
       "altura_final": 1.25,
+      "fim_do_arquivo_db": -54.8,
+      "arquivo_acaba_com_voz": false,
       "ultima_letra": "a",
       "regra": "vogal >= 55 ms"
      }
@@ -44,9 +46,11 @@
      "semente": 2026,
      "sobe": [],
      "final": {
-      "queda_de_-15_ao_silencio_ms": 59,
-      "nivel_35ms_antes_db": -19.3,
-      "altura_final": 0.79,
+      "queda_de_-15_ao_silencio_ms": 55,
+      "nivel_35ms_antes_db": -20.4,
+      "altura_final": 0.7,
+      "fim_do_arquivo_db": -67.9,
+      "arquivo_acaba_com_voz": false,
       "ultima_letra": "a",
       "regra": "vogal >= 55 ms"
      }
@@ -75,19 +79,19 @@
     ],
     [
      "não",
-     2.133
+     2.12
     ],
     [
      "teve",
-     2.284
+     2.271
     ],
     [
      "certeza",
-     2.504
+     2.457
     ]
    ],
    "pausas_entre_partes": [
-    0.881
+    0.846
    ],
    "marca": 1.923
   },
@@ -108,6 +112,8 @@
       "queda_de_-15_ao_silencio_ms": 110,
       "nivel_35ms_antes_db": -33.6,
       "altura_final": 0.7,
+      "fim_do_arquivo_db": -77.6,
+      "arquivo_acaba_com_voz": false,
       "ultima_letra": "o",
       "regra": "vogal >= 55 ms"
      }
@@ -157,8 +163,8 @@
    "texto": "Quantas camas? Tem berço? Cabe todo mundo?",
    "arquivo": "card2.wav",
    "ini": 0.03,
-   "fim": 3.183,
-   "dur": 3.153,
+   "fim": 3.182,
+   "dur": 3.152,
    "partes": [
     {
      "texto": "Quantas camas?",
@@ -171,6 +177,8 @@
       "queda_de_-15_ao_silencio_ms": 59,
       "nivel_35ms_antes_db": -23.2,
       "altura_final": 1.1,
+      "fim_do_arquivo_db": -73.7,
+      "arquivo_acaba_com_voz": false,
       "ultima_letra": "s",
       "regra": "consoante >= 35 ms"
      }
@@ -178,14 +186,16 @@
     {
      "texto": "Tem berço?",
      "arquivo": "card2-2.mp3",
-     "semente": 42,
+     "semente": 11,
      "sobe": [
-      0.167
+      0.172
      ],
      "final": {
-      "queda_de_-15_ao_silencio_ms": 56,
-      "nivel_35ms_antes_db": -27.8,
-      "altura_final": 1.12,
+      "queda_de_-15_ao_silencio_ms": 57,
+      "nivel_35ms_antes_db": -20.4,
+      "altura_final": 1.11,
+      "fim_do_arquivo_db": -70.8,
+      "arquivo_acaba_com_voz": false,
       "ultima_letra": "o",
       "regra": "vogal >= 55 ms"
      }
@@ -201,6 +211,8 @@
       "queda_de_-15_ao_silencio_ms": 63,
       "nivel_35ms_antes_db": -21.8,
       "altura_final": 1.38,
+      "fim_do_arquivo_db": -73.6,
+      "arquivo_acaba_com_voz": false,
       "ultima_letra": "o",
       "regra": "vogal >= 55 ms"
      }
@@ -221,24 +233,24 @@
     ],
     [
      "berço",
-     1.434
+     1.467
     ],
     [
      "cabe",
-     2.415
+     2.352
     ],
     [
      "todo",
-     2.67
+     2.607
     ],
     [
      "mundo",
-     2.891
+     2.828
     ]
    ],
    "pausas_entre_partes": [
-    0.521,
-    0.511
+    0.487,
+    0.575
    ]
   },
   {
@@ -258,6 +270,8 @@
       "queda_de_-15_ao_silencio_ms": 619,
       "nivel_35ms_antes_db": -26.4,
       "altura_final": 0.92,
+      "fim_do_arquivo_db": -80.5,
+      "arquivo_acaba_com_voz": false,
       "ultima_letra": "l",
       "regra": "consoante >= 35 ms"
      }
@@ -323,6 +337,8 @@
       "queda_de_-15_ao_silencio_ms": 53,
       "nivel_35ms_antes_db": -18.0,
       "altura_final": 0.81,
+      "fim_do_arquivo_db": -71.3,
+      "arquivo_acaba_com_voz": false,
       "ultima_letra": "u",
       "regra": "vogal >= 55 ms"
      }
@@ -368,6 +384,8 @@
       "queda_de_-15_ao_silencio_ms": 240,
       "nivel_35ms_antes_db": -21.7,
       "altura_final": 0.76,
+      "fim_do_arquivo_db": -77.3,
+      "arquivo_acaba_com_voz": false,
       "ultima_letra": "a",
       "regra": "vogal >= 55 ms"
      }
@@ -437,6 +455,8 @@
       "queda_de_-15_ao_silencio_ms": 146,
       "nivel_35ms_antes_db": -30.1,
       "altura_final": 0.68,
+      "fim_do_arquivo_db": -82.0,
+      "arquivo_acaba_com_voz": false,
       "ultima_letra": "a",
       "regra": "vogal >= 55 ms"
      }
@@ -478,5 +498,5 @@
    ]
   }
  ],
- "fala_total": 19.15
+ "fala_total": 19.06
 }

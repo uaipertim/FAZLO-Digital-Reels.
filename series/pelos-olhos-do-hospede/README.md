@@ -92,6 +92,8 @@ Sai com erro se a revisão técnica ou as áreas seguras falharem.
     - outras consoantes: ≥ 35 ms;
   - **tomadas mantidas** (`voz_manter`) também passam por essa conferência: se uma falhar, é gerada de novo.
   - **o arquivo tem de terminar em silêncio** (23/10): se a voz ainda soa no último milissegundo do arquivo (acima de −50 dB), é corte, mesmo que a queda pareça longa. Antes disso, o fim do arquivo contava como silêncio e tomadas cortadas passavam (era o "corte seco" do título do check-in, com a voz em −19 dB no fim do arquivo).
+- **Sem exceção da consoante plosiva (23/10):** o "WhatsApp?" que parecia cair direto pela parada do "p" estava cortado no fim do arquivo. Toda fala e parte termina em silêncio; plosivas seguem a regra das outras consoantes (≥ 35 ms).
+- **`voz_sem_next`**: cenas de uma parte só que também vão sem o texto seguinte. Ex.: `["card2"]`.
 - **Partes sem o texto seguinte (ep. 7 em diante):** cada parte de uma fala em partes vai à API só com o texto anterior (`previous_text`), sem o `next_text`. Com o texto seguinte, o ElevenLabs devolvia a parte cortada no fim do arquivo, como se emendasse direto na próxima: 3 de 3 sementes cortadas com ele, 0 de 3 sem ele.
 - **A emenda das partes** não apara a voz: cada parte é cortada 60 ms depois de cair a −38 dB, ponto em que a tomada já está abaixo de −50 dB (conferido no MP4 final do check-in: −77 dB na emenda).
   - a altura da voz não pode subir no fim;

@@ -48,12 +48,14 @@
     ]
   },
   "voz_manter": [
-    "titulo-2",
     "card1",
     "card3",
     "carimbo",
     "virada",
-    "fecho"
+    "fecho",
+    "titulo-1",
+    "card2-1",
+    "card2-3"
   ],
   "voz_excecoes": [
     "carimbo"

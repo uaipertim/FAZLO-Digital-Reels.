@@ -20,20 +20,22 @@
    "texto": "Como eu reservo? Ninguém explicou.",
    "arquivo": "titulo.wav",
    "ini": 0.03,
-   "fim": 2.619,
-   "dur": 2.589,
+   "fim": 2.64,
+   "dur": 2.61,
    "partes": [
     {
      "texto": "Como eu reservo?",
      "arquivo": "titulo-1.mp3",
-     "semente": 7,
+     "semente": 606,
      "sobe": [
-      0.445
+      0.399
      ],
      "final": {
-      "queda_de_-15_ao_silencio_ms": 230,
-      "nivel_35ms_antes_db": -24.9,
-      "altura_final": 0.66,
+      "queda_de_-15_ao_silencio_ms": 74,
+      "nivel_35ms_antes_db": -37.0,
+      "altura_final": 1.47,
+      "fim_do_arquivo_db": -76.7,
+      "arquivo_acaba_com_voz": false,
       "ultima_letra": "o",
       "regra": "vogal >= 55 ms"
      }
@@ -47,6 +49,8 @@
       "queda_de_-15_ao_silencio_ms": 51,
       "nivel_35ms_antes_db": -20.3,
       "altura_final": 1.46,
+      "fim_do_arquivo_db": -73.8,
+      "arquivo_acaba_com_voz": false,
       "ultima_letra": "u",
       "regra": "vogal >= 55 ms"
      }
@@ -59,25 +63,25 @@
     ],
     [
      "eu",
-     0.207
+     0.203
     ],
     [
      "reservo",
-     0.312
+     0.307
     ],
     [
      "ninguém",
-     1.885
+     1.843
     ],
     [
      "explicou",
-     2.187
+     2.145
     ]
    ],
    "pausas_entre_partes": [
-    0.805
+    0.868
    ],
-   "marca": 1.885
+   "marca": 1.843
   },
   {
    "cena": "card1",
@@ -96,6 +100,8 @@
       "queda_de_-15_ao_silencio_ms": 173,
       "nivel_35ms_antes_db": -33.6,
       "altura_final": 0.61,
+      "fim_do_arquivo_db": -79.6,
+      "arquivo_acaba_com_voz": false,
       "ultima_letra": "r",
       "regra": "consoante >= 35 ms"
      }
@@ -144,38 +150,42 @@
    "cena": "card2",
    "texto": "Manda direct? Chama no WhatsApp? Ou liga?",
    "arquivo": "card2.wav",
-   "ini": 0.02,
-   "fim": 3.142,
-   "dur": 3.122,
+   "ini": 0.0,
+   "fim": 3.298,
+   "dur": 3.298,
    "partes": [
     {
      "texto": "Manda direct?",
      "arquivo": "card2-1.mp3",
-     "semente": 42,
+     "semente": 2026,
      "sobe": [
-      0.466
+      0.153
      ],
      "final": {
-      "queda_de_-15_ao_silencio_ms": 137,
-      "nivel_35ms_antes_db": -27.8,
-      "altura_final": 1.35,
+      "queda_de_-15_ao_silencio_ms": 48,
+      "nivel_35ms_antes_db": -20.7,
+      "altura_final": 1.08,
+      "fim_do_arquivo_db": -71.2,
+      "arquivo_acaba_com_voz": false,
       "ultima_letra": "t",
-      "regra": "plosiva (pergunta que sobe)"
+      "regra": "consoante >= 35 ms"
      }
     },
     {
      "texto": "Chama no WhatsApp?",
      "arquivo": "card2-2.mp3",
-     "semente": 1414,
+     "semente": 101,
      "sobe": [
-      0.257
+      0.714
      ],
      "final": {
-      "queda_de_-15_ao_silencio_ms": 0,
-      "nivel_35ms_antes_db": -7.3,
-      "altura_final": 0.96,
+      "queda_de_-15_ao_silencio_ms": 38,
+      "nivel_35ms_antes_db": -18.8,
+      "altura_final": 1.1,
+      "fim_do_arquivo_db": -73.5,
+      "arquivo_acaba_com_voz": false,
       "ultima_letra": "p",
-      "regra": "plosiva (pergunta que sobe)"
+      "regra": "consoante >= 35 ms"
      }
     },
     {
@@ -189,6 +199,8 @@
       "queda_de_-15_ao_silencio_ms": 43,
       "nivel_35ms_antes_db": -21.1,
       "altura_final": 1.48,
+      "fim_do_arquivo_db": -77.0,
+      "arquivo_acaba_com_voz": false,
       "ultima_letra": "a",
       "regra": "vogal >= 55 ms"
      }
@@ -201,32 +213,32 @@
     ],
     [
      "direct",
-     0.247
+     0.255
     ],
     [
      "chama",
-     1.23
+     1.257
     ],
     [
      "no",
-     1.497
+     1.536
     ],
     [
      "whatsapp",
-     1.567
+     1.605
     ],
     [
      "ou",
-     2.739
+     2.774
     ],
     [
      "liga",
-     2.89
+     2.925
     ]
    ],
    "pausas_entre_partes": [
-    0.51,
-    0.51
+    0.577,
+    0.575
    ]
   },
   {
@@ -246,6 +258,8 @@
       "queda_de_-15_ao_silencio_ms": 225,
       "nivel_35ms_antes_db": -30.2,
       "altura_final": 1.01,
+      "fim_do_arquivo_db": -79.4,
+      "arquivo_acaba_com_voz": false,
       "ultima_letra": "r",
       "regra": "consoante >= 35 ms"
      }
@@ -295,6 +309,8 @@
       "queda_de_-15_ao_silencio_ms": 134,
       "nivel_35ms_antes_db": -23.6,
       "altura_final": null,
+      "fim_do_arquivo_db": -76.3,
+      "arquivo_acaba_com_voz": false,
       "ultima_letra": "e",
       "regra": "vogal >= 55 ms"
      }
@@ -352,6 +368,8 @@
       "queda_de_-15_ao_silencio_ms": 286,
       "nivel_35ms_antes_db": -25.0,
       "altura_final": 0.67,
+      "fim_do_arquivo_db": -78.8,
+      "arquivo_acaba_com_voz": false,
       "ultima_letra": "a",
       "regra": "vogal >= 55 ms"
      }
@@ -433,6 +451,8 @@
       "queda_de_-15_ao_silencio_ms": 207,
       "nivel_35ms_antes_db": -20.3,
       "altura_final": 0.77,
+      "fim_do_arquivo_db": -75.9,
+      "arquivo_acaba_com_voz": false,
       "ultima_letra": "o",
       "regra": "vogal >= 55 ms"
      }
@@ -474,5 +494,5 @@
    ]
   }
  ],
- "fala_total": 21.5
+ "fala_total": 21.7
 }

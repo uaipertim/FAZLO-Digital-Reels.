@@ -207,8 +207,8 @@ def fim_ok(x, texto, modo, m=None, queda_min=None):
     """A conferência do final de uma parte (do ep. 7 em diante, calibrada pelo ouvido do Willian):
       - palavra final terminada em VOGAL: cai de -15 dB até o silêncio (-50 dB) em >= 55 ms (40 ms soou cortado;
         59 e 63 ms soaram naturais);
-      - terminada em consoante PLOSIVA (p, t, k): pode cair direto, desde que seja pergunta e suba (a parada da
-        própria palavra, como em "WhatsApp?"); afirmativa segue a regra das outras consoantes;
+      - (a exceção da consoante plosiva, de 22/10, saiu em 23/10: o "WhatsApp?" que caía direto estava, na verdade,
+        cortado no fim do arquivo; toda parte termina em silêncio);
       - outras consoantes: >= 35 ms (a regra de corte de antes).
     modo 'firme' (fecho afirmativo): além disso, a voz não sobe no fim. Devolve (ok, dados)."""
     _, d = termina_bem(x, texto)
@@ -220,9 +220,6 @@ def fim_ok(x, texto, modo, m=None, queda_min=None):
         sem_corte, regra = q >= queda_min, f'critério da parte: >= {queda_min} ms'
     elif u in 'aeiou':
         sem_corte, regra = q >= FIM_VOGAL_MS, f'vogal >= {FIM_VOGAL_MS} ms'
-    elif u in 'ptk' and pergunta:
-        sb = perguntas(texto, m, x) if m else []
-        sem_corte, regra = (q >= FIM_OUTRA_MS) or (bool(sb) and all(v is not None and v >= SOBE_MIN for v in sb)), 'plosiva (pergunta que sobe)'
     else:
         sem_corte, regra = q >= FIM_OUTRA_MS, f'consoante >= {FIM_OUTRA_MS} ms'
     firme = d['altura_final'] is None or d['altura_final'] <= 1.0
@@ -255,14 +252,15 @@ def gerar_parte(texto, prev, nxt, destino, fim=None, manter=False, excecao=False
         x = decodifica(destino + '.mp3')
         sb = perguntas(texto, m, x)
         nota = min([v if v is not None else -1 for v in sb] or [1])
-        nota = nota if nota >= sobe_min else min(nota, SOBE_MIN - 0.001)
+        if nota < sobe_min:                              # abaixo do critério da parte: não passa, mas mantém a ordem
+            nota -= 1                                    # (a melhor fica a que mais subiu)
         bem, dados = fim_ok(x, texto, fim, m, queda_min) if fim else (True, None)
         nota = nota if bem else -9
         print(f'      {os.path.basename(destino)}, tentativa {tent} (semente {sem}): perguntas {sb or "-"} · '
               f'final {"completo" if bem else "cortado ou suspenso"} {dados or ""}')
         if melhor is None or nota > melhor[0]:
             melhor = (nota, sem)
-        if nota >= SOBE_MIN or (bem and '?' not in texto):
+        if nota >= min(sobe_min, SOBE_MIN) or (bem and '?' not in texto):
             ULTIMA[os.path.basename(destino)] = {'tentativas': tent, 'final': dados}
             return True, sem, sb
     gerar(texto, prev, nxt, destino, melhor[1])          # fica a melhor (avisa: nenhuma passou)
@@ -319,7 +317,7 @@ def main(eid):
             base = os.path.join(dir_, cena if len(partes) == 1 else f'{cena}-{k + 1}')
             prev = partes[k - 1] if k else antes
             nxt = partes[k + 1] if k + 1 < len(partes) else depois
-            if longa and len(partes) > 1:
+            if longa and (len(partes) > 1 or cena in ep.get('voz_sem_next', [])):
                 # do ep. 7 em diante, uma parte vai SEM o texto seguinte: com o next_text, o ElevenLabs devolvia a parte
                 # cortada no fim do arquivo (a voz ainda soando), como se emendasse direto na próxima (teste de 23/10:
                 # 3 de 3 sementes cortadas com o next_text, 0 de 3 sem ele)
