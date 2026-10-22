@@ -1,0 +1,190 @@
+{
+  "id": "explica-01",
+  "titulo": "O site que faz o hóspede reservar. Em 7 partes.",
+  "marca": "@fazlodigital",
+  "capitulos": [
+    {
+      "rotulo": "PRA QUEM TEM POUSADA",
+      "tom": "palco",
+      "titulo": ["O site que faz", "o hóspede reservar."],
+      "fala": [
+        { "texto": "O site que faz o hóspede reservar tem sete partes.", "apoio": null },
+        { "texto": "Vamos montar ele juntos, parte por parte.", "apoio": "Vamos montar juntos, parte por parte." }
+      ],
+      "diagrama": {
+        "tipo": "capa",
+        "faixa": "em 7 partes.",
+        "conta": { "em": "sete" },
+        "monta": { "em": "montar" }
+      }
+    },
+    {
+      "rotulo": "O TOPO",
+      "tom": "ardosia",
+      "titulo": ["Primeira tela:", "onde ele está."],
+      "fala": [
+        { "texto": "Primeira parte: o topo.", "apoio": "A primeira parte é o topo do site." },
+        { "texto": "Na primeira tela, o hóspede precisa entender três coisas: que lugar é esse, onde fica, e por que vale a viagem.", "apoio": "Na primeira tela, três respostas." },
+        { "texto": "Uma foto forte, o nome e a cidade.", "apoio": "Uma foto forte, o nome e a cidade." }
+      ],
+      "diagrama": {
+        "tipo": "topo",
+        "quadro": { "em": "topo" },
+        "etiquetas": [
+          { "t": "QUE LUGAR", "em": "lugar" },
+          { "t": "ONDE", "em": "onde" },
+          { "t": "POR QUE", "em": "viagem" }
+        ],
+        "mostra_etiquetas": "três",
+        "foto": { "em": "foto" },
+        "nome": { "t": "Sua Pousada", "em": "nome" },
+        "cidade": { "t": "Sua Cidade", "em": "cidade" }
+      }
+    },
+    {
+      "rotulo": "TEM VAGA?",
+      "tom": "musgo",
+      "titulo": ["Antes de tudo:", "tem vaga?"],
+      "fala": [
+        { "texto": "Segunda: a consulta de datas.", "apoio": "A segunda parte é a consulta de datas." },
+        { "texto": "É a primeira pergunta de quem quer reservar.", "apoio": "É a primeira pergunta de quem quer reservar." },
+        { "texto": "Então ela vem logo abaixo do topo: entrada, saída e quantas pessoas.", "apoio": "Logo abaixo do topo: entrada, saída e pessoas." }
+      ],
+      "diagrama": {
+        "tipo": "consulta",
+        "cartao": { "t": "Consulte as datas", "em": "consulta" },
+        "topo": { "em": "abaixo" },
+        "campos": [
+          { "t": "ENTRADA", "tipo": "data", "em": "entrada" },
+          { "t": "SAÍDA", "tipo": "data", "em": "saída" },
+          { "t": "HÓSPEDES", "tipo": "pessoas", "em": "quantas", "mais": ["pessoas"] }
+        ],
+        "botao": { "t": "Consultar", "em": "pessoas", "depois": 0.35 }
+      }
+    },
+    {
+      "rotulo": "OS QUARTOS",
+      "tom": "carvao",
+      "titulo": ["Cada quarto,", "com tudo à vista."],
+      "fala": [
+        { "texto": "Terceira: os quartos.", "apoio": "A terceira parte são os quartos." },
+        { "texto": "Cada um com fotos de verdade, quantas pessoas cabem, e um valor de referência.", "apoio": "Fotos de verdade, quantas pessoas e o valor." },
+        { "texto": "Um simples 'a partir de' já responde se cabe no bolso.", "apoio": "Um “a partir de” já diz se cabe no bolso." }
+      ],
+      "diagrama": {
+        "tipo": "quartos",
+        "quartos": [
+          { "t": "Quarto Família", "cabe": "ATÉ 4 PESSOAS", "em": "quartos" },
+          { "t": "Quarto Casal", "cabe": "ATÉ 2 PESSOAS", "em": "quartos", "atraso": 0.22 }
+        ],
+        "fotos": { "em": "fotos" },
+        "cabe": { "em": "cabem" },
+        "valor": { "t": "a partir de R$", "em": "valor" },
+        "destaque": { "em": "partir" },
+        "bolso": { "em": "bolso" }
+      }
+    },
+    {
+      "rotulo": "AS REGRAS",
+      "tom": "abismo",
+      "titulo": ["O que está incluso", "fica escrito."],
+      "fala": [
+        { "texto": "Quarta: o que está incluso.", "apoio": "A quarta parte é o que está incluso." },
+        { "texto": "Café da manhã, horário de check-in e check-out, se aceita pet.", "apoio": "Café, horários e pet, tudo respondido." },
+        { "texto": "Tudo o que hoje vira pergunta no direct fica escrito no site.", "apoio": "O que vira pergunta no direct fica escrito." }
+      ],
+      "diagrama": {
+        "tipo": "incluso",
+        "lista": { "t": "O que está incluso", "em": "incluso" },
+        "itens": [
+          { "t": "Café da manhã", "icone": "cafe", "em": "café" },
+          { "t": "Check-in e check-out", "icone": "relogio", "em": "horário" },
+          { "t": "Aceita pet", "icone": "pet", "em": "pet" }
+        ],
+        "perguntas": { "em": "pergunta" },
+        "escrito": { "em": "escrito" }
+      }
+    },
+    {
+      "rotulo": "COMO CHEGAR",
+      "tom": "oliva",
+      "titulo": ["Como chegar,", "sem perguntar."],
+      "fala": [
+        { "texto": "Quinta: como chegar.", "apoio": "A quinta parte é como chegar." },
+        { "texto": "O mapa, e as referências que só quem é da região conhece.", "apoio": "O mapa e as referências de quem é da região." },
+        { "texto": "Assim o hóspede chega tranquilo, e ninguém precisa explicar de novo.", "apoio": "Ele chega tranquilo, sem explicar de novo." }
+      ],
+      "diagrama": {
+        "tipo": "mapa",
+        "mapa": { "em": "mapa" },
+        "pino": { "em": "mapa", "depois": 0.3 },
+        "rota": { "em": "referências", "ate": "conhece" },
+        "chips": [
+          { "t": "TRECHO DE TERRA", "em": "região" },
+          { "t": "ENTRADA DEPOIS DA PONTE", "em": "conhece" }
+        ],
+        "chegou": { "em": "tranquilo" }
+      }
+    },
+    {
+      "rotulo": "A MENSAGEM",
+      "tom": "noite",
+      "titulo": ["A mensagem", "já chega pronta."],
+      "fala": [
+        { "texto": "Sexta: a mensagem.", "apoio": "A sexta parte é a mensagem." },
+        { "texto": "Quando o hóspede consulta, ela chega no WhatsApp da pousada já preenchida, com as datas, as pessoas e o quarto.", "apoio": "Ela chega já preenchida: datas, pessoas e quarto." },
+        { "texto": "Você só responde.", "apoio": "Você só responde." }
+      ],
+      "diagrama": {
+        "tipo": "mensagem",
+        "consulta": { "em": "consulta" },
+        "balao": { "t": "Olá! Quero consultar:", "em": "chega" },
+        "campos": [
+          { "t": "DATAS", "de": "datas", "em": "datas" },
+          { "t": "PESSOAS", "de": "pessoas", "em": "pessoas" },
+          { "t": "QUARTO", "de": "quarto", "em": "quarto" }
+        ],
+        "visto": { "em": "responde" }
+      }
+    },
+    {
+      "rotulo": "NO CELULAR",
+      "tom": "grafite",
+      "titulo": ["Ele vai abrir", "no celular."],
+      "fala": [
+        { "texto": "E sétima: o celular.", "apoio": "A sétima parte é o celular." },
+        { "texto": "É nele que o hóspede procura, muitas vezes no meio da viagem.", "apoio": "É nele que o hóspede procura, até na estrada." },
+        { "texto": "O site tem que abrir rápido e caber na tela, sem precisar de zoom.", "apoio": "Abrir rápido e caber na tela, sem zoom." }
+      ],
+      "diagrama": {
+        "tipo": "celular",
+        "celular": { "em": "celular" },
+        "rola": { "em": "procura", "ate": "viagem" },
+        "carrega": { "em": "rápido" },
+        "cabe": { "em": "caber" },
+        "zoom": { "em": "zoom" }
+      }
+    },
+    {
+      "rotulo": "SALVA ESSE",
+      "tom": "palco",
+      "titulo": ["Salva e manda", "pra quem tem pousada."],
+      "min": 8.5,
+      "fala": [
+        { "texto": "Salva esse vídeo e manda pra quem tem pousada.", "apoio": "Salva e manda pra quem tem pousada." },
+        { "texto": "E me conta nos comentários: quantas dessas sete partes o seu site já tem?", "apoio": "Quantas das sete partes o seu site já tem?" }
+      ],
+      "diagrama": {
+        "tipo": "fecho",
+        "cresce": { "em": "+0.2" },
+        "acoes": [
+          { "icone": "salvar", "t": "SALVA", "em": "salva" },
+          { "icone": "enviar", "t": "MANDA", "em": "manda" },
+          { "icone": "comentar", "t": "COMENTA", "em": "comentários" }
+        ],
+        "comentario": { "t": "__ de 7", "em": "quantas" },
+        "logo": 3.0
+      }
+    }
+  ]
+}

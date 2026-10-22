@@ -1,0 +1,9 @@
+# regeneráveis a partir da narração versionada (audio/<id>/voz/) e do roteiro
+audio/*/mix.wav
+audio/*/voz.wav
+audio/*/voz-tratada.wav
+audio/*/trilha.wav
+audio/*/efeitos.wav
+output/*/.video-only.mp4
+output/*/previa.mp4
+output/*/stills/
