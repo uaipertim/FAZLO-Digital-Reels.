@@ -255,9 +255,9 @@
   let VZ = null;         // durações das falas (reels/<id>/audio/voz/voz.json)
   // LEITURA LONGA (padrão a partir do ep. 7; os eps. 1–6 têm "leitura": "curta" no roteiro e ficam como eram):
   // cada card fica >= 2,0 s inteiro e parado depois da sua fala; o carimbo >= 1,5 s parado; a virada >= 2,5 s inteira
-  // depois da fala; "Manda pra…" >= 3,0 s parado depois da fala; e a logo sozinha, centralizada e parada >= 3,0 s até
+  // depois da fala; "Manda pra…" 1,0 s parado depois da fala (era 3,0 s até 23/10); e a logo sozinha, centralizada e parada >= 3,0 s até
   // o fim. O texto dos cards cresce até 10% quando isso não quebra mais linhas. Limite do episódio: 38 s.
-  const LEIT = { card: 2.0, carimbo: 1.5, virada: 2.5, fecho: 3.0, logo: 3.0, logoW: 560, texto: 1.10 };
+  const LEIT = { card: 2.0, carimbo: 1.5, virada: 2.5, fecho: 1.0, logo: 3.0, logoW: 560, texto: 1.10 };   // fecho: 1,0 s parado depois da fala (23/10; era 3,0 s)
   let LONGA = false;
 
   function measureCard(c) {

@@ -1,0 +1,144 @@
+{
+ "como-eu-reservo_card2-A_uma-geracao.mp3": {
+  "texto": "Manda direct, chama no WhatsApp… ou liga?",
+  "semente": 101,
+  "sobe": [
+   0.855
+  ],
+  "fim_do_arquivo_db": -77.1,
+  "queda_ms": 71,
+  "ajustes": {
+   "stability": 0.4,
+   "similarity_boost": 0.8,
+   "style": 0.35,
+   "use_speaker_boost": true,
+   "speed": 1.0
+  },
+  "duracao_s": 2.86
+ },
+ "como-eu-reservo_card2-B_uma-geracao.mp3": {
+  "texto": "Manda direct, chama no WhatsApp… ou liga?",
+  "semente": 2525,
+  "sobe": [
+   0.206
+  ],
+  "fim_do_arquivo_db": -72.7,
+  "queda_ms": 120,
+  "ajustes": {
+   "stability": 0.4,
+   "similarity_boost": 0.8,
+   "style": 0.35,
+   "use_speaker_boost": true,
+   "speed": 1.0
+  },
+  "duracao_s": 2.75
+ },
+ "como-eu-reservo_card2-C_tres-partes.mp3": {
+  "partes": [
+   {
+    "texto": "Manda direct?",
+    "semente": 2026,
+    "sobe": [
+     0.153
+    ],
+    "fim_do_arquivo_db": -71.2,
+    "queda_ms": 55,
+    "ajustes": {
+     "stability": 0.4,
+     "similarity_boost": 0.8,
+     "style": 0.35,
+     "use_speaker_boost": true,
+     "speed": 1.0
+    }
+   },
+   {
+    "texto": "Chama no WhatsApp?",
+    "semente": 707,
+    "sobe": [
+     0.248
+    ],
+    "fim_do_arquivo_db": -70.6,
+    "queda_ms": 67,
+    "ajustes": {
+     "stability": 0.4,
+     "similarity_boost": 0.8,
+     "style": 0.35,
+     "use_speaker_boost": true,
+     "speed": 1.0
+    }
+   },
+   {
+    "texto": "Ou liga?",
+    "semente": 11,
+    "sobe": [
+     0.319
+    ],
+    "fim_do_arquivo_db": -75.0,
+    "queda_ms": 64,
+    "ajustes": {
+     "stability": 0.4,
+     "similarity_boost": 0.8,
+     "style": 0.35,
+     "use_speaker_boost": true,
+     "speed": 1.0
+    }
+   }
+  ],
+  "pausa_entre_partes_s": 0.55,
+  "duracao_s": 3.83
+ },
+ "horario-check-in_titulo-1.mp3": {
+  "texto": "Que horas é o check-in?",
+  "semente": 11,
+  "sobe": [
+   0.346
+  ],
+  "fim_do_arquivo_db": -74.4,
+  "queda_ms": 49,
+  "ajustes": {
+   "stability": 0.2,
+   "similarity_boost": 0.8,
+   "style": 0.7,
+   "use_speaker_boost": true,
+   "speed": 1.0
+  },
+  "sobe_no_final": 0.424,
+  "duracao_s": 1.61
+ },
+ "horario-check-in_titulo-2_hein.mp3": {
+  "texto": "Que horas é o check-in, hein?",
+  "semente": 11,
+  "sobe": [
+   0.544
+  ],
+  "fim_do_arquivo_db": -76.6,
+  "queda_ms": 71,
+  "ajustes": {
+   "stability": 0.15,
+   "similarity_boost": 0.8,
+   "style": 0.85,
+   "use_speaker_boost": true,
+   "speed": 1.0
+  },
+  "sobe_no_final": 0.332,
+  "duracao_s": 1.76
+ },
+ "horario-check-in_titulo-3_hein_nao-atinge-30.mp3": {
+  "texto": "Que horas é o check-in, hein?",
+  "semente": 2026,
+  "sobe": [
+   0.292
+  ],
+  "fim_do_arquivo_db": -71.3,
+  "queda_ms": 47,
+  "ajustes": {
+   "stability": 0.2,
+   "similarity_boost": 0.8,
+   "style": 0.7,
+   "use_speaker_boost": true,
+   "speed": 1.0
+  },
+  "sobe_no_final": 0.247,
+  "duracao_s": 1.78
+ }
+}
