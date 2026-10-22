@@ -1,0 +1,43 @@
+{
+  "id": "horario-check-in",
+  "titulo": [
+    "Que horas é o check-in?",
+    "*Ele chegou e esperou.*"
+  ],
+  "cards": [
+    {
+      "rotulo": "Na estrada",
+      "texto": "Saiu cedo pra aproveitar o dia."
+    },
+    {
+      "texto": "Check-in? Check-out? Ninguém disse."
+    },
+    {
+      "texto": "Chegou cedo. O quarto não estava pronto."
+    }
+  ],
+  "carimbo": "Esperou na recepção",
+  "virada": [
+    "Check-in e check-out no site",
+    "*e ele planeja o dia certo.*"
+  ],
+  "fecho": "Manda pra pousada que explica o horário um por um.",
+  "voz": {
+    "titulo": [
+      "Que horas é o check-in?",
+      "Ele chegou… e esperou."
+    ],
+    "cards": [
+      "Ele saiu cedo, pra aproveitar o dia.",
+      [
+        "Que horas é o check-in?",
+        "E o check-out?",
+        "Ninguém disse."
+      ],
+      "Chegou cedo… e o quarto ainda não estava pronto."
+    ],
+    "carimbo": "Resultado: esperou na recepção.",
+    "virada": "No site, check-in e check-out ficam escritos, e ele planeja o dia certo.",
+    "fecho": "Manda pra pousada que explica o horário um por um."
+  }
+}

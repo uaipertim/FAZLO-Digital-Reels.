@@ -1,0 +1,43 @@
+{
+  "id": "cabe-a-familia",
+  "titulo": [
+    "Cabe a família toda?",
+    "*Ele não teve certeza.*"
+  ],
+  "cards": [
+    {
+      "rotulo": "A viagem",
+      "texto": "Dois adultos, três crianças e a avó."
+    },
+    {
+      "texto": "Quantas camas? Tem berço? Cabe todo mundo?"
+    },
+    {
+      "texto": "No perfil, só a foto da cama de casal."
+    }
+  ],
+  "carimbo": "Não arriscou",
+  "virada": [
+    "Quantos cabem em cada quarto",
+    "*fica escrito no site.*"
+  ],
+  "fecho": "Manda pra pousada que é perfeita pra família!",
+  "voz": {
+    "titulo": [
+      "Cabe a família toda?",
+      "Ele não teve certeza."
+    ],
+    "cards": [
+      "Na viagem: dois adultos, três crianças… e a avó.",
+      [
+        "Quantas camas?",
+        "Tem berço?",
+        "Cabe todo mundo?"
+      ],
+      "E no perfil, só a foto da cama de casal."
+    ],
+    "carimbo": "Na dúvida, ele não arriscou.",
+    "virada": "No site, cada quarto mostra quantas pessoas cabem, antes da pergunta.",
+    "fecho": "Manda pra pousada que é perfeita pra família!"
+  }
+}

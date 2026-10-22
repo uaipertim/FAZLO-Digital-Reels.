@@ -1,0 +1,43 @@
+{
+  "id": "como-eu-reservo",
+  "titulo": [
+    "Como eu reservo?",
+    "*Ninguém explicou.*"
+  ],
+  "cards": [
+    {
+      "rotulo": "No perfil",
+      "texto": "Fotos lindas. E nenhum caminho."
+    },
+    {
+      "texto": "Manda direct? WhatsApp? Liga?"
+    },
+    {
+      "texto": "Ele não sabia por onde começar."
+    }
+  ],
+  "carimbo": "Desistiu",
+  "virada": [
+    "Um caminho só pra reservar",
+    "*e ele chega até o fim.*"
+  ],
+  "fecho": "Manda pra pousada que ainda reserva no improviso.",
+  "voz": {
+    "titulo": [
+      "Como eu reservo?",
+      "Ninguém explicou."
+    ],
+    "cards": [
+      "No perfil, fotos lindas. E nenhum caminho pra reservar.",
+      [
+        "Manda direct?",
+        "Chama no WhatsApp?",
+        "Liga?"
+      ],
+      "Ele não sabia por onde começar."
+    ],
+    "carimbo": "E quem não sabe por onde começar… desiste.",
+    "virada": "No site, um caminho só: escolhe as datas, consulta, e a mensagem chega pronta.",
+    "fecho": "Manda pra pousada que ainda reserva no improviso."
+  }
+}
