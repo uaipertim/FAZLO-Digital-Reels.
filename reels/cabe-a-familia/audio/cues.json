@@ -1,0 +1,123 @@
+{
+ "id": "cabe-a-familia",
+ "bpm": null,
+ "fps": 60,
+ "duration": 25,
+ "sections": {
+  "gancho": 0,
+  "situacao": 3.2260000000000004,
+  "corte": 14.3298,
+  "virada": 16.8824,
+  "fecho": 21.304
+ },
+ "cues": [
+  {
+   "t": 0,
+   "type": "hook"
+  },
+  {
+   "t": 0,
+   "type": "voz",
+   "cena": "titulo",
+   "d": 2.426
+  },
+  {
+   "t": 1.371,
+   "type": "knock"
+  },
+  {
+   "t": 2.776,
+   "type": "rise",
+   "d": 0.5
+  },
+  {
+   "t": 3.226,
+   "type": "ping",
+   "k": 0,
+   "n": 3
+  },
+  {
+   "t": 3.476,
+   "type": "voz",
+   "cena": "card1",
+   "d": 4.01
+  },
+  {
+   "t": 8.1286,
+   "type": "ping",
+   "k": 1,
+   "n": 3
+  },
+  {
+   "t": 8.3786,
+   "type": "voz",
+   "cena": "card2",
+   "d": 2.342
+  },
+  {
+   "t": 11.3632,
+   "type": "ping",
+   "k": 2,
+   "n": 3
+  },
+  {
+   "t": 11.6132,
+   "type": "voz",
+   "cena": "card3",
+   "d": 2.074
+  },
+  {
+   "t": 14.3298,
+   "type": "cut",
+   "d": 0.2
+  },
+  {
+   "t": 14.5298,
+   "type": "stamp"
+  },
+  {
+   "t": 14.6798,
+   "type": "voz",
+   "cena": "carimbo",
+   "d": 1.21
+  },
+  {
+   "t": 16.5324,
+   "type": "exit",
+   "d": 0.5
+  },
+  {
+   "t": 16.8824,
+   "type": "virada"
+  },
+  {
+   "t": 17.2324,
+   "type": "voz",
+   "cena": "virada",
+   "d": 3.429
+  },
+  {
+   "t": 21.304,
+   "type": "fecho"
+  },
+  {
+   "t": 21.504,
+   "type": "voz",
+   "cena": "fecho",
+   "d": 2.246
+  },
+  {
+   "t": 22.104,
+   "type": "slash"
+  },
+  {
+   "t": 23.6,
+   "type": "logo"
+  },
+  {
+   "t": 24.7,
+   "type": "fade",
+   "d": 0.3000000000000007
+  }
+ ]
+}

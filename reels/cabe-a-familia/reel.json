@@ -1,0 +1,108 @@
+{
+  "id": "cabe-a-familia",
+  "title": "Cabe a família toda? Ele não teve certeza.",
+  "serie": "Pelos olhos do hóspede",
+  "voz": true,
+  "status": "em produção",
+  "format": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 60
+  },
+  "output": {
+    "video": "output/fazlo-digital-cabe-a-familia.mp4",
+    "cover": "output/capa.png"
+  },
+  "fonts": [
+    "900 100px 'FZD Display'",
+    "800 100px 'FZD Display'",
+    "600 100px 'FZD Text'",
+    "700 100px 'FZD Text'"
+  ],
+  "scripts": [
+    "../../series/pelos-olhos-do-hospede/motor.js"
+  ],
+  "assets": {},
+  "qa": {
+    "duration": [
+      25,
+      30.05
+    ],
+    "lufs": -14,
+    "syncCues": [
+      "ping",
+      "stamp"
+    ],
+    "visualCues": [
+      "ping",
+      "stamp"
+    ],
+    "checkTimes": [
+      0,
+      3.48,
+      3.73,
+      8.63,
+      11.86,
+      15.13,
+      18.08,
+      22.6,
+      24.65
+    ],
+    "coverClear": [
+      [
+        860,
+        240,
+        1080,
+        440
+      ],
+      [
+        0,
+        1560,
+        1080,
+        1680
+      ]
+    ]
+  },
+  "storyboard": [
+    [
+      0,
+      "TÍTULO-DOR"
+    ],
+    [
+      3.48,
+      "CABEÇALHO"
+    ],
+    [
+      3.73,
+      "CARD 1"
+    ],
+    [
+      8.63,
+      "CARD 2"
+    ],
+    [
+      11.86,
+      "CARD 3"
+    ],
+    [
+      14.45,
+      "O CORTE"
+    ],
+    [
+      15.13,
+      "CARIMBO"
+    ],
+    [
+      18.08,
+      "VIRADA"
+    ],
+    [
+      22.6,
+      "MANDA PRA QUEM…"
+    ],
+    [
+      24.65,
+      "LOGO"
+    ]
+  ]
+}

@@ -1,0 +1,439 @@
+{
+ "voz": {
+  "id": "GDzHdQOi6jjf8zaXhCYD",
+  "nome": "Raquel - For Conversational"
+ },
+ "modelo": "eleven_multilingual_v2",
+ "ajustes": {
+  "stability": 0.4,
+  "similarity_boost": 0.8,
+  "style": 0.35,
+  "use_speaker_boost": true,
+  "speed": 1.0
+ },
+ "formato": "mp3_44100_128",
+ "semente": 2026,
+ "contexto": "previous_text / next_text",
+ "cenas": [
+  {
+   "cena": "titulo",
+   "texto": "Que horas é o check-in? Ele chegou… e esperou.",
+   "arquivo": "titulo.wav",
+   "ini": 0.03,
+   "fim": 2.863,
+   "dur": 2.833,
+   "partes": [
+    {
+     "texto": "Que horas é o check-in?",
+     "arquivo": "titulo-1.mp3",
+     "semente": 2026,
+     "sobe": [
+      0.149
+     ]
+    },
+    {
+     "texto": "Ele chegou… e esperou.",
+     "arquivo": "titulo-2.mp3",
+     "semente": 2026,
+     "sobe": []
+    }
+   ],
+   "palavras": [
+    [
+     "que",
+     0.0
+    ],
+    [
+     "horas",
+     0.122
+    ],
+    [
+     "é",
+     0.401
+    ],
+    [
+     "o",
+     0.447
+    ],
+    [
+     "check",
+     0.505
+    ],
+    [
+     "in",
+     0.819
+    ],
+    [
+     "ele",
+     1.275
+    ],
+    [
+     "chegou",
+     1.484
+    ],
+    [
+     "e",
+     2.39
+    ],
+    [
+     "esperou",
+     2.494
+    ]
+   ],
+   "marca": 1.275
+  },
+  {
+   "cena": "card1",
+   "texto": "Ele saiu cedo, pra aproveitar o dia.",
+   "arquivo": "card1.mp3",
+   "ini": 0.045,
+   "fim": 2.036,
+   "dur": 1.991,
+   "partes": [
+    {
+     "texto": "Ele saiu cedo, pra aproveitar o dia.",
+     "arquivo": "card1.mp3",
+     "semente": 2026,
+     "sobe": []
+    }
+   ],
+   "palavras": [
+    [
+     "ele",
+     0.0
+    ],
+    [
+     "saiu",
+     0.176
+    ],
+    [
+     "cedo",
+     0.408
+    ],
+    [
+     "pra",
+     0.988
+    ],
+    [
+     "aproveitar",
+     1.128
+    ],
+    [
+     "o",
+     1.604
+    ],
+    [
+     "dia",
+     1.696
+    ]
+   ]
+  },
+  {
+   "cena": "card2",
+   "texto": "Que horas é o check-in? E o check-out? Ninguém disse.",
+   "arquivo": "card2.wav",
+   "ini": 0.03,
+   "fim": 3.087,
+   "dur": 3.057,
+   "partes": [
+    {
+     "texto": "Que horas é o check-in?",
+     "arquivo": "card2-1.mp3",
+     "semente": 7,
+     "sobe": [
+      0.16
+     ]
+    },
+    {
+     "texto": "E o check-out?",
+     "arquivo": "card2-2.mp3",
+     "semente": 2026,
+     "sobe": [
+      0.372
+     ]
+    },
+    {
+     "texto": "Ninguém disse.",
+     "arquivo": "card2-3.mp3",
+     "semente": 2026,
+     "sobe": []
+    }
+   ],
+   "palavras": [
+    [
+     "que",
+     0.0
+    ],
+    [
+     "horas",
+     0.143
+    ],
+    [
+     "é",
+     0.457
+    ],
+    [
+     "o",
+     0.526
+    ],
+    [
+     "check",
+     0.596
+    ],
+    [
+     "in",
+     0.921
+    ],
+    [
+     "e",
+     1.458
+    ],
+    [
+     "o",
+     1.562
+    ],
+    [
+     "check",
+     1.632
+    ],
+    [
+     "out",
+     1.911
+    ],
+    [
+     "ninguém",
+     2.465
+    ],
+    [
+     "disse",
+     2.825
+    ]
+   ]
+  },
+  {
+   "cena": "card3",
+   "texto": "Chegou cedo… e o quarto ainda não estava pronto.",
+   "arquivo": "card3.mp3",
+   "ini": 0.029,
+   "fim": 2.789,
+   "dur": 2.76,
+   "partes": [
+    {
+     "texto": "Chegou cedo… e o quarto ainda não estava pronto.",
+     "arquivo": "card3.mp3",
+     "semente": 2026,
+     "sobe": []
+    }
+   ],
+   "palavras": [
+    [
+     "chegou",
+     0.0
+    ],
+    [
+     "cedo",
+     0.343
+    ],
+    [
+     "e",
+     1.132
+    ],
+    [
+     "o",
+     1.295
+    ],
+    [
+     "quarto",
+     1.422
+    ],
+    [
+     "ainda",
+     1.84
+    ],
+    [
+     "não",
+     2.049
+    ],
+    [
+     "estava",
+     2.142
+    ],
+    [
+     "pronto",
+     2.456
+    ]
+   ]
+  },
+  {
+   "cena": "carimbo",
+   "texto": "Resultado: esperou na recepção.",
+   "arquivo": "carimbo.mp3",
+   "ini": 0.038,
+   "fim": 1.634,
+   "dur": 1.596,
+   "partes": [
+    {
+     "texto": "Resultado: esperou na recepção.",
+     "arquivo": "carimbo.mp3",
+     "semente": 2026,
+     "sobe": []
+    }
+   ],
+   "palavras": [
+    [
+     "resultado",
+     0.0
+    ],
+    [
+     "esperou",
+     0.531
+    ],
+    [
+     "na",
+     0.926
+    ],
+    [
+     "recepção",
+     1.03
+    ]
+   ]
+  },
+  {
+   "cena": "virada",
+   "texto": "No site, check-in e check-out ficam escritos, e ele planeja o dia certo.",
+   "arquivo": "virada.mp3",
+   "ini": 0.056,
+   "fim": 4.34,
+   "dur": 4.284,
+   "partes": [
+    {
+     "texto": "No site, check-in e check-out ficam escritos, e ele planeja o dia certo.",
+     "arquivo": "virada.mp3",
+     "semente": 2026,
+     "sobe": []
+    }
+   ],
+   "palavras": [
+    [
+     "no",
+     0.0
+    ],
+    [
+     "site",
+     0.176
+    ],
+    [
+     "check",
+     0.629
+    ],
+    [
+     "in",
+     0.989
+    ],
+    [
+     "e",
+     1.093
+    ],
+    [
+     "check",
+     1.14
+    ],
+    [
+     "out",
+     1.5
+    ],
+    [
+     "ficam",
+     1.732
+    ],
+    [
+     "escritos",
+     2.011
+    ],
+    [
+     "e",
+     2.881
+    ],
+    [
+     "ele",
+     3.021
+    ],
+    [
+     "planeja",
+     3.195
+    ],
+    [
+     "o",
+     3.601
+    ],
+    [
+     "dia",
+     3.682
+    ],
+    [
+     "certo",
+     3.891
+    ]
+   ]
+  },
+  {
+   "cena": "fecho",
+   "texto": "Manda pra pousada que explica o horário um por um.",
+   "arquivo": "fecho.mp3",
+   "ini": 0.03,
+   "fim": 2.437,
+   "dur": 2.407,
+   "partes": [
+    {
+     "texto": "Manda pra pousada que explica o horário um por um.",
+     "arquivo": "fecho.mp3",
+     "semente": 42,
+     "sobe": []
+    }
+   ],
+   "palavras": [
+    [
+     "manda",
+     0.0
+    ],
+    [
+     "pra",
+     0.294
+    ],
+    [
+     "pousada",
+     0.446
+    ],
+    [
+     "que",
+     0.887
+    ],
+    [
+     "explica",
+     0.992
+    ],
+    [
+     "o",
+     1.432
+    ],
+    [
+     "horário",
+     1.514
+    ],
+    [
+     "um",
+     1.92
+    ],
+    [
+     "por",
+     2.037
+    ],
+    [
+     "um",
+     2.28
+    ]
+   ]
+  }
+ ],
+ "fala_total": 18.93
+}

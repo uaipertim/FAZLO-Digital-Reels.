@@ -1,0 +1,108 @@
+{
+  "id": "horario-check-in",
+  "title": "Que horas é o check-in? Ele chegou e esperou.",
+  "serie": "Pelos olhos do hóspede",
+  "voz": true,
+  "status": "em produção",
+  "format": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 60
+  },
+  "output": {
+    "video": "output/fazlo-digital-horario-check-in.mp4",
+    "cover": "output/capa.png"
+  },
+  "fonts": [
+    "900 100px 'FZD Display'",
+    "800 100px 'FZD Display'",
+    "600 100px 'FZD Text'",
+    "700 100px 'FZD Text'"
+  ],
+  "scripts": [
+    "../../series/pelos-olhos-do-hospede/motor.js"
+  ],
+  "assets": {},
+  "qa": {
+    "duration": [
+      25,
+      30.05
+    ],
+    "lufs": -14,
+    "syncCues": [
+      "ping",
+      "stamp"
+    ],
+    "visualCues": [
+      "ping",
+      "stamp"
+    ],
+    "checkTimes": [
+      0,
+      3.88,
+      4.13,
+      6.92,
+      10.78,
+      14.64,
+      17.89,
+      23.17,
+      25.38
+    ],
+    "coverClear": [
+      [
+        860,
+        240,
+        1080,
+        440
+      ],
+      [
+        0,
+        1560,
+        1080,
+        1680
+      ]
+    ]
+  },
+  "storyboard": [
+    [
+      0,
+      "TÍTULO-DOR"
+    ],
+    [
+      3.88,
+      "CABEÇALHO"
+    ],
+    [
+      4.13,
+      "CARD 1"
+    ],
+    [
+      6.92,
+      "CARD 2"
+    ],
+    [
+      10.78,
+      "CARD 3"
+    ],
+    [
+      13.96,
+      "O CORTE"
+    ],
+    [
+      14.64,
+      "CARIMBO"
+    ],
+    [
+      17.89,
+      "VIRADA"
+    ],
+    [
+      23.17,
+      "MANDA PRA QUEM…"
+    ],
+    [
+      25.38,
+      "LOGO"
+    ]
+  ]
+}

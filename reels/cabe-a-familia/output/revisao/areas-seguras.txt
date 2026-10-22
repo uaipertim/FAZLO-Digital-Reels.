@@ -1,0 +1,60 @@
+CABE-A-FAMILIA — áreas seguras, elemento a elemento
+
+Regras: conteúdo entre y 265 e 1456; nada em x ≥ 950 entre y 1060 e 1560 (coluna de botões);
+título do quadro 0 dentro do recorte 3:4 (y 240–1680).
+
+OK     chip da série            t= 0.00 s   x  267–783   y  674–730
+OK     título 1                 t= 0.00 s   x  323–727   y  776–845
+OK     título 2                 t= 0.00 s   x  105–945   y  870–939
+OK     título 3                 t= 0.00 s   x  143–907   y  963–1032
+OK     título 4                 t= 0.00 s   x  259–791   y 1057–1126
+OK     cabeçalho                t=14.53 s   x  330–750   y  285–460
+OK     card 1                   t=14.28 s   x   78–942   y  592–784
+OK     card 2                   t=14.28 s   x   78–942   y  792–994
+OK     card 3                   t=14.28 s   x   78–942   y 1002–1204
+OK     carimbo                  t=15.03 s   x  242–788   y  830–979
+OK     virada 1                 t=21.20 s   x   92–958   y  714–776
+OK     virada 1 (no fecho)      t=24.65 s   x   99–951   y  532–593
+OK     virada 2                 t=21.20 s   x   85–965   y  801–863
+OK     virada 2 (no fecho)      t=24.65 s   x   92–958   y  618–678
+OK     virada 3                 t=21.20 s   x  191–859   y  888–950
+OK     virada 3 (no fecho)      t=24.65 s   x  197–853   y  703–764
+OK     virada 4                 t=21.20 s   x  323–727   y  975–1037
+OK     virada 4 (no fecho)      t=24.65 s   x  327–723   y  789–849
+OK     fecho 1                  t=24.65 s   x  197–853   y  922–975
+OK     fecho 2                  t=24.65 s   x  235–815   y  989–1042
+OK     logo                     t=24.65 s   x  353–697   y 1115–1221
+
+OK     capa: bloco (chip + título) em y 730–1190, centro em y = 960.0 (recorte 3:4: 960)
+
+Layout calculado:
+{
+ "titulo": {
+  "size": 85,
+  "linhas": [
+   "CABE A",
+   "FAMÍLIA TODA?",
+   "ELE NÃO TEVE",
+   "CERTEZA."
+  ]
+ },
+ "cabecalho": 0.5,
+ "virada": {
+  "size": 72,
+  "linhas": [
+   "QUANTOS CABEM",
+   "EM CADA QUARTO",
+   "FICA ESCRITO",
+   "NO SITE."
+  ]
+ },
+ "fecho": [
+  52,
+  "Manda pra pousada que",
+  "é perfeita pra família!"
+ ],
+ "carimbo": 46,
+ "duracao": 25
+}
+
+RESULTADO: aprovado

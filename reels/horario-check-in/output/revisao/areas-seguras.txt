@@ -1,0 +1,60 @@
+HORARIO-CHECK-IN — áreas seguras, elemento a elemento
+
+Regras: conteúdo entre y 265 e 1456; nada em x ≥ 950 entre y 1060 e 1560 (coluna de botões);
+título do quadro 0 dentro do recorte 3:4 (y 240–1680).
+
+OK     chip da série            t= 0.00 s   x  267–783   y  644–700
+OK     título 1                 t= 0.00 s   x  106–944   y  746–827
+OK     título 2                 t= 0.00 s   x  125–925   y  856–937
+OK     título 3                 t= 0.00 s   x  125–925   y  966–1047
+OK     título 4                 t= 0.00 s   x  163–887   y 1076–1157
+OK     cabeçalho                t=14.04 s   x  336–744   y  285–485
+OK     card 1                   t=13.79 s   x   78–942   y  607–799
+OK     card 2                   t=13.79 s   x   78–942   y  807–1009
+OK     card 3                   t=13.79 s   x   78–942   y 1017–1219
+OK     carimbo                  t=14.54 s   x  113–917   y  835–1003
+OK     virada 1                 t=21.77 s   x  277–773   y  727–784
+OK     virada 1 (no fecho)      t=25.38 s   x  281–769   y  546–601
+OK     virada 2                 t=21.77 s   x   85–965   y  807–864
+OK     virada 2 (no fecho)      t=25.38 s   x   93–957   y  624–680
+OK     virada 3                 t=21.77 s   x  188–862   y  887–943
+OK     virada 3 (no fecho)      t=25.38 s   x  194–856   y  702–758
+OK     virada 4                 t=21.77 s   x  236–814   y  966–1023
+OK     virada 4 (no fecho)      t=25.38 s   x  241–809   y  780–836
+OK     fecho 1                  t=25.38 s   x  197–853   y  909–961
+OK     fecho 2                  t=25.38 s   x  137–913   y  976–1028
+OK     logo                     t=25.38 s   x  353–697   y 1101–1208
+
+OK     capa: bloco (chip + título) em y 699–1221, centro em y = 960.0 (recorte 3:4: 960)
+
+Layout calculado:
+{
+ "titulo": {
+  "size": 100,
+  "linhas": [
+   "QUE HORAS É",
+   "O CHECK-IN?",
+   "ELE CHEGOU",
+   "E ESPEROU."
+  ]
+ },
+ "cabecalho": 0.48661800486618007,
+ "virada": {
+  "size": 66,
+  "linhas": [
+   "CHECK-IN E",
+   "CHECK-OUT NO SITE",
+   "E ELE PLANEJA",
+   "O DIA CERTO."
+  ]
+ },
+ "fecho": [
+  52,
+  "Manda pra pousada que",
+  "explica o horário um por um."
+ ],
+ "carimbo": 46,
+ "duracao": 25.733333333333334
+}
+
+RESULTADO: aprovado

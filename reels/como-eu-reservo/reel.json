@@ -1,0 +1,108 @@
+{
+  "id": "como-eu-reservo",
+  "title": "Como eu reservo? Ninguém explicou.",
+  "serie": "Pelos olhos do hóspede",
+  "voz": true,
+  "status": "em produção",
+  "format": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 60
+  },
+  "output": {
+    "video": "output/fazlo-digital-como-eu-reservo.mp4",
+    "cover": "output/capa.png"
+  },
+  "fonts": [
+    "900 100px 'FZD Display'",
+    "800 100px 'FZD Display'",
+    "600 100px 'FZD Text'",
+    "700 100px 'FZD Text'"
+  ],
+  "scripts": [
+    "../../series/pelos-olhos-do-hospede/motor.js"
+  ],
+  "assets": {},
+  "qa": {
+    "duration": [
+      25,
+      30.05
+    ],
+    "lufs": -14,
+    "syncCues": [
+      "ping",
+      "stamp"
+    ],
+    "visualCues": [
+      "ping",
+      "stamp"
+    ],
+    "checkTimes": [
+      0,
+      3.08,
+      3.33,
+      7.42,
+      10.65,
+      13.13,
+      17.62,
+      24.73,
+      26.72
+    ],
+    "coverClear": [
+      [
+        860,
+        240,
+        1080,
+        440
+      ],
+      [
+        0,
+        1560,
+        1080,
+        1680
+      ]
+    ]
+  },
+  "storyboard": [
+    [
+      0,
+      "TÍTULO-DOR"
+    ],
+    [
+      3.08,
+      "CABEÇALHO"
+    ],
+    [
+      3.33,
+      "CARD 1"
+    ],
+    [
+      7.42,
+      "CARD 2"
+    ],
+    [
+      10.65,
+      "CARD 3"
+    ],
+    [
+      12.45,
+      "O CORTE"
+    ],
+    [
+      13.13,
+      "CARIMBO"
+    ],
+    [
+      17.62,
+      "VIRADA"
+    ],
+    [
+      24.73,
+      "MANDA PRA QUEM…"
+    ],
+    [
+      26.72,
+      "LOGO"
+    ]
+  ]
+}

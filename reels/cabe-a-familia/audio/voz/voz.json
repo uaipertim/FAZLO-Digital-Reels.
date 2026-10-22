@@ -1,0 +1,405 @@
+{
+ "voz": {
+  "id": "GDzHdQOi6jjf8zaXhCYD",
+  "nome": "Raquel - For Conversational"
+ },
+ "modelo": "eleven_multilingual_v2",
+ "ajustes": {
+  "stability": 0.4,
+  "similarity_boost": 0.8,
+  "style": 0.35,
+  "use_speaker_boost": true,
+  "speed": 1.0
+ },
+ "formato": "mp3_44100_128",
+ "semente": 2026,
+ "contexto": "previous_text / next_text",
+ "cenas": [
+  {
+   "cena": "titulo",
+   "texto": "Cabe a família toda? Ele não teve certeza.",
+   "arquivo": "titulo.wav",
+   "ini": 0.03,
+   "fim": 2.456,
+   "dur": 2.426,
+   "partes": [
+    {
+     "texto": "Cabe a família toda?",
+     "arquivo": "titulo-1.mp3",
+     "semente": 7,
+     "sobe": [
+      0.162
+     ]
+    },
+    {
+     "texto": "Ele não teve certeza.",
+     "arquivo": "titulo-2.mp3",
+     "semente": 2026,
+     "sobe": []
+    }
+   ],
+   "palavras": [
+    [
+     "cabe",
+     0.0
+    ],
+    [
+     "a",
+     0.218
+    ],
+    [
+     "família",
+     0.276
+    ],
+    [
+     "toda",
+     0.671
+    ],
+    [
+     "ele",
+     1.371
+    ],
+    [
+     "não",
+     1.581
+    ],
+    [
+     "teve",
+     1.732
+    ],
+    [
+     "certeza",
+     1.952
+    ]
+   ],
+   "marca": 1.371
+  },
+  {
+   "cena": "card1",
+   "texto": "Na viagem: dois adultos, três crianças… e a avó.",
+   "arquivo": "card1.mp3",
+   "ini": 0.052,
+   "fim": 4.062,
+   "dur": 4.01,
+   "partes": [
+    {
+     "texto": "Na viagem: dois adultos, três crianças… e a avó.",
+     "arquivo": "card1.mp3",
+     "semente": 2026,
+     "sobe": []
+    }
+   ],
+   "palavras": [
+    [
+     "na",
+     0.0
+    ],
+    [
+     "viagem",
+     0.192
+    ],
+    [
+     "dois",
+     0.807
+    ],
+    [
+     "adultos",
+     1.109
+    ],
+    [
+     "três",
+     1.957
+    ],
+    [
+     "crianças",
+     2.224
+    ],
+    [
+     "e",
+     3.338
+    ],
+    [
+     "a",
+     3.547
+    ],
+    [
+     "avó",
+     3.605
+    ]
+   ]
+  },
+  {
+   "cena": "card2",
+   "texto": "Quantas camas? Tem berço? Cabe todo mundo?",
+   "arquivo": "card2.wav",
+   "ini": 0.03,
+   "fim": 2.372,
+   "dur": 2.342,
+   "partes": [
+    {
+     "texto": "Quantas camas?",
+     "arquivo": "card2-1.mp3",
+     "semente": 23,
+     "sobe": [
+      0.248
+     ]
+    },
+    {
+     "texto": "Tem berço?",
+     "arquivo": "card2-2.mp3",
+     "semente": 7,
+     "sobe": [
+      0.45
+     ]
+    },
+    {
+     "texto": "Cabe todo mundo?",
+     "arquivo": "card2-3.mp3",
+     "semente": 7,
+     "sobe": [
+      0.647
+     ]
+    }
+   ],
+   "palavras": [
+    [
+     "quantas",
+     0.0
+    ],
+    [
+     "camas",
+     0.294
+    ],
+    [
+     "tem",
+     0.882
+    ],
+    [
+     "berço",
+     1.103
+    ],
+    [
+     "cabe",
+     1.69
+    ],
+    [
+     "todo",
+     1.896
+    ],
+    [
+     "mundo",
+     2.093
+    ]
+   ]
+  },
+  {
+   "cena": "card3",
+   "texto": "E no perfil, só a foto da cama de casal.",
+   "arquivo": "card3.mp3",
+   "ini": 0.065,
+   "fim": 2.139,
+   "dur": 2.074,
+   "partes": [
+    {
+     "texto": "E no perfil, só a foto da cama de casal.",
+     "arquivo": "card3.mp3",
+     "semente": 2026,
+     "sobe": []
+    }
+   ],
+   "palavras": [
+    [
+     "e",
+     0.0
+    ],
+    [
+     "no",
+     0.086
+    ],
+    [
+     "perfil",
+     0.214
+    ],
+    [
+     "só",
+     0.608
+    ],
+    [
+     "a",
+     0.817
+    ],
+    [
+     "foto",
+     0.91
+    ],
+    [
+     "da",
+     1.27
+    ],
+    [
+     "cama",
+     1.386
+    ],
+    [
+     "de",
+     1.63
+    ],
+    [
+     "casal",
+     1.711
+    ]
+   ]
+  },
+  {
+   "cena": "carimbo",
+   "texto": "Na dúvida, ele não arriscou.",
+   "arquivo": "carimbo.mp3",
+   "ini": 0.026,
+   "fim": 1.236,
+   "dur": 1.21,
+   "partes": [
+    {
+     "texto": "Na dúvida, ele não arriscou.",
+     "arquivo": "carimbo.mp3",
+     "semente": 2026,
+     "sobe": []
+    }
+   ],
+   "palavras": [
+    [
+     "na",
+     0.0
+    ],
+    [
+     "dúvida",
+     0.16
+    ],
+    [
+     "ele",
+     0.45
+    ],
+    [
+     "não",
+     0.624
+    ],
+    [
+     "arriscou",
+     0.775
+    ]
+   ]
+  },
+  {
+   "cena": "virada",
+   "texto": "No site, cada quarto mostra quantas pessoas cabem, antes da pergunta.",
+   "arquivo": "virada.mp3",
+   "ini": 0.067,
+   "fim": 3.496,
+   "dur": 3.429,
+   "partes": [
+    {
+     "texto": "No site, cada quarto mostra quantas pessoas cabem, antes da pergunta.",
+     "arquivo": "virada.mp3",
+     "semente": 2026,
+     "sobe": []
+    }
+   ],
+   "palavras": [
+    [
+     "no",
+     0.0
+    ],
+    [
+     "site",
+     0.2
+    ],
+    [
+     "cada",
+     0.618
+    ],
+    [
+     "quarto",
+     0.943
+    ],
+    [
+     "mostra",
+     1.268
+    ],
+    [
+     "quantas",
+     1.582
+    ],
+    [
+     "pessoas",
+     1.895
+    ],
+    [
+     "cabem",
+     2.278
+    ],
+    [
+     "antes",
+     2.673
+    ],
+    [
+     "da",
+     2.859
+    ],
+    [
+     "pergunta",
+     2.975
+    ]
+   ]
+  },
+  {
+   "cena": "fecho",
+   "texto": "Manda pra pousada que é perfeita pra família!",
+   "arquivo": "fecho.mp3",
+   "ini": 0.04,
+   "fim": 2.286,
+   "dur": 2.246,
+   "partes": [
+    {
+     "texto": "Manda pra pousada que é perfeita pra família!",
+     "arquivo": "fecho.mp3",
+     "semente": 2026,
+     "sobe": []
+    }
+   ],
+   "palavras": [
+    [
+     "manda",
+     0.0
+    ],
+    [
+     "pra",
+     0.227
+    ],
+    [
+     "pousada",
+     0.366
+    ],
+    [
+     "que",
+     0.738
+    ],
+    [
+     "é",
+     0.831
+    ],
+    [
+     "perfeita",
+     0.97
+    ],
+    [
+     "pra",
+     1.632
+    ],
+    [
+     "família",
+     1.771
+    ]
+   ]
+  }
+ ],
+ "fala_total": 17.74
+}
