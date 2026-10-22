@@ -134,6 +134,25 @@ else:
     r = 10 * np.log10(pv[fala] / (pf[fala] + 1e-12))
     print(f'voz: efeitos {20 * np.log10(g.min()):.1f} dB sob a fala · voz acima dos efeitos: mínimo {r.min():+.1f} dB, '
           f'10% {np.percentile(r, 10):+.1f} dB, mediana {np.median(r):+.1f} dB')
+    # nenhum efeito por cima da voz: onde a fala fica menos de 3 dB acima dos efeitos (ex.: a cauda de um toque no
+    # começo de uma fala), os efeitos abaixam só nesse trecho (±60 ms, rampas de 30 ms) até a voz ficar 3 dB acima
+    MARGEM = 3.0
+    falta = np.zeros(len(pv))
+    falta[fala] = np.clip(MARGEM - r, 0, None)
+    if falta.max() > 0:
+        for j in np.where(falta > 0)[0]:
+            print(f'  efeito acima da margem em {j * 0.05:.2f} s (voz {MARGEM - falta[j]:+.1f} dB acima): efeitos -{falta[j]:.1f} dB nesse trecho')
+        gq = 10 ** (-falta / 20)
+        from scipy.ndimage import minimum_filter1d, uniform_filter1d
+        gs = np.repeat(minimum_filter1d(gq, 3), q)
+        gs = np.concatenate([gs, np.ones(mix.N - len(gs))])[: mix.N]
+        gs = minimum_filter1d(gs, int(0.06 * SR) * 2 + 1)
+        gs = uniform_filter1d(gs, int(0.03 * SR))
+        fx = fx * gs
+        fb = sosfiltfilt(sos, fx.mean(0))
+        pf = (fb[: len(fb) // q * q] ** 2).reshape(-1, q).mean(1)
+        r = 10 * np.log10(pv[fala] / (pf[fala] + 1e-12))
+        print(f'  depois do ajuste: voz acima dos efeitos no mínimo {r.min():+.1f} dB')
     # teto de pico do master: -3,3 dBTP (folga para o AAC); o roteiro pode baixar com "master": {"teto_db": -4.6}
     ep_json = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'episodios', os.path.basename(ROOT) + '.json')
     teto = (json.load(open(ep_json)).get('master') or {}).get('teto_db', -3.3) if os.path.exists(ep_json) else -3.3

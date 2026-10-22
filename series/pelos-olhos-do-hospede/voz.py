@@ -160,24 +160,28 @@ def perguntas(texto, meta, x):
 def termina_bem(x, texto):
     """Confere o final de uma frase concluída (ponto ou exclamação): a última sílaba tem de ir até o fim e a
     voz não pode subir nem ficar suspensa.
-      - sem corte: depois da última palavra a energia cai aos poucos (queda de -20 a -40 dB em >= 90 ms, ou já
-        está a -26 dB ou menos 50 ms antes do fim); uma parada seca (<= 60 ms, ainda forte) é corte;
+      - sem corte: é CORTE quando o final cai até o silêncio (-50 dB) em menos de 35 ms começando acima de -15 dB
+        (relativo ao pico da fala). Quedas que começam em -20 dB ou abaixo são fim natural.
+        Calibração (ouvida pelo Willian): um fecho cortado caía de -8,7 dB ao silêncio em 32 ms; finais de
+        37–57 ms a partir de nível mais baixo soaram normais. (Até o ep. 6 a regra era mais rígida: queda de -20 a
+        -40 dB em >= 90 ms, ou -26 dB 50 ms antes do fim; ela recusava finais naturais.)
       - firme: a altura da voz nos últimos 300 ms da fala não passa da mediana dos 600 ms anteriores.
     Devolve (ok, dados)."""
     e = envelope(x, 0.01)
     pk = e.max()
-    fim = int(np.where(e > pk * 10 ** (-40 / 20))[0][-1])
-    a = int(np.where(e[:fim] > pk * 10 ** (-20 / 20))[0][-1])
-    queda_ms = (fim - a) / SR * 1000
-    r50 = 20 * np.log10(e[max(0, fim - int(0.05 * SR))] / pk)
-    sem_corte = queda_ms >= 90 or r50 <= -26
+    fim = int(np.where(e > pk * 10 ** (-50 / 20))[0][-1])                     # onde o final chega ao silêncio
+    acima = np.where(e[:fim] > pk * 10 ** (-15 / 20))[0]
+    queda_ms = (fim - int(acima[-1])) / SR * 1000 if len(acima) else 9999.0   # da última vez acima de -15 dB até o silêncio
+    n35 = 20 * np.log10(e[max(0, fim - int(0.035 * SR))] / pk)               # o nível 35 ms antes do silêncio
+    sem_corte = queda_ms >= 35
+    fim = int(np.where(e > pk * 10 ** (-40 / 20))[0][-1])                     # (o fim da fala, para a altura)
     fz = f0(x)
     t = fim / SR
     seg = lambda t0, t1: (lambda v: v[~np.isnan(v)])(fz[int(max(0, t0) / 0.01):int(t1 / 0.01)])
     fin, antes = seg(t - 0.3, t), seg(t - 0.9, t - 0.3)
     razao = float(np.median(fin) / np.median(antes)) if len(fin) >= 3 and len(antes) >= 3 else None
     firme = razao is None or razao <= 1.0
-    return sem_corte and firme, {'queda_ms': round(queda_ms), 'r50_db': round(float(r50), 1), 'altura_final': None if razao is None else round(razao, 2)}
+    return sem_corte and firme, {'queda_de_-15_ao_silencio_ms': round(queda_ms), 'nivel_35ms_antes_db': round(float(n35), 1), 'altura_final': None if razao is None else round(razao, 2)}
 
 
 def gerar_parte(texto, prev, nxt, destino, concluida=False):
