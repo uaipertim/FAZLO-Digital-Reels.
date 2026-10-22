@@ -1103,7 +1103,7 @@
         [[T.x - 4, 1], [T.x + T.w + 4, -1]].forEach(([x, dir]) => { c.beginPath(); c.moveTo(x + dir * 14, T.y + T.h / 2 - 60); c.lineTo(x, T.y + T.h / 2 - 60); c.lineTo(x, T.y + T.h / 2 + 60); c.lineTo(x + dir * 14, T.y + T.h / 2 + 60); c.stroke(); });
         c.restore(); }
       c.restore();
-      boxHere(c, 'celular grande', F.x, F.y + (1 - q) * 60, F.x + F.w, F.y + F.h + (1 - q) * 60);
+      if (q > 0.6) boxHere(c, 'celular grande', F.x, F.y + (1 - q) * 60, F.x + F.w, F.y + F.h + (1 - q) * 60);
     },
     extra(c, cap, S, t) {
       const fora = 1 - p(t, cap.voo[0] - 0.3, cap.voo[0]);
@@ -1183,6 +1183,7 @@
   // =====================================================================
   // MONTAGEM DO QUADRO
   // =====================================================================
+  const flutua = (t) => Math.sin(t * 1.35) * 4;
   function capitulo(c, n, t) {                          // tudo do capítulo n (sem a marca e o celular do canto)
     const cap = CAPS[n], S = cap.S, tipo = cap.diagrama.tipo, cena = CENAS[tipo];
     CUR_CAP = n;
@@ -1194,8 +1195,10 @@
       return;
     }
     drawRotulo(c, cap, t); drawTitulo(c, cap, t); drawApoio(c, cap, t, cap.lay.apoioY);
+    c.save(); c.translate(0, flutua(t));                // a cena nunca fica parada: a parte flutua devagar (±4 px)
     if (cena.extra) cena.extra(c, cap, S, t);
     if (cena.parte && (!cap.voo || t < cap.voo[0])) cena.parte(c, cap, S, t);
+    c.restore();
   }
   // a parte voando até o bloco (encolhe, vira um bloco lima e encaixa)
   function voo(c, n, t) {
@@ -1203,7 +1206,7 @@
     if (!cap.voo || t < cap.voo[0] || t >= cap.voo[1] || n === 0) return;
     const S = cap.S, R = S.parte, cena = CENAS[cap.diagrama.tipo];
     const q = E.io(p(t, cap.voo[0], cap.voo[1])), B = blocoRect(CANTO, n - 1);
-    const x = lerp(R.x, B.x, q), y = lerp(R.y, B.y, q) - Math.sin(q * Math.PI) * 60, w = lerp(R.w, B.w, q), h = lerp(R.h, B.h, q);
+    const x = lerp(R.x, B.x, q), y = lerp(R.y + flutua(cap.voo[0]), B.y, q) - Math.sin(q * Math.PI) * 60, w = lerp(R.w, B.w, q), h = lerp(R.h, B.h, q);
     const conteudo = 1 - p(q, 0.35, 0.8), lima = p(q, 0.45, 0.95);
     c.save();
     c.shadowColor = 'rgba(0,0,0,0.6)'; c.shadowBlur = 40 * (1 - q); c.shadowOffsetY = 12 * (1 - q);

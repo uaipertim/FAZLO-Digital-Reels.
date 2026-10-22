@@ -212,7 +212,7 @@ bd = run(['ffmpeg', '-hide_banner', '-nostats', '-i', VIDEO, '-vf', 'blackdetect
 ok(not re.findall(r'black_start', bd), 'sem trechos pretos')
 fz = run(['ffmpeg', '-hide_banner', '-nostats', '-i', VIDEO, '-vf', 'freezedetect=n=-60dB:d=1.5', '-an', '-f', 'null', '-']).stderr
 congel = [float(x) for x in re.findall(r'freeze_start: ([\d.]+)', fz)]
-antes_logo = [x for x in congel if x < f_['logo_parada'][0] - 0.05]
+antes_logo = [x for x in congel if x < f_['corte_logo'][0]]       # do corte da logo em diante a imagem para de propósito
 ok(not antes_logo, 'sem imagem congelada por 1,5 s ou mais antes da logo final (o fundo e o cursor seguem vivos)' + ('' if not antes_logo else ': ' + ', '.join(f'{x:.2f} s' for x in antes_logo)))
 
 # ---------------------------------------------------------------- capa
