@@ -58,5 +58,10 @@
   },
   "voz_sem_next": [
     "card2"
-  ]
+  ],
+  "capa_v2": {
+    "ep": 7,
+    "ilustracao": "caminhos",
+    "tom": "#0F1A0A"
+  }
 }

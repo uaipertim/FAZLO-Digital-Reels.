@@ -64,5 +64,10 @@
     "card2-2": {
       "sobe_min": 0.15
     }
+  },
+  "capa_v2": {
+    "ep": 9,
+    "ilustracao": "familia",
+    "tom": "#0A1A14"
   }
 }

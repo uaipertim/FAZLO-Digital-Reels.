@@ -656,6 +656,118 @@
   }
   let COVER = null;
 
+  // ---------------------------------------------------------------- capa v2 (23/10): ilustração própria do tema
+  // Só PNG (tools/capas-v2.cjs); a capa do quadro 0 dos vídeos continua a de cima. Roteiro: "capa_v2": {"ep": 5,
+  // "ilustracao": "cafe" | "pet" | "caminhos" | "relogio" | "familia", "tom": "#0B0907"}.
+  function neon(c, path, o = {}) {                   // traço lima com brilho suave e preenchimento escuro
+    c.save(); c.lineCap = 'round'; c.lineJoin = 'round';
+    if (o.fill !== null) { c.fillStyle = o.fill || '#111816'; c.fill(path); }
+    c.lineWidth = o.lw || 12; c.strokeStyle = o.cor || C.lime; c.globalAlpha *= o.a ?? 1;
+    if (o.dash) c.setLineDash(o.dash);
+    c.shadowColor = rgba(C.lime, 0.55); c.shadowBlur = o.glow ?? 34; c.stroke(path);
+    c.shadowBlur = 0; c.stroke(path); c.restore();
+  }
+  function cheio(c, path, cor = C.lime) { c.save(); c.fillStyle = cor; c.shadowColor = rgba(C.lime, 0.6); c.shadowBlur = 30; c.fill(path); c.shadowBlur = 0; c.fill(path); c.restore(); }
+  const P = (f) => { const q = new Path2D(); f(q); return q; };
+  const elipse = (x, y, rx, ry, r = 0) => P((q) => q.ellipse(x, y, rx, ry, r, 0, TAU));
+  const caixa = (x, y, w, h, r) => P((q) => q.roundRect(x, y, w, h, r));
+  function letra(c, s, x, y, size, cor) { setFont(c, DISPLAY, size, 900, 'center'); c.fillStyle = cor; c.fillText(s, x, y + size * 0.36); }
+  // as ilustrações, numa caixa de 600 × 560 (origem no canto de cima à esquerda)
+  const ILUSTRA = {
+    cafe(c) {                                        // xícara com um "?" desenhado no vapor
+      neon(c, elipse(300, 478, 240, 40), { fill: '#0E1412' });
+      neon(c, P((q) => { q.moveTo(140, 262); q.lineTo(460, 262); q.lineTo(428, 430); q.quadraticCurveTo(418, 470, 372, 470); q.lineTo(228, 470); q.quadraticCurveTo(182, 470, 172, 430); q.closePath(); }));
+      neon(c, P((q) => q.arc(470, 345, 58, -1.25, 1.25)), { fill: null });
+      neon(c, elipse(300, 262, 160, 24), { fill: '#1C2A1A' });
+      cheio(c, elipse(300, 264, 128, 15), rgba(C.lime, 0.35));
+      neon(c, P((q) => { q.moveTo(232, 112); q.bezierCurveTo(232, 30, 368, 30, 368, 112); q.bezierCurveTo(368, 168, 300, 164, 300, 214); }), { fill: null, lw: 15 });
+      cheio(c, elipse(300, 240, 11, 11));
+      [[188, 1], [412, -1]].forEach(([x, d]) => neon(c, P((q) => { q.moveTo(x, 232); q.bezierCurveTo(x - 24 * d, 196, x + 24 * d, 170, x, 132); }), { fill: null, lw: 9, a: 0.6, glow: 20 }));
+    },
+    pet(c) {                                         // pata dentro de um balão de pergunta
+      neon(c, P((q) => { q.roundRect(50, 40, 500, 390, 80); q.moveTo(170, 425); q.lineTo(120, 525); q.lineTo(255, 425); }));
+      c.save(); c.fillStyle = '#111816'; c.fillRect(176, 418, 72, 16); c.restore();
+      cheio(c, elipse(300, 290, 92, 74));
+      [[188, 200, -0.45], [250, 135, -0.15], [350, 135, 0.15], [412, 200, 0.45]].forEach(([x, y, r]) => cheio(c, elipse(x, y, 34, 44, r)));
+      cheio(c, elipse(520, 60, 52, 52)); letra(c, '?', 520, 60, 64, C.ink);
+    },
+    caminhos(c) {                                    // três caminhos que se separam, com um "?" no cruzamento
+      const vias = [[[300, 300], [300, 160], [300, 40]], [[300, 300], [150, 250], [80, 70]], [[300, 300], [450, 250], [520, 70]]];
+      const via = (pts) => P((q) => { q.moveTo(...pts[0]); q.quadraticCurveTo(...pts[1], ...pts[2]); });
+      const tronco = P((q) => { q.moveTo(300, 540); q.lineTo(300, 300); });
+      [tronco, ...vias.map(via)].forEach((v) => { c.save(); c.lineWidth = 56; c.lineCap = 'round'; c.strokeStyle = '#16211C'; c.stroke(v); c.restore(); });
+      [tronco, ...vias.map(via)].forEach((v) => neon(c, v, { fill: null, lw: 13, dash: [2, 30], glow: 22 }));
+      vias.forEach((v) => { cheio(c, elipse(v[2][0], v[2][1], 20, 20)); });
+      neon(c, elipse(300, 540, 18, 18), { fill: C.white, cor: C.white });
+      neon(c, elipse(300, 300, 74, 74), { lw: 13 });
+      letra(c, '?', 300, 300, 92, C.lime);
+    },
+    relogio(c) {                                     // relógio grande com uma chave de quarto pendurada
+      const X = 235, Y = 205, R = 190;
+      neon(c, elipse(X, Y, R, R), { lw: 15 });
+      for (let k = 0; k < 12; k++) {
+        const a = k * TAU / 12, r0 = k % 3 ? R - 36 : R - 54;
+        neon(c, P((q) => { q.moveTo(X + Math.sin(a) * r0, Y - Math.cos(a) * r0); q.lineTo(X + Math.sin(a) * (R - 20), Y - Math.cos(a) * (R - 20)); }), { fill: null, lw: k % 3 ? 7 : 12, glow: 12 });
+      }
+      neon(c, P((q) => { q.moveTo(X, Y); q.lineTo(X, Y - 128); }), { fill: null, lw: 13 });
+      neon(c, P((q) => { q.moveTo(X, Y); q.lineTo(X + Math.sin(TAU / 6) * 92, Y - Math.cos(TAU / 6) * 92); }), { fill: null, lw: 16 });
+      cheio(c, elipse(X, Y, 17, 17));
+      // o fio sai do relógio, passa por uma argola e segura a chave e a etiqueta
+      const hx = X + R * Math.cos(Math.PI / 4), hy = Y + R * Math.sin(Math.PI / 4);
+      neon(c, P((q) => { q.moveTo(hx, hy); q.quadraticCurveTo(hx + 40, hy + 10, 430, 392); }), { fill: null, lw: 7, glow: 10 });
+      neon(c, elipse(430, 404, 16, 16), { fill: null, lw: 9 });
+      neon(c, P((q) => { q.arc(430, 462, 38, 0, TAU); q.moveTo(430, 500); q.lineTo(430, 556); q.moveTo(430, 524); q.lineTo(458, 524); q.moveTo(430, 548); q.lineTo(452, 548); }), { lw: 11 });
+      cheio(c, elipse(430, 462, 13, 13), '#111816');
+      neon(c, P((q) => { q.moveTo(444, 412); q.lineTo(500, 430); }), { fill: null, lw: 7, glow: 10 });
+      c.save(); c.translate(530, 486); c.rotate(0.2); neon(c, caixa(-42, -58, 84, 124, 20), { lw: 10 }); cheio(c, elipse(0, -36, 9, 9), '#111816'); c.restore();
+    },
+    familia(c) {                                     // cama de casal e berço lado a lado, com pessoas contando
+      neon(c, caixa(30, 300, 300, 90, 20));
+      neon(c, caixa(12, 378, 336, 96, 18));
+      cheio(c, caixa(12, 418, 336, 56, 16), rgba(C.lime, 0.3));
+      neon(c, caixa(56, 336, 104, 40, 14), { lw: 9 }); neon(c, caixa(198, 336, 104, 40, 14), { lw: 9 });
+      neon(c, P((q) => { q.moveTo(30, 474); q.lineTo(30, 520); q.moveTo(330, 474); q.lineTo(330, 520); }), { fill: null, lw: 11 });
+      neon(c, caixa(392, 330, 190, 140, 14), { lw: 11 });
+      for (let x = 420; x < 570; x += 27) neon(c, P((q) => { q.moveTo(x, 344); q.lineTo(x, 456); }), { fill: null, lw: 7, glow: 10 });
+      neon(c, P((q) => { q.moveTo(400, 470); q.lineTo(400, 520); q.moveTo(574, 470); q.lineTo(574, 520); }), { fill: null, lw: 11 });
+      const gente = [[60, 1.0], [150, 1.0], [235, 0.72], [305, 0.72], [375, 0.72], [470, 0.92]];
+      gente.forEach(([x, k], i) => {
+        const yb = 240, h = 150 * k;
+        neon(c, P((q) => { q.arc(x, yb - h + 30 * k, 28 * k, 0, TAU); q.moveTo(x - 44 * k, yb); q.quadraticCurveTo(x - 44 * k, yb - h * 0.52, x, yb - h * 0.52); q.quadraticCurveTo(x + 44 * k, yb - h * 0.52, x + 44 * k, yb); }), { fill: null, lw: 9, glow: 18 });
+        cheio(c, elipse(x, yb + 34, 20, 20)); setFont(c, TEXT, 24, 700, 'center'); c.fillStyle = C.ink; c.fillText(String(i + 1), x, yb + 43);
+      });
+    },
+  };
+  function capaV2(c) {
+    const cfg = EP.capa_v2 || {};
+    c.setTransform(1, 0, 0, 1, 0, 0);
+    background(c, 0);
+    if (cfg.tom) { c.save(); c.globalAlpha = 0.9; c.globalCompositeOperation = 'source-over'; const g = c.createLinearGradient(0, 0, 0, H); g.addColorStop(0, cfg.tom); g.addColorStop(1, '#050606'); c.fillStyle = g; c.globalAlpha = 0.85; c.fillRect(0, 0, W, H); c.restore();
+      c.fillStyle = 'rgba(255,255,255,0.05)'; for (let y = 0; y < H + 44; y += 44) for (let x = 0; x < W + 44; x += 44) { c.beginPath(); c.arc(x, y, 1.3, 0, TAU); c.fill(); } }
+    drawLogo(c, 540, 356, 220, Infinity, 0);         // a logo pequena no topo, como na capa de hoje
+    // o título: as mesmas linhas da capa de hoje, 15% menor
+    const marked = EP.titulo.some((s) => s.includes('*'));
+    const lines = EP.titulo.map((ln, i) => rich(ln, marked || i === 0 ? C.white : C.lime));
+    const title = fitRows(lines, { maxW: 860, maxH: 700, max: 150, pref: 96, lead: 1.1 });
+    const IH = 560, G1 = 56, G2 = 40, BASE = 1540;     // o título termina até y 1540 (a faixa de baixo do recorte fica livre)
+    const tb = blockOf(title), k = Math.min(0.85, (BASE - 430 - IH - G1 - CHIP.h - G2) / tb.h), size = title.size * k;
+    const total = IH + G1 + CHIP.h + G2 + tb.h * k;
+    const top = Math.max(430, 960 - total / 2);
+    // a ilustração, com uma luz lima suave atrás
+    c.save(); c.globalCompositeOperation = 'lighter'; glow(c, 540, top + IH / 2, 520, 0.10); c.restore();
+    c.save(); c.translate(240, top); ILUSTRA[cfg.ilustracao](c); c.restore();
+    // o selo com o número do episódio
+    const selo = upper(`Pelos olhos do hóspede · EP. ${String(cfg.ep).padStart(2, '0')}`);
+    setFont(c, TEXT, CHIP.size, 700, 'left', CHIP.ls);
+    const sw = c.measureText(selo).width - CHIP.ls + 46 + 28, sy = top + IH + G1;
+    rr(c, 540 - sw / 2, sy, sw, CHIP.h, CHIP.h / 2); c.fillStyle = C.card; c.fill(); c.strokeStyle = C.line; c.lineWidth = 2; c.stroke();
+    circle(c, 540 - sw / 2 + 28, sy + CHIP.h / 2, 7); c.fillStyle = C.lime; c.fill();
+    txt(c, selo, 540 - sw / 2 + 46, sy + CHIP.h / 2 + 0.36 * CHIP.size, { size: CHIP.size, weight: 700, color: C.soft, ls: CHIP.ls });
+    const ty = sy + CHIP.h + G2;
+    title.rows.forEach((row, i) => drawRow(c, row, 540, ty + tb.base[i] * k, size));
+    return { top, ilustracao: [top, top + IH], selo: [sy, sy + CHIP.h], titulo: [ty, ty + tb.h * k], size };
+  }
+
   // ---------------------------------------------------------------- caixas para a revisão de áreas seguras
   function boxes() {
     const out = [];
@@ -735,6 +847,7 @@
       boxes, roteiro: EP, T: () => ({ ...T, duration: DURATION }), voz: () => VZ,
       layout: () => ({ titulo: { size: L.title.size, linhas: L.title.rows.map(rowText) }, cabecalho: L.head.s, virada: { size: L.virada.size, linhas: L.virada.rows.map(rowText) }, fecho: [L.fs, ...L.fRows], carimbo: L.ss, duracao: DURATION }),
       capa: () => COVER,
+      capaV2: (c) => capaV2(c),
     };
     return reel;
   }

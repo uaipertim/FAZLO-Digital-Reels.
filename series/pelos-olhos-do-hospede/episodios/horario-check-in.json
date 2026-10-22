@@ -63,5 +63,10 @@
   "voz_excecoes": [],
   "voz_sem_next": [
     "card2"
-  ]
+  ],
+  "capa_v2": {
+    "ep": 8,
+    "ilustracao": "relogio",
+    "tom": "#140F1C"
+  }
 }
