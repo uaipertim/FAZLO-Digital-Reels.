@@ -50,7 +50,10 @@
     "card3",
     "carimbo",
     "virada",
-    "fecho",
-    "card2-2"
+    "fecho"
+  ],
+  "voz_excecoes": [
+    "titulo-2",
+    "card2-3"
   ]
 }

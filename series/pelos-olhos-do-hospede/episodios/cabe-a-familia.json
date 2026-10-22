@@ -41,7 +41,11 @@
     "fecho": "Manda pra pousada que é perfeita pra família!"
   },
   "voz_pausas": {
-    "titulo": 0.8
+    "titulo": 0.8,
+    "card2": [
+      0.43,
+      0.52
+    ]
   },
   "voz_manter": [
     "titulo-2",
@@ -50,5 +54,13 @@
     "carimbo",
     "virada",
     "fecho"
-  ]
+  ],
+  "voz_excecoes": [
+    "carimbo"
+  ],
+  "voz_criterios": {
+    "card2-2": {
+      "sobe_min": 0.15
+    }
+  }
 }

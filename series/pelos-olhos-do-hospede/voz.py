@@ -29,6 +29,7 @@ import json
 import os
 import re
 import subprocess
+import unicodedata
 import sys
 
 import numpy as np
@@ -185,16 +186,39 @@ def termina_bem(x, texto):
     return sem_corte and firme, {'queda_de_-15_ao_silencio_ms': round(queda_ms), 'nivel_35ms_antes_db': round(float(n35), 1), 'altura_final': None if razao is None else round(razao, 2)}
 
 
-def fim_ok(x, texto, modo):
-    """A conferência do final de uma parte. modo 'firme' (frase afirmativa): sem corte e a voz não sobe no fim;
-    modo 'corte' (pergunta): só sem corte (a voz deve subir). Devolve (ok, dados)."""
+FIM_VOGAL_MS = 55       # calibração do Willian (ep. 7 em diante): palavra que termina em vogal precisa de >= 55 ms
+FIM_OUTRA_MS = 35       # outras consoantes: a regra de corte (>= 35 ms de -15 dB ao silêncio)
+
+
+def ultima_letra(texto):
+    w = re.sub(r'[^A-Za-zÀ-ÿ]', '', texto.split()[-1]) if texto.split() else ''
+    return unicodedata.normalize('NFD', w[-1].lower())[0] if w else ''
+
+
+def fim_ok(x, texto, modo, m=None):
+    """A conferência do final de uma parte (do ep. 7 em diante, calibrada pelo ouvido do Willian):
+      - palavra final terminada em VOGAL: cai de -15 dB até o silêncio (-50 dB) em >= 55 ms (40 ms soou cortado;
+        59 e 63 ms soaram naturais);
+      - terminada em consoante PLOSIVA (p, t, k): pode cair direto, desde que seja pergunta e suba (a parada da
+        própria palavra, como em "WhatsApp?"); afirmativa segue a regra das outras consoantes;
+      - outras consoantes: >= 35 ms (a regra de corte de antes).
+    modo 'firme' (fecho afirmativo): além disso, a voz não sobe no fim. Devolve (ok, dados)."""
     _, d = termina_bem(x, texto)
-    sem_corte = d['queda_de_-15_ao_silencio_ms'] >= 35
+    q, u = d['queda_de_-15_ao_silencio_ms'], ultima_letra(texto)
+    pergunta = texto.rstrip().endswith('?')
+    if u in 'aeiou':
+        sem_corte, regra = q >= FIM_VOGAL_MS, f'vogal >= {FIM_VOGAL_MS} ms'
+    elif u in 'ptk' and pergunta:
+        sb = perguntas(texto, m, x) if m else []
+        sem_corte, regra = (q >= FIM_OUTRA_MS) or (bool(sb) and all(v is not None and v >= SOBE_MIN for v in sb)), 'plosiva (pergunta que sobe)'
+    else:
+        sem_corte, regra = q >= FIM_OUTRA_MS, f'consoante >= {FIM_OUTRA_MS} ms'
     firme = d['altura_final'] is None or d['altura_final'] <= 1.0
+    d = {**d, 'ultima_letra': u, 'regra': regra}
     return (sem_corte and (firme or modo == 'corte')), d
 
 
-def gerar_parte(texto, prev, nxt, destino, fim=None, manter=False):
+def gerar_parte(texto, prev, nxt, destino, fim=None, manter=False, excecao=False, sobe_min=SOBE_MIN):
     """Uma parte da fala. Com "?", confere a subida no fim; com `fim` ('firme' ou 'corte'), confere o final da parte
     (fim_ok). Se precisar, tenta outras sementes.
     manter=True (roteiro: "voz_manter"): a tomada aprovada que já existe com o mesmo texto fica, mesmo que o texto
@@ -202,17 +226,14 @@ def gerar_parte(texto, prev, nxt, destino, fim=None, manter=False):
     de uma fala sem gerar de novo as outras."""
     if os.path.exists(destino + '.json'):
         m = json.load(open(destino + '.json'))
-        if manter and m.get('texto_api') == api_texto(texto):        # tomada aprovada: fica (a conferência só avisa)
+        if (manter or excecao) and m.get('texto_api') == api_texto(texto) or m.get('base') == chave_base(texto, prev, nxt):
             x = decodifica(destino + '.mp3')
             sb = perguntas(texto, m, x)
-            ok = all(v is not None and v >= SOBE_MIN for v in sb) and (not fim or fim_ok(x, texto, fim)[0])
-            if not ok:
-                print(f'      {os.path.basename(destino)}: mantida (voz_manter), mas NÃO passa na conferência: {sb} {fim_ok(x, texto, fim or "corte")[1]}')
-            return False, m.get('semente', SEMENTE), sb
-        if m.get('base') == chave_base(texto, prev, nxt):
-            x = decodifica(destino + '.mp3')
-            sb = perguntas(texto, m, x)
-            if all(v is not None and v >= SOBE_MIN for v in sb) and (not fim or fim_ok(x, texto, fim)[0]):
+            ok = all(v is not None and v >= sobe_min for v in sb) and (not fim or fim_ok(x, texto, fim, m)[0])
+            if ok:
+                return False, m.get('semente', SEMENTE), sb
+            if excecao and m.get('texto_api') == api_texto(texto):   # roteiro: "voz_excecoes" (aprovada como está)
+                print(f'      {os.path.basename(destino)}: EXCEÇÃO aprovada (voz_excecoes), não passa na conferência: {sb} {fim_ok(x, texto, fim or "corte", m)[1]}')
                 return False, m.get('semente', SEMENTE), sb
             print(f'      {os.path.basename(destino)}: a tomada guardada não passa na conferência ({sb}, {fim_ok(x, texto, fim or "firme")[1]}): gerando de novo')
     melhor = None
@@ -222,7 +243,8 @@ def gerar_parte(texto, prev, nxt, destino, fim=None, manter=False):
         x = decodifica(destino + '.mp3')
         sb = perguntas(texto, m, x)
         nota = min([v if v is not None else -1 for v in sb] or [1])
-        bem, dados = fim_ok(x, texto, fim) if fim else (True, None)
+        nota = nota if nota >= sobe_min else min(nota, SOBE_MIN - 0.001)
+        bem, dados = fim_ok(x, texto, fim, m) if fim else (True, None)
         nota = nota if bem else -9
         print(f'      {os.path.basename(destino)}, tentativa {tent} (semente {sem}): perguntas {sb or "-"} · '
               f'final {"completo" if bem else "cortado ou suspenso"} {dados or ""}')
@@ -234,7 +256,7 @@ def gerar_parte(texto, prev, nxt, destino, fim=None, manter=False):
     gerar(texto, prev, nxt, destino, melhor[1])          # fica a melhor (avisa: nenhuma passou)
     m = json.load(open(destino + '.json'))
     x = decodifica(destino + '.mp3')
-    ULTIMA[os.path.basename(destino)] = {'tentativas': len(SEMENTES_PERGUNTA), 'final': fim_ok(x, texto, fim or 'firme')[1], 'sem_aprovada': True}
+    ULTIMA[os.path.basename(destino)] = {'tentativas': len(SEMENTES_PERGUNTA), 'final': fim_ok(x, texto, fim or 'firme', m)[1], 'sem_aprovada': True}
     print(f'      {os.path.basename(destino)}: NENHUMA tentativa passou; ficou a melhor (semente {melhor[1]})')
     return True, melhor[1], perguntas(texto, m, x)
 
@@ -278,7 +300,8 @@ def main(eid):
         # o silêncio entre as partes (≈ o que se mede): o do roteiro ("voz_pausas": {"titulo": 0.8}); na leitura longa,
         # 0,52 s quando a fala tem pergunta (faixa 0,45–0,6 s); nos eps. 1–6, 0,25 s
         alvo = (ep.get('voz_pausas') or {}).get(cena)
-        gap = alvo if alvo else (0.52 if longa and any(q.rstrip().endswith('?') for q in partes) else 0.25)
+        padrao = 0.52 if longa and any(q.rstrip().endswith('?') for q in partes) else 0.25
+        gaps = alvo if isinstance(alvo, list) else [alvo or padrao] * len(partes)   # um valor por emenda, se for lista
         juntas = []
         for k, texto in enumerate(partes):
             base = os.path.join(dir_, cena if len(partes) == 1 else f'{cena}-{k + 1}')
@@ -289,19 +312,23 @@ def main(eid):
                 fim = 'firme' if (cena == 'fecho' and not pergunta) else 'corte'   # o fecho afirmativo também não pode subir
             else:                                       # eps. 1–6: só o fecho afirmativo
                 fim = 'firme' if (cena == 'fecho' and not pergunta) else None
-            nv, sem, sb = gerar_parte(texto, prev, nxt, base, fim=fim, manter=os.path.basename(base) in ep.get('voz_manter', []))
+            nome = os.path.basename(base)
+            nv, sem, sb = gerar_parte(texto, prev, nxt, base, fim=fim, manter=nome in ep.get('voz_manter', []),
+                                      excecao=nome in ep.get('voz_excecoes', []),
+                                      sobe_min=(ep.get('voz_criterios') or {}).get(nome, {}).get('sobe_min', SOBE_MIN))
             novo |= nv
             x = decodifica(base + '.mp3')
             ini, fim = fronteiras(x)
             meta = json.load(open(base + '.json'))
             info.append({'texto': texto, 'arquivo': os.path.basename(base) + '.mp3', 'semente': sem, 'sobe': sb,
-                         'final': fim_ok(x, texto, fim or 'firme')[1]})
+                         'final': fim_ok(x, texto, fim or 'corte', meta)[1]})
             if len(partes) == 1:
                 sinais, pal = [x], palavras(meta, ini)
                 cena_ini, cena_fim = ini, fim
             else:                                      # emenda: cada parte aparada, 0,25 s entre elas (ou a pausa do roteiro)
                 a, b = max(0, int((ini - 0.03) * SR)), int((fim + 0.06) * SR)
                 if k:
+                    gap = gaps[k - 1]
                     sinais.append(np.zeros(int(gap * SR)))
                     t += gap
                     juntas.append(sum(len(z) for z in sinais))      # onde começa a parte k (para medir a pausa)
@@ -318,7 +345,7 @@ def main(eid):
             e = envelope(y)
             quieto = e < e.max() * 10 ** (-38 / 20)
             pausas = []
-            for j in juntas:
+            for j, gap in zip(juntas, gaps):
                 a_ = b_ = j - int(gap * SR) // 2                # do meio do silêncio inserido para os dois lados
                 while a_ > 0 and quieto[a_ - 1]:
                     a_ -= 1

@@ -33,7 +33,9 @@
      "final": {
       "queda_de_-15_ao_silencio_ms": 230,
       "nivel_35ms_antes_db": -24.9,
-      "altura_final": 0.66
+      "altura_final": 0.66,
+      "ultima_letra": "o",
+      "regra": "vogal >= 55 ms"
      }
     },
     {
@@ -44,7 +46,9 @@
      "final": {
       "queda_de_-15_ao_silencio_ms": 51,
       "nivel_35ms_antes_db": -20.3,
-      "altura_final": 1.46
+      "altura_final": 1.46,
+      "ultima_letra": "u",
+      "regra": "vogal >= 55 ms"
      }
     }
    ],
@@ -91,7 +95,9 @@
      "final": {
       "queda_de_-15_ao_silencio_ms": 173,
       "nivel_35ms_antes_db": -33.6,
-      "altura_final": 0.61
+      "altura_final": 0.61,
+      "ultima_letra": "r",
+      "regra": "consoante >= 35 ms"
      }
     }
    ],
@@ -152,7 +158,9 @@
      "final": {
       "queda_de_-15_ao_silencio_ms": 137,
       "nivel_35ms_antes_db": -27.8,
-      "altura_final": 1.35
+      "altura_final": 1.35,
+      "ultima_letra": "t",
+      "regra": "plosiva (pergunta que sobe)"
      }
     },
     {
@@ -165,7 +173,9 @@
      "final": {
       "queda_de_-15_ao_silencio_ms": 0,
       "nivel_35ms_antes_db": -7.3,
-      "altura_final": 0.96
+      "altura_final": 0.96,
+      "ultima_letra": "p",
+      "regra": "plosiva (pergunta que sobe)"
      }
     },
     {
@@ -178,7 +188,9 @@
      "final": {
       "queda_de_-15_ao_silencio_ms": 43,
       "nivel_35ms_antes_db": -21.1,
-      "altura_final": 1.48
+      "altura_final": 1.48,
+      "ultima_letra": "a",
+      "regra": "vogal >= 55 ms"
      }
     }
    ],
@@ -233,7 +245,9 @@
      "final": {
       "queda_de_-15_ao_silencio_ms": 225,
       "nivel_35ms_antes_db": -30.2,
-      "altura_final": 1.01
+      "altura_final": 1.01,
+      "ultima_letra": "r",
+      "regra": "consoante >= 35 ms"
      }
     }
    ],
@@ -280,7 +294,9 @@
      "final": {
       "queda_de_-15_ao_silencio_ms": 134,
       "nivel_35ms_antes_db": -23.6,
-      "altura_final": null
+      "altura_final": null,
+      "ultima_letra": "e",
+      "regra": "vogal >= 55 ms"
      }
     }
    ],
@@ -335,7 +351,9 @@
      "final": {
       "queda_de_-15_ao_silencio_ms": 286,
       "nivel_35ms_antes_db": -25.0,
-      "altura_final": 0.67
+      "altura_final": 0.67,
+      "ultima_letra": "a",
+      "regra": "vogal >= 55 ms"
      }
     }
    ],
@@ -414,7 +432,9 @@
      "final": {
       "queda_de_-15_ao_silencio_ms": 207,
       "nivel_35ms_antes_db": -20.3,
-      "altura_final": 0.77
+      "altura_final": 0.77,
+      "ultima_letra": "o",
+      "regra": "vogal >= 55 ms"
      }
     }
    ],

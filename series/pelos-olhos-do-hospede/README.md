@@ -86,6 +86,11 @@ Sai com erro se a revisão técnica ou as áreas seguras falharem.
   - "direct" fica "direct": foi a grafia escolhida nas amostras de 16/10.
 - **Final de frase:** do ep. 7 em diante, o `voz.py` confere o final de **toda fala e de toda parte** (nos eps. 1–6, só o do fecho). Se falhar, tenta outras sementes:
   - **corte** (vale para todas as falas e partes) é o final cair até o silêncio (−50 dB) em menos de 35 ms começando acima de −15 dB (relativo ao pico da fala); quedas que começam em −20 dB ou abaixo são fim natural (calibração ouvida pelo Willian: um fecho cortado caía de −8,7 dB ao silêncio em 32 ms; finais de 37–57 ms a partir de nível mais baixo soaram normais; regra em uso a partir do ep. 7);
+  - **calibração pelo ouvido do Willian (ep. 7 em diante)**, conforme a última letra da fala ou parte:
+    - termina em **vogal**: o final precisa cair de −15 dB até o silêncio em **≥ 55 ms** (40 ms soou cortado; 59 e 63 ms soaram naturais);
+    - termina em **consoante plosiva (p, t, k)**: pode cair direto, desde que seja pergunta e suba ≥ 10% (a parada da própria palavra, como em "WhatsApp?");
+    - outras consoantes: ≥ 35 ms;
+  - **tomadas mantidas** (`voz_manter`) também passam por essa conferência: se uma falhar, é gerada de novo.
   - a altura da voz não pode subir no fim;
   - depois da última palavra o vídeo tem pelo menos 0,4 s de respiro.
 - **Nenhum efeito por cima da voz:** o `audio.py` mede, em janelas de 50 ms com fala (300 Hz–4 kHz), quanto a voz fica acima dos efeitos. Onde ficar menos de 3 dB acima (ex.: a cauda de um toque no começo de uma fala), os efeitos abaixam só nesse trecho até a voz ficar 3 dB acima.
@@ -138,8 +143,10 @@ Os eps. 1–6 têm `"leitura": "curta"` no roteiro e continuam com os tempos aci
 ### Ajustes de voz no roteiro
 
 - **Pergunta dividida em partes** leva **0,45–0,6 s** de silêncio entre as partes (padrão 0,52 s na leitura longa; ~0,25 s nos eps. 1–6).
-- **`voz_pausas`**: o silêncio inserido entre as partes de uma fala, por cena (≈ o silêncio medido). Ex.: `{"titulo": 0.8}`. O `voz.json` registra a pausa medida em `pausas_entre_partes` e a queda do final de cada parte em `partes[].final`.
-- **`voz_manter`**: tomadas aprovadas que ficam como estão, mesmo que o texto vizinho (o contexto) mude ou que não passem numa conferência nova (o `voz.py` só avisa). Ex.: `["card2-1", "card2-2"]`. Serve para trocar só uma parte de uma fala sem gerar de novo as outras.
+- **`voz_pausas`**: o silêncio inserido entre as partes de uma fala, por cena (≈ o silêncio medido). Ex.: `{"titulo": 0.8}`, ou uma lista com um valor por emenda: `{"card2": [0.43, 0.52]}`. O `voz.json` registra a pausa medida em `pausas_entre_partes` e a queda do final de cada parte em `partes[].final`.
+- **`voz_manter`**: tomadas aprovadas que ficam como estão mesmo que o texto vizinho (o contexto) mude. Ex.: `["card2-1", "card2-2"]`. Serve para trocar só uma parte de uma fala sem gerar de novo as outras. Elas também passam pela conferência: se falharem, são geradas de novo.
+- **`voz_excecoes`**: tomadas que ficam como estão mesmo sem passar numa conferência, por decisão de quem ouviu (o `voz.py` avisa a cada rodada). Ex.: `["titulo-2"]`.
+- **`voz_criterios`**: critério mais exigente para uma parte. Ex.: `{"card2-2": {"sobe_min": 0.15}}` (a pergunta precisa subir 15%).
 
 **Voz** (`voz.py`, mesmo padrão de "Site não é luxo"):
 - Raquel - For Conversational (`GDzHdQOi6jjf8zaXhCYD`), `eleven_multilingual_v2`;
