@@ -29,13 +29,23 @@
      "semente": 7,
      "sobe": [
       0.445
-     ]
+     ],
+     "final": {
+      "queda_de_-15_ao_silencio_ms": 230,
+      "nivel_35ms_antes_db": -24.9,
+      "altura_final": 0.66
+     }
     },
     {
      "texto": "Ninguém explicou.",
      "arquivo": "titulo-2.mp3",
      "semente": 2026,
-     "sobe": []
+     "sobe": [],
+     "final": {
+      "queda_de_-15_ao_silencio_ms": 51,
+      "nivel_35ms_antes_db": -20.3,
+      "altura_final": 1.46
+     }
     }
    ],
    "palavras": [
@@ -77,7 +87,12 @@
      "texto": "No perfil, fotos lindas. E nenhum caminho pra reservar.",
      "arquivo": "card1.mp3",
      "semente": 2026,
-     "sobe": []
+     "sobe": [],
+     "final": {
+      "queda_de_-15_ao_silencio_ms": 173,
+      "nivel_35ms_antes_db": -33.6,
+      "altura_final": 0.61
+     }
     }
    ],
    "palavras": [
@@ -124,8 +139,8 @@
    "texto": "Manda direct? Chama no WhatsApp? Ou liga?",
    "arquivo": "card2.wav",
    "ini": 0.03,
-   "fim": 2.515,
-   "dur": 2.485,
+   "fim": 3.055,
+   "dur": 3.025,
    "partes": [
     {
      "texto": "Manda direct?",
@@ -133,7 +148,12 @@
      "semente": 2026,
      "sobe": [
       0.151
-     ]
+     ],
+     "final": {
+      "queda_de_-15_ao_silencio_ms": 4,
+      "nivel_35ms_antes_db": -15.9,
+      "altura_final": 0.75
+     }
     },
     {
      "texto": "Chama no WhatsApp?",
@@ -141,7 +161,12 @@
      "semente": 7,
      "sobe": [
       0.218
-     ]
+     ],
+     "final": {
+      "queda_de_-15_ao_silencio_ms": 0,
+      "nivel_35ms_antes_db": -14.9,
+      "altura_final": 1.08
+     }
     },
     {
      "texto": "Ou liga?",
@@ -149,7 +174,12 @@
      "semente": 7,
      "sobe": [
       0.919
-     ]
+     ],
+     "final": {
+      "queda_de_-15_ao_silencio_ms": 0,
+      "nivel_35ms_antes_db": -10.5,
+      "altura_final": 1.4
+     }
     }
    ],
    "palavras": [
@@ -163,28 +193,28 @@
     ],
     [
      "chama",
-     0.932
+     1.202
     ],
     [
      "no",
-     1.211
+     1.481
     ],
     [
      "whatsapp",
-     1.28
+     1.55
     ],
     [
      "ou",
-     2.171
+     2.711
     ],
     [
      "liga",
-     2.322
+     2.862
     ]
    ],
    "pausas_entre_partes": [
-    0.24,
-    0.24
+    0.51,
+    0.51
    ]
   },
   {
@@ -199,7 +229,12 @@
      "texto": "Ele não sabia por onde começar.",
      "arquivo": "card3.mp3",
      "semente": 2026,
-     "sobe": []
+     "sobe": [],
+     "final": {
+      "queda_de_-15_ao_silencio_ms": 225,
+      "nivel_35ms_antes_db": -30.2,
+      "altura_final": 1.01
+     }
     }
    ],
    "palavras": [
@@ -241,7 +276,12 @@
      "texto": "E quem não sabe por onde começar… desiste.",
      "arquivo": "carimbo.mp3",
      "semente": 2026,
-     "sobe": []
+     "sobe": [],
+     "final": {
+      "queda_de_-15_ao_silencio_ms": 134,
+      "nivel_35ms_antes_db": -23.6,
+      "altura_final": null
+     }
     }
    ],
    "palavras": [
@@ -291,7 +331,12 @@
      "texto": "No site, um caminho só: escolhe as datas, consulta, e a mensagem chega pronta.",
      "arquivo": "virada.mp3",
      "semente": 2026,
-     "sobe": []
+     "sobe": [],
+     "final": {
+      "queda_de_-15_ao_silencio_ms": 286,
+      "nivel_35ms_antes_db": -25.0,
+      "altura_final": 0.67
+     }
     }
    ],
    "palavras": [
@@ -365,7 +410,12 @@
      "texto": "Manda pra pousada que ainda reserva no improviso.",
      "arquivo": "fecho.mp3",
      "semente": 2026,
-     "sobe": []
+     "sobe": [],
+     "final": {
+      "queda_de_-15_ao_silencio_ms": 207,
+      "nivel_35ms_antes_db": -20.3,
+      "altura_final": 0.77
+     }
     }
    ],
    "palavras": [
@@ -404,5 +454,5 @@
    ]
   }
  ],
- "fala_total": 20.86
+ "fala_total": 21.4
 }

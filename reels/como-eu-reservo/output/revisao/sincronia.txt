@@ -1,15 +1,15 @@
 COMO-EU-RESERVO — sincronização som x imagem
 
 OK     áudio do MP4 = trilha, sem deslocamento (+0.0, +0.0, +0.0 ms)
-OK     4 efeitos-chave com ataque no instante do evento (desvio médio 4.8 ms, máximo 5.8 ms; 1 quadro = 16,7 ms)
+OK     4 efeitos-chave com ataque no instante do evento (desvio médio 4.7 ms, máximo 5.8 ms; 1 quadro = 16,7 ms)
 OK     a imagem reage em 4/4 golpes principais (pico de movimento a ≤ 8 quadros do som)
 
 Evento a evento (instante do evento visual, desvio medido):
-           2.829 s  ping        áudio   -5.8 ms
-           6.915 s  ping        áudio   -4.3 ms
-          10.154 s  ping        áudio   -5.8 ms
-          12.529 s  stamp       áudio   -3.3 ms
-           2.829 s  ping        imagem: movimento   2.6 (antes  0.1), pico a -3 quadro(s)
-           6.915 s  ping        imagem: movimento   2.2 (antes  0.0), pico a +6 quadro(s)
-          10.154 s  ping        imagem: movimento   2.9 (antes  0.0), pico a +5 quadro(s)
-          12.529 s  stamp       imagem: movimento  12.1 (antes  0.1), pico a -2 quadro(s)
+           3.389 s  ping        áudio   -5.8 ms
+           8.925 s  ping        áudio   -4.3 ms
+          14.200 s  ping        áudio   -4.3 ms
+          18.025 s  stamp       áudio   -4.3 ms
+           3.389 s  ping        imagem: movimento   3.0 (antes  0.1), pico a -3 quadro(s)
+           8.925 s  ping        imagem: movimento   2.2 (antes  0.0), pico a +6 quadro(s)
+          14.200 s  ping        imagem: movimento   2.9 (antes  0.0), pico a +5 quadro(s)
+          18.025 s  stamp       imagem: movimento  12.2 (antes  0.0), pico a -3 quadro(s)
