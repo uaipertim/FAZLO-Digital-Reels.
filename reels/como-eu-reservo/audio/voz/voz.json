@@ -20,8 +20,8 @@
    "texto": "Como eu reservo? Ninguém explicou.",
    "arquivo": "titulo.wav",
    "ini": 0.03,
-   "fim": 2.059,
-   "dur": 2.029,
+   "fim": 2.619,
+   "dur": 2.589,
    "partes": [
     {
      "texto": "Como eu reservo?",
@@ -53,14 +53,17 @@
     ],
     [
      "ninguém",
-     1.325
+     1.885
     ],
     [
      "explicou",
-     1.627
+     2.187
     ]
    ],
-   "marca": 1.325
+   "pausas_entre_partes": [
+    0.805
+   ],
+   "marca": 1.885
   },
   {
    "cena": "card1",
@@ -118,11 +121,11 @@
   },
   {
    "cena": "card2",
-   "texto": "Manda direct? Chama no WhatsApp? Liga?",
+   "texto": "Manda direct? Chama no WhatsApp? Ou liga?",
    "arquivo": "card2.wav",
    "ini": 0.03,
-   "fim": 2.469,
-   "dur": 2.439,
+   "fim": 2.515,
+   "dur": 2.485,
    "partes": [
     {
      "texto": "Manda direct?",
@@ -141,11 +144,11 @@
      ]
     },
     {
-     "texto": "Liga?",
+     "texto": "Ou liga?",
      "arquivo": "card2-3.mp3",
-     "semente": 2026,
+     "semente": 7,
      "sobe": [
-      0.361
+      0.919
      ]
     }
    ],
@@ -171,9 +174,17 @@
      1.28
     ],
     [
-     "liga",
+     "ou",
      2.171
+    ],
+    [
+     "liga",
+     2.322
     ]
+   ],
+   "pausas_entre_partes": [
+    0.24,
+    0.24
    ]
   },
   {
@@ -393,5 +404,5 @@
    ]
   }
  ],
- "fala_total": 20.26
+ "fala_total": 20.86
 }
