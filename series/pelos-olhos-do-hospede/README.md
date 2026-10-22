@@ -22,7 +22,7 @@ A estrutura (título-dor → cards → carimbo → virada → "Manda pra quem…
 | Aceita pet? | "Aceita pet? / Ele não quis arriscar." | 25,0 s | [`reels/aceita-pet/`](../../reels/aceita-pet) | com voz · aguardando aprovação · qui 22/10, 9h30 |
 | Como eu reservo? | "Como eu reservo? / Ninguém explicou." | 41,5 s | [`reels/como-eu-reservo/`](../../reels/como-eu-reservo) | com voz · aguardando aprovação · sex 23/10, 9h30 |
 | Que horas é o check-in? | "Que horas é o check-in? / Ele chegou e esperou!" | 38,6 s | [`reels/horario-check-in/`](../../reels/horario-check-in) | com voz · aguardando aprovação · sáb 24/10, 9h30 |
-| Cabe a família toda? | "Cabe a família toda? / Ele não teve certeza." | 38,9 s | [`reels/cabe-a-familia/`](../../reels/cabe-a-familia) | com voz · aguardando aprovação · dom 25/10, 9h30 |
+| Cabe a família toda? | "Cabe a família toda? / Ele não teve certeza." | 36,9 s | [`reels/cabe-a-familia/`](../../reels/cabe-a-familia) | com voz · aguardando aprovação · dom 25/10, 9h30 |
 
 As versões curtas sem voz ficam em `reels/<id>/output/fazlo-digital-<id>-curto.mp4`.
 

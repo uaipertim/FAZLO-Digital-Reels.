@@ -3,15 +3,15 @@ output/fazlo-digital-cabe-a-familia.mp4
 
 OK     vídeo h264 High yuv420p
 OK     resolução 1080x1920 (9:16)
-OK     60 fps, 2332 quadros
-OK     duração do vídeo 38.867 s (alvo 25–42.05 s)
-OK     arquivo 13.9 MB, 2.9 Mb/s
+OK     60 fps, 2212 quadros
+OK     duração do vídeo 36.867 s (alvo 25–42.05 s)
+OK     arquivo 13.3 MB, 2.9 Mb/s
 OK     faixa de áudio presente
-OK     áudio aac 48000 Hz, 2 canais, 252 kb/s
+OK     áudio aac 48000 Hz, 2 canais, 253 kb/s
 OK     vídeo e áudio com a mesma duração (Δ 1 ms)
 OK     loudness integrado -13.8 LUFS (alvo -14)
-OK     pico real -3.2 dBTP (limite -1)
-       faixa de loudness (LRA) 6.9 LU
+OK     pico real -3.3 dBTP (limite -1)
+       faixa de loudness (LRA) 5.8 LU
 OK     sem trechos pretos ≥ 0,1 s
 OK     sem imagem congelada ≥ 0,75 s
 OK     o 1º quadro já tem imagem (luminância média 22.0), sem abertura preta
@@ -21,7 +21,7 @@ OK     capa: conteúdo dentro do recorte 3:4 (y 240–1680)
 
 Sincronização (detalhes em sincronia.txt):
 OK     áudio do MP4 = trilha, sem deslocamento (+0.0, +0.0, +0.0 ms)
-OK     4 efeitos-chave com ataque no instante do evento (desvio médio 4.3 ms, máximo 4.8 ms; 1 quadro = 16,7 ms)
+OK     4 efeitos-chave com ataque no instante do evento (desvio médio 3.7 ms, máximo 4.8 ms; 1 quadro = 16,7 ms)
 OK     a imagem reage em 4/4 golpes principais (pico de movimento a ≤ 8 quadros do som)
 
 RESULTADO: aprovado

@@ -14,16 +14,16 @@ OK     card 2                   t=19.68 s   x   78–942   y  870–1078
 OK     card 3                   t=19.68 s   x   78–942   y 1086–1294
 OK     carimbo                  t=20.43 s   x  242–788   y  917–1067
 OK     virada 1                 t=29.32 s   x   91–959   y  714–776
-OK     virada 1 (no fecho)      t=34.81 s   x   91–959   y  616–678
+OK     virada 1 (no fecho)      t=32.81 s   x   91–959   y  616–678
 OK     virada 2                 t=29.32 s   x   84–966   y  801–863
-OK     virada 2 (no fecho)      t=34.81 s   x   84–966   y  703–765
+OK     virada 2 (no fecho)      t=32.81 s   x   84–966   y  703–765
 OK     virada 3                 t=29.32 s   x  191–859   y  888–950
-OK     virada 3 (no fecho)      t=34.81 s   x  191–859   y  790–852
+OK     virada 3 (no fecho)      t=32.81 s   x  191–859   y  790–852
 OK     virada 4                 t=29.32 s   x  323–727   y  975–1037
-OK     virada 4 (no fecho)      t=34.81 s   x  323–727   y  877–939
-OK     fecho 1                  t=34.81 s   x  191–859   y 1013–1066
-OK     fecho 2                  t=34.81 s   x  230–820   y 1081–1135
-OK     logo sozinha             t=38.82 s   x  245–805   y  873–1047
+OK     virada 4 (no fecho)      t=32.81 s   x  323–727   y  877–939
+OK     fecho 1                  t=32.81 s   x  191–859   y 1013–1066
+OK     fecho 2                  t=32.81 s   x  230–820   y 1081–1135
+OK     logo sozinha             t=36.82 s   x  245–805   y  873–1047
 
 OK     capa: bloco (chip + título) em y 730–1190, centro em y = 960.0 (recorte 3:4: 960)
 
@@ -54,7 +54,7 @@ Layout calculado:
   "é perfeita pra família!"
  ],
  "carimbo": 46,
- "duracao": 38.86666666666667
+ "duracao": 36.86666666666667
 }
 
 RESULTADO: aprovado
