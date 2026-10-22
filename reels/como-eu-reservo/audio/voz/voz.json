@@ -138,47 +138,47 @@
    "cena": "card2",
    "texto": "Manda direct? Chama no WhatsApp? Ou liga?",
    "arquivo": "card2.wav",
-   "ini": 0.03,
-   "fim": 3.055,
-   "dur": 3.025,
+   "ini": 0.02,
+   "fim": 3.142,
+   "dur": 3.122,
    "partes": [
     {
      "texto": "Manda direct?",
      "arquivo": "card2-1.mp3",
-     "semente": 2026,
+     "semente": 42,
      "sobe": [
-      0.151
+      0.466
      ],
      "final": {
-      "queda_de_-15_ao_silencio_ms": 4,
-      "nivel_35ms_antes_db": -15.9,
-      "altura_final": 0.75
+      "queda_de_-15_ao_silencio_ms": 137,
+      "nivel_35ms_antes_db": -27.8,
+      "altura_final": 1.35
      }
     },
     {
      "texto": "Chama no WhatsApp?",
      "arquivo": "card2-2.mp3",
-     "semente": 7,
+     "semente": 1414,
      "sobe": [
-      0.218
+      0.257
      ],
      "final": {
       "queda_de_-15_ao_silencio_ms": 0,
-      "nivel_35ms_antes_db": -14.9,
-      "altura_final": 1.08
+      "nivel_35ms_antes_db": -7.3,
+      "altura_final": 0.96
      }
     },
     {
      "texto": "Ou liga?",
      "arquivo": "card2-3.mp3",
-     "semente": 7,
+     "semente": 23,
      "sobe": [
-      0.919
+      0.547
      ],
      "final": {
-      "queda_de_-15_ao_silencio_ms": 0,
-      "nivel_35ms_antes_db": -10.5,
-      "altura_final": 1.4
+      "queda_de_-15_ao_silencio_ms": 43,
+      "nivel_35ms_antes_db": -21.1,
+      "altura_final": 1.48
      }
     }
    ],
@@ -189,27 +189,27 @@
     ],
     [
      "direct",
-     0.209
+     0.247
     ],
     [
      "chama",
-     1.202
+     1.23
     ],
     [
      "no",
-     1.481
+     1.497
     ],
     [
      "whatsapp",
-     1.55
+     1.567
     ],
     [
      "ou",
-     2.711
+     2.739
     ],
     [
      "liga",
-     2.862
+     2.89
     ]
    ],
    "pausas_entre_partes": [
@@ -454,5 +454,5 @@
    ]
   }
  ],
- "fala_total": 21.4
+ "fala_total": 21.5
 }
