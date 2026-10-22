@@ -253,6 +253,12 @@
     min: 25,             // abaixo disso, a diferença vai para os respiros (os cards ficam mais tempo)
   };
   let VZ = null;         // durações das falas (reels/<id>/audio/voz/voz.json)
+  // LEITURA LONGA (padrão a partir do ep. 7; os eps. 1–6 têm "leitura": "curta" no roteiro e ficam como eram):
+  // cada card fica >= 2,0 s inteiro e parado depois da sua fala; o carimbo >= 1,5 s parado; a virada >= 2,5 s inteira
+  // depois da fala; "Manda pra…" >= 3,0 s parado depois da fala; e a logo sozinha, centralizada e parada >= 3,0 s até
+  // o fim. O texto dos cards cresce até 10% quando isso não quebra mais linhas. Limite do episódio: 38 s.
+  const LEIT = { card: 2.0, carimbo: 1.5, virada: 2.5, fecho: 3.0, logo: 3.0, logoW: 560, texto: 1.10 };
+  let LONGA = false;
 
   function measureCard(c) {
     const k = { ...c };
@@ -272,8 +278,15 @@
       if (one.length === 1) { size = z; rows = one; }
     }
     while (rows.length > 2 && size > 38) { size -= 2; rows = wrap(s, TEXT, size, 600, -0.01 * size, maxW); }
+    if (LONGA) {                                     // até +10%, sem quebrar mais linhas
+      for (let z = Math.floor(size * LEIT.texto); z > size; z -= 1) {
+        const r = wrap(s, TEXT, z, 600, -0.01 * z, maxW);
+        if (r.length <= rows.length) { size = z; rows = r; break; }
+      }
+    }
     k.size = size; k.rows = rows; k.w = CARD.w;
-    k.h = (k.kind === 'rotulo' ? 176 : 124) + (rows.length - 1) * CARD.lh;
+    k.lh = Math.round(CARD.lh * Math.max(1, size / CARD.text));
+    k.h = (k.kind === 'rotulo' ? 176 : 124) + (rows.length - 1) * k.lh;
     k.chars = s.length + (c.rotulo ? c.rotulo.length : 0);
     return k;
   }
@@ -309,7 +322,7 @@
     while (fRows.length > 2 && fs > 42) { fs -= 1; fRows = balance(fechoS, TEXT, fs, FECHO.weight, -0.01 * fs, FECHO.maxW); }
     const fH = 0.73 * fs + (fRows.length - 1) * fs * FECHO.lead + 0.24 * fs;
     const lh = logoH(LOCK.w);
-    const total = vb.h + FECHO.gap + fH + LOCK.before + lh;
+    const total = vb.h + FECHO.gap + fH + (LONGA ? 0 : LOCK.before + lh);
     let fTop = VIRADA.cy - total / 2;
     fTop -= Math.max(0, fTop + total - 1440);
     const fin = { vTop0: VIRADA.cy - vb.h / 2, vTop: fTop, fTop: fTop + vb.h + FECHO.gap, logoCy: fTop + total - lh / 2 };
@@ -346,15 +359,25 @@
       const r = V.resp + extra, t = { knock: VZ.titulo.marca ?? 0.7, cards: [], voz: { titulo: 0 } };
       t.rise = d('titulo') + V.head;
       let x = t.rise + 0.45;
-      cards.forEach((_, k) => { t.cards.push(x); t.voz[`card${k + 1}`] = x + V.entra; x = x + V.entra + d(`card${k + 1}`) + r; });
+      cards.forEach((_, k) => { t.cards.push(x); t.voz[`card${k + 1}`] = x + V.entra; x = x + V.entra + d(`card${k + 1}`) + (LONGA ? Math.max(r, LEIT.card) : r); });
       t.cut = x;
       t.stamp = x + CUT;
       t.voz.carimbo = t.stamp + 0.15;
-      t.exit = Math.max(t.stamp + 1.6, t.voz.carimbo + d('carimbo') + r);
+      t.exit = LONGA ? Math.max(t.stamp + 0.4 + LEIT.carimbo, t.voz.carimbo + d('carimbo') + LEIT.carimbo)   // 0,4 s: o tremor do baque
+        : Math.max(t.stamp + 1.6, t.voz.carimbo + d('carimbo') + r);
       t.virada = t.exit + 0.35;
       t.voz.virada = t.virada + V.virada;
-      t.fecho = t.voz.virada + d('virada') + r;
+      t.viradaFim = t.voz.virada + d('virada');
+      t.fecho = t.viradaFim + (LONGA ? LEIT.virada : r);
       t.voz.fecho = t.fecho + 0.2;
+      if (LONGA) {                                                     // o fecho parado; depois só a logo, parada até o fim
+        t.sai = t.voz.fecho + d('fecho') + LEIT.fecho;
+        t.logo = t.sai + 0.45;
+        t.logoPronta = t.logo + 0.85;
+        t.som = t.logo + 0.2;
+        t.end = t.logoPronta + LEIT.logo;
+        return t;
+      }
       t.logo = t.voz.fecho + V.logo;                                   // a logo se monta durante "Manda pra quem…"
       t.logoPronta = t.logo + 0.85;                                    // letras, barra e DIGITAL no lugar
       t.som = Math.max(t.logo + 0.2, t.voz.fecho + d('fecho') + 0.05);  // a assinatura sonora soa depois da fala
@@ -364,7 +387,7 @@
     let t = build(0);
     if (t.end < V.min) t = build((V.min - t.end) / (cards.length + 2));   // respiros: depois de cada card, do carimbo e da virada
     DURATION = Math.ceil(t.end * 60) / 60;
-    t.fade = DURATION - 0.3;
+    t.fade = LONGA ? DURATION : DURATION - 0.3;                         // na leitura longa a logo fica até o fim (sem fade)
     // a virada: as linhas antes da 1ª palavra lima entram juntas; dali em diante, cada palavra entra quando
     // a voz chega nela (procura em ordem; sem achar, entra logo depois da anterior)
     const norm = (w) => w.toLocaleLowerCase('pt-BR').replace(/[^a-zà-ú0-9]/g, '');
@@ -443,10 +466,10 @@
 
   // ---------------------------------------------------------------- cards
   const DRIFT = 50;                                 // a pilha sobe devagar até a saída: a cena nunca fica parada
-  const groupDrift = (t) => -(VZ ? 90 : DRIFT) * E.inOutSine(p(t, T.cards[0], T.exit));
+  const groupDrift = (t) => (LONGA ? 0 : -(VZ ? 90 : DRIFT) * E.inOutSine(p(t, T.cards[0], T.exit)));
   // com voz os cards ficam mais tempo: cada um flutua de leve (fase própria), já assentado
-  const floatY = (i, t) => (VZ ? 6 * Math.sin(TAU * (t - T.cards[i]) / 3.4 + i * 1.9) * p(t, T.cards[i] + 0.3, T.cards[i] + 1.0) : 0);
-  const floatR = (i, t) => (VZ ? 0.45 * DEG * Math.sin(TAU * (t - T.cards[i]) / 4.6 + i * 2.7) * p(t, T.cards[i] + 0.3, T.cards[i] + 1.0) : 0);
+  const floatY = (i, t) => (VZ && !LONGA ? 6 * Math.sin(TAU * (t - T.cards[i]) / 3.4 + i * 1.9) * p(t, T.cards[i] + 0.3, T.cards[i] + 1.0) : 0);
+  const floatR = (i, t) => (VZ && !LONGA ? 0.45 * DEG * Math.sin(TAU * (t - T.cards[i]) / 4.6 + i * 2.7) * p(t, T.cards[i] + 0.3, T.cards[i] + 1.0) : 0);
   // o card da vez: contorno lima enquanto a sua fala soa
   function falando(i, t) {
     if (!VZ) return 0;
@@ -476,10 +499,10 @@
       txt(c, k.chipS, x + 72, h / 2 + 0.36 * CARD.chip, { size: CARD.chip, weight: 700, color: C.white, ls: 3 });
     } else if (k.kind === 'rotulo') {
       txt(c, upper(smart(k.rotulo)), x + 70, 58, { size: CARD.label, weight: 700, color: C.muted, ls: 3 });
-      k.rows.forEach((s, j) => txt(c, s, x + 40, 134 + j * CARD.lh, { size: k.size, weight: 600, color: C.white, ls: -0.01 * k.size }));
+      k.rows.forEach((s, j) => txt(c, s, x + 40, 134 + j * k.lh, { size: k.size, weight: 600, color: C.white, ls: -0.01 * k.size }));
     } else {
-      const b0 = h / 2 - (k.rows.length - 1) * CARD.lh / 2 + 0.36 * k.size;
-      k.rows.forEach((s, j) => txt(c, s, x + 76, b0 + j * CARD.lh, { size: k.size, weight: 600, color: C.white, ls: -0.01 * k.size }));
+      const b0 = h / 2 - (k.rows.length - 1) * k.lh / 2 + 0.36 * k.size;
+      k.rows.forEach((s, j) => txt(c, s, x + 76, b0 + j * k.lh, { size: k.size, weight: 600, color: C.white, ls: -0.01 * k.size }));
     }
     if (dim > 0.005) { rr(c, x, 0, w, h, r); c.fillStyle = rgba(C.bg, dim); c.fill(); }
   }
@@ -552,9 +575,12 @@
     const { virada, vb, fin, fRows } = L;
     const up = E.inOutCubic(p(t, T.fecho, T.fecho + 0.5));
     const vTop = lerp(fin.vTop0, fin.vTop, up);
-    const drift = VZ ? 1 + 0.06 * p(t, T.virada, T.fecho) - 0.02 * E.inOutSine(p(t, T.fecho, DURATION))
-      : 1 + 0.025 * E.inOutSine(p(t, T.virada + 0.3, DURATION));
-    c.save(); c.translate(CX, 960); c.scale(drift, drift); c.translate(-CX, -960);
+    const drift = viradaZoom(t);
+    const sai = LONGA ? E.inCubic(p(t, T.sai, T.sai + 0.4)) : 0;         // a virada e o fecho saem; depois, só a logo
+    if (LONGA && t >= T.logo) logoSozinha(c, t);
+    if (sai >= 1) return;
+    c.save(); c.globalAlpha *= 1 - sai; c.translate(0, -70 * sai);
+    c.translate(CX, 960); c.scale(drift, drift); c.translate(-CX, -960);
     virada.rows.forEach((row, i) => {
       if (T.viradaWords) riseWords(c, row, CX, vTop + vb.base[i], virada.size, T.viradaWords[i].map((t0) => p(t, t0, t0 + 0.36)));
       else riseRow(c, row, CX, vTop + vb.base[i], virada.size, p(t, T.virada + i * 0.08, T.virada + i * 0.08 + 0.36));
@@ -570,7 +596,7 @@
         txt(c, r, CX - w / 2, y + off, { size: s, weight: FECHO.weight, color: C.soft, ls });
         c.restore();
       });
-      if (t >= T.logo) {
+      if (t >= T.logo && !LONGA) {
         c.save(); c.globalCompositeOperation = 'lighter'; glow(c, CX, fin.logoCy, 300, 0.06 + 0.16 * kick(t, T.logo + 0.2, 0.6)); c.restore();
         drawLogo(c, CX, fin.logoCy, LOCK.w, t, T.logo);
       }
@@ -578,6 +604,14 @@
     c.restore();
   }
 
+  // a virada se aproxima 6% enquanto é falada (na leitura longa, para quando a fala termina)
+  const viradaZoom = (t) => (LONGA ? 1 + 0.06 * p(t, T.virada, T.viradaFim)
+    : VZ ? 1 + 0.06 * p(t, T.virada, T.fecho) - 0.02 * E.inOutSine(p(t, T.fecho, DURATION))
+      : 1 + 0.025 * E.inOutSine(p(t, T.virada + 0.3, DURATION)));
+  function logoSozinha(c, t) {                        // a logo oficial, sozinha e centralizada; pronta, não se mexe mais
+    c.save(); c.globalCompositeOperation = 'lighter'; glow(c, CX, 960, 420, 0.06 + 0.16 * kick(t, T.logo + 0.2, 0.6)); c.restore();
+    drawLogo(c, CX, 960, LEIT.logoW, t, T.logo);
+  }
   function shake(t) {
     const x = t - T.stamp;
     if (x < 0 || x > 0.4) return [0, 0];
@@ -596,7 +630,7 @@
     hook(c, t);
     closing(c, t);
     c.restore();
-    const f = E.inOutSine(p(t, T.fade, DURATION));
+    const f = LONGA ? 0 : E.inOutSine(p(t, T.fade, DURATION));
     if (f > 0) { c.fillStyle = `rgba(0,0,0,${f})`; c.fillRect(0, 0, W, H); }
   }
 
@@ -629,10 +663,9 @@
     L.cards.forEach((k, i) => out.push({ el: `card ${i + 1}`, t: tc, ...G(tc, CARD.x - 2, CARD.x + k.w + 2, tops[i] - fl, tops[i] + k.h + fl) }));
     const a = STAMP.rot * DEG, ex = (Math.abs(Math.cos(a)) * L.stampW + Math.abs(Math.sin(a)) * L.stampH) / 2, ey = (Math.abs(Math.sin(a)) * L.stampW + Math.abs(Math.cos(a)) * L.stampH) / 2;
     out.push({ el: 'carimbo', t: T.stamp + 0.5, ...G(T.stamp + 0.5, STAMP.cx - ex, STAMP.cx + ex, L.CY + 10 - ey, L.CY + 10 + ey) });
-    const dr = (t) => (VZ ? 1 + 0.06 * p(t, T.virada, T.fecho) - 0.02 * E.inOutSine(p(t, T.fecho, DURATION))
-      : 1 + 0.025 * E.inOutSine(p(t, T.virada + 0.3, DURATION)));
+    const dr = viradaZoom;
     const Dz = (t, x0, x1, y0, y1) => { const g = dr(t); return { t, x0: CX + (x0 - CX) * g, x1: CX + (x1 - CX) * g, y0: 960 + (y0 - 960) * g, y1: 960 + (y1 - 960) * g }; };
-    const tv = T.fecho - 0.1, tf = DURATION - 0.35, vs = L.virada.size;
+    const tv = T.fecho - 0.1, tf = LONGA ? T.sai - 0.05 : DURATION - 0.35, vs = L.virada.size;
     L.virada.rows.forEach((r, i) => {
       const w = rowW100(r) * vs / 100;
       out.push({ el: `virada ${i + 1}`, ...Dz(tv, CX - w / 2, CX + w / 2, L.fin.vTop0 + L.vb.base[i] - CAP * vs, L.fin.vTop0 + L.vb.base[i] + 0.06 * vs) });
@@ -643,6 +676,7 @@
       const w = tw(r, TEXT, fs, FECHO.weight, -0.01 * fs), b = L.fin.fTop + 0.73 * fs + i * fs * FECHO.lead;
       out.push({ el: `fecho ${i + 1}`, ...Dz(tf, CX - w / 2, CX + w / 2, b - 0.73 * fs, b + 0.24 * fs) });
     });
+    if (LONGA) { const lw = LEIT.logoW, lh2 = logoH(lw); out.push({ el: 'logo sozinha', t: DURATION - 0.05, x0: CX - lw / 2, x1: CX + lw / 2, y0: 960 - lh2 / 2, y1: 960 + lh2 / 2 }); return out; }
     const lh = logoH(LOCK.w);
     out.push({ el: 'logo', ...Dz(tf, CX - LOCK.w / 2, CX + LOCK.w / 2, L.fin.logoCy - lh / 2, L.fin.logoCy + lh / 2) });
     return out;
@@ -654,6 +688,7 @@
     if (x.status !== 200) throw new Error(`roteiro não encontrado: ${SERIE_BASE}/episodios/${id}.json`);
     EP = JSON.parse(x.responseText);
     VZ = null;
+    LONGA = !!EP.voz && EP.leitura !== 'curta';
     if (EP.voz) {
       const v = new XMLHttpRequest(); v.open('GET', `/reels/${id}/audio/voz/voz.json`, false); v.send();
       if (v.status !== 200) throw new Error(`o roteiro tem voz, mas falta reels/${id}/audio/voz/voz.json (rode o voz.py da série)`);

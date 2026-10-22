@@ -1,5 +1,6 @@
 {
   "id": "viu-a-piscina",
+  "leitura": "curta",
   "titulo": ["Ele viu a piscina.", "*Mas não viu o quarto.*"],
   "cards": [
     { "rotulo": "No perfil", "texto": "Piscina, café e pôr do sol." },

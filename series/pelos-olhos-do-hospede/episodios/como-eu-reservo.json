@@ -32,12 +32,21 @@
       [
         "Manda direct?",
         "Chama no WhatsApp?",
-        "Liga?"
+        "Ou liga?"
       ],
       "Ele não sabia por onde começar."
     ],
     "carimbo": "E quem não sabe por onde começar… desiste.",
     "virada": "No site, um caminho só: escolhe as datas, consulta, e a mensagem chega pronta.",
     "fecho": "Manda pra pousada que ainda reserva no improviso."
-  }
+  },
+  "voz_pausas": {
+    "titulo": 0.9
+  },
+  "voz_manter": [
+    "card1",
+    "card2-1",
+    "card2-2",
+    "card3"
+  ]
 }

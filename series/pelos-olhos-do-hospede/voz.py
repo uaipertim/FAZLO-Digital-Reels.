@@ -11,7 +11,8 @@ Série "Pelos olhos do hóspede" — a narração (ElevenLabs), uma fala por cen
 As falas saem do campo "voz" do roteiro (episodios/<id>.json): titulo, cards[], carimbo, virada,
 fecho. O texto na tela continua o do roteiro. Uma fala pode ser uma lista de partes (ex.: o título
 "Como chega aí?" + "Ele perguntou de novo!"): cada parte é uma chamada, e elas são emendadas com
-0,25 s de pausa. Em toda frase com "?", a entonação é conferida no áudio (a altura da voz precisa
+0,25 s de pausa (ou a pausa que o roteiro pedir em "voz_pausas", ex. {"titulo": 0.8}: o silêncio entre
+as partes). "voz_manter": ["card2-1", ...] mantém essas partes mesmo que a parte vizinha mude. Em toda frase com "?", a entonação é conferida no áudio (a altura da voz precisa
 subir no fim); se sair como afirmação, outras sementes são tentadas. A chave NÃO passa por aqui: no ambiente de nuvem ela
 fica nos Segredos de rede e o proxy injeta o cabeçalho xi-api-key; fora dele, exporte
 ELEVENLABS_API_KEY (nunca em arquivo).
@@ -184,11 +185,13 @@ def termina_bem(x, texto):
     return sem_corte and firme, {'queda_de_-15_ao_silencio_ms': round(queda_ms), 'nivel_35ms_antes_db': round(float(n35), 1), 'altura_final': None if razao is None else round(razao, 2)}
 
 
-def gerar_parte(texto, prev, nxt, destino, concluida=False):
-    """Uma parte da fala. Com "?", confere a subida no fim e, se precisar, tenta outras sementes."""
+def gerar_parte(texto, prev, nxt, destino, concluida=False, manter=False):
+    """Uma parte da fala. Com "?", confere a subida no fim e, se precisar, tenta outras sementes.
+    manter=True (roteiro: "voz_manter"): a tomada que já existe com o mesmo texto fica, mesmo que o texto vizinho
+    (o contexto) tenha mudado — para trocar só uma parte de uma fala sem gerar de novo as outras."""
     if os.path.exists(destino + '.json'):
         m = json.load(open(destino + '.json'))
-        if m.get('base') == chave_base(texto, prev, nxt):
+        if m.get('base') == chave_base(texto, prev, nxt) or (manter and m.get('texto_api') == api_texto(texto)):
             sb = perguntas(texto, m, decodifica(destino + '.mp3'))
             if all(v is not None and v >= SOBE_MIN for v in sb) and (not concluida or termina_bem(decodifica(destino + '.mp3'), texto)[0]):
                 return False, m.get('semente', SEMENTE), sb
@@ -251,11 +254,15 @@ def main(eid):
         partes = [fala] if isinstance(fala, str) else fala
         antes, depois = (junta(cs[i - 1][1]) if i else None), (junta(cs[i + 1][1]) if i + 1 < len(cs) else None)
         sinais, pal, info, novo, t = [], [], [], False, 0.0
+        alvo = (ep.get('voz_pausas') or {}).get(cena)                 # roteiro: "voz_pausas": {"titulo": 0.8} (s de silêncio)
+        gap = max(0.05, alvo - 0.09) if alvo else 0.25
+        juntas = []
         for k, texto in enumerate(partes):
             base = os.path.join(dir_, cena if len(partes) == 1 else f'{cena}-{k + 1}')
             prev = partes[k - 1] if k else antes
             nxt = partes[k + 1] if k + 1 < len(partes) else depois
-            nv, sem, sb = gerar_parte(texto, prev, nxt, base, concluida=(cena == 'fecho' and not texto.rstrip().endswith('?')))
+            nv, sem, sb = gerar_parte(texto, prev, nxt, base, concluida=(cena == 'fecho' and not texto.rstrip().endswith('?')),
+                                      manter=os.path.basename(base) in ep.get('voz_manter', []))
             novo |= nv
             x = decodifica(base + '.mp3')
             ini, fim = fronteiras(x)
@@ -264,11 +271,12 @@ def main(eid):
             if len(partes) == 1:
                 sinais, pal = [x], palavras(meta, ini)
                 cena_ini, cena_fim = ini, fim
-            else:                                      # emenda: cada parte aparada, 0,25 s entre elas
+            else:                                      # emenda: cada parte aparada, 0,25 s entre elas (ou a pausa do roteiro)
                 a, b = max(0, int((ini - 0.03) * SR)), int((fim + 0.06) * SR)
                 if k:
-                    sinais.append(np.zeros(int(0.25 * SR)))
-                    t += 0.25
+                    sinais.append(np.zeros(int(gap * SR)))
+                    t += gap
+                    juntas.append(sum(len(z) for z in sinais))      # onde começa a parte k (para medir a pausa)
                 pal += [[w, round(tw + t + (0.03 if k else 0), 3)] for w, tw in palavras(meta, ini)]
                 sinais.append(x[a:b])
                 t += (b - a) / SR - 0.03 if k == 0 else (b - a) / SR
@@ -278,16 +286,30 @@ def main(eid):
             wavfile.write(os.path.join(dir_, f'{cena}.wav'), SR, np.round(np.clip(y, -1, 1) * 32767).astype(np.int16))
             cena_ini, cena_fim = fronteiras(y)
             arq = f'{cena}.wav'
+            # a pausa medida: o silêncio (abaixo de -38 dB do pico) que atravessa cada emenda
+            e = envelope(y)
+            quieto = e < e.max() * 10 ** (-38 / 20)
+            pausas = []
+            for j in juntas:
+                a_ = b_ = j - int(gap * SR) // 2                # do meio do silêncio inserido para os dois lados
+                while a_ > 0 and quieto[a_ - 1]:
+                    a_ -= 1
+                while b_ < len(y) and quieto[b_]:
+                    b_ += 1
+                pausas.append(round((b_ - a_) / SR, 3))
         else:
             arq = f'{cena}.mp3'
         item = {'cena': cena, 'texto': junta(fala), 'arquivo': arq, 'ini': round(cena_ini, 3), 'fim': round(cena_fim, 3),
                 'dur': round(cena_fim - cena_ini, 3), 'partes': info, 'palavras': pal}
+        if len(partes) > 1:
+            item['pausas_entre_partes'] = pausas
         if cena == 'titulo':
             item['marca'] = marca_do_titulo(ep, pal)
         out['cenas'].append(item)
         perg = ' · '.join(f"pergunta {'sobe' if v is not None and v >= SOBE_MIN else 'NÃO sobe'} {v:+.0%}" if v is not None else 'pergunta: sem medida'
                           for p_ in info for v in p_['sobe'])
-        print(f"{'nova ' if novo else 'ok   '} {cena:8} {item['dur']:5.2f} s  \"{junta(fala)}\"" + (f'  [{perg}]' if perg else ''))
+        print(f"{'nova ' if novo else 'ok   '} {cena:8} {item['dur']:5.2f} s  \"{junta(fala)}\"" + (f'  [{perg}]' if perg else '')
+              + (f"  [pausas entre as partes: {', '.join(f'{v:.2f} s' for v in item['pausas_entre_partes'])}]" if len(partes) > 1 else ''))
     total = sum(c['dur'] for c in out['cenas'])
     out['fala_total'] = round(total, 2)
     json.dump(out, open(os.path.join(dir_, 'voz.json'), 'w'), ensure_ascii=False, indent=1)

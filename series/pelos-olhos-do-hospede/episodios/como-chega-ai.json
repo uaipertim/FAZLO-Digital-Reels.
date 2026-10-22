@@ -1,5 +1,6 @@
 {
   "id": "como-chega-ai",
+  "leitura": "curta",
   "titulo": ["Como chega aí?", "*Ele perguntou de novo!*"],
   "cards": [
     { "rotulo": "No direct", "texto": "Como chega aí? A estrada é boa?" },

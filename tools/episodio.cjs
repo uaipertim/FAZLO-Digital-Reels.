@@ -16,7 +16,8 @@
  *   4. confere as áreas seguras elemento a elemento
  *      (output/revisao/areas-seguras.txt; sai com erro se algo ficar de fora).
  *
- * Com voz, a duração vem das falas (25–30 s). Se passar de 30 s, o comando para antes do
+ * Com voz, a duração vem das falas (25–38 s com a leitura longa, padrão a partir do ep. 7; 25–30 s nos eps. 1–6,
+ * "leitura": "curta"). Se passar do limite, o comando para antes do
  * render e avisa: nada é acelerado nem cortado sem aprovação (--forcar renderiza assim mesmo).
  *
  * Opções: --steps audio,video,...  (só alguns passos do pipeline do item 3) · --forcar
@@ -37,6 +38,8 @@ const dir = path.join(ROOT, 'reels', id);
 const W = (rel, s) => { const f = path.join(dir, rel); fs.mkdirSync(path.dirname(f), { recursive: true }); fs.writeFileSync(f, s); };
 const titulo = ep.titulo.map((s) => s.replace(/\*/g, '')).join(' ');
 const comVoz = !!ep.voz;
+const longa = comVoz && ep.leitura !== 'curta';      // leitura longa (padrão a partir do ep. 7): até 38 s
+const LIMITE = longa ? 38 : 30;
 const run = (cmd, args) => {
   const r = spawnSync(cmd, args, { stdio: 'inherit', cwd: ROOT });
   if (r.status !== 0) { console.error(`\n${id}: falhou: ${cmd} ${args.join(' ')}`); process.exit(r.status || 1); }
@@ -63,7 +66,7 @@ const cfg = {
   scripts: ['../../series/pelos-olhos-do-hospede/motor.js'],
   assets: {},
   qa: {
-    duration: comVoz ? [25, 30.05] : [10.4, 14.5], lufs: comVoz ? -14 : -16,
+    duration: comVoz ? [25, LIMITE + 0.05] : [10.4, 14.5], lufs: comVoz ? -14 : -16,
     syncCues: ['ping', 'stamp'], visualCues: ['ping', 'stamp'],
     checkTimes: old.qa?.checkTimes || [],
     coverClear: [[860, 240, 1080, 440], [0, 1560, 1080, 1680]],
@@ -95,8 +98,8 @@ cfg.storyboard = [[0, 'TÍTULO-DOR'], [r2(rise + 0.7), 'CABEÇALHO'], ...at('pin
   [r2(stamp - 0.08), 'O CORTE'], [r2(stamp + 0.6), 'CARIMBO'], [r2(virada + 1.2), 'VIRADA'], [r2(fecho + 1.3), 'MANDA PRA QUEM…'], [r2(D - 0.35), 'LOGO']];
 W('reel.json', JSON.stringify(cfg, null, 2) + '\n');
 console.log(`${id}: ${D.toFixed(2)} s`);
-if (comVoz && D > 30 && !opt.forcar) {
-  console.error(`\n${id}: com as falas, o episódio fica com ${D.toFixed(2)} s (mais de 30 s).`);
+if (comVoz && D > LIMITE && !opt.forcar) {
+  console.error(`\n${id}: com as falas, o episódio fica com ${D.toFixed(2)} s (mais de ${LIMITE} s).`);
   console.error('Nada foi acelerado nem cortado. Encurte as falas no roteiro ou rode com --forcar para renderizar assim.');
   process.exit(3);
 }

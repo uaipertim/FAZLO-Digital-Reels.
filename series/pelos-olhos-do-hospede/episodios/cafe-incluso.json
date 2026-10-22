@@ -1,5 +1,6 @@
 {
   "id": "cafe-incluso",
+  "leitura": "curta",
   "titulo": ["O café está incluso?", "*Ele perguntou no direct.*"],
   "cards": [
     { "rotulo": "No perfil", "texto": "A foto da mesa de café, linda." },

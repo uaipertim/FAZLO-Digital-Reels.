@@ -1,5 +1,6 @@
 {
   "id": "aceita-pet",
+  "leitura": "curta",
   "titulo": ["Aceita pet?", "*Ele não quis arriscar.*"],
   "cards": [
     { "rotulo": "Na viagem", "texto": "O casal, as malas e o cachorro." },

@@ -1,5 +1,6 @@
 {
   "id": "nao-achou-o-preco",
+  "leitura": "curta",
   "titulo": ["Ele achou sua pousada.", "*Mas não achou o preço.*"],
   "cards": [
     { "rotulo": "No perfil", "texto": "Fotos da piscina, do café e da vista." },

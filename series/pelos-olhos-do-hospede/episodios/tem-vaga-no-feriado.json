@@ -1,5 +1,6 @@
 {
   "id": "tem-vaga-no-feriado",
+  "leitura": "curta",
   "titulo": ["Tem vaga no feriado?", "*Ele perguntou em três lugares.*"],
   "cards": [
     { "rotulo": "No direct", "texto": "Tem vaga de sexta a domingo?" },
