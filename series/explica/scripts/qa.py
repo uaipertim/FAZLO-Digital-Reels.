@@ -250,8 +250,9 @@ dur_fecho = DUR - fecho['corte'][0]
 ok(dur_fecho >= 8.5, f'fecho de {dur_fecho:.2f} s, do corte de entrada ao fim (mínimo 8,5 s): título + chamado + logo')
 lp = f_['logo_parada']
 ok(abs((DUR - lp[0]) - 3.0) < 0.02, f'a logo fica sozinha e parada nos últimos {DUR - lp[0]:.2f} s (de {lp[0]:.2f} s ao fim)')
-fa, fb = np.asarray(quadro(lp[0] + 0.05)).astype(float), np.asarray(quadro(DUR - 0.05)).astype(float)
-ok(np.abs(fa - fb).mean() < 0.5, f'a logo não se mexe entre {lp[0] + 0.05:.2f} s e o fim (diferença média {np.abs(fa - fb).mean():.2f} de 255)')
+t_fim = min(DUR, vd) - 0.1                       # o último quadro que o ffmpeg acha com folga (busca perto do fim falha)
+fa, fb = np.asarray(quadro(lp[0] + 0.05)).astype(float), np.asarray(quadro(t_fim)).astype(float)
+ok(np.abs(fa - fb).mean() < 0.5, f'a logo não se mexe entre {lp[0] + 0.05:.2f} s e {t_fim:.2f} s (diferença média {np.abs(fa - fb).mean():.2f} de 255)')
 lb = next(b for b in CX[-1]['caixas'] if b['nome'] == 'logo final')
 cx_, cy_ = (lb['x0'] + lb['x1']) / 2, (lb['y0'] + lb['y1']) / 2
 fora_logo = fb.mean(axis=2).copy()
@@ -260,7 +261,7 @@ ok(abs(cx_ - 540) < 1 and fora_logo.max() < 40, f'só a logo oficial na tela, ce
 
 # ---------------------------------------------------------------- folha das áreas seguras
 mont = MOT['montagens']
-CHECK_T = [0.0] + [round(m['voo'][0] - 0.3, 2) for m in mont if m['voo']] + [round(f_['corte_logo'][0] - 0.3, 2), round(DUR - 0.1, 2)]
+CHECK_T = [0.0] + [round(m['voo'][0] - 0.3, 2) for m in mont if m['voo']] + [round(f_['corte_logo'][0] - 0.3, 2), round(min(DUR, vd) - 0.15, 2)]
 TW, TH, COLS = 300, 533, 6
 rows = (len(CHECK_T) + COLS - 1) // COLS
 sheet = Image.new('RGB', (COLS * (TW + 10) + 10, rows * (TH + 44) + 10), (40, 40, 40))
