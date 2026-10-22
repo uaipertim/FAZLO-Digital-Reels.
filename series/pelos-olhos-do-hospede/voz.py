@@ -171,9 +171,15 @@ def termina_bem(x, texto):
     Devolve (ok, dados)."""
     e = envelope(x, 0.01)
     pk = e.max()
+    # o arquivo tem de terminar em silêncio: o ElevenLabs às vezes devolve a fala cortada no fim do arquivo (a voz
+    # ainda soando no último milissegundo). Antes de 23/10 isso escapava, porque o fim do arquivo contava como silêncio.
+    n10 = int(0.01 * SR)
+    fim_arq = 20 * np.log10(np.sqrt(np.mean(x[-n10:] ** 2)) / pk + 1e-12)
     fim = int(np.where(e > pk * 10 ** (-50 / 20))[0][-1])                     # onde o final chega ao silêncio
     acima = np.where(e[:fim] > pk * 10 ** (-15 / 20))[0]
     queda_ms = (fim - int(acima[-1])) / SR * 1000 if len(acima) else 9999.0   # da última vez acima de -15 dB até o silêncio
+    if fim_arq > -50:
+        queda_ms = 0.0                                                        # acaba com voz: é corte
     n35 = 20 * np.log10(e[max(0, fim - int(0.035 * SR))] / pk)               # o nível 35 ms antes do silêncio
     sem_corte = queda_ms >= 35
     fim = int(np.where(e > pk * 10 ** (-40 / 20))[0][-1])                     # (o fim da fala, para a altura)
@@ -183,7 +189,9 @@ def termina_bem(x, texto):
     fin, antes = seg(t - 0.3, t), seg(t - 0.9, t - 0.3)
     razao = float(np.median(fin) / np.median(antes)) if len(fin) >= 3 and len(antes) >= 3 else None
     firme = razao is None or razao <= 1.0
-    return sem_corte and firme, {'queda_de_-15_ao_silencio_ms': round(queda_ms), 'nivel_35ms_antes_db': round(float(n35), 1), 'altura_final': None if razao is None else round(razao, 2)}
+    return sem_corte and firme, {'queda_de_-15_ao_silencio_ms': round(queda_ms), 'nivel_35ms_antes_db': round(float(n35), 1),
+                                 'altura_final': None if razao is None else round(razao, 2), 'fim_do_arquivo_db': round(float(fim_arq), 1),
+                                 'arquivo_acaba_com_voz': bool(fim_arq > -50)}
 
 
 FIM_VOGAL_MS = 55       # calibração do Willian (ep. 7 em diante): palavra que termina em vogal precisa de >= 55 ms
@@ -195,7 +203,7 @@ def ultima_letra(texto):
     return unicodedata.normalize('NFD', w[-1].lower())[0] if w else ''
 
 
-def fim_ok(x, texto, modo, m=None):
+def fim_ok(x, texto, modo, m=None, queda_min=None):
     """A conferência do final de uma parte (do ep. 7 em diante, calibrada pelo ouvido do Willian):
       - palavra final terminada em VOGAL: cai de -15 dB até o silêncio (-50 dB) em >= 55 ms (40 ms soou cortado;
         59 e 63 ms soaram naturais);
@@ -206,7 +214,11 @@ def fim_ok(x, texto, modo, m=None):
     _, d = termina_bem(x, texto)
     q, u = d['queda_de_-15_ao_silencio_ms'], ultima_letra(texto)
     pergunta = texto.rstrip().endswith('?')
-    if u in 'aeiou':
+    if d['arquivo_acaba_com_voz']:
+        sem_corte, regra = False, 'o arquivo acaba com a voz soando (corte)'
+    elif queda_min:
+        sem_corte, regra = q >= queda_min, f'critério da parte: >= {queda_min} ms'
+    elif u in 'aeiou':
         sem_corte, regra = q >= FIM_VOGAL_MS, f'vogal >= {FIM_VOGAL_MS} ms'
     elif u in 'ptk' and pergunta:
         sb = perguntas(texto, m, x) if m else []
@@ -218,7 +230,7 @@ def fim_ok(x, texto, modo, m=None):
     return (sem_corte and (firme or modo == 'corte')), d
 
 
-def gerar_parte(texto, prev, nxt, destino, fim=None, manter=False, excecao=False, sobe_min=SOBE_MIN):
+def gerar_parte(texto, prev, nxt, destino, fim=None, manter=False, excecao=False, sobe_min=SOBE_MIN, queda_min=None):
     """Uma parte da fala. Com "?", confere a subida no fim; com `fim` ('firme' ou 'corte'), confere o final da parte
     (fim_ok). Se precisar, tenta outras sementes.
     manter=True (roteiro: "voz_manter"): a tomada aprovada que já existe com o mesmo texto fica, mesmo que o texto
@@ -229,7 +241,7 @@ def gerar_parte(texto, prev, nxt, destino, fim=None, manter=False, excecao=False
         if (manter or excecao) and m.get('texto_api') == api_texto(texto) or m.get('base') == chave_base(texto, prev, nxt):
             x = decodifica(destino + '.mp3')
             sb = perguntas(texto, m, x)
-            ok = all(v is not None and v >= sobe_min for v in sb) and (not fim or fim_ok(x, texto, fim, m)[0])
+            ok = all(v is not None and v >= sobe_min for v in sb) and (not fim or fim_ok(x, texto, fim, m, queda_min)[0])
             if ok:
                 return False, m.get('semente', SEMENTE), sb
             if excecao and m.get('texto_api') == api_texto(texto):   # roteiro: "voz_excecoes" (aprovada como está)
@@ -244,7 +256,7 @@ def gerar_parte(texto, prev, nxt, destino, fim=None, manter=False, excecao=False
         sb = perguntas(texto, m, x)
         nota = min([v if v is not None else -1 for v in sb] or [1])
         nota = nota if nota >= sobe_min else min(nota, SOBE_MIN - 0.001)
-        bem, dados = fim_ok(x, texto, fim, m) if fim else (True, None)
+        bem, dados = fim_ok(x, texto, fim, m, queda_min) if fim else (True, None)
         nota = nota if bem else -9
         print(f'      {os.path.basename(destino)}, tentativa {tent} (semente {sem}): perguntas {sb or "-"} · '
               f'final {"completo" if bem else "cortado ou suspenso"} {dados or ""}')
@@ -307,15 +319,22 @@ def main(eid):
             base = os.path.join(dir_, cena if len(partes) == 1 else f'{cena}-{k + 1}')
             prev = partes[k - 1] if k else antes
             nxt = partes[k + 1] if k + 1 < len(partes) else depois
+            if longa and len(partes) > 1:
+                # do ep. 7 em diante, uma parte vai SEM o texto seguinte: com o next_text, o ElevenLabs devolvia a parte
+                # cortada no fim do arquivo (a voz ainda soando), como se emendasse direto na próxima (teste de 23/10:
+                # 3 de 3 sementes cortadas com o next_text, 0 de 3 sem ele)
+                nxt = None
             pergunta = texto.rstrip().endswith('?')
             if longa:                                   # do ep. 7 em diante: TODA fala e parte tem o final conferido (corte);
                 fim = 'firme' if (cena == 'fecho' and not pergunta) else 'corte'   # o fecho afirmativo também não pode subir
             else:                                       # eps. 1–6: só o fecho afirmativo
                 fim = 'firme' if (cena == 'fecho' and not pergunta) else None
             nome = os.path.basename(base)
+            crit = (ep.get('voz_criterios') or {}).get(nome, {})          # ex.: {"sobe_min": 0.15, "queda_min": 80, "modo": "firme"}
+            fim = crit.get('modo', fim)
             nv, sem, sb = gerar_parte(texto, prev, nxt, base, fim=fim, manter=nome in ep.get('voz_manter', []),
                                       excecao=nome in ep.get('voz_excecoes', []),
-                                      sobe_min=(ep.get('voz_criterios') or {}).get(nome, {}).get('sobe_min', SOBE_MIN))
+                                      sobe_min=crit.get('sobe_min', SOBE_MIN), queda_min=crit.get('queda_min'))
             novo |= nv
             x = decodifica(base + '.mp3')
             ini, fim = fronteiras(x)

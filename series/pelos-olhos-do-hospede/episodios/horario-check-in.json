@@ -2,7 +2,7 @@
   "id": "horario-check-in",
   "titulo": [
     "Que horas é o check-in?",
-    "*Ele chegou e esperou.*"
+    "*Ele chegou e esperou!*"
   ],
   "cards": [
     {
@@ -25,7 +25,7 @@
   "voz": {
     "titulo": [
       "Que horas é o check-in?",
-      "Ele chegou… e esperou."
+      "Ele chegou… e esperou!"
     ],
     "cards": [
       "Ele saiu cedo, pra aproveitar o dia.",
@@ -40,12 +40,23 @@
     "titulo": 0.8
   },
   "voz_manter": [
-    "titulo-1",
-    "titulo-2",
     "card1",
     "card3",
     "carimbo",
     "virada",
-    "fecho"
+    "fecho",
+    "titulo-2"
+  ],
+  "voz_criterios": {
+    "titulo-1": {
+      "sobe_min": 0.15,
+      "queda_min": 80
+    },
+    "titulo-2": {
+      "modo": "firme"
+    }
+  },
+  "voz_excecoes": [
+    "card2"
   ]
 }

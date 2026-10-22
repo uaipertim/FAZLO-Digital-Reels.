@@ -17,36 +17,40 @@
  "cenas": [
   {
    "cena": "titulo",
-   "texto": "Que horas é o check-in? Ele chegou… e esperou.",
+   "texto": "Que horas é o check-in? Ele chegou… e esperou!",
    "arquivo": "titulo.wav",
-   "ini": 0.03,
-   "fim": 3.413,
-   "dur": 3.383,
+   "ini": 0.038,
+   "fim": 3.439,
+   "dur": 3.401,
    "partes": [
     {
      "texto": "Que horas é o check-in?",
      "arquivo": "titulo-1.mp3",
-     "semente": 2026,
+     "semente": 7,
      "sobe": [
-      0.149
+      0.33
      ],
      "final": {
-      "queda_de_-15_ao_silencio_ms": 127,
-      "nivel_35ms_antes_db": -20.4,
-      "altura_final": 0.76,
+      "queda_de_-15_ao_silencio_ms": 147,
+      "nivel_35ms_antes_db": -22.4,
+      "altura_final": 0.72,
+      "fim_do_arquivo_db": -74.7,
+      "arquivo_acaba_com_voz": false,
       "ultima_letra": "n",
       "regra": "consoante >= 35 ms"
      }
     },
     {
-     "texto": "Ele chegou… e esperou.",
+     "texto": "Ele chegou… e esperou!",
      "arquivo": "titulo-2.mp3",
      "semente": 2026,
      "sobe": [],
      "final": {
-      "queda_de_-15_ao_silencio_ms": 84,
-      "nivel_35ms_antes_db": -25.4,
-      "altura_final": 0.8,
+      "queda_de_-15_ao_silencio_ms": 123,
+      "nivel_35ms_antes_db": -34.6,
+      "altura_final": 0.94,
+      "fim_do_arquivo_db": -85.2,
+      "arquivo_acaba_com_voz": false,
       "ultima_letra": "u",
       "regra": "vogal >= 55 ms"
      }
@@ -59,45 +63,45 @@
     ],
     [
      "horas",
-     0.122
+     0.119
     ],
     [
      "é",
-     0.401
+     0.41
     ],
     [
      "o",
-     0.447
+     0.456
     ],
     [
      "check",
-     0.505
+     0.526
     ],
     [
      "in",
-     0.819
+     0.781
     ],
     [
      "ele",
-     1.825
+     1.806
     ],
     [
      "chegou",
-     2.034
+     2.015
     ],
     [
      "e",
-     2.94
+     2.909
     ],
     [
      "esperou",
-     3.044
+     3.002
     ]
    ],
    "pausas_entre_partes": [
-    0.79
+    0.863
    ],
-   "marca": 1.825
+   "marca": 1.806
   },
   {
    "cena": "card1",
@@ -116,6 +120,8 @@
       "queda_de_-15_ao_silencio_ms": 55,
       "nivel_35ms_antes_db": -27.7,
       "altura_final": 1.12,
+      "fim_do_arquivo_db": -71.6,
+      "arquivo_acaba_com_voz": false,
       "ultima_letra": "a",
       "regra": "vogal >= 55 ms"
      }
@@ -169,11 +175,13 @@
       0.204
      ],
      "final": {
-      "queda_de_-15_ao_silencio_ms": 695,
+      "queda_de_-15_ao_silencio_ms": 0,
       "nivel_35ms_antes_db": -68.6,
       "altura_final": null,
+      "fim_do_arquivo_db": -38.2,
+      "arquivo_acaba_com_voz": true,
       "ultima_letra": "e",
-      "regra": "vogal >= 55 ms"
+      "regra": "o arquivo acaba com a voz soando (corte)"
      }
     }
    ],
@@ -245,6 +253,8 @@
       "queda_de_-15_ao_silencio_ms": 218,
       "nivel_35ms_antes_db": -33.3,
       "altura_final": 0.66,
+      "fim_do_arquivo_db": -80.0,
+      "arquivo_acaba_com_voz": false,
       "ultima_letra": "o",
       "regra": "vogal >= 55 ms"
      }
@@ -306,6 +316,8 @@
       "queda_de_-15_ao_silencio_ms": 144,
       "nivel_35ms_antes_db": -23.4,
       "altura_final": 1.05,
+      "fim_do_arquivo_db": -78.8,
+      "arquivo_acaba_com_voz": false,
       "ultima_letra": "o",
       "regra": "vogal >= 55 ms"
      }
@@ -347,6 +359,8 @@
       "queda_de_-15_ao_silencio_ms": 229,
       "nivel_35ms_antes_db": -34.4,
       "altura_final": 0.7,
+      "fim_do_arquivo_db": -79.7,
+      "arquivo_acaba_com_voz": false,
       "ultima_letra": "o",
       "regra": "vogal >= 55 ms"
      }
@@ -432,6 +446,8 @@
       "queda_de_-15_ao_silencio_ms": 190,
       "nivel_35ms_antes_db": -29.5,
       "altura_final": 0.78,
+      "fim_do_arquivo_db": -77.7,
+      "arquivo_acaba_com_voz": false,
       "ultima_letra": "m",
       "regra": "consoante >= 35 ms"
      }
@@ -481,5 +497,5 @@
    ]
   }
  ],
- "fala_total": 18.76
+ "fala_total": 18.77
 }

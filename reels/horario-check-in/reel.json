@@ -1,6 +1,6 @@
 {
   "id": "horario-check-in",
-  "title": "Que horas é o check-in? Ele chegou e esperou.",
+  "title": "Que horas é o check-in? Ele chegou e esperou!",
   "serie": "Pelos olhos do hóspede",
   "voz": true,
   "status": "em produção",
@@ -39,14 +39,14 @@
     ],
     "checkTimes": [
       0,
-      4.43,
-      4.68,
-      8.92,
-      13.51,
-      18.82,
-      23.01,
-      30.25,
-      38.22
+      4.45,
+      4.7,
+      8.94,
+      13.53,
+      18.84,
+      23.03,
+      30.27,
+      38.23
     ],
     "coverClear": [
       [
@@ -69,39 +69,39 @@
       "TÍTULO-DOR"
     ],
     [
-      4.43,
+      4.45,
       "CABEÇALHO"
     ],
     [
-      4.68,
+      4.7,
       "CARD 1"
     ],
     [
-      8.92,
+      8.94,
       "CARD 2"
     ],
     [
-      13.51,
+      13.53,
       "CARD 3"
     ],
     [
-      18.14,
+      18.16,
       "O CORTE"
     ],
     [
-      18.82,
+      18.84,
       "CARIMBO"
     ],
     [
-      23.01,
+      23.03,
       "VIRADA"
     ],
     [
-      30.25,
+      30.27,
       "MANDA PRA QUEM…"
     ],
     [
-      38.22,
+      38.23,
       "LOGO"
     ]
   ]

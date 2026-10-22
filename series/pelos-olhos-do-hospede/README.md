@@ -20,9 +20,9 @@ A estrutura (título-dor → cards → carimbo → virada → "Manda pra quem…
 | Ele viu a piscina | "Ele viu a piscina. / Mas não viu o quarto." | 25,0 s | [`reels/viu-a-piscina/`](../../reels/viu-a-piscina) | com voz · aguardando aprovação · 20/10, 9h30 |
 | O café está incluso? | "O café está incluso? / Ele perguntou no direct." | 28,6 s | [`reels/cafe-incluso/`](../../reels/cafe-incluso) | com voz · aguardando aprovação · qua 21/10, 9h30 |
 | Aceita pet? | "Aceita pet? / Ele não quis arriscar." | 25,0 s | [`reels/aceita-pet/`](../../reels/aceita-pet) | com voz · aguardando aprovação · qui 22/10, 9h30 |
-| Como eu reservo? | "Como eu reservo? / Ninguém explicou." | 27,1 s | [`reels/como-eu-reservo/`](../../reels/como-eu-reservo) | com voz · aguardando aprovação · sex 23/10, 9h30 |
-| Que horas é o check-in? | "Que horas é o check-in? / Ele chegou e esperou." | 25,7 s | [`reels/horario-check-in/`](../../reels/horario-check-in) | com voz · aguardando aprovação · sáb 24/10, 9h30 |
-| Cabe a família toda? | "Cabe a família toda? / Ele não teve certeza." | 25,0 s | [`reels/cabe-a-familia/`](../../reels/cabe-a-familia) | com voz · aguardando aprovação · dom 25/10, 9h30 |
+| Como eu reservo? | "Como eu reservo? / Ninguém explicou." | 41,3 s | [`reels/como-eu-reservo/`](../../reels/como-eu-reservo) | com voz · aguardando aprovação · sex 23/10, 9h30 |
+| Que horas é o check-in? | "Que horas é o check-in? / Ele chegou e esperou!" | 38,6 s | [`reels/horario-check-in/`](../../reels/horario-check-in) | com voz · aguardando aprovação · sáb 24/10, 9h30 |
+| Cabe a família toda? | "Cabe a família toda? / Ele não teve certeza." | 39,0 s | [`reels/cabe-a-familia/`](../../reels/cabe-a-familia) | com voz · aguardando aprovação · dom 25/10, 9h30 |
 
 As versões curtas sem voz ficam em `reels/<id>/output/fazlo-digital-<id>-curto.mp4`.
 
@@ -91,6 +91,9 @@ Sai com erro se a revisão técnica ou as áreas seguras falharem.
     - termina em **consoante plosiva (p, t, k)**: pode cair direto, desde que seja pergunta e suba ≥ 10% (a parada da própria palavra, como em "WhatsApp?");
     - outras consoantes: ≥ 35 ms;
   - **tomadas mantidas** (`voz_manter`) também passam por essa conferência: se uma falhar, é gerada de novo.
+  - **o arquivo tem de terminar em silêncio** (23/10): se a voz ainda soa no último milissegundo do arquivo (acima de −50 dB), é corte, mesmo que a queda pareça longa. Antes disso, o fim do arquivo contava como silêncio e tomadas cortadas passavam (era o "corte seco" do título do check-in, com a voz em −19 dB no fim do arquivo).
+- **Partes sem o texto seguinte (ep. 7 em diante):** cada parte de uma fala em partes vai à API só com o texto anterior (`previous_text`), sem o `next_text`. Com o texto seguinte, o ElevenLabs devolvia a parte cortada no fim do arquivo, como se emendasse direto na próxima: 3 de 3 sementes cortadas com ele, 0 de 3 sem ele.
+- **A emenda das partes** não apara a voz: cada parte é cortada 60 ms depois de cair a −38 dB, ponto em que a tomada já está abaixo de −50 dB (conferido no MP4 final do check-in: −77 dB na emenda).
   - a altura da voz não pode subir no fim;
   - depois da última palavra o vídeo tem pelo menos 0,4 s de respiro.
 - **Nenhum efeito por cima da voz:** o `audio.py` mede, em janelas de 50 ms com fala (300 Hz–4 kHz), quanto a voz fica acima dos efeitos. Onde ficar menos de 3 dB acima (ex.: a cauda de um toque no começo de uma fala), os efeitos abaixam só nesse trecho até a voz ficar 3 dB acima.
@@ -146,7 +149,7 @@ Os eps. 1–6 têm `"leitura": "curta"` no roteiro e continuam com os tempos aci
 - **`voz_pausas`**: o silêncio inserido entre as partes de uma fala, por cena (≈ o silêncio medido). Ex.: `{"titulo": 0.8}`, ou uma lista com um valor por emenda: `{"card2": [0.43, 0.52]}`. O `voz.json` registra a pausa medida em `pausas_entre_partes` e a queda do final de cada parte em `partes[].final`.
 - **`voz_manter`**: tomadas aprovadas que ficam como estão mesmo que o texto vizinho (o contexto) mude. Ex.: `["card2-1", "card2-2"]`. Serve para trocar só uma parte de uma fala sem gerar de novo as outras. Elas também passam pela conferência: se falharem, são geradas de novo.
 - **`voz_excecoes`**: tomadas que ficam como estão mesmo sem passar numa conferência, por decisão de quem ouviu (o `voz.py` avisa a cada rodada). Ex.: `["titulo-2"]`.
-- **`voz_criterios`**: critério mais exigente para uma parte. Ex.: `{"card2-2": {"sobe_min": 0.15}}` (a pergunta precisa subir 15%).
+- **`voz_criterios`**: critério mais exigente para uma parte. Ex.: `{"titulo-1": {"sobe_min": 0.15, "queda_min": 80}}` (a pergunta sobe ≥ 15% e cai até o silêncio em ≥ 80 ms) ou `{"titulo-2": {"modo": "firme"}}` (exclamação: a voz não pode subir no fim).
 
 **Voz** (`voz.py`, mesmo padrão de "Site não é luxo"):
 - Raquel - For Conversational (`GDzHdQOi6jjf8zaXhCYD`), `eleven_multilingual_v2`;
