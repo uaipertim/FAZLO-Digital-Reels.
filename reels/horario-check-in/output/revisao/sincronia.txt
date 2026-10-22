@@ -1,15 +1,15 @@
 HORARIO-CHECK-IN — sincronização som x imagem
 
 OK     áudio do MP4 = trilha, sem deslocamento (+0.0, +0.0, +0.0 ms)
-OK     4 efeitos-chave com ataque no instante do evento (desvio médio 5.0 ms, máximo 5.3 ms; 1 quadro = 16,7 ms)
+OK     4 efeitos-chave com ataque no instante do evento (desvio médio 4.2 ms, máximo 5.3 ms; 1 quadro = 16,7 ms)
 OK     a imagem reage em 4/4 golpes principais (pico de movimento a ≤ 8 quadros do som)
 
 Evento a evento (instante do evento visual, desvio medido):
            4.201 s  ping        áudio   -5.3 ms
            8.442 s  ping        áudio   -3.8 ms
-          13.026 s  ping        áudio   -5.3 ms
-          18.236 s  stamp       áudio   -5.3 ms
+          13.032 s  ping        áudio   -3.8 ms
+          18.242 s  stamp       áudio   -3.8 ms
            4.201 s  ping        imagem: movimento   3.3 (antes  0.1), pico a -3 quadro(s)
            8.442 s  ping        imagem: movimento   3.4 (antes  0.1), pico a +6 quadro(s)
-          13.026 s  ping        imagem: movimento   5.1 (antes  0.0), pico a +6 quadro(s)
-          18.236 s  stamp       imagem: movimento  14.3 (antes  0.0), pico a -2 quadro(s)
+          13.032 s  ping        imagem: movimento   5.0 (antes  0.0), pico a +5 quadro(s)
+          18.242 s  stamp       imagem: movimento  13.6 (antes  0.0), pico a -3 quadro(s)

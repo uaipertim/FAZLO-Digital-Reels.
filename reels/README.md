@@ -20,9 +20,9 @@ Cada Reel vive numa pasta independente (`reel-NN/` ou, a partir de "Instagram n�
 | — | **"Ele viu a piscina."** 4º episódio da série "Pelos olhos do hóspede", com voz: ele viu a piscina, mas não viu o quarto | 25,0 s | com voz · aguardando aprovação | [`viu-a-piscina/`](viu-a-piscina) |
 | — | **"O café está incluso?"** 5º episódio da série "Pelos olhos do hóspede", com voz: a foto da mesa de café e a pergunta sem resposta | 28,6 s | com voz · aguardando aprovação | [`cafe-incluso/`](cafe-incluso) |
 | — | **"Aceita pet?"** 6º episódio da série "Pelos olhos do hóspede", com voz: ele não quis arriscar a viagem com o cachorro | 25,0 s | com voz · aguardando aprovação | [`aceita-pet/`](aceita-pet) |
-| — | **"Como eu reservo?"** 7º episódio da série "Pelos olhos do hóspede", com voz: ninguém explicou o caminho para reservar | 41,3 s | com voz · aguardando aprovação | [`como-eu-reservo/`](como-eu-reservo) |
+| — | **"Como eu reservo?"** 7º episódio da série "Pelos olhos do hóspede", com voz: ninguém explicou o caminho para reservar | 41,5 s | com voz · aguardando aprovação | [`como-eu-reservo/`](como-eu-reservo) |
 | — | **"Que horas é o check-in?"** 8º episódio da série "Pelos olhos do hóspede", com voz: ele chegou cedo e esperou na recepção | 38,6 s | com voz · aguardando aprovação | [`horario-check-in/`](horario-check-in) |
-| — | **"Cabe a família toda?"** 9º episódio da série "Pelos olhos do hóspede", com voz: sem saber quantos cabem, ele não arriscou | 39,0 s | com voz · aguardando aprovação | [`cabe-a-familia/`](cabe-a-familia) |
+| — | **"Cabe a família toda?"** 9º episódio da série "Pelos olhos do hóspede", com voz: sem saber quantos cabem, ele não arriscou | 38,9 s | com voz · aguardando aprovação | [`cabe-a-familia/`](cabe-a-familia) |
 
 Episódios da série "Pelos olhos do hóspede": `npm run episodio -- <id>` (só o roteiro em JSON, ver [`../series/pelos-olhos-do-hospede/`](../series/pelos-olhos-do-hospede)).
 

@@ -10,7 +10,7 @@ OK     faixa de áudio presente
 OK     áudio aac 48000 Hz, 2 canais, 251 kb/s
 OK     vídeo e áudio com a mesma duração (Δ 0 ms)
 OK     loudness integrado -13.8 LUFS (alvo -14)
-OK     pico real -2.7 dBTP (limite -1)
+OK     pico real -3.1 dBTP (limite -1)
        faixa de loudness (LRA) 6.1 LU
 OK     sem trechos pretos ≥ 0,1 s
 OK     sem imagem congelada ≥ 0,75 s
@@ -21,7 +21,7 @@ OK     capa: conteúdo dentro do recorte 3:4 (y 240–1680)
 
 Sincronização (detalhes em sincronia.txt):
 OK     áudio do MP4 = trilha, sem deslocamento (+0.0, +0.0, +0.0 ms)
-OK     4 efeitos-chave com ataque no instante do evento (desvio médio 5.0 ms, máximo 5.3 ms; 1 quadro = 16,7 ms)
+OK     4 efeitos-chave com ataque no instante do evento (desvio médio 4.2 ms, máximo 5.3 ms; 1 quadro = 16,7 ms)
 OK     a imagem reage em 4/4 golpes principais (pico de movimento a ≤ 8 quadros do som)
 
 RESULTADO: aprovado
