@@ -39,5 +39,16 @@
     "carimbo": "Na dúvida, ele não arriscou.",
     "virada": "No site, cada quarto mostra quantas pessoas cabem, antes da pergunta.",
     "fecho": "Manda pra pousada que é perfeita pra família!"
-  }
+  },
+  "voz_pausas": {
+    "titulo": 0.8
+  },
+  "voz_manter": [
+    "titulo-2",
+    "card1",
+    "card3",
+    "carimbo",
+    "virada",
+    "fecho"
+  ]
 }

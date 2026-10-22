@@ -20,22 +20,32 @@
    "texto": "Cabe a família toda? Ele não teve certeza.",
    "arquivo": "titulo.wav",
    "ini": 0.03,
-   "fim": 2.456,
-   "dur": 2.426,
+   "fim": 3.057,
+   "dur": 3.027,
    "partes": [
     {
      "texto": "Cabe a família toda?",
      "arquivo": "titulo-1.mp3",
-     "semente": 7,
+     "semente": 42,
      "sobe": [
-      0.162
-     ]
+      0.826
+     ],
+     "final": {
+      "queda_de_-15_ao_silencio_ms": 114,
+      "nivel_35ms_antes_db": -32.9,
+      "altura_final": 1.25
+     }
     },
     {
      "texto": "Ele não teve certeza.",
      "arquivo": "titulo-2.mp3",
      "semente": 2026,
-     "sobe": []
+     "sobe": [],
+     "final": {
+      "queda_de_-15_ao_silencio_ms": 59,
+      "nivel_35ms_antes_db": -19.3,
+      "altura_final": 0.79
+     }
     }
    ],
    "palavras": [
@@ -45,37 +55,37 @@
     ],
     [
      "a",
-     0.218
+     0.21
     ],
     [
      "família",
-     0.276
+     0.257
     ],
     [
      "toda",
-     0.671
+     0.605
     ],
     [
      "ele",
-     1.371
+     1.923
     ],
     [
      "não",
-     1.581
+     2.133
     ],
     [
      "teve",
-     1.732
+     2.284
     ],
     [
      "certeza",
-     1.952
+     2.504
     ]
    ],
    "pausas_entre_partes": [
-    0.277
+    0.881
    ],
-   "marca": 1.371
+   "marca": 1.923
   },
   {
    "cena": "card1",
@@ -89,7 +99,12 @@
      "texto": "Na viagem: dois adultos, três crianças… e a avó.",
      "arquivo": "card1.mp3",
      "semente": 2026,
-     "sobe": []
+     "sobe": [],
+     "final": {
+      "queda_de_-15_ao_silencio_ms": 110,
+      "nivel_35ms_antes_db": -33.6,
+      "altura_final": 0.7
+     }
     }
    ],
    "palavras": [
@@ -136,16 +151,21 @@
    "texto": "Quantas camas? Tem berço? Cabe todo mundo?",
    "arquivo": "card2.wav",
    "ini": 0.03,
-   "fim": 2.372,
-   "dur": 2.342,
+   "fim": 3.206,
+   "dur": 3.176,
    "partes": [
     {
      "texto": "Quantas camas?",
      "arquivo": "card2-1.mp3",
-     "semente": 23,
+     "semente": 42,
      "sobe": [
-      0.248
-     ]
+      0.107
+     ],
+     "final": {
+      "queda_de_-15_ao_silencio_ms": 59,
+      "nivel_35ms_antes_db": -23.2,
+      "altura_final": 1.1
+     }
     },
     {
      "texto": "Tem berço?",
@@ -153,15 +173,25 @@
      "semente": 7,
      "sobe": [
       0.45
-     ]
+     ],
+     "final": {
+      "queda_de_-15_ao_silencio_ms": 40,
+      "nivel_35ms_antes_db": -22.0,
+      "altura_final": 1.21
+     }
     },
     {
      "texto": "Cabe todo mundo?",
      "arquivo": "card2-3.mp3",
-     "semente": 7,
+     "semente": 11,
      "sobe": [
-      0.647
-     ]
+      0.698
+     ],
+     "final": {
+      "queda_de_-15_ao_silencio_ms": 63,
+      "nivel_35ms_antes_db": -21.8,
+      "altura_final": 1.38
+     }
     }
    ],
    "palavras": [
@@ -171,32 +201,32 @@
     ],
     [
      "camas",
-     0.294
+     0.336
     ],
     [
      "tem",
-     0.882
+     1.348
     ],
     [
      "berço",
-     1.103
+     1.569
     ],
     [
      "cabe",
-     1.69
+     2.426
     ],
     [
      "todo",
-     1.896
+     2.681
     ],
     [
      "mundo",
-     2.093
+     2.902
     ]
    ],
    "pausas_entre_partes": [
-    0.277,
-    0.293
+    0.578,
+    0.528
    ]
   },
   {
@@ -211,7 +241,12 @@
      "texto": "E no perfil, só a foto da cama de casal.",
      "arquivo": "card3.mp3",
      "semente": 2026,
-     "sobe": []
+     "sobe": [],
+     "final": {
+      "queda_de_-15_ao_silencio_ms": 619,
+      "nivel_35ms_antes_db": -26.4,
+      "altura_final": 0.92
+     }
     }
    ],
    "palavras": [
@@ -269,7 +304,12 @@
      "texto": "Na dúvida, ele não arriscou.",
      "arquivo": "carimbo.mp3",
      "semente": 2026,
-     "sobe": []
+     "sobe": [],
+     "final": {
+      "queda_de_-15_ao_silencio_ms": 53,
+      "nivel_35ms_antes_db": -18.0,
+      "altura_final": 0.81
+     }
     }
    ],
    "palavras": [
@@ -307,7 +347,12 @@
      "texto": "No site, cada quarto mostra quantas pessoas cabem, antes da pergunta.",
      "arquivo": "virada.mp3",
      "semente": 2026,
-     "sobe": []
+     "sobe": [],
+     "final": {
+      "queda_de_-15_ao_silencio_ms": 240,
+      "nivel_35ms_antes_db": -21.7,
+      "altura_final": 0.76
+     }
     }
    ],
    "palavras": [
@@ -369,7 +414,12 @@
      "texto": "Manda pra pousada que é perfeita pra família!",
      "arquivo": "fecho.mp3",
      "semente": 2026,
-     "sobe": []
+     "sobe": [],
+     "final": {
+      "queda_de_-15_ao_silencio_ms": 146,
+      "nivel_35ms_antes_db": -30.1,
+      "altura_final": 0.68
+     }
     }
    ],
    "palavras": [
@@ -408,5 +458,5 @@
    ]
   }
  ],
- "fala_total": 17.74
+ "fala_total": 19.17
 }
