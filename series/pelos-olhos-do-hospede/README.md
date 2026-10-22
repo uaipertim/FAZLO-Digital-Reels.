@@ -131,7 +131,8 @@ Os eps. 1–6 têm `"leitura": "curta"` no roteiro e continuam com os tempos aci
 | **Carimbo** | **≥ 1,5 s parado** depois do tremor do baque e depois da fala dele |
 | **Virada** | **≥ 2,5 s inteira** depois da fala. A aproximação de 6% para quando a fala termina |
 | **Fecho** | "Manda pra…" fica **≥ 3,0 s inteiro e parado** depois da fala; a virada e o fecho saem juntos |
-| **Logo** | depois, a logo FAZLO DIGITAL se monta **sozinha, centralizada** (560 px, centro em y 960), com a assinatura completa, e fica **parada ≥ 3,0 s até o fim**, sem fade |
+| **Logo** | enquanto o texto sai, a logo FAZLO DIGITAL se monta **sozinha, centralizada** (560 px, centro em y 960), com a assinatura completa, e fica **parada ≥ 3,0 s até o fim**, sem fade |
+| **Fundo** | como o texto fica parado, o fundo segue vivo: a grade de pontos anda 3× mais rápido e duas luzes lima largas passeiam devagar (a revisão não acusa imagem congelada) |
 | **Duração** | até **38 s**. A voz nunca é acelerada |
 
 ### Ajustes de voz no roteiro

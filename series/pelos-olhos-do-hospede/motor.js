@@ -372,7 +372,7 @@
       t.voz.fecho = t.fecho + 0.2;
       if (LONGA) {                                                     // o fecho parado; depois só a logo, parada até o fim
         t.sai = t.voz.fecho + d('fecho') + LEIT.fecho;
-        t.logo = t.sai + 0.45;
+        t.logo = t.sai + 0.15;                                         // começa a se montar enquanto o texto sai (sem tela vazia)
         t.logoPronta = t.logo + 0.85;
         t.som = t.logo + 0.2;
         t.end = t.logoPronta + LEIT.logo;
@@ -416,17 +416,24 @@
   function background(c, t) {
     c.fillStyle = C.bg; c.fillRect(0, 0, W, H);
     // a grade de pontos da FAZLO Digital, respirando devagar
-    const ox = (t * 6) % 44, oy = (t * 10) % 44;
+    const vel = LONGA ? 3 : 1;                         // leitura longa: o texto fica parado, o fundo segue vivo
+    const ox = (t * 6 * vel) % 44, oy = (t * 10 * vel) % 44;
     c.fillStyle = 'rgba(255,255,255,0.05)';
     for (let y = -44 + oy; y < H + 44; y += 44) for (let x = -44 + ox; x < W + 44; x += 44) { c.beginPath(); c.arc(x, y, 1.3, 0, TAU); c.fill(); }
     const g = c.createRadialGradient(540, 980, 0, 540, 980, 1150);
     g.addColorStop(0, 'rgba(18,22,22,0.0)'); g.addColorStop(1, 'rgba(5,6,6,0.75)');
     c.fillStyle = g; c.fillRect(0, 0, W, H);
+    if (LONGA) {                                       // uma luz lima larga passeia devagar pelo fundo (o texto fica parado)
+      c.save(); c.globalCompositeOperation = 'lighter';
+      glow(c, 540 + 420 * Math.sin(t * 0.55), 960 + 520 * Math.sin(t * 0.41 + 1.2), 900, 0.06);
+      glow(c, 540 + 420 * Math.sin(t * 0.55 + Math.PI / 2), 960 - 520 * Math.sin(t * 0.41 + 1.2 + Math.PI / 2), 800, 0.05);   // defasada: uma das duas sempre anda
+      c.restore();
+    }
     // a luz lima cresce com a pilha
     let n = 0;
     T.cards.forEach((m) => { n += p(t, m, m + 0.4); });
     const on = (n / T.cards.length) * (1 - p(t, T.exit, T.exit + 0.5));
-    if (on > 0) { c.save(); c.globalCompositeOperation = 'lighter'; glow(c, 540, L.CY + 120, 720, 0.05 * on); c.restore(); }
+    if (on > 0) { c.save(); c.globalCompositeOperation = 'lighter'; glow(c, 540 + (LONGA ? 90 * Math.sin(t * 0.9) : 0), L.CY + 120 + (LONGA ? 60 * Math.cos(t * 0.7) : 0), 720, 0.05 * on * (LONGA ? 1 + 0.35 * Math.sin(t * 1.3) : 1)); c.restore(); }
   }
 
   function seriesChip(c, x, y, a) {
