@@ -727,7 +727,8 @@
   // ---- quartos (cap 3): dois cards de quarto (foto, "ATÉ N PESSOAS", "a partir de R$" com o valor como barra)
   CENAS.quartos = {
     setup(cap) {
-      const d = cap.diagrama, S = { parte: { x: 100, y: 772, w: 820, h: 560 } };
+      // peças ~15% maiores (altura, fotos e textos; a largura já vai de x 90 a 930) e centralizadas na vertical (y 790–1400)
+      const d = cap.diagrama, S = { parte: { x: 90, y: 790, w: 840, h: 610 } };
       S.q = d.quartos.map((q) => ({ ...q, on: at(cap, q.em) + (q.atraso || 0) }));
       S.fotos = at(cap, d.fotos.em); S.cabe = at(cap, d.cabe.em); S.valor = at(cap, d.valor.em);
       S.destaque = at(cap, d.destaque.em); S.bolso = at(cap, d.bolso.em);
@@ -743,29 +744,29 @@
       if (qp <= 0) return;
       painel(c, R, qp * 0.9, { fill: css(C.panel, 0.85) });
       S.q.forEach((q, i) => {
-        const x = R.x + 24 + i * 398, y = R.y + 24, w = 374, h = R.h - 48;
+        const x = R.x + 22 + i * 408, y = R.y + 22, w = 388, h = R.h - 44;
         c.save();
         if (entra(c, t, q.on, x + w / 2, y + h / 2) <= 0) { c.restore(); return; }
         rr(c, x, y, w, h, 22); c.fillStyle = C.card; c.fill(); c.lineWidth = 2; c.strokeStyle = 'rgba(255,255,255,0.08)'; c.stroke();
-        const F = { x: x + 14, y: y + 14, w: w - 28, h: 234 };
+        const F = { x: x + 14, y: y + 14, w: w - 28, h: 284 };
         const qf = E.io(p(t, S.fotos + i * 0.15, S.fotos + i * 0.15 + 0.55));
-        if (qf < 1) { tracejado(c, F.x, F.y, F.w, F.h, 14); icon(c, 'imagem', F.x + F.w / 2, F.y + F.h / 2, 54, C.dim, { lw: 1.8 }); }
+        if (qf < 1) { tracejado(c, F.x, F.y, F.w, F.h, 14); icon(c, 'imagem', F.x + F.w / 2, F.y + F.h / 2, 62, C.dim, { lw: 1.8 }); }
         if (qf > 0) { c.save(); clipRevela(c, F.x, F.y, F.w, F.h, qf); quarto(c, F.x, F.y, F.w, F.h, i); c.restore(); }
-        txt(c, q.t, x + 22, y + 296, { size: 29, weight: 600, box: 'quarto ' + (i + 1) });
+        txt(c, q.t, x + 24, y + 352, { size: 33, weight: 600, box: 'quarto ' + (i + 1) });
         const qc = E.back(p(t, S.cabe + i * 0.12, S.cabe + i * 0.12 + 0.35), 1.8);
         if (qc > 0) {
-          c.save(); c.translate(x + 22, y + 340); c.scale(qc, qc); c.translate(-(x + 22), -(y + 340));
-          chip(c, q.cabe, x + 22, y + 318, { on: 0, solido: true, cor: css(C.lime, 0.7), corTexto: C.lime, size: 17, ls: 1.5, h: 44, pad: 16, icone: 'pessoa' });
+          c.save(); c.translate(x + 24, y + 403); c.scale(qc, qc); c.translate(-(x + 24), -(y + 403));
+          chip(c, q.cabe, x + 24, y + 378, { on: 0, solido: true, cor: css(C.lime, 0.7), corTexto: C.lime, size: 19, ls: 1.5, h: 50, pad: 18, icone: 'pessoa' });
           c.restore();
         }
         const qv = E.out(p(t, S.valor + i * 0.1, S.valor + i * 0.1 + 0.45));
         if (qv > 0) {
           const hi = E.out(p(t, S.destaque, S.destaque + 0.3));
-          txt(c, typo(cap.diagrama.valor.t), x + 22, y + 412, { size: 22, weight: 500, color: mixHex(C.gray, C.white, hi), alpha: qv, box: 'preço ' + (i + 1) });
+          txt(c, typo(cap.diagrama.valor.t), x + 24, y + 484, { size: 25, weight: 500, color: mixHex(C.gray, C.white, hi), alpha: qv, box: 'preço ' + (i + 1) });
           c.save(); if (hi > 0) { c.shadowColor = css(C.lime, 0.9); c.shadowBlur = 20 * pulse(t, S.destaque, 1) + 4 * hi; }
-          barra(c, x + 22, y + 428, 168, 20, qv); c.restore();
+          barra(c, x + 24, y + 503, 194, 23, qv); c.restore();
         }
-        selo(c, x + w - 40, y + 40, 24, p(t, S.bolso + i * 0.12, S.bolso + i * 0.12 + 0.4), t, S.bolso + i * 0.12);
+        selo(c, x + w - 44, y + 44, 27, p(t, S.bolso + i * 0.12, S.bolso + i * 0.12 + 0.4), t, S.bolso + i * 0.12);
         c.restore();
       });
     },
@@ -775,7 +776,8 @@
   // ---- incluso (cap 4): balões "?" aparecem e somem enquanto os itens entram com check
   CENAS.incluso = {
     setup(cap) {
-      const d = cap.diagrama, S = { parte: { x: 100, y: 806, w: 820, h: 476 } };
+      // peças ~15% maiores e centralizadas na vertical (y 820–1366)
+      const d = cap.diagrama, S = { parte: { x: 90, y: 820, w: 840, h: 546 } };
       S.ent = at(cap, d.lista.em);
       S.itens = d.itens.map((it) => ({ ...it, on: at(cap, it.em) }));
       S.perg = at(cap, d.perguntas.em); S.escrito = at(cap, d.escrito.em);
@@ -784,8 +786,8 @@
       [0, 1, 2, 3].forEach((k) => cue(S.perg + 0.07 * k, 'balao'));
       cue(S.escrito, 'estoura'); cue(S.escrito + 0.05, 'brilho');
       S.pecas = [S.ent, S.itens[1].on, S.escrito];
-      S.baloes = [[836, 760], [700, 742], [566, 758]];
-      S.nuvem = [[150, 780], [318, 752], [880, 1328], [160, 1320]];
+      S.baloes = [[832, 782], [684, 764], [536, 780]];
+      S.nuvem = [[150, 792], [330, 768], [872, 1398], [176, 1392]];
       return S;
     },
     parte(c, cap, S, t) {
@@ -794,23 +796,23 @@
       if (entra(c, t, S.ent, R.x + R.w / 2, R.y + R.h / 2) <= 0) { c.restore(); return; }
       const fl = pulse(t, S.escrito + 0.05, 0.9);
       painel(c, R, 1, { stroke: fl > 0 ? css(C.lime, 0.2 + 0.7 * fl) : undefined });
-      txt(c, cap.diagrama.lista.t, R.x + 36, R.y + 58, { size: 30, weight: 600, box: 'cabeçalho incluso' });
+      txt(c, cap.diagrama.lista.t, R.x + 38, R.y + 66, { size: 34, weight: 600, box: 'cabeçalho incluso' });
       const ul = E.out(p(t, S.escrito, S.escrito + 0.5));
-      if (ul > 0) { c.fillStyle = C.lime; c.fillRect(R.x + 36, R.y + 74, tw(cap.diagrama.lista.t, TEXT, 30, 600) * ul, 4); }
+      if (ul > 0) { c.fillStyle = C.lime; c.fillRect(R.x + 38, R.y + 84, tw(cap.diagrama.lista.t, TEXT, 34, 600) * ul, 5); }
       S.itens.forEach((it, i) => {
-        const x = R.x + 24, y = R.y + 96 + i * 122, w = R.w - 48, h = 108;
+        const x = R.x + 24, y = R.y + 110 + i * 142, w = R.w - 48, h = 126;
         const q = E.out(p(t, it.on, it.on + 0.4));
         if (q <= 0) return;
         c.save(); c.globalAlpha *= q; c.translate((1 - q) * -40, 0);
         rr(c, x, y, w, h, 18); c.fillStyle = C.card; c.fill();
-        c.beginPath(); c.arc(x + 58, y + h / 2, 32, 0, 7); c.fillStyle = css(C.lime, 0.12); c.fill();
-        if (it.icone === 'pet') pata(c, x + 58, y + h / 2 + 1, 30, C.lime);
-        else icon(c, it.icone, x + 58, y + h / 2, 34, C.lime, { lw: 2.3 });
-        txt(c, it.t, x + 110, y + h / 2 + 11, { size: 31, weight: 600, box: 'item ' + it.t });
+        c.beginPath(); c.arc(x + 64, y + h / 2, 37, 0, 7); c.fillStyle = css(C.lime, 0.12); c.fill();
+        if (it.icone === 'pet') pata(c, x + 64, y + h / 2 + 1, 35, C.lime);
+        else icon(c, it.icone, x + 64, y + h / 2, 39, C.lime, { lw: 2.3 });
+        txt(c, it.t, x + 124, y + h / 2 + 13, { size: 36, weight: 600, box: 'item ' + it.t });
         const qc = p(t, it.on + 0.3, it.on + 0.62);
-        const cx = x + w - 52, cy = y + h / 2;
-        if (qc < 1) { c.save(); c.setLineDash([6, 5]); c.lineWidth = 2; c.strokeStyle = C.dash; c.beginPath(); c.arc(cx, cy, 24, 0, 7); c.stroke(); c.restore(); }
-        selo(c, cx, cy, 24, qc, t, it.on + 0.3);
+        const cx = x + w - 58, cy = y + h / 2;
+        if (qc < 1) { c.save(); c.setLineDash([6, 5]); c.lineWidth = 2; c.strokeStyle = C.dash; c.beginPath(); c.arc(cx, cy, 28, 0, 7); c.stroke(); c.restore(); }
+        selo(c, cx, cy, 28, qc, t, it.on + 0.3);
         c.restore();
       });
       c.restore();
@@ -819,12 +821,12 @@
       const b = (x, y, t0, t1) => {
         const qi = E.back(p(t, t0, t0 + 0.3), 2.2), qo = p(t, t1, t1 + 0.22);
         if (qi <= 0 || qo >= 1) return;
-        const s = qi * (1 + qo * 0.5);
+        const s = 1.15 * qi * (1 + qo * 0.5);
         c.save(); c.translate(x, y); c.scale(s, s); c.globalAlpha *= 1 - qo;
         balao(c, -34, -30, 68, 58, { r: 20, fill: C.card2, stroke: 'rgba(255,255,255,0.12)' });
         txt(c, '?', 0, 12, { fam: DISPLAY, size: 34, weight: 800, color: C.lime, align: 'center' });
         c.restore();
-        if (qo < 0.4 && qi > 0.6) boxHere(c, 'balão ?', x - 34, y - 30, x + 34, y + 44);
+        if (qo < 0.4 && qi > 0.6) boxHere(c, 'balão ?', x - 39, y - 35, x + 39, y + 51);
       };
       S.itens.forEach((it, i) => b(...S.baloes[i], it.on - 0.5, it.on + 0.25));
       S.nuvem.forEach(([x, y], k) => b(x, y, S.perg + 0.07 * k, S.escrito + 0.04 * k));
@@ -1205,9 +1207,15 @@
     const cap = CAPS[n];
     if (!cap.voo || t < cap.voo[0] || t >= cap.voo[1] || n === 0) return;
     const S = cap.S, R = S.parte, cena = CENAS[cap.diagrama.tipo];
-    const q = E.io(p(t, cap.voo[0], cap.voo[1])), B = blocoRect(CANTO, n - 1);
-    const x = lerp(R.x, B.x, q), y = lerp(R.y + flutua(cap.voo[0]), B.y, q) - Math.sin(q * Math.PI) * 60, w = lerp(R.w, B.w, q), h = lerp(R.h, B.h, q);
-    const conteudo = 1 - p(q, 0.35, 0.8), lima = p(q, 0.45, 0.95);
+    // o caminho não cruza o texto: 1) encolhe e anda POR BAIXO do título e do apoio até a coluna do celular do canto
+    // (x do bloco, logo abaixo do texto), já do tamanho do bloco e em lima; 2) sobe reto até o bloco
+    const u = p(t, cap.voo[0], cap.voo[1]), B = blocoRect(CANTO, n - 1), CUT = 0.62;
+    const yBase = Math.max(cap.lay.apoioY + 64, B.y + 260);
+    const qa = E.io(clamp(u / CUT)), qb = E.io(clamp((u - CUT) / (1 - CUT)));
+    const x = lerp(R.x, B.x, qa), w = lerp(R.w, B.w, qa), h = lerp(R.h, B.h, qa);
+    const y = u < CUT ? lerp(R.y + flutua(cap.voo[0]), yBase, qa) : lerp(yBase, B.y, qb);
+    const q = qa;
+    const conteudo = 1 - p(qa, 0.3, 0.75), lima = p(qa, 0.4, 0.9);
     c.save();
     c.shadowColor = 'rgba(0,0,0,0.6)'; c.shadowBlur = 40 * (1 - q); c.shadowOffsetY = 12 * (1 - q);
     rr(c, x, y, w, h, lerp(28, 4, q)); c.fillStyle = C.panel; c.fill(); c.shadowColor = 'transparent';

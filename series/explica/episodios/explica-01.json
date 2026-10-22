@@ -16,8 +16,8 @@
           "apoio": null
         },
         {
-          "texto": "Vamos montar ele juntos, parte por parte.",
-          "apoio": "Vamos montar juntos, parte por parte."
+          "texto": "Vamos montar juntos, parte por parte?",
+          "apoio": "Vamos montar juntos, parte por parte?"
         }
       ],
       "diagrama": {
@@ -200,7 +200,19 @@
           "apoio": "A quarta parte é o que está incluso."
         },
         {
-          "texto": "Café, horários, pet: o que hoje vira pergunta no direct fica escrito no site.",
+          "texto": "O café da manhã.",
+          "apoio": "Café, horários e pet: tudo respondido."
+        },
+        {
+          "texto": "Os horários de check-in e check-out.",
+          "apoio": "Café, horários e pet: tudo respondido."
+        },
+        {
+          "texto": "Se aceita pet.",
+          "apoio": "Café, horários e pet: tudo respondido."
+        },
+        {
+          "texto": "Tudo o que hoje vira pergunta no direct fica escrito no site.",
           "apoio": "O que vira pergunta no direct fica escrito."
         }
       ],
@@ -233,6 +245,21 @@
         "escrito": {
           "em": "escrito"
         }
+      },
+      "conferencia": {
+        "ritmo_max": 12.0,
+        "respiros": [
+          null,
+          [
+            0.3,
+            0.6
+          ],
+          [
+            0.3,
+            0.6
+          ],
+          null
+        ]
       }
     },
     {

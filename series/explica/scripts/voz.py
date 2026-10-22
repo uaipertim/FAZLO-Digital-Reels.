@@ -23,6 +23,8 @@ Conferência de cada geração (se uma falhar, o capítulo inteiro é gerado de 
                natural. (Calibração: um fecho ouvido como cortado caía de −8,7 dB ao silêncio em 32 ms; finais de
                37–57 ms a partir de nível mais baixo soaram normais.) A voz também não pode subir no fim de uma
                frase afirmativa, e tem de sobrar áudio depois da última letra;
+  capítulo     (opcional, campo "conferencia" do roteiro) ritmo máximo e faixa de respiro em trocas de frase
+               específicas, ex. {"ritmo_max": 12, "respiros": [null, [0.3, 0.6], [0.3, 0.6], null]};
   perguntas    em toda frase com "?", a altura da voz sobe pelo menos 10% na parte final (a tônica);
   transcrição  (se a API de transcrição responder) o texto ouvido bate com o roteiro, palavra por palavra (≥ 92%).
 
@@ -238,6 +240,13 @@ def confere(mp3, al, cap):
         return False, f'pausa entre frases de {maior_fr:.2f} s', n, x
     if respiros and min(respiros) < LIM['respiro']:
         return False, f'frases coladas (respiro de {min(respiros):.2f} s)', n, x
+    # conferência própria do capítulo (campo "conferencia" do roteiro): ritmo máximo e respiro em trocas de frase específicas
+    cf = cap.get('conferencia') or {}
+    if cf.get('ritmo_max') and ritmo > cf['ritmo_max']:
+        return False, f'corrido: {ritmo:.1f} letras/s (máximo {cf["ritmo_max"]})', n, x
+    for k, faixa in enumerate(cf.get('respiros') or []):
+        if faixa and k < len(respiros) and not faixa[0] <= respiros[k] <= faixa[1]:
+            return False, f'respiro {respiros[k]:.2f} s depois da frase {k + 1} (alvo {faixa[0]}–{faixa[1]} s)', n, x
     if sobra < 0.05 or not sem_corte:
         return False, 'fim cortado', n, x
     if not firme:
