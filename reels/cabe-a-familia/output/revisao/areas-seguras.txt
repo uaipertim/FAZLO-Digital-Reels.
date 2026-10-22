@@ -8,22 +8,22 @@ OK     título 1                 t= 0.00 s   x  323–727   y  776–845
 OK     título 2                 t= 0.00 s   x  105–945   y  870–939
 OK     título 3                 t= 0.00 s   x  143–907   y  963–1032
 OK     título 4                 t= 0.00 s   x  259–791   y 1057–1126
-OK     cabeçalho                t=20.04 s   x  330–750   y  285–460
-OK     card 1                   t=19.79 s   x   78–942   y  670–862
-OK     card 2                   t=19.79 s   x   78–942   y  870–1078
-OK     card 3                   t=19.79 s   x   78–942   y 1086–1294
-OK     carimbo                  t=20.54 s   x  242–788   y  917–1067
-OK     virada 1                 t=29.43 s   x   91–959   y  714–776
-OK     virada 1 (no fecho)      t=34.92 s   x   91–959   y  616–678
-OK     virada 2                 t=29.43 s   x   84–966   y  801–863
-OK     virada 2 (no fecho)      t=34.92 s   x   84–966   y  703–765
-OK     virada 3                 t=29.43 s   x  191–859   y  888–950
-OK     virada 3 (no fecho)      t=34.92 s   x  191–859   y  790–852
-OK     virada 4                 t=29.43 s   x  323–727   y  975–1037
-OK     virada 4 (no fecho)      t=34.92 s   x  323–727   y  877–939
-OK     fecho 1                  t=34.92 s   x  191–859   y 1013–1066
-OK     fecho 2                  t=34.92 s   x  230–820   y 1081–1135
-OK     logo sozinha             t=38.93 s   x  245–805   y  873–1047
+OK     cabeçalho                t=20.01 s   x  330–750   y  285–460
+OK     card 1                   t=19.76 s   x   78–942   y  670–862
+OK     card 2                   t=19.76 s   x   78–942   y  870–1078
+OK     card 3                   t=19.76 s   x   78–942   y 1086–1294
+OK     carimbo                  t=20.51 s   x  242–788   y  917–1067
+OK     virada 1                 t=29.40 s   x   91–959   y  714–776
+OK     virada 1 (no fecho)      t=34.90 s   x   91–959   y  616–678
+OK     virada 2                 t=29.40 s   x   84–966   y  801–863
+OK     virada 2 (no fecho)      t=34.90 s   x   84–966   y  703–765
+OK     virada 3                 t=29.40 s   x  191–859   y  888–950
+OK     virada 3 (no fecho)      t=34.90 s   x  191–859   y  790–852
+OK     virada 4                 t=29.40 s   x  323–727   y  975–1037
+OK     virada 4 (no fecho)      t=34.90 s   x  323–727   y  877–939
+OK     fecho 1                  t=34.90 s   x  191–859   y 1013–1066
+OK     fecho 2                  t=34.90 s   x  230–820   y 1081–1135
+OK     logo sozinha             t=38.90 s   x  245–805   y  873–1047
 
 OK     capa: bloco (chip + título) em y 730–1190, centro em y = 960.0 (recorte 3:4: 960)
 
@@ -54,7 +54,7 @@ Layout calculado:
   "é perfeita pra família!"
  ],
  "carimbo": 46,
- "duracao": 38.983333333333334
+ "duracao": 38.95
 }
 
 RESULTADO: aprovado
