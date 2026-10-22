@@ -295,6 +295,7 @@ def palavras(meta, ini):
 
 
 def main(eid):
+    global AJUSTES                                       # ajustes por parte (voz_criterios.<parte>.ajustes)
     ep = json.load(open(os.path.join(SERIE, 'episodios', f'{eid}.json')))
     dir_ = os.path.join(REPO, 'reels', eid, 'audio', 'voz')
     os.makedirs(dir_, exist_ok=True)
@@ -330,9 +331,15 @@ def main(eid):
             nome = os.path.basename(base)
             crit = (ep.get('voz_criterios') or {}).get(nome, {})          # ex.: {"sobe_min": 0.15, "queda_min": 80, "modo": "firme"}
             fim = crit.get('modo', fim)
-            nv, sem, sb = gerar_parte(texto, prev, nxt, base, fim=fim, manter=nome in ep.get('voz_manter', []),
-                                      excecao=nome in ep.get('voz_excecoes', []),
-                                      sobe_min=crit.get('sobe_min', SOBE_MIN), queda_min=crit.get('queda_min'))
+            ajustes_serie = AJUSTES
+            if crit.get('ajustes'):                     # ajustes de voz só desta parte (ex.: mais expressivos numa pergunta)
+                AJUSTES = {**AJUSTES, **crit['ajustes']}
+            try:
+                nv, sem, sb = gerar_parte(texto, prev, nxt, base, fim=fim, manter=nome in ep.get('voz_manter', []),
+                                          excecao=nome in ep.get('voz_excecoes', []),
+                                          sobe_min=crit.get('sobe_min', SOBE_MIN), queda_min=crit.get('queda_min'))
+            finally:
+                AJUSTES = ajustes_serie
             novo |= nv
             x = decodifica(base + '.mp3')
             ini, fim = fronteiras(x)

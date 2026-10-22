@@ -45,12 +45,16 @@
     "carimbo",
     "virada",
     "fecho",
-    "titulo-2"
+    "titulo-2",
+    "titulo-1"
   ],
   "voz_criterios": {
     "titulo-1": {
       "sobe_min": 0.15,
-      "queda_min": 80
+      "ajustes": {
+        "stability": 0.2,
+        "style": 0.7
+      }
     },
     "titulo-2": {
       "modo": "firme"

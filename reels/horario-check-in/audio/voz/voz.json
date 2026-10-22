@@ -19,22 +19,22 @@
    "cena": "titulo",
    "texto": "Que horas é o check-in? Ele chegou… e esperou!",
    "arquivo": "titulo.wav",
-   "ini": 0.038,
-   "fim": 3.439,
-   "dur": 3.401,
+   "ini": 0.031,
+   "fim": 3.484,
+   "dur": 3.454,
    "partes": [
     {
      "texto": "Que horas é o check-in?",
      "arquivo": "titulo-1.mp3",
-     "semente": 7,
+     "semente": 11,
      "sobe": [
-      0.33
+      0.346
      ],
      "final": {
-      "queda_de_-15_ao_silencio_ms": 147,
-      "nivel_35ms_antes_db": -22.4,
-      "altura_final": 0.72,
-      "fim_do_arquivo_db": -74.7,
+      "queda_de_-15_ao_silencio_ms": 49,
+      "nivel_35ms_antes_db": -25.3,
+      "altura_final": 1.21,
+      "fim_do_arquivo_db": -74.4,
       "arquivo_acaba_com_voz": false,
       "ultima_letra": "n",
       "regra": "consoante >= 35 ms"
@@ -63,45 +63,45 @@
     ],
     [
      "horas",
-     0.119
+     0.133
     ],
     [
      "é",
-     0.41
+     0.423
     ],
     [
      "o",
-     0.456
+     0.47
     ],
     [
      "check",
-     0.526
+     0.528
     ],
     [
      "in",
-     0.781
+     0.818
     ],
     [
      "ele",
-     1.806
+     1.85
     ],
     [
      "chegou",
-     2.015
+     2.059
     ],
     [
      "e",
-     2.909
+     2.953
     ],
     [
      "esperou",
-     3.002
+     3.046
     ]
    ],
    "pausas_entre_partes": [
-    0.863
+    0.862
    ],
-   "marca": 1.806
+   "marca": 1.85
   },
   {
    "cena": "card1",
@@ -497,5 +497,5 @@
    ]
   }
  ],
- "fala_total": 18.78
+ "fala_total": 18.83
 }

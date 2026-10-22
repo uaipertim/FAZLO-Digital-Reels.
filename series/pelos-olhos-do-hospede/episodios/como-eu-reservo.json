@@ -29,11 +29,7 @@
     ],
     "cards": [
       "No perfil, fotos lindas. E nenhum caminho pra reservar.",
-      [
-        "Manda direct?",
-        "Chama no WhatsApp?",
-        "Ou liga?"
-      ],
+      "Manda direct, chama no WhatsApp… ou liga?",
       "Ele não sabia por onde começar."
     ],
     "carimbo": "E quem não sabe por onde começar… desiste.",
@@ -49,21 +45,18 @@
     "card3",
     "carimbo",
     "virada",
-    "fecho"
+    "fecho",
+    "card2"
   ],
   "voz_excecoes": [
-    "titulo-2",
-    "card2-3"
+    "titulo-2"
   ],
   "voz_criterios": {
     "titulo-1": {
       "sobe_min": 0.15
-    },
-    "card2-1": {
-      "sobe_min": 0.15
-    },
-    "card2-2": {
-      "sobe_min": 0.15
     }
-  }
+  },
+  "voz_sem_next": [
+    "card2"
+  ]
 }
