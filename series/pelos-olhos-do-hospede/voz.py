@@ -185,38 +185,58 @@ def termina_bem(x, texto):
     return sem_corte and firme, {'queda_de_-15_ao_silencio_ms': round(queda_ms), 'nivel_35ms_antes_db': round(float(n35), 1), 'altura_final': None if razao is None else round(razao, 2)}
 
 
-def gerar_parte(texto, prev, nxt, destino, concluida=False, manter=False):
-    """Uma parte da fala. Com "?", confere a subida no fim e, se precisar, tenta outras sementes.
-    manter=True (roteiro: "voz_manter"): a tomada que já existe com o mesmo texto fica, mesmo que o texto vizinho
-    (o contexto) tenha mudado — para trocar só uma parte de uma fala sem gerar de novo as outras."""
+def fim_ok(x, texto, modo):
+    """A conferência do final de uma parte. modo 'firme' (frase afirmativa): sem corte e a voz não sobe no fim;
+    modo 'corte' (pergunta): só sem corte (a voz deve subir). Devolve (ok, dados)."""
+    _, d = termina_bem(x, texto)
+    sem_corte = d['queda_de_-15_ao_silencio_ms'] >= 35
+    firme = d['altura_final'] is None or d['altura_final'] <= 1.0
+    return (sem_corte and (firme or modo == 'corte')), d
+
+
+def gerar_parte(texto, prev, nxt, destino, fim=None, manter=False):
+    """Uma parte da fala. Com "?", confere a subida no fim; com `fim` ('firme' ou 'corte'), confere o final da parte
+    (fim_ok). Se precisar, tenta outras sementes.
+    manter=True (roteiro: "voz_manter"): a tomada aprovada que já existe com o mesmo texto fica, mesmo que o texto
+    vizinho (o contexto) tenha mudado ou que ela não passe numa conferência nova (só avisa) — para trocar só uma parte
+    de uma fala sem gerar de novo as outras."""
     if os.path.exists(destino + '.json'):
         m = json.load(open(destino + '.json'))
-        if m.get('base') == chave_base(texto, prev, nxt) or (manter and m.get('texto_api') == api_texto(texto)):
-            sb = perguntas(texto, m, decodifica(destino + '.mp3'))
-            if all(v is not None and v >= SOBE_MIN for v in sb) and (not concluida or termina_bem(decodifica(destino + '.mp3'), texto)[0]):
+        if manter and m.get('texto_api') == api_texto(texto):        # tomada aprovada: fica (a conferência só avisa)
+            x = decodifica(destino + '.mp3')
+            sb = perguntas(texto, m, x)
+            ok = all(v is not None and v >= SOBE_MIN for v in sb) and (not fim or fim_ok(x, texto, fim)[0])
+            if not ok:
+                print(f'      {os.path.basename(destino)}: mantida (voz_manter), mas NÃO passa na conferência: {sb} {fim_ok(x, texto, fim or "corte")[1]}')
+            return False, m.get('semente', SEMENTE), sb
+        if m.get('base') == chave_base(texto, prev, nxt):
+            x = decodifica(destino + '.mp3')
+            sb = perguntas(texto, m, x)
+            if all(v is not None and v >= SOBE_MIN for v in sb) and (not fim or fim_ok(x, texto, fim)[0]):
                 return False, m.get('semente', SEMENTE), sb
+            print(f'      {os.path.basename(destino)}: a tomada guardada não passa na conferência ({sb}, {fim_ok(x, texto, fim or "firme")[1]}): gerando de novo')
     melhor = None
-    for tent, sem in enumerate(SEMENTES_PERGUNTA if ('?' in texto or concluida) else [SEMENTE], 1):
+    for tent, sem in enumerate(SEMENTES_PERGUNTA if ('?' in texto or fim) else [SEMENTE], 1):
         gerar(texto, prev, nxt, destino, sem)
         m = json.load(open(destino + '.json'))
         x = decodifica(destino + '.mp3')
         sb = perguntas(texto, m, x)
         nota = min([v if v is not None else -1 for v in sb] or [1])
-        bem, dados = termina_bem(x, texto) if concluida else (True, None)
-        if concluida:
-            print(f'      fecho, tentativa {tent} (semente {sem}): {"final firme e completo" if bem else "final cortado ou suspenso"} {dados}')
-            nota = nota if bem else -9
+        bem, dados = fim_ok(x, texto, fim) if fim else (True, None)
+        nota = nota if bem else -9
+        print(f'      {os.path.basename(destino)}, tentativa {tent} (semente {sem}): perguntas {sb or "-"} · '
+              f'final {"completo" if bem else "cortado ou suspenso"} {dados or ""}')
         if melhor is None or nota > melhor[0]:
             melhor = (nota, sem)
-        if nota >= SOBE_MIN or (concluida and bem and '?' not in texto):
+        if nota >= SOBE_MIN or (bem and '?' not in texto):
             ULTIMA[os.path.basename(destino)] = {'tentativas': tent, 'final': dados}
             return True, sem, sb
-        if not concluida:
-            print(f'      semente {sem}: a pergunta não subiu ({sb}), tentando outra')
-    gerar(texto, prev, nxt, destino, melhor[1])          # fica a que mais subiu
+    gerar(texto, prev, nxt, destino, melhor[1])          # fica a melhor (avisa: nenhuma passou)
     m = json.load(open(destino + '.json'))
-    ULTIMA[os.path.basename(destino)] = {'tentativas': len(SEMENTES_PERGUNTA), 'final': termina_bem(decodifica(destino + '.mp3'), texto)[1] if concluida else None, 'sem_aprovada': True}
-    return True, melhor[1], perguntas(texto, m, decodifica(destino + '.mp3'))
+    x = decodifica(destino + '.mp3')
+    ULTIMA[os.path.basename(destino)] = {'tentativas': len(SEMENTES_PERGUNTA), 'final': fim_ok(x, texto, fim or 'firme')[1], 'sem_aprovada': True}
+    print(f'      {os.path.basename(destino)}: NENHUMA tentativa passou; ficou a melhor (semente {melhor[1]})')
+    return True, melhor[1], perguntas(texto, m, x)
 
 
 def marca_do_titulo(ep, pal):
@@ -247,6 +267,7 @@ def main(eid):
     dir_ = os.path.join(REPO, 'reels', eid, 'audio', 'voz')
     os.makedirs(dir_, exist_ok=True)
     cs = cenas(ep)
+    longa = ep.get('leitura') != 'curta'                # leitura longa: padrão a partir do ep. 7
     junta = lambda v: v if isinstance(v, str) else ' '.join(v)
     out = {'voz': VOZ, 'modelo': MODELO, 'ajustes': AJUSTES, 'formato': FORMATO, 'semente': SEMENTE,
            'contexto': 'previous_text / next_text', 'cenas': []}
@@ -254,20 +275,27 @@ def main(eid):
         partes = [fala] if isinstance(fala, str) else fala
         antes, depois = (junta(cs[i - 1][1]) if i else None), (junta(cs[i + 1][1]) if i + 1 < len(cs) else None)
         sinais, pal, info, novo, t = [], [], [], False, 0.0
-        alvo = (ep.get('voz_pausas') or {}).get(cena)                 # roteiro: "voz_pausas": {"titulo": 0.8} (s de silêncio)
-        gap = max(0.05, alvo - 0.09) if alvo else 0.25
+        # o silêncio entre as partes (≈ o que se mede): o do roteiro ("voz_pausas": {"titulo": 0.8}); na leitura longa,
+        # 0,52 s quando a fala tem pergunta (faixa 0,45–0,6 s); nos eps. 1–6, 0,25 s
+        alvo = (ep.get('voz_pausas') or {}).get(cena)
+        gap = alvo if alvo else (0.52 if longa and any(q.rstrip().endswith('?') for q in partes) else 0.25)
         juntas = []
         for k, texto in enumerate(partes):
             base = os.path.join(dir_, cena if len(partes) == 1 else f'{cena}-{k + 1}')
             prev = partes[k - 1] if k else antes
             nxt = partes[k + 1] if k + 1 < len(partes) else depois
-            nv, sem, sb = gerar_parte(texto, prev, nxt, base, concluida=(cena == 'fecho' and not texto.rstrip().endswith('?')),
-                                      manter=os.path.basename(base) in ep.get('voz_manter', []))
+            pergunta = texto.rstrip().endswith('?')
+            if longa:                                   # do ep. 7 em diante: TODA fala e parte tem o final conferido (corte);
+                fim = 'firme' if (cena == 'fecho' and not pergunta) else 'corte'   # o fecho afirmativo também não pode subir
+            else:                                       # eps. 1–6: só o fecho afirmativo
+                fim = 'firme' if (cena == 'fecho' and not pergunta) else None
+            nv, sem, sb = gerar_parte(texto, prev, nxt, base, fim=fim, manter=os.path.basename(base) in ep.get('voz_manter', []))
             novo |= nv
             x = decodifica(base + '.mp3')
             ini, fim = fronteiras(x)
             meta = json.load(open(base + '.json'))
-            info.append({'texto': texto, 'arquivo': os.path.basename(base) + '.mp3', 'semente': sem, 'sobe': sb})
+            info.append({'texto': texto, 'arquivo': os.path.basename(base) + '.mp3', 'semente': sem, 'sobe': sb,
+                         'final': fim_ok(x, texto, fim or 'firme')[1]})
             if len(partes) == 1:
                 sinais, pal = [x], palavras(meta, ini)
                 cena_ini, cena_fim = ini, fim

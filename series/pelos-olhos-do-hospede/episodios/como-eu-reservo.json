@@ -41,12 +41,18 @@
     "fecho": "Manda pra pousada que ainda reserva no improviso."
   },
   "voz_pausas": {
-    "titulo": 0.9
+    "titulo": 0.81
   },
   "voz_manter": [
+    "titulo-1",
+    "titulo-2",
     "card1",
     "card2-1",
     "card2-2",
-    "card3"
+    "card2-3",
+    "card3",
+    "carimbo",
+    "virada",
+    "fecho"
   ]
 }

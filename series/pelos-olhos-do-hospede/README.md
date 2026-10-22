@@ -7,7 +7,7 @@ A estrutura (título-dor → cards → carimbo → virada → "Manda pra quem…
 É **um motion só**: cada episódio troca apenas o roteiro, um JSON em [`episodios/`](episodios). Depois do modelo aprovado, um episódio novo sai com um comando.
 
 **Formato (decisão de 16/10: os episódios passam a ter voz):**
-- 9:16 (1080×1920), 60 fps, **25–38 s com voz** (leitura longa, a partir do ep. 7; os eps. 1–6 ficaram em 25–30 s). A duração vem das falas. Sem o campo `voz` no roteiro, o motor ainda gera a versão curta de 10,4–14,4 s.
+- 9:16 (1080×1920), 60 fps, **25–42 s com voz** (leitura longa, a partir do ep. 7; os eps. 1–6 ficaram em 25–30 s). A duração vem das falas. Sem o campo `voz` no roteiro, o motor ainda gera a versão curta de 10,4–14,4 s.
 - H.264 + AAC 48 kHz.
 - **Narração com a voz oficial da FAZLO** (ElevenLabs) e efeitos sintetizados. Os efeitos abaixam ~9 dB sob a fala, e o master fica em **−14 LUFS** com pico ≤ −1 dBTP, sem espaço para música do Instagram.
 - Identidade da FAZLO Digital: Unbounded + Sora, lima `#C6FA41`, fundo `#050606` com a grade de pontos, logo FAZLO DIGITAL do kit oficial.
@@ -34,7 +34,7 @@ npm run episodio -- <id>
 ```
 
 O comando:
-0. se o roteiro tem `voz`, gera as falas (`voz.py`; só refaz as que mudaram) e guarda o vídeo curto que já existir como `-curto.mp4`. **Se o total passar de 38 s (30 s nos eps. 1–6), ele para e avisa antes do render**: nada é acelerado nem cortado sem aprovação (`--forcar` renderiza assim mesmo);
+0. se o roteiro tem `voz`, gera as falas (`voz.py`; só refaz as que mudaram) e guarda o vídeo curto que já existir como `-curto.mp4`. **Se o total passar de 42 s (30 s nos eps. 1–6), ele para e avisa antes do render**: nada é acelerado nem cortado sem aprovação (`--forcar` renderiza assim mesmo);
 1. cria (ou atualiza) `reels/<id>/` (`reel.json`, `src/anim.js` de uma linha, `scripts/audio.py`);
 2. exporta os cues e completa o `reel.json` com os instantes da revisão e do storyboard;
 3. roda o pipeline normal: áudio → vídeo → capa → storyboard → QA;
@@ -84,8 +84,8 @@ Sai com erro se a revisão técnica ou as áreas seguras falharem.
   - Use partes para acertar a entonação, porque duas perguntas na mesma chamada tendem a sair como afirmação.
   - "FAZLO" é enviado à API como "Fázlo" ("FÁZ-lo"); na tela continua FAZLO.
   - "direct" fica "direct": foi a grafia escolhida nas amostras de 16/10.
-- **Final de frase concluída:** na fala do fecho (ponto ou exclamação), o `voz.py` confere o final no áudio. Se falhar, tenta outras sementes:
-  - **corte** é o final cair até o silêncio (−50 dB) em menos de 35 ms começando acima de −15 dB (relativo ao pico da fala); quedas que começam em −20 dB ou abaixo são fim natural (calibração ouvida pelo Willian: um fecho cortado caía de −8,7 dB ao silêncio em 32 ms; finais de 37–57 ms a partir de nível mais baixo soaram normais; regra em uso a partir do ep. 7);
+- **Final de frase:** do ep. 7 em diante, o `voz.py` confere o final de **toda fala e de toda parte** (nos eps. 1–6, só o do fecho). Se falhar, tenta outras sementes:
+  - **corte** (vale para todas as falas e partes) é o final cair até o silêncio (−50 dB) em menos de 35 ms começando acima de −15 dB (relativo ao pico da fala); quedas que começam em −20 dB ou abaixo são fim natural (calibração ouvida pelo Willian: um fecho cortado caía de −8,7 dB ao silêncio em 32 ms; finais de 37–57 ms a partir de nível mais baixo soaram normais; regra em uso a partir do ep. 7);
   - a altura da voz não pode subir no fim;
   - depois da última palavra o vídeo tem pelo menos 0,4 s de respiro.
 - **Nenhum efeito por cima da voz:** o `audio.py` mede, em janelas de 50 ms com fala (300 Hz–4 kHz), quanto a voz fica acima dos efeitos. Onde ficar menos de 3 dB acima (ex.: a cauda de um toque no começo de uma fala), os efeitos abaixam só nesse trecho até a voz ficar 3 dB acima.
@@ -118,7 +118,7 @@ O fecho tem 2,0 s em todos os episódios (ajuste de 16/10). Se o roteiro passar 
 | **Virada** | As linhas antes da 1ª palavra lima entram juntas. Daí em diante, **cada palavra entra quando a voz a diz** (alinhamento por caractere), como "“a partir de”". A frase se aproxima 6%, em ritmo constante, enquanto é falada. |
 | **Fecho** | "Manda pra quem…" entra, e a fala começa 0,2 s depois. A logo começa a se montar 0,4 s depois do início da fala e, pronta, fica **pelo menos 1,4 s na tela** antes do fade (ajuste de 16/10: mínimo de 1,2 s). A assinatura sonora soa logo depois da fala, sem cobri-la, e tem 1,2 s para soar inteira. O fecho tem pelo menos 2,0 s. |
 
-Se o total ficar abaixo de 25 s, a diferença vai para os respiros: os cards ficam mais tempo. Acima do limite (38 s; 30 s nos eps. 1–6), o comando avisa antes de renderizar.
+Se o total ficar abaixo de 25 s, a diferença vai para os respiros: os cards ficam mais tempo. Acima do limite (42 s; 30 s nos eps. 1–6), o comando avisa antes de renderizar.
 
 ### Leitura longa (regras de 22/10, pedido do Willian; padrão a partir do ep. 7)
 
@@ -133,12 +133,13 @@ Os eps. 1–6 têm `"leitura": "curta"` no roteiro e continuam com os tempos aci
 | **Fecho** | "Manda pra…" fica **≥ 3,0 s inteiro e parado** depois da fala; a virada e o fecho saem juntos |
 | **Logo** | enquanto o texto sai, a logo FAZLO DIGITAL se monta **sozinha, centralizada** (560 px, centro em y 960), com a assinatura completa, e fica **parada ≥ 3,0 s até o fim**, sem fade |
 | **Fundo** | como o texto fica parado, o fundo segue vivo: a grade de pontos anda 3× mais rápido e duas luzes lima largas passeiam devagar (a revisão não acusa imagem congelada) |
-| **Duração** | até **38 s**. A voz nunca é acelerada |
+| **Duração** | até **42 s** (decisão de 22/10: os textos ficam inteiros). A voz nunca é acelerada |
 
 ### Ajustes de voz no roteiro
 
-- **`voz_pausas`**: o silêncio entre as partes de uma fala, por cena. Ex.: `{"titulo": 0.9}`. O `voz.json` registra a pausa medida em `pausas_entre_partes`. Sem o campo, as partes são emendadas com ~0,25 s.
-- **`voz_manter`**: partes que ficam como estão mesmo que o texto vizinho (o contexto) mude. Ex.: `["card2-1", "card2-2"]`. Serve para trocar só uma parte de uma fala sem gerar de novo as outras.
+- **Pergunta dividida em partes** leva **0,45–0,6 s** de silêncio entre as partes (padrão 0,52 s na leitura longa; ~0,25 s nos eps. 1–6).
+- **`voz_pausas`**: o silêncio inserido entre as partes de uma fala, por cena (≈ o silêncio medido). Ex.: `{"titulo": 0.8}`. O `voz.json` registra a pausa medida em `pausas_entre_partes` e a queda do final de cada parte em `partes[].final`.
+- **`voz_manter`**: tomadas aprovadas que ficam como estão, mesmo que o texto vizinho (o contexto) mude ou que não passem numa conferência nova (o `voz.py` só avisa). Ex.: `["card2-1", "card2-2"]`. Serve para trocar só uma parte de uma fala sem gerar de novo as outras.
 
 **Voz** (`voz.py`, mesmo padrão de "Site não é luxo"):
 - Raquel - For Conversational (`GDzHdQOi6jjf8zaXhCYD`), `eleven_multilingual_v2`;
