@@ -1,24 +1,46 @@
 {
   "id": "nao-achou-o-preco",
   "leitura": "curta",
-  "titulo": ["Ele achou sua pousada.", "*Mas não achou o preço.*"],
+  "titulo": [
+    "Ele achou sua pousada.",
+    "*Mas não achou o preço.*"
+  ],
   "cards": [
-    { "rotulo": "No perfil", "texto": "Fotos da piscina, do café e da vista." },
-    { "texto": "E a diária? Nenhum valor à vista." },
-    { "texto": "Perguntar no direct… e esperar." }
+    {
+      "rotulo": "No perfil",
+      "texto": "Fotos da piscina, do café e da vista."
+    },
+    {
+      "texto": "E a diária? Nenhum valor à vista."
+    },
+    {
+      "texto": "Perguntar no direct… e esperar."
+    }
   ],
   "carimbo": "Foi ver outra",
-  "virada": ["Um valor de referência,", "um simples *“a partir de”*", "*responde antes da pergunta.*"],
+  "virada": [
+    "Um valor de referência,",
+    "um simples *“a partir de”*",
+    "*responde antes da pergunta.*"
+  ],
   "fecho": "Manda pra aquela pousada que só passa o preço pelo direct.",
   "voz": {
     "titulo": "Ele achou sua pousada. Mas não achou o preço.",
     "cards": [
       "Viu as fotos da piscina, do café, da vista.",
-      ["E a diária?", "Nenhum valor à vista."],
+      [
+        "E a diária?",
+        "Nenhum valor à vista."
+      ],
       "Aí ele pergunta no direct… e espera."
     ],
     "carimbo": "Enquanto isso, foi ver outra.",
     "virada": "Um valor de referência, um simples 'a partir de', responde antes da pergunta.",
     "fecho": "Manda pra aquela pousada que só passa o preço pelo direct."
+  },
+  "capa_v2": {
+    "ep": 1,
+    "ilustracao": "preco",
+    "tom": "#1A0C0C"
   }
 }

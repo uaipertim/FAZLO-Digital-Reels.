@@ -1,17 +1,34 @@
 {
   "id": "tem-vaga-no-feriado",
   "leitura": "curta",
-  "titulo": ["Tem vaga no feriado?", "*Ele perguntou em três lugares.*"],
+  "titulo": [
+    "Tem vaga no feriado?",
+    "*Ele perguntou em três lugares.*"
+  ],
   "cards": [
-    { "rotulo": "No direct", "texto": "Tem vaga de sexta a domingo?" },
-    { "texto": "No WhatsApp, a mesma pergunta." },
-    { "texto": "E nos comentários do post." }
+    {
+      "rotulo": "No direct",
+      "texto": "Tem vaga de sexta a domingo?"
+    },
+    {
+      "texto": "No WhatsApp, a mesma pergunta."
+    },
+    {
+      "texto": "E nos comentários do post."
+    }
   ],
   "carimbo": "Reservou na outra",
-  "virada": ["Consulta de datas no site:", "*ele escolhe as datas*", "*e a pergunta chega pronta.*"],
+  "virada": [
+    "Consulta de datas no site:",
+    "*ele escolhe as datas*",
+    "*e a pergunta chega pronta.*"
+  ],
   "fecho": "Manda pra pousada que perde reserva no feriado.",
   "voz": {
-    "titulo": ["Tem vaga no feriado?", "Ele perguntou em três lugares."],
+    "titulo": [
+      "Tem vaga no feriado?",
+      "Ele perguntou em três lugares."
+    ],
     "cards": [
       "No direct: tem vaga de sexta a domingo?",
       "No WhatsApp, a mesma pergunta.",
@@ -20,5 +37,10 @@
     "carimbo": "Quem respondeu primeiro… levou a reserva.",
     "virada": "Com a consulta de datas no site, ele escolhe entrada e saída, e a pergunta chega pronta no seu WhatsApp.",
     "fecho": "Manda pra pousada que perde reserva no feriado."
+  },
+  "capa_v2": {
+    "ep": 3,
+    "ilustracao": "calendario",
+    "tom": "#0A0E1C"
   }
 }

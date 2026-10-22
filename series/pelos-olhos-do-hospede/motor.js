@@ -721,6 +721,42 @@
       neon(c, P((q) => { q.moveTo(444, 412); q.lineTo(500, 430); }), { fill: null, lw: 7, glow: 10 });
       c.save(); c.translate(530, 486); c.rotate(0.2); neon(c, caixa(-42, -58, 84, 124, 20), { lw: 10 }); cheio(c, elipse(0, -36, 9, 9), '#111816'); c.restore();
     },
+    preco(c) {                                       // etiqueta de preço pendurada, com "R$ ?" no lugar do valor
+      neon(c, P((q) => { q.moveTo(300, 20); q.quadraticCurveTo(250, 60, 268, 118); }), { fill: null, lw: 7, glow: 10 });
+      c.save(); c.translate(300, 300); c.rotate(-0.12);
+      neon(c, P((q) => { q.moveTo(0, -190); q.lineTo(170, -110); q.lineTo(170, 230); q.quadraticCurveTo(170, 250, 150, 250); q.lineTo(-150, 250); q.quadraticCurveTo(-170, 250, -170, 230); q.lineTo(-170, -110); q.closePath(); }), { lw: 14 });
+      neon(c, elipse(0, -110, 22, 22), { fill: '#050606', lw: 9 });
+      letra(c, 'R$', 0, 20, 92, C.white); letra(c, '?', 0, 150, 120, C.lime);
+      c.restore();
+    },
+    estrada(c) {                                     // pino no fim de uma estrada sinuosa, com um "?" no caminho
+      const via = P((q) => { q.moveTo(80, 545); q.bezierCurveTo(420, 520, 520, 420, 330, 360); q.bezierCurveTo(140, 300, 160, 210, 330, 175); });
+      c.save(); c.lineWidth = 64; c.lineCap = 'round'; c.strokeStyle = '#16211C'; c.stroke(via); c.restore();
+      neon(c, via, { fill: null, lw: 12, dash: [2, 30], glow: 22 });
+      neon(c, P((q) => { q.moveTo(330, 170); q.bezierCurveTo(318, 145, 270, 118, 270, 70); q.arc(330, 70, 60, Math.PI, 0); q.bezierCurveTo(390, 118, 342, 145, 330, 170); q.closePath(); }), { lw: 12 });
+      cheio(c, elipse(330, 70, 20, 20));
+      neon(c, elipse(190, 300, 52, 52), { lw: 11 }); letra(c, '?', 190, 300, 68, C.lime);
+    },
+    calendario(c) {                                  // calendário com uma data marcada e um "?" em cima dela
+      neon(c, caixa(40, 90, 520, 450, 36), { lw: 14 });
+      cheio(c, caixa(40, 90, 520, 90, 36), rgba(C.lime, 0.25)); neon(c, P((q) => { q.moveTo(40, 180); q.lineTo(560, 180); }), { fill: null, lw: 10 });
+      neon(c, P((q) => { q.moveTo(160, 60); q.lineTo(160, 125); q.moveTo(440, 60); q.lineTo(440, 125); }), { fill: null, lw: 14 });
+      for (let r = 0; r < 4; r++) for (let k = 0; k < 6; k++) {
+        const x = 95 + k * 82, y = 230 + r * 80;
+        if (r === 2 && k === 3) { neon(c, elipse(x, y, 40, 40), { fill: rgba(C.lime, 0.3), lw: 10 }); letra(c, '?', x, y - 92, 72, C.lime); }
+        else { c.save(); c.fillStyle = rgba(C.white, 0.25); c.beginPath(); c.roundRect(x - 18, y - 12, 36, 24, 8); c.fill(); c.restore(); }
+      }
+    },
+    piscina(c) {                                     // escada de piscina com água à esquerda e uma porta fechada com "?" à direita
+      neon(c, caixa(0, 330, 290, 220, 26), { fill: '#0F2A26', lw: 10 });
+      for (let k = 0; k < 3; k++) neon(c, P((q) => { q.moveTo(30 + k * 10, 380 + k * 55); q.bezierCurveTo(80, 365 + k * 55, 120, 395 + k * 55, 170 + k * 15, 380 + k * 55); q.bezierCurveTo(210, 365 + k * 55, 240, 395 + k * 55, 265, 380 + k * 55); }), { fill: null, lw: 7, a: 0.7, glow: 14 });
+      neon(c, P((q) => { q.moveTo(90, 470); q.lineTo(90, 230); q.arc(140, 230, 50, Math.PI, 0); q.moveTo(170, 470); q.lineTo(170, 250); q.arc(210, 250, 40, Math.PI, 0); q.moveTo(90, 300); q.lineTo(170, 300); q.moveTo(90, 360); q.lineTo(170, 360); }), { fill: null, lw: 12 });
+      neon(c, caixa(360, 70, 210, 400, 16), { lw: 14 });
+      neon(c, caixa(385, 100, 160, 150, 10), { fill: null, lw: 7, glow: 10 }); neon(c, caixa(385, 280, 160, 160, 10), { fill: null, lw: 7, glow: 10 });
+      cheio(c, elipse(530, 290, 12, 12));
+      neon(c, elipse(465, 175, 46, 46), { fill: '#050606', lw: 10 }); letra(c, '?', 465, 175, 62, C.lime);
+      neon(c, P((q) => { q.moveTo(330, 470); q.lineTo(600, 470); }), { fill: null, lw: 9, glow: 10 });
+    },
     familia(c) {                                     // cama de casal e berço lado a lado, com pessoas contando
       neon(c, caixa(30, 300, 300, 90, 20));
       neon(c, caixa(12, 378, 336, 96, 18));
