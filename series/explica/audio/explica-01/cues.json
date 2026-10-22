@@ -1,0 +1,644 @@
+{
+ "duracao": 83.331,
+ "cues": [
+  {
+   "t": 2.91,
+   "type": "conta",
+   "k": 0
+  },
+  {
+   "t": 3,
+   "type": "conta",
+   "k": 1
+  },
+  {
+   "t": 3.09,
+   "type": "conta",
+   "k": 2
+  },
+  {
+   "t": 3.18,
+   "type": "conta",
+   "k": 3
+  },
+  {
+   "t": 3.27,
+   "type": "conta",
+   "k": 4
+  },
+  {
+   "t": 3.36,
+   "type": "conta",
+   "k": 5
+  },
+  {
+   "t": 3.45,
+   "type": "conta",
+   "k": 6
+  },
+  {
+   "t": 4.102,
+   "type": "apoio"
+  },
+  {
+   "t": 4.5,
+   "type": "cursor_on"
+  },
+  {
+   "t": 5.927,
+   "type": "faixa_sai"
+  },
+  {
+   "t": 6.327,
+   "type": "encolhe"
+  },
+  {
+   "t": 6.947,
+   "type": "pousa"
+  },
+  {
+   "t": 7.087,
+   "type": "corte"
+  },
+  {
+   "t": 7.507,
+   "type": "titulo"
+  },
+  {
+   "t": 7.937,
+   "type": "apoio"
+  },
+  {
+   "t": 8.449,
+   "type": "monta"
+  },
+  {
+   "t": 9.997,
+   "type": "apoio"
+  },
+  {
+   "t": 11.525,
+   "type": "etiquetas"
+  },
+  {
+   "t": 12.93,
+   "type": "acende",
+   "k": 0
+  },
+  {
+   "t": 12.93,
+   "type": "digita",
+   "d": 0.4
+  },
+  {
+   "t": 13.627,
+   "type": "acende",
+   "k": 1
+  },
+  {
+   "t": 13.871,
+   "type": "pino"
+  },
+  {
+   "t": 14.498,
+   "type": "foto"
+  },
+  {
+   "t": 14.765,
+   "type": "acende",
+   "k": 2
+  },
+  {
+   "t": 15.395,
+   "type": "voa_parte"
+  },
+  {
+   "t": 16.015,
+   "type": "bloco",
+   "k": 1
+  },
+  {
+   "t": 16.075,
+   "type": "cursor"
+  },
+  {
+   "t": 16.155,
+   "type": "corte"
+  },
+  {
+   "t": 16.575,
+   "type": "titulo"
+  },
+  {
+   "t": 16.955,
+   "type": "balao"
+  },
+  {
+   "t": 17.005,
+   "type": "apoio"
+  },
+  {
+   "t": 18.051,
+   "type": "monta"
+  },
+  {
+   "t": 19.312,
+   "type": "esqueleto"
+  },
+  {
+   "t": 19.897,
+   "type": "surge"
+  },
+  {
+   "t": 21.019,
+   "type": "apoio"
+  },
+  {
+   "t": 21.139,
+   "type": "campo",
+   "k": 0
+  },
+  {
+   "t": 21.824,
+   "type": "campo",
+   "k": 1
+  },
+  {
+   "t": 22.358,
+   "type": "campo",
+   "k": 2
+  },
+  {
+   "t": 22.695,
+   "type": "mais"
+  },
+  {
+   "t": 23.045,
+   "type": "botao"
+  },
+  {
+   "t": 23.337,
+   "type": "voa_parte"
+  },
+  {
+   "t": 23.957,
+   "type": "bloco",
+   "k": 2
+  },
+  {
+   "t": 24.017,
+   "type": "cursor"
+  },
+  {
+   "t": 24.097,
+   "type": "corte"
+  },
+  {
+   "t": 24.517,
+   "type": "titulo"
+  },
+  {
+   "t": 24.947,
+   "type": "apoio"
+  },
+  {
+   "t": 25.679,
+   "type": "monta",
+   "k": 0
+  },
+  {
+   "t": 25.899,
+   "type": "monta",
+   "k": 1
+  },
+  {
+   "t": 26.736,
+   "type": "foto"
+  },
+  {
+   "t": 27.007,
+   "type": "apoio"
+  },
+  {
+   "t": 29.081,
+   "type": "acende",
+   "k": 0
+  },
+  {
+   "t": 29.201,
+   "type": "acende",
+   "k": 1
+  },
+  {
+   "t": 30.381,
+   "type": "campo",
+   "k": 0
+  },
+  {
+   "t": 31.693,
+   "type": "brilho"
+  },
+  {
+   "t": 32.599,
+   "type": "check"
+  },
+  {
+   "t": 33.137,
+   "type": "voa_parte"
+  },
+  {
+   "t": 33.757,
+   "type": "bloco",
+   "k": 3
+  },
+  {
+   "t": 33.817,
+   "type": "cursor"
+  },
+  {
+   "t": 33.897,
+   "type": "corte"
+  },
+  {
+   "t": 34.317,
+   "type": "titulo"
+  },
+  {
+   "t": 34.747,
+   "type": "apoio"
+  },
+  {
+   "t": 35.561,
+   "type": "monta"
+  },
+  {
+   "t": 36.164,
+   "type": "balao"
+  },
+  {
+   "t": 36.605,
+   "type": "balao"
+  },
+  {
+   "t": 36.664,
+   "type": "campo",
+   "k": 0
+  },
+  {
+   "t": 36.807,
+   "type": "apoio"
+  },
+  {
+   "t": 36.914,
+   "type": "estoura"
+  },
+  {
+   "t": 36.964,
+   "type": "check"
+  },
+  {
+   "t": 37.023,
+   "type": "balao"
+  },
+  {
+   "t": 37.105,
+   "type": "campo",
+   "k": 1
+  },
+  {
+   "t": 37.355,
+   "type": "estoura"
+  },
+  {
+   "t": 37.405,
+   "type": "check"
+  },
+  {
+   "t": 37.523,
+   "type": "campo",
+   "k": 2
+  },
+  {
+   "t": 37.773,
+   "type": "estoura"
+  },
+  {
+   "t": 37.823,
+   "type": "check"
+  },
+  {
+   "t": 38.498,
+   "type": "balao"
+  },
+  {
+   "t": 38.568,
+   "type": "balao"
+  },
+  {
+   "t": 38.638,
+   "type": "balao"
+  },
+  {
+   "t": 38.708,
+   "type": "balao"
+  },
+  {
+   "t": 39.543,
+   "type": "estoura"
+  },
+  {
+   "t": 39.593,
+   "type": "brilho"
+  },
+  {
+   "t": 40.452,
+   "type": "voa_parte"
+  },
+  {
+   "t": 41.072,
+   "type": "bloco",
+   "k": 4
+  },
+  {
+   "t": 41.132,
+   "type": "cursor"
+  },
+  {
+   "t": 41.212,
+   "type": "corte"
+  },
+  {
+   "t": 41.632,
+   "type": "titulo"
+  },
+  {
+   "t": 42.062,
+   "type": "apoio"
+  },
+  {
+   "t": 44.122,
+   "type": "apoio"
+  },
+  {
+   "t": 44.211,
+   "type": "monta"
+  },
+  {
+   "t": 44.511,
+   "type": "pino"
+  },
+  {
+   "t": 44.756,
+   "type": "rota",
+   "d": 2.5080000000000027
+  },
+  {
+   "t": 46.161,
+   "type": "acende",
+   "k": 0
+  },
+  {
+   "t": 46.637,
+   "type": "acende",
+   "k": 1
+  },
+  {
+   "t": 47.585,
+   "type": "apoio"
+  },
+  {
+   "t": 48.356,
+   "type": "anda",
+   "d": 0.6000000000000014
+  },
+  {
+   "t": 48.956,
+   "type": "check"
+  },
+  {
+   "t": 50.229,
+   "type": "voa_parte"
+  },
+  {
+   "t": 50.849,
+   "type": "bloco",
+   "k": 5
+  },
+  {
+   "t": 50.909,
+   "type": "cursor"
+  },
+  {
+   "t": 50.989,
+   "type": "corte"
+  },
+  {
+   "t": 51.409,
+   "type": "titulo"
+  },
+  {
+   "t": 51.839,
+   "type": "monta"
+  },
+  {
+   "t": 51.839,
+   "type": "apoio"
+  },
+  {
+   "t": 52.525,
+   "type": "monta",
+   "k": 1
+  },
+  {
+   "t": 53.779,
+   "type": "botao"
+  },
+  {
+   "t": 53.899,
+   "type": "apoio"
+  },
+  {
+   "t": 54.417,
+   "type": "mensagem"
+  },
+  {
+   "t": 57.691,
+   "type": "voa",
+   "k": 0
+  },
+  {
+   "t": 58.111,
+   "type": "encaixa",
+   "k": 0
+  },
+  {
+   "t": 58.167,
+   "type": "voa",
+   "k": 1
+  },
+  {
+   "t": 58.587,
+   "type": "encaixa",
+   "k": 1
+  },
+  {
+   "t": 58.713,
+   "type": "voa",
+   "k": 2
+  },
+  {
+   "t": 59.133,
+   "type": "encaixa",
+   "k": 2
+  },
+  {
+   "t": 59.301,
+   "type": "apoio"
+  },
+  {
+   "t": 59.862,
+   "type": "visto"
+  },
+  {
+   "t": 60.212,
+   "type": "digitando"
+  },
+  {
+   "t": 60.551,
+   "type": "voa_parte"
+  },
+  {
+   "t": 61.171,
+   "type": "bloco",
+   "k": 6
+  },
+  {
+   "t": 61.231,
+   "type": "cursor"
+  },
+  {
+   "t": 61.311,
+   "type": "corte"
+  },
+  {
+   "t": 61.731,
+   "type": "titulo"
+  },
+  {
+   "t": 62.161,
+   "type": "apoio"
+  },
+  {
+   "t": 63.23,
+   "type": "monta"
+  },
+  {
+   "t": 64.225,
+   "type": "apoio"
+  },
+  {
+   "t": 65.308,
+   "type": "rola",
+   "d": 1.6949999999999932
+  },
+  {
+   "t": 67.266,
+   "type": "apoio"
+  },
+  {
+   "t": 68.007,
+   "type": "surge"
+  },
+  {
+   "t": 68.186,
+   "type": "carrega",
+   "d": 0.6
+  },
+  {
+   "t": 68.536,
+   "type": "acende",
+   "k": 0
+  },
+  {
+   "t": 69.093,
+   "type": "encaixa",
+   "k": 0
+  },
+  {
+   "t": 69.093,
+   "type": "acende",
+   "k": 1
+  },
+  {
+   "t": 70.359,
+   "type": "risca"
+  },
+  {
+   "t": 70.359,
+   "type": "acende",
+   "k": 2
+  },
+  {
+   "t": 70.746,
+   "type": "voa_parte"
+  },
+  {
+   "t": 71.366,
+   "type": "bloco",
+   "k": 7
+  },
+  {
+   "t": 71.426,
+   "type": "cursor"
+  },
+  {
+   "t": 71.506,
+   "type": "corte"
+  },
+  {
+   "t": 71.926,
+   "type": "titulo"
+  },
+  {
+   "t": 72.106,
+   "type": "cresce"
+  },
+  {
+   "t": 72.206,
+   "type": "acao",
+   "k": 0
+  },
+  {
+   "t": 72.356,
+   "type": "apoio"
+  },
+  {
+   "t": 73.146,
+   "type": "acao",
+   "k": 1
+  },
+  {
+   "t": 74.78,
+   "type": "apoio"
+  },
+  {
+   "t": 75.631,
+   "type": "acao",
+   "k": 2
+  },
+  {
+   "t": 76.804,
+   "type": "digita",
+   "d": 0.45
+  },
+  {
+   "t": 77.304,
+   "type": "cursor_on"
+  },
+  {
+   "t": 79.831,
+   "type": "logo"
+  }
+ ],
+ "avisos": []
+}

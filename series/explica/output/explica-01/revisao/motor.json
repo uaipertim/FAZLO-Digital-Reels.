@@ -1,0 +1,332 @@
+{
+ "duracao": 83.331,
+ "apoios": [
+  {
+   "cap": 0,
+   "i": 0,
+   "texto": "Vamos montar juntos, parte por parte.",
+   "t": 4.102,
+   "inteira_de": 4.442,
+   "ate": 7.087
+  },
+  {
+   "cap": 1,
+   "i": 0,
+   "texto": "A primeira parte é o topo do site.",
+   "t": 7.937,
+   "inteira_de": 8.277000000000001,
+   "ate": 9.797
+  },
+  {
+   "cap": 1,
+   "i": 1,
+   "texto": "Que lugar é, onde fica e por que vale a viagem.",
+   "t": 9.997,
+   "inteira_de": 10.337,
+   "ate": 16.155
+  },
+  {
+   "cap": 2,
+   "i": 0,
+   "texto": "A segunda parte é a consulta de datas, logo abaixo do topo.",
+   "t": 17.005,
+   "inteira_de": 17.345,
+   "ate": 20.819
+  },
+  {
+   "cap": 2,
+   "i": 1,
+   "texto": "Entrada, saída e quantas pessoas.",
+   "t": 21.019,
+   "inteira_de": 21.358999999999998,
+   "ate": 24.097
+  },
+  {
+   "cap": 3,
+   "i": 0,
+   "texto": "A terceira parte são os quartos.",
+   "t": 24.947,
+   "inteira_de": 25.287,
+   "ate": 26.807000000000002
+  },
+  {
+   "cap": 3,
+   "i": 1,
+   "texto": "Fotos, quantas pessoas e um “a partir de”.",
+   "t": 27.007,
+   "inteira_de": 27.347,
+   "ate": 33.897
+  },
+  {
+   "cap": 4,
+   "i": 0,
+   "texto": "A quarta parte é o que está incluso.",
+   "t": 34.747,
+   "inteira_de": 35.087,
+   "ate": 36.607
+  },
+  {
+   "cap": 4,
+   "i": 1,
+   "texto": "O que vira pergunta no direct fica escrito.",
+   "t": 36.807,
+   "inteira_de": 37.147000000000006,
+   "ate": 41.212
+  },
+  {
+   "cap": 5,
+   "i": 0,
+   "texto": "A quinta parte é como chegar.",
+   "t": 42.062,
+   "inteira_de": 42.402,
+   "ate": 43.922
+  },
+  {
+   "cap": 5,
+   "i": 1,
+   "texto": "O mapa e as referências de quem é da região.",
+   "t": 44.122,
+   "inteira_de": 44.462,
+   "ate": 47.385
+  },
+  {
+   "cap": 5,
+   "i": 2,
+   "texto": "Ele chega tranquilo, sem perguntar de novo.",
+   "t": 47.585,
+   "inteira_de": 47.925000000000004,
+   "ate": 50.989
+  },
+  {
+   "cap": 6,
+   "i": 0,
+   "texto": "A sexta parte é a mensagem.",
+   "t": 51.839,
+   "inteira_de": 52.179,
+   "ate": 53.699
+  },
+  {
+   "cap": 6,
+   "i": 1,
+   "texto": "Chega já preenchida: datas, pessoas e quarto.",
+   "t": 53.899,
+   "inteira_de": 54.239000000000004,
+   "ate": 59.101
+  },
+  {
+   "cap": 6,
+   "i": 2,
+   "texto": "Você só responde.",
+   "t": 59.301,
+   "inteira_de": 59.641000000000005,
+   "ate": 61.311
+  },
+  {
+   "cap": 7,
+   "i": 0,
+   "texto": "A sétima parte é o celular.",
+   "t": 62.161,
+   "inteira_de": 62.501000000000005,
+   "ate": 64.02499999999999
+  },
+  {
+   "cap": 7,
+   "i": 1,
+   "texto": "É nele que o hóspede procura, até na estrada.",
+   "t": 64.225,
+   "inteira_de": 64.565,
+   "ate": 67.066
+  },
+  {
+   "cap": 7,
+   "i": 2,
+   "texto": "Abrir rápido e caber na tela, sem zoom.",
+   "t": 67.266,
+   "inteira_de": 67.60600000000001,
+   "ate": 71.506
+  },
+  {
+   "cap": 8,
+   "i": 0,
+   "texto": "Salva e manda pra quem tem pousada.",
+   "t": 72.356,
+   "inteira_de": 72.696,
+   "ate": 74.58
+  },
+  {
+   "cap": 8,
+   "i": 1,
+   "texto": "Quantas das sete partes o seu site já tem?",
+   "t": 74.78,
+   "inteira_de": 75.12,
+   "ate": 79.831
+  }
+ ],
+ "trocas": [
+  {
+   "cap": 1,
+   "t0": 7.087,
+   "t1": 7.887
+  },
+  {
+   "cap": 2,
+   "t0": 16.155,
+   "t1": 16.955
+  },
+  {
+   "cap": 3,
+   "t0": 24.097,
+   "t1": 24.897
+  },
+  {
+   "cap": 4,
+   "t0": 33.897,
+   "t1": 34.697
+  },
+  {
+   "cap": 5,
+   "t0": 41.212,
+   "t1": 42.012
+  },
+  {
+   "cap": 6,
+   "t0": 50.989,
+   "t1": 51.789
+  },
+  {
+   "cap": 7,
+   "t0": 61.311,
+   "t1": 62.111
+  },
+  {
+   "cap": 8,
+   "t0": 71.506,
+   "t1": 72.306
+  }
+ ],
+ "montagens": [
+  {
+   "cap": 0,
+   "primeira": 0,
+   "ultima": 0,
+   "voo": [
+    6.327,
+    6.947
+   ],
+   "cursor": [
+    7.007,
+    7.307
+   ]
+  },
+  {
+   "cap": 1,
+   "primeira": 8.449,
+   "ultima": 14.498,
+   "voo": [
+    15.395,
+    16.015
+   ],
+   "cursor": [
+    16.075,
+    16.375
+   ]
+  },
+  {
+   "cap": 2,
+   "primeira": 18.051,
+   "ultima": 23.045,
+   "voo": [
+    23.337,
+    23.957
+   ],
+   "cursor": [
+    24.017,
+    24.317
+   ]
+  },
+  {
+   "cap": 3,
+   "primeira": 25.679,
+   "ultima": 32.599,
+   "voo": [
+    33.137,
+    33.757
+   ],
+   "cursor": [
+    33.817,
+    34.117
+   ]
+  },
+  {
+   "cap": 4,
+   "primeira": 35.561,
+   "ultima": 39.543,
+   "voo": [
+    40.452,
+    41.072
+   ],
+   "cursor": [
+    41.132,
+    41.432
+   ]
+  },
+  {
+   "cap": 5,
+   "primeira": 44.211,
+   "ultima": 48.956,
+   "voo": [
+    50.229,
+    50.849
+   ],
+   "cursor": [
+    50.909,
+    51.209
+   ]
+  },
+  {
+   "cap": 6,
+   "primeira": 52.525,
+   "ultima": 59.862,
+   "voo": [
+    60.551,
+    61.171
+   ],
+   "cursor": [
+    61.231,
+    61.531
+   ]
+  },
+  {
+   "cap": 7,
+   "primeira": 63.23,
+   "ultima": 70.359,
+   "voo": [
+    70.746,
+    71.366
+   ],
+   "cursor": [
+    71.426,
+    71.726
+   ]
+  },
+  {
+   "cap": 8,
+   "primeira": 72.10600000000001,
+   "ultima": 76.804,
+   "voo": null,
+   "cursor": null
+  }
+ ],
+ "fecho": {
+  "t0": 71.906,
+  "corte_logo": [
+   79.831,
+   80.331
+  ],
+  "logo_parada": [
+   80.331,
+   83.331
+  ],
+  "fim": 83.331
+ }
+}

@@ -6,7 +6,7 @@ Vídeos explicativos da @fazlodigital, de 60–90 s, em capítulos e narrados. C
 
 | Episódio | Tema | Duração | Saída |
 |---|---|---|---|
-| **explica-01** | "O site que faz o hóspede reservar. Em 7 partes." Capa, 01 o topo, 02 tem vaga?, 03 os quartos, 04 as regras, 05 como chegar, 06 a mensagem, 07 no celular, fecho | — | [`output/explica-01/`](output/explica-01) |
+| **explica-01** | "O site que faz o hóspede reservar. Em 7 partes." Capa, 01 o topo, 02 tem vaga?, 03 os quartos, 04 as regras, 05 como chegar, 06 a mensagem, 07 no celular, fecho | 83,3 s · revisão aprovada · aguardando avaliação | [`output/explica-01/`](output/explica-01) |
 
 Em `output/<id>/` ficam:
 - **Vídeo:** `fazlo-digital-<id>.mp4`.
