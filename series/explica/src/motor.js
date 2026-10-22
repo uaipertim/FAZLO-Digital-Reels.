@@ -98,14 +98,14 @@
   const typo = (s) => (s || '').replace(/"([^"]*)"/g, '“$1”').replace(/'([^']*)'/g, '‘$1’');
 
   // ---------------------------------------------------------------- caixas (para a revisão das áreas seguras)
-  let COLLECT = null, CUR_CAP = 0;
+  let COLLECT = null, CUR_CAP = 0, MINI = 0;            // MINI > 0: desenhando miniaturas (sem caixas próprias)
   function BOX(nome, x0, y0, x1, y1) {
     if (!COLLECT) return;
     const m = COLLECT.m;                               // a transformação atual
     const pts = [[x0, y0], [x1, y0], [x0, y1], [x1, y1]].map(([x, y]) => [m.a * x + m.c * y + m.e, m.b * x + m.d * y + m.f]);
     COLLECT.out.push({ nome, cap: CUR_CAP, x0: Math.min(...pts.map((q) => q[0])), x1: Math.max(...pts.map((q) => q[0])), y0: Math.min(...pts.map((q) => q[1])), y1: Math.max(...pts.map((q) => q[1])) });
   }
-  const boxHere = (c, nome, x0, y0, x1, y1) => { if (COLLECT) { COLLECT.m = c.getTransform(); BOX(nome, x0, y0, x1, y1); } };
+  const boxHere = (c, nome, x0, y0, x1, y1) => { if (COLLECT && !MINI) { COLLECT.m = c.getTransform(); BOX(nome, x0, y0, x1, y1); } };
 
   // ---------------------------------------------------------------- ícones (traço, grade de 24; desenho próprio da FAZLO)
   const ICON = {
@@ -1067,7 +1067,7 @@
       for (let k = 1; k <= 6; k++) {
         const cap = CAPS[k], S = cap.S, R = S.parte;
         c.save(); c.translate(x, yy); c.scale(s, s); c.translate(-R.x, -R.y);
-        CENAS[cap.diagrama.tipo].parte(c, cap, S, cap.voo[0] - 0.02);
+        MINI++; CENAS[cap.diagrama.tipo].parte(c, cap, S, cap.voo[0] - 0.02); MINI--;
         c.restore();
         yy += R.h * s + 10;
       }
@@ -1211,7 +1211,7 @@
     if (conteudo > 0) {
       c.save(); rr(c, x, y, w, h, lerp(28, 4, q)); c.clip(); c.globalAlpha *= conteudo;
       c.translate(x, y); c.scale(w / R.w, h / R.h); c.translate(-R.x, -R.y);
-      cena.parte(c, cap, S, cap.voo[0] - 0.01);
+      MINI++; cena.parte(c, cap, S, cap.voo[0] - 0.01); MINI--;
       c.restore();
     }
     if (lima > 0) { rr(c, x, y, w, h, lerp(28, 4, q)); c.fillStyle = css(C.lime, lima); c.fill(); }
