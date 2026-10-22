@@ -108,10 +108,12 @@ Fora da nuvem, exporte `ELEVENLABS_API_KEY` no terminal. Os scripts só leem a v
 | Item | Regra |
 |---|---|
 | ritmo | 9–18 letras por segundo de fala |
-| pausas internas | toda troca de frase tem respiro ≥ 0,12 s (silêncio medido no áudio); nenhuma pausa passa de 0,85 s |
-| fim de frase | a última sílaba vai até o fim (a energia cai aos poucos, sem parada seca); a voz não sobe no fim de uma frase afirmativa |
+| pausas | entre frases, respiro de 0,12 s a 1,1 s (silêncio medido no áudio); dentro de uma frase, nenhuma pausa passa de 0,85 s |
+| fim de frase | é **corte** quando o final cai até o silêncio (−50 dB) em **menos de 35 ms** E a queda começa **acima de −15 dB** (relativo ao pico da fala). Quedas que começam em −20 dB ou abaixo são fim natural e passam. A voz também não pode subir no fim de uma frase afirmativa |
 | perguntas | em toda frase com "?", a altura da voz sobe ≥ 10% na parte final (a tônica) |
-| transcrição | se a API de transcrição responder, o texto ouvido bate com o roteiro, palavra por palavra (≥ 92%) |
+| transcrição | se a chave tiver a permissão de speech-to-text, o texto ouvido bate com o roteiro, palavra por palavra (≥ 92%); sem a permissão, a geração segue e o histórico registra `transcricao: null` |
+
+**Calibração do corte:** um fecho ouvido como cortado em outro episódio caía de −8,7 dB ao silêncio em 32 ms. Finais de 37–57 ms a partir de nível mais baixo soaram normais.
 
 O `falas.json` guarda, por capítulo:
 - o texto, a semente usada e o sha1 do áudio;

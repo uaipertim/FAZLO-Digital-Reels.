@@ -17,9 +17,12 @@ Voz e ajustes: os de series/pelos-olhos-do-hospede/voz.py (a voz oficial da FAZL
 
 Conferência de cada geração (se uma falhar, o capítulo inteiro é gerado de novo com outra semente, até 6 vezes):
   ritmo        9–18 letras por segundo de fala;
-  pausas       toda troca de frase (. : ?) tem respiro de pelo menos 0,12 s, e nenhuma pausa passa de 0,85 s;
-  fim          a última frase vai até o fim: a energia cai aos poucos depois da última sílaba (sem parada seca),
-               a voz não sobe nem fica suspensa (frase afirmativa) e sobra áudio depois da última letra;
+  pausas       toda troca de frase tem respiro de 0,12 s a 1,1 s; dentro de uma frase, nenhuma pausa passa de 0,85 s;
+  fim          a última frase vai até o fim. É CORTE quando o final cai até o silêncio (−50 dB) em menos de 35 ms
+               começando acima de −15 dB (relativo ao pico da fala); quedas que começam em −20 dB ou abaixo são fim
+               natural. (Calibração: um fecho ouvido como cortado caía de −8,7 dB ao silêncio em 32 ms; finais de
+               37–57 ms a partir de nível mais baixo soaram normais.) A voz também não pode subir no fim de uma
+               frase afirmativa, e tem de sobrar áudio depois da última letra;
   perguntas    em toda frase com "?", a altura da voz sobe pelo menos 10% na parte final (a tônica);
   transcrição  (se a API de transcrição responder) o texto ouvido bate com o roteiro, palavra por palavra (≥ 92%).
 
@@ -49,7 +52,8 @@ FORMATO = 'mp3_44100_128'
 SEMENTE = 2026
 TENTATIVAS = 6
 FAZLO_API = 'Fázlo'                       # FAZLO = "FÁZ-lo" (só no texto enviado; na tela continua FAZLO)
-LIM = {'ritmo': (9.0, 18.0), 'respiro': 0.12, 'pausa_max': 0.85, 'sobe': 0.10, 'transcricao': 0.92}
+LIM = {'ritmo': (9.0, 18.0), 'respiro': 0.12, 'pausa_max': 0.85, 'pausa_frases': 1.1, 'corte_ms': 35, 'corte_db': -15.0, 'silencio_db': -50.0,
+       'sobe': 0.10, 'transcricao': 0.92}
 
 
 def texto_cap(c):
@@ -179,24 +183,25 @@ def confere(mp3, al, cap):
     e = envelope(x)
     pk = e.max()
     # pausas: entre palavras (alinhamento) e o respiro medido no áudio em cada troca de frase
-    gaps = [b['t0'] - a['fim_letra'] for a, b in zip(ws, ws[1:])]
-    maior = max(gaps) if gaps else 0.0
-    respiros = []
-    pos = 0
+    respiros, inicios, pos = [], set(), 0
     for f in cap['fala'][:-1]:
         pos += len(f['texto'])
         a = next(w for w in reversed(ws) if w['i0'] < pos)
         b = next(w for w in ws if w['i0'] >= pos)
+        inicios.add(b['i0'])
         respiros.append(round(silencio(e, pk, a['fim_letra'] - 0.02, b['t0'] + 0.05), 3))
         pos += 1
+    gaps = [(b['t0'] - a['fim_letra'], b['i0'] in inicios) for a, b in zip(ws, ws[1:])]
+    maior = max([g for g, fr in gaps if not fr] or [0.0])              # dentro de uma frase
+    maior_fr = max([g for g, fr in gaps if fr] or [0.0])               # entre frases
     # dentro de uma frase também há trocas com ":" — elas contam como respiro só se houver pausa (não são exigidas)
     # o fim: a energia cai aos poucos, a voz não sobe no fim (frase afirmativa) e sobra áudio depois da última letra
     sobra = len(x) / SR - fim
-    fim_i = int(np.where(e > pk * 10 ** (-40 / 20))[0][-1])
-    a_i = int(np.where(e[:fim_i] > pk * 10 ** (-20 / 20))[0][-1])
-    queda_ms = (fim_i - a_i) / SR * 1000
-    r50 = 20 * np.log10(e[max(0, fim_i - int(0.05 * SR))] / pk)
-    sem_corte = queda_ms >= 90 or r50 <= -26
+    fim_i = int(np.where(e > pk * 10 ** (LIM['silencio_db'] / 20))[0][-1])          # onde o final chega ao silêncio (−50 dB)
+    acima = np.where(e[:fim_i] > pk * 10 ** (LIM['corte_db'] / 20))[0]
+    queda_ms = (fim_i - int(acima[-1])) / SR * 1000 if len(acima) else 9999.0    # da última vez acima de −15 dB até o silêncio
+    nivel_antes = 20 * np.log10(e[max(0, fim_i - int(LIM['corte_ms'] / 1000 * SR))] / pk)
+    sem_corte = queda_ms >= LIM['corte_ms']
     fz = f0(x)
     tfim = fim_i / SR
     seg = lambda t0, t1: (lambda v: v[~np.isnan(v)])(fz[int(max(0, t0) / 0.01):int(t1 / 0.01)])
@@ -222,12 +227,15 @@ def confere(mp3, al, cap):
         corpo, cauda = corpo[~np.isnan(corpo)], cauda[~np.isnan(cauda)]
         sobe.append(round(float(np.percentile(cauda, 90) / np.median(corpo) - 1), 3) if len(cauda) >= 3 and len(corpo) >= 2 else None)
     n = {'fala_s': round(fim - ini, 2), 'ritmo_letras_s': round(ritmo, 1), 'maior_pausa_s': round(maior, 2), 'respiros_s': respiros,
-         'sobra_no_fim_s': round(sobra, 2), 'queda_final_ms': round(queda_ms), 'altura_final': None if altura_final is None else round(altura_final, 2),
+         'maior_pausa_entre_frases_s': round(maior_fr, 2), 'sobra_no_fim_s': round(sobra, 2), 'queda_final_ms': round(queda_ms),
+         'nivel_35ms_antes_db': round(float(nivel_antes), 1), 'altura_final': None if altura_final is None else round(altura_final, 2),
          'perguntas_sobem': sobe}
     if not LIM['ritmo'][0] <= ritmo <= LIM['ritmo'][1]:
         return False, f'ritmo {ritmo:.1f} letras/s', n, x
     if maior > LIM['pausa_max']:
-        return False, f'pausa interna de {maior:.2f} s', n, x
+        return False, f'pausa de {maior:.2f} s dentro de uma frase', n, x
+    if maior_fr > LIM['pausa_frases']:
+        return False, f'pausa entre frases de {maior_fr:.2f} s', n, x
     if respiros and min(respiros) < LIM['respiro']:
         return False, f'frases coladas (respiro de {min(respiros):.2f} s)', n, x
     if sobra < 0.05 or not sem_corte:

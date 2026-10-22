@@ -630,7 +630,7 @@
       const d = cap.diagrama, S = { parte: { x: 100, y: 868, w: 820, h: 452 } };
       S.ent = at(cap, d.cartao.em);
       S.topo = at(cap, d.topo.em);
-      S.perg = at(cap, 'pergunta', S.ent + 1.4);
+      S.perg = at(cap, d.balao ? d.balao.em : 'pergunta', S.ent + 1.4);       // o balão "tem vaga?"
       S.campos = d.campos.map((f) => ({ ...f, on: at(cap, f.em), mais: (f.mais || []).map((m) => at(cap, m)) }));
       S.botao = at(cap, d.botao.em) + (d.botao.depois || 0);
       S.esq = fimDe(cap, d.esqueleto || 'datas') + 0.1;            // os campos aparecem vazios (tracejados) no fim da 1ª frase
