@@ -20,8 +20,8 @@
    "texto": "Que horas é o check-in? Ele chegou… e esperou.",
    "arquivo": "titulo.wav",
    "ini": 0.03,
-   "fim": 2.863,
-   "dur": 2.833,
+   "fim": 3.413,
+   "dur": 3.383,
    "partes": [
     {
      "texto": "Que horas é o check-in?",
@@ -29,13 +29,23 @@
      "semente": 2026,
      "sobe": [
       0.149
-     ]
+     ],
+     "final": {
+      "queda_de_-15_ao_silencio_ms": 127,
+      "nivel_35ms_antes_db": -20.4,
+      "altura_final": 0.76
+     }
     },
     {
      "texto": "Ele chegou… e esperou.",
      "arquivo": "titulo-2.mp3",
      "semente": 2026,
-     "sobe": []
+     "sobe": [],
+     "final": {
+      "queda_de_-15_ao_silencio_ms": 84,
+      "nivel_35ms_antes_db": -25.4,
+      "altura_final": 0.8
+     }
     }
    ],
    "palavras": [
@@ -65,22 +75,25 @@
     ],
     [
      "ele",
-     1.275
+     1.825
     ],
     [
      "chegou",
-     1.484
+     2.034
     ],
     [
      "e",
-     2.39
+     2.94
     ],
     [
      "esperou",
-     2.494
+     3.044
     ]
    ],
-   "marca": 1.275
+   "pausas_entre_partes": [
+    0.79
+   ],
+   "marca": 1.825
   },
   {
    "cena": "card1",
@@ -94,7 +107,12 @@
      "texto": "Ele saiu cedo, pra aproveitar o dia.",
      "arquivo": "card1.mp3",
      "semente": 2026,
-     "sobe": []
+     "sobe": [],
+     "final": {
+      "queda_de_-15_ao_silencio_ms": 55,
+      "nivel_35ms_antes_db": -27.7,
+      "altura_final": 1.12
+     }
     }
    ],
    "palavras": [
@@ -131,32 +149,24 @@
   {
    "cena": "card2",
    "texto": "Que horas é o check-in? E o check-out? Ninguém disse.",
-   "arquivo": "card2.wav",
-   "ini": 0.03,
-   "fim": 3.087,
-   "dur": 3.057,
+   "arquivo": "card2.mp3",
+   "ini": 0.066,
+   "fim": 2.4,
+   "dur": 2.334,
    "partes": [
     {
-     "texto": "Que horas é o check-in?",
-     "arquivo": "card2-1.mp3",
-     "semente": 7,
-     "sobe": [
-      0.16
-     ]
-    },
-    {
-     "texto": "E o check-out?",
-     "arquivo": "card2-2.mp3",
+     "texto": "Que horas é o check-in? E o check-out? Ninguém disse.",
+     "arquivo": "card2.mp3",
      "semente": 2026,
      "sobe": [
-      0.372
-     ]
-    },
-    {
-     "texto": "Ninguém disse.",
-     "arquivo": "card2-3.mp3",
-     "semente": 2026,
-     "sobe": []
+      0.43,
+      0.204
+     ],
+     "final": {
+      "queda_de_-15_ao_silencio_ms": 695,
+      "nivel_35ms_antes_db": -68.6,
+      "altura_final": null
+     }
     }
    ],
    "palavras": [
@@ -166,47 +176,47 @@
     ],
     [
      "horas",
-     0.143
+     0.155
     ],
     [
      "é",
-     0.457
+     0.445
     ],
     [
      "o",
-     0.526
+     0.491
     ],
     [
      "check",
-     0.596
+     0.561
     ],
     [
      "in",
-     0.921
+     0.874
     ],
     [
      "e",
-     1.458
+     1.049
     ],
     [
      "o",
-     1.562
+     1.118
     ],
     [
      "check",
-     1.632
+     1.188
     ],
     [
      "out",
-     1.911
+     1.478
     ],
     [
      "ninguém",
-     2.465
+     1.699
     ],
     [
      "disse",
-     2.825
+     2.001
     ]
    ]
   },
@@ -222,7 +232,12 @@
      "texto": "Chegou cedo… e o quarto ainda não estava pronto.",
      "arquivo": "card3.mp3",
      "semente": 2026,
-     "sobe": []
+     "sobe": [],
+     "final": {
+      "queda_de_-15_ao_silencio_ms": 218,
+      "nivel_35ms_antes_db": -33.3,
+      "altura_final": 0.66
+     }
     }
    ],
    "palavras": [
@@ -276,7 +291,12 @@
      "texto": "Resultado: esperou na recepção.",
      "arquivo": "carimbo.mp3",
      "semente": 2026,
-     "sobe": []
+     "sobe": [],
+     "final": {
+      "queda_de_-15_ao_silencio_ms": 144,
+      "nivel_35ms_antes_db": -23.4,
+      "altura_final": 1.05
+     }
     }
    ],
    "palavras": [
@@ -310,7 +330,12 @@
      "texto": "No site, check-in e check-out ficam escritos, e ele planeja o dia certo.",
      "arquivo": "virada.mp3",
      "semente": 2026,
-     "sobe": []
+     "sobe": [],
+     "final": {
+      "queda_de_-15_ao_silencio_ms": 229,
+      "nivel_35ms_antes_db": -34.4,
+      "altura_final": 0.7
+     }
     }
    ],
    "palavras": [
@@ -388,7 +413,12 @@
      "texto": "Manda pra pousada que explica o horário um por um.",
      "arquivo": "fecho.mp3",
      "semente": 42,
-     "sobe": []
+     "sobe": [],
+     "final": {
+      "queda_de_-15_ao_silencio_ms": 190,
+      "nivel_35ms_antes_db": -29.5,
+      "altura_final": 0.78
+     }
     }
    ],
    "palavras": [
@@ -435,5 +465,5 @@
    ]
   }
  ],
- "fala_total": 18.93
+ "fala_total": 18.76
 }
