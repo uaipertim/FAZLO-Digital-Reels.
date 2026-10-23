@@ -36,6 +36,15 @@ OK     ícone dentro do círculo seguro (até 190 px do centro; raio 360)
 OK     ícone 328x286 px = 45.6% do diâmetro (alvo ~45%)
 OK     centrado (-0.5, -0.5 px)
 
+cases.png  (destaque "Cases")
+OK     1080x1920
+OK     opaca
+OK     fundo liso #050606
+OK     só fundo e lima (desvio máximo 1.5/255)
+OK     ícone dentro do círculo seguro (até 177 px do centro; raio 360)
+OK     ícone 208x328 px = 45.6% do diâmetro (alvo ~45%)
+OK     centrado (-0.5, -0.5 px)
+
 traço: 27 px em todas (mesma escala e mesma espessura no SVG); sem texto nas capas
 
 RESULTADO: aprovado

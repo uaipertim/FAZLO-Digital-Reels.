@@ -12,6 +12,7 @@ Capas dos destaques do perfil da @fazlodigital. O Instagram usa um Story (1080×
 | **Raio-x** | ficha atravessada por uma linha de scan horizontal, que passa das bordas | [`raio-x.png`](raio-x.png) |
 | **Hospeda** | calendário com um check (ícone FAZLO, não a logo do Hospeda) | [`hospeda.png`](hospeda.png) |
 | **Contato** | balão de conversa genérico com três pontinhos (sem logo de app) | [`contato.png`](contato.png) |
+| **Cases** | celular com um check na tela (os sites feitos pela FAZLO) | [`cases.png`](cases.png) |
 
 ## Regras
 
@@ -27,12 +28,15 @@ Capas dos destaques do perfil da @fazlodigital. O Instagram usa um Story (1080×
   | Raio-x | 340×328 px | 47,2% (a linha de scan passa das bordas) |
   | Hospeda | 304×316 px | 43,9% |
   | Contato | 328×286 px | 45,6% |
+  | Cases | 208×328 px | 45,6% |
 
-- **Nome do destaque:** o Instagram aceita até **15 caracteres** e mostra cerca de 9 a 10 embaixo do círculo. Os 4 nomes (Sites, Raio-x, Hospeda, Contato) aparecem inteiros. O 4º se chamaria "Fale com a FAZLO", mas tem 16 caracteres e virou **"Contato"**.
+- **Nome do destaque:** o Instagram aceita até **15 caracteres** e mostra cerca de 9 a 10 embaixo do círculo. Os 5 nomes (Sites, Raio-x, Hospeda, Contato, Cases) aparecem inteiros. O 4º se chamaria "Fale com a FAZLO", mas tem 16 caracteres e virou **"Contato"**.
+
+Os Stories de cada destaque ficam em [`../stories/destaques/`](../stories/destaques).
 
 ## Prévia e revisão
 
-- [`previa-perfil.png`](previa-perfil.png): os 4 círculos como aparecem no app, com os nomes embaixo, em tema escuro e claro. Usa o anel cinza do Instagram e mostra cada capa com ~64 px, na densidade de um celular (3x). O círculo seguro de 720 px vira a foto de 56 px dentro do anel.
+- [`previa-perfil.png`](previa-perfil.png): os 5 círculos como aparecem no app, com os nomes embaixo, em tema escuro e claro. Usa o anel cinza do Instagram e mostra cada capa com ~64 px, na densidade de um celular (3x). O círculo seguro de 720 px vira a foto de 56 px dentro do anel.
 - [`revisao/capas-com-guias.png`](revisao/capas-com-guias.png): as capas inteiras com o círculo seguro (vermelho) e o diâmetro-alvo do ícone (azul).
 - [`revisao/relatorio.txt`](revisao/relatorio.txt) confere, em cada capa:
   - 1080×1920 e opaca;

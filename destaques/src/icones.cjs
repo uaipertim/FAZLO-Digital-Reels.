@@ -29,6 +29,12 @@ const ICONES = {
     <line x1="22" y1="-50" x2="22" y2="-28"/>
     <polyline points="-20,16 -6,30 22,2"/>`,
 
+  // celular com um check na tela (os sites que a FAZLO fez); o mesmo traço das outras capas
+  'celular-check': `
+    <rect x="-30" y="-50" width="60" height="100" rx="12"/>
+    <line x1="-10" y1="-40" x2="10" y2="-40"/>
+    <polyline points="-14,4 -3,15 16,-6"/>`,
+
   // balão de conversa genérico (sem logo de app) com três pontinhos
   balao: `
     <path d="M -12 28 L 32 28 A 18 18 0 0 0 50 10 L 50 -22 A 18 18 0 0 0 32 -40 L -32 -40

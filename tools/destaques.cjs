@@ -51,7 +51,7 @@ function previaPerfil(capas) {
     body { margin: 0; background: #1A1B1D; font-family: Inter, 'Liberation Sans', sans-serif; }
     .folha { display: flex; gap: 24px; padding: 24px; width: max-content; }
     .rotulo { color: #9AA0A6; font-size: 11px; letter-spacing: .04em; text-transform: uppercase; margin: 0 0 8px 2px; }
-    .perfil { width: 390px; padding: 18px 0 16px; border-radius: 14px; }
+    .perfil { width: 476px; padding: 18px 0 16px; border-radius: 14px; }
     .escuro { background: #000000; --anel: #3A3A3C; --texto: #F5F5F5; }
     .claro { background: #FFFFFF; --anel: #DBDBDB; --texto: #000000; }
     .linha { display: flex; gap: 14px; padding: 0 16px; }
