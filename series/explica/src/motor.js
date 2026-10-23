@@ -15,6 +15,8 @@
  * muda a cada frase, e o diagrama da parte. O fundo muda levemente de tom por capítulo.
  *
  * Biblioteca de diagramas (CENAS): capa · topo · consulta · quartos · incluso · mapa · mensagem · celular · fecho.
+ * Collab ("progresso": "pedidos"): capa_collab · pedido · fecho_collab, com a lista dos pedidos no canto no lugar do
+ * celular de 7 blocos e as telas REAIS do site (PNGs em linha.telas) dentro de um celular genérico.
  * Áreas seguras: conteúdo entre y 265 e 1456; nada na coluna de botões (x ≥ 950, y 1060–1560); a capa é o quadro 0.
  */
 (function () {
@@ -328,13 +330,15 @@
     c.save(); c.globalAlpha *= q; c.translate((1 - q) * -24, 0);
     let x = L.x0;
     barraZ(c, x, L.rotY - 20, 9, 22); c.fillStyle = C.lime; c.fill(); x += 9 + 21 + 14;
-    const num = cap.n >= 1 && cap.n <= 7 ? String(cap.n).padStart(2, '0') : null;
+    const k = PEDIDOS() ? (cap.diagrama.tipo === 'pedido' ? cap.S.k : 0) : (cap.n >= 1 && cap.n <= 7 ? cap.n : 0);
+    const num = k ? String(k).padStart(2, '0') : null;
     if (num) { x += txt(c, num, x, L.rotY, { size: 24, weight: 700, color: C.lime, ls: 2 }) + 16; }
     const w = txt(c, cap.rotulo, x, L.rotY, { size: 24, weight: 600, color: C.lime, ls: 4, alpha: num ? 0.92 : 1 });
     c.restore();
     if (q > 0.6) boxHere(c, 'rótulo', L.x0, L.rotY - 22, x + w, L.rotY + 6);
   }
   function layoutTitulo(cap) {
+    if (!cap.titulo) { cap.lay = { tl: null, apoioY: L.rotY + 80 }; return; }
     const [a, b] = cap.titulo.map(typo);
     const s = fit([a, b], DISPLAY, 800, [L.l1max, L.l2max], L.tmax, 36);
     const b1 = L.rotY + 34 + s * 0.92, b2 = b1 + s * 1.13;
@@ -342,6 +346,7 @@
     cap.lay = { tl: [a, b], ts: s, b1, b2, apoioY };
   }
   function drawTitulo(c, cap, t) {
+    if (!cap.lay.tl) return;
     const { tl, ts, b1, b2 } = cap.lay;
     [b1, b2].forEach((by, i) => {
       const t0 = cap.t0 + 0.02 + 0.1 * i, q = E.out(p(t, t0, t0 + 0.55));
@@ -1183,15 +1188,347 @@
   };
 
   // =====================================================================
+  // COLLAB · "A POUSADA PEDIU. A GENTE FEZ." (episódio com "progresso": "pedidos")
+  //   Recurso de progresso PRÓPRIO: a lista dos pedidos (cartõezinhos 01–04) no canto superior direito. Cada
+  //   capítulo de pedido mostra o cartão "O PEDIDO:" (o texto entre aspas, sem nome, sem horário, sem cara de print
+  //   de conversa) e, em seguida, a tela REAL do site no celular resolvendo. No fim do capítulo o cartão encolhe, voa
+  //   até o cartãozinho dele, que acende em lima com o ✓. Telas: PNGs capturados do site no ar (linha.telas).
+  // =====================================================================
+  let IMGS = {}, TELAS = null;
+  const PEDIDOS = () => EP && EP.progresso === 'pedidos';
+  const LISTA = { w: 132, h: 50, gap: 12, n: 4 };
+  const LCANTO = { x: 808, y: 270, s: 1 };            // a lista fixa no canto (x 808–940, y 270–506)
+  const listaRect = (pl, i) => ({ x: pl.x, y: pl.y + i * (LISTA.h + LISTA.gap) * pl.s, w: LISTA.w * pl.s, h: LISTA.h * pl.s });
+  const pedidoCaps = () => CAPS.filter((c) => c.diagrama.tipo === 'pedido');
+
+  function listaState(t) {
+    const st = { lit: [], building: -1 };
+    pedidoCaps().forEach((c, i) => {
+      if (c.voo && t >= c.voo[1]) st.lit.push({ i, t: c.voo[1] });
+      else if (st.building < 0 && t >= (c.corte ? c.corte[0] : 0)) st.building = i;
+    });
+    return st;
+  }
+  function listaPlace(t) {
+    const c0 = CAPS[0], S0 = c0.S, f = ULT();
+    if (t < S0.lista) return null;
+    const meio = { x: 540 - LISTA.w * 1.7 / 2, y: S0.listaY, s: 1.7 };
+    if (t < c0.voo[0]) return meio;
+    if (t < c0.voo[1]) { const q = E.io(p(t, c0.voo[0], c0.voo[1])); return { x: lerp(meio.x, LCANTO.x, q), y: lerp(meio.y, LCANTO.y, q) - Math.sin(q * Math.PI) * 50, s: lerp(meio.s, LCANTO.s, q) }; }
+    if (f.S && f.S.listaPl && t >= f.S.lista) { const q = E.io(p(t, f.S.lista, f.S.lista + 0.7)), g = f.S.listaPl; return { x: lerp(LCANTO.x, g.x, q), y: lerp(LCANTO.y, g.y, q), s: lerp(LCANTO.s, g.s, q) }; }
+    return LCANTO;
+  }
+  function drawLista(c, t, pl) {
+    const st = listaState(t), S0 = CAPS[0].S, s = pl.s;
+    for (let i = 0; i < LISTA.n; i++) {
+      const R = listaRect(pl, i), qa = E.back(p(t, S0.lista + 0.09 * i, S0.lista + 0.09 * i + 0.4), 1.8);
+      if (qa <= 0) continue;
+      const lit = st.lit.find((q) => q.i === i), b = st.building === i;
+      c.save();
+      c.translate(R.x + R.w / 2, R.y + R.h / 2); c.scale(qa, qa); c.translate(-(R.x + R.w / 2), -(R.y + R.h / 2));
+      c.globalAlpha *= clamp(qa * 1.5);
+      const num = String(i + 1).padStart(2, '0'), fs = 21 * s, cx = R.x + R.w - 25 * s, cy = R.y + R.h / 2, r = 12 * s;
+      if (lit) {
+        const pop = E.back(p(t, lit.t, lit.t + 0.32), 2.2), g = pulse(t, lit.t, 0.8);
+        c.translate(R.x + R.w / 2, cy); c.scale(lerp(1.16, 1, pop), lerp(1.16, 1, pop)); c.translate(-(R.x + R.w / 2), -cy);
+        if (g > 0) { c.shadowColor = css(C.lime, 0.9); c.shadowBlur = 24 * g * s; }
+        rr(c, R.x, R.y, R.w, R.h, 10 * s); c.fillStyle = C.lime; c.fill(); c.shadowBlur = 0;
+        txt(c, num, R.x + 16 * s, cy + fs * 0.36, { size: fs, weight: 700, color: C.ink, ls: 1 });
+        c.beginPath(); c.arc(cx, cy, r, 0, 7); c.fillStyle = C.ink; c.fill();
+        checkMark(c, cx, cy + 0.5 * s, r * 1.25, p(t, lit.t + 0.05, lit.t + 0.35), C.lime, 3 * s);
+      } else {
+        rr(c, R.x, R.y, R.w, R.h, 10 * s); c.fillStyle = css('#090C0D', 0.92); c.fill();
+        c.save(); c.setLineDash([5 * s, 4 * s]); c.lineWidth = 1.8 * s;
+        c.strokeStyle = b ? css(C.lime, 0.55 + 0.3 * Math.sin(t * 5)) : css(C.dash, 0.95);
+        rr(c, R.x + 1, R.y + 1, R.w - 2, R.h - 2, 10 * s); c.stroke();
+        c.beginPath(); c.arc(cx, cy, r, 0, 7); c.stroke(); c.restore();
+        txt(c, num, R.x + 16 * s, cy + fs * 0.36, { size: fs, weight: 700, color: b ? C.lime : C.gray, ls: 1 });
+      }
+      c.restore();
+    }
+    const last = listaRect(pl, LISTA.n - 1);
+    boxHere(c, 'lista de pedidos', pl.x, pl.y, pl.x + LISTA.w * s, last.y + last.h);
+  }
+
+  // ---------------------------------------------------------------- traço lima com brilho (ilustração da capa)
+  function neon(c, draw, lw = 6, a = 1, fill = null) {
+    c.save(); c.globalAlpha *= a; c.lineCap = 'round'; c.lineJoin = 'round';
+    c.beginPath(); draw();
+    if (fill) { c.fillStyle = fill; c.fill(); }
+    c.strokeStyle = C.lime; c.lineWidth = lw; c.shadowColor = css(C.lime, 0.75); c.shadowBlur = 22; c.stroke();
+    c.shadowBlur = 0; c.lineWidth = lw * 0.42; c.strokeStyle = 'rgba(240,255,210,0.85)'; c.stroke();
+    c.restore();
+  }
+  // a cachoeira em traço lima, com o balão "O pedido ✓" (origem: o topo da queda, no centro)
+  function cachoeira(c, ox, oy, t, a = 1) {
+    const F = '#070B07';
+    c.save(); c.translate(ox, oy); c.globalAlpha *= a;
+    // a serra ao fundo
+    neon(c, () => { c.moveTo(-340, 40); c.lineTo(-250, -30); c.lineTo(-180, 12); c.lineTo(-90, -62); c.lineTo(-10, -8); c.lineTo(80, -70); c.lineTo(170, 4); c.lineTo(250, -36); c.lineTo(340, 30); }, 3.5, 0.55);
+    // as margens de pedra
+    const pedra = (k) => { c.moveTo(-340 * k, 440); c.lineTo(-340 * k, 236); c.lineTo(-306 * k, 196); c.lineTo(-268 * k, 188); c.lineTo(-236 * k, 146);
+      c.lineTo(-188 * k, 132); c.lineTo(-150 * k, 96); c.lineTo(-118 * k, 88); c.lineTo(-96 * k, 62); c.lineTo(-84 * k, 372); c.lineTo(-150 * k, 392); c.lineTo(-250 * k, 408); c.closePath(); };
+    neon(c, () => pedra(1), 6, 1, F);
+    neon(c, () => pedra(-1), 6, 1, F);
+    neon(c, () => { c.moveTo(-300, 300); c.lineTo(-210, 270); c.moveTo(-280, 200); c.lineTo(-190, 180); c.moveTo(300, 290); c.lineTo(205, 262); c.moveTo(285, 190); c.lineTo(190, 176); }, 3, 0.6);
+    // pinheiros nas margens
+    [[-262, 182, 1], [-212, 138, 0.8], [262, 182, 1]].forEach(([x, y, k]) => neon(c, () => { c.moveTo(x, y - 70 * k); c.lineTo(x + 26 * k, y); c.lineTo(x - 26 * k, y); c.closePath(); c.moveTo(x, y); c.lineTo(x, y + 14 * k); }, 4, 0.85, F));
+    // o rio chegando na crista
+    neon(c, () => { c.moveTo(-96, 62); c.bezierCurveTo(-70, 30, -40, 14, -30, -4); c.moveTo(96, 62); c.bezierCurveTo(70, 30, 40, 14, 30, -4); }, 5);
+    // a queda: fios de água descendo (o tracejado corre para baixo)
+    const off = -(t * 160) % 46;
+    [-62, -34, -6, 22, 50, 72].forEach((x, i) => {
+      c.save(); c.setLineDash([30, 16]); c.lineDashOffset = off + i * 9;
+      neon(c, () => { c.moveTo(x * 0.9, 66); c.bezierCurveTo(x, 150, x * 1.08, 260, x * 1.12, 370); }, i % 2 ? 4 : 5, 0.95);
+      c.restore();
+    });
+    // o poço com as ondas
+    neon(c, () => { c.ellipse(0, 410, 268, 48, 0, 0, Math.PI * 2); }, 6, 1, F);
+    [[150, 24, 0.75], [76, 12, 0.6]].forEach(([rx, ry, k], i) => { const w = 1 + 0.05 * Math.sin(t * 2.4 + i); neon(c, () => c.ellipse(0, 404, rx * w, ry * w, 0, Math.PI * 0.05, Math.PI * 0.95), 3.5, k); });
+    neon(c, () => { [[-110, 362, -128, 344], [-96, 376, -122, 372], [110, 362, 128, 344], [96, 376, 122, 372]].forEach(([a, b, x, y]) => { c.moveTo(a, b); c.lineTo(x, y); }); }, 3.5, 0.8);
+    c.restore();
+  }
+  function balaoPedido(c, x, y, t) {                    // o balão "O pedido ✓" (traço lima, cauda para a queda)
+    const w = 286, h = 88;
+    c.save();
+    neon(c, () => { rr(c, x, y, w, h, 28); }, 5, 1, '#0A0F09');
+    neon(c, () => { c.moveTo(x + 46, y + h - 1); c.lineTo(x + 20, y + h + 34); c.lineTo(x + 86, y + h - 1); }, 5, 1, '#0A0F09');
+    c.fillStyle = '#0A0F09'; c.fillRect(x + 48, y + h - 6, 36, 8);
+    txt(c, 'O pedido', x + 32, y + 57, { size: 34, weight: 700, color: C.white, box: 'balão o pedido' });
+    c.beginPath(); c.arc(x + w - 46, y + h / 2, 24, 0, 7); c.fillStyle = C.lime; c.shadowColor = css(C.lime, 0.8); c.shadowBlur = 18; c.fill(); c.shadowBlur = 0;
+    checkMark(c, x + w - 46, y + h / 2 + 1, 30, 1, C.ink, 5);
+    c.restore();
+  }
+
+  // ---- capa_collab (capítulo 0): a capa ilustrada (quadro 0) + a lista vazia que aparece no centro e vai para o canto
+  CENAS.capa_collab = {
+    setup(cap) {
+      const d = cap.diagrama, S = {};
+      S.lista = at(cap, d.lista && d.lista.em);
+      S.listaY = 560;
+      const lines = cap.titulo.map(typo);
+      let s = 78, rows;
+      const quebra = (z) => lines.map((l) => wrap(l, DISPLAY, z, 800, 860));      // até x 940: fora da coluna de botões
+      while (s > 40 && ((rows = quebra(s)).flat().length > 4 || rows.flat().some((r) => tw(r, DISPLAY, s, 800) > 860))) s -= 1;
+      S.ts = s; S.rows = rows; S.tTop = 1078;
+      for (let k = 0; k < 4; k++) cue(S.lista + 0.09 * k, 'conta', { k });
+      cue(cap.voo[0], 'encolhe'); cue(cap.voo[1], 'pousa');
+      cap.lay = { apoioY: 1460 };
+      S.pecas = [0, S.lista];
+      return S;
+    },
+    draw(c, cap, S, t) {
+      chip(c, cap.rotulo, L.x0, 372, { on: 0, size: 22, ls: 4, h: 50, cor: C.lime, corTexto: C.lime, solido: true });
+      const a = 1 - 0.78 * E.out(p(t, S.lista - 0.1, S.lista + 0.45));
+      cachoeira(c, 540, 515, t, a);
+      boxHere(c, 'ilustração', 200, 445, 880, 975);
+      c.save(); c.globalAlpha *= a; balaoPedido(c, 652, 452, t); c.restore();
+      chip(c, cap.diagrama.selo, 540, 994, { on: 1, size: 22, ls: 3.5, h: 52, align: 'center', glow: false });
+      let y = S.tTop + S.ts * 0.8;
+      S.rows.forEach((rs, i) => rs.forEach((r) => { txt(c, r, L.x0, y, { fam: DISPLAY, size: S.ts, weight: 800, color: i ? C.lime : C.white, box: `título ${i + 1}` }); y += S.ts * 1.1; }));
+    },
+  };
+
+  // ---- pedido (capítulos 1–4): o cartão "O PEDIDO:" e a tela real do site no celular
+  const CARD = { x: 80, y: 446, w: 700, pad: 26, size: 27, lh: 37 };
+  const SHOT = 1170;                                  // largura dos PNGs (390 px CSS × 3)
+  CENAS.pedido = {
+    setup(cap) {
+      const d = cap.diagrama, S = {};
+      S.k = pedidoCaps().indexOf(cap) + 1 || cap.n;
+      S.rows = wrap(typo(`"${d.pedido}"`), TEXT, CARD.size, 600, CARD.w - 2 * CARD.pad);
+      const h = CARD.pad + 24 + 16 + S.rows.length * CARD.lh + CARD.pad - 10;
+      S.parte = { x: CARD.x, y: CARD.y, w: CARD.w, h };
+      S.cart = at(cap, d.cartao && d.cartao.em, cap.voz_t0);
+      const top = CARD.y + h + 24, bot = 1440, pw = 480;
+      S.ph = { x: 540 - pw / 2, y: top, w: pw, h: bot - top };
+      S.scr = { x: S.ph.x + 14, y: S.ph.y + 14, w: pw - 28, h: S.ph.h - 28 };
+      S.kk = S.scr.w / SHOT;
+      const vis = S.scr.h / S.kk;
+      const box = (src, nome) => TELAS.telas[src].caixas[nome];
+      const rolagem = (src, alvo) => { const H = (IMGS[src] && IMGS[src].height) || 2532; const y = alvo ? (alvo[1] + alvo[3]) / 2 - vis / 2 : 0; return clamp(y, 0, Math.max(0, H - vis)); };
+      const lista = d.telas || [d.tela];
+      S.telas = lista.map((tl, i) => {
+        const T = { src: tl.src, t: at(cap, tl.em), realces: [] };
+        if (i === 0 && d.realce) d.realce.forEach((r) => T.realces.push({ box: box(tl.src, r.caixa), t: at(cap, r.em) }));
+        if (tl.realce) T.realces.push({ box: box(tl.src, tl.realce), t: T.t + 0.35 });
+        const alvos = T.realces.map((r) => r.box);
+        const uni = alvos.length ? [Math.min(...alvos.map((b) => b[0])), Math.min(...alvos.map((b) => b[1])), Math.max(...alvos.map((b) => b[2])), Math.max(...alvos.map((b) => b[3]))] : null;
+        T.y0 = T.y1 = rolagem(tl.src, uni);
+        return T;
+      });
+      S.tela0 = S.telas[0].t;
+      if (d.toque) {
+        const b = box(lista[0].src, d.toque.caixa);
+        S.toque = { box: b, t: at(cap, d.toque.em), abre: d.toque.abre, ta: at(cap, d.toque.abre_em) };
+        const T = S.telas[0];
+        T.y1 = rolagem(T.src, b); T.y0 = 0;                // entra no topo da seção e rola até a foto
+        T.rola = [S.tela0 + 0.55, Math.max(S.tela0 + 1.0, S.toque.t - 0.25)];
+        S.toque.y = T.y1;
+        S.toque.yAbre = clamp(((IMGS[d.toque.abre] && IMGS[d.toque.abre].height) || 2532) / 2 - vis / 2, 0, 9999);
+        cue(T.rola[0], 'rola', { d: T.rola[1] - T.rola[0] }); cue(S.toque.t, 'toque'); cue(S.toque.ta, 'foto');
+      }
+      if (d.mensagem) { S.msg = at(cap, d.mensagem.em); S.msgTxt = (TELAS.mensagem || '').split('\n'); cue(S.msg, 'mensagem'); }
+      S.res = at(cap, d.resolve && d.resolve.em, cap.voz_t1);
+      cue(S.cart, 'monta', { k: S.k });
+      S.telas.forEach((T, i) => { cue(T.t, i ? 'foto' : 'surge'); T.realces.forEach((r, j) => cue(r.t, 'acende', { k: j + i })); });
+      cue(S.res, 'check');
+      S.pecas = [S.cart, S.tela0, S.res];
+      return S;
+    },
+    parte(c, cap, S, t) {                               // o cartão "O PEDIDO:" (grande antes da tela; depois, compacto no topo)
+      const R = S.parte, q = E.io(p(t, S.tela0 - 0.05, S.tela0 + 0.45));
+      const cx = lerp(540, R.x + R.w / 2, q), cy = lerp(860, R.y + R.h / 2, q), s = lerp(1.3, 1, q);
+      c.save();
+      c.translate(cx, cy); c.scale(s, s); c.translate(-(R.x + R.w / 2), -(R.y + R.h / 2));
+      if (entra(c, t, S.cart, R.x + R.w / 2, R.y + R.h / 2, 0.45) <= 0) { c.restore(); return; }
+      c.save(); c.shadowColor = 'rgba(0,0,0,0.55)'; c.shadowBlur = 36; c.shadowOffsetY = 12;
+      rr(c, R.x, R.y, R.w, R.h, 26); c.fillStyle = C.card; c.fill(); c.restore();
+      c.lineWidth = 2; c.strokeStyle = 'rgba(255,255,255,0.10)'; rr(c, R.x, R.y, R.w, R.h, 26); c.stroke();
+      barraZ(c, R.x + CARD.pad, R.y + CARD.pad + 2, 7, 20); c.fillStyle = C.lime; c.fill();
+      txt(c, 'O PEDIDO:', R.x + CARD.pad + 30, R.y + CARD.pad + 20, { size: 21, weight: 700, color: C.lime, ls: 3.5 });
+      S.rows.forEach((r, i) => txt(c, r, R.x + CARD.pad, R.y + CARD.pad + 24 + 16 + CARD.size * 0.8 + i * CARD.lh, { size: CARD.size, weight: 600, color: C.white }));
+      c.restore();
+      if (q > 0.98 || t < S.tela0 - 0.05) {
+        const bx = q > 0.98 ? R : { x: 540 - R.w * 0.65, y: 860 - R.h * 0.65, w: R.w * 1.3, h: R.h * 1.3 };
+        if (t >= S.cart + 0.3) boxHere(c, 'cartão o pedido', bx.x, bx.y, bx.x + bx.w, bx.y + bx.h);
+      }
+    },
+    extra(c, cap, S, t) {
+      if (t < S.tela0) return;
+      const P = S.ph, Sc = S.scr, k = S.kk;
+      const qp = E.out(p(t, S.tela0, S.tela0 + 0.5));
+      c.save(); c.globalAlpha *= clamp(qp * 1.4); c.translate(0, (1 - qp) * 90);
+      // o celular genérico (sem marca)
+      c.save(); c.shadowColor = 'rgba(0,0,0,0.7)'; c.shadowBlur = 50; c.shadowOffsetY = 18;
+      rr(c, P.x, P.y, P.w, P.h, 56); c.fillStyle = '#0B0D0E'; c.fill(); c.restore();
+      c.lineWidth = 3; c.strokeStyle = 'rgba(255,255,255,0.30)'; rr(c, P.x, P.y, P.w, P.h, 56); c.stroke();
+      c.lineWidth = 1.5; c.strokeStyle = 'rgba(255,255,255,0.07)'; rr(c, P.x + 6, P.y + 6, P.w - 12, P.h - 12, 50); c.stroke();
+      c.save(); rr(c, Sc.x, Sc.y, Sc.w, Sc.h, 42); c.clip();
+      c.fillStyle = '#EEE8DC'; c.fillRect(Sc.x, Sc.y, Sc.w, Sc.h);
+      const tela = (T, yImg) => { const im = IMGS[T.src]; if (im) c.drawImage(im, 0, yImg, SHOT, Sc.h / k, Sc.x, Sc.y, Sc.w, Sc.h); };
+      const rolY = (T) => (T.rola ? lerp(T.y0, T.y1, E.io(p(t, T.rola[0], T.rola[1]))) : T.y1);
+      let i = 0; S.telas.forEach((T, j) => { if (t >= T.t) i = j; });
+      const T = S.telas[i], qt = E.io(p(t, T.t, T.t + 0.45));
+      if (i > 0 && qt < 1) { tela(S.telas[i - 1], rolY(S.telas[i - 1])); c.save(); clipRevela(c, Sc.x, Sc.y, Sc.w, Sc.h, qt); tela(T, rolY(T)); c.restore(); }
+      else tela(T, rolY(T));
+      const yNow = rolY(T);
+      const emTela = (b) => ({ x: Sc.x + b[0] * k, y: Sc.y + (b[1] - yNow) * k, w: (b[2] - b[0]) * k, h: (b[3] - b[1]) * k });
+      // realces: contorno lima em volta do que resolve o pedido
+      const abriu = S.toque && t >= S.toque.ta;
+      if (!abriu) T.realces.forEach((r) => {
+        const q = E.out(p(t, r.t, r.t + 0.3));
+        if (q <= 0) return;
+        const B = emTela(r.box), g = pulse(t, r.t, 0.9), m = 8;
+        c.save(); c.globalAlpha *= q; c.shadowColor = css(C.lime, 0.9); c.shadowBlur = 10 + 22 * g;
+        c.lineWidth = 5; c.strokeStyle = C.lime; rr(c, B.x - m, B.y - m, B.w + 2 * m, B.h + 2 * m, 16); c.stroke(); c.restore();
+      });
+      // o toque e a foto abrindo na tela inteira
+      if (S.toque) {
+        const B = emTela(S.toque.box);
+        if (t >= S.toque.ta && IMGS[S.toque.abre]) {
+          const q = E.io(p(t, S.toque.ta, S.toque.ta + 0.5));
+          const X = lerp(B.x, Sc.x, q), Y = lerp(B.y, Sc.y, q), Wd = lerp(B.w, Sc.w, q), Hd = lerp(B.h, Sc.h, q);
+          c.save(); c.globalAlpha *= clamp(q * 3); rr(c, X, Y, Wd, Hd, lerp(16, 0, q)); c.clip();
+          const im = IMGS[S.toque.abre];
+          c.drawImage(im, 0, S.toque.yAbre, SHOT, Sc.h / k, X, Y, Wd, Hd);
+          c.restore();
+        }
+        const t0 = S.toque.t;
+        if (t >= t0 - 0.45 && t < S.toque.ta + 0.35) {
+          const cx = B.x + B.w * 0.5, cy = B.y + B.h * 0.55;
+          const chega = E.out(p(t, t0 - 0.45, t0 - 0.05)), aperta = pulse(t, t0 - 0.05, 0.3);
+          const a = chega * (1 - p(t, S.toque.ta + 0.1, S.toque.ta + 0.35));
+          c.save(); c.globalAlpha *= a;
+          c.translate(cx + (1 - chega) * 60, cy + (1 - chega) * 80);
+          c.beginPath(); c.arc(0, 0, 40 * (1 - 0.18 * aperta), 0, 7); c.fillStyle = 'rgba(255,255,255,0.28)'; c.fill();
+          c.lineWidth = 4; c.strokeStyle = C.lime; c.stroke();
+          c.beginPath(); c.arc(0, 0, 15, 0, 7); c.fillStyle = 'rgba(255,255,255,0.95)'; c.fill();
+          c.restore();
+          anel(c, cx, cy, 40, t, t0, 0.6);
+        }
+      }
+      c.restore();                                     // fim do recorte da tela
+      if (qp > 0.98) boxHere(c, 'celular com a tela real', P.x, P.y, P.x + P.w, P.y + P.h);
+      // resolvido: o selo ✓ no canto do celular
+      const qr = p(t, S.res, S.res + 0.45);
+      if (qr > 0) { selo(c, P.x + P.w - 18, P.y + 18, 34, qr, t, S.res); anel(c, P.x + P.w - 18, P.y + 18, 34, t, S.res, 0.7); }
+      c.restore();
+      // a consulta chegando pronta: balão de conversa genérico (sem logo de app, sem número)
+      if (S.msg != null && t >= S.msg) this.mensagem(c, S, t);
+    },
+    mensagem(c, S, t) {
+      const q = E.out(p(t, S.msg, S.msg + 0.5)), R = { x: 110, y: 1000, w: 660, h: 440 };
+      c.save(); c.globalAlpha *= clamp(q * 1.6); c.translate(0, (1 - q) * 120);
+      c.save(); c.shadowColor = 'rgba(0,0,0,0.7)'; c.shadowBlur = 44; c.shadowOffsetY = 14;
+      rr(c, R.x, R.y, R.w, R.h, 30); c.fillStyle = C.panel; c.fill(); c.restore();
+      c.lineWidth = 2; c.strokeStyle = 'rgba(255,255,255,0.12)'; rr(c, R.x, R.y, R.w, R.h, 30); c.stroke();
+      c.beginPath(); c.arc(R.x + 54, R.y + 50, 26, 0, 7); c.fillStyle = C.lime; c.fill();
+      icon(c, 'casa', R.x + 54, R.y + 50, 30, C.ink, { lw: 2.4 });
+      txt(c, 'Pousada Guardião da Serra', R.x + 96, R.y + 60, { size: 25, weight: 700, color: C.white });
+      c.fillStyle = 'rgba(255,255,255,0.08)'; c.fillRect(R.x + 24, R.y + 96, R.w - 48, 2);
+      const B = { x: R.x + 34, y: R.y + 118, w: R.w - 68 };
+      const linhas = S.msgTxt.flatMap((l) => wrap(l, TEXT, 22, 500, B.w - 44));
+      const bh = 26 + linhas.length * 29 + 18;
+      rr(c, B.x, B.y, B.w, bh, 22); c.fillStyle = C.card2; c.fill(); c.lineWidth = 2; c.strokeStyle = css(C.lime, 0.55); c.stroke();
+      const n = Math.ceil(linhas.length * p(t, S.msg + 0.25, S.msg + 0.9));
+      linhas.slice(0, n).forEach((l, i) => txt(c, l, B.x + 22, B.y + 44 + i * 29, { size: 22, weight: i ? 500 : 600, color: i ? C.apoio : C.white }));
+      const qv = p(t, S.msg + 0.95, S.msg + 1.25);
+      if (qv > 0) { checkMark(c, B.x + B.w - 52, B.y + bh - 22, 20, qv, C.lime, 3.2); checkMark(c, B.x + B.w - 38, B.y + bh - 22, 20, p(qv, 0.4, 1), C.lime, 3.2); }
+      c.restore();
+      if (q > 0.6) boxHere(c, 'mensagem pronta', R.x, R.y, R.x + R.w, R.y + R.h);
+    },
+  };
+
+  // ---- fecho_collab: a lista com os 4 ✓ no centro, "Site por Fazlo Digital" em lima e o site; depois, só a logo
+  CENAS.fecho_collab = {
+    setup(cap) {
+      const d = cap.diagrama, S = {};
+      S.lista = at(cap, d.lista.em);
+      S.listaPl = { x: 540 - LISTA.w * 1.4 / 2, y: 672, s: 1.4 };
+      S.cred = at(cap, d.credito.em); S.para = at(cap, d.para_em.em);
+      S.dS = fit([d.destaque], DISPLAY, 800, [800], 64, 36);
+      S.pS = fit([d.para], TEXT, 600, [800], 40, 24);
+      cue(S.lista, 'cresce'); cue(S.cred, 'brilho'); cue(S.para, 'surge'); cue(S.para + 0.45, 'acende', { k: 4 });
+      cue(cap.corte_logo[0], 'logo');
+      S.pecas = [S.lista, S.cred, S.para];
+      return S;
+    },
+    extra(c, cap, S, t) {
+      const d = cap.diagrama;
+      const q1 = E.out(p(t, S.cred, S.cred + 0.55));
+      if (q1 > 0) {
+        const w = tw(d.destaque, DISPLAY, S.dS, 800), y = 1112;
+        c.save(); clipRevela(c, 540 - w / 2, y - S.dS * 0.95, w, S.dS * 1.25, q1);
+        txt(c, d.destaque, 540, y, { fam: DISPLAY, size: S.dS, weight: 800, color: C.lime, align: 'center', glow: css(C.lime, 0.35 * pulse(t, S.cred + 0.3, 1.2)), blur: 26 });
+        c.restore();
+        if (q1 > 0.6) boxHere(c, 'site por', 540 - w / 2, y - S.dS * 0.78, 540 + w / 2, y + S.dS * 0.24);
+      }
+      const q2 = E.out(p(t, S.para, S.para + 0.45));
+      if (q2 > 0) txt(c, d.para, 540, 1178 + (1 - q2) * 16, { size: S.pS, weight: 600, color: C.white, align: 'center', alpha: q2, box: 'pra pousada' });
+      const q3 = E.out(p(t, S.para + 0.45, S.para + 0.85));
+      if (q3 > 0) {
+        c.save(); c.globalAlpha *= q3; c.translate(0, (1 - q3) * 14);
+        const s = d.site, w = tw(s, TEXT, 27, 600) + 64 + 40, x = 540 - w / 2, y = 1222, h = 60;
+        rr(c, x, y, w, h, h / 2); c.fillStyle = css(C.lime, 0.08); c.fill(); c.lineWidth = 2; c.strokeStyle = css(C.lime, 0.75); c.stroke();
+        icon(c, 'casa', x + 40, y + h / 2, 26, C.lime, { lw: 2.4 });
+        txt(c, s, x + 70, y + h / 2 + 27 * 0.36, { size: 27, weight: 600, color: C.white });
+        c.restore();
+        if (q3 > 0.6) boxHere(c, 'site da pousada', x, y, x + w, y + h);
+      }
+    },
+  };
+
+  // =====================================================================
   // MONTAGEM DO QUADRO
   // =====================================================================
   const flutua = (t) => Math.sin(t * 1.35) * 4;
   function capitulo(c, n, t) {                          // tudo do capítulo n (sem a marca e o celular do canto)
     const cap = CAPS[n], S = cap.S, tipo = cap.diagrama.tipo, cena = CENAS[tipo];
     CUR_CAP = n;
-    const parado = tipo === 'fecho' && cap.logo_parada && t >= cap.logo_parada[0];
+    const parado = (tipo === 'fecho' || tipo === 'fecho_collab') && cap.logo_parada && t >= cap.logo_parada[0];
     drawBg(c, cap.tom, t, parado);
-    if (tipo === 'capa') {
+    if (tipo === 'capa' || tipo === 'capa_collab') {
       cena.draw(c, cap, S, t);
       drawApoio(c, cap, t, cap.lay.apoioY);
       return;
@@ -1207,6 +1544,7 @@
     const cap = CAPS[n];
     if (!cap.voo || t < cap.voo[0] || t >= cap.voo[1] || n === 0) return;
     const S = cap.S, R = S.parte, cena = CENAS[cap.diagrama.tipo];
+    if (PEDIDOS()) { vooPedido(c, cap, t); return; }
     // o caminho não cruza o texto: 1) encolhe e anda POR BAIXO do título e do apoio até a coluna do celular do canto
     // (x do bloco, logo abaixo do texto), já do tamanho do bloco e em lima; 2) sobe reto até o bloco
     const u = p(t, cap.voo[0], cap.voo[1]), B = blocoRect(CANTO, n - 1), CUT = 0.62;
@@ -1228,6 +1566,24 @@
     if (lima > 0) { rr(c, x, y, w, h, lerp(28, 4, q)); c.fillStyle = css(C.lime, lima); c.fill(); }
     c.restore();
   }
+  // collab: o cartão do pedido encolhe e voa até o cartãozinho dele na lista do canto, já em lima
+  function vooPedido(c, cap, t) {
+    const S = cap.S, R = S.parte, cena = CENAS.pedido, B = listaRect(LCANTO, S.k - 1);
+    const u = E.io(p(t, cap.voo[0], cap.voo[1]));
+    const x = lerp(R.x, B.x, u), y = lerp(R.y + flutua(cap.voo[0]), B.y, u) - Math.sin(u * Math.PI) * 60, w = lerp(R.w, B.w, u), h = lerp(R.h, B.h, u);
+    const conteudo = 1 - p(u, 0.25, 0.7), lima = p(u, 0.35, 0.85);
+    c.save();
+    c.shadowColor = 'rgba(0,0,0,0.6)'; c.shadowBlur = 40 * (1 - u); c.shadowOffsetY = 12 * (1 - u);
+    rr(c, x, y, w, h, lerp(26, 10, u)); c.fillStyle = C.card; c.fill(); c.shadowColor = 'transparent';
+    if (conteudo > 0) {
+      c.save(); rr(c, x, y, w, h, lerp(26, 10, u)); c.clip(); c.globalAlpha *= conteudo;
+      c.translate(x, y); c.scale(w / R.w, h / R.h); c.translate(-R.x, -R.y);
+      MINI++; cena.parte(c, cap, S, cap.voo[0] - 0.01); MINI--;
+      c.restore();
+    }
+    if (lima > 0) { rr(c, x, y, w, h, lerp(26, 10, u)); c.fillStyle = css(C.lime, lima); c.fill(); }
+    c.restore();
+  }
   // o corte diagonal entre o capítulo antigo e o novo: a barra lima atravessa na inclinação do Z
   function corte(c, u, antigo, novo) {
     const ext = -SLOPE * H / 2 + 120, xc = lerp(-ext, W + ext, u);
@@ -1242,11 +1598,11 @@
   function frame(c, t) {
     t = clamp(t, 0, DURATION - 1e-6);
     const n = capAt(t), cap = CAPS[n], ult = n === CAPS.length - 1;
-    const pl = wirePlace(t);
+    const pl = PEDIDOS() ? listaPlace(t) : wirePlace(t);
     const fixos = () => {
       drawMarca(c);
-      drawWire(c, t, pl);
-      if (n === 0) { CENAS.capa.brilhoBlocos(c, cap, cap.S, t, pl); CENAS.capa.faixa(c, cap, cap.S, t); }
+      if (PEDIDOS()) { if (pl) drawLista(c, t, pl); } else drawWire(c, t, pl);
+      if (n === 0 && !PEDIDOS()) { CENAS.capa.brilhoBlocos(c, cap, cap.S, t, pl); CENAS.capa.faixa(c, cap, cap.S, t); }
       for (let k = 1; k < CAPS.length; k++) voo(c, k, t);
     };
     const tudo = (k) => () => capitulo(c, k, t);
@@ -1294,12 +1650,13 @@
   // =====================================================================
   // INICIALIZAÇÃO E DADOS PARA A REVISÃO
   // =====================================================================
-  function init(svgText, linha) {
+  function init(svgText, linha, extras = {}) {
     M = document.createElement('canvas').getContext('2d');
+    IMGS = extras.imgs || {}; TELAS = extras.telas || null;
     parseLogo(svgText);
     EP = linha; CAPS = linha.capitulos; DURATION = linha.duracao; CUES = []; WARN = [];
     CAPS.forEach((cap) => {
-      if (cap.diagrama.tipo !== 'capa') layoutTitulo(cap);
+      if (!['capa', 'capa_collab'].includes(cap.diagrama.tipo)) layoutTitulo(cap);
       const cena = CENAS[cap.diagrama.tipo];
       if (!cena) throw new Error('diagrama desconhecido: ' + cap.diagrama.tipo);
       cap.S = cena.setup(cap);

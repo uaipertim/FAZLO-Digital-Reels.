@@ -7,7 +7,7 @@ Série Explica (FAZLO Digital) — revisão técnica de um episódio (roda depoi
                                                          output/explica-01/revisao/capa-no-feed.jpg
 
 Confere:
-  formato     1080×1920, 60 fps, H.264 yuv420p, AAC 48 kHz estéreo; 60–90 s; vídeo e áudio com a mesma duração;
+  formato     1080×1920, 60 fps, H.264 yuv420p, AAC 48 kHz estéreo; 60–90 s (ou o "duracao_alvo" do roteiro); vídeo e áudio com a mesma duração;
   som         −14 LUFS integrados (±0,5) e pico real ≤ −1 dBTP medidos NO MP4 (depois do AAC);
   voz         cada capítulo é UMA geração inteira, colocada sem cortes: o trecho na narração montada é idêntico ao
               arquivo da geração (fora os fades de 8 ms / 60 ms nas pontas) e o arquivo é o registrado (sha1);
@@ -35,10 +35,12 @@ from scipy.signal import butter, sosfilt
 SERIE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 REPO = os.path.dirname(os.path.dirname(SERIE))
 EP = sys.argv[1] if len(sys.argv) > 1 else 'explica-01'
-VIDEO = os.path.join(SERIE, 'output', EP, f'fazlo-digital-{EP}.mp4')
 AUD = os.path.join(SERIE, 'audio', EP)
-OUT = os.path.join(SERIE, 'output', EP, 'revisao')
 LN = json.load(open(os.path.join(AUD, 'linha.json')))
+OUTD = os.path.join(REPO, LN['saida']) if LN.get('saida') else os.path.join(SERIE, 'output', EP)     # "saida" do roteiro
+VIDEO = os.path.join(OUTD, f'fazlo-digital-{EP}.mp4')
+OUT = os.path.join(OUTD, 'revisao')
+ALVO = LN.get('duracao_alvo', [60, 90])
 MOT = json.load(open(os.path.join(OUT, 'motor.json')))
 CX = json.load(open(os.path.join(OUT, 'caixas.json')))
 FALAS = json.load(open(os.path.join(AUD, 'voz', 'falas.json')))['capitulos']
@@ -87,7 +89,7 @@ vd, ad = float(v['duration']), float(a['duration'])
 ok(v['codec_name'] == 'h264' and v['pix_fmt'] == 'yuv420p', f"vídeo {v['codec_name']} {v.get('profile', '')} {v['pix_fmt']}")
 ok((int(v['width']), int(v['height'])) == (1080, 1920), f"resolução {v['width']}×{v['height']} (9:16)")
 ok(abs(fps - 60) < 0.01, f'{fps:.0f} fps, {v.get("nb_frames", "?")} quadros')
-ok(60 <= vd <= 90, f'duração {vd:.2f} s (alvo 60–90 s)')
+ok(ALVO[0] <= vd <= ALVO[1], f'duração {vd:.2f} s (alvo {ALVO[0]}–{ALVO[1]} s)')
 ok(a['codec_name'] == 'aac' and int(a['sample_rate']) == 48000 and int(a['channels']) == 2, f"áudio {a['codec_name']} {a['sample_rate']} Hz, {a['channels']} canais, {int(a.get('bit_rate', 0)) // 1000} kb/s")
 ok(abs(vd - ad) < 0.05, f'vídeo e áudio com a mesma duração (Δ {abs(vd - ad) * 1000:.0f} ms)')
 info(f'arquivo {int(inf["format"]["size"]) / 1e6:.1f} MB, {int(inf["format"]["bit_rate"]) / 1e6:.1f} Mb/s')
@@ -165,8 +167,11 @@ for i, ap in enumerate(aps):
     if i + 1 < len(aps) and aps[i + 1]['cap'] == ap['cap'] and aps[i + 1]['t'] < ap['ate'] + 0.2 - 1e-3:
         sobrepostas.append(ap)
     info(f'cap {ap["cap"]:02d} · apoio {ap["i"] + 1}: {tempo:4.2f} s inteira · "{ap["texto"]}"')
-ok(not curtas, f'{len(aps)} linhas de apoio; a mais curta fica {min(ap["ate"] - ap["inteira_de"] for ap in aps):.2f} s inteira na tela (mínimo 1,5 s)')
-ok(not sobrepostas, 'nunca duas linhas de apoio ao mesmo tempo (a anterior sai antes de a próxima entrar)')
+if aps:
+    ok(not curtas, f'{len(aps)} linhas de apoio; a mais curta fica {min(ap["ate"] - ap["inteira_de"] for ap in aps):.2f} s inteira na tela (mínimo 1,5 s)')
+    ok(not sobrepostas, 'nunca duas linhas de apoio ao mesmo tempo (a anterior sai antes de a próxima entrar)')
+else:
+    info('o episódio não tem linhas de apoio (nada a conferir)')
 
 # ---------------------------------------------------------------- áreas seguras
 report += ['', 'ÁREAS SEGURAS']
@@ -217,7 +222,12 @@ ok(not antes_logo, 'sem imagem congelada por 1,5 s ou mais antes da logo final (
 
 # ---------------------------------------------------------------- capa
 report += ['', 'CAPA']
-capa = Image.open(os.path.join(SERIE, 'output', EP, 'capa.png')).convert('RGB')
+capa = Image.open(os.path.join(OUTD, 'capa.png')).convert('RGB')
+# o 1º quadro decodificado do MP4 (não o da amostragem a 4 quadros/s, que pode cair num quadro seguinte quando a
+# capa já tem movimento no quadro 0, como a água da cachoeira na capa do collab)
+with tempfile.TemporaryDirectory() as tmp:
+    subprocess.run(['ffmpeg', '-y', '-loglevel', 'error', '-i', VIDEO, '-frames:v', '1', os.path.join(tmp, 'q0.png')], check=True)
+    f0 = np.asarray(Image.open(os.path.join(tmp, 'q0.png')).convert('L'))
 mse = float(np.mean((np.asarray(capa.convert('L')).astype(float) - f0.astype(float)) ** 2))
 psnr = 99.0 if mse == 0 else 10 * np.log10(255 ** 2 / mse)
 ok(psnr > 34, f'a capa é o quadro 0 do vídeo (PSNR {psnr:.1f} dB entre capa.png e o 1º quadro)')

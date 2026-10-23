@@ -6,7 +6,8 @@
 #   series/explica/scripts/episodio.sh explica-01 --forcar     renderiza mesmo fora de 60–90 s
 #
 # Lê series/explica/episodios/<id>.json e entrega em series/explica/output/<id>/: o MP4, a capa, o storyboard,
-# a folha do recurso de progresso e a revisão técnica. Para antes do render se a duração sair de 60–90 s
+# a folha do recurso de progresso e a revisão técnica (ou na pasta do campo "saida" do roteiro). Para antes do render
+# se a duração sair de 60–90 s (ou do "duracao_alvo" do roteiro)
 # (mostra as durações por capítulo): a voz nunca é acelerada.
 # A chave do ElevenLabs NUNCA fica no repositório: nesta nuvem a rede a injeta (Segredos de rede);
 # fora dela, exporte ELEVENLABS_API_KEY no terminal.
@@ -27,8 +28,9 @@ test -f "series/explica/episodios/$EP.json" || { echo "series/explica/episodios/
 python3 $S/voz.py "$EP" "${REFAZ[@]}"                  # 1. uma geração inteira por capítulo, conferida (só o que falta)
 python3 $S/linha.py "$EP"                               # 2. linha do tempo por palavra + a narração montada (voz.wav)
 DUR=$(python3 -c "import json;print(json.load(open('series/explica/audio/$EP/linha.json'))['duracao'])")
-if [ "$FORCAR" = 0 ] && ! python3 -c "import sys;d=float('$DUR');sys.exit(0 if 60<=d<=90 else 1)"; then
-  echo "PAROU: o episódio tem $DUR s (fora de 60–90 s). Ajuste o texto do roteiro (a voz não é acelerada) ou use --forcar."
+ALVO=$(python3 -c "import json;a=json.load(open('series/explica/audio/$EP/linha.json')).get('duracao_alvo',[60,90]);print(a[0],a[1])")
+if [ "$FORCAR" = 0 ] && ! python3 -c "import sys;d=float('$DUR');a,b=map(float,'$ALVO'.split());sys.exit(0 if a<=d<=b else 1)"; then
+  echo "PAROU: o episódio tem $DUR s (fora de ${ALVO/ /–} s). Ajuste o texto do roteiro (a voz não é acelerada) ou use --forcar."
   exit 2
 fi
 node $S/render.cjs cues --ep "$EP"                      # 3. os sons tirados da animação

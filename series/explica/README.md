@@ -7,6 +7,7 @@ Vídeos explicativos da @fazlodigital, de 60–90 s, em capítulos e narrados. C
 | Episódio | Tema | Duração | Saída |
 |---|---|---|---|
 | **explica-01** | "O site que faz o hóspede reservar. Em 7 partes." Capa, 01 o topo, 02 tem vaga?, 03 os quartos, 04 as regras, 05 como chegar, 06 a mensagem, 07 no celular, fecho | 83,3 s · revisão aprovada · aguardando avaliação | [`output/explica-01/`](output/explica-01) |
+| **case-guardiao-da-serra** | Collab "A pousada pediu. A gente fez." com a Pousada Guardião da Serra: os 4 pedidos da pousada e a tela REAL do site resolvendo cada um (modo collab, abaixo) | ver o README do Reel | [`../../reels/case-guardiao-da-serra/`](../../reels/case-guardiao-da-serra) |
 
 Em `output/<id>/` ficam:
 - **Vídeo:** `fazlo-digital-<id>.mp4`.
@@ -68,7 +69,9 @@ Nenhuma cor, fonte, logo, ícone, animação ou som do Hospeda foi reutilizado. 
 ```bash
 series/explica/scripts/episodio.sh explica-01               # gera só a narração que falta e faz o resto
 series/explica/scripts/episodio.sh explica-01 --refaz 3,5   # gera de novo, INTEIROS, os capítulos 3 e 5 (outra semente)
-series/explica/scripts/episodio.sh explica-01 --forcar      # renderiza mesmo fora de 60–90 s
+series/explica/scripts/episodio.sh explica-01 --forcar      # renderiza mesmo fora de 60–90 s (ou do "duracao_alvo")
+python3 series/explica/scripts/voz.py explica-01 --so 0,4,5  # gera só esses capítulos (amostras para aprovar antes do resto)
+python3 series/explica/scripts/voz.py explica-01 --refaz 0 --semente 0:5026   # o cap 0 com uma semente escolhida, conferido de novo
 python3 series/explica/scripts/linha.py explica-02 --estimativa   # estima as durações de um roteiro novo, sem voz e sem API
 ```
 
@@ -101,15 +104,15 @@ Fora da nuvem, exporte `ELEVENLABS_API_KEY` no terminal. Os scripts só leem a v
 - Raquel - For Conversational (`GDzHdQOi6jjf8zaXhCYD`), `eleven_multilingual_v2`.
 - Estabilidade 0,40 · semelhança 0,80 · estilo 0,35 · speaker boost · velocidade 1,0 · idioma pt.
 - MP3 44,1 kHz 128 kb/s, com alinhamento por caractere.
-- O capítulo anterior e o seguinte vão como `previous_text` / `next_text`.
+- O capítulo anterior vai como `previous_text`. O seguinte **não** vai como `next_text` (regra de 23/10, da série "Pelos olhos do hóspede": com ele, o ElevenLabs devolvia a fala cortada no fim do arquivo, como se emendasse direto na próxima).
 
 **Conferência de cada geração.** Se falhar, o capítulo inteiro é gerado de novo com outra semente, até 6 vezes:
 
 | Item | Regra |
 |---|---|
 | ritmo | 9–18 letras por segundo de fala |
-| pausas | entre frases, respiro de 0,12 s a 1,1 s (silêncio medido no áudio); dentro de uma frase, nenhuma pausa passa de 0,85 s |
-| fim de frase | é **corte** quando o final cai até o silêncio (−50 dB) em **menos de 35 ms** E a queda começa **acima de −15 dB** (relativo ao pico da fala). Quedas que começam em −20 dB ou abaixo são fim natural e passam. A voz também não pode subir no fim de uma frase afirmativa |
+| pausas | entre frases, respiro de 0,12 s a 1,1 s (silêncio medido no áudio); dentro de uma frase, nenhuma pausa passa de 0,85 s. Conta como "entre frases" a troca de item da `fala` e todo fim de frase dentro de um item (palavra que termina em . ? ! …) |
+| fim de frase | o arquivo tem de **terminar em silêncio** (abaixo de −50 dB); se acaba com a voz soando, é corte. A queda de −15 dB (relativo ao pico da fala) até o silêncio (−50 dB) tem de durar **≥ 55 ms quando a última palavra termina em vogal** e **≥ 35 ms** nas outras (calibração de 23/10: 40 ms numa vogal soou cortado; 59 e 63 ms soaram naturais). Quedas que começam em −20 dB ou abaixo são fim natural. A voz também não pode subir no fim de uma frase afirmativa |
 | perguntas | em toda frase com "?", a altura da voz sobe ≥ 10% na parte final (a tônica) |
 | transcrição | se a chave tiver a permissão de speech-to-text, o texto ouvido bate com o roteiro, palavra por palavra (≥ 92%); sem a permissão, a geração segue e o histórico registra `transcricao: null` |
 
@@ -174,6 +177,30 @@ O `falas.json` guarda, por capítulo:
 - Acentos e maiúsculas não importam.
 - `"+1.2"` dispara 1,2 s depois do começo do capítulo; `"fim"`, no fim da fala.
 - Se a palavra não existir, a peça entra num tempo padrão e o `render.cjs cues` avisa.
+
+### Campos de episódio opcionais
+
+- **`saida`:** a pasta das entregas (ex. `reels/case-guardiao-da-serra/output`); sem ela, `output/<id>/`.
+- **`duracao_alvo`:** a faixa de duração, ex. `[45, 60]` (padrão `[60, 90]`); o comando para antes do render fora dela.
+- **`conferencia`** (por capítulo): `ritmo_max`, `respiros` por troca de frase e `enfase` (`{"trecho": "...", "min": 0.06}`: a altura da voz no trecho fica ao menos 6% acima do resto do capítulo).
+- **`progresso`** e **`telas`:** o modo collab (abaixo).
+
+### Modo collab: "A pousada pediu. A gente fez." (`"progresso": "pedidos"`)
+
+Um episódio com a pousada parceira, mostrando o site REAL que a FAZLO fez. O motor troca o celular de 7 blocos por um recurso de progresso próprio:
+
+- **A lista dos pedidos:** 4 cartõezinhos "01–04" no canto superior direito (x 808–940, y 270–506). Na capa ela aparece vazia no centro e vai para o canto; o pedido do capítulo pulsa em lima tracejado.
+- **O cartão "O PEDIDO:":** o texto do pedido entre aspas, sem nome, sem horário e sem cara de print de conversa. Entra grande e, quando a tela entra, encolhe para o topo.
+- **A tela real:** PNGs capturados do site no ar (campo `telas`: a pasta com `telas.json` + PNGs de 1170 px de largura), dentro de um celular genérico sem marca. Contornos lima realçam o que resolve o pedido; a tela rola, troca com o corte na inclinação do Z, recebe um toque (indicador de toque) que abre a foto na tela inteira, e a consulta pode chegar num balão de conversa genérico (sem logo de app, sem número) com a mensagem que o próprio site monta.
+- **Resolvido:** o selo ✓ no canto do celular; no fim do capítulo o cartão voa até o cartãozinho dele, que acende em lima com o ✓.
+
+| `tipo` | Visual | Campos |
+|---|---|---|
+| `capa_collab` | a capa ilustrada (quadro 0): selo do rótulo, cachoeira em traço lima com o balão "O pedido ✓", selo lima e o título do gancho (2ª frase em lima, até 4 linhas); na palavra de `lista`, a lista vazia aparece no centro e vai para o canto | `selo`, `lista: {em}` |
+| `pedido` | o cartão "O PEDIDO:" + o celular com a tela real | `pedido`, `cartao: {em}`, `tela: {src, em}` ou `telas: [{src, em, realce}]`, `realce: [{caixa, em}]`, `toque: {caixa, em, abre, abre_em}`, `mensagem: {em}`, `resolve: {em}` |
+| `fecho_collab` | a lista com os 4 ✓ cresce no centro, o destaque em lima, a linha branca e o site; depois, só a logo | `destaque`, `para`, `site`, `lista: {em}`, `credito: {em}`, `para_em: {em}` |
+
+Os capítulos de pedido não têm título (`"titulo": null`): o cartão faz esse papel. `caixa` é o nome de uma caixa gravada em `telas.json` pela captura.
 
 ### Biblioteca de diagramas da FAZLO
 

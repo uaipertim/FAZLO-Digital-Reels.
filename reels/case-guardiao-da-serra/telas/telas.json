@@ -1,12 +1,13 @@
 {
  "url": "https://pousadaguardiaodaserra.com.br/",
- "capturado_em": "2026-10-23T16:05:40.781Z",
+ "capturado_em": "2026-10-23T16:43:23.234Z",
  "largura_css": 390,
  "escala": 3,
  "conferencia": {
   "tres": 4,
   "grinalda": false,
-  "quatro": false
+  "quatro": false,
+  "confirmar": false
  },
  "telas": {
   "01-topo": {
@@ -38,7 +39,7 @@
      0,
      193,
      1170,
-     3102
+     3282
     ],
     "titulo": [
      60,
@@ -48,15 +49,15 @@
     ],
     "foto": [
      60,
-     769,
+     949,
      1110,
-     2072
+     2252
     ],
-    "chips": [
+    "incluso": [
      60,
-     2120,
-     1110,
-     2418
+     769,
+     695,
+     901
     ]
    },
    "telefones_desfocados": 3

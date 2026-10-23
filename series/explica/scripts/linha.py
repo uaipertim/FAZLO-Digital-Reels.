@@ -178,6 +178,8 @@ def main(ep_id, estimativa=False):
     os.makedirs(aud, exist_ok=True)
     out = {'episodio': ep_id, 'titulo': roteiro['titulo'], 'marca': roteiro.get('marca', '@fazlodigital'), 'duracao': round(dur, 4),
            'provisorio': estimativa, 'tr': TR, 'voo': VOO, 'logo': LOGO,
+           'saida': roteiro.get('saida'), 'progresso': roteiro.get('progresso', 'pagina'), 'telas': roteiro.get('telas'),
+           'duracao_alvo': roteiro.get('duracao_alvo', [60, 90]),
            'apoio': {'entra': AP_ENTRA, 'sai': AP_SAI, 'leitura': AP_LEITURA}, 'capitulos': caps, 'colocacao': coloc}
     json.dump(out, open(os.path.join(aud, 'linha.json'), 'w'), ensure_ascii=False, indent=1)
     print(f'{ep_id}: {len(caps)} capítulos, {dur:.2f} s' + ('  (ESTIMATIVA pelo texto, sem voz)' if estimativa else ''))

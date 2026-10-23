@@ -20,6 +20,7 @@ Cada Reel vive numa pasta independente (`reel-NN/` ou, a partir de "Instagram n�
 | — | **"Ele viu a piscina."** 4º episódio da série "Pelos olhos do hóspede", com voz: ele viu a piscina, mas não viu o quarto | 25,0 s | com voz · aguardando aprovação | [`viu-a-piscina/`](viu-a-piscina) |
 | — | **"O café está incluso?"** 5º episódio da série "Pelos olhos do hóspede", com voz: a foto da mesa de café e a pergunta sem resposta | 28,6 s | com voz · aguardando aprovação | [`cafe-incluso/`](cafe-incluso) |
 | — | **"Aceita pet?"** 6º episódio da série "Pelos olhos do hóspede", com voz: ele não quis arriscar a viagem com o cachorro | 25,0 s | com voz · aguardando aprovação | [`aceita-pet/`](aceita-pet) |
+| — | **"A pousada pediu. A gente fez."** (collab @fazlodigital + @pousadaguardiaodaserra) Os 4 pedidos da Pousada Guardião da Serra, cada um num cartão "O PEDIDO:", e a **tela real** do site no ar resolvendo (topo com as cachoeiras, a seção do pôr do sol incluso, a foto em tela cheia, a consulta com a Vila Pequi e a mensagem pronta). Lista dos pedidos com ✓ no canto, narração por capítulo, capa ilustrada. Motor da Série Explica (modo collab) | 54,9 s | concluído · em avaliação · posta qui 29/10, 17h | [`case-guardiao-da-serra/`](case-guardiao-da-serra) |
 
 Episódios da série "Pelos olhos do hóspede": `npm run episodio -- <id>` (só o roteiro em JSON, ver [`../series/pelos-olhos-do-hospede/`](../series/pelos-olhos-do-hospede)).
 

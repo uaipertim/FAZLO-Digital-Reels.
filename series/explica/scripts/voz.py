@@ -30,7 +30,9 @@ Conferência de cada geração (se uma falhar, o capítulo inteiro é gerado de 
                37–57 ms a partir de nível mais baixo soaram normais.) A voz também não pode subir no fim de uma
                frase afirmativa, e tem de sobrar áudio depois da última letra;
   capítulo     (opcional, campo "conferencia" do roteiro) ritmo máximo e faixa de respiro em trocas de frase
-               específicas, ex. {"ritmo_max": 12, "respiros": [null, [0.3, 0.6], [0.3, 0.6], null]};
+               específicas, ex. {"ritmo_max": 12, "respiros": [null, [0.3, 0.6], [0.3, 0.6], null]}, e um trecho dito com
+               ênfase: {"enfase": {"trecho": "Site por Fazlo Digital", "min": 0.06}} (a mediana da altura da voz no
+               trecho fica ao menos 6% acima da mediana do resto do capítulo);
   perguntas    em toda frase com "?", a altura da voz sobe pelo menos 10% na parte final (a tônica);
   transcrição  (se a API de transcrição responder) o texto ouvido bate com o roteiro, palavra por palavra (≥ 92%).
 
@@ -195,9 +197,11 @@ def confere(mp3, al, cap):
         a = next(w for w in reversed(ws) if w['i0'] < pos)
         b = next(w for w in ws if w['i0'] >= pos)
         inicios.add(b['i0'])
-        respiros.append(round(silencio(e, pk, a['fim_letra'] - 0.02, b['t0'] + 0.05), 3))
+        respiros.append(round(silencio(e, pk, a['fim_letra'] - 0.02, b['t0'] + 0.15), 3))   # a janela passa um pouco do início
+        # marcado da palavra seguinte (o alinhamento às vezes marca o começo antes do som); o silêncio é medido no áudio
         pos += 1
-    gaps = [(b['t0'] - a['fim_letra'], b['i0'] in inicios) for a, b in zip(ws, ws[1:])]
+    # entre frases: a troca de item da fala E todo fim de frase dentro de um item (palavra que termina em . ? ! …)
+    gaps = [(b['t0'] - a['fim_letra'], b['i0'] in inicios or a['w'].rstrip('"”\'')[-1:] in '.?!…') for a, b in zip(ws, ws[1:])]
     maior = max([g for g, fr in gaps if not fr] or [0.0])              # dentro de uma frase
     maior_fr = max([g for g, fr in gaps if fr] or [0.0])               # entre frases
     # dentro de uma frase também há trocas com ":" — elas contam como respiro só se houver pausa (não são exigidas)
@@ -257,6 +261,16 @@ def confere(mp3, al, cap):
     for k, faixa in enumerate(cf.get('respiros') or []):
         if faixa and k < len(respiros) and not faixa[0] <= respiros[k] <= faixa[1]:
             return False, f'respiro {respiros[k]:.2f} s depois da frase {k + 1} (alvo {faixa[0]}–{faixa[1]} s)', n, x
+    if cf.get('enfase'):                                                  # um trecho dito com ênfase: a altura dele fica acima do resto
+        trecho, minimo = cf['enfase']['trecho'], cf['enfase'].get('min', 0.06)
+        k0 = texto.find(trecho)
+        lt = [k for k in range(k0, k0 + len(trecho)) if ch[k].isalnum()]
+        dentro = seg(t0s[lt[0]], t1s[lt[-1]])
+        fora_ = np.concatenate([seg(t0s[0], t0s[lt[0]] - 0.02), seg(t1s[lt[-1]] + 0.02, tfim)])
+        enf = round(float(np.median(dentro) / np.median(fora_) - 1), 3) if len(dentro) >= 5 and len(fora_) >= 5 else None
+        n['enfase'] = {'trecho': trecho, 'altura_acima_do_resto': enf}
+        if enf is None or enf < minimo:
+            return False, f'sem ênfase em "{trecho}" ({enf})', n, x
     if sobra < 0.05 or not sem_corte:
         return False, 'fim cortado', n, x
     if not firme:

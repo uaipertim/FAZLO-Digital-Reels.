@@ -41,7 +41,15 @@
       ...pesos.map(([w, f]) => document.fonts.load(`${w} 100px '${f}'`)),
     ]);
     await document.fonts.ready;
-    EXPLICA.init(svg, linha);
+    const extras = {};
+    if (linha.telas) {                                  // telas reais do site (collab): PNGs + caixas + a mensagem
+      extras.telas = await fetch(`/${linha.telas}/telas.json`).then((r) => r.json());
+      extras.imgs = {};
+      await Promise.all(Object.keys(extras.telas.telas).map((nome) => new Promise((ok, erro) => {
+        const im = new Image(); im.onload = () => { extras.imgs[nome] = im; ok(); }; im.onerror = erro; im.src = `/${linha.telas}/${nome}.png`;
+      })));
+    }
+    EXPLICA.init(svg, linha, extras);
     document.title = `FAZLO Digital — Explica ${EPID}`;
   })();
 

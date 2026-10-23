@@ -217,6 +217,8 @@ for c in CUES:
         mix.place('sfx', estalo(2800), t, 0.35, 0.6); mix.place('sfx', baque(66, 0.25), t, 0.22)
         b = fm_bell(midi(n), 1.6, 0.7)
         mix.place('sfx', b, t, 0.16, 0.6); mix.place('send', b, t, 0.12)
+    elif ty == 'toque':
+        mix.place('sfx', estalo(3800), t, 0.3); mix.place('sfx', bolha(700), t + 0.02, 0.18)
     elif ty == 'logo':
         sig_cut(mix, t + 0.12, g=1.0, big=True)
         sig_motif(mix, t + 0.36, 0.3, g=0.9)

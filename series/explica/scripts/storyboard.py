@@ -21,9 +21,9 @@ from PIL import Image, ImageDraw, ImageFont
 SERIE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 REPO = os.path.dirname(os.path.dirname(SERIE))
 EP = sys.argv[1] if len(sys.argv) > 1 else 'explica-01'
-OUTD = os.path.join(SERIE, 'output', EP)
-VIDEO = os.path.join(OUTD, f'fazlo-digital-{EP}.mp4')
 LN = json.load(open(os.path.join(SERIE, 'audio', EP, 'linha.json')))
+OUTD = os.path.join(REPO, LN['saida']) if LN.get('saida') else os.path.join(SERIE, 'output', EP)     # "saida" do roteiro
+VIDEO = os.path.join(OUTD, f'fazlo-digital-{EP}.mp4')
 MOT = json.load(open(os.path.join(OUTD, 'revisao', 'motor.json')))
 F = lambda w, n: ImageFont.truetype(os.path.join(REPO, 'brand', 'fonts', f'sora-latin-{w}-normal.woff2'), n)
 LIMA, CINZA, CLARO = (198, 250, 65), (150, 156, 160), (225, 228, 230)
@@ -60,7 +60,7 @@ with tempfile.TemporaryDirectory() as tmp:
         x = PAD + col * (TW + PAD) + (PAD if col >= 2 else 0)
         y = PAD + (i // COLS) * (TH + LAB + PAD)
         sheet.paste(im, (x, y))
-        rot = 'CAPA' if c['n'] == 0 else (f'{c["n"]:02d} · {c["rotulo"]}' if c['n'] <= 7 else c['rotulo'])
+        rot = 'CAPA' if c['n'] == 0 else (f'{c["n"]:02d} · {c["rotulo"]}' if c['n'] <= 7 and c is not caps[-1] else c['rotulo'])
         dr.text((x, y + TH + 6), rot, font=F(700, 17), fill=LIMA)
         dr.text((x, y + TH + 28), f'{tipo} · {t:.1f} s', font=F(500, 14), fill=CLARO)
         if i % 2 == 0 and fala:
@@ -70,8 +70,21 @@ with tempfile.TemporaryDirectory() as tmp:
 
     # ------------------------------------------------------------ o recurso de progresso funcionando
     c1, c2, c3 = caps[1], caps[2], caps[3]
-    c7, f = caps[7], caps[-1]
-    prog = [
+    f = caps[-1]
+    if LN.get('progresso') == 'pedidos':                # collab: a lista dos pedidos com os checks
+        ped = [c for c in caps if c['diagrama']['tipo'] == 'pedido']
+        prog = [
+            (caps[0]['voo'][0] - 0.3, '1 · a lista dos 4 pedidos aparece vazia no centro'),
+            (caps[0]['voo'][1] + 0.3, '2 · a lista vai para o canto; o pedido 01 pulsa'),
+            ((ped[0]['voo'][0] + ped[0]['voo'][1]) / 2, '3 · resolvido: o cartão do pedido encolhe e voa até o 01'),
+            (ped[0]['voo'][1] + 0.25, '4 · o 01 acende em lima, com o check'),
+            (ped[-1]['voo'][1] + 0.25, '5 · os 4 pedidos com check'),
+            (MOT['montagens'][-1]['primeira'] + 1.0, '6 · fecho: a lista completa no centro'),
+        ]
+    else:
+        prog = None
+    c7 = caps[7] if len(caps) > 7 else caps[-2]
+    prog = prog or [
         (0.0, '1 · quadro 0: o celular vazio, 7 blocos tracejados'),
         ((c1['voo'][0] + c1['voo'][1]) / 2, '2 · fim do 01: o topo encolhe e voa até o bloco dele'),
         (c1['voo'][1] + 0.12, '3 · encaixou: o bloco 01 acende em lima, o cursor desce para o 02'),

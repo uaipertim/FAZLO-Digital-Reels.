@@ -46,6 +46,8 @@ const LIMPA = `
   await p.evaluate(() => window.scrollTo(0, 0)); await p.waitForTimeout(600);
   const texto = await p.evaluate(() => document.body.innerText + ' ' + (document.querySelector('meta[name=description]') || {}).content);
   const conferencia = { tres: (texto.match(/3 cachoeiras|Três cachoeiras/gi) || []).length, grinalda: /grinalda/i.test(texto), quatro: /4 cachoeiras|quatro cachoeiras/i.test(texto) };
+  conferencia.confirmar = /\[confirmar\]/i.test(texto);
+  if (conferencia.confirmar) throw new Error('o site ainda mostra "[confirmar]" na localização');
   if (conferencia.grinalda || conferencia.quatro || !conferencia.tres) throw new Error('o site ainda fala em 4 cachoeiras/Grinalda: ' + JSON.stringify(conferencia));
   const meta = { url: URL, capturado_em: new Date().toISOString(), largura_css: VW, escala: K, conferencia, telas: {} };
   const caixa = async (loc) => { const r = await loc.boundingBox(); return r && [r.x, r.y, r.x + r.width, r.y + r.height].map((v) => Math.round(v * K)); };
@@ -68,7 +70,9 @@ const LIMPA = `
   // 2) a seção do pôr do sol
   const ps = p.locator('#por-do-sol-m');
   await rolaAte(ps, 64);
-  await foto('02-por-do-sol', { secao: ps, titulo: ps.locator('h2'), foto: ps.locator('img').first(), chips: ps.getByText('Queijo Canastra').first() });
+  const incluso = ps.getByText('Incluso na hospedagem').first();
+  if (!(await incluso.count())) throw new Error('o chip "Incluso na hospedagem" ainda não está na seção do pôr do sol');
+  await foto('02-por-do-sol', { secao: ps, titulo: ps.locator('h2'), foto: ps.locator('img').first(), incluso });
 
   // 3) as fotos grandes: a seção das cachoeiras, o toque numa foto e ela em tela cheia
   const ca = p.locator('#cachoeiras-m');

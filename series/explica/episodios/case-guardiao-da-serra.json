@@ -4,6 +4,11 @@
   "marca": "@fazlodigital",
   "saida": "reels/case-guardiao-da-serra/output",
   "progresso": "pedidos",
+  "telas": "reels/case-guardiao-da-serra/telas",
+  "duracao_alvo": [
+    45,
+    60
+  ],
   "capitulos": [
     {
       "rotulo": "A POUSADA PEDIU. A GENTE FEZ.",
@@ -45,7 +50,7 @@
       "titulo": null,
       "fala": [
         {
-          "texto": "O primeiro pedido: quem chega precisa saber das cachoeiras.",
+          "texto": "O primeiro pedido: quem chega precisa saber das cachoeiras…",
           "apoio": null
         },
         {
@@ -100,12 +105,16 @@
         },
         "tela": {
           "src": "02-por-do-sol",
-          "em": "ganhou"
+          "em": "experiencia"
         },
         "realce": [
           {
             "caixa": "titulo",
             "em": "secao"
+          },
+          {
+            "caixa": "incluso",
+            "em": "incluso"
           }
         ],
         "resolve": {
@@ -135,7 +144,7 @@
         },
         "tela": {
           "src": "03a-fotos",
-          "em": "toque"
+          "em": "grandes"
         },
         "toque": {
           "caixa": "toque",
@@ -171,26 +180,27 @@
         "telas": [
           {
             "src": "04b-datas",
-            "em": "datas"
+            "em": "escolhe"
           },
           {
             "src": "04a-vila-pequi",
-            "em": "vila",
+            "em": "chales",
             "realce": "card"
           },
           {
             "src": "04c-chale",
-            "em": "consulta",
+            "em": "e#3",
             "realce": "chale"
           }
         ],
         "mensagem": {
-          "em": "pronta"
+          "em": "whatsapp"
         },
         "resolve": {
           "em": "whatsapp"
         }
-      }
+      },
+      "min": 13.6
     },
     {
       "rotulo": "COLLAB",
@@ -201,26 +211,42 @@
       ],
       "fala": [
         {
-          "texto": "A pousada pediu. A gente fez.",
+          "texto": "A pousada pediu. A gente fez. Site por Fazlo Digital…",
           "apoio": null
         },
         {
-          "texto": "Site por Fazlo Digital, para a Pousada Guardião da Serra.",
+          "texto": "pra Pousada Guardião da Serra.",
           "apoio": null
         }
       ],
       "diagrama": {
         "tipo": "fecho_collab",
-        "credito": "Site por Fazlo Digital para a Pousada Guardião da Serra",
+        "destaque": "Site por Fazlo Digital",
+        "para": "pra Pousada Guardião da Serra",
         "site": "pousadaguardiaodaserra.com.br",
         "lista": {
           "em": "pediu"
         },
-        "credito_em": {
+        "credito": {
           "em": "site"
+        },
+        "para_em": {
+          "em": "pra"
         }
       },
-      "min": 8
+      "min": 8,
+      "conferencia": {
+        "respiros": [
+          [
+            0.5,
+            0.8
+          ]
+        ],
+        "enfase": {
+          "trecho": "Site por Fazlo Digital",
+          "min": 0.06
+        }
+      }
     }
   ]
 }

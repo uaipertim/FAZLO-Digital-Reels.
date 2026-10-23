@@ -29,7 +29,8 @@ const flag = (name) => args.includes('--' + name);
 const EP = opt('ep', 'explica-01');
 const LINHA = path.join(SERIE, 'audio', EP, 'linha.json');
 if (!fs.existsSync(LINHA)) { console.error(`${path.relative(REPO, LINHA)} não existe: rode antes scripts/linha.py ${EP}`); process.exit(1); }
-const OUT = path.join(SERIE, 'output', EP);
+const SAIDA = JSON.parse(fs.readFileSync(LINHA)).saida;          // "saida" do roteiro (ex. reels/case-guardiao-da-serra/output)
+const OUT = SAIDA ? path.join(REPO, SAIDA) : path.join(SERIE, 'output', EP);
 
 const MIME = { '.html': 'text/html', '.js': 'text/javascript', '.json': 'application/json', '.css': 'text/css', '.woff2': 'font/woff2', '.svg': 'image/svg+xml', '.wav': 'audio/wav', '.png': 'image/png' };
 function serve() {

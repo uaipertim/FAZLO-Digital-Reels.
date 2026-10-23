@@ -1,0 +1,254 @@
+{
+ "duracao": 54.963,
+ "cues": [
+  {
+   "t": 2.062,
+   "type": "conta",
+   "k": 0
+  },
+  {
+   "t": 2.152,
+   "type": "conta",
+   "k": 1
+  },
+  {
+   "t": 2.242,
+   "type": "conta",
+   "k": 2
+  },
+  {
+   "t": 2.332,
+   "type": "conta",
+   "k": 3
+  },
+  {
+   "t": 3.506,
+   "type": "encolhe"
+  },
+  {
+   "t": 4.126,
+   "type": "pousa"
+  },
+  {
+   "t": 4.266,
+   "type": "corte"
+  },
+  {
+   "t": 4.686,
+   "type": "titulo"
+  },
+  {
+   "t": 5.07,
+   "type": "monta",
+   "k": 1
+  },
+  {
+   "t": 8.588,
+   "type": "surge"
+  },
+  {
+   "t": 9.076,
+   "type": "acende",
+   "k": 0
+  },
+  {
+   "t": 10.167,
+   "type": "acende",
+   "k": 1
+  },
+  {
+   "t": 10.167,
+   "type": "check"
+  },
+  {
+   "t": 10.601,
+   "type": "voa_parte"
+  },
+  {
+   "t": 11.221,
+   "type": "bloco",
+   "k": 1
+  },
+  {
+   "t": 11.281,
+   "type": "cursor"
+  },
+  {
+   "t": 11.361,
+   "type": "corte"
+  },
+  {
+   "t": 11.781,
+   "type": "titulo"
+  },
+  {
+   "t": 12.247,
+   "type": "monta",
+   "k": 2
+  },
+  {
+   "t": 15.939,
+   "type": "surge"
+  },
+  {
+   "t": 18.725,
+   "type": "acende",
+   "k": 0
+  },
+  {
+   "t": 20.095,
+   "type": "acende",
+   "k": 1
+  },
+  {
+   "t": 20.095,
+   "type": "check"
+  },
+  {
+   "t": 20.691,
+   "type": "voa_parte"
+  },
+  {
+   "t": 21.311,
+   "type": "bloco",
+   "k": 2
+  },
+  {
+   "t": 21.371,
+   "type": "cursor"
+  },
+  {
+   "t": 21.451,
+   "type": "corte"
+  },
+  {
+   "t": 21.871,
+   "type": "titulo"
+  },
+  {
+   "t": 22.337,
+   "type": "monta",
+   "k": 3
+  },
+  {
+   "t": 25.077,
+   "type": "surge"
+  },
+  {
+   "t": 25.627,
+   "type": "rola",
+   "d": 0.4499999999999993
+  },
+  {
+   "t": 26.296,
+   "type": "toque"
+  },
+  {
+   "t": 27.979,
+   "type": "foto"
+  },
+  {
+   "t": 29.047,
+   "type": "check"
+  },
+  {
+   "t": 29.574,
+   "type": "voa_parte"
+  },
+  {
+   "t": 30.194,
+   "type": "bloco",
+   "k": 3
+  },
+  {
+   "t": 30.254,
+   "type": "cursor"
+  },
+  {
+   "t": 30.334,
+   "type": "corte"
+  },
+  {
+   "t": 30.754,
+   "type": "titulo"
+  },
+  {
+   "t": 31.336,
+   "type": "monta",
+   "k": 4
+  },
+  {
+   "t": 32.845,
+   "type": "surge"
+  },
+  {
+   "t": 37.675,
+   "type": "foto"
+  },
+  {
+   "t": 38.025,
+   "type": "acende",
+   "k": 1
+  },
+  {
+   "t": 39.393,
+   "type": "foto"
+  },
+  {
+   "t": 39.743,
+   "type": "acende",
+   "k": 2
+  },
+  {
+   "t": 40.914,
+   "type": "mensagem"
+  },
+  {
+   "t": 40.914,
+   "type": "check"
+  },
+  {
+   "t": 43.574,
+   "type": "voa_parte"
+  },
+  {
+   "t": 44.194,
+   "type": "bloco",
+   "k": 4
+  },
+  {
+   "t": 44.254,
+   "type": "cursor"
+  },
+  {
+   "t": 44.334,
+   "type": "corte"
+  },
+  {
+   "t": 44.754,
+   "type": "titulo"
+  },
+  {
+   "t": 45.556,
+   "type": "cresce"
+  },
+  {
+   "t": 47.449,
+   "type": "brilho"
+  },
+  {
+   "t": 49.55,
+   "type": "surge"
+  },
+  {
+   "t": 50,
+   "type": "acende",
+   "k": 4
+  },
+  {
+   "t": 51.463,
+   "type": "logo"
+  }
+ ],
+ "avisos": []
+}
