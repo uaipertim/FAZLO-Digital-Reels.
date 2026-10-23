@@ -1,0 +1,150 @@
+{
+ "url": "https://pousadaguardiaodaserra.com.br/",
+ "capturado_em": "2026-10-23T16:05:40.781Z",
+ "largura_css": 390,
+ "escala": 3,
+ "conferencia": {
+  "tres": 4,
+  "grinalda": false,
+  "quatro": false
+ },
+ "telas": {
+  "01-topo": {
+   "caixas": {
+    "h1": [
+     60,
+     267,
+     695,
+     380
+    ],
+    "titulo": [
+     60,
+     416,
+     1110,
+     743
+    ],
+    "foto": [
+     60,
+     977,
+     1110,
+     1967
+    ]
+   },
+   "telefones_desfocados": 3
+  },
+  "02-por-do-sol": {
+   "caixas": {
+    "secao": [
+     0,
+     193,
+     1170,
+     3102
+    ],
+    "titulo": [
+     60,
+     415,
+     1110,
+     721
+    ],
+    "foto": [
+     60,
+     769,
+     1110,
+     2072
+    ],
+    "chips": [
+     60,
+     2120,
+     1110,
+     2418
+    ]
+   },
+   "telefones_desfocados": 3
+  },
+  "03a-fotos": {
+   "caixas": {
+    "titulo": [
+     60,
+     336,
+     1110,
+     532
+    ],
+    "toque": [
+     603,
+     1582,
+     1110,
+     2216
+    ]
+   },
+   "telefones_desfocados": 3,
+   "rotulo_toque": "Ampliar foto: Cachoeira do Oratório"
+  },
+  "03b-foto-tela-cheia": {
+   "caixas": {},
+   "telefones_desfocados": 3
+  },
+  "04a-vila-pequi": {
+   "caixas": {
+    "titulo": [
+     114,
+     1261,
+     1056,
+     1412
+    ],
+    "card": [
+     60,
+     475,
+     1110,
+     1631
+    ]
+   },
+   "telefones_desfocados": 3
+  },
+  "04b-datas": {
+   "caixas": {
+    "cartao": [
+     132,
+     209,
+     1038,
+     287
+    ]
+   },
+   "telefones_desfocados": 3
+  },
+  "04c-chale": {
+   "caixas": {
+    "quase": [
+     180,
+     359,
+     990,
+     431
+    ],
+    "chale": [
+     525,
+     838,
+     853,
+     952
+    ],
+    "enviar": [
+     180,
+     1750,
+     990,
+     1906
+    ]
+   },
+   "telefones_desfocados": 3
+  },
+  "05-rodape": {
+   "caixas": {
+    "credito": [
+     60,
+     2185,
+     502,
+     2245
+    ]
+   },
+   "telefones_desfocados": 3
+  }
+ },
+ "mensagem": "Olá! Gostaria de consultar disponibilidade na Pousada Guardião da Serra.\nChegada: 28 out, qua\nSaída: 31 out, sáb\nNoites: 3 noites\nHóspedes: 2 adultos\nChalé: Pôr do Sol 03\nPet: não\nNome: -\nTelefone: -"
+}

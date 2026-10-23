@@ -1,0 +1,226 @@
+{
+  "id": "case-guardiao-da-serra",
+  "titulo": "A pousada pediu. A gente fez. Collab com a Pousada Guardião da Serra.",
+  "marca": "@fazlodigital",
+  "saida": "reels/case-guardiao-da-serra/output",
+  "progresso": "pedidos",
+  "capitulos": [
+    {
+      "rotulo": "A POUSADA PEDIU. A GENTE FEZ.",
+      "tom": "palco",
+      "titulo": [
+        "3 cachoeiras dentro da pousada.",
+        "Como mostrar isso num site?"
+      ],
+      "fala": [
+        {
+          "texto": "Três cachoeiras dentro da pousada.",
+          "apoio": null
+        },
+        {
+          "texto": "Como mostrar isso num site?",
+          "apoio": null
+        }
+      ],
+      "diagrama": {
+        "tipo": "capa_collab",
+        "selo": "COLLAB · GUARDIÃO DA SERRA",
+        "lista": {
+          "em": "como"
+        }
+      },
+      "conferencia": {
+        "ritmo_max": 16,
+        "respiros": [
+          [
+            0.25,
+            0.8
+          ]
+        ]
+      }
+    },
+    {
+      "rotulo": "PEDIDO",
+      "tom": "ardosia",
+      "titulo": null,
+      "fala": [
+        {
+          "texto": "O primeiro pedido: quem chega precisa saber das cachoeiras.",
+          "apoio": null
+        },
+        {
+          "texto": "Então elas abrem o site, logo no topo.",
+          "apoio": null
+        }
+      ],
+      "diagrama": {
+        "tipo": "pedido",
+        "pedido": "Quem chega precisa saber das cachoeiras.",
+        "cartao": {
+          "em": "primeiro"
+        },
+        "tela": {
+          "src": "01-topo",
+          "em": "entao"
+        },
+        "realce": [
+          {
+            "caixa": "h1",
+            "em": "abrem"
+          },
+          {
+            "caixa": "titulo",
+            "em": "topo"
+          }
+        ],
+        "resolve": {
+          "em": "topo"
+        }
+      }
+    },
+    {
+      "rotulo": "PEDIDO",
+      "tom": "musgo",
+      "titulo": null,
+      "fala": [
+        {
+          "texto": "O segundo: o pôr do sol com vinho e queijo canastra é uma experiência, não um item de lista.",
+          "apoio": null
+        },
+        {
+          "texto": "Ganhou uma seção só dele, e está incluso.",
+          "apoio": null
+        }
+      ],
+      "diagrama": {
+        "tipo": "pedido",
+        "pedido": "O pôr do sol com vinho e queijo canastra é uma experiência, não um item.",
+        "cartao": {
+          "em": "segundo"
+        },
+        "tela": {
+          "src": "02-por-do-sol",
+          "em": "ganhou"
+        },
+        "realce": [
+          {
+            "caixa": "titulo",
+            "em": "secao"
+          }
+        ],
+        "resolve": {
+          "em": "incluso"
+        }
+      }
+    },
+    {
+      "rotulo": "PEDIDO",
+      "tom": "carvao",
+      "titulo": null,
+      "fala": [
+        {
+          "texto": "O terceiro: as fotos precisam aparecer grandes.",
+          "apoio": null
+        },
+        {
+          "texto": "Um toque, e a foto abre na tela inteira.",
+          "apoio": null
+        }
+      ],
+      "diagrama": {
+        "tipo": "pedido",
+        "pedido": "As fotos precisam aparecer grandes.",
+        "cartao": {
+          "em": "terceiro"
+        },
+        "tela": {
+          "src": "03a-fotos",
+          "em": "toque"
+        },
+        "toque": {
+          "caixa": "toque",
+          "em": "toque",
+          "abre": "03b-foto-tela-cheia",
+          "abre_em": "abre"
+        },
+        "resolve": {
+          "em": "inteira"
+        }
+      }
+    },
+    {
+      "rotulo": "PEDIDO",
+      "tom": "abismo",
+      "titulo": null,
+      "fala": [
+        {
+          "texto": "E o quarto: o hóspede escolhe o chalé e já fala com a pousada.",
+          "apoio": null
+        },
+        {
+          "texto": "Escolhe as datas, os chalés da Vila Pequi, e a consulta chega pronta no WhatsApp.",
+          "apoio": null
+        }
+      ],
+      "diagrama": {
+        "tipo": "pedido",
+        "pedido": "O hóspede escolhe o chalé e já fala com a gente.",
+        "cartao": {
+          "em": "quarto"
+        },
+        "telas": [
+          {
+            "src": "04b-datas",
+            "em": "datas"
+          },
+          {
+            "src": "04a-vila-pequi",
+            "em": "vila",
+            "realce": "card"
+          },
+          {
+            "src": "04c-chale",
+            "em": "consulta",
+            "realce": "chale"
+          }
+        ],
+        "mensagem": {
+          "em": "pronta"
+        },
+        "resolve": {
+          "em": "whatsapp"
+        }
+      }
+    },
+    {
+      "rotulo": "COLLAB",
+      "tom": "grafite",
+      "titulo": [
+        "A pousada pediu.",
+        "A gente fez."
+      ],
+      "fala": [
+        {
+          "texto": "A pousada pediu. A gente fez.",
+          "apoio": null
+        },
+        {
+          "texto": "Site por Fazlo Digital, para a Pousada Guardião da Serra.",
+          "apoio": null
+        }
+      ],
+      "diagrama": {
+        "tipo": "fecho_collab",
+        "credito": "Site por Fazlo Digital para a Pousada Guardião da Serra",
+        "site": "pousadaguardiaodaserra.com.br",
+        "lista": {
+          "em": "pediu"
+        },
+        "credito_em": {
+          "em": "site"
+        }
+      },
+      "min": 8
+    }
+  ]
+}

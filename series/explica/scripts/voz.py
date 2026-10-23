@@ -5,6 +5,8 @@ Série Explica (FAZLO Digital) — a narração: UMA geração inteira por capí
     python3 series/explica/scripts/voz.py explica-01               gera os capítulos que ainda não têm narração (ou cujo texto mudou)
     python3 series/explica/scripts/voz.py explica-01 --refaz 3,5   gera de novo os capítulos 3 e 5, INTEIROS, com outra semente
     python3 series/explica/scripts/voz.py explica-01 --medir       só mostra a conferência (sem chamar a API)
+    python3 series/explica/scripts/voz.py explica-01 --so 0,4,5    gera só esses capítulos (amostras para aprovar antes do resto)
+    python3 series/explica/scripts/voz.py explica-01 --refaz 0 --semente 0:5026   gera o cap 0 com a semente 5026 (já tentada), conferida de novo
 
 REGRA DA SÉRIE: todas as frases de um capítulo vão numa chamada só. Se algo sair ruim, o capítulo inteiro é gerado de
 novo com outra semente. Nunca se emendam palavras nem trechos de gerações diferentes. O arquivo que a API devolve fica
@@ -13,13 +15,17 @@ como veio: series/explica/audio/<id>/voz/cap-NN.mp3, e o histórico de todas as 
 Voz e ajustes: os de series/pelos-olhos-do-hospede/voz.py (a voz oficial da FAZLO):
   Raquel - For Conversational (GDzHdQOi6jjf8zaXhCYD) · eleven_multilingual_v2 · estabilidade 0,40 · semelhança 0,80 ·
   estilo 0,35 · speaker boost · velocidade 1,0 (nunca acelerar) · idioma pt · MP3 44,1 kHz 128 kb/s com alinhamento
-  por caractere (with-timestamps). O capítulo anterior e o seguinte vão como previous_text / next_text.
+  por caractere (with-timestamps). O capítulo anterior vai como previous_text; o seguinte NÃO vai como next_text
+  (regra de 23/10, da série "Pelos olhos do hóspede": com o next_text, o ElevenLabs devolvia a fala cortada no fim
+  do arquivo, como se emendasse direto na próxima).
 
 Conferência de cada geração (se uma falhar, o capítulo inteiro é gerado de novo com outra semente, até 6 vezes):
   ritmo        9–18 letras por segundo de fala;
   pausas       toda troca de frase tem respiro de 0,12 s a 1,1 s; dentro de uma frase, nenhuma pausa passa de 0,85 s;
-  fim          a última frase vai até o fim. É CORTE quando o final cai até o silêncio (−50 dB) em menos de 35 ms
-               começando acima de −15 dB (relativo ao pico da fala); quedas que começam em −20 dB ou abaixo são fim
+  fim          a última frase vai até o fim. O arquivo tem de terminar em silêncio (abaixo de −50 dB); se acaba com a
+               voz soando, é corte. A queda de −15 dB (relativo ao pico da fala) até o silêncio (−50 dB) tem de durar
+               ≥ 55 ms quando a última palavra termina em vogal e ≥ 35 ms nas outras (calibração de 23/10: 40 ms
+               numa vogal soou cortado; 59 e 63 ms soaram naturais); quedas que começam em −20 dB ou abaixo são fim
                natural. (Calibração: um fecho ouvido como cortado caía de −8,7 dB ao silêncio em 32 ms; finais de
                37–57 ms a partir de nível mais baixo soaram normais.) A voz também não pode subir no fim de uma
                frase afirmativa, e tem de sobrar áudio depois da última letra;
@@ -53,8 +59,8 @@ AJUSTES = {'stability': 0.40, 'similarity_boost': 0.80, 'style': 0.35, 'use_spea
 FORMATO = 'mp3_44100_128'
 SEMENTE = 2026
 TENTATIVAS = 6
-FAZLO_API = 'Fázlo'                       # FAZLO = "FÁZ-lo" (só no texto enviado; na tela continua FAZLO)
-LIM = {'ritmo': (9.0, 18.0), 'respiro': 0.12, 'pausa_max': 0.85, 'pausa_frases': 1.1, 'corte_ms': 35, 'corte_db': -15.0, 'silencio_db': -50.0,
+FAZLO_API = 'Fázlo'                       # FAZLO / Fazlo = "FÁZ-lo" (só no texto enviado; na tela continua FAZLO)
+LIM = {'ritmo': (9.0, 18.0), 'respiro': 0.12, 'pausa_max': 0.85, 'pausa_frases': 1.1, 'corte_ms': 35, 'corte_vogal_ms': 55, 'corte_db': -15.0, 'silencio_db': -50.0,
        'sobe': 0.10, 'transcricao': 0.92}
 
 
@@ -63,7 +69,7 @@ def texto_cap(c):
 
 
 def api_texto(s):
-    return re.sub(r'\bFAZLO\b', FAZLO_API, s)
+    return re.sub(r'\bFAZLO\b', FAZLO_API, s, flags=re.I)
 
 
 def cabecalho(extra=None):
@@ -79,13 +85,11 @@ def norm(s):
 
 
 # ------------------------------------------------------------------ API
-def tts(texto, prev, nxt, semente):
+def tts(texto, prev, semente):
     import requests
     body = {'text': api_texto(texto), 'model_id': MODELO, 'language_code': 'pt', 'voice_settings': AJUSTES, 'seed': semente}
     if prev:
         body['previous_text'] = api_texto(prev)
-    if nxt:
-        body['next_text'] = api_texto(nxt)
     url = f"https://api.elevenlabs.io/v1/text-to-speech/{VOZ['id']}/with-timestamps?output_format={FORMATO}"
     for k in range(4):
         r = requests.post(url, json=body, headers=cabecalho({'Content-Type': 'application/json'}), timeout=240)
@@ -203,7 +207,13 @@ def confere(mp3, al, cap):
     acima = np.where(e[:fim_i] > pk * 10 ** (LIM['corte_db'] / 20))[0]
     queda_ms = (fim_i - int(acima[-1])) / SR * 1000 if len(acima) else 9999.0    # da última vez acima de −15 dB até o silêncio
     nivel_antes = 20 * np.log10(e[max(0, fim_i - int(LIM['corte_ms'] / 1000 * SR))] / pk)
-    sem_corte = queda_ms >= LIM['corte_ms']
+    n10 = int(0.01 * SR)
+    fim_arq = 20 * np.log10(np.sqrt(np.mean(x[-n10:] ** 2)) / pk + 1e-12)       # o último 10 ms do arquivo
+    if fim_arq > LIM['silencio_db']:
+        queda_ms = 0.0                                                           # acaba com a voz soando: é corte
+    ult = unicodedata.normalize('NFD', re.sub(r'[^A-Za-zÀ-ÿ]', '', texto.split()[-1])[-1:].lower())[:1]
+    corte_min = LIM['corte_vogal_ms'] if ult in 'aeiou' and ult else LIM['corte_ms']
+    sem_corte = queda_ms >= corte_min
     fz = f0(x)
     tfim = fim_i / SR
     seg = lambda t0, t1: (lambda v: v[~np.isnan(v)])(fz[int(max(0, t0) / 0.01):int(t1 / 0.01)])
@@ -230,7 +240,7 @@ def confere(mp3, al, cap):
         sobe.append(round(float(np.percentile(cauda, 90) / np.median(corpo) - 1), 3) if len(cauda) >= 3 and len(corpo) >= 2 else None)
     n = {'fala_s': round(fim - ini, 2), 'ritmo_letras_s': round(ritmo, 1), 'maior_pausa_s': round(maior, 2), 'respiros_s': respiros,
          'maior_pausa_entre_frases_s': round(maior_fr, 2), 'sobra_no_fim_s': round(sobra, 2), 'queda_final_ms': round(queda_ms),
-         'nivel_35ms_antes_db': round(float(nivel_antes), 1), 'altura_final': None if altura_final is None else round(altura_final, 2),
+         'nivel_35ms_antes_db': round(float(nivel_antes), 1), 'fim_do_arquivo_db': round(float(fim_arq), 1), 'queda_minima_ms': corte_min, 'altura_final': None if altura_final is None else round(altura_final, 2),
          'perguntas_sobem': sobe}
     if not LIM['ritmo'][0] <= ritmo <= LIM['ritmo'][1]:
         return False, f'ritmo {ritmo:.1f} letras/s', n, x
@@ -275,7 +285,7 @@ def confere_transcricao(mp3, texto, n):
 
 
 # ------------------------------------------------------------------ gerar
-def gerar(ep_id, refaz):
+def gerar(ep_id, refaz, so=None, forca=None):
     ep = json.load(open(os.path.join(SERIE, 'episodios', f'{ep_id}.json')))
     out = os.path.join(SERIE, 'audio', ep_id, 'voz')
     os.makedirs(out, exist_ok=True)
@@ -287,18 +297,21 @@ def gerar(ep_id, refaz):
         texto = texto_cap(c)
         atual = D['capitulos'].get(key)
         arq = os.path.join(out, f'cap-{key}.mp3')
+        if so is not None and n not in so:
+            continue
         if atual and atual['texto'] == texto and n not in refaz and os.path.exists(arq):
             continue
         prev = texto_cap(caps[n - 1]) if n else None
-        nxt = texto_cap(caps[n + 1]) if n + 1 < len(caps) else None
         hist = atual['historico'] if atual and atual['texto'] == texto else []
         usadas = {h['semente'] for h in hist}
         semente = c.get('semente', SEMENTE + 17 * n)
         while semente in usadas:
             semente += 1000
+        if forca and n in forca:
+            semente = forca[n]                      # semente pedida (pode já estar no histórico); a conferência é refeita
         melhor = None
         for k in range(TENTATIVAS):
-            mp3, al = tts(texto, prev, nxt, semente)
+            mp3, al = tts(texto, prev, semente)
             ok, motivo, num, _ = confere(mp3, al, c)
             if ok:
                 ok, motivo = confere_transcricao(mp3, texto, num)
@@ -349,6 +362,8 @@ if __name__ == '__main__':
     refaz = set()
     if '--refaz' in args:
         refaz = {int(v) for v in args[args.index('--refaz') + 1].split(',')}
+    so = {int(v) for v in args[args.index('--so') + 1].split(',')} if '--so' in args else None
     if '--medir' not in args:
-        gerar(args[0], refaz)
+        forca = dict((int(a), int(b)) for a, b in (v.split(':') for v in args[args.index('--semente') + 1].split(','))) if '--semente' in args else None
+        gerar(args[0], refaz, so, forca)
     medir(args[0])

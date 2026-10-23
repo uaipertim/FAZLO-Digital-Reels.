@@ -1,0 +1,1211 @@
+{
+ "episodio": "case-guardiao-da-serra",
+ "titulo": "A pousada pediu. A gente fez. Collab com a Pousada Guardião da Serra.",
+ "marca": "@fazlodigital",
+ "duracao": 47.169,
+ "provisorio": true,
+ "tr": 0.8,
+ "voo": 0.62,
+ "logo": 3.0,
+ "apoio": {
+  "entra": 0.34,
+  "sai": 0.2,
+  "leitura": 1.5
+ },
+ "capitulos": [
+  {
+   "n": 0,
+   "rotulo": "A POUSADA PEDIU. A GENTE FEZ.",
+   "tom": "palco",
+   "titulo": [
+    "3 cachoeiras dentro da pousada.",
+    "Como mostrar isso num site?"
+   ],
+   "diagrama": {
+    "tipo": "capa_collab",
+    "selo": "COLLAB · GUARDIÃO DA SERRA",
+    "lista": {
+     "em": "como"
+    }
+   },
+   "t0": 0.0,
+   "corte": null,
+   "voz_t0": 0.1,
+   "voz_t1": 3.887,
+   "palavras": [
+    {
+     "w": "Três",
+     "i0": 0,
+     "t0": 0.1,
+     "t1": 0.35,
+     "n": "tres"
+    },
+    {
+     "w": "cachoeiras",
+     "i0": 5,
+     "t0": 0.35,
+     "t1": 0.975,
+     "n": "cachoeiras"
+    },
+    {
+     "w": "dentro",
+     "i0": 16,
+     "t0": 0.975,
+     "t1": 1.35,
+     "n": "dentro"
+    },
+    {
+     "w": "da",
+     "i0": 23,
+     "t0": 1.35,
+     "t1": 1.475,
+     "n": "da"
+    },
+    {
+     "w": "pousada.",
+     "i0": 26,
+     "t0": 1.475,
+     "t1": 1.912,
+     "n": "pousada"
+    },
+    {
+     "w": "Como",
+     "i0": 35,
+     "t0": 2.212,
+     "t1": 2.462,
+     "n": "como"
+    },
+    {
+     "w": "mostrar",
+     "i0": 40,
+     "t0": 2.462,
+     "t1": 2.9,
+     "n": "mostrar"
+    },
+    {
+     "w": "isso",
+     "i0": 48,
+     "t0": 2.9,
+     "t1": 3.15,
+     "n": "isso"
+    },
+    {
+     "w": "num",
+     "i0": 53,
+     "t0": 3.15,
+     "t1": 3.337,
+     "n": "num"
+    },
+    {
+     "w": "site?",
+     "i0": 57,
+     "t0": 3.337,
+     "t1": 3.587,
+     "n": "site"
+    }
+   ],
+   "frases": [
+    {
+     "texto": "Três cachoeiras dentro da pousada.",
+     "apoio": null,
+     "t0": 0.1,
+     "t1": 1.912
+    },
+    {
+     "texto": "Como mostrar isso num site?",
+     "apoio": null,
+     "t0": 2.212,
+     "t1": 3.587
+    }
+   ],
+   "apoios": [],
+   "voo": [
+    4.007,
+    4.627
+   ],
+   "cursor": [
+    4.687,
+    4.987
+   ],
+   "t1": 4.767
+  },
+  {
+   "n": 1,
+   "rotulo": "PEDIDO",
+   "tom": "ardosia",
+   "titulo": [
+    "O primeiro pedido:",
+    "as cachoeiras no topo."
+   ],
+   "diagrama": {
+    "tipo": "pedido",
+    "pedido": "Quem chega precisa saber das cachoeiras.",
+    "cartao": {
+     "em": "primeiro"
+    },
+    "tela": {
+     "src": "01-topo",
+     "em": "entao"
+    },
+    "realce": [
+     {
+      "caixa": "h1",
+      "em": "abrem"
+     },
+     {
+      "caixa": "titulo",
+      "em": "topo"
+     }
+    ],
+    "resolve": {
+     "em": "topo"
+    }
+   },
+   "t0": 5.167,
+   "corte": [
+    4.767,
+    5.567
+   ],
+   "voz_t0": 5.467,
+   "voz_t1": 11.182,
+   "palavras": [
+    {
+     "w": "O",
+     "i0": 0,
+     "t0": 5.467,
+     "t1": 5.529,
+     "n": "o"
+    },
+    {
+     "w": "primeiro",
+     "i0": 2,
+     "t0": 5.529,
+     "t1": 6.029,
+     "n": "primeiro"
+    },
+    {
+     "w": "pedido:",
+     "i0": 11,
+     "t0": 6.029,
+     "t1": 6.405,
+     "n": "pedido"
+    },
+    {
+     "w": "quem",
+     "i0": 19,
+     "t0": 6.525,
+     "t1": 6.775,
+     "n": "quem"
+    },
+    {
+     "w": "chega",
+     "i0": 24,
+     "t0": 6.775,
+     "t1": 7.087,
+     "n": "chega"
+    },
+    {
+     "w": "precisa",
+     "i0": 30,
+     "t0": 7.087,
+     "t1": 7.525,
+     "n": "precisa"
+    },
+    {
+     "w": "saber",
+     "i0": 38,
+     "t0": 7.525,
+     "t1": 7.837,
+     "n": "saber"
+    },
+    {
+     "w": "das",
+     "i0": 44,
+     "t0": 7.837,
+     "t1": 8.025,
+     "n": "das"
+    },
+    {
+     "w": "cachoeiras.",
+     "i0": 48,
+     "t0": 8.025,
+     "t1": 8.65,
+     "n": "cachoeiras"
+    },
+    {
+     "w": "Então",
+     "i0": 60,
+     "t0": 8.949,
+     "t1": 9.262,
+     "n": "entao"
+    },
+    {
+     "w": "elas",
+     "i0": 66,
+     "t0": 9.262,
+     "t1": 9.512,
+     "n": "elas"
+    },
+    {
+     "w": "abrem",
+     "i0": 71,
+     "t0": 9.512,
+     "t1": 9.824,
+     "n": "abrem"
+    },
+    {
+     "w": "o",
+     "i0": 77,
+     "t0": 9.824,
+     "t1": 9.887,
+     "n": "o"
+    },
+    {
+     "w": "site,",
+     "i0": 79,
+     "t0": 9.887,
+     "t1": 10.137,
+     "n": "site"
+    },
+    {
+     "w": "logo",
+     "i0": 85,
+     "t0": 10.257,
+     "t1": 10.507,
+     "n": "logo"
+    },
+    {
+     "w": "no",
+     "i0": 90,
+     "t0": 10.507,
+     "t1": 10.632,
+     "n": "no"
+    },
+    {
+     "w": "topo.",
+     "i0": 93,
+     "t0": 10.632,
+     "t1": 10.882,
+     "n": "topo"
+    }
+   ],
+   "frases": [
+    {
+     "texto": "O primeiro pedido: quem chega precisa saber das cachoeiras.",
+     "apoio": null,
+     "t0": 5.467,
+     "t1": 8.65
+    },
+    {
+     "texto": "Então elas abrem o site, logo no topo.",
+     "apoio": "Elas abrem o site, logo no topo.",
+     "t0": 8.949,
+     "t1": 10.882
+    }
+   ],
+   "apoios": [
+    {
+     "t": 8.829,
+     "texto": "Elas abrem o site, logo no topo.",
+     "ate": 12.062,
+     "sai": false
+    }
+   ],
+   "voo": [
+    11.302,
+    11.922
+   ],
+   "cursor": [
+    11.982,
+    12.282
+   ],
+   "t1": 12.062
+  },
+  {
+   "n": 2,
+   "rotulo": "PEDIDO",
+   "tom": "musgo",
+   "titulo": [
+    "O pôr do sol virou",
+    "uma experiência."
+   ],
+   "diagrama": {
+    "tipo": "pedido",
+    "pedido": "O pôr do sol com vinho e queijo canastra é uma experiência, não um item.",
+    "cartao": {
+     "em": "segundo"
+    },
+    "tela": {
+     "src": "02-por-do-sol",
+     "em": "ganhou"
+    },
+    "realce": [
+     {
+      "caixa": "titulo",
+      "em": "secao"
+     }
+    ],
+    "resolve": {
+     "em": "incluso"
+    }
+   },
+   "t0": 12.462,
+   "corte": [
+    12.062,
+    12.862
+   ],
+   "voz_t0": 12.762,
+   "voz_t1": 20.159,
+   "palavras": [
+    {
+     "w": "O",
+     "i0": 0,
+     "t0": 12.762,
+     "t1": 12.824,
+     "n": "o"
+    },
+    {
+     "w": "segundo:",
+     "i0": 2,
+     "t0": 12.824,
+     "t1": 13.262,
+     "n": "segundo"
+    },
+    {
+     "w": "o",
+     "i0": 11,
+     "t0": 13.382,
+     "t1": 13.444,
+     "n": "o"
+    },
+    {
+     "w": "pôr",
+     "i0": 13,
+     "t0": 13.444,
+     "t1": 13.632,
+     "n": "por"
+    },
+    {
+     "w": "do",
+     "i0": 17,
+     "t0": 13.632,
+     "t1": 13.757,
+     "n": "do"
+    },
+    {
+     "w": "sol",
+     "i0": 20,
+     "t0": 13.757,
+     "t1": 13.945,
+     "n": "sol"
+    },
+    {
+     "w": "com",
+     "i0": 24,
+     "t0": 13.945,
+     "t1": 14.132,
+     "n": "com"
+    },
+    {
+     "w": "vinho",
+     "i0": 28,
+     "t0": 14.132,
+     "t1": 14.445,
+     "n": "vinho"
+    },
+    {
+     "w": "e",
+     "i0": 34,
+     "t0": 14.445,
+     "t1": 14.507,
+     "n": "e"
+    },
+    {
+     "w": "queijo",
+     "i0": 36,
+     "t0": 14.507,
+     "t1": 14.882,
+     "n": "queijo"
+    },
+    {
+     "w": "canastra",
+     "i0": 43,
+     "t0": 14.882,
+     "t1": 15.382,
+     "n": "canastra"
+    },
+    {
+     "w": "é",
+     "i0": 52,
+     "t0": 15.382,
+     "t1": 15.445,
+     "n": "e"
+    },
+    {
+     "w": "uma",
+     "i0": 54,
+     "t0": 15.445,
+     "t1": 15.632,
+     "n": "uma"
+    },
+    {
+     "w": "experiência,",
+     "i0": 58,
+     "t0": 15.632,
+     "t1": 16.32,
+     "n": "experiencia"
+    },
+    {
+     "w": "não",
+     "i0": 71,
+     "t0": 16.44,
+     "t1": 16.627,
+     "n": "nao"
+    },
+    {
+     "w": "um",
+     "i0": 75,
+     "t0": 16.627,
+     "t1": 16.752,
+     "n": "um"
+    },
+    {
+     "w": "item",
+     "i0": 78,
+     "t0": 16.752,
+     "t1": 17.002,
+     "n": "item"
+    },
+    {
+     "w": "de",
+     "i0": 83,
+     "t0": 17.002,
+     "t1": 17.127,
+     "n": "de"
+    },
+    {
+     "w": "lista.",
+     "i0": 86,
+     "t0": 17.127,
+     "t1": 17.44,
+     "n": "lista"
+    },
+    {
+     "w": "Ganhou",
+     "i0": 93,
+     "t0": 17.74,
+     "t1": 18.115,
+     "n": "ganhou"
+    },
+    {
+     "w": "uma",
+     "i0": 100,
+     "t0": 18.115,
+     "t1": 18.302,
+     "n": "uma"
+    },
+    {
+     "w": "seção",
+     "i0": 104,
+     "t0": 18.302,
+     "t1": 18.615,
+     "n": "secao"
+    },
+    {
+     "w": "só",
+     "i0": 110,
+     "t0": 18.615,
+     "t1": 18.74,
+     "n": "so"
+    },
+    {
+     "w": "dele,",
+     "i0": 113,
+     "t0": 18.74,
+     "t1": 18.99,
+     "n": "dele"
+    },
+    {
+     "w": "e",
+     "i0": 119,
+     "t0": 19.11,
+     "t1": 19.172,
+     "n": "e"
+    },
+    {
+     "w": "está",
+     "i0": 121,
+     "t0": 19.172,
+     "t1": 19.422,
+     "n": "esta"
+    },
+    {
+     "w": "incluso.",
+     "i0": 126,
+     "t0": 19.422,
+     "t1": 19.86,
+     "n": "incluso"
+    }
+   ],
+   "frases": [
+    {
+     "texto": "O segundo: o pôr do sol com vinho e queijo canastra é uma experiência, não um item de lista.",
+     "apoio": null,
+     "t0": 12.762,
+     "t1": 17.44
+    },
+    {
+     "texto": "Ganhou uma seção só dele, e está incluso.",
+     "apoio": "Ganhou uma seção só dele, e está incluso.",
+     "t0": 17.74,
+     "t1": 19.86
+    }
+   ],
+   "apoios": [
+    {
+     "t": 17.62,
+     "texto": "Ganhou uma seção só dele, e está incluso.",
+     "ate": 21.039,
+     "sai": false
+    }
+   ],
+   "voo": [
+    20.279,
+    20.899
+   ],
+   "cursor": [
+    20.959,
+    21.259
+   ],
+   "t1": 21.039
+  },
+  {
+   "n": 3,
+   "rotulo": "PEDIDO",
+   "tom": "carvao",
+   "titulo": [
+    "Um toque, e a foto",
+    "abre na tela inteira."
+   ],
+   "diagrama": {
+    "tipo": "pedido",
+    "pedido": "As fotos precisam aparecer grandes.",
+    "cartao": {
+     "em": "terceiro"
+    },
+    "tela": {
+     "src": "03a-fotos",
+     "em": "toque"
+    },
+    "toque": {
+     "caixa": "toque",
+     "em": "toque",
+     "abre": "03b-foto-tela-cheia",
+     "abre_em": "abre"
+    },
+    "resolve": {
+     "em": "inteira"
+    }
+   },
+   "t0": 21.439,
+   "corte": [
+    21.039,
+    21.839
+   ],
+   "voz_t0": 21.739,
+   "voz_t1": 26.891,
+   "palavras": [
+    {
+     "w": "O",
+     "i0": 0,
+     "t0": 21.739,
+     "t1": 21.801,
+     "n": "o"
+    },
+    {
+     "w": "terceiro:",
+     "i0": 2,
+     "t0": 21.801,
+     "t1": 22.301,
+     "n": "terceiro"
+    },
+    {
+     "w": "as",
+     "i0": 12,
+     "t0": 22.421,
+     "t1": 22.547,
+     "n": "as"
+    },
+    {
+     "w": "fotos",
+     "i0": 15,
+     "t0": 22.547,
+     "t1": 22.859,
+     "n": "fotos"
+    },
+    {
+     "w": "precisam",
+     "i0": 21,
+     "t0": 22.859,
+     "t1": 23.359,
+     "n": "precisam"
+    },
+    {
+     "w": "aparecer",
+     "i0": 30,
+     "t0": 23.359,
+     "t1": 23.859,
+     "n": "aparecer"
+    },
+    {
+     "w": "grandes.",
+     "i0": 39,
+     "t0": 23.859,
+     "t1": 24.297,
+     "n": "grandes"
+    },
+    {
+     "w": "Um",
+     "i0": 48,
+     "t0": 24.596,
+     "t1": 24.721,
+     "n": "um"
+    },
+    {
+     "w": "toque,",
+     "i0": 51,
+     "t0": 24.721,
+     "t1": 25.034,
+     "n": "toque"
+    },
+    {
+     "w": "e",
+     "i0": 58,
+     "t0": 25.154,
+     "t1": 25.217,
+     "n": "e"
+    },
+    {
+     "w": "a",
+     "i0": 60,
+     "t0": 25.217,
+     "t1": 25.279,
+     "n": "a"
+    },
+    {
+     "w": "foto",
+     "i0": 62,
+     "t0": 25.279,
+     "t1": 25.529,
+     "n": "foto"
+    },
+    {
+     "w": "abre",
+     "i0": 67,
+     "t0": 25.529,
+     "t1": 25.779,
+     "n": "abre"
+    },
+    {
+     "w": "na",
+     "i0": 72,
+     "t0": 25.779,
+     "t1": 25.904,
+     "n": "na"
+    },
+    {
+     "w": "tela",
+     "i0": 75,
+     "t0": 25.904,
+     "t1": 26.154,
+     "n": "tela"
+    },
+    {
+     "w": "inteira.",
+     "i0": 80,
+     "t0": 26.154,
+     "t1": 26.592,
+     "n": "inteira"
+    }
+   ],
+   "frases": [
+    {
+     "texto": "O terceiro: as fotos precisam aparecer grandes.",
+     "apoio": null,
+     "t0": 21.739,
+     "t1": 24.297
+    },
+    {
+     "texto": "Um toque, e a foto abre na tela inteira.",
+     "apoio": "Um toque, e a foto abre na tela inteira.",
+     "t0": 24.596,
+     "t1": 26.592
+    }
+   ],
+   "apoios": [
+    {
+     "t": 24.476,
+     "texto": "Um toque, e a foto abre na tela inteira.",
+     "ate": 27.771,
+     "sai": false
+    }
+   ],
+   "voo": [
+    27.011,
+    27.631
+   ],
+   "cursor": [
+    27.691,
+    27.991
+   ],
+   "t1": 27.771
+  },
+  {
+   "n": 4,
+   "rotulo": "PEDIDO",
+   "tom": "abismo",
+   "titulo": [
+    "Escolhe o chalé e já",
+    "fala com a pousada."
+   ],
+   "diagrama": {
+    "tipo": "pedido",
+    "pedido": "O hóspede escolhe o chalé e já fala com a gente.",
+    "cartao": {
+     "em": "quarto"
+    },
+    "telas": [
+     {
+      "src": "04b-datas",
+      "em": "datas"
+     },
+     {
+      "src": "04a-vila-pequi",
+      "em": "vila",
+      "realce": "card"
+     },
+     {
+      "src": "04c-chale",
+      "em": "consulta",
+      "realce": "chale"
+     }
+    ],
+    "mensagem": {
+     "em": "pronta"
+    },
+    "resolve": {
+     "em": "whatsapp"
+    }
+   },
+   "t0": 28.171,
+   "corte": [
+    27.771,
+    28.571
+   ],
+   "voz_t0": 28.471,
+   "voz_t1": 36.369,
+   "palavras": [
+    {
+     "w": "E",
+     "i0": 0,
+     "t0": 28.471,
+     "t1": 28.533,
+     "n": "e"
+    },
+    {
+     "w": "o",
+     "i0": 2,
+     "t0": 28.533,
+     "t1": 28.596,
+     "n": "o"
+    },
+    {
+     "w": "quarto:",
+     "i0": 4,
+     "t0": 28.596,
+     "t1": 28.971,
+     "n": "quarto"
+    },
+    {
+     "w": "o",
+     "i0": 12,
+     "t0": 29.091,
+     "t1": 29.153,
+     "n": "o"
+    },
+    {
+     "w": "hóspede",
+     "i0": 14,
+     "t0": 29.153,
+     "t1": 29.591,
+     "n": "hospede"
+    },
+    {
+     "w": "escolhe",
+     "i0": 22,
+     "t0": 29.591,
+     "t1": 30.029,
+     "n": "escolhe"
+    },
+    {
+     "w": "o",
+     "i0": 30,
+     "t0": 30.029,
+     "t1": 30.091,
+     "n": "o"
+    },
+    {
+     "w": "chalé",
+     "i0": 32,
+     "t0": 30.091,
+     "t1": 30.404,
+     "n": "chale"
+    },
+    {
+     "w": "e",
+     "i0": 38,
+     "t0": 30.404,
+     "t1": 30.466,
+     "n": "e"
+    },
+    {
+     "w": "já",
+     "i0": 40,
+     "t0": 30.466,
+     "t1": 30.591,
+     "n": "ja"
+    },
+    {
+     "w": "fala",
+     "i0": 43,
+     "t0": 30.591,
+     "t1": 30.841,
+     "n": "fala"
+    },
+    {
+     "w": "com",
+     "i0": 48,
+     "t0": 30.841,
+     "t1": 31.029,
+     "n": "com"
+    },
+    {
+     "w": "a",
+     "i0": 52,
+     "t0": 31.029,
+     "t1": 31.091,
+     "n": "a"
+    },
+    {
+     "w": "pousada.",
+     "i0": 54,
+     "t0": 31.091,
+     "t1": 31.529,
+     "n": "pousada"
+    },
+    {
+     "w": "Escolhe",
+     "i0": 63,
+     "t0": 31.828,
+     "t1": 32.266,
+     "n": "escolhe"
+    },
+    {
+     "w": "as",
+     "i0": 71,
+     "t0": 32.266,
+     "t1": 32.391,
+     "n": "as"
+    },
+    {
+     "w": "datas,",
+     "i0": 74,
+     "t0": 32.391,
+     "t1": 32.703,
+     "n": "datas"
+    },
+    {
+     "w": "os",
+     "i0": 81,
+     "t0": 32.824,
+     "t1": 32.949,
+     "n": "os"
+    },
+    {
+     "w": "chalés",
+     "i0": 84,
+     "t0": 32.949,
+     "t1": 33.324,
+     "n": "chales"
+    },
+    {
+     "w": "da",
+     "i0": 91,
+     "t0": 33.324,
+     "t1": 33.449,
+     "n": "da"
+    },
+    {
+     "w": "Vila",
+     "i0": 94,
+     "t0": 33.449,
+     "t1": 33.699,
+     "n": "vila"
+    },
+    {
+     "w": "Pequi,",
+     "i0": 99,
+     "t0": 33.699,
+     "t1": 34.011,
+     "n": "pequi"
+    },
+    {
+     "w": "e",
+     "i0": 106,
+     "t0": 34.131,
+     "t1": 34.194,
+     "n": "e"
+    },
+    {
+     "w": "a",
+     "i0": 108,
+     "t0": 34.194,
+     "t1": 34.256,
+     "n": "a"
+    },
+    {
+     "w": "consulta",
+     "i0": 110,
+     "t0": 34.256,
+     "t1": 34.756,
+     "n": "consulta"
+    },
+    {
+     "w": "chega",
+     "i0": 119,
+     "t0": 34.756,
+     "t1": 35.069,
+     "n": "chega"
+    },
+    {
+     "w": "pronta",
+     "i0": 125,
+     "t0": 35.069,
+     "t1": 35.444,
+     "n": "pronta"
+    },
+    {
+     "w": "no",
+     "i0": 132,
+     "t0": 35.444,
+     "t1": 35.569,
+     "n": "no"
+    },
+    {
+     "w": "WhatsApp.",
+     "i0": 135,
+     "t0": 35.569,
+     "t1": 36.069,
+     "n": "whatsapp"
+    }
+   ],
+   "frases": [
+    {
+     "texto": "E o quarto: o hóspede escolhe o chalé e já fala com a pousada.",
+     "apoio": null,
+     "t0": 28.471,
+     "t1": 31.529
+    },
+    {
+     "texto": "Escolhe as datas, os chalés da Vila Pequi, e a consulta chega pronta no WhatsApp.",
+     "apoio": "As datas, o chalé, e a consulta chega pronta.",
+     "t0": 31.828,
+     "t1": 36.069
+    }
+   ],
+   "apoios": [
+    {
+     "t": 31.708,
+     "texto": "As datas, o chalé, e a consulta chega pronta.",
+     "ate": 37.249,
+     "sai": false
+    }
+   ],
+   "voo": [
+    36.489,
+    37.109
+   ],
+   "cursor": [
+    37.169,
+    37.469
+   ],
+   "t1": 37.249
+  },
+  {
+   "n": 5,
+   "rotulo": "COLLAB",
+   "tom": "grafite",
+   "titulo": [
+    "A pousada pediu.",
+    "A gente fez."
+   ],
+   "diagrama": {
+    "tipo": "fecho_collab",
+    "credito": "Site por Fazlo Digital para a Pousada Guardião da Serra",
+    "site": "pousadaguardiaodaserra.com.br",
+    "lista": {
+     "em": "pediu"
+    },
+    "credito_em": {
+     "em": "site"
+    }
+   },
+   "t0": 37.649,
+   "corte": [
+    37.249,
+    38.049
+   ],
+   "voz_t0": 37.949,
+   "voz_t1": 43.219,
+   "palavras": [
+    {
+     "w": "A",
+     "i0": 0,
+     "t0": 37.949,
+     "t1": 38.011,
+     "n": "a"
+    },
+    {
+     "w": "pousada",
+     "i0": 2,
+     "t0": 38.011,
+     "t1": 38.449,
+     "n": "pousada"
+    },
+    {
+     "w": "pediu.",
+     "i0": 10,
+     "t0": 38.449,
+     "t1": 38.761,
+     "n": "pediu"
+    },
+    {
+     "w": "A",
+     "i0": 17,
+     "t0": 39.062,
+     "t1": 39.124,
+     "n": "a"
+    },
+    {
+     "w": "gente",
+     "i0": 19,
+     "t0": 39.124,
+     "t1": 39.437,
+     "n": "gente"
+    },
+    {
+     "w": "fez.",
+     "i0": 25,
+     "t0": 39.437,
+     "t1": 39.624,
+     "n": "fez"
+    },
+    {
+     "w": "Site",
+     "i0": 30,
+     "t0": 39.924,
+     "t1": 40.174,
+     "n": "site"
+    },
+    {
+     "w": "por",
+     "i0": 35,
+     "t0": 40.174,
+     "t1": 40.362,
+     "n": "por"
+    },
+    {
+     "w": "Fazlo",
+     "i0": 39,
+     "t0": 40.362,
+     "t1": 40.674,
+     "n": "fazlo"
+    },
+    {
+     "w": "Digital,",
+     "i0": 45,
+     "t0": 40.674,
+     "t1": 41.112,
+     "n": "digital"
+    },
+    {
+     "w": "para",
+     "i0": 54,
+     "t0": 41.232,
+     "t1": 41.482,
+     "n": "para"
+    },
+    {
+     "w": "a",
+     "i0": 59,
+     "t0": 41.482,
+     "t1": 41.544,
+     "n": "a"
+    },
+    {
+     "w": "Pousada",
+     "i0": 61,
+     "t0": 41.544,
+     "t1": 41.982,
+     "n": "pousada"
+    },
+    {
+     "w": "Guardião",
+     "i0": 69,
+     "t0": 41.982,
+     "t1": 42.482,
+     "n": "guardiao"
+    },
+    {
+     "w": "da",
+     "i0": 78,
+     "t0": 42.482,
+     "t1": 42.607,
+     "n": "da"
+    },
+    {
+     "w": "Serra.",
+     "i0": 81,
+     "t0": 42.607,
+     "t1": 42.919,
+     "n": "serra"
+    }
+   ],
+   "frases": [
+    {
+     "texto": "A pousada pediu. A gente fez.",
+     "apoio": null,
+     "t0": 37.949,
+     "t1": 39.624
+    },
+    {
+     "texto": "Site por Fazlo Digital, para a Pousada Guardião da Serra.",
+     "apoio": null,
+     "t0": 39.924,
+     "t1": 42.919
+    }
+   ],
+   "apoios": [],
+   "corte_logo": [
+    43.669,
+    44.169
+   ],
+   "logo_parada": [
+    44.169,
+    47.169
+   ],
+   "t1": 47.169
+  }
+ ],
+ "colocacao": []
+}
