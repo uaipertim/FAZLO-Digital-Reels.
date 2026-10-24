@@ -153,9 +153,11 @@ Os eps. 1–6 têm `"leitura": "curta"` no roteiro e continuam com os tempos aci
 - **`voz_excecoes`**: tomadas que ficam como estão mesmo sem passar numa conferência, por decisão de quem ouviu (o `voz.py` avisa a cada rodada). Ex.: `["titulo-2"]`.
 - **`voz_criterios`**: critério mais exigente para uma parte. Ex.: `{"titulo-1": {"sobe_min": 0.15, "queda_min": 80}}` (a pergunta sobe ≥ 15% e cai até o silêncio em ≥ 80 ms) ou `{"titulo-2": {"modo": "firme"}}` (exclamação: a voz não pode subir no fim).
 
-**Voz** (`voz.py`, mesmo padrão de "Site não é luxo"):
-- Raquel - For Conversational (`GDzHdQOi6jjf8zaXhCYD`), `eleven_multilingual_v2`;
-- estabilidade 0,40 · semelhança 0,80 · estilo 0,35 · speaker boost · velocidade 1,0 (nunca acelerar) · semente 2026;
+**Voz** (`voz.py`; desde 24/10, a versão C aprovada no teste A/B de `testes/voz-ab`, a mesma da Série Explica):
+- Raquel (`GDzHdQOi6jjf8zaXhCYD`), **`eleven_v4`**;
+- estabilidade 0,50 · semelhança 0,75 · estilo, speaker boost e velocidade no padrão do modelo (não enviados) · semente 2026;
+- dicionário de pronúncia (só no texto enviado; a tela não muda), sem diferenciar maiúsculas: FAZLO → "Fázlo" · WhatsApp → "Uátsap";
+- **episódio já narrado fica com a voz dele:** se `reels/<id>/audio/voz/voz.json` existe, valem o modelo, os ajustes e o dicionário gravados ali, e nada é gerado de novo por causa da troca. Os eps. 1 a 9 foram narrados com `eleven_multilingual_v2` (0,40 / 0,80 / estilo 0,35 / speaker boost / velocidade 1,0) e só FAZLO → Fázlo;
 - uma chamada por cena, com as falas vizinhas como `previous_text` / `next_text`;
 - MP3 44,1 kHz 128 kbps (plano Starter), com alinhamento por caractere;
 - a chave não fica no repositório: no ambiente de nuvem está nos Segredos de rede (o proxy injeta `xi-api-key`); fora dele, use `ELEVENLABS_API_KEY`.

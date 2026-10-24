@@ -2,9 +2,13 @@
 """
 Série "Pelos olhos do hóspede" — a narração (ElevenLabs), uma fala por cena.
 
-  voz       Raquel - For Conversational (GDzHdQOi6jjf8zaXhCYD), a voz oficial da FAZLO
-  modelo    eleven_multilingual_v2 · estabilidade 0,40 · semelhança 0,80 · estilo 0,35 ·
-            speaker boost · velocidade 1,0 (nunca acelerar) · semente fixa
+  voz       Raquel (GDzHdQOi6jjf8zaXhCYD), a voz oficial da FAZLO
+  modelo    desde 24/10, eleven_v4 · estabilidade 0,50 · semelhança 0,75 · estilo, speaker boost e velocidade
+            no padrão do modelo (não enviados) · semente fixa (a versão C do teste A/B de testes/voz-ab).
+            Episódio já narrado fica com a voz dele: se reels/<id>/audio/voz/voz.json existe, valem o modelo, os
+            ajustes e o dicionário gravados ali (nada é regenerado por causa da troca). Antes de 24/10:
+            eleven_multilingual_v2 · 0,40 / 0,80 / estilo 0,35 · speaker boost · velocidade 1,0, só FAZLO → Fázlo
+  pronúncia só no texto enviado (a tela não muda), sem diferenciar maiúsculas: FAZLO → Fázlo, WhatsApp → Uátsap
   contexto  cada fala vai com a anterior e a seguinte (previous_text / next_text)
   saída     MP3 44,1 kHz 128 kbps + alinhamento por caractere
 
@@ -38,12 +42,13 @@ SERIE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.dirname(os.path.dirname(SERIE))
 SR = 48000
 
-VOZ = {'id': 'GDzHdQOi6jjf8zaXhCYD', 'nome': 'Raquel - For Conversational'}
-MODELO = 'eleven_multilingual_v2'
-AJUSTES = {'stability': 0.40, 'similarity_boost': 0.80, 'style': 0.35, 'use_speaker_boost': True, 'speed': 1.0}
+VOZ = {'id': 'GDzHdQOi6jjf8zaXhCYD', 'nome': 'Raquel'}
+MODELO = 'eleven_v4'
+AJUSTES = {'stability': 0.50, 'similarity_boost': 0.75}      # estilo, speaker boost e velocidade: padrão do modelo
 FORMATO = 'mp3_44100_128'                 # o máximo do plano Starter
 SEMENTE = 2026
-FAZLO_API = 'Fázlo'                       # FAZLO = "FÁZ-lo" (só no texto enviado; na tela continua FAZLO)
+PRONUNCIA = {'FAZLO': 'Fázlo', 'WhatsApp': 'Uátsap'}     # só no texto enviado (na tela continua igual); sem diferenciar maiúsculas
+PRONUNCIA_ANTIGA = {'FAZLO': 'Fázlo'}                     # episódios narrados antes de 24/10 (só maiúsculas, como era)
 
 
 def cenas(ep):
@@ -57,7 +62,9 @@ def cenas(ep):
 
 
 def api_texto(s):
-    return re.sub(r'\bFAZLO\b', FAZLO_API, s)
+    for de, para in PRONUNCIA.items():
+        s = re.sub(rf'\b{re.escape(de)}\b', para, s, flags=0 if PRONUNCIA is PRONUNCIA_ANTIGA else re.I)
+    return s
 
 
 def decodifica(mp3):
@@ -295,14 +302,20 @@ def palavras(meta, ini):
 
 
 def main(eid):
-    global AJUSTES                                       # ajustes por parte (voz_criterios.<parte>.ajustes)
+    global AJUSTES, MODELO, PRONUNCIA                    # ajustes por parte (voz_criterios.<parte>.ajustes)
     ep = json.load(open(os.path.join(SERIE, 'episodios', f'{eid}.json')))
     dir_ = os.path.join(REPO, 'reels', eid, 'audio', 'voz')
     os.makedirs(dir_, exist_ok=True)
+    antigo = os.path.join(dir_, 'voz.json')
+    if os.path.exists(antigo) and json.load(open(antigo)).get('modelo'):     # episódio já narrado: fica com a voz dele
+        V = json.load(open(antigo))
+        MODELO, AJUSTES = V['modelo'], V['ajustes']
+        PRONUNCIA = V.get('pronuncia', PRONUNCIA_ANTIGA)
+        print(f'  {eid}: já narrado com {MODELO} {json.dumps(AJUSTES)} — mantido')
     cs = cenas(ep)
     longa = ep.get('leitura') != 'curta'                # leitura longa: padrão a partir do ep. 7
     junta = lambda v: v if isinstance(v, str) else ' '.join(v)
-    out = {'voz': VOZ, 'modelo': MODELO, 'ajustes': AJUSTES, 'formato': FORMATO, 'semente': SEMENTE,
+    out = {'voz': VOZ, 'modelo': MODELO, 'ajustes': AJUSTES, 'pronuncia': PRONUNCIA, 'formato': FORMATO, 'semente': SEMENTE,
            'contexto': 'previous_text / next_text', 'cenas': []}
     for i, (cena, fala) in enumerate(cs):
         partes = [fala] if isinstance(fala, str) else fala
