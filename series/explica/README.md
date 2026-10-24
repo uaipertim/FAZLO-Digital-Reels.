@@ -50,7 +50,7 @@ Nenhuma cor, fonte, logo, ícone, animação ou som do Hospeda foi reutilizado. 
    - Uma hachura fina na inclinação do Z desliza devagar, para o quadro nunca ficar congelado.
    - A marca fica fixa no topo de todos os quadros: a logo FAZLO DIGITAL do kit + o @ do roteiro.
 5. **Voz.**
-   - É a voz oficial da FAZLO no ElevenLabs, com os ajustes de `series/pelos-olhos-do-hospede/voz.py`.
+   - É a voz oficial da FAZLO no ElevenLabs (Raquel, `eleven_v4`, desde 24/10), a mesma da série "Pelos olhos do hóspede".
    - **Cada capítulo é UMA geração inteira.** Se algo sair ruim, o capítulo inteiro é gerado de novo com outra semente. Nunca se emendam palavras nem trechos.
    - Por baixo vai uma trilha contínua própria, com ducking. O master fica em **−14 LUFS**, com pico real **≤ −1 dBTP** medido no MP4.
 6. **Fecho.**
@@ -100,11 +100,13 @@ Fora da nuvem, exporte `ELEVENLABS_API_KEY` no terminal. Os scripts só leem a v
 
 ### A voz e a conferência
 
-**Voz:**
-- Raquel - For Conversational (`GDzHdQOi6jjf8zaXhCYD`), `eleven_multilingual_v2`.
-- Estabilidade 0,40 · semelhança 0,80 · estilo 0,35 · speaker boost · velocidade 1,0 · idioma pt.
+**Voz** (desde 24/10, a versão C aprovada no teste A/B de `testes/voz-ab`):
+- Raquel (`GDzHdQOi6jjf8zaXhCYD`), **`eleven_v4`**.
+- Estabilidade 0,50 · semelhança 0,75. Estilo, speaker boost e velocidade ficam no padrão do modelo (não são enviados). Idioma pt.
 - MP3 44,1 kHz 128 kb/s, com alinhamento por caractere.
 - O capítulo anterior vai como `previous_text`. O seguinte **não** vai como `next_text` (regra de 23/10, da série "Pelos olhos do hóspede": com ele, o ElevenLabs devolvia a fala cortada no fim do arquivo, como se emendasse direto na próxima).
+- **Dicionário de pronúncia** (só no texto enviado; a tela não muda), sem diferenciar maiúsculas: FAZLO → "Fázlo" · WhatsApp → "Uátsap".
+- **Episódios já narrados ficam com a voz deles.** Se `audio/<id>/voz/falas.json` existe, valem o modelo, os ajustes e o dicionário gravados ali, inclusive num `--refaz`; assim um episódio nunca mistura vozes. explica-01 e case-guardiao-da-serra foram narrados com `eleven_multilingual_v2` (0,40 / 0,80 / estilo 0,35 / speaker boost / velocidade 1,0) e só a troca FAZLO → Fázlo.
 
 **Conferência de cada geração.** Se falhar, o capítulo inteiro é gerado de novo com outra semente, até 6 vezes:
 

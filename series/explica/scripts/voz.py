@@ -12,10 +12,15 @@ REGRA DA SÉRIE: todas as frases de um capítulo vão numa chamada só. Se algo 
 novo com outra semente. Nunca se emendam palavras nem trechos de gerações diferentes. O arquivo que a API devolve fica
 como veio: series/explica/audio/<id>/voz/cap-NN.mp3, e o histórico de todas as gerações fica em falas.json.
 
-Voz e ajustes: os de series/pelos-olhos-do-hospede/voz.py (a voz oficial da FAZLO):
-  Raquel - For Conversational (GDzHdQOi6jjf8zaXhCYD) · eleven_multilingual_v2 · estabilidade 0,40 · semelhança 0,80 ·
-  estilo 0,35 · speaker boost · velocidade 1,0 (nunca acelerar) · idioma pt · MP3 44,1 kHz 128 kb/s com alinhamento
-  por caractere (with-timestamps). O capítulo anterior vai como previous_text; o seguinte NÃO vai como next_text
+Voz e ajustes (desde 24/10, a versão C aprovada no teste A/B de testes/voz-ab; os mesmos da série "Pelos olhos do
+hóspede"): Raquel (GDzHdQOi6jjf8zaXhCYD) · eleven_v4 · estabilidade 0,50 · semelhança 0,75 · estilo, speaker boost e
+velocidade no padrão do modelo (não enviados) · idioma pt · MP3 44,1 kHz 128 kb/s com alinhamento por caractere
+(with-timestamps).
+Episódios já narrados ficam com a voz deles: se audio/<id>/voz/falas.json existe, o modelo, os ajustes e o dicionário
+gravados ali continuam valendo para esse episódio (um --refaz num episódio antigo não mistura vozes). Antes de 24/10:
+eleven_multilingual_v2 · 0,40 / 0,80 / estilo 0,35 · speaker boost · velocidade 1,0, e só a troca FAZLO → Fázlo.
+Dicionário de pronúncia (só no texto enviado; a tela não muda), sem diferenciar maiúsculas: FAZLO → Fázlo,
+WhatsApp → Uátsap. O capítulo anterior vai como previous_text; o seguinte NÃO vai como next_text
   (regra de 23/10, da série "Pelos olhos do hóspede": com o next_text, o ElevenLabs devolvia a fala cortada no fim
   do arquivo, como se emendasse direto na próxima).
 
@@ -55,13 +60,14 @@ SERIE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 REPO = os.path.dirname(os.path.dirname(SERIE))
 SR = 48000
 
-VOZ = {'id': 'GDzHdQOi6jjf8zaXhCYD', 'nome': 'Raquel - For Conversational'}
-MODELO = 'eleven_multilingual_v2'
-AJUSTES = {'stability': 0.40, 'similarity_boost': 0.80, 'style': 0.35, 'use_speaker_boost': True, 'speed': 1.0}
+VOZ = {'id': 'GDzHdQOi6jjf8zaXhCYD', 'nome': 'Raquel'}
+MODELO = 'eleven_v4'
+AJUSTES = {'stability': 0.50, 'similarity_boost': 0.75}      # estilo, speaker boost e velocidade: padrão do modelo
 FORMATO = 'mp3_44100_128'
 SEMENTE = 2026
 TENTATIVAS = 6
-FAZLO_API = 'Fázlo'                       # FAZLO / Fazlo = "FÁZ-lo" (só no texto enviado; na tela continua FAZLO)
+PRONUNCIA = {'FAZLO': 'Fázlo', 'WhatsApp': 'Uátsap'}     # só no texto enviado (na tela continua igual); sem diferenciar maiúsculas
+PRONUNCIA_ANTIGA = {'FAZLO': 'Fázlo'}                     # episódios narrados antes de 24/10
 LIM = {'ritmo': (9.0, 18.0), 'respiro': 0.12, 'pausa_max': 0.85, 'pausa_frases': 1.1, 'corte_ms': 35, 'corte_vogal_ms': 55, 'corte_db': -15.0, 'silencio_db': -50.0,
        'sobe': 0.10, 'transcricao': 0.92}
 
@@ -71,7 +77,9 @@ def texto_cap(c):
 
 
 def api_texto(s):
-    return re.sub(r'\bFAZLO\b', FAZLO_API, s, flags=re.I)
+    for de, para in PRONUNCIA.items():
+        s = re.sub(rf'\b{re.escape(de)}\b', para, s, flags=re.I)
+    return s
 
 
 def cabecalho(extra=None):
@@ -306,6 +314,11 @@ def gerar(ep_id, refaz, so=None, forca=None):
     caps = ep['capitulos']
     path = os.path.join(out, 'falas.json')
     D = json.load(open(path)) if os.path.exists(path) else {'capitulos': {}}
+    global MODELO, AJUSTES, PRONUNCIA
+    if D.get('modelo'):                                   # episódio já narrado: fica com a voz e o dicionário dele
+        MODELO, AJUSTES = D['modelo'], D['ajustes']
+        PRONUNCIA = D.get('pronuncia', PRONUNCIA_ANTIGA)
+        print(f'  {ep_id}: já narrado com {MODELO} {json.dumps(AJUSTES)} — mantido')
     for n, c in enumerate(caps):
         key = f'{n:02d}'
         texto = texto_cap(c)
@@ -349,7 +362,7 @@ def gerar(ep_id, refaz, so=None, forca=None):
                                'inicio_da_fala': round(ws[0]['t0'], 3), 'fim_da_fala': round(ws[-1]['fim_letra'], 3),
                                'sha1_audio': hashlib.sha1(mp3).hexdigest(), 'geracoes': len(hist), 'historico': hist,
                                'alinhamento': al}
-        D.update({'voz': VOZ['nome'], 'voice_id': VOZ['id'], 'modelo': MODELO, 'ajustes': AJUSTES, 'formato': FORMATO,
+        D.update({'voz': VOZ['nome'], 'voice_id': VOZ['id'], 'modelo': MODELO, 'ajustes': AJUSTES, 'pronuncia': PRONUNCIA, 'formato': FORMATO,
                   'regra': 'uma geração inteira por capítulo; nada emendado', 'limites': LIM})
         json.dump(D, open(path, 'w'), ensure_ascii=False, indent=1)
 
