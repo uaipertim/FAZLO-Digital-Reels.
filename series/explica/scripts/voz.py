@@ -25,8 +25,9 @@ WhatsApp → Uátsap. O capítulo anterior vai como previous_text; o seguinte N�
   do arquivo, como se emendasse direto na próxima).
 
 Conferência de cada geração (se uma falhar, o capítulo inteiro é gerado de novo com outra semente, até 6 vezes):
-  ritmo        9–18 letras por segundo de fala;
-  pausas       toda troca de frase tem respiro de 0,12 s a 1,1 s; dentro de uma frase, nenhuma pausa passa de 0,85 s;
+  ritmo        8–18 letras por segundo de fala (era 9–18 até 24/10: o eleven_v4 fala com mais pausas);
+  pausas       toda troca de frase tem respiro de 0,12 s a 1,6 s; dentro de uma frase, nenhuma pausa passa de 1,2 s
+               (eram 1,1 s e 0,85 s até 24/10: o eleven_v4 fala com mais pausas);
   fim          a última frase vai até o fim. O arquivo tem de terminar em silêncio (abaixo de −50 dB); se acaba com a
                voz soando, é corte. A queda de −15 dB (relativo ao pico da fala) até o silêncio (−50 dB) tem de durar
                ≥ 55 ms quando a última palavra termina em vogal e ≥ 35 ms nas outras (calibração de 23/10: 40 ms
@@ -68,7 +69,7 @@ SEMENTE = 2026
 TENTATIVAS = 6
 PRONUNCIA = {'FAZLO': 'Fázlo', 'WhatsApp': 'Uátsap'}     # só no texto enviado (na tela continua igual); sem diferenciar maiúsculas
 PRONUNCIA_ANTIGA = {'FAZLO': 'Fázlo'}                     # episódios narrados antes de 24/10
-LIM = {'ritmo': (9.0, 18.0), 'respiro': 0.12, 'pausa_max': 0.85, 'pausa_frases': 1.1, 'corte_ms': 35, 'corte_vogal_ms': 55, 'corte_db': -15.0, 'silencio_db': -50.0,
+LIM = {'ritmo': (8.0, 18.0), 'respiro': 0.12, 'pausa_max': 1.2, 'pausa_frases': 1.6, 'corte_ms': 35, 'corte_vogal_ms': 55, 'corte_db': -15.0, 'silencio_db': -50.0,
        'sobe': 0.10, 'transcricao': 0.92}
 
 

@@ -112,8 +112,8 @@ Fora da nuvem, exporte `ELEVENLABS_API_KEY` no terminal. Os scripts só leem a v
 
 | Item | Regra |
 |---|---|
-| ritmo | 9–18 letras por segundo de fala |
-| pausas | entre frases, respiro de 0,12 s a 1,1 s (silêncio medido no áudio); dentro de uma frase, nenhuma pausa passa de 0,85 s. Conta como "entre frases" a troca de item da `fala` e todo fim de frase dentro de um item (palavra que termina em . ? ! …) |
+| ritmo | 8–18 letras por segundo de fala (era 9–18 até 24/10) |
+| pausas | entre frases, respiro de 0,12 s a 1,6 s (silêncio medido no áudio); dentro de uma frase, nenhuma pausa passa de 1,2 s (eram 1,1 s e 0,85 s até 24/10: o eleven_v4 fala com mais pausas). Conta como "entre frases" a troca de item da `fala` e todo fim de frase dentro de um item (palavra que termina em . ? ! …) |
 | fim de frase | o arquivo tem de **terminar em silêncio** (abaixo de −50 dB); se acaba com a voz soando, é corte. A queda de −15 dB (relativo ao pico da fala) até o silêncio (−50 dB) tem de durar **≥ 55 ms quando a última palavra termina em vogal** e **≥ 35 ms** nas outras (calibração de 23/10: 40 ms numa vogal soou cortado; 59 e 63 ms soaram naturais). Quedas que começam em −20 dB ou abaixo são fim natural. A voz também não pode subir no fim de uma frase afirmativa |
 | perguntas | em toda frase com "?", a altura da voz sobe ≥ 10% na parte final (a tônica) |
 | transcrição | se a chave tiver a permissão de speech-to-text, o texto ouvido bate com o roteiro, palavra por palavra (≥ 92%); sem a permissão, a geração segue e o histórico registra `transcricao: null` |
