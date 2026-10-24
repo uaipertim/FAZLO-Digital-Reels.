@@ -16,7 +16,7 @@
  *   4. confere as áreas seguras elemento a elemento
  *      (output/revisao/areas-seguras.txt; sai com erro se algo ficar de fora).
  *
- * Com voz, a duração vem das falas (25–42 s com a leitura longa, padrão a partir do ep. 7; 25–30 s nos eps. 1–6,
+ * Com voz, a duração vem das falas (25–48 s com a leitura longa, padrão a partir do ep. 7; 25–30 s nos eps. 1–6,
  * "leitura": "curta"). Se passar do limite, o comando para antes do
  * render e avisa: nada é acelerado nem cortado sem aprovação (--forcar renderiza assim mesmo).
  *
@@ -39,7 +39,7 @@ const W = (rel, s) => { const f = path.join(dir, rel); fs.mkdirSync(path.dirname
 const titulo = ep.titulo.map((s) => s.replace(/\*/g, '')).join(' ');
 const comVoz = !!ep.voz;
 const longa = comVoz && ep.leitura !== 'curta';      // leitura longa (padrão a partir do ep. 7): até 42 s
-const LIMITE = longa ? 42 : 30;
+const LIMITE = longa ? 48 : 30;                  // leitura longa: 48 s desde 24/10 (era 42; o eleven_v4 fala com mais pausas)
 const run = (cmd, args) => {
   const r = spawnSync(cmd, args, { stdio: 'inherit', cwd: ROOT });
   if (r.status !== 0) { console.error(`\n${id}: falhou: ${cmd} ${args.join(' ')}`); process.exit(r.status || 1); }
