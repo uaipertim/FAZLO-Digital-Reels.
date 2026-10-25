@@ -18,6 +18,9 @@
  * Collab ("progresso": "pedidos"): capa_collab · pedido · fecho_collab, com a lista dos pedidos no canto no lugar do
  * celular de 7 blocos e as telas REAIS do site (PNGs em linha.telas) dentro de um celular genérico.
  * Áreas seguras: conteúdo entre y 265 e 1456; nada na coluna de botões (x ≥ 950, y 1060–1560); a capa é o quadro 0.
+ * Legenda palavra por palavra (opcional, "legenda": true no roteiro; tools/legenda-palavras/): por cima de tudo, na faixa
+ * y 1300–1450, até o corte da logo final. Com ela ligada, a linha de apoio não aparece e os diagramas encolhem para caber
+ * até y ≈ 1250 (a mesma escala na parte, no voo dela e no celular do fecho). Prévia sem mexer no roteiro: &legenda=1.
  */
 (function () {
   'use strict';
@@ -190,6 +193,12 @@
   // EPISÓDIO
   // =====================================================================
   let EP = null, CAPS = [], DURATION = 10, CUES = [], WARN = [];
+  // legenda ligada: os diagramas (de y ≈ 740–1450) vão para y 650–1250, em escala, centrados em x = 540
+  let LEG = null, LEGON = false;
+  const DIA = { A: 740, B: 650, k: (1250 - 650) / (1450 - 740) };
+  const diaM = (c) => { c.translate(540, DIA.B); c.scale(DIA.k, DIA.k); c.translate(-540, -DIA.A); };
+  const mapR = (R) => ({ ...R, x: 540 + (R.x - 540) * DIA.k, y: DIA.B + (R.y - DIA.A) * DIA.k, w: R.w * DIA.k, h: R.h * DIA.k });
+  const mapW = (P) => ({ ...P, x: 540 + (P.x - 540) * DIA.k, y: DIA.B + (P.y - DIA.A) * DIA.k, s: P.s * DIA.k });
   const MARCA = { x: 80, y: 287, w: 176 };
 
   // a palavra da fala que dispara uma peça: "palavra", "palavra#2", "+1.2" (s depois do início do capítulo), "fim"
@@ -359,6 +368,7 @@
     });
   }
   function drawApoio(c, cap, t, y) {
+    if (LEGON) return;                                  // com a legenda ligada, a linha de apoio não aparece
     const AP = EP.apoio;
     cap.apoios.forEach((a, i) => {
       if (t < a.t || t > a.ate + 0.5) return;
@@ -519,7 +529,8 @@
       S.b1 = S.chipY + 50 + 40 + S.ts * 0.8; S.b2 = S.b1 + S.ts * 1.1;
       S.apoioY = S.b2 + 74;
       S.wire = { x: 540 - WIRE.w * 1.25, y: S.apoioY + 46, s: 2.5 };
-      S.faixaY = S.wire.y + WIRE.h * 2.5 * 0.7;
+      if (LEGON) { const y = S.b2 + 56, s = Math.min(2.5, (1250 - y) / WIRE.h); S.wire = { x: 540 - (WIRE.w * s) / 2, y, s }; }   // sem apoio: sobe e cabe até y 1250
+      S.faixaY = S.wire.y + WIRE.h * S.wire.s * 0.7;
       S.conta = at(cap, d.conta && d.conta.em);
       S.cursorOn = at(cap, d.monta && d.monta.em);
       S.faixaSai = cap.voo[0] - 0.4;
@@ -1535,6 +1546,7 @@
     }
     drawRotulo(c, cap, t); drawTitulo(c, cap, t); drawApoio(c, cap, t, cap.lay.apoioY);
     c.save(); c.translate(0, flutua(t));                // a cena nunca fica parada: a parte flutua devagar (±4 px)
+    if (LEGON) diaM(c);                                 // legenda ligada: o diagrama em escala, até y ≈ 1250
     if (cena.extra) cena.extra(c, cap, S, t);
     if (cena.parte && (!cap.voo || t < cap.voo[0])) cena.parte(c, cap, S, t);
     c.restore();
@@ -1543,15 +1555,15 @@
   function voo(c, n, t) {
     const cap = CAPS[n];
     if (!cap.voo || t < cap.voo[0] || t >= cap.voo[1] || n === 0) return;
-    const S = cap.S, R = S.parte, cena = CENAS[cap.diagrama.tipo];
+    const S = cap.S, R = S.parte, cena = CENAS[cap.diagrama.tipo], R0 = LEGON ? mapR(R) : R;   // R0: onde a parte começa
     if (PEDIDOS()) { vooPedido(c, cap, t); return; }
     // o caminho não cruza o texto: 1) encolhe e anda POR BAIXO do título e do apoio até a coluna do celular do canto
     // (x do bloco, logo abaixo do texto), já do tamanho do bloco e em lima; 2) sobe reto até o bloco
     const u = p(t, cap.voo[0], cap.voo[1]), B = blocoRect(CANTO, n - 1), CUT = 0.62;
     const yBase = Math.max(cap.lay.apoioY + 64, B.y + 260);
     const qa = E.io(clamp(u / CUT)), qb = E.io(clamp((u - CUT) / (1 - CUT)));
-    const x = lerp(R.x, B.x, qa), w = lerp(R.w, B.w, qa), h = lerp(R.h, B.h, qa);
-    const y = u < CUT ? lerp(R.y + flutua(cap.voo[0]), yBase, qa) : lerp(yBase, B.y, qb);
+    const x = lerp(R0.x, B.x, qa), w = lerp(R0.w, B.w, qa), h = lerp(R0.h, B.h, qa);
+    const y = u < CUT ? lerp(R0.y + flutua(cap.voo[0]), yBase, qa) : lerp(yBase, B.y, qb);
     const q = qa;
     const conteudo = 1 - p(qa, 0.3, 0.75), lima = p(qa, 0.4, 0.9);
     c.save();
@@ -1568,9 +1580,9 @@
   }
   // collab: o cartão do pedido encolhe e voa até o cartãozinho dele na lista do canto, já em lima
   function vooPedido(c, cap, t) {
-    const S = cap.S, R = S.parte, cena = CENAS.pedido, B = listaRect(LCANTO, S.k - 1);
+    const S = cap.S, R = S.parte, cena = CENAS.pedido, B = listaRect(LCANTO, S.k - 1), R0 = LEGON ? mapR(R) : R;
     const u = E.io(p(t, cap.voo[0], cap.voo[1]));
-    const x = lerp(R.x, B.x, u), y = lerp(R.y + flutua(cap.voo[0]), B.y, u) - Math.sin(u * Math.PI) * 60, w = lerp(R.w, B.w, u), h = lerp(R.h, B.h, u);
+    const x = lerp(R0.x, B.x, u), y = lerp(R0.y + flutua(cap.voo[0]), B.y, u) - Math.sin(u * Math.PI) * 60, w = lerp(R0.w, B.w, u), h = lerp(R0.h, B.h, u);
     const conteudo = 1 - p(u, 0.25, 0.7), lima = p(u, 0.35, 0.85);
     c.save();
     c.shadowColor = 'rgba(0,0,0,0.6)'; c.shadowBlur = 40 * (1 - u); c.shadowOffsetY = 12 * (1 - u);
@@ -1606,20 +1618,25 @@
       for (let k = 1; k < CAPS.length; k++) voo(c, k, t);
     };
     const tudo = (k) => () => capitulo(c, k, t);
+    const leg = () => {                                 // a legenda, por cima do capítulo e das peças fixas
+      if (!LEG) return;
+      LEG.desenha(c, t);
+      if (COLLECT) LEG.caixas(t).forEach((b) => COLLECT.out.push({ ...b, cap: CUR_CAP }));
+    };
     if (n > 0 && t < cap.corte[1]) {
       const u = E.io(p(t, cap.corte[0], cap.corte[1]));
       corte(c, u, tudo(n - 1), tudo(n));
-      fixos();
+      fixos(); leg();
       return;
     }
     if (ult && cap.corte_logo && t >= cap.corte_logo[0]) {
       const logo = () => { drawBg(c, 'palco', t, true); const w = 640, h = logoH(w); drawLogo(c, 540 - w / 2, 950 - h / 2, w); boxHere(c, 'logo final', 540 - w / 2, 950 - h / 2, 540 + w / 2, 950 + h / 2); };
-      if (t < cap.corte_logo[1]) { const u = E.io(p(t, cap.corte_logo[0], cap.corte_logo[1])); corte(c, u, () => { tudo(n)(); fixos(); }, logo); }
+      if (t < cap.corte_logo[1]) { const u = E.io(p(t, cap.corte_logo[0], cap.corte_logo[1])); corte(c, u, () => { tudo(n)(); fixos(); leg(); }, logo); }   // a legenda sai com o corte
       else logo();
       return;
     }
     tudo(n)();
-    fixos();
+    fixos(); leg();
   }
 
   // ---------------------------------------------------------------- motion blur (só nas passagens rápidas)
@@ -1655,14 +1672,18 @@
     IMGS = extras.imgs || {}; TELAS = extras.telas || null;
     parseLogo(svgText);
     EP = linha; CAPS = linha.capitulos; DURATION = linha.duracao; CUES = []; WARN = [];
+    LEGON = !!((linha.legenda || extras.forcaLegenda) && extras.legenda);
+    if ((linha.legenda || extras.forcaLegenda) && !extras.legenda) throw new Error('legenda ligada, mas falta o legenda.json (rode tools/legenda-palavras/legenda.py explica <id>)');
+    LEG = LEGON ? window.LEGENDA.cria(extras.legenda, { fim: extras.legenda.fim }) : null;
     CAPS.forEach((cap) => {
       if (!['capa', 'capa_collab'].includes(cap.diagrama.tipo)) layoutTitulo(cap);
       const cena = CENAS[cap.diagrama.tipo];
       if (!cena) throw new Error('diagrama desconhecido: ' + cap.diagrama.tipo);
       cap.S = cena.setup(cap);
+      if (LEGON && cap.S.wire && !['capa', 'capa_collab'].includes(cap.diagrama.tipo)) cap.S.wire = mapW(cap.S.wire);   // o celular do fecho, na escala do diagrama
       if (cap.corte) cue(cap.corte[0], 'corte');
       if (cap.n > 0) cue(cap.t0 + 0.02, 'titulo');
-      cap.apoios.forEach((a) => cue(a.t, 'apoio'));
+      if (!LEGON) cap.apoios.forEach((a) => cue(a.t, 'apoio'));
       if (cap.voo && cap.n > 0) { cue(cap.voo[0], 'voa_parte'); cue(cap.voo[1], 'bloco', { k: cap.n }); cue(cap.cursor[0], 'cursor'); }
     });
     CUES.sort((a, b) => a.t - b.t);
@@ -1677,6 +1698,7 @@
     apoios: () => CAPS.flatMap((cap) => cap.apoios.map((a, i) => ({ cap: cap.n, i, texto: a.texto, t: a.t, inteira_de: a.t + EP.apoio.entra, ate: a.sai ? a.ate - EP.apoio.sai : a.ate }))),
     trocas: () => CAPS.filter((c) => c.corte).map((c) => ({ cap: c.n, t0: c.corte[0], t1: c.corte[1] })),
     montagens: () => CAPS.map((c) => ({ cap: c.n, primeira: Math.min(...(c.S.pecas || [c.t0])), ultima: Math.max(...(c.S.pecas || [c.t0])), voo: c.voo || null, cursor: c.cursor || null })),
+    legenda: () => (LEG ? { paginas: LEG.paginas.map((q) => ({ cena: q.cena, t0: q.t0, t1: q.t1, texto: q.texto, juntada: q.juntada })), juntadas: LEG.juntadas } : null),
     fecho: () => { const f = CAPS[CAPS.length - 1]; return { t0: f.t0, corte_logo: f.corte_logo, logo_parada: f.logo_parada, fim: DURATION }; },
   };
 })();

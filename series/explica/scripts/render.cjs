@@ -8,6 +8,7 @@
  *   node series/explica/scripts/render.cjs video  --ep explica-01 [--workers 4] [--previa]
  *                                                                   -> output/explica-01/fazlo-digital-explica-01.mp4
  *   node series/explica/scripts/render.cjs stills 0.5,2,5.2 --ep explica-01 [--dir output/explica-01/stills] [--noblur]
+ *   (--legenda em qualquer modo: liga a legenda palavra por palavra só nesta saída, para prévia; o roteiro não muda)
  *
  * Sobe um servidor local na raiz do repositório (para /brand/fonts e /brand/logo/kit), abre
  * series/explica/src/index.html?render, captura cada quadro do canvas e envia em ordem ao ffmpeg
@@ -48,7 +49,7 @@ async function openPage(browser, port) {
   const page = await browser.newPage({ viewport: { width: 1080, height: 1920 }, deviceScaleFactor: 1 });
   page.on('pageerror', (e) => console.error('[erro na página]', e.message));
   page.on('console', (m) => { if (['error', 'warning'].includes(m.type())) console.error('[console]', m.text()); });
-  await page.goto(`http://127.0.0.1:${port}/series/explica/src/index.html?render&ep=${EP}`);
+  await page.goto(`http://127.0.0.1:${port}/series/explica/src/index.html?render&ep=${EP}${flag('legenda') ? '&legenda=1' : ''}`);
   await page.evaluate(() => window.ready);
   return page;
 }

@@ -1,0 +1,1353 @@
+{
+ "serie": "explica",
+ "episodio": "explica-01",
+ "ligada": false,
+ "tempo": "video",
+ "fim": 85.765,
+ "cenas": [
+  {
+   "id": "00",
+   "ancora": null,
+   "frases": [
+    {
+     "texto": "O site que faz o hóspede reservar tem sete partes.",
+     "palavras": [
+      {
+       "w": "O",
+       "t0": 0.1,
+       "t1": 0.193,
+       "chave": false
+      },
+      {
+       "w": "site",
+       "t0": 0.309,
+       "t1": 0.634,
+       "chave": false
+      },
+      {
+       "w": "que",
+       "t0": 0.68,
+       "t1": 0.762,
+       "chave": false
+      },
+      {
+       "w": "faz",
+       "t0": 0.82,
+       "t1": 1.052,
+       "chave": false
+      },
+      {
+       "w": "o",
+       "t0": 1.168,
+       "t1": 1.191,
+       "chave": false
+      },
+      {
+       "w": "hóspede",
+       "t0": 1.261,
+       "t1": 1.656,
+       "chave": false
+      },
+      {
+       "w": "reservar",
+       "t0": 1.702,
+       "t1": 2.399,
+       "chave": false
+      },
+      {
+       "w": "tem",
+       "t0": 2.7577,
+       "t1": 2.886,
+       "chave": false
+      },
+      {
+       "w": "sete",
+       "t0": 3.002,
+       "t1": 3.42,
+       "chave": false
+      },
+      {
+       "w": "partes.",
+       "t0": 3.49,
+       "t1": 4.036,
+       "chave": false
+      }
+     ]
+    },
+    {
+     "texto": "Vamos montar juntos, parte por parte?",
+     "palavras": [
+      {
+       "w": "Vamos",
+       "t0": 4.5332,
+       "t1": 4.709,
+       "chave": false
+      },
+      {
+       "w": "montar",
+       "t0": 4.767,
+       "t1": 5.046,
+       "chave": false
+      },
+      {
+       "w": "juntos,",
+       "t0": 5.092,
+       "t1": 5.417,
+       "chave": false
+      },
+      {
+       "w": "parte",
+       "t0": 5.464,
+       "t1": 5.661,
+       "chave": false
+      },
+      {
+       "w": "por",
+       "t0": 5.696,
+       "t1": 5.789,
+       "chave": false
+      },
+      {
+       "w": "parte?",
+       "t0": 5.847,
+       "t1": 6.23,
+       "chave": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "01",
+   "ancora": null,
+   "frases": [
+    {
+     "texto": "Primeira: o topo.",
+     "palavras": [
+      {
+       "w": "Primeira:",
+       "t0": 7.81,
+       "t1": 8.205,
+       "chave": false
+      },
+      {
+       "w": "o",
+       "t0": 8.286,
+       "t1": 8.379,
+       "chave": false
+      },
+      {
+       "w": "topo.",
+       "t0": 8.472,
+       "t1": 9.064,
+       "chave": false
+      }
+     ]
+    },
+    {
+     "texto": "Na primeira tela, o hóspede entende três coisas: que lugar é esse, onde fica e por que vale a viagem.",
+     "palavras": [
+      {
+       "w": "Na",
+       "t0": 9.607,
+       "t1": 9.702,
+       "chave": false
+      },
+      {
+       "w": "primeira",
+       "t0": 9.737,
+       "t1": 10.051,
+       "chave": false
+      },
+      {
+       "w": "tela,",
+       "t0": 10.12,
+       "t1": 10.492,
+       "chave": false
+      },
+      {
+       "w": "o",
+       "t0": 10.562,
+       "t1": 10.643,
+       "chave": false
+      },
+      {
+       "w": "hóspede",
+       "t0": 10.701,
+       "t1": 11.13,
+       "chave": false
+      },
+      {
+       "w": "entende",
+       "t0": 11.154,
+       "t1": 11.479,
+       "chave": false
+      },
+      {
+       "w": "três",
+       "t0": 11.548,
+       "t1": 11.85,
+       "chave": false
+      },
+      {
+       "w": "coisas:",
+       "t0": 11.92,
+       "t1": 12.419,
+       "chave": false
+      },
+      {
+       "w": "que",
+       "t0": 12.837,
+       "t1": 12.895,
+       "chave": false
+      },
+      {
+       "w": "lugar",
+       "t0": 12.953,
+       "t1": 13.243,
+       "chave": false
+      },
+      {
+       "w": "é",
+       "t0": 13.325,
+       "t1": 13.348,
+       "chave": false
+      },
+      {
+       "w": "esse,",
+       "t0": 13.464,
+       "t1": 13.603,
+       "chave": false
+      },
+      {
+       "w": "onde",
+       "t0": 13.65,
+       "t1": 13.824,
+       "chave": false
+      },
+      {
+       "w": "fica",
+       "t0": 13.894,
+       "t1": 14.161,
+       "chave": false
+      },
+      {
+       "w": "e",
+       "t0": 14.184,
+       "t1": 14.207,
+       "chave": false
+      },
+      {
+       "w": "por",
+       "t0": 14.254,
+       "t1": 14.37,
+       "chave": false
+      },
+      {
+       "w": "que",
+       "t0": 14.404,
+       "t1": 14.474,
+       "chave": false
+      },
+      {
+       "w": "vale",
+       "t0": 14.521,
+       "t1": 14.706,
+       "chave": false
+      },
+      {
+       "w": "a",
+       "t0": 14.73,
+       "t1": 14.753,
+       "chave": false
+      },
+      {
+       "w": "viagem.",
+       "t0": 14.788,
+       "t1": 15.298,
+       "chave": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "02",
+   "ancora": null,
+   "frases": [
+    {
+     "texto": "Segunda: a consulta de datas, logo abaixo do topo.",
+     "palavras": [
+      {
+       "w": "Segunda:",
+       "t0": 16.878,
+       "t1": 17.551,
+       "chave": false
+      },
+      {
+       "w": "a",
+       "t0": 17.9589,
+       "t1": 18.004,
+       "chave": false
+      },
+      {
+       "w": "consulta",
+       "t0": 18.074,
+       "t1": 18.515,
+       "chave": false
+      },
+      {
+       "w": "de",
+       "t0": 18.561,
+       "t1": 18.631,
+       "chave": false
+      },
+      {
+       "w": "datas,",
+       "t0": 18.689,
+       "t1": 19.235,
+       "chave": false
+      },
+      {
+       "w": "logo",
+       "t0": 19.6378,
+       "t1": 19.897,
+       "chave": false
+      },
+      {
+       "w": "abaixo",
+       "t0": 19.92,
+       "t1": 20.233,
+       "chave": false
+      },
+      {
+       "w": "do",
+       "t0": 20.268,
+       "t1": 20.338,
+       "chave": false
+      },
+      {
+       "w": "topo.",
+       "t0": 20.396,
+       "t1": 20.756,
+       "chave": false
+      }
+     ]
+    },
+    {
+     "texto": "Entrada, saída e quantas pessoas.",
+     "palavras": [
+      {
+       "w": "Entrada,",
+       "t0": 21.2181,
+       "t1": 21.801,
+       "chave": false
+      },
+      {
+       "w": "saída",
+       "t0": 21.847,
+       "t1": 22.288,
+       "chave": false
+      },
+      {
+       "w": "e",
+       "t0": 22.311,
+       "t1": 22.335,
+       "chave": false
+      },
+      {
+       "w": "quantas",
+       "t0": 22.381,
+       "t1": 22.671,
+       "chave": false
+      },
+      {
+       "w": "pessoas.",
+       "t0": 22.718,
+       "t1": 23.24,
+       "chave": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "03",
+   "ancora": null,
+   "frases": [
+    {
+     "texto": "Terceira: os quartos.",
+     "palavras": [
+      {
+       "w": "Terceira:",
+       "t0": 24.82,
+       "t1": 25.424,
+       "chave": false
+      },
+      {
+       "w": "os",
+       "t0": 25.482,
+       "t1": 25.633,
+       "chave": false
+      },
+      {
+       "w": "quartos.",
+       "t0": 25.702,
+       "t1": 26.306,
+       "chave": false
+      }
+     ]
+    },
+    {
+     "texto": "Fotos de verdade, quantas pessoas cabem e um 'a partir de', que já responde se cabe no bolso.",
+     "palavras": [
+      {
+       "w": "Fotos",
+       "t0": 26.8457,
+       "t1": 27.235,
+       "chave": false
+      },
+      {
+       "w": "de",
+       "t0": 27.293,
+       "t1": 27.374,
+       "chave": false
+      },
+      {
+       "w": "verdade,",
+       "t0": 27.455,
+       "t1": 28.129,
+       "chave": false
+      },
+      {
+       "w": "quantas",
+       "t0": 28.187,
+       "t1": 28.512,
+       "chave": false
+      },
+      {
+       "w": "pessoas",
+       "t0": 28.57,
+       "t1": 29.011,
+       "chave": false
+      },
+      {
+       "w": "cabem",
+       "t0": 29.104,
+       "t1": 29.673,
+       "chave": false
+      },
+      {
+       "w": "e",
+       "t0": 29.743,
+       "t1": 29.859,
+       "chave": false
+      },
+      {
+       "w": "um",
+       "t0": 29.975,
+       "t1": 30.126,
+       "chave": false
+      },
+      {
+       "w": "'a",
+       "t0": 30.3,
+       "t1": 30.335,
+       "chave": false
+      },
+      {
+       "w": "partir",
+       "t0": 30.404,
+       "t1": 30.799,
+       "chave": false
+      },
+      {
+       "w": "de',",
+       "t0": 30.915,
+       "t1": 31.02,
+       "chave": false
+      },
+      {
+       "w": "que",
+       "t0": 31.4674,
+       "t1": 31.519,
+       "chave": false
+      },
+      {
+       "w": "já",
+       "t0": 31.589,
+       "t1": 31.681,
+       "chave": false
+      },
+      {
+       "w": "responde",
+       "t0": 31.716,
+       "t1": 32.099,
+       "chave": false
+      },
+      {
+       "w": "se",
+       "t0": 32.146,
+       "t1": 32.216,
+       "chave": false
+      },
+      {
+       "w": "cabe",
+       "t0": 32.262,
+       "t1": 32.471,
+       "chave": false
+      },
+      {
+       "w": "no",
+       "t0": 32.506,
+       "t1": 32.575,
+       "chave": false
+      },
+      {
+       "w": "bolso.",
+       "t0": 32.622,
+       "t1": 33.04,
+       "chave": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "04",
+   "ancora": null,
+   "frases": [
+    {
+     "texto": "Quarta: o que está incluso.",
+     "palavras": [
+      {
+       "w": "Quarta:",
+       "t0": 34.62,
+       "t1": 35.224,
+       "chave": false
+      },
+      {
+       "w": "o",
+       "t0": 35.34,
+       "t1": 35.398,
+       "chave": false
+      },
+      {
+       "w": "que",
+       "t0": 35.456,
+       "t1": 35.549,
+       "chave": false
+      },
+      {
+       "w": "está",
+       "t0": 35.572,
+       "t1": 35.839,
+       "chave": false
+      },
+      {
+       "w": "incluso.",
+       "t0": 35.909,
+       "t1": 36.594,
+       "chave": false
+      }
+     ]
+    },
+    {
+     "texto": "O café da manhã.",
+     "palavras": [
+      {
+       "w": "O",
+       "t0": 37.372,
+       "t1": 37.43,
+       "chave": false
+      },
+      {
+       "w": "café",
+       "t0": 37.499,
+       "t1": 37.708,
+       "chave": false
+      },
+      {
+       "w": "da",
+       "t0": 37.755,
+       "t1": 37.824,
+       "chave": false
+      },
+      {
+       "w": "manhã.",
+       "t0": 37.871,
+       "t1": 38.219,
+       "chave": false
+      }
+     ]
+    },
+    {
+     "texto": "Os horários de check-in e check-out.",
+     "palavras": [
+      {
+       "w": "Os",
+       "t0": 38.6215,
+       "t1": 38.718,
+       "chave": false
+      },
+      {
+       "w": "horários",
+       "t0": 38.753,
+       "t1": 39.101,
+       "chave": false
+      },
+      {
+       "w": "de",
+       "t0": 39.148,
+       "t1": 39.218,
+       "chave": false
+      },
+      {
+       "w": "check-in",
+       "t0": 39.264,
+       "t1": 39.752,
+       "chave": false
+      },
+      {
+       "w": "e",
+       "t0": 39.81,
+       "t1": 39.833,
+       "chave": false
+      },
+      {
+       "w": "check-out.",
+       "t0": 39.868,
+       "t1": 40.576,
+       "chave": false
+      }
+     ]
+    },
+    {
+     "texto": "Se aceita pet.",
+     "palavras": [
+      {
+       "w": "Se",
+       "t0": 41.0317,
+       "t1": 41.133,
+       "chave": false
+      },
+      {
+       "w": "aceita",
+       "t0": 41.168,
+       "t1": 41.447,
+       "chave": false
+      },
+      {
+       "w": "pet.",
+       "t0": 41.493,
+       "t1": 41.888,
+       "chave": false
+      }
+     ]
+    },
+    {
+     "texto": "Tudo o que hoje vira pergunta no direct fica escrito no site.",
+     "palavras": [
+      {
+       "w": "Tudo",
+       "t0": 42.5385,
+       "t1": 42.701,
+       "chave": false
+      },
+      {
+       "w": "o",
+       "t0": 42.8496,
+       "t1": 42.968,
+       "chave": false
+      },
+      {
+       "w": "que",
+       "t0": 43.037,
+       "t1": 43.153,
+       "chave": false
+      },
+      {
+       "w": "hoje",
+       "t0": 43.188,
+       "t1": 43.444,
+       "chave": false
+      },
+      {
+       "w": "vira",
+       "t0": 43.513,
+       "t1": 43.734,
+       "chave": false
+      },
+      {
+       "w": "pergunta",
+       "t0": 43.78,
+       "t1": 44.117,
+       "chave": false
+      },
+      {
+       "w": "no",
+       "t0": 44.152,
+       "t1": 44.221,
+       "chave": false
+      },
+      {
+       "w": "direct",
+       "t0": 44.279,
+       "t1": 44.593,
+       "chave": false
+      },
+      {
+       "w": "fica",
+       "t0": 44.651,
+       "t1": 44.814,
+       "chave": false
+      },
+      {
+       "w": "escrito",
+       "t0": 44.837,
+       "t1": 45.162,
+       "chave": false
+      },
+      {
+       "w": "no",
+       "t0": 45.208,
+       "t1": 45.278,
+       "chave": false
+      },
+      {
+       "w": "site.",
+       "t0": 45.324,
+       "t1": 45.766,
+       "chave": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "05",
+   "ancora": null,
+   "frases": [
+    {
+     "texto": "Quinta: como chegar.",
+     "palavras": [
+      {
+       "w": "Quinta:",
+       "t0": 47.346,
+       "t1": 47.903,
+       "chave": false
+      },
+      {
+       "w": "como",
+       "t0": 48.2357,
+       "t1": 48.461,
+       "chave": false
+      },
+      {
+       "w": "chegar.",
+       "t0": 48.507,
+       "t1": 49.076,
+       "chave": false
+      }
+     ]
+    },
+    {
+     "texto": "O mapa e as referências que só quem é da região conhece.",
+     "palavras": [
+      {
+       "w": "O",
+       "t0": 49.459,
+       "t1": 49.529,
+       "chave": false
+      },
+      {
+       "w": "mapa",
+       "t0": 49.645,
+       "t1": 49.958,
+       "chave": false
+      },
+      {
+       "w": "e",
+       "t0": 49.981,
+       "t1": 50.005,
+       "chave": false
+      },
+      {
+       "w": "as",
+       "t0": 50.051,
+       "t1": 50.121,
+       "chave": false
+      },
+      {
+       "w": "referências",
+       "t0": 50.19,
+       "t1": 50.759,
+       "chave": false
+      },
+      {
+       "w": "que",
+       "t0": 50.817,
+       "t1": 50.899,
+       "chave": false
+      },
+      {
+       "w": "só",
+       "t0": 50.945,
+       "t1": 51.073,
+       "chave": false
+      },
+      {
+       "w": "quem",
+       "t0": 51.131,
+       "t1": 51.27,
+       "chave": false
+      },
+      {
+       "w": "é",
+       "t0": 51.351,
+       "t1": 51.386,
+       "chave": false
+      },
+      {
+       "w": "da",
+       "t0": 51.468,
+       "t1": 51.549,
+       "chave": false
+      },
+      {
+       "w": "região",
+       "t0": 51.595,
+       "t1": 52.036,
+       "chave": false
+      },
+      {
+       "w": "conhece.",
+       "t0": 52.071,
+       "t1": 52.698,
+       "chave": false
+      }
+     ]
+    },
+    {
+     "texto": "O hóspede chega tranquilo, sem perguntar de novo.",
+     "palavras": [
+      {
+       "w": "O",
+       "t0": 53.1774,
+       "t1": 53.209,
+       "chave": false
+      },
+      {
+       "w": "hóspede",
+       "t0": 53.337,
+       "t1": 53.766,
+       "chave": false
+      },
+      {
+       "w": "chega",
+       "t0": 53.79,
+       "t1": 54.022,
+       "chave": false
+      },
+      {
+       "w": "tranquilo,",
+       "t0": 54.057,
+       "t1": 54.498,
+       "chave": false
+      },
+      {
+       "w": "sem",
+       "t0": 54.544,
+       "t1": 54.649,
+       "chave": false
+      },
+      {
+       "w": "perguntar",
+       "t0": 54.695,
+       "t1": 55.055,
+       "chave": false
+      },
+      {
+       "w": "de",
+       "t0": 55.09,
+       "t1": 55.148,
+       "chave": false
+      },
+      {
+       "w": "novo.",
+       "t0": 55.194,
+       "t1": 55.543,
+       "chave": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "06",
+   "ancora": null,
+   "frases": [
+    {
+     "texto": "Sexta: a mensagem.",
+     "palavras": [
+      {
+       "w": "Sexta:",
+       "t0": 57.123,
+       "t1": 57.692,
+       "chave": false
+      },
+      {
+       "w": "a",
+       "t0": 57.8679,
+       "t1": 57.901,
+       "chave": false
+      },
+      {
+       "w": "mensagem.",
+       "t0": 57.959,
+       "t1": 58.597,
+       "chave": false
+      }
+     ]
+    },
+    {
+     "texto": "A consulta chega no WhatsApp da pousada já preenchida: datas, pessoas e quarto.",
+     "palavras": [
+      {
+       "w": "A",
+       "t0": 59.073,
+       "t1": 59.143,
+       "chave": false
+      },
+      {
+       "w": "consulta",
+       "t0": 59.213,
+       "t1": 59.793,
+       "chave": false
+      },
+      {
+       "w": "chega",
+       "t0": 59.851,
+       "t1": 60.13,
+       "chave": false
+      },
+      {
+       "w": "no",
+       "t0": 60.176,
+       "t1": 60.258,
+       "chave": false
+      },
+      {
+       "w": "WhatsApp",
+       "t0": 60.281,
+       "t1": 60.838,
+       "chave": false
+      },
+      {
+       "w": "da",
+       "t0": 60.919,
+       "t1": 60.989,
+       "chave": false
+      },
+      {
+       "w": "pousada",
+       "t0": 61.036,
+       "t1": 61.558,
+       "chave": false
+      },
+      {
+       "w": "já",
+       "t0": 61.674,
+       "t1": 61.906,
+       "chave": false
+      },
+      {
+       "w": "preenchida:",
+       "t0": 61.976,
+       "t1": 62.765,
+       "chave": false
+      },
+      {
+       "w": "datas,",
+       "t0": 63.1343,
+       "t1": 63.555,
+       "chave": false
+      },
+      {
+       "w": "pessoas",
+       "t0": 63.601,
+       "t1": 64.019,
+       "chave": false
+      },
+      {
+       "w": "e",
+       "t0": 64.077,
+       "t1": 64.101,
+       "chave": false
+      },
+      {
+       "w": "quarto.",
+       "t0": 64.147,
+       "t1": 64.6,
+       "chave": false
+      }
+     ]
+    },
+    {
+     "texto": "Você só responde.",
+     "palavras": [
+      {
+       "w": "Você",
+       "t0": 64.8545,
+       "t1": 65.076,
+       "chave": false
+      },
+      {
+       "w": "só",
+       "t0": 65.134,
+       "t1": 65.238,
+       "chave": false
+      },
+      {
+       "w": "responde.",
+       "t0": 65.296,
+       "t1": 65.865,
+       "chave": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "07",
+   "ancora": null,
+   "frases": [
+    {
+     "texto": "E sétima: o celular.",
+     "palavras": [
+      {
+       "w": "E",
+       "t0": 67.445,
+       "t1": 67.538,
+       "chave": false
+      },
+      {
+       "w": "sétima:",
+       "t0": 67.631,
+       "t1": 68.258,
+       "chave": false
+      },
+      {
+       "w": "o",
+       "t0": 68.5476,
+       "t1": 68.629,
+       "chave": false
+      },
+      {
+       "w": "celular.",
+       "t0": 68.664,
+       "t1": 69.279,
+       "chave": false
+      }
+     ]
+    },
+    {
+     "texto": "É nele que o hóspede procura, muitas vezes na estrada.",
+     "palavras": [
+      {
+       "w": "É",
+       "t0": 69.779,
+       "t1": 69.837,
+       "chave": false
+      },
+      {
+       "w": "nele",
+       "t0": 69.93,
+       "t1": 70.139,
+       "chave": false
+      },
+      {
+       "w": "que",
+       "t0": 70.185,
+       "t1": 70.255,
+       "chave": false
+      },
+      {
+       "w": "o",
+       "t0": 70.301,
+       "t1": 70.324,
+       "chave": false
+      },
+      {
+       "w": "hóspede",
+       "t0": 70.371,
+       "t1": 70.696,
+       "chave": false
+      },
+      {
+       "w": "procura,",
+       "t0": 70.742,
+       "t1": 71.137,
+       "chave": false
+      },
+      {
+       "w": "muitas",
+       "t0": 71.183,
+       "t1": 71.485,
+       "chave": false
+      },
+      {
+       "w": "vezes",
+       "t0": 71.532,
+       "t1": 71.764,
+       "chave": false
+      },
+      {
+       "w": "na",
+       "t0": 71.822,
+       "t1": 71.892,
+       "chave": false
+      },
+      {
+       "w": "estrada.",
+       "t0": 71.915,
+       "t1": 72.437,
+       "chave": false
+      }
+     ]
+    },
+    {
+     "texto": "O site tem que abrir rápido e caber na tela, sem zoom.",
+     "palavras": [
+      {
+       "w": "O",
+       "t0": 72.82,
+       "t1": 72.89,
+       "chave": false
+      },
+      {
+       "w": "site",
+       "t0": 73.041,
+       "t1": 73.378,
+       "chave": false
+      },
+      {
+       "w": "tem",
+       "t0": 73.424,
+       "t1": 73.54,
+       "chave": false
+      },
+      {
+       "w": "que",
+       "t0": 73.587,
+       "t1": 73.656,
+       "chave": false
+      },
+      {
+       "w": "abrir",
+       "t0": 73.691,
+       "t1": 73.935,
+       "chave": false
+      },
+      {
+       "w": "rápido",
+       "t0": 73.97,
+       "t1": 74.434,
+       "chave": false
+      },
+      {
+       "w": "e",
+       "t0": 74.457,
+       "t1": 74.481,
+       "chave": false
+      },
+      {
+       "w": "caber",
+       "t0": 74.527,
+       "t1": 74.852,
+       "chave": false
+      },
+      {
+       "w": "na",
+       "t0": 74.91,
+       "t1": 75.003,
+       "chave": false
+      },
+      {
+       "w": "tela,",
+       "t0": 75.061,
+       "t1": 75.421,
+       "chave": false
+      },
+      {
+       "w": "sem",
+       "t0": 75.491,
+       "t1": 75.723,
+       "chave": false
+      },
+      {
+       "w": "zoom.",
+       "t0": 75.793,
+       "t1": 76.06,
+       "chave": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "08",
+   "ancora": null,
+   "frases": [
+    {
+     "texto": "Salva esse vídeo e manda pra quem tem pousada.",
+     "palavras": [
+      {
+       "w": "Salva",
+       "t0": 77.64,
+       "t1": 77.988,
+       "chave": false
+      },
+      {
+       "w": "esse",
+       "t0": 78.012,
+       "t1": 78.174,
+       "chave": false
+      },
+      {
+       "w": "vídeo",
+       "t0": 78.244,
+       "t1": 78.488,
+       "chave": false
+      },
+      {
+       "w": "e",
+       "t0": 78.511,
+       "t1": 78.534,
+       "chave": false
+      },
+      {
+       "w": "manda",
+       "t0": 78.58,
+       "t1": 78.813,
+       "chave": false
+      },
+      {
+       "w": "pra",
+       "t0": 78.847,
+       "t1": 78.952,
+       "chave": false
+      },
+      {
+       "w": "quem",
+       "t0": 78.987,
+       "t1": 79.103,
+       "chave": false
+      },
+      {
+       "w": "tem",
+       "t0": 79.149,
+       "t1": 79.254,
+       "chave": false
+      },
+      {
+       "w": "pousada.",
+       "t0": 79.3,
+       "t1": 79.939,
+       "chave": false
+      }
+     ]
+    },
+    {
+     "texto": "E me conta nos comentários: quantas dessas sete partes o seu site já tem?",
+     "palavras": [
+      {
+       "w": "E",
+       "t0": 80.3911,
+       "t1": 80.426,
+       "chave": false
+      },
+      {
+       "w": "me",
+       "t0": 80.508,
+       "t1": 80.589,
+       "chave": false
+      },
+      {
+       "w": "conta",
+       "t0": 80.635,
+       "t1": 80.891,
+       "chave": false
+      },
+      {
+       "w": "nos",
+       "t0": 80.926,
+       "t1": 81.019,
+       "chave": false
+      },
+      {
+       "w": "comentários:",
+       "t0": 81.065,
+       "t1": 81.796,
+       "chave": false
+      },
+      {
+       "w": "quantas",
+       "t0": 82.2816,
+       "t1": 82.656,
+       "chave": false
+      },
+      {
+       "w": "dessas",
+       "t0": 82.702,
+       "t1": 82.981,
+       "chave": false
+      },
+      {
+       "w": "sete",
+       "t0": 83.004,
+       "t1": 83.306,
+       "chave": false
+      },
+      {
+       "w": "partes",
+       "t0": 83.364,
+       "t1": 83.724,
+       "chave": false
+      },
+      {
+       "w": "o",
+       "t0": 83.793,
+       "t1": 83.817,
+       "chave": false
+      },
+      {
+       "w": "seu",
+       "t0": 83.875,
+       "t1": 84.014,
+       "chave": false
+      },
+      {
+       "w": "site",
+       "t0": 84.072,
+       "t1": 84.351,
+       "chave": false
+      },
+      {
+       "w": "já",
+       "t0": 84.42,
+       "t1": 84.513,
+       "chave": false
+      },
+      {
+       "w": "tem?",
+       "t0": 84.583,
+       "t1": 84.815,
+       "chave": false
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

@@ -27,6 +27,7 @@ S=series/explica/scripts
 test -f "series/explica/episodios/$EP.json" || { echo "series/explica/episodios/$EP.json não existe"; exit 1; }
 python3 $S/voz.py "$EP" "${REFAZ[@]}"                  # 1. uma geração inteira por capítulo, conferida (só o que falta)
 python3 $S/linha.py "$EP"                               # 2. linha do tempo por palavra + a narração montada (voz.wav)
+python3 tools/legenda-palavras/legenda.py explica "$EP"  # 2b. legenda palavra por palavra (para se ligada e com falha)
 DUR=$(python3 -c "import json;print(json.load(open('series/explica/audio/$EP/linha.json'))['duracao'])")
 ALVO=$(python3 -c "import json;a=json.load(open('series/explica/audio/$EP/linha.json')).get('duracao_alvo',[60,90]);print(a[0],a[1])")
 if [ "$FORCAR" = 0 ] && ! python3 -c "import sys;d=float('$DUR');a,b=map(float,'$ALVO'.split());sys.exit(0 if a<=d<=b else 1)"; then

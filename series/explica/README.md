@@ -267,3 +267,16 @@ series/explica/
 ```
 
 Para a prévia interativa, rode `npm run dev` e abra `http://127.0.0.1:5173/series/explica/src/index.html?ep=explica-01`.
+
+## Legenda palavra por palavra (opcional)
+
+- **Como ligar:** `"legenda": true` no roteiro. O padrão é `false`, e explica-01 segue sem.
+- **Destaque:** opcional, com `"destaque"` na frase. Um trecho de 1 ou 2 palavras; sem o campo, tudo branco.
+- **O que muda na tela:**
+  - a legenda entra por cima do capítulo e das peças fixas, na faixa y 1300–1450, e sai com o corte da logo final;
+  - a linha de apoio não aparece;
+  - os diagramas encolhem para caber até y ≈ 1250.
+- **No pipeline:** `episodio.sh` gera e confere a legenda depois do `linha.py`.
+- **Prévia:** `node series/explica/scripts/render.cjs stills 12,30 --ep <id> --legenda`.
+
+Detalhes e amostra em [`tools/legenda-palavras/`](../../tools/legenda-palavras/).

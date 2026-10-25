@@ -18,6 +18,8 @@ Tempo de um capítulo (n ≥ 1), em segundos:
               ter ficado 1,5 s inteira na tela, nem antes de `min` s.
   fecho       sem voo: 0,45 s depois da fala, um corte de 0,5 s deixa só a logo, que fica parada os últimos 3 s.
 
+Legenda palavra por palavra ("legenda": true no roteiro; tools/legenda-palavras/): sem linhas de apoio.
+
 Linhas de apoio: uma por frase (o "apoio" de cada frase; null = nenhuma; igual à anterior = continua). Cada uma entra
 em 0,34 s, fica ao menos 1,5 s inteira e sai em 0,2 s ANTES de a próxima entrar: nunca duas ao mesmo tempo.
 
@@ -102,6 +104,7 @@ def main(ep_id, estimativa=False):
     roteiro = json.load(open(os.path.join(SERIE, 'episodios', ep_id + '.json')))
     falas = None if estimativa else json.load(open(os.path.join(aud, 'voz', 'falas.json')))['capitulos']
     caps_in = roteiro['capitulos']
+    legenda = bool(roteiro.get('legenda', False))
     caps, pistas, t1_ant = [], [], None
     for n, c in enumerate(caps_in):
         ultimo = n == len(caps_in) - 1
@@ -129,6 +132,8 @@ def main(ep_id, estimativa=False):
             pos = b + 1
         apoios = []
         for f in frases:
+            if legenda:                              # com a legenda palavra por palavra ligada, não há linha de apoio
+                break
             if not f['apoio'] or (apoios and apoios[-1]['texto'] == f['apoio']):
                 continue
             ta = max(f['t0'] - 0.12, t0 + 0.45, (apoios[-1]['t'] + AP_PASSO) if apoios else -9)
@@ -180,6 +185,7 @@ def main(ep_id, estimativa=False):
            'provisorio': estimativa, 'tr': TR, 'voo': VOO, 'logo': LOGO,
            'saida': roteiro.get('saida'), 'progresso': roteiro.get('progresso', 'pagina'), 'telas': roteiro.get('telas'),
            'duracao_alvo': roteiro.get('duracao_alvo', [60, 90]),
+           'legenda': legenda,
            'apoio': {'entra': AP_ENTRA, 'sai': AP_SAI, 'leitura': AP_LEITURA}, 'capitulos': caps, 'colocacao': coloc}
     json.dump(out, open(os.path.join(aud, 'linha.json'), 'w'), ensure_ascii=False, indent=1)
     print(f'{ep_id}: {len(caps)} capítulos, {dur:.2f} s' + ('  (ESTIMATIVA pelo texto, sem voz)' if estimativa else ''))

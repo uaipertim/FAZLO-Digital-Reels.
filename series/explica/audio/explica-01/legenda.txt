@@ -1,0 +1,79 @@
+LEGENDA PALAVRA POR PALAVRA — explica-01
+explica · explica-01 · legenda desligada no roteiro
+9 cenas · 24 frases · 195 palavras · 32 páginas
+OK     grafia do roteiro na tela (nenhuma grafia fonética: Fázlo, Uátsap)
+       destaque em limão: nenhum (o roteiro não tem o campo destaque)
+       início medido na voz em 21 palavras depois de pausa (a marcação da API errava em média 38 ms, no máximo 87 ms)
+OK     sincronia com a voz montada (voz montada pela "colocacao" do linha.json), conferida pela subida da voz: 28 palavras depois de pausa, média 22 ms, máximo 62 ms (meta < 40 / < 80) · pior: cena 06 "A" -62 ms
+OK     cada página ≥ 1,5 s na tela (a mais curta: 1.80 s)
+       páginas juntadas (frase curta + a seguinte, para durar ≥ 1,5 s): 5
+OK     páginas nunca sobrepostas (a próxima entra em corte seco)
+OK     a última página de cada cena tem mais de 1 palavra
+OK     dentro de x 130–950 (usa x 131–949)
+OK     nunca abaixo de y 1536 (usa y 1312–1440; faixa 1300–1450)
+
+PÁGINAS
+    0.10–  4.53 s  cena 00       2 linha(s)  O site que faz o hóspede / reservar tem sete partes.
+    4.53–  7.81 s  cena 00       2 linha(s)  Vamos montar juntos, / parte por parte?
+    7.81–  9.61 s  cena 01       1 linha(s)  Primeira: o topo.
+    9.61– 11.92 s  cena 01       2 linha(s)  Na primeira tela, / o hóspede entende três
+   11.92– 14.73 s  cena 01       2 linha(s)  coisas: que lugar é esse, / onde fica e por que vale
+   14.73– 16.88 s  cena 01       1 linha(s)  a viagem.
+   16.88– 20.27 s  cena 02       2 linha(s) · juntada  Segunda: a consulta / de datas, logo abaixo
+   20.27– 24.82 s  cena 02       2 linha(s) · juntada  do topo. Entrada, saída / e quantas pessoas.
+   24.82– 26.85 s  cena 03       1 linha(s)  Terceira: os quartos.
+   26.85– 29.74 s  cena 03       2 linha(s)  Fotos de verdade, / quantas pessoas cabem
+   29.74– 32.51 s  cena 03       2 linha(s)  e um 'a partir de', que já / responde se cabe
+   32.51– 34.62 s  cena 03       1 linha(s)  no bolso.
+   34.62– 37.37 s  cena 04       2 linha(s)  Quarta: / o que está incluso.
+   37.37– 39.81 s  cena 04       2 linha(s) · juntada  O café da manhã. / Os horários de check-in
+   39.81– 42.54 s  cena 04       1 linha(s) · juntada  e check-out. Se aceita pet.
+   42.54– 44.84 s  cena 04       2 linha(s)  Tudo o que hoje vira / pergunta no direct fica
+   44.84– 47.35 s  cena 04       1 linha(s)  escrito no site.
+   47.35– 49.46 s  cena 05       1 linha(s)  Quinta: como chegar.
+   49.46– 52.07 s  cena 05       2 linha(s) · juntada  O mapa e as referências / que só quem é da região
+   52.07– 54.70 s  cena 05       2 linha(s) · juntada  conhece. O hóspede / chega tranquilo, sem
+   54.70– 57.12 s  cena 05       1 linha(s) · juntada  perguntar de novo.
+   57.12– 59.07 s  cena 06       1 linha(s)  Sexta: a mensagem.
+   59.07– 61.98 s  cena 06       2 linha(s)  A consulta chega no / WhatsApp da pousada já
+   61.98– 64.85 s  cena 06       2 linha(s)  preenchida: datas, / pessoas e quarto.
+   64.85– 67.44 s  cena 06       1 linha(s)  Você só responde.
+   67.44– 69.78 s  cena 07       1 linha(s)  E sétima: o celular.
+   69.78– 71.82 s  cena 07       2 linha(s) · juntada  É nele que o hóspede / procura, muitas vezes
+   71.82– 74.91 s  cena 07       2 linha(s) · juntada  na estrada. O site tem / que abrir rápido e caber
+   74.91– 77.64 s  cena 07       1 linha(s) · juntada  na tela, sem zoom.
+   77.64– 80.39 s  cena 08       2 linha(s)  Salva esse vídeo e manda / pra quem tem pousada.
+   80.39– 82.70 s  cena 08       2 linha(s)  E me conta nos / comentários: quantas
+   82.70– 85.77 s  cena 08       2 linha(s)  dessas sete partes / o seu site já tem?
+
+SINCRONIA (palavras depois de pausa: legenda − subida da voz)
+  cena 00         2.758 s    -5 ms  "tem"
+  cena 00         4.533 s    -4 ms  "Vamos"
+  cena 01         9.607 s    -3 ms  "Na"
+  cena 01        12.837 s   -43 ms  "que"
+  cena 02        17.959 s    -3 ms  "a"
+  cena 02        19.638 s    -3 ms  "logo"
+  cena 02        21.218 s    -3 ms  "Entrada,"
+  cena 03        26.846 s    -3 ms  "Fotos"
+  cena 03        30.300 s   +25 ms  "'a"
+  cena 03        31.467 s   -33 ms  "que"
+  cena 04        37.372 s   -45 ms  "O"
+  cena 04        38.621 s   -15 ms  "Os"
+  cena 04        41.032 s    -9 ms  "Se"
+  cena 04        42.538 s   -14 ms  "Tudo"
+  cena 04        42.850 s   -16 ms  "o"
+  cena 05        48.236 s   -32 ms  "como"
+  cena 05        49.459 s   -44 ms  "O"
+  cena 05        53.177 s    -4 ms  "O"
+  cena 06        57.868 s    -3 ms  "a"
+  cena 06        59.073 s   -62 ms  "A"
+  cena 06        63.134 s   -46 ms  "datas,"
+  cena 06        64.855 s    -3 ms  "Você"
+  cena 07        68.548 s    -3 ms  "o"
+  cena 07        69.779 s   -39 ms  "É"
+  cena 07        72.820 s   -55 ms  "O"
+  cena 07        73.041 s   -57 ms  "site"
+  cena 08        80.391 s    -3 ms  "E"
+  cena 08        82.282 s   -34 ms  "quantas"
+
+RESULTADO: aprovado

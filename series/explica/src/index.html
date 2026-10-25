@@ -26,9 +26,10 @@
   <span class="time" id="time">0.00s</span>
 </div>
 <audio id="audio" preload="auto"></audio>
+<script src="/tools/legenda-palavras/legenda.js"></script>
 <script src="motor.js"></script>
 <script>
-  // prévia: /series/explica/src/index.html?ep=explica-01&t=12.5  ·  render: &render (usado por scripts/render.cjs)
+  // prévia: /series/explica/src/index.html?ep=explica-01&t=12.5  ·  render: &render (usado por scripts/render.cjs)  ·  &legenda=1: liga a legenda só nesta prévia
   const canvas = document.getElementById('c');
   const ctx = canvas.getContext('2d');
   const params = new URLSearchParams(location.search);
@@ -41,7 +42,11 @@
       ...pesos.map(([w, f]) => document.fonts.load(`${w} 100px '${f}'`)),
     ]);
     await document.fonts.ready;
-    const extras = {};
+    const extras = { forcaLegenda: params.get('legenda') === '1' };
+    if (linha.legenda || extras.forcaLegenda) {         // a legenda palavra por palavra (tools/legenda-palavras/legenda.py)
+      const r = await fetch(`/series/explica/audio/${EPID}/legenda.json`);
+      if (r.ok) extras.legenda = await r.json();
+    }
     if (linha.telas) {                                  // telas reais do site (collab): PNGs + caixas + a mensagem
       extras.telas = await fetch(`/${linha.telas}/telas.json`).then((r) => r.json());
       extras.imgs = {};
