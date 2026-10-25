@@ -1,0 +1,517 @@
+{
+ "serie": "pelos-olhos-do-hospede",
+ "episodio": "cafe-incluso",
+ "ligada": false,
+ "tempo": "ancora",
+ "fim": null,
+ "duracao": 28.5667,
+ "cenas": [
+  {
+   "id": "titulo",
+   "ancora": "voz:titulo",
+   "frases": [
+    {
+     "texto": "O café está incluso?",
+     "palavras": [
+      {
+       "w": "O",
+       "t0": -0.0646,
+       "t1": 0.0394,
+       "chave": false
+      },
+      {
+       "w": "café",
+       "t0": 0.0864,
+       "t1": 0.3184,
+       "chave": false
+      },
+      {
+       "w": "está",
+       "t0": 0.3534,
+       "t1": 0.5154,
+       "chave": false
+      },
+      {
+       "w": "incluso?",
+       "t0": 0.5624,
+       "t1": 0.9924,
+       "chave": false
+      }
+     ]
+    },
+    {
+     "texto": "Ele perguntou no direct.",
+     "palavras": [
+      {
+       "w": "Ele",
+       "t0": 1.2955,
+       "t1": 1.4629,
+       "chave": false
+      },
+      {
+       "w": "perguntou",
+       "t0": 1.5089,
+       "t1": 1.8689,
+       "chave": false
+      },
+      {
+       "w": "no",
+       "t0": 1.9039,
+       "t1": 1.9729,
+       "chave": false
+      },
+      {
+       "w": "direct.",
+       "t0": 2.0199,
+       "t1": 2.4259,
+       "chave": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "card1",
+   "ancora": "voz:card1",
+   "frases": [
+    {
+     "texto": "No perfil, a foto da mesa de café. Linda.",
+     "palavras": [
+      {
+       "w": "No",
+       "t0": -0.042,
+       "t1": 0.074,
+       "chave": false
+      },
+      {
+       "w": "perfil,",
+       "t0": 0.121,
+       "t1": 0.399,
+       "chave": false
+      },
+      {
+       "w": "a",
+       "t0": 0.446,
+       "t1": 0.469,
+       "chave": false
+      },
+      {
+       "w": "foto",
+       "t0": 0.527,
+       "t1": 0.759,
+       "chave": false
+      },
+      {
+       "w": "da",
+       "t0": 0.806,
+       "t1": 0.864,
+       "chave": false
+      },
+      {
+       "w": "mesa",
+       "t0": 0.91,
+       "t1": 1.107,
+       "chave": false
+      },
+      {
+       "w": "de",
+       "t0": 1.142,
+       "t1": 1.189,
+       "chave": false
+      },
+      {
+       "w": "café.",
+       "t0": 1.235,
+       "t1": 1.56,
+       "chave": false
+      },
+      {
+       "w": "Linda.",
+       "t0": 1.9036,
+       "t1": 2.303,
+       "chave": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "card2",
+   "ancora": "voz:card2",
+   "frases": [
+    {
+     "texto": "Mas está incluso na diária?",
+     "palavras": [
+      {
+       "w": "Mas",
+       "t0": -0.0534,
+       "t1": 0.1206,
+       "chave": false
+      },
+      {
+       "w": "está",
+       "t0": 0.1676,
+       "t1": 0.3186,
+       "chave": false
+      },
+      {
+       "w": "incluso",
+       "t0": 0.3646,
+       "t1": 0.7126,
+       "chave": false
+      },
+      {
+       "w": "na",
+       "t0": 0.7596,
+       "t1": 0.8406,
+       "chave": false
+      },
+      {
+       "w": "diária?",
+       "t0": 0.8986,
+       "t1": 1.5256,
+       "chave": false
+      }
+     ]
+    },
+    {
+     "texto": "Até que horas é servido?",
+     "palavras": [
+      {
+       "w": "Até",
+       "t0": 1.8968,
+       "t1": 2.0985,
+       "chave": false
+      },
+      {
+       "w": "que",
+       "t0": 2.1565,
+       "t1": 2.2615,
+       "chave": false
+      },
+      {
+       "w": "horas",
+       "t0": 2.2965,
+       "t1": 2.5165,
+       "chave": false
+      },
+      {
+       "w": "é",
+       "t0": 2.5865,
+       "t1": 2.6095,
+       "chave": false
+      },
+      {
+       "w": "servido?",
+       "t0": 2.6565,
+       "t1": 3.2835,
+       "chave": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "card3",
+   "ancora": "voz:card3",
+   "frases": [
+    {
+     "texto": "E a resposta só vem quando alguém vê a mensagem.",
+     "palavras": [
+      {
+       "w": "E",
+       "t0": -0.061,
+       "t1": 0.043,
+       "chave": false
+      },
+      {
+       "w": "a",
+       "t0": 0.125,
+       "t1": 0.148,
+       "chave": false
+      },
+      {
+       "w": "resposta",
+       "t0": 0.183,
+       "t1": 0.601,
+       "chave": false
+      },
+      {
+       "w": "só",
+       "t0": 0.659,
+       "t1": 0.775,
+       "chave": false
+      },
+      {
+       "w": "vem",
+       "t0": 0.856,
+       "t1": 1.17,
+       "chave": false
+      },
+      {
+       "w": "quando",
+       "t0": 1.239,
+       "t1": 1.495,
+       "chave": false
+      },
+      {
+       "w": "alguém",
+       "t0": 1.53,
+       "t1": 1.808,
+       "chave": false
+      },
+      {
+       "w": "vê",
+       "t0": 1.866,
+       "t1": 1.959,
+       "chave": false
+      },
+      {
+       "w": "a",
+       "t0": 1.982,
+       "t1": 2.006,
+       "chave": false
+      },
+      {
+       "w": "mensagem.",
+       "t0": 2.064,
+       "t1": 2.691,
+       "chave": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "carimbo",
+   "ancora": "voz:carimbo",
+   "frases": [
+    {
+     "texto": "Enquanto isso, ele continua esperando.",
+     "palavras": [
+      {
+       "w": "Enquanto",
+       "t0": -0.065,
+       "t1": 0.353,
+       "chave": false
+      },
+      {
+       "w": "isso,",
+       "t0": 0.411,
+       "t1": 0.539,
+       "chave": false
+      },
+      {
+       "w": "ele",
+       "t0": 0.62,
+       "t1": 0.829,
+       "chave": false
+      },
+      {
+       "w": "continua",
+       "t0": 0.864,
+       "t1": 1.247,
+       "chave": false
+      },
+      {
+       "w": "esperando.",
+       "t0": 1.27,
+       "t1": 1.839,
+       "chave": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "virada",
+   "ancora": "voz:virada",
+   "frases": [
+    {
+     "texto": "No site, o que a diária inclui já fica escrito, com horário e tudo, antes da pergunta.",
+     "palavras": [
+      {
+       "w": "No",
+       "t0": -0.035,
+       "t1": 0.139,
+       "chave": false
+      },
+      {
+       "w": "site,",
+       "t0": 0.209,
+       "t1": 0.604,
+       "chave": false
+      },
+      {
+       "w": "o",
+       "t0": 0.65,
+       "t1": 0.673,
+       "chave": false
+      },
+      {
+       "w": "que",
+       "t0": 0.72,
+       "t1": 0.789,
+       "chave": false
+      },
+      {
+       "w": "a",
+       "t0": 0.836,
+       "t1": 0.859,
+       "chave": false
+      },
+      {
+       "w": "diária",
+       "t0": 0.917,
+       "t1": 1.335,
+       "chave": false
+      },
+      {
+       "w": "inclui",
+       "t0": 1.405,
+       "t1": 1.985,
+       "chave": false
+      },
+      {
+       "w": "já",
+       "t0": 2.3034,
+       "t1": 2.461,
+       "chave": false
+      },
+      {
+       "w": "fica",
+       "t0": 2.519,
+       "t1": 2.728,
+       "chave": false
+      },
+      {
+       "w": "escrito,",
+       "t0": 2.751,
+       "t1": 3.413,
+       "chave": false
+      },
+      {
+       "w": "com",
+       "t0": 3.7717,
+       "t1": 3.924,
+       "chave": false
+      },
+      {
+       "w": "horário",
+       "t0": 3.982,
+       "t1": 4.505,
+       "chave": false
+      },
+      {
+       "w": "e",
+       "t0": 4.574,
+       "t1": 4.644,
+       "chave": false
+      },
+      {
+       "w": "tudo,",
+       "t0": 4.725,
+       "t1": 5.155,
+       "chave": false
+      },
+      {
+       "w": "antes",
+       "t0": 5.5217,
+       "t1": 5.735,
+       "chave": false
+      },
+      {
+       "w": "da",
+       "t0": 5.77,
+       "t1": 5.84,
+       "chave": false
+      },
+      {
+       "w": "pergunta.",
+       "t0": 5.886,
+       "t1": 6.397,
+       "chave": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "fecho",
+   "ancora": "voz:fecho",
+   "frases": [
+    {
+     "texto": "Manda pra pousada que tem o café mais bonito da região!",
+     "palavras": [
+      {
+       "w": "Manda",
+       "t0": -0.03,
+       "t1": 0.237,
+       "chave": false
+      },
+      {
+       "w": "pra",
+       "t0": 0.272,
+       "t1": 0.388,
+       "chave": false
+      },
+      {
+       "w": "pousada",
+       "t0": 0.434,
+       "t1": 0.852,
+       "chave": false
+      },
+      {
+       "w": "que",
+       "t0": 0.899,
+       "t1": 0.968,
+       "chave": false
+      },
+      {
+       "w": "tem",
+       "t0": 1.027,
+       "t1": 1.131,
+       "chave": false
+      },
+      {
+       "w": "o",
+       "t0": 1.177,
+       "t1": 1.201,
+       "chave": false
+      },
+      {
+       "w": "café",
+       "t0": 1.235,
+       "t1": 1.491,
+       "chave": false
+      },
+      {
+       "w": "mais",
+       "t0": 1.549,
+       "t1": 1.688,
+       "chave": false
+      },
+      {
+       "w": "bonito",
+       "t0": 1.758,
+       "t1": 2.129,
+       "chave": false
+      },
+      {
+       "w": "da",
+       "t0": 2.188,
+       "t1": 2.257,
+       "chave": false
+      },
+      {
+       "w": "região!",
+       "t0": 2.304,
+       "t1": 2.965,
+       "chave": false
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,32 @@
+LEGENDA PALAVRA POR PALAVRA — aceita-pet
+pelos-olhos-do-hospede · aceita-pet · legenda desligada no roteiro
+7 cenas · 10 frases · 60 palavras · 9 páginas
+OK     grafia do roteiro na tela (nenhuma grafia fonética: Fázlo, Uátsap)
+       destaque em limão: nenhum (o roteiro não tem o campo destaque)
+       início medido na voz em 4 palavras depois de pausa (a marcação da API errava em média 62 ms, no máximo 89 ms)
+OK     sincronia com a voz montada (voz das cenas posta nos cues "voz"), conferida pela subida da voz: 4 palavras depois de pausa, média 4 ms, máximo 5 ms (meta < 40 / < 80) · pior: cena card2 "Tem" -5 ms
+OK     cada página ≥ 1,5 s na tela (a mais curta: 1.56 s)
+       páginas juntadas (frase curta + a seguinte, para durar ≥ 1,5 s): 3
+OK     páginas nunca sobrepostas (a próxima entra em corte seco)
+OK     a última página de cada cena tem mais de 1 palavra
+OK     dentro de x 130–950 (usa x 131–950)
+OK     nunca abaixo de y 1536 (usa y 1312–1440; faixa 1300–1450)
+
+PÁGINAS
+   -0.05–  2.94 s  cena titulo   2 linha(s) · juntada  Aceita pet? / Ele não quis arriscar.
+    2.94–  6.90 s  cena card1    2 linha(s)  Na viagem vão o casal, / as malas… e o cachorro.
+    6.90– 10.11 s  cena card2    2 linha(s) · juntada  Aceita pet? Tem taxa? / Qual porte?
+   10.11– 12.82 s  cena card3    2 linha(s)  No perfil, nenhuma / palavra sobre isso.
+   12.82– 16.15 s  cena carimbo  2 linha(s)  Na dúvida, ele foi / para outra pousada.
+   16.15– 19.38 s  cena virada   2 linha(s)  No site, as regras de pet / ficam claras, e quem viaja
+   19.38– 21.59 s  cena virada   1 linha(s)  com ele já chega decidido.
+   21.59– 23.15 s  cena fecho    2 linha(s)  Manda pra pousada / que aceita pet e
+   23.15– 25.00 s  cena fecho    1 linha(s)  ninguém sabe.
+
+SINCRONIA (palavras depois de pausa: legenda − subida da voz)
+  cena titulo     1.011 s    -3 ms  "Ele"
+  cena card1      5.396 s    -3 ms  "e"
+  cena card2      7.960 s    -5 ms  "Tem"
+  cena card2      8.773 s    -3 ms  "Qual"
+
+RESULTADO: aprovado

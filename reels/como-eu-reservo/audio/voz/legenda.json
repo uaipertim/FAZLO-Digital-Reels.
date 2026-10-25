@@ -1,0 +1,434 @@
+{
+ "serie": "pelos-olhos-do-hospede",
+ "episodio": "como-eu-reservo",
+ "ligada": false,
+ "tempo": "ancora",
+ "fim": null,
+ "duracao": 34.284,
+ "cenas": [
+  {
+   "id": "titulo",
+   "ancora": "voz:titulo",
+   "frases": [
+    {
+     "texto": "Como eu reservo?",
+     "palavras": [
+      {
+       "w": "Como",
+       "t0": -0.0761,
+       "t1": 0.1789,
+       "chave": false
+      },
+      {
+       "w": "eu",
+       "t0": 0.2029,
+       "t1": 0.2609,
+       "chave": false
+      },
+      {
+       "w": "reservo?",
+       "t0": 0.3069,
+       "t1": 0.9339,
+       "chave": false
+      }
+     ]
+    },
+    {
+     "texto": "Ninguém explicou.",
+     "palavras": [
+      {
+       "w": "Ninguém",
+       "t0": 1.8443,
+       "t1": 2.0803,
+       "chave": false
+      },
+      {
+       "w": "explicou.",
+       "t0": 2.1153,
+       "t1": 2.6143,
+       "chave": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "card1",
+   "ancora": "voz:card1",
+   "frases": [
+    {
+     "texto": "No perfil, fotos lindas. E nenhum caminho pra reservar.",
+     "palavras": [
+      {
+       "w": "No",
+       "t0": -0.083,
+       "t1": 0.08,
+       "chave": false
+      },
+      {
+       "w": "perfil,",
+       "t0": 0.126,
+       "t1": 0.463,
+       "chave": false
+      },
+      {
+       "w": "fotos",
+       "t0": 0.521,
+       "t1": 0.834,
+       "chave": false
+      },
+      {
+       "w": "lindas.",
+       "t0": 0.892,
+       "t1": 1.31,
+       "chave": false
+      },
+      {
+       "w": "E",
+       "t0": 1.8163,
+       "t1": 1.856,
+       "chave": false
+      },
+      {
+       "w": "nenhum",
+       "t0": 1.972,
+       "t1": 2.239,
+       "chave": false
+      },
+      {
+       "w": "caminho",
+       "t0": 2.297,
+       "t1": 2.645,
+       "chave": false
+      },
+      {
+       "w": "pra",
+       "t0": 2.68,
+       "t1": 2.785,
+       "chave": false
+      },
+      {
+       "w": "reservar.",
+       "t0": 2.808,
+       "t1": 3.319,
+       "chave": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "card2",
+   "ancora": "voz:card2",
+   "frases": [
+    {
+     "texto": "Manda direct, chama no WhatsApp… ou liga?",
+     "palavras": [
+      {
+       "w": "Manda",
+       "t0": -0.078,
+       "t1": 0.177,
+       "chave": false
+      },
+      {
+       "w": "direct,",
+       "t0": 0.224,
+       "t1": 0.642,
+       "chave": false
+      },
+      {
+       "w": "chama",
+       "t0": 0.688,
+       "t1": 0.897,
+       "chave": false
+      },
+      {
+       "w": "no",
+       "t0": 0.932,
+       "t1": 0.99,
+       "chave": false
+      },
+      {
+       "w": "WhatsApp…",
+       "t0": 1.013,
+       "t1": 1.571,
+       "chave": false
+      },
+      {
+       "w": "ou",
+       "t0": 1.687,
+       "t1": 1.745,
+       "chave": false
+      },
+      {
+       "w": "liga?",
+       "t0": 1.791,
+       "t1": 2.128,
+       "chave": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "card3",
+   "ancora": "voz:card3",
+   "frases": [
+    {
+     "texto": "Ele não sabia por onde começar.",
+     "palavras": [
+      {
+       "w": "Ele",
+       "t0": -0.091,
+       "t1": 0.13,
+       "chave": false
+      },
+      {
+       "w": "não",
+       "t0": 0.188,
+       "t1": 0.269,
+       "chave": false
+      },
+      {
+       "w": "sabia",
+       "t0": 0.315,
+       "t1": 0.571,
+       "chave": false
+      },
+      {
+       "w": "por",
+       "t0": 0.617,
+       "t1": 0.733,
+       "chave": false
+      },
+      {
+       "w": "onde",
+       "t0": 0.78,
+       "t1": 0.896,
+       "chave": false
+      },
+      {
+       "w": "começar.",
+       "t0": 0.931,
+       "t1": 1.407,
+       "chave": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "carimbo",
+   "ancora": "voz:carimbo",
+   "frases": [
+    {
+     "texto": "E quem não sabe por onde começar… desiste.",
+     "palavras": [
+      {
+       "w": "E",
+       "t0": -0.093,
+       "t1": 0.046,
+       "chave": false
+      },
+      {
+       "w": "quem",
+       "t0": 0.128,
+       "t1": 0.29,
+       "chave": false
+      },
+      {
+       "w": "não",
+       "t0": 0.325,
+       "t1": 0.453,
+       "chave": false
+      },
+      {
+       "w": "sabe",
+       "t0": 0.499,
+       "t1": 0.743,
+       "chave": false
+      },
+      {
+       "w": "por",
+       "t0": 0.778,
+       "t1": 0.905,
+       "chave": false
+      },
+      {
+       "w": "onde",
+       "t0": 0.952,
+       "t1": 1.091,
+       "chave": false
+      },
+      {
+       "w": "começar…",
+       "t0": 1.149,
+       "t1": 1.823,
+       "chave": false
+      },
+      {
+       "w": "desiste.",
+       "t0": 2.2115,
+       "t1": 2.868,
+       "chave": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "virada",
+   "ancora": "voz:virada",
+   "frases": [
+    {
+     "texto": "No site, um caminho só: escolhe as datas, consulta, e a mensagem chega pronta.",
+     "palavras": [
+      {
+       "w": "No",
+       "t0": -0.079,
+       "t1": 0.107,
+       "chave": false
+      },
+      {
+       "w": "site,",
+       "t0": 0.165,
+       "t1": 0.409,
+       "chave": false
+      },
+      {
+       "w": "um",
+       "t0": 0.455,
+       "t1": 0.501,
+       "chave": false
+      },
+      {
+       "w": "caminho",
+       "t0": 0.56,
+       "t1": 0.919,
+       "chave": false
+      },
+      {
+       "w": "só:",
+       "t0": 0.966,
+       "t1": 1.233,
+       "chave": false
+      },
+      {
+       "w": "escolhe",
+       "t0": 1.7289,
+       "t1": 2.208,
+       "chave": false
+      },
+      {
+       "w": "as",
+       "t0": 2.255,
+       "t1": 2.371,
+       "chave": false
+      },
+      {
+       "w": "datas,",
+       "t0": 2.44,
+       "t1": 3.032,
+       "chave": false
+      },
+      {
+       "w": "consulta,",
+       "t0": 3.354,
+       "t1": 4.182,
+       "chave": false
+      },
+      {
+       "w": "e",
+       "t0": 4.5624,
+       "t1": 4.623,
+       "chave": false
+      },
+      {
+       "w": "a",
+       "t0": 4.681,
+       "t1": 4.716,
+       "chave": false
+      },
+      {
+       "w": "mensagem",
+       "t0": 4.774,
+       "t1": 5.285,
+       "chave": false
+      },
+      {
+       "w": "chega",
+       "t0": 5.343,
+       "t1": 5.633,
+       "chave": false
+      },
+      {
+       "w": "pronta.",
+       "t0": 5.68,
+       "t1": 6.167,
+       "chave": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "fecho",
+   "ancora": "voz:fecho",
+   "frases": [
+    {
+     "texto": "Manda pra pousada que ainda reserva no improviso.",
+     "palavras": [
+      {
+       "w": "Manda",
+       "t0": -0.039,
+       "t1": 0.182,
+       "chave": false
+      },
+      {
+       "w": "pra",
+       "t0": 0.216,
+       "t1": 0.321,
+       "chave": false
+      },
+      {
+       "w": "pousada",
+       "t0": 0.367,
+       "t1": 0.75,
+       "chave": false
+      },
+      {
+       "w": "que",
+       "t0": 0.797,
+       "t1": 0.867,
+       "chave": false
+      },
+      {
+       "w": "ainda",
+       "t0": 0.89,
+       "t1": 1.076,
+       "chave": false
+      },
+      {
+       "w": "reserva",
+       "t0": 1.122,
+       "t1": 1.494,
+       "chave": false
+      },
+      {
+       "w": "no",
+       "t0": 1.528,
+       "t1": 1.575,
+       "chave": false
+      },
+      {
+       "w": "improviso.",
+       "t0": 1.598,
+       "t1": 2.202,
+       "chave": false
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

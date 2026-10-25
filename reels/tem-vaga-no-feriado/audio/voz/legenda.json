@@ -1,0 +1,458 @@
+{
+ "serie": "pelos-olhos-do-hospede",
+ "episodio": "tem-vaga-no-feriado",
+ "ligada": false,
+ "tempo": "ancora",
+ "fim": null,
+ "duracao": 26.6333,
+ "cenas": [
+  {
+   "id": "titulo",
+   "ancora": "voz:titulo",
+   "frases": [
+    {
+     "texto": "Tem vaga no feriado?",
+     "palavras": [
+      {
+       "w": "Tem",
+       "t0": -0.1035,
+       "t1": 0.1055,
+       "chave": false
+      },
+      {
+       "w": "vaga",
+       "t0": 0.1515,
+       "t1": 0.3495,
+       "chave": false
+      },
+      {
+       "w": "no",
+       "t0": 0.3845,
+       "t1": 0.4425,
+       "chave": false
+      },
+      {
+       "w": "feriado?",
+       "t0": 0.4885,
+       "t1": 0.9415,
+       "chave": false
+      }
+     ]
+    },
+    {
+     "texto": "Ele perguntou em três lugares.",
+     "palavras": [
+      {
+       "w": "Ele",
+       "t0": 1.2592,
+       "t1": 1.4121,
+       "chave": false
+      },
+      {
+       "w": "perguntou",
+       "t0": 1.4581,
+       "t1": 1.7831,
+       "chave": false
+      },
+      {
+       "w": "em",
+       "t0": 1.8071,
+       "t1": 1.8531,
+       "chave": false
+      },
+      {
+       "w": "três",
+       "t0": 1.9001,
+       "t1": 2.0851,
+       "chave": false
+      },
+      {
+       "w": "lugares.",
+       "t0": 2.1431,
+       "t1": 2.6431,
+       "chave": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "card1",
+   "ancora": "voz:card1",
+   "frases": [
+    {
+     "texto": "No direct: tem vaga de sexta a domingo?",
+     "palavras": [
+      {
+       "w": "No",
+       "t0": -0.043,
+       "t1": 0.085,
+       "chave": false
+      },
+      {
+       "w": "direct:",
+       "t0": 0.131,
+       "t1": 0.468,
+       "chave": false
+      },
+      {
+       "w": "tem",
+       "t0": 0.572,
+       "t1": 0.712,
+       "chave": false
+      },
+      {
+       "w": "vaga",
+       "t0": 0.77,
+       "t1": 1.014,
+       "chave": false
+      },
+      {
+       "w": "de",
+       "t0": 1.072,
+       "t1": 1.153,
+       "chave": false
+      },
+      {
+       "w": "sexta",
+       "t0": 1.246,
+       "t1": 1.582,
+       "chave": false
+      },
+      {
+       "w": "a",
+       "t0": 1.606,
+       "t1": 1.629,
+       "chave": false
+      },
+      {
+       "w": "domingo?",
+       "t0": 1.675,
+       "t1": 2.163,
+       "chave": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "card2",
+   "ancora": "voz:card2",
+   "frases": [
+    {
+     "texto": "No WhatsApp, a mesma pergunta.",
+     "palavras": [
+      {
+       "w": "No",
+       "t0": -0.044,
+       "t1": 0.072,
+       "chave": false
+      },
+      {
+       "w": "WhatsApp,",
+       "t0": 0.107,
+       "t1": 0.571,
+       "chave": false
+      },
+      {
+       "w": "a",
+       "t0": 0.629,
+       "t1": 0.653,
+       "chave": false
+      },
+      {
+       "w": "mesma",
+       "t0": 0.687,
+       "t1": 0.954,
+       "chave": false
+      },
+      {
+       "w": "pergunta.",
+       "t0": 1.001,
+       "t1": 1.547,
+       "chave": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "card3",
+   "ancora": "voz:card3",
+   "frases": [
+    {
+     "texto": "E nos comentários do post.",
+     "palavras": [
+      {
+       "w": "E",
+       "t0": -0.088,
+       "t1": 0.016,
+       "chave": false
+      },
+      {
+       "w": "nos",
+       "t0": 0.086,
+       "t1": 0.191,
+       "chave": false
+      },
+      {
+       "w": "comentários",
+       "t0": 0.249,
+       "t1": 0.736,
+       "chave": false
+      },
+      {
+       "w": "do",
+       "t0": 0.783,
+       "t1": 0.852,
+       "chave": false
+      },
+      {
+       "w": "post.",
+       "t0": 0.91,
+       "t1": 1.398,
+       "chave": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "carimbo",
+   "ancora": "voz:carimbo",
+   "frases": [
+    {
+     "texto": "Quem respondeu primeiro… levou a reserva.",
+     "palavras": [
+      {
+       "w": "Quem",
+       "t0": -0.063,
+       "t1": 0.204,
+       "chave": false
+      },
+      {
+       "w": "respondeu",
+       "t0": 0.25,
+       "t1": 0.785,
+       "chave": false
+      },
+      {
+       "w": "primeiro…",
+       "t0": 0.819,
+       "t1": 1.4,
+       "chave": false
+      },
+      {
+       "w": "levou",
+       "t0": 1.8831,
+       "t1": 2.189,
+       "chave": false
+      },
+      {
+       "w": "a",
+       "t0": 2.213,
+       "t1": 2.247,
+       "chave": false
+      },
+      {
+       "w": "reserva.",
+       "t0": 2.282,
+       "t1": 2.909,
+       "chave": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "virada",
+   "ancora": "voz:virada",
+   "frases": [
+    {
+     "texto": "Com a consulta de datas no site, ele escolhe entrada e saída, e a pergunta chega pronta no seu WhatsApp.",
+     "palavras": [
+      {
+       "w": "Com",
+       "t0": -0.106,
+       "t1": 0.103,
+       "chave": false
+      },
+      {
+       "w": "a",
+       "t0": 0.149,
+       "t1": 0.173,
+       "chave": false
+      },
+      {
+       "w": "consulta",
+       "t0": 0.207,
+       "t1": 0.649,
+       "chave": false
+      },
+      {
+       "w": "de",
+       "t0": 0.695,
+       "t1": 0.776,
+       "chave": false
+      },
+      {
+       "w": "datas",
+       "t0": 0.834,
+       "t1": 1.241,
+       "chave": false
+      },
+      {
+       "w": "no",
+       "t0": 1.299,
+       "t1": 1.38,
+       "chave": false
+      },
+      {
+       "w": "site,",
+       "t0": 1.461,
+       "t1": 1.903,
+       "chave": false
+      },
+      {
+       "w": "ele",
+       "t0": 1.949,
+       "t1": 2.065,
+       "chave": false
+      },
+      {
+       "w": "escolhe",
+       "t0": 2.088,
+       "t1": 2.471,
+       "chave": false
+      },
+      {
+       "w": "entrada",
+       "t0": 2.529,
+       "t1": 3.005,
+       "chave": false
+      },
+      {
+       "w": "e",
+       "t0": 3.029,
+       "t1": 3.052,
+       "chave": false
+      },
+      {
+       "w": "saída,",
+       "t0": 3.098,
+       "t1": 3.69,
+       "chave": false
+      },
+      {
+       "w": "e",
+       "t0": 3.737,
+       "t1": 3.818,
+       "chave": false
+      },
+      {
+       "w": "a",
+       "t0": 3.876,
+       "t1": 3.899,
+       "chave": false
+      },
+      {
+       "w": "pergunta",
+       "t0": 3.957,
+       "t1": 4.341,
+       "chave": false
+      },
+      {
+       "w": "chega",
+       "t0": 4.387,
+       "t1": 4.631,
+       "chave": false
+      },
+      {
+       "w": "pronta",
+       "t0": 4.677,
+       "t1": 4.991,
+       "chave": false
+      },
+      {
+       "w": "no",
+       "t0": 5.037,
+       "t1": 5.095,
+       "chave": false
+      },
+      {
+       "w": "seu",
+       "t0": 5.142,
+       "t1": 5.281,
+       "chave": false
+      },
+      {
+       "w": "WhatsApp.",
+       "t0": 5.304,
+       "t1": 6.012,
+       "chave": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "fecho",
+   "ancora": "voz:fecho",
+   "frases": [
+    {
+     "texto": "Manda pra pousada que perde reserva no feriado.",
+     "palavras": [
+      {
+       "w": "Manda",
+       "t0": -0.028,
+       "t1": 0.239,
+       "chave": false
+      },
+      {
+       "w": "pra",
+       "t0": 0.274,
+       "t1": 0.378,
+       "chave": false
+      },
+      {
+       "w": "pousada",
+       "t0": 0.425,
+       "t1": 0.796,
+       "chave": false
+      },
+      {
+       "w": "que",
+       "t0": 0.843,
+       "t1": 0.912,
+       "chave": false
+      },
+      {
+       "w": "perde",
+       "t0": 0.959,
+       "t1": 1.191,
+       "chave": false
+      },
+      {
+       "w": "reserva",
+       "t0": 1.249,
+       "t1": 1.597,
+       "chave": false
+      },
+      {
+       "w": "no",
+       "t0": 1.632,
+       "t1": 1.69,
+       "chave": false
+      },
+      {
+       "w": "feriado.",
+       "t0": 1.737,
+       "t1": 2.294,
+       "chave": false
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

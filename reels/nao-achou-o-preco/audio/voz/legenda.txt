@@ -1,0 +1,33 @@
+LEGENDA PALAVRA POR PALAVRA — nao-achou-o-preco
+pelos-olhos-do-hospede · nao-achou-o-preco · legenda desligada no roteiro
+7 cenas · 8 frases · 61 palavras · 9 páginas
+OK     grafia do roteiro na tela (nenhuma grafia fonética: Fázlo, Uátsap)
+       destaque em limão: nenhum (o roteiro não tem o campo destaque)
+       início medido na voz em 4 palavras depois de pausa (a marcação da API errava em média 23 ms, no máximo 38 ms)
+OK     sincronia com a voz montada (voz das cenas posta nos cues "voz"), conferida pela subida da voz: 5 palavras depois de pausa, média 19 ms, máximo 76 ms (meta < 40 / < 80) · pior: cena virada "'a" +76 ms
+OK     cada página ≥ 1,5 s na tela (a mais curta: 1.71 s)
+       páginas juntadas (frase curta + a seguinte, para durar ≥ 1,5 s): 1
+OK     páginas nunca sobrepostas (a próxima entra em corte seco)
+OK     a última página de cada cena tem mais de 1 palavra
+OK     dentro de x 130–950 (usa x 169–912)
+OK     nunca abaixo de y 1536 (usa y 1312–1440; faixa 1300–1450)
+
+PÁGINAS
+   -0.06–  3.41 s  cena titulo   2 linha(s)  Ele achou sua pousada. / Mas não achou o preço.
+    3.41–  6.84 s  cena card1    2 linha(s)  Viu as fotos da piscina, / do café, da vista.
+    6.84–  9.85 s  cena card2    2 linha(s) · juntada  E a diária? / Nenhum valor à vista.
+    9.85– 12.66 s  cena card3    2 linha(s)  Aí ele pergunta / no direct… e espera.
+   12.66– 15.75 s  cena carimbo  2 linha(s)  Enquanto isso, / foi ver outra.
+   15.75– 19.52 s  cena virada   2 linha(s)  Um valor de referência, / um simples 'a partir de',
+   19.52– 21.77 s  cena virada   2 linha(s)  responde antes / da pergunta.
+   21.77– 23.48 s  cena fecho    2 linha(s)  Manda pra aquela / pousada que só passa
+   23.48– 25.78 s  cena fecho    1 linha(s)  o preço pelo direct.
+
+SINCRONIA (palavras depois de pausa: legenda − subida da voz)
+  cena titulo     1.411 s    -6 ms  "Mas"
+  cena card2      8.010 s    -4 ms  "Nenhum"
+  cena card3     11.286 s    -3 ms  "e"
+  cena virada    18.166 s   +76 ms  "'a"
+  cena virada    19.516 s    -5 ms  "responde"
+
+RESULTADO: aprovado

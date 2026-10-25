@@ -1,0 +1,33 @@
+LEGENDA PALAVRA POR PALAVRA — cabe-a-familia
+pelos-olhos-do-hospede · cabe-a-familia · legenda desligada no roteiro
+7 cenas · 10 frases · 58 palavras · 10 páginas
+OK     grafia do roteiro na tela (nenhuma grafia fonética: Fázlo, Uátsap)
+       destaque em limão: nenhum (o roteiro não tem o campo destaque)
+       início medido na voz em 4 palavras depois de pausa (a marcação da API errava em média 37 ms, no máximo 68 ms)
+OK     sincronia com a voz montada (voz das cenas posta nos cues "voz"), conferida pela subida da voz: 4 palavras depois de pausa, média 30 ms, máximo 50 ms (meta < 40 / < 80) · pior: cena titulo "Ele" -50 ms
+OK     cada página ≥ 1,5 s na tela (a mais curta: 1.96 s)
+       páginas juntadas (frase curta + a seguinte, para durar ≥ 1,5 s): 1
+OK     páginas nunca sobrepostas (a próxima entra em corte seco)
+OK     a última página de cada cena tem mais de 1 palavra
+OK     dentro de x 130–950 (usa x 137–943)
+OK     nunca abaixo de y 1536 (usa y 1312–1440; faixa 1300–1450)
+
+PÁGINAS
+   -0.08–  1.88 s  cena titulo   1 linha(s)  Cabe a família toda?
+    1.88–  3.94 s  cena titulo   1 linha(s)  Ele não teve certeza.
+    3.94– 10.21 s  cena card1    2 linha(s)  Na viagem: dois adultos, / três crianças… e a avó.
+   10.21– 12.62 s  cena card2    2 linha(s) · juntada  Quantas camas? / Tem berço?
+   12.62– 15.59 s  cena card2    1 linha(s)  Cabe todo mundo?
+   15.59– 20.05 s  cena card3    2 linha(s)  E no perfil, só a foto / da cama de casal.
+   20.05– 23.42 s  cena carimbo  2 linha(s)  Na dúvida, ele / não arriscou.
+   23.42– 25.77 s  cena virada   2 linha(s)  No site, cada quarto / mostra quantas pessoas
+   25.77– 29.58 s  cena virada   2 linha(s)  cabem, antes / da pergunta.
+   29.58– 32.86 s  cena fecho    2 linha(s)  Manda pra pousada / que é perfeita pra família!
+
+SINCRONIA (palavras depois de pausa: legenda − subida da voz)
+  cena titulo     1.882 s   -50 ms  "Ele"
+  cena card1      7.363 s   -38 ms  "e"
+  cena card2     11.549 s    -3 ms  "Tem"
+  cena card2     12.623 s   -28 ms  "Cabe"
+
+RESULTADO: aprovado

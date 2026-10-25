@@ -1,0 +1,31 @@
+LEGENDA PALAVRA POR PALAVRA — tem-vaga-no-feriado
+pelos-olhos-do-hospede · tem-vaga-no-feriado · legenda desligada no roteiro
+7 cenas · 8 frases · 61 palavras · 10 páginas
+OK     grafia do roteiro na tela (nenhuma grafia fonética: Fázlo, Uátsap)
+       destaque em limão: nenhum (o roteiro não tem o campo destaque)
+       início medido na voz em 2 palavras depois de pausa (a marcação da API errava em média 3 ms, no máximo 4 ms)
+OK     sincronia com a voz montada (voz das cenas posta nos cues "voz"), conferida pela subida da voz: 2 palavras depois de pausa, média 6 ms, máximo 7 ms (meta < 40 / < 80) · pior: cena titulo "Ele" -7 ms
+OK     cada página ≥ 1,5 s na tela (a mais curta: 1.84 s)
+       páginas juntadas (frase curta + a seguinte, para durar ≥ 1,5 s): 1
+OK     páginas nunca sobrepostas (a próxima entra em corte seco)
+OK     a última página de cada cena tem mais de 1 palavra
+OK     dentro de x 130–950 (usa x 133–947)
+OK     nunca abaixo de y 1536 (usa y 1312–1440; faixa 1300–1450)
+
+PÁGINAS
+   -0.10–  1.81 s  cena titulo   2 linha(s) · juntada  Tem vaga no feriado? / Ele perguntou
+    1.81–  3.65 s  cena titulo   1 linha(s) · juntada  em três lugares.
+    3.65–  6.59 s  cena card1    2 linha(s)  No direct: tem vaga / de sexta a domingo?
+    6.59–  8.85 s  cena card2    2 linha(s)  No WhatsApp, / a mesma pergunta.
+    8.85– 11.19 s  cena card3    2 linha(s)  E nos comentários / do post.
+   11.19– 15.28 s  cena carimbo  2 linha(s)  Quem respondeu / primeiro… levou a reserva.
+   15.28– 17.92 s  cena virada   2 linha(s)  Com a consulta de datas / no site, ele escolhe
+   17.92– 20.43 s  cena virada   2 linha(s)  entrada e saída, e a / pergunta chega pronta
+   20.43– 23.06 s  cena virada   1 linha(s)  no seu WhatsApp.
+   23.06– 26.63 s  cena fecho    2 linha(s)  Manda pra pousada que / perde reserva no feriado.
+
+SINCRONIA (palavras depois de pausa: legenda − subida da voz)
+  cena titulo     1.259 s    -7 ms  "Ele"
+  cena carimbo   13.136 s    -4 ms  "levou"
+
+RESULTADO: aprovado

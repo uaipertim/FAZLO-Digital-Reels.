@@ -1,0 +1,36 @@
+LEGENDA PALAVRA POR PALAVRA — como-eu-reservo
+pelos-olhos-do-hospede · como-eu-reservo · legenda desligada no roteiro
+7 cenas · 8 frases · 57 palavras · 11 páginas
+OK     grafia do roteiro na tela (nenhuma grafia fonética: Fázlo, Uátsap)
+       destaque em limão: nenhum (o roteiro não tem o campo destaque)
+       início medido na voz em 6 palavras depois de pausa (a marcação da API errava em média 35 ms, no máximo 55 ms)
+OK     sincronia com a voz montada (voz das cenas posta nos cues "voz"), conferida pela subida da voz: 6 palavras depois de pausa, média 15 ms, máximo 37 ms (meta < 40 / < 80) · pior: cena virada "consulta," -37 ms
+OK     cada página ≥ 1,5 s na tela (a mais curta: 1.57 s)
+       páginas juntadas (frase curta + a seguinte, para durar ≥ 1,5 s): 0
+OK     páginas nunca sobrepostas (a próxima entra em corte seco)
+OK     a última página de cada cena tem mais de 1 palavra
+OK     dentro de x 130–950 (usa x 132–949)
+OK     nunca abaixo de y 1536 (usa y 1312–1440; faixa 1300–1450)
+
+PÁGINAS
+   -0.08–  1.84 s  cena titulo   1 linha(s)  Como eu reservo?
+    1.84–  3.58 s  cena titulo   1 linha(s)  Ninguém explicou.
+    3.58–  6.34 s  cena card1    2 linha(s)  No perfil, fotos lindas. / E nenhum caminho
+    6.34–  9.12 s  cena card1    1 linha(s)  pra reservar.
+    9.12– 13.44 s  cena card2    2 linha(s)  Manda direct, chama / no WhatsApp… ou liga?
+   13.44– 17.16 s  cena card3    2 linha(s)  Ele não sabia / por onde começar.
+   17.16– 22.22 s  cena carimbo  2 linha(s)  E quem não sabe por onde / começar… desiste.
+   22.22– 25.65 s  cena virada   2 linha(s)  No site, um caminho / só: escolhe as datas,
+   25.65– 31.07 s  cena virada   2 linha(s)  consulta, e a mensagem / chega pronta.
+   31.07– 32.64 s  cena fecho    2 linha(s)  Manda pra pousada / que ainda reserva
+   32.64– 34.28 s  cena fecho    1 linha(s)  no improviso.
+
+SINCRONIA (palavras depois de pausa: legenda − subida da voz)
+  cena titulo     1.844 s   -13 ms  "Ninguém"
+  cena card1      5.476 s   -23 ms  "E"
+  cena carimbo   19.468 s    -3 ms  "desiste."
+  cena virada    24.028 s   -10 ms  "escolhe"
+  cena virada    25.653 s   -37 ms  "consulta,"
+  cena virada    26.861 s    -3 ms  "e"
+
+RESULTADO: aprovado

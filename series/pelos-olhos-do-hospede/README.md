@@ -200,3 +200,13 @@ series/pelos-olhos-do-hospede/
 tools/episodio.cjs         um episódio inteiro, do roteiro à revisão (npm run episodio -- <id>)
 reels/<id>/                a pasta gerada do episódio (vídeo, capa, storyboard, revisão)
 ```
+
+## Legenda palavra por palavra (opcional)
+
+- **Como ligar:** `"legenda": true` no roteiro. O padrão é `false`, e os episódios 1–6 seguem sem.
+- **Destaque:** opcional, com `"destaques": {"<cena>": "trecho"}`. Um trecho de 1 ou 2 palavras por frase; sem o campo, tudo branco.
+- **Onde fica:** por cima de tudo, na faixa y 1300–1450. O layout dos cards não muda.
+- **No pipeline:** `npm run episodio` gera e confere a legenda depois dos cues (`tools/legenda-palavras/legenda.py pelos <id>`).
+- **Prévia:** `node tools/render.cjs stills <id> 5,12 --legenda`.
+
+Detalhes em [`tools/legenda-palavras/`](../../tools/legenda-palavras/).

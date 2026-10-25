@@ -6,6 +6,8 @@
  *   node tools/render.cjs video   <reel> [--fps 60] [--workers 4] [--out arquivo.mp4] [--from 0 --to 5]
  *   node tools/render.cjs preview <reel>                     -> output/preview.mp4 (30 fps, rápido, para revisão)
  *   node tools/render.cjs stills  <reel> 0.5,2,5.2 [--noblur] [--dir output/stills]
+ *   (--legenda em qualquer modo: liga a legenda palavra por palavra só nesta saída, para prévia; o roteiro não muda;
+ *    --legenda 0 desliga, como nos cues do episodio.cjs, que saem antes do legenda.json)
  *   node tools/render.cjs cover   <reel>                     -> output/capa.png
  *
  * <reel> aceita 00, reel-00 ou _calibracao. Sobe um servidor estático local,
@@ -30,7 +32,7 @@ async function openPage(browser, port) {
   const page = await browser.newPage({ viewport: { width: 1080, height: 1920 }, deviceScaleFactor: 1 });
   page.on('pageerror', (e) => console.error('[page error]', e.message));
   page.on('console', (m) => { if (m.type() === 'error') console.error('[console]', m.text()); });
-  await page.goto(`http://127.0.0.1:${port}/core/player.html?reel=${reel.id}&render`);
+  await page.goto(`http://127.0.0.1:${port}/core/player.html?reel=${reel.id}&render${opt.legenda === '0' ? '&legenda=0' : opt.legenda ? '&legenda=1' : ''}`);
   await page.evaluate(() => window.ready);
   return page;
 }

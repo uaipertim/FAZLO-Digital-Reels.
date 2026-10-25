@@ -1,0 +1,35 @@
+LEGENDA PALAVRA POR PALAVRA — horario-check-in
+pelos-olhos-do-hospede · horario-check-in · legenda desligada no roteiro
+7 cenas · 8 frases · 62 palavras · 11 páginas
+OK     grafia do roteiro na tela (nenhuma grafia fonética: Fázlo, Uátsap)
+       destaque em limão: nenhum (o roteiro não tem o campo destaque)
+       início medido na voz em 5 palavras depois de pausa (a marcação da API errava em média 31 ms, no máximo 54 ms)
+OK     sincronia com a voz montada (voz das cenas posta nos cues "voz"), conferida pela subida da voz: 5 palavras depois de pausa, média 13 ms, máximo 24 ms (meta < 40 / < 80) · pior: cena titulo "Ele" -24 ms
+OK     cada página ≥ 1,5 s na tela (a mais curta: 1.54 s)
+       páginas juntadas (frase curta + a seguinte, para durar ≥ 1,5 s): 0
+OK     páginas nunca sobrepostas (a próxima entra em corte seco)
+OK     a última página de cada cena tem mais de 1 palavra
+OK     dentro de x 130–950 (usa x 138–942)
+OK     nunca abaixo de y 1536 (usa y 1312–1440; faixa 1300–1450)
+
+PÁGINAS
+   -0.10–  1.82 s  cena titulo   1 linha(s)  Que horas é o check-in?
+    1.82–  4.46 s  cena titulo   1 linha(s)  Ele chegou… e esperou!
+    4.46–  8.66 s  cena card1    2 linha(s)  Ele saiu cedo, / pra aproveitar o dia.
+    8.66– 10.44 s  cena card2    2 linha(s)  Que horas é o check-in? / E o check-out?
+   10.44– 13.31 s  cena card2    1 linha(s)  Ninguém disse.
+   13.31– 18.41 s  cena card3    2 linha(s)  Chegou cedo… e o quarto / ainda não estava pronto.
+   18.41– 22.18 s  cena carimbo  2 linha(s)  Resultado: esperou / na recepção.
+   22.18– 25.18 s  cena virada   2 linha(s)  No site, check-in e / check-out ficam escritos,
+   25.18– 29.20 s  cena virada   1 linha(s)  e ele planeja o dia certo.
+   29.20– 30.74 s  cena fecho    2 linha(s)  Manda pra pousada / que explica o
+   30.74– 32.63 s  cena fecho    1 linha(s)  horário um por um.
+
+SINCRONIA (palavras depois de pausa: legenda − subida da voz)
+  cena titulo     1.820 s   -24 ms  "Ele"
+  cena titulo     2.948 s    -3 ms  "e"
+  cena card1      5.532 s   -22 ms  "pra"
+  cena card3     14.501 s   -13 ms  "e"
+  cena virada    25.176 s    -3 ms  "e"
+
+RESULTADO: aprovado

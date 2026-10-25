@@ -1,0 +1,426 @@
+{
+ "serie": "pelos-olhos-do-hospede",
+ "episodio": "como-chega-ai",
+ "ligada": false,
+ "tempo": "ancora",
+ "fim": null,
+ "duracao": 25,
+ "cenas": [
+  {
+   "id": "titulo",
+   "ancora": "voz:titulo",
+   "frases": [
+    {
+     "texto": "Como chega aí?",
+     "palavras": [
+      {
+       "w": "Como",
+       "t0": -0.0895,
+       "t1": 0.1775,
+       "chave": false
+      },
+      {
+       "w": "chega",
+       "t0": 0.2125,
+       "t1": 0.4905,
+       "chave": false
+      },
+      {
+       "w": "aí?",
+       "t0": 0.5145,
+       "t1": 0.5835,
+       "chave": false
+      }
+     ]
+    },
+    {
+     "texto": "Ele perguntou de novo!",
+     "palavras": [
+      {
+       "w": "Ele",
+       "t0": 0.8986,
+       "t1": 1.0665,
+       "chave": false
+      },
+      {
+       "w": "perguntou",
+       "t0": 1.1005,
+       "t1": 1.4025,
+       "chave": false
+      },
+      {
+       "w": "de",
+       "t0": 1.4375,
+       "t1": 1.5075,
+       "chave": false
+      },
+      {
+       "w": "novo!",
+       "t0": 1.5535,
+       "t1": 1.8785,
+       "chave": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "card1",
+   "ancora": "voz:card1",
+   "frases": [
+    {
+     "texto": "Como chega aí?",
+     "palavras": [
+      {
+       "w": "Como",
+       "t0": -0.0954,
+       "t1": 0.1716,
+       "chave": false
+      },
+      {
+       "w": "chega",
+       "t0": 0.2066,
+       "t1": 0.4506,
+       "chave": false
+      },
+      {
+       "w": "aí?",
+       "t0": 0.4736,
+       "t1": 0.5776,
+       "chave": false
+      }
+     ]
+    },
+    {
+     "texto": "A estrada é boa?",
+     "palavras": [
+      {
+       "w": "A",
+       "t0": 0.8935,
+       "t1": 0.9676,
+       "chave": false
+      },
+      {
+       "w": "estrada",
+       "t0": 1.0016,
+       "t1": 1.3276,
+       "chave": false
+      },
+      {
+       "w": "é",
+       "t0": 1.3506,
+       "t1": 1.3736,
+       "chave": false
+      },
+      {
+       "w": "boa?",
+       "t0": 1.4196,
+       "t1": 1.8616,
+       "chave": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "card2",
+   "ancora": "voz:card2",
+   "frases": [
+    {
+     "texto": "Mandaram o pin… sem o caminho.",
+     "palavras": [
+      {
+       "w": "Mandaram",
+       "t0": 0.0,
+       "t1": 0.418,
+       "chave": false
+      },
+      {
+       "w": "o",
+       "t0": 0.453,
+       "t1": 0.476,
+       "chave": false
+      },
+      {
+       "w": "pin…",
+       "t0": 0.546,
+       "t1": 0.871,
+       "chave": false
+      },
+      {
+       "w": "sem",
+       "t0": 1.0162,
+       "t1": 1.173,
+       "chave": false
+      },
+      {
+       "w": "o",
+       "t0": 1.207,
+       "t1": 1.231,
+       "chave": false
+      },
+      {
+       "w": "caminho.",
+       "t0": 1.265,
+       "t1": 1.776,
+       "chave": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "card3",
+   "ancora": "voz:card3",
+   "frases": [
+    {
+     "texto": "E a cachoeira?",
+     "palavras": [
+      {
+       "w": "E",
+       "t0": -0.0466,
+       "t1": 0.0574,
+       "chave": false
+      },
+      {
+       "w": "a",
+       "t0": 0.1164,
+       "t1": 0.1394,
+       "chave": false
+      },
+      {
+       "w": "cachoeira?",
+       "t0": 0.1854,
+       "t1": 0.5684,
+       "chave": false
+      }
+     ]
+    },
+    {
+     "texto": "Fica longe?",
+     "palavras": [
+      {
+       "w": "Fica",
+       "t0": 0.9991,
+       "t1": 1.155,
+       "chave": false
+      },
+      {
+       "w": "longe?",
+       "t0": 1.202,
+       "t1": 1.504,
+       "chave": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "carimbo",
+   "ancora": "voz:carimbo",
+   "frases": [
+    {
+     "texto": "E a pergunta continua sem resposta.",
+     "palavras": [
+      {
+       "w": "E",
+       "t0": -0.062,
+       "t1": 0.042,
+       "chave": false
+      },
+      {
+       "w": "a",
+       "t0": 0.135,
+       "t1": 0.159,
+       "chave": false
+      },
+      {
+       "w": "pergunta",
+       "t0": 0.217,
+       "t1": 0.727,
+       "chave": false
+      },
+      {
+       "w": "continua",
+       "t0": 0.774,
+       "t1": 1.25,
+       "chave": false
+      },
+      {
+       "w": "sem",
+       "t0": 1.296,
+       "t1": 1.424,
+       "chave": false
+      },
+      {
+       "w": "resposta.",
+       "t0": 1.471,
+       "t1": 2.167,
+       "chave": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "virada",
+   "ancora": "voz:virada",
+   "frases": [
+    {
+     "texto": "Mapa, caminho e a distância dos passeios: no site já tem tudo, antes da pergunta.",
+     "palavras": [
+      {
+       "w": "Mapa,",
+       "t0": -0.019,
+       "t1": 0.492,
+       "chave": false
+      },
+      {
+       "w": "caminho",
+       "t0": 0.538,
+       "t1": 1.014,
+       "chave": false
+      },
+      {
+       "w": "e",
+       "t0": 1.038,
+       "t1": 1.061,
+       "chave": false
+      },
+      {
+       "w": "a",
+       "t0": 1.107,
+       "t1": 1.13,
+       "chave": false
+      },
+      {
+       "w": "distância",
+       "t0": 1.177,
+       "t1": 1.583,
+       "chave": false
+      },
+      {
+       "w": "dos",
+       "t0": 1.618,
+       "t1": 1.734,
+       "chave": false
+      },
+      {
+       "w": "passeios:",
+       "t0": 1.781,
+       "t1": 2.407,
+       "chave": false
+      },
+      {
+       "w": "no",
+       "t0": 2.9313,
+       "t1": 3.0,
+       "chave": false
+      },
+      {
+       "w": "site",
+       "t0": 3.058,
+       "t1": 3.348,
+       "chave": false
+      },
+      {
+       "w": "já",
+       "t0": 3.394,
+       "t1": 3.499,
+       "chave": false
+      },
+      {
+       "w": "tem",
+       "t0": 3.557,
+       "t1": 3.708,
+       "chave": false
+      },
+      {
+       "w": "tudo,",
+       "t0": 3.777,
+       "t1": 4.219,
+       "chave": false
+      },
+      {
+       "w": "antes",
+       "t0": 4.6142,
+       "t1": 4.915,
+       "chave": false
+      },
+      {
+       "w": "da",
+       "t0": 4.938,
+       "t1": 4.997,
+       "chave": false
+      },
+      {
+       "w": "pergunta.",
+       "t0": 5.043,
+       "t1": 5.577,
+       "chave": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "fecho",
+   "ancora": "voz:fecho",
+   "frases": [
+    {
+     "texto": "Manda pra pousada que manda tudo pelo direct.",
+     "palavras": [
+      {
+       "w": "Manda",
+       "t0": 0.0,
+       "t1": 0.232,
+       "chave": false
+      },
+      {
+       "w": "pra",
+       "t0": 0.267,
+       "t1": 0.372,
+       "chave": false
+      },
+      {
+       "w": "pousada",
+       "t0": 0.406,
+       "t1": 0.731,
+       "chave": false
+      },
+      {
+       "w": "que",
+       "t0": 0.766,
+       "t1": 0.836,
+       "chave": false
+      },
+      {
+       "w": "manda",
+       "t0": 0.882,
+       "t1": 1.068,
+       "chave": false
+      },
+      {
+       "w": "tudo",
+       "t0": 1.103,
+       "t1": 1.277,
+       "chave": false
+      },
+      {
+       "w": "pelo",
+       "t0": 1.324,
+       "t1": 1.498,
+       "chave": false
+      },
+      {
+       "w": "direct.",
+       "t0": 1.544,
+       "t1": 1.939,
+       "chave": false
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

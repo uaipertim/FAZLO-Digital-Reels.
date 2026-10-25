@@ -1,0 +1,450 @@
+{
+ "serie": "pelos-olhos-do-hospede",
+ "episodio": "viu-a-piscina",
+ "ligada": false,
+ "tempo": "ancora",
+ "fim": null,
+ "duracao": 25,
+ "cenas": [
+  {
+   "id": "titulo",
+   "ancora": "voz:titulo",
+   "frases": [
+    {
+     "texto": "Ele viu a piscina.",
+     "palavras": [
+      {
+       "w": "Ele",
+       "t0": -0.0653,
+       "t1": 0.1557,
+       "chave": false
+      },
+      {
+       "w": "viu",
+       "t0": 0.1898,
+       "t1": 0.3067,
+       "chave": false
+      },
+      {
+       "w": "a",
+       "t0": 0.3528,
+       "t1": 0.3758,
+       "chave": false
+      },
+      {
+       "w": "piscina.",
+       "t0": 0.4227,
+       "t1": 0.8987,
+       "chave": false
+      }
+     ]
+    },
+    {
+     "texto": "Mas não viu o quarto.",
+     "palavras": [
+      {
+       "w": "Mas",
+       "t0": 1.2238,
+       "t1": 1.3572,
+       "chave": false
+      },
+      {
+       "w": "não",
+       "t0": 1.4032,
+       "t1": 1.4842,
+       "chave": false
+      },
+      {
+       "w": "viu",
+       "t0": 1.5312,
+       "t1": 1.6932,
+       "chave": false
+      },
+      {
+       "w": "o",
+       "t0": 1.7172,
+       "t1": 1.7402,
+       "chave": false
+      },
+      {
+       "w": "quarto.",
+       "t0": 1.7862,
+       "t1": 2.2256,
+       "chave": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "card1",
+   "ancora": "voz:card1",
+   "frases": [
+    {
+     "texto": "No perfil: piscina, café e pôr do sol.",
+     "palavras": [
+      {
+       "w": "No",
+       "t0": -0.077,
+       "t1": 0.074,
+       "chave": false
+      },
+      {
+       "w": "perfil:",
+       "t0": 0.12,
+       "t1": 0.411,
+       "chave": false
+      },
+      {
+       "w": "piscina,",
+       "t0": 0.457,
+       "t1": 0.991,
+       "chave": false
+      },
+      {
+       "w": "café",
+       "t0": 1.038,
+       "t1": 1.409,
+       "chave": false
+      },
+      {
+       "w": "e",
+       "t0": 1.444,
+       "t1": 1.467,
+       "chave": false
+      },
+      {
+       "w": "pôr",
+       "t0": 1.514,
+       "t1": 1.664,
+       "chave": false
+      },
+      {
+       "w": "do",
+       "t0": 1.711,
+       "t1": 1.781,
+       "chave": false
+      },
+      {
+       "w": "sol.",
+       "t0": 1.839,
+       "t1": 2.152,
+       "chave": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "card2",
+   "ancora": "voz:card2",
+   "frases": [
+    {
+     "texto": "E a cama?",
+     "palavras": [
+      {
+       "w": "E",
+       "t0": -0.033,
+       "t1": 0.06,
+       "chave": false
+      },
+      {
+       "w": "a",
+       "t0": 0.141,
+       "t1": 0.176,
+       "chave": false
+      },
+      {
+       "w": "cama?",
+       "t0": 0.246,
+       "t1": 0.617,
+       "chave": false
+      }
+     ]
+    },
+    {
+     "texto": "E o banheiro?",
+     "palavras": [
+      {
+       "w": "E",
+       "t0": 0.9554,
+       "t1": 1.0301,
+       "chave": false
+      },
+      {
+       "w": "o",
+       "t0": 1.0641,
+       "t1": 1.0881,
+       "chave": false
+      },
+      {
+       "w": "banheiro?",
+       "t0": 1.1341,
+       "t1": 1.5171,
+       "chave": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "card3",
+   "ancora": "voz:card3",
+   "frases": [
+    {
+     "texto": "Foto do quarto?",
+     "palavras": [
+      {
+       "w": "Foto",
+       "t0": -0.002,
+       "t1": 0.242,
+       "chave": false
+      },
+      {
+       "w": "do",
+       "t0": 0.277,
+       "t1": 0.335,
+       "chave": false
+      },
+      {
+       "w": "quarto?",
+       "t0": 0.381,
+       "t1": 0.66,
+       "chave": false
+      }
+     ]
+    },
+    {
+     "texto": "Só pedindo no direct.",
+     "palavras": [
+      {
+       "w": "Só",
+       "t0": 1.0202,
+       "t1": 1.142,
+       "chave": false
+      },
+      {
+       "w": "pedindo",
+       "t0": 1.188,
+       "t1": 1.444,
+       "chave": false
+      },
+      {
+       "w": "no",
+       "t0": 1.502,
+       "t1": 1.583,
+       "chave": false
+      },
+      {
+       "w": "direct.",
+       "t0": 1.641,
+       "t1": 2.024,
+       "chave": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "carimbo",
+   "ancora": "voz:carimbo",
+   "frases": [
+    {
+     "texto": "E na dúvida… ele não reservou.",
+     "palavras": [
+      {
+       "w": "E",
+       "t0": -0.1,
+       "t1": 0.016,
+       "chave": false
+      },
+      {
+       "w": "na",
+       "t0": 0.086,
+       "t1": 0.167,
+       "chave": false
+      },
+      {
+       "w": "dúvida…",
+       "t0": 0.225,
+       "t1": 0.678,
+       "chave": false
+      },
+      {
+       "w": "ele",
+       "t0": 1.1237,
+       "t1": 1.305,
+       "chave": false
+      },
+      {
+       "w": "não",
+       "t0": 1.374,
+       "t1": 1.537,
+       "chave": false
+      },
+      {
+       "w": "reservou.",
+       "t0": 1.572,
+       "t1": 2.176,
+       "chave": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "virada",
+   "ancora": "voz:virada",
+   "frases": [
+    {
+     "texto": "No site, fotos de cada quarto mostram onde ele vai dormir, antes da pergunta.",
+     "palavras": [
+      {
+       "w": "No",
+       "t0": -0.079,
+       "t1": 0.107,
+       "chave": false
+      },
+      {
+       "w": "site,",
+       "t0": 0.176,
+       "t1": 0.583,
+       "chave": false
+      },
+      {
+       "w": "fotos",
+       "t0": 0.641,
+       "t1": 1.001,
+       "chave": false
+      },
+      {
+       "w": "de",
+       "t0": 1.024,
+       "t1": 1.082,
+       "chave": false
+      },
+      {
+       "w": "cada",
+       "t0": 1.128,
+       "t1": 1.337,
+       "chave": false
+      },
+      {
+       "w": "quarto",
+       "t0": 1.384,
+       "t1": 1.732,
+       "chave": false
+      },
+      {
+       "w": "mostram",
+       "t0": 1.802,
+       "t1": 2.243,
+       "chave": false
+      },
+      {
+       "w": "onde",
+       "t0": 2.301,
+       "t1": 2.452,
+       "chave": false
+      },
+      {
+       "w": "ele",
+       "t0": 2.475,
+       "t1": 2.568,
+       "chave": false
+      },
+      {
+       "w": "vai",
+       "t0": 2.615,
+       "t1": 2.742,
+       "chave": false
+      },
+      {
+       "w": "dormir,",
+       "t0": 2.777,
+       "t1": 3.195,
+       "chave": false
+      },
+      {
+       "w": "antes",
+       "t0": 3.241,
+       "t1": 3.392,
+       "chave": false
+      },
+      {
+       "w": "da",
+       "t0": 3.439,
+       "t1": 3.52,
+       "chave": false
+      },
+      {
+       "w": "pergunta.",
+       "t0": 3.578,
+       "t1": 4.135,
+       "chave": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "fecho",
+   "ancora": "voz:fecho",
+   "frases": [
+    {
+     "texto": "Manda pra pousada que só posta a piscina.",
+     "palavras": [
+      {
+       "w": "Manda",
+       "t0": -0.038,
+       "t1": 0.217,
+       "chave": false
+      },
+      {
+       "w": "pra",
+       "t0": 0.252,
+       "t1": 0.357,
+       "chave": false
+      },
+      {
+       "w": "pousada",
+       "t0": 0.392,
+       "t1": 0.74,
+       "chave": false
+      },
+      {
+       "w": "que",
+       "t0": 0.763,
+       "t1": 0.833,
+       "chave": false
+      },
+      {
+       "w": "só",
+       "t0": 0.868,
+       "t1": 0.972,
+       "chave": false
+      },
+      {
+       "w": "posta",
+       "t0": 1.03,
+       "t1": 1.239,
+       "chave": false
+      },
+      {
+       "w": "a",
+       "t0": 1.262,
+       "t1": 1.286,
+       "chave": false
+      },
+      {
+       "w": "piscina.",
+       "t0": 1.32,
+       "t1": 1.82,
+       "chave": false
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

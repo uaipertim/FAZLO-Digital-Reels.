@@ -1,0 +1,36 @@
+LEGENDA PALAVRA POR PALAVRA — cafe-incluso
+pelos-olhos-do-hospede · cafe-incluso · legenda desligada no roteiro
+7 cenas · 9 frases · 70 palavras · 11 páginas
+OK     grafia do roteiro na tela (nenhuma grafia fonética: Fázlo, Uátsap)
+       destaque em limão: nenhum (o roteiro não tem o campo destaque)
+       início medido na voz em 6 palavras depois de pausa (a marcação da API errava em média 24 ms, no máximo 53 ms)
+OK     sincronia com a voz montada (voz das cenas posta nos cues "voz"), conferida pela subida da voz: 6 palavras depois de pausa, média 12 ms, máximo 31 ms (meta < 40 / < 80) · pior: cena virada "com" -31 ms
+OK     cada página ≥ 1,5 s na tela (a mais curta: 1.51 s)
+       páginas juntadas (frase curta + a seguinte, para durar ≥ 1,5 s): 1
+OK     páginas nunca sobrepostas (a próxima entra em corte seco)
+OK     a última página de cada cena tem mais de 1 palavra
+OK     dentro de x 130–950 (usa x 156–924)
+OK     nunca abaixo de y 1536 (usa y 1312–1440; faixa 1300–1450)
+
+PÁGINAS
+   -0.06–  3.46 s  cena titulo   2 linha(s) · juntada  O café está incluso? / Ele perguntou no direct.
+    3.46–  6.52 s  cena card1    2 linha(s)  No perfil, a foto / da mesa de café. Linda.
+    6.52–  8.47 s  cena card2    2 linha(s)  Mas está incluso / na diária?
+    8.47– 10.61 s  cena card2    1 linha(s)  Até que horas é servido?
+   10.61– 12.66 s  cena card3    2 linha(s)  E a resposta só vem / quando alguém vê
+   12.66– 14.17 s  cena card3    1 linha(s)  a mensagem.
+   14.17– 17.25 s  cena carimbo  2 linha(s)  Enquanto isso, ele / continua esperando.
+   17.25– 21.05 s  cena virada   2 linha(s)  No site, o que a diária / inclui já fica escrito,
+   21.05– 24.33 s  cena virada   2 linha(s)  com horário e tudo, / antes da pergunta.
+   24.33– 26.55 s  cena fecho    2 linha(s)  Manda pra pousada que / tem o café mais bonito
+   26.55– 28.57 s  cena fecho    1 linha(s)  da região!
+
+SINCRONIA (palavras depois de pausa: legenda − subida da voz)
+  cena titulo     1.296 s    -3 ms  "Ele"
+  cena card1      5.404 s    -4 ms  "Linda."
+  cena card2      8.473 s   -27 ms  "Até"
+  cena virada    19.585 s    -3 ms  "já"
+  cena virada    21.054 s   -31 ms  "com"
+  cena virada    22.804 s    -3 ms  "antes"
+
+RESULTADO: aprovado

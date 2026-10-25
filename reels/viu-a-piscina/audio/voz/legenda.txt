@@ -1,0 +1,31 @@
+LEGENDA PALAVRA POR PALAVRA — viu-a-piscina
+pelos-olhos-do-hospede · viu-a-piscina · legenda desligada no roteiro
+7 cenas · 10 frases · 58 palavras · 8 páginas
+OK     grafia do roteiro na tela (nenhuma grafia fonética: Fázlo, Uátsap)
+       destaque em limão: nenhum (o roteiro não tem o campo destaque)
+       início medido na voz em 4 palavras depois de pausa (a marcação da API errava em média 29 ms, no máximo 53 ms)
+OK     sincronia com a voz montada (voz das cenas posta nos cues "voz"), conferida pela subida da voz: 4 palavras depois de pausa, média 8 ms, máximo 13 ms (meta < 40 / < 80) · pior: cena card3 "Só" -13 ms
+OK     cada página ≥ 1,5 s na tela (a mais curta: 2.63 s)
+       páginas juntadas (frase curta + a seguinte, para durar ≥ 1,5 s): 3
+OK     páginas nunca sobrepostas (a próxima entra em corte seco)
+OK     a última página de cada cena tem mais de 1 palavra
+OK     dentro de x 130–950 (usa x 141–939)
+OK     nunca abaixo de y 1536 (usa y 1312–1440; faixa 1300–1450)
+
+PÁGINAS
+   -0.07–  3.14 s  cena titulo   2 linha(s) · juntada  Ele viu a piscina. / Mas não viu o quarto.
+    3.14–  6.55 s  cena card1    2 linha(s)  No perfil: piscina, / café e pôr do sol.
+    6.55–  9.36 s  cena card2    1 linha(s) · juntada  E a cama? E o banheiro?
+    9.36– 12.73 s  cena card3    2 linha(s) · juntada  Foto do quarto? / Só pedindo no direct.
+   12.73– 16.60 s  cena carimbo  2 linha(s)  E na dúvida… ele / não reservou.
+   16.60– 19.30 s  cena virada   2 linha(s)  No site, fotos de cada / quarto mostram onde ele
+   19.30– 21.92 s  cena virada   2 linha(s)  vai dormir, antes / da pergunta.
+   21.92– 25.00 s  cena fecho    2 linha(s)  Manda pra pousada / que só posta a piscina.
+
+SINCRONIA (palavras depois de pausa: legenda − subida da voz)
+  cena titulo     1.224 s    -4 ms  "Mas"
+  cena card2      7.543 s    -3 ms  "E"
+  cena card3     10.384 s   -13 ms  "Só"
+  cena carimbo   13.954 s   -11 ms  "ele"
+
+RESULTADO: aprovado

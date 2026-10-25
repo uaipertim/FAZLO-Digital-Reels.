@@ -11,7 +11,8 @@
  *   1. cria (ou atualiza) a pasta do Reel reels/<id>/ (reel.json, src/anim.js
  *      de uma linha, scripts/audio.py que chama o som da série);
  *   2. exporta os cues e completa o reel.json com os instantes de revisão e
- *      do storyboard (a duração depende do roteiro);
+ *      do storyboard (a duração depende do roteiro); com "legenda": true, gera e confere a
+ *      legenda palavra por palavra (tools/legenda-palavras/legenda.py; para se algo falhar);
  *   3. roda o pipeline normal: áudio -> vídeo -> capa -> storyboard -> QA;
  *   4. confere as áreas seguras elemento a elemento
  *      (output/revisao/areas-seguras.txt; sai com erro se algo ficar de fora).
@@ -87,8 +88,10 @@ runpy.run_path(os.path.join(ROOT, '..', '..', 'series', 'pelos-olhos-do-hospede'
 `);
 
 // ---------------------------------------------------------------- 2. cues -> instantes de revisão e do storyboard
-run('node', [path.join(__dirname, 'render.cjs'), 'cues', id]);
+run('node', [path.join(__dirname, 'render.cjs'), 'cues', id, '--legenda', '0']);   // a legenda não tem som (e sai depois dos cues)
 const cues = JSON.parse(fs.readFileSync(path.join(dir, 'audio', 'cues.json'), 'utf8'));
+// legenda palavra por palavra ("legenda": true no roteiro): palavras com a grafia do roteiro, páginas e sincronia conferidas
+if (ep.legenda) run(process.env.PYTHON || 'python3', [path.join(ROOT, 'tools', 'legenda-palavras', 'legenda.py'), 'pelos', id]);
 const at = (type) => cues.cues.filter((c) => c.type === type).map((c) => c.t);
 const r2 = (x) => Math.round(x * 100) / 100;
 const [stamp] = at('stamp'), [virada] = at('virada'), [fecho] = at('fecho'), [rise] = at('rise');

@@ -1,0 +1,33 @@
+LEGENDA PALAVRA POR PALAVRA — como-chega-ai
+pelos-olhos-do-hospede · como-chega-ai · legenda desligada no roteiro
+7 cenas · 10 frases · 54 palavras · 8 páginas
+OK     grafia do roteiro na tela (nenhuma grafia fonética: Fázlo, Uátsap)
+       destaque em limão: nenhum (o roteiro não tem o campo destaque)
+       início medido na voz em 6 palavras depois de pausa (a marcação da API errava em média 23 ms, no máximo 99 ms)
+OK     sincronia com a voz montada (voz das cenas posta nos cues "voz"), conferida pela subida da voz: 6 palavras depois de pausa, média 3 ms, máximo 4 ms (meta < 40 / < 80) · pior: cena card2 "sem" -4 ms
+OK     cada página ≥ 1,5 s na tela (a mais curta: 2.73 s)
+       páginas juntadas (frase curta + a seguinte, para durar ≥ 1,5 s): 3
+OK     páginas nunca sobrepostas (a próxima entra em corte seco)
+OK     a última página de cada cena tem mais de 1 palavra
+OK     dentro de x 130–950 (usa x 156–924)
+OK     nunca abaixo de y 1536 (usa y 1312–1440; faixa 1300–1450)
+
+PÁGINAS
+   -0.09–  2.82 s  cena titulo   2 linha(s) · juntada  Como chega aí? / Ele perguntou de novo!
+    2.82–  5.90 s  cena card1    2 linha(s) · juntada  Como chega aí? / A estrada é boa?
+    5.90–  8.73 s  cena card2    2 linha(s)  Mandaram o pin… / sem o caminho.
+    8.73– 11.46 s  cena card3    2 linha(s) · juntada  E a cachoeira? / Fica longe?
+   11.46– 15.16 s  cena carimbo  2 linha(s)  E a pergunta continua / sem resposta.
+   15.16– 18.12 s  cena virada   2 linha(s)  Mapa, caminho e a / distância dos passeios:
+   18.12– 21.77 s  cena virada   2 linha(s)  no site já tem tudo, / antes da pergunta.
+   21.77– 25.00 s  cena fecho    2 linha(s)  Manda pra pousada que / manda tudo pelo direct.
+
+SINCRONIA (palavras depois de pausa: legenda − subida da voz)
+  cena titulo     0.899 s    -3 ms  "Ele"
+  cena card1      3.812 s    -4 ms  "A"
+  cena card2      6.918 s    -4 ms  "sem"
+  cena card3      9.774 s    -4 ms  "Fica"
+  cena virada    18.115 s    -3 ms  "no"
+  cena virada    19.798 s    -3 ms  "antes"
+
+RESULTADO: aprovado

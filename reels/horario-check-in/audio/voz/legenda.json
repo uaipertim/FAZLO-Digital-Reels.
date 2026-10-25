@@ -1,0 +1,464 @@
+{
+ "serie": "pelos-olhos-do-hospede",
+ "episodio": "horario-check-in",
+ "ligada": false,
+ "tempo": "ancora",
+ "fim": null,
+ "duracao": 32.632,
+ "cenas": [
+  {
+   "id": "titulo",
+   "ancora": "voz:titulo",
+   "frases": [
+    {
+     "texto": "Que horas é o check-in?",
+     "palavras": [
+      {
+       "w": "Que",
+       "t0": -0.1003,
+       "t1": 0.0737,
+       "chave": false
+      },
+      {
+       "w": "horas",
+       "t0": 0.1318,
+       "t1": 0.3638,
+       "chave": false
+      },
+      {
+       "w": "é",
+       "t0": 0.4217,
+       "t1": 0.4457,
+       "chave": false
+      },
+      {
+       "w": "o",
+       "t0": 0.4687,
+       "t1": 0.4917,
+       "chave": false
+      },
+      {
+       "w": "check-in?",
+       "t0": 0.5267,
+       "t1": 0.9327,
+       "chave": false
+      }
+     ]
+    },
+    {
+     "texto": "Ele chegou… e esperou!",
+     "palavras": [
+      {
+       "w": "Ele",
+       "t0": 1.8204,
+       "t1": 1.9933,
+       "chave": false
+      },
+      {
+       "w": "chegou…",
+       "t0": 2.0283,
+       "t1": 2.4343,
+       "chave": false
+      },
+      {
+       "w": "e",
+       "t0": 2.9477,
+       "t1": 2.9923,
+       "chave": false
+      },
+      {
+       "w": "esperou!",
+       "t0": 3.0153,
+       "t1": 3.4443,
+       "chave": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "card1",
+   "ancora": "voz:card1",
+   "frases": [
+    {
+     "texto": "Ele saiu cedo, pra aproveitar o dia.",
+     "palavras": [
+      {
+       "w": "Ele",
+       "t0": -0.045,
+       "t1": 0.141,
+       "chave": false
+      },
+      {
+       "w": "saiu",
+       "t0": 0.176,
+       "t1": 0.35,
+       "chave": false
+      },
+      {
+       "w": "cedo,",
+       "t0": 0.408,
+       "t1": 0.814,
+       "chave": false
+      },
+      {
+       "w": "pra",
+       "t0": 1.0284,
+       "t1": 1.104,
+       "chave": false
+      },
+      {
+       "w": "aproveitar",
+       "t0": 1.128,
+       "t1": 1.569,
+       "chave": false
+      },
+      {
+       "w": "o",
+       "t0": 1.604,
+       "t1": 1.627,
+       "chave": false
+      },
+      {
+       "w": "dia.",
+       "t0": 1.696,
+       "t1": 2.01,
+       "chave": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "card2",
+   "ancora": "voz:card2",
+   "frases": [
+    {
+     "texto": "Que horas é o check-in? E o check-out? Ninguém disse.",
+     "palavras": [
+      {
+       "w": "Que",
+       "t0": -0.086,
+       "t1": 0.1,
+       "chave": false
+      },
+      {
+       "w": "horas",
+       "t0": 0.146,
+       "t1": 0.39,
+       "chave": false
+      },
+      {
+       "w": "é",
+       "t0": 0.448,
+       "t1": 0.471,
+       "chave": false
+      },
+      {
+       "w": "o",
+       "t0": 0.518,
+       "t1": 0.553,
+       "chave": false
+      },
+      {
+       "w": "check-in?",
+       "t0": 0.587,
+       "t1": 1.017,
+       "chave": false
+      },
+      {
+       "w": "E",
+       "t0": 1.075,
+       "t1": 1.098,
+       "chave": false
+      },
+      {
+       "w": "o",
+       "t0": 1.121,
+       "t1": 1.168,
+       "chave": false
+      },
+      {
+       "w": "check-out?",
+       "t0": 1.203,
+       "t1": 1.609,
+       "chave": false
+      },
+      {
+       "w": "Ninguém",
+       "t0": 1.69,
+       "t1": 1.934,
+       "chave": false
+      },
+      {
+       "w": "disse.",
+       "t0": 1.992,
+       "t1": 2.306,
+       "chave": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "card3",
+   "ancora": "voz:card3",
+   "frases": [
+    {
+     "texto": "Chegou cedo… e o quarto ainda não estava pronto.",
+     "palavras": [
+      {
+       "w": "Chegou",
+       "t0": -0.029,
+       "t1": 0.296,
+       "chave": false
+      },
+      {
+       "w": "cedo…",
+       "t0": 0.343,
+       "t1": 0.702,
+       "chave": false
+      },
+      {
+       "w": "e",
+       "t0": 1.1664,
+       "t1": 1.225,
+       "chave": false
+      },
+      {
+       "w": "o",
+       "t0": 1.295,
+       "t1": 1.341,
+       "chave": false
+      },
+      {
+       "w": "quarto",
+       "t0": 1.422,
+       "t1": 1.817,
+       "chave": false
+      },
+      {
+       "w": "ainda",
+       "t0": 1.84,
+       "t1": 2.014,
+       "chave": false
+      },
+      {
+       "w": "não",
+       "t0": 2.049,
+       "t1": 2.119,
+       "chave": false
+      },
+      {
+       "w": "estava",
+       "t0": 2.142,
+       "t1": 2.409,
+       "chave": false
+      },
+      {
+       "w": "pronto.",
+       "t0": 2.456,
+       "t1": 2.827,
+       "chave": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "carimbo",
+   "ancora": "voz:carimbo",
+   "frases": [
+    {
+     "texto": "Resultado: esperou na recepção.",
+     "palavras": [
+      {
+       "w": "Resultado:",
+       "t0": -0.038,
+       "t1": 0.484,
+       "chave": false
+      },
+      {
+       "w": "esperou",
+       "t0": 0.531,
+       "t1": 0.879,
+       "chave": false
+      },
+      {
+       "w": "na",
+       "t0": 0.926,
+       "t1": 0.984,
+       "chave": false
+      },
+      {
+       "w": "recepção.",
+       "t0": 1.03,
+       "t1": 1.657,
+       "chave": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "virada",
+   "ancora": "voz:virada",
+   "frases": [
+    {
+     "texto": "No site, check-in e check-out ficam escritos, e ele planeja o dia certo.",
+     "palavras": [
+      {
+       "w": "No",
+       "t0": -0.056,
+       "t1": 0.107,
+       "chave": false
+      },
+      {
+       "w": "site,",
+       "t0": 0.176,
+       "t1": 0.583,
+       "chave": false
+      },
+      {
+       "w": "check-in",
+       "t0": 0.629,
+       "t1": 1.047,
+       "chave": false
+      },
+      {
+       "w": "e",
+       "t0": 1.093,
+       "t1": 1.117,
+       "chave": false
+      },
+      {
+       "w": "check-out",
+       "t0": 1.14,
+       "t1": 1.674,
+       "chave": false
+      },
+      {
+       "w": "ficam",
+       "t0": 1.732,
+       "t1": 1.941,
+       "chave": false
+      },
+      {
+       "w": "escritos,",
+       "t0": 2.011,
+       "t1": 2.591,
+       "chave": false
+      },
+      {
+       "w": "e",
+       "t0": 2.9347,
+       "t1": 2.997,
+       "chave": false
+      },
+      {
+       "w": "ele",
+       "t0": 3.021,
+       "t1": 3.16,
+       "chave": false
+      },
+      {
+       "w": "planeja",
+       "t0": 3.195,
+       "t1": 3.578,
+       "chave": false
+      },
+      {
+       "w": "o",
+       "t0": 3.601,
+       "t1": 3.624,
+       "chave": false
+      },
+      {
+       "w": "dia",
+       "t0": 3.682,
+       "t1": 3.857,
+       "chave": false
+      },
+      {
+       "w": "certo.",
+       "t0": 3.891,
+       "t1": 4.333,
+       "chave": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "fecho",
+   "ancora": "voz:fecho",
+   "frases": [
+    {
+     "texto": "Manda pra pousada que explica o horário um por um.",
+     "palavras": [
+      {
+       "w": "Manda",
+       "t0": -0.03,
+       "t1": 0.26,
+       "chave": false
+      },
+      {
+       "w": "pra",
+       "t0": 0.295,
+       "t1": 0.4,
+       "chave": false
+      },
+      {
+       "w": "pousada",
+       "t0": 0.446,
+       "t1": 0.852,
+       "chave": false
+      },
+      {
+       "w": "que",
+       "t0": 0.887,
+       "t1": 0.968,
+       "chave": false
+      },
+      {
+       "w": "explica",
+       "t0": 0.992,
+       "t1": 1.386,
+       "chave": false
+      },
+      {
+       "w": "o",
+       "t0": 1.433,
+       "t1": 1.468,
+       "chave": false
+      },
+      {
+       "w": "horário",
+       "t0": 1.514,
+       "t1": 1.839,
+       "chave": false
+      },
+      {
+       "w": "um",
+       "t0": 1.92,
+       "t1": 1.979,
+       "chave": false
+      },
+      {
+       "w": "por",
+       "t0": 2.037,
+       "t1": 2.211,
+       "chave": false
+      },
+      {
+       "w": "um.",
+       "t0": 2.28,
+       "t1": 2.42,
+       "chave": false
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

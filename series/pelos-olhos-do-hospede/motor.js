@@ -30,6 +30,11 @@
    flutuam de leve e o card da vez ganha um contorno lima enquanto é falado. Se o total ficar
    abaixo de 25 s, a diferença vai para os respiros; acima de 30 s, tools/episodio.cjs avisa
    antes de renderizar (nada é acelerado nem cortado).
+
+   LEGENDA (opcional, "legenda": true no roteiro; padrão false, os publicados ficam sem): a legenda
+   palavra por palavra de tools/legenda-palavras/ (reels/<id>/audio/voz/legenda.json, do legenda.py),
+   por cima de tudo, na faixa y 1300–1450. O layout dos cards não muda. Para uma prévia sem mexer
+   no roteiro: &legenda=1 na URL (tools/render.cjs --legenda).
    ===================================================================== */
 (function () {
   'use strict';
@@ -259,6 +264,7 @@
   // o fim. O texto dos cards cresce até 10% quando isso não quebra mais linhas. Limite do episódio: 38 s.
   const LEIT = { card: 2.0, carimbo: 1.5, virada: 2.5, fecho: 1.0, logo: 3.0, logoW: 560, texto: 1.10 };   // fecho: 1,0 s parado depois da fala (23/10; era 3,0 s)
   let LONGA = false;
+  let LEG = null, LEG_DADOS = null;   // a legenda palavra por palavra (tools/legenda-palavras), só se ligada
 
   function measureCard(c) {
     const k = { ...c };
@@ -637,6 +643,7 @@
     hook(c, t);
     closing(c, t);
     c.restore();
+    if (LEG) LEG.desenha(c, t);
     const f = LONGA ? 0 : E.inOutSine(p(t, T.fade, DURATION));
     if (f > 0) { c.fillStyle = `rgba(0,0,0,${f})`; c.fillRect(0, 0, W, H); }
   }
@@ -831,6 +838,7 @@
       const w = tw(r, TEXT, fs, FECHO.weight, -0.01 * fs), b = L.fin.fTop + 0.73 * fs + i * fs * FECHO.lead;
       out.push({ el: `fecho ${i + 1}`, ...Dz(tf, CX - w / 2, CX + w / 2, b - 0.73 * fs, b + 0.24 * fs) });
     });
+    if (LEG) LEG.paginas.forEach((q, i) => q.caixas.forEach((b) => out.push({ el: `legenda ${i + 1}`, t: Math.max(q.t0, q.t1 - 0.05), ...b })));
     if (LONGA) { const lw = LEIT.logoW, lh2 = logoH(lw); out.push({ el: 'logo sozinha', t: DURATION - 0.05, x0: CX - lw / 2, x1: CX + lw / 2, y0: 960 - lh2 / 2, y1: 960 + lh2 / 2 }); return out; }
     const lh = logoH(LOCK.w);
     out.push({ el: 'logo', ...Dz(tf, CX - LOCK.w / 2, CX + LOCK.w / 2, L.fin.logoCy - lh / 2, L.fin.logoCy + lh / 2) });
@@ -851,6 +859,16 @@
     }
     loadLogo();
     layout(EP);
+    LEG = null; LEG_DADOS = null;
+    const pede = typeof location !== 'undefined' && new URLSearchParams(location.search).get('legenda');
+    if ((EP.legenda || pede === '1') && pede !== '0') {
+      if (!VZ) throw new Error('a legenda precisa da voz (o campo "voz" do roteiro)');
+      const get = (u) => { const r = new XMLHttpRequest(); r.open('GET', u, false); r.send(); if (r.status !== 200) throw new Error(`falta ${u} (rode tools/legenda-palavras/legenda.py pelos ${id})`); return r.responseText; };
+      if (!window.LEGENDA) (0, eval)(get('/tools/legenda-palavras/legenda.js'));
+      LEG_DADOS = JSON.parse(get(`/reels/${id}/audio/voz/legenda.json`));
+    }
+    const legenda = () => { LEG = LEG_DADOS && window.LEGENDA.cria(LEG_DADOS, { ancora: (cena) => T.voz[cena], fim: LONGA ? T.sai : DURATION }); };
+    legenda();
     const fast = [[T.rise, T.rise + 0.5, 8, 1 / 60]]
       .concat(T.cards.map((m) => [m, m + 0.4, 4, 1 / 120]))
       .concat([[T.cut, T.stamp + 0.3, 8, 1 / 60], [T.exit, T.exit + 0.7, 10, 1 / 50],
@@ -859,7 +877,7 @@
       id, duration: DURATION,
       sections: { gancho: 0, situacao: T.cards[0], corte: T.cut, virada: T.virada, fecho: T.fecho },
       blur: { default: [1, 0], ranges: fast },
-      setup() { layout(EP); },
+      setup() { layout(EP); legenda(); },             // a legenda mede as palavras com a fonte já carregada
       frame,
       cover,
       cues(api) {

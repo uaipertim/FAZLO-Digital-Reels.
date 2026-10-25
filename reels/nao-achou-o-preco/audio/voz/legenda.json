@@ -1,0 +1,458 @@
+{
+ "serie": "pelos-olhos-do-hospede",
+ "episodio": "nao-achou-o-preco",
+ "ligada": false,
+ "tempo": "ancora",
+ "fim": null,
+ "duracao": 25.7833,
+ "cenas": [
+  {
+   "id": "titulo",
+   "ancora": "voz:titulo",
+   "frases": [
+    {
+     "texto": "Ele achou sua pousada. Mas não achou o preço.",
+     "palavras": [
+      {
+       "w": "Ele",
+       "t0": -0.063,
+       "t1": 0.169,
+       "chave": false
+      },
+      {
+       "w": "achou",
+       "t0": 0.192,
+       "t1": 0.367,
+       "chave": false
+      },
+      {
+       "w": "sua",
+       "t0": 0.425,
+       "t1": 0.529,
+       "chave": false
+      },
+      {
+       "w": "pousada.",
+       "t0": 0.576,
+       "t1": 1.191,
+       "chave": false
+      },
+      {
+       "w": "Mas",
+       "t0": 1.4107,
+       "t1": 1.539,
+       "chave": false
+      },
+      {
+       "w": "não",
+       "t0": 1.586,
+       "t1": 1.702,
+       "chave": false
+      },
+      {
+       "w": "achou",
+       "t0": 1.737,
+       "t1": 1.934,
+       "chave": false
+      },
+      {
+       "w": "o",
+       "t0": 1.98,
+       "t1": 2.004,
+       "chave": false
+      },
+      {
+       "w": "preço.",
+       "t0": 2.05,
+       "t1": 2.538,
+       "chave": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "card1",
+   "ancora": "voz:card1",
+   "frases": [
+    {
+     "texto": "Viu as fotos da piscina, do café, da vista.",
+     "palavras": [
+      {
+       "w": "Viu",
+       "t0": -0.09,
+       "t1": 0.119,
+       "chave": false
+      },
+      {
+       "w": "as",
+       "t0": 0.154,
+       "t1": 0.223,
+       "chave": false
+      },
+      {
+       "w": "fotos",
+       "t0": 0.282,
+       "t1": 0.479,
+       "chave": false
+      },
+      {
+       "w": "da",
+       "t0": 0.537,
+       "t1": 0.63,
+       "chave": false
+      },
+      {
+       "w": "piscina,",
+       "t0": 0.676,
+       "t1": 1.234,
+       "chave": false
+      },
+      {
+       "w": "do",
+       "t0": 1.28,
+       "t1": 1.35,
+       "chave": false
+      },
+      {
+       "w": "café,",
+       "t0": 1.384,
+       "t1": 1.942,
+       "chave": false
+      },
+      {
+       "w": "da",
+       "t0": 2.011,
+       "t1": 2.093,
+       "chave": false
+      },
+      {
+       "w": "vista.",
+       "t0": 2.151,
+       "t1": 2.673,
+       "chave": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "card2",
+   "ancora": "voz:card2",
+   "frases": [
+    {
+     "texto": "E a diária?",
+     "palavras": [
+      {
+       "w": "E",
+       "t0": -0.0913,
+       "t1": 0.0477,
+       "chave": false
+      },
+      {
+       "w": "a",
+       "t0": 0.1407,
+       "t1": 0.1757,
+       "chave": false
+      },
+      {
+       "w": "diária?",
+       "t0": 0.2457,
+       "t1": 0.7327,
+       "chave": false
+      }
+     ]
+    },
+    {
+     "texto": "Nenhum valor à vista.",
+     "palavras": [
+      {
+       "w": "Nenhum",
+       "t0": 1.0746,
+       "t1": 1.3498,
+       "chave": false
+      },
+      {
+       "w": "valor",
+       "t0": 1.3848,
+       "t1": 1.6408,
+       "chave": false
+      },
+      {
+       "w": "à",
+       "t0": 1.6868,
+       "t1": 1.7098,
+       "chave": false
+      },
+      {
+       "w": "vista.",
+       "t0": 1.7568,
+       "t1": 2.1978,
+       "chave": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "card3",
+   "ancora": "voz:card3",
+   "frases": [
+    {
+     "texto": "Aí ele pergunta no direct… e espera.",
+     "palavras": [
+      {
+       "w": "Aí",
+       "t0": -0.036,
+       "t1": 0.127,
+       "chave": false
+      },
+      {
+       "w": "ele",
+       "t0": 0.161,
+       "t1": 0.289,
+       "chave": false
+      },
+      {
+       "w": "pergunta",
+       "t0": 0.336,
+       "t1": 0.661,
+       "chave": false
+      },
+      {
+       "w": "no",
+       "t0": 0.695,
+       "t1": 0.765,
+       "chave": false
+      },
+      {
+       "w": "direct…",
+       "t0": 0.812,
+       "t1": 1.137,
+       "chave": false
+      },
+      {
+       "w": "e",
+       "t0": 1.3973,
+       "t1": 1.462,
+       "chave": false
+      },
+      {
+       "w": "espera.",
+       "t0": 1.497,
+       "t1": 1.961,
+       "chave": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "carimbo",
+   "ancora": "voz:carimbo",
+   "frases": [
+    {
+     "texto": "Enquanto isso, foi ver outra.",
+     "palavras": [
+      {
+       "w": "Enquanto",
+       "t0": -0.067,
+       "t1": 0.374,
+       "chave": false
+      },
+      {
+       "w": "isso,",
+       "t0": 0.421,
+       "t1": 0.572,
+       "chave": false
+      },
+      {
+       "w": "foi",
+       "t0": 0.618,
+       "t1": 0.734,
+       "chave": false
+      },
+      {
+       "w": "ver",
+       "t0": 0.781,
+       "t1": 0.931,
+       "chave": false
+      },
+      {
+       "w": "outra.",
+       "t0": 1.001,
+       "t1": 1.373,
+       "chave": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "virada",
+   "ancora": "voz:virada",
+   "frases": [
+    {
+     "texto": "Um valor de referência, um simples 'a partir de', responde antes da pergunta.",
+     "palavras": [
+      {
+       "w": "Um",
+       "t0": -0.059,
+       "t1": 0.127,
+       "chave": false
+      },
+      {
+       "w": "valor",
+       "t0": 0.173,
+       "t1": 0.498,
+       "chave": false
+      },
+      {
+       "w": "de",
+       "t0": 0.591,
+       "t1": 0.672,
+       "chave": false
+      },
+      {
+       "w": "referência,",
+       "t0": 0.719,
+       "t1": 1.323,
+       "chave": false
+      },
+      {
+       "w": "um",
+       "t0": 1.369,
+       "t1": 1.415,
+       "chave": false
+      },
+      {
+       "w": "simples",
+       "t0": 1.508,
+       "t1": 2.031,
+       "chave": false
+      },
+      {
+       "w": "'a",
+       "t0": 2.356,
+       "t1": 2.379,
+       "chave": false
+      },
+      {
+       "w": "partir",
+       "t0": 2.449,
+       "t1": 2.948,
+       "chave": false
+      },
+      {
+       "w": "de',",
+       "t0": 3.064,
+       "t1": 3.18,
+       "chave": false
+      },
+      {
+       "w": "responde",
+       "t0": 3.7063,
+       "t1": 4.248,
+       "chave": false
+      },
+      {
+       "w": "antes",
+       "t0": 4.295,
+       "t1": 4.573,
+       "chave": false
+      },
+      {
+       "w": "da",
+       "t0": 4.62,
+       "t1": 4.689,
+       "chave": false
+      },
+      {
+       "w": "pergunta.",
+       "t0": 4.736,
+       "t1": 5.328,
+       "chave": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "fecho",
+   "ancora": "voz:fecho",
+   "frases": [
+    {
+     "texto": "Manda pra aquela pousada que só passa o preço pelo direct.",
+     "palavras": [
+      {
+       "w": "Manda",
+       "t0": -0.08,
+       "t1": 0.187,
+       "chave": false
+      },
+      {
+       "w": "pra",
+       "t0": 0.222,
+       "t1": 0.326,
+       "chave": false
+      },
+      {
+       "w": "aquela",
+       "t0": 0.35,
+       "t1": 0.593,
+       "chave": false
+      },
+      {
+       "w": "pousada",
+       "t0": 0.64,
+       "t1": 1.081,
+       "chave": false
+      },
+      {
+       "w": "que",
+       "t0": 1.104,
+       "t1": 1.174,
+       "chave": false
+      },
+      {
+       "w": "só",
+       "t0": 1.197,
+       "t1": 1.336,
+       "chave": false
+      },
+      {
+       "w": "passa",
+       "t0": 1.406,
+       "t1": 1.603,
+       "chave": false
+      },
+      {
+       "w": "o",
+       "t0": 1.627,
+       "t1": 1.65,
+       "chave": false
+      },
+      {
+       "w": "preço",
+       "t0": 1.696,
+       "t1": 1.894,
+       "chave": false
+      },
+      {
+       "w": "pelo",
+       "t0": 1.917,
+       "t1": 2.091,
+       "chave": false
+      },
+      {
+       "w": "direct.",
+       "t0": 2.138,
+       "t1": 2.66,
+       "chave": false
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

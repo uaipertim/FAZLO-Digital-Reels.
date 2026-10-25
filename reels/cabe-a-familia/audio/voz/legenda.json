@@ -1,0 +1,450 @@
+{
+ "serie": "pelos-olhos-do-hospede",
+ "episodio": "cabe-a-familia",
+ "ligada": false,
+ "tempo": "ancora",
+ "fim": null,
+ "duracao": 32.864,
+ "cenas": [
+  {
+   "id": "titulo",
+   "ancora": "voz:titulo",
+   "frases": [
+    {
+     "texto": "Cabe a família toda?",
+     "palavras": [
+      {
+       "w": "Cabe",
+       "t0": -0.0795,
+       "t1": 0.1875,
+       "chave": false
+      },
+      {
+       "w": "a",
+       "t0": 0.2105,
+       "t1": 0.2335,
+       "chave": false
+      },
+      {
+       "w": "família",
+       "t0": 0.2575,
+       "t1": 0.5595,
+       "chave": false
+      },
+      {
+       "w": "toda?",
+       "t0": 0.6055,
+       "t1": 1.0005,
+       "chave": false
+      }
+     ]
+    },
+    {
+     "texto": "Ele não teve certeza.",
+     "palavras": [
+      {
+       "w": "Ele",
+       "t0": 1.8821,
+       "t1": 2.0205,
+       "chave": false
+      },
+      {
+       "w": "não",
+       "t0": 2.0785,
+       "t1": 2.1835,
+       "chave": false
+      },
+      {
+       "w": "teve",
+       "t0": 2.2295,
+       "t1": 2.3925,
+       "chave": false
+      },
+      {
+       "w": "certeza.",
+       "t0": 2.4155,
+       "t1": 2.9265,
+       "chave": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "card1",
+   "ancora": "voz:card1",
+   "frases": [
+    {
+     "texto": "Na viagem: dois adultos, três crianças… e a avó.",
+     "palavras": [
+      {
+       "w": "Na",
+       "t0": -0.052,
+       "t1": 0.134,
+       "chave": false
+      },
+      {
+       "w": "viagem:",
+       "t0": 0.192,
+       "t1": 0.749,
+       "chave": false
+      },
+      {
+       "w": "dois",
+       "t0": 0.807,
+       "t1": 1.028,
+       "chave": false
+      },
+      {
+       "w": "adultos,",
+       "t0": 1.109,
+       "t1": 1.91,
+       "chave": false
+      },
+      {
+       "w": "três",
+       "t0": 1.957,
+       "t1": 2.177,
+       "chave": false
+      },
+      {
+       "w": "crianças…",
+       "t0": 2.224,
+       "t1": 3.025,
+       "chave": false
+      },
+      {
+       "w": "e",
+       "t0": 3.3698,
+       "t1": 3.489,
+       "chave": false
+      },
+      {
+       "w": "a",
+       "t0": 3.547,
+       "t1": 3.582,
+       "chave": false
+      },
+      {
+       "w": "avó.",
+       "t0": 3.605,
+       "t1": 4.0,
+       "chave": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "card2",
+   "ancora": "voz:card2",
+   "frases": [
+    {
+     "texto": "Quantas camas?",
+     "palavras": [
+      {
+       "w": "Quantas",
+       "t0": -0.0472,
+       "t1": 0.2778,
+       "chave": false
+      },
+      {
+       "w": "camas?",
+       "t0": 0.3358,
+       "t1": 0.7308,
+       "chave": false
+      }
+     ]
+    },
+    {
+     "texto": "Tem berço?",
+     "palavras": [
+      {
+       "w": "Tem",
+       "t0": 1.296,
+       "t1": 1.3909,
+       "chave": false
+      },
+      {
+       "w": "berço?",
+       "t0": 1.4369,
+       "t1": 1.7159,
+       "chave": false
+      }
+     ]
+    },
+    {
+     "texto": "Cabe todo mundo?",
+     "palavras": [
+      {
+       "w": "Cabe",
+       "t0": 2.3699,
+       "t1": 2.554,
+       "chave": false
+      },
+      {
+       "w": "todo",
+       "t0": 2.577,
+       "t1": 2.763,
+       "chave": false
+      },
+      {
+       "w": "mundo?",
+       "t0": 2.798,
+       "t1": 3.158,
+       "chave": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "card3",
+   "ancora": "voz:card3",
+   "frases": [
+    {
+     "texto": "E no perfil, só a foto da cama de casal.",
+     "palavras": [
+      {
+       "w": "E",
+       "t0": -0.065,
+       "t1": 0.016,
+       "chave": false
+      },
+      {
+       "w": "no",
+       "t0": 0.086,
+       "t1": 0.167,
+       "chave": false
+      },
+      {
+       "w": "perfil,",
+       "t0": 0.214,
+       "t1": 0.55,
+       "chave": false
+      },
+      {
+       "w": "só",
+       "t0": 0.608,
+       "t1": 0.794,
+       "chave": false
+      },
+      {
+       "w": "a",
+       "t0": 0.817,
+       "t1": 0.841,
+       "chave": false
+      },
+      {
+       "w": "foto",
+       "t0": 0.91,
+       "t1": 1.212,
+       "chave": false
+      },
+      {
+       "w": "da",
+       "t0": 1.27,
+       "t1": 1.34,
+       "chave": false
+      },
+      {
+       "w": "cama",
+       "t0": 1.386,
+       "t1": 1.595,
+       "chave": false
+      },
+      {
+       "w": "de",
+       "t0": 1.63,
+       "t1": 1.676,
+       "chave": false
+      },
+      {
+       "w": "casal.",
+       "t0": 1.711,
+       "t1": 2.094,
+       "chave": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "carimbo",
+   "ancora": "voz:carimbo",
+   "frases": [
+    {
+     "texto": "Na dúvida, ele não arriscou.",
+     "palavras": [
+      {
+       "w": "Na",
+       "t0": -0.026,
+       "t1": 0.113,
+       "chave": false
+      },
+      {
+       "w": "dúvida,",
+       "t0": 0.16,
+       "t1": 0.369,
+       "chave": false
+      },
+      {
+       "w": "ele",
+       "t0": 0.45,
+       "t1": 0.589,
+       "chave": false
+      },
+      {
+       "w": "não",
+       "t0": 0.624,
+       "t1": 0.74,
+       "chave": false
+      },
+      {
+       "w": "arriscou.",
+       "t0": 0.775,
+       "t1": 1.216,
+       "chave": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "virada",
+   "ancora": "voz:virada",
+   "frases": [
+    {
+     "texto": "No site, cada quarto mostra quantas pessoas cabem, antes da pergunta.",
+     "palavras": [
+      {
+       "w": "No",
+       "t0": -0.067,
+       "t1": 0.13,
+       "chave": false
+      },
+      {
+       "w": "site,",
+       "t0": 0.2,
+       "t1": 0.56,
+       "chave": false
+      },
+      {
+       "w": "cada",
+       "t0": 0.618,
+       "t1": 0.885,
+       "chave": false
+      },
+      {
+       "w": "quarto",
+       "t0": 0.943,
+       "t1": 1.222,
+       "chave": false
+      },
+      {
+       "w": "mostra",
+       "t0": 1.268,
+       "t1": 1.547,
+       "chave": false
+      },
+      {
+       "w": "quantas",
+       "t0": 1.582,
+       "t1": 1.849,
+       "chave": false
+      },
+      {
+       "w": "pessoas",
+       "t0": 1.895,
+       "t1": 2.22,
+       "chave": false
+      },
+      {
+       "w": "cabem,",
+       "t0": 2.278,
+       "t1": 2.627,
+       "chave": false
+      },
+      {
+       "w": "antes",
+       "t0": 2.673,
+       "t1": 2.835,
+       "chave": false
+      },
+      {
+       "w": "da",
+       "t0": 2.859,
+       "t1": 2.928,
+       "chave": false
+      },
+      {
+       "w": "pergunta.",
+       "t0": 2.975,
+       "t1": 3.474,
+       "chave": false
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "fecho",
+   "ancora": "voz:fecho",
+   "frases": [
+    {
+     "texto": "Manda pra pousada que é perfeita pra família!",
+     "palavras": [
+      {
+       "w": "Manda",
+       "t0": -0.04,
+       "t1": 0.192,
+       "chave": false
+      },
+      {
+       "w": "pra",
+       "t0": 0.227,
+       "t1": 0.332,
+       "chave": false
+      },
+      {
+       "w": "pousada",
+       "t0": 0.366,
+       "t1": 0.703,
+       "chave": false
+      },
+      {
+       "w": "que",
+       "t0": 0.738,
+       "t1": 0.808,
+       "chave": false
+      },
+      {
+       "w": "é",
+       "t0": 0.831,
+       "t1": 0.854,
+       "chave": false
+      },
+      {
+       "w": "perfeita",
+       "t0": 0.97,
+       "t1": 1.597,
+       "chave": false
+      },
+      {
+       "w": "pra",
+       "t0": 1.632,
+       "t1": 1.736,
+       "chave": false
+      },
+      {
+       "w": "família!",
+       "t0": 1.771,
+       "t1": 2.259,
+       "chave": false
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}
