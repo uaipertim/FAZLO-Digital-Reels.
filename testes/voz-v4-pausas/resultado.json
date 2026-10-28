@@ -1,0 +1,67 @@
+{
+ "reticencias": {
+  "texto": "A pousada pediu. A gente fez. Site por FAZLO Digital… pra Pousada Guardião da Serra.",
+  "silencio_antes_de_pra_s": 0.104,
+  "palavras_no_alinhamento": [
+   "A",
+   "pousada",
+   "pediu.",
+   "A",
+   "gente",
+   "fez.",
+   "Site",
+   "por",
+   "Fázlo",
+   "Digital…",
+   "pra",
+   "Pousada",
+   "Guardião",
+   "da",
+   "Serra."
+  ]
+ },
+ "paragrafo": {
+  "texto": "A pousada pediu. A gente fez. Site por FAZLO Digital.\n\nPra Pousada Guardião da Serra.",
+  "silencio_antes_de_pra_s": 0.062,
+  "palavras_no_alinhamento": [
+   "A",
+   "pousada",
+   "pediu.",
+   "A",
+   "gente",
+   "fez.",
+   "Site",
+   "por",
+   "Fázlo",
+   "Digital.",
+   "Pra",
+   "Pousada",
+   "Guardião",
+   "da",
+   "Serra."
+  ]
+ },
+ "break": {
+  "texto": "A pousada pediu. A gente fez. Site por FAZLO Digital <break time=\"0.6s\" /> pra Pousada Guardião da Serra.",
+  "silencio_antes_de_pra_s": 0.053,
+  "palavras_no_alinhamento": [
+   "A",
+   "pousada",
+   "pediu.",
+   "A",
+   "gente",
+   "fez.",
+   "Site",
+   "por",
+   "Fázlo",
+   "Digital",
+   "<break",
+   "time=\"0.6s\"",
+   "pra",
+   "Pousada",
+   "Guardião",
+   "da",
+   "Serra."
+  ]
+ }
+}

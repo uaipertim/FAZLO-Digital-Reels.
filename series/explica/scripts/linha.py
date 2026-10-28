@@ -102,7 +102,14 @@ def palavras(al, desloc):
 def main(ep_id, estimativa=False):
     aud = os.path.join(SERIE, 'audio', ep_id)
     roteiro = json.load(open(os.path.join(SERIE, 'episodios', ep_id + '.json')))
-    falas = None if estimativa else json.load(open(os.path.join(aud, 'voz', 'falas.json')))['capitulos']
+    FJ = None if estimativa else json.load(open(os.path.join(aud, 'voz', 'falas.json')))
+    falas = FJ and FJ['capitulos']
+    # o alinhamento é do texto ENVIADO à API (dicionário de pronúncia: FAZLO → Fázlo, WhatsApp → Uátsap); a tela usa o roteiro
+    dic = (FJ or {}).get('pronuncia') or ({'FAZLO': 'Fázlo'} if FJ else {})
+    def api(s):
+        for de, para in dic.items():
+            s = re.sub(rf'\b{re.escape(de)}\b', para, s, flags=re.I)
+        return s
     caps_in = roteiro['capitulos']
     legenda = bool(roteiro.get('legenda', False))
     caps, pistas, t1_ant = [], [], None
@@ -122,9 +129,16 @@ def main(ep_id, estimativa=False):
         desloc = v0 - ini
         v1 = fim + desloc
         ws = palavras(al, desloc)
+        # as palavras com a grafia do roteiro (a do áudio é a fonética), casadas uma a uma; se o número divergir, para
+        tk = [w for w in texto.split() if norm(w)]
+        if len(tk) != len(ws):
+            raise SystemExit(f'capítulo {n:02d}: o áudio tem {len(ws)} palavras e o roteiro {len(tk)} — '
+                             f'áudio: "{" ".join(w["w"] for w in ws)}" · roteiro: "{" ".join(tk)}"')
+        for w, t in zip(ws, tk):
+            w['api'], w['w'], w['n'] = w['w'], t, norm(t)
         frases, pos = [], 0
         for f in c['fala']:
-            a, b = pos, pos + len(f['texto'])
+            a, b = pos, pos + len(api(f['texto']) if not estimativa else f['texto'])
             alfa = [k for k in range(a, b) if al['characters'][k].isalnum()]
             frases.append({'texto': f['texto'], 'apoio': f.get('apoio'),
                            't0': round(al['character_start_times_seconds'][alfa[0]] + desloc, 4),

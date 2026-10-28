@@ -7,6 +7,11 @@ Série Explica (FAZLO Digital) — a narração: UMA geração inteira por capí
     python3 series/explica/scripts/voz.py explica-01 --medir       só mostra a conferência (sem chamar a API)
     python3 series/explica/scripts/voz.py explica-01 --so 0,4,5    gera só esses capítulos (amostras para aprovar antes do resto)
     python3 series/explica/scripts/voz.py explica-01 --refaz 0 --semente 0:5026   gera o cap 0 com a semente 5026 (já tentada), conferida de novo
+    python3 series/explica/scripts/voz.py explica-01 --candidatos 3   gera 3 tomadas APROVADAS por capítulo (audio/<id>/voz/candidatos/)
+                                                                    e instala a de maior nota; as outras ficam para ouvir
+    python3 series/explica/scripts/voz.py explica-01 --escolhe 0:2026,5:4111   troca pela candidata escolhida de ouvido (sem API)
+    python3 series/explica/scripts/voz.py explica-01 --candidatos 3 --guardar-todas --refaz 0   guarda também as reprovadas
+                                                                    (as N primeiras tomadas), para ouvir quando nenhuma passa
 
 REGRA DA SÉRIE: todas as frases de um capítulo vão numa chamada só. Se algo sair ruim, o capítulo inteiro é gerado de
 novo com outra semente. Nunca se emendam palavras nem trechos de gerações diferentes. O arquivo que a API devolve fica
@@ -30,7 +35,7 @@ Conferência de cada geração (se uma falhar, o capítulo inteiro é gerado de 
                (eram 1,1 s e 0,85 s até 24/10: o eleven_v4 fala com mais pausas);
   fim          a última frase vai até o fim. O arquivo tem de terminar em silêncio (abaixo de −50 dB); se acaba com a
                voz soando, é corte. A queda de −15 dB (relativo ao pico da fala) até o silêncio (−50 dB) tem de durar
-               ≥ 55 ms quando a última palavra termina em vogal e ≥ 35 ms nas outras (calibração de 23/10: 40 ms
+               ≥ 55 ms quando a última palavra termina em vogal ou plosiva (p, b, t, d, k, g; desde 28/10) e ≥ 35 ms nas outras (calibração de 23/10: 40 ms
                numa vogal soou cortado; 59 e 63 ms soaram naturais); quedas que começam em −20 dB ou abaixo são fim
                natural. (Calibração: um fecho ouvido como cortado caía de −8,7 dB ao silêncio em 32 ms; finais de
                37–57 ms a partir de nível mais baixo soaram normais.) A voz também não pode subir no fim de uma
@@ -103,7 +108,13 @@ def tts(texto, prev, semente):
         body['previous_text'] = api_texto(prev)
     url = f"https://api.elevenlabs.io/v1/text-to-speech/{VOZ['id']}/with-timestamps?output_format={FORMATO}"
     for k in range(4):
-        r = requests.post(url, json=body, headers=cabecalho({'Content-Type': 'application/json'}), timeout=240)
+        try:
+            r = requests.post(url, json=body, headers=cabecalho({'Content-Type': 'application/json'}), timeout=240)
+        except requests.exceptions.ConnectionError:     # a conexão caiu (proxy): tenta de novo, até 4 vezes
+            if k == 3:
+                raise
+            time.sleep(2 ** (k + 1))
+            continue
         if r.status_code == 200:
             d = r.json()
             return base64.b64decode(d['audio_base64']), d['alignment']
@@ -202,7 +213,7 @@ def confere(mp3, al, cap):
     # pausas: entre palavras (alinhamento) e o respiro medido no áudio em cada troca de frase
     respiros, inicios, pos = [], set(), 0
     for f in cap['fala'][:-1]:
-        pos += len(f['texto'])
+        pos += len(api_texto(f['texto']))                 # o alinhamento é do texto enviado (Uátsap ≠ WhatsApp)
         a = next(w for w in reversed(ws) if w['i0'] < pos)
         b = next(w for w in ws if w['i0'] >= pos)
         inicios.add(b['i0'])
@@ -225,7 +236,7 @@ def confere(mp3, al, cap):
     if fim_arq > LIM['silencio_db']:
         queda_ms = 0.0                                                           # acaba com a voz soando: é corte
     ult = unicodedata.normalize('NFD', re.sub(r'[^A-Za-zÀ-ÿ]', '', texto.split()[-1])[-1:].lower())[:1]
-    corte_min = LIM['corte_vogal_ms'] if ult in 'aeiou' and ult else LIM['corte_ms']
+    corte_min = LIM['corte_vogal_ms'] if ult and ult in 'aeioupbtdkg' else LIM['corte_ms']     # vogal ou plosiva: >= 55 ms
     sem_corte = queda_ms >= corte_min
     fz = f0(x)
     tfim = fim_i / SR
@@ -272,8 +283,9 @@ def confere(mp3, al, cap):
             return False, f'respiro {respiros[k]:.2f} s depois da frase {k + 1} (alvo {faixa[0]}–{faixa[1]} s)', n, x
     if cf.get('enfase'):                                                  # um trecho dito com ênfase: a altura dele fica acima do resto
         trecho, minimo = cf['enfase']['trecho'], cf['enfase'].get('min', 0.06)
-        k0 = texto.find(trecho)
-        lt = [k for k in range(k0, k0 + len(trecho)) if ch[k].isalnum()]
+        ta, tt_ = api_texto(texto), api_texto(trecho)
+        k0 = ta.lower().find(tt_.lower())
+        lt = [k for k in range(k0, k0 + len(tt_)) if ch[k].isalnum()]
         dentro = seg(t0s[lt[0]], t1s[lt[-1]])
         fora_ = np.concatenate([seg(t0s[0], t0s[lt[0]] - 0.02), seg(t1s[lt[-1]] + 0.02, tfim)])
         enf = round(float(np.median(dentro) / np.median(fora_) - 1), 3) if len(dentro) >= 5 and len(fora_) >= 5 else None
@@ -284,8 +296,9 @@ def confere(mp3, al, cap):
         return False, 'fim cortado', n, x
     if not firme:
         return False, f'fim suspenso (a voz sobe {altura_final:.2f}x no fim)', n, x
-    if any(v is None or v < LIM['sobe'] for v in sobe):
-        return False, f'pergunta sem subida ({sobe})', n, x
+    sobe_min = cf.get('sobe_min', LIM['sobe'])
+    if any(v is None or v < sobe_min for v in sobe):
+        return False, f'pergunta sem subida ({sobe}, mínimo {sobe_min})', n, x
     return True, 'ok', n, x
 
 
@@ -308,7 +321,54 @@ def confere_transcricao(mp3, texto, n):
 
 
 # ------------------------------------------------------------------ gerar
-def gerar(ep_id, refaz, so=None, forca=None):
+def nota_candidato(num, cap):
+    """Nota de uma tomada APROVADA, para ordenar candidatas (maior = melhor). Só desempata o que passou na conferência:
+    ritmo perto de 12,5 letras/s, respiro no meio da faixa pedida, pergunta que sobe mais, ênfase mais alta e final
+    que cai mais devagar. Quem escolhe de verdade é quem ouve (--escolhe)."""
+    cf = cap.get('conferencia') or {}
+    nt = -abs(num['ritmo_letras_s'] - 12.5) * 0.5
+    for k, faixa in enumerate(cf.get('respiros') or []):
+        if faixa and k < len(num['respiros_s']):
+            nt -= 3 * abs(num['respiros_s'][k] - (faixa[0] + faixa[1]) / 2)
+    if num['perguntas_sobem']:
+        nt += 4 * min(v for v in num['perguntas_sobem'] if v is not None)
+    if num.get('enfase') and num['enfase'].get('altura_acima_do_resto') is not None:
+        nt += 5 * num['enfase']['altura_acima_do_resto']
+    nt += min(num['queda_final_ms'], 300) / 300
+    return round(nt, 3)
+
+
+def guarda_candidato(out, key, mp3, al, semente, num, cap):
+    d = os.path.join(out, 'candidatos')
+    os.makedirs(d, exist_ok=True)
+    nome = f'cap-{key}-s{semente}'
+    open(os.path.join(d, nome + '.mp3'), 'wb').write(mp3)
+    json.dump(al, open(os.path.join(d, nome + '.json'), 'w'), ensure_ascii=False)
+    return {'semente': semente, 'arquivo': f'candidatos/{nome}.mp3', 'alinhamento': f'candidatos/{nome}.json',
+            'nota': nota_candidato(num, cap), 'medidas': {k: num.get(k) for k in ('fala_s', 'ritmo_letras_s', 'respiros_s', 'maior_pausa_s',
+            'maior_pausa_entre_frases_s', 'queda_final_ms', 'queda_minima_ms', 'fim_do_arquivo_db', 'altura_final', 'perguntas_sobem', 'enfase')}}
+
+
+def escolhe(ep_id, pares):
+    """Troca a tomada de um capítulo por outra candidata já gerada (sem chamar a API): --escolhe 0:17026,5:9111."""
+    out = os.path.join(SERIE, 'audio', ep_id, 'voz')
+    path = os.path.join(out, 'falas.json')
+    D = json.load(open(path))
+    for n, sem in pares.items():
+        F = D['capitulos'][f'{n:02d}']
+        c = next((a for a in F.get('candidatos', []) if a['semente'] == sem), None)
+        if not c:
+            raise SystemExit(f'cap {n:02d}: a semente {sem} não está entre as candidatas ({[a["semente"] for a in F.get("candidatos", [])]})')
+        mp3, al = open(os.path.join(out, c['arquivo']), 'rb').read(), json.load(open(os.path.join(out, c['alinhamento'])))
+        open(os.path.join(out, f'cap-{n:02d}.mp3'), 'wb').write(mp3)
+        ws = palavras(al)
+        F.update({'semente': sem, 'aprovada': True, 'inicio_da_fala': round(ws[0]['t0'], 3), 'fim_da_fala': round(ws[-1]['fim_letra'], 3),
+                  'sha1_audio': hashlib.sha1(mp3).hexdigest(), 'alinhamento': al, 'escolhida_por': 'escuta'})
+        print(f'  cap {n:02d}: agora com a semente {sem}')
+    json.dump(D, open(path, 'w'), ensure_ascii=False, indent=1)
+
+
+def gerar(ep_id, refaz, so=None, forca=None, candidatos=1, todas=False):
     ep = json.load(open(os.path.join(SERIE, 'episodios', f'{ep_id}.json')))
     out = os.path.join(SERIE, 'audio', ep_id, 'voz')
     os.makedirs(out, exist_ok=True)
@@ -337,8 +397,8 @@ def gerar(ep_id, refaz, so=None, forca=None):
             semente += 1000
         if forca and n in forca:
             semente = forca[n]                      # semente pedida (pode já estar no histórico); a conferência é refeita
-        melhor = None
-        for k in range(TENTATIVAS):
+        melhor, aprovadas = None, []
+        for k in range(TENTATIVAS * candidatos):
             mp3, al = tts(texto, prev, semente)
             ok, motivo, num, _ = confere(mp3, al, c)
             if ok:
@@ -348,8 +408,21 @@ def gerar(ep_id, refaz, so=None, forca=None):
                   f'respiros {num["respiros_s"]} · maior pausa {num["maior_pausa_s"]} s'
                   + (f' · perguntas {num["perguntas_sobem"]}' if num['perguntas_sobem'] else '')
                   + (f' · transcrição {num["transcricao"]["palavras_batem"]:.0%}' if num.get('transcricao') else ''))
+            if todas and not ok:                        # --guardar-todas: a tomada reprovada também fica, para ouvir
+                r = guarda_candidato(out, key, mp3, al, semente, num, c)
+                r['reprovada'] = motivo
+                aprovadas.append(r)
+                if len(aprovadas) >= candidatos:
+                    break
             if ok:
                 melhor = (mp3, al, semente, True)
+                if candidatos > 1:                      # modo candidatos: guarda cada tomada aprovada e segue até ter N
+                    aprovadas.append(guarda_candidato(out, key, mp3, al, semente, num, c))
+                    if len(aprovadas) < candidatos:
+                        semente += 1000
+                        while semente in usadas:
+                            semente += 1000
+                        continue
                 break
             if melhor is None:
                 melhor = (mp3, al, semente, False)
@@ -357,12 +430,20 @@ def gerar(ep_id, refaz, so=None, forca=None):
             while semente in usadas:
                 semente += 1000
         mp3, al, semente, aprovada = melhor
+        if aprovadas:                                   # a escolhida: a de maior nota (nota_candidato); --escolhe troca depois
+            aprovadas.sort(key=lambda a: ('reprovada' in a, -a['nota']))    # aprovadas primeiro
+            esc = aprovadas[0]
+            mp3, al, semente = open(os.path.join(out, esc['arquivo']), 'rb').read(), json.load(open(os.path.join(out, esc['alinhamento'])) ), esc['semente']
+            aprovada = 'reprovada' not in esc
+            print(f'  cap {key}: {len(aprovadas)} candidatas; escolhida a semente {semente} (nota {esc["nota"]})' + ('' if aprovada else f' — REPROVADA: {esc["reprovada"]}'))
         open(arq, 'wb').write(mp3)
         ws = palavras(al)
         D['capitulos'][key] = {'n': n, 'texto': texto, 'semente': semente, 'aprovada': aprovada,
                                'inicio_da_fala': round(ws[0]['t0'], 3), 'fim_da_fala': round(ws[-1]['fim_letra'], 3),
                                'sha1_audio': hashlib.sha1(mp3).hexdigest(), 'geracoes': len(hist), 'historico': hist,
                                'alinhamento': al}
+        if aprovadas:
+            D['capitulos'][key]['candidatos'] = aprovadas
         D.update({'voz': VOZ['nome'], 'voice_id': VOZ['id'], 'modelo': MODELO, 'ajustes': AJUSTES, 'pronuncia': PRONUNCIA, 'formato': FORMATO,
                   'regra': 'uma geração inteira por capítulo; nada emendado', 'limites': LIM})
         json.dump(D, open(path, 'w'), ensure_ascii=False, indent=1)
@@ -393,5 +474,9 @@ if __name__ == '__main__':
     so = {int(v) for v in args[args.index('--so') + 1].split(',')} if '--so' in args else None
     if '--medir' not in args:
         forca = dict((int(a), int(b)) for a, b in (v.split(':') for v in args[args.index('--semente') + 1].split(','))) if '--semente' in args else None
-        gerar(args[0], refaz, so, forca)
+        cand = int(args[args.index('--candidatos') + 1]) if '--candidatos' in args else 1
+        if '--escolhe' in args:
+            escolhe(args[0], dict((int(a), int(b)) for a, b in (v.split(':') for v in args[args.index('--escolhe') + 1].split(','))))
+        else:
+            gerar(args[0], refaz, so, forca, cand, '--guardar-todas' in args)
     medir(args[0])

@@ -14,12 +14,12 @@
       "rotulo": "A POUSADA PEDIU. A GENTE FEZ.",
       "tom": "palco",
       "titulo": [
-        "3 cachoeiras dentro da pousada.",
+        "4 cachoeiras dentro da pousada.",
         "Como mostrar isso num site?"
       ],
       "fala": [
         {
-          "texto": "Três cachoeiras dentro da pousada.",
+          "texto": "Quatro cachoeiras dentro da pousada.",
           "apoio": null
         },
         {
@@ -41,7 +41,8 @@
             0.25,
             0.8
           ]
-        ]
+        ],
+        "sobe_min": 0.15
       }
     },
     {
@@ -211,7 +212,7 @@
       ],
       "fala": [
         {
-          "texto": "A pousada pediu. A gente fez. Site por Fazlo Digital…",
+          "texto": "A pousada pediu. A gente fez. Site por FAZLO Digital…",
           "apoio": null
         },
         {
@@ -221,7 +222,7 @@
       ],
       "diagrama": {
         "tipo": "fecho_collab",
-        "destaque": "Site por Fazlo Digital",
+        "destaque": "Site por FAZLO Digital",
         "para": "pra Pousada Guardião da Serra",
         "site": "pousadaguardiaodaserra.com.br",
         "lista": {
@@ -243,7 +244,7 @@
           ]
         ],
         "enfase": {
-          "trecho": "Site por Fazlo Digital",
+          "trecho": "Site por FAZLO Digital",
           "min": 0.06
         }
       }

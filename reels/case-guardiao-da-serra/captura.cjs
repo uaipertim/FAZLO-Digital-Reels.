@@ -45,27 +45,34 @@ const LIMPA = `
   for (let y = 0; y < H; y += 500) { await p.evaluate((y) => window.scrollTo(0, y), y); await p.waitForTimeout(120); }
   await p.evaluate(() => window.scrollTo(0, 0)); await p.waitForTimeout(600);
   const texto = await p.evaluate(() => document.body.innerText + ' ' + (document.querySelector('meta[name=description]') || {}).content);
-  const conferencia = { tres: (texto.match(/3 cachoeiras|Três cachoeiras/gi) || []).length, grinalda: /grinalda/i.test(texto), quatro: /4 cachoeiras|quatro cachoeiras/i.test(texto) };
-  conferencia.confirmar = /\[confirmar\]/i.test(texto);
+  // desde 28/10 o site tem 4 cachoeiras (Capivara, Paraíso dos Pássaros, Oratório, Gruta do Lobo Guará) e o Encontro das Águas à parte
+  const conferencia = { quatro: (texto.match(/4 cachoeiras|quatro cachoeiras/gi) || []).length, tres: /3 cachoeiras|três cachoeiras/i.test(texto),
+    recanto: /recanto dos p[áa]ssaros/i.test(texto), grinalda: /grinalda/i.test(texto), confirmar: /\[confirmar\]/i.test(texto) };
   if (conferencia.confirmar) throw new Error('o site ainda mostra "[confirmar]" na localização');
-  if (conferencia.grinalda || conferencia.quatro || !conferencia.tres) throw new Error('o site ainda fala em 4 cachoeiras/Grinalda: ' + JSON.stringify(conferencia));
+  if (!conferencia.quatro || conferencia.tres || conferencia.recanto || conferencia.grinalda) throw new Error('o site não está com as 4 cachoeiras (ou ainda fala em 3 cachoeiras, Recanto dos Pássaros ou Grinalda): ' + JSON.stringify(conferencia));
   const meta = { url: URL, capturado_em: new Date().toISOString(), largura_css: VW, escala: K, conferencia, telas: {} };
   const caixa = async (loc) => { const r = await loc.boundingBox(); return r && [r.x, r.y, r.x + r.width, r.y + r.height].map((v) => Math.round(v * K)); };
-  const foto = async (nome, caixas = {}) => {
+  // alto: um elemento que precisa caber no quadro; se ele passa da tela, o quadro desce até ele (uma faixa mais alta
+  // da mesma página, a partir do mesmo ponto de rolagem; o vídeo rola dentro dela)
+  const foto = async (nome, caixas = {}, alto = null) => {
     const n = await p.evaluate(LIMPA);
     await p.waitForTimeout(250);
-    await p.screenshot({ path: path.join(OUT, nome + '.png') });
-    const cx = {};
+    const cx = {};                                   // as caixas antes da foto (a foto de página inteira mexe na rolagem)
     for (const [k, loc] of Object.entries(caixas)) cx[k] = await caixa(loc);
+    if (alto) {
+      const y0 = await p.evaluate(() => scrollY), b = await alto.boundingBox();
+      const h = Math.max(VH, Math.ceil(b.y + b.height + 40));
+      await p.screenshot({ path: path.join(OUT, nome + '.png'), fullPage: true, clip: { x: 0, y: y0, width: VW, height: h } });
+    } else await p.screenshot({ path: path.join(OUT, nome + '.png') });
     meta.telas[nome] = { caixas: cx, telefones_desfocados: n };
     console.log(nome, JSON.stringify(cx));
   };
   const rolaAte = async (loc, topo = 0) => { await p.evaluate(({ y }) => window.scrollTo(0, y), { y: (await loc.evaluate((e) => e.getBoundingClientRect().top + scrollY)) - topo }); await p.waitForTimeout(700); };
   const M = p.locator('#inicio-m');
 
-  // 1) o topo: "Pousada com cachoeiras na Serra da Canastra" + o slide "3 cachoeiras dentro da propriedade."
+  // 1) o topo: "Pousada com cachoeiras na Serra da Canastra" + o slide "4 cachoeiras dentro da propriedade."
   await p.locator('#inicio-m button[aria-label="Ver foto 1: Cachoeira da Capivara"]').click(); await p.waitForTimeout(900);
-  await foto('01-topo', { h1: M.locator('h1'), titulo: M.getByText('3 cachoeiras dentro da propriedade.'), foto: M.locator('button[aria-label^="Ampliar foto"]').first() });
+  await foto('01-topo', { h1: M.locator('h1'), titulo: M.getByText('4 cachoeiras dentro da propriedade.'), foto: M.locator('button[aria-label^="Ampliar foto"]').first() });
 
   // 2) a seção do pôr do sol
   const ps = p.locator('#por-do-sol-m');
@@ -77,8 +84,8 @@ const LIMPA = `
   // 3) as fotos grandes: a seção das cachoeiras, o toque numa foto e ela em tela cheia
   const ca = p.locator('#cachoeiras-m');
   await rolaAte(ca, 64);
-  const alvoFoto = ca.locator('button[aria-label^="Ampliar"]').nth(2);
-  await foto('03a-fotos', { titulo: ca.locator('h2'), toque: alvoFoto });
+  const alvoFoto = ca.locator('button[aria-label="Ampliar foto: Cachoeira do Oratório"]');
+  await foto('03a-fotos', { titulo: ca.locator('h2'), toque: alvoFoto }, alvoFoto);
   meta.telas['03a-fotos'].rotulo_toque = await alvoFoto.getAttribute('aria-label');
   await alvoFoto.tap(); await p.waitForTimeout(900);
   await foto('03b-foto-tela-cheia', {});
@@ -94,7 +101,11 @@ const LIMPA = `
   await M.getByText('Chegada').click(); await p.waitForTimeout(500);
   const cal = M.locator('button').filter({ hasText: /^\d{1,2}$/ });
   const livres = [];
-  for (const el of await cal.all()) if (await el.isEnabled()) livres.push(el);
+  for (let mes = 0; mes < 3 && livres.length < 4; mes++) {       // o site só aceita datas a partir de 5 dias: se o mês
+    if (mes) { await M.locator('button[aria-label="Próximo mês"]').click(); await p.waitForTimeout(400); }   // não tem, vai ao seguinte
+    livres.length = 0;
+    for (const el of await cal.all()) if (await el.isEnabled()) livres.push(el);
+  }
   await livres[0].click(); await p.waitForTimeout(250); await livres[3].click(); await p.waitForTimeout(400);
   await rolaAte(M.getByText('Quando você vem pra serra?'), 70);
   await foto('04b-datas', { cartao: M.getByText('Quando você vem pra serra?') });

@@ -1,0 +1,392 @@
+{
+ "00": {
+  "texto": "Quatro cachoeiras dentro da pousada. Como mostrar isso num site?",
+  "escolhida": 21026,
+  "aprovada": false,
+  "candidatas": [
+   {
+    "semente": 21026,
+    "aprovada": false,
+    "motivo": "pergunta sem subida ([-0.14], mínimo 0.15)",
+    "nota": 0.001,
+    "fala_s": 4.4,
+    "ritmo_letras_s": 12.0,
+    "respiros_s": [
+     0.462
+    ],
+    "maior_pausa_s": 0.08,
+    "maior_pausa_entre_frases_s": 0.48,
+    "queda_final_ms": 402,
+    "queda_minima_ms": 55,
+    "fim_do_arquivo_db": -77.3,
+    "altura_final": 0.8,
+    "perguntas_sobem": [
+     -0.14
+    ],
+    "enfase": null
+   },
+   {
+    "semente": 22026,
+    "aprovada": false,
+    "motivo": "pergunta sem subida ([-0.106], mínimo 0.15)",
+    "nota": -0.016,
+    "fala_s": 4.4,
+    "ritmo_letras_s": 12.0,
+    "respiros_s": [
+     0.411
+    ],
+    "maior_pausa_s": 0.16,
+    "maior_pausa_entre_frases_s": 0.4,
+    "queda_final_ms": 422,
+    "queda_minima_ms": 55,
+    "fim_do_arquivo_db": -76.8,
+    "altura_final": 0.86,
+    "perguntas_sobem": [
+     -0.106
+    ],
+    "enfase": null
+   },
+   {
+    "semente": 20026,
+    "aprovada": false,
+    "motivo": "pergunta sem subida ([-0.16], mínimo 0.15)",
+    "nota": -0.247,
+    "fala_s": 4.4,
+    "ritmo_letras_s": 12.0,
+    "respiros_s": [
+     0.406
+    ],
+    "maior_pausa_s": 0.24,
+    "maior_pausa_entre_frases_s": 0.4,
+    "queda_final_ms": 384,
+    "queda_minima_ms": 55,
+    "fim_do_arquivo_db": -76.8,
+    "altura_final": 0.81,
+    "perguntas_sobem": [
+     -0.16
+    ],
+    "enfase": null
+   }
+  ]
+ },
+ "05": {
+  "texto": "A pousada pediu. A gente fez. Site por FAZLO Digital… pra Pousada Guardião da Serra.",
+  "escolhida": 20111,
+  "aprovada": false,
+  "candidatas": [
+   {
+    "semente": 20111,
+    "aprovada": false,
+    "motivo": "frases coladas (respiro de 0.11 s)",
+    "nota": -1.926,
+    "fala_s": 6.64,
+    "ritmo_letras_s": 9.9,
+    "respiros_s": [
+     0.108
+    ],
+    "maior_pausa_s": 0.44,
+    "maior_pausa_entre_frases_s": 0.08,
+    "queda_final_ms": 317,
+    "queda_minima_ms": 55,
+    "fim_do_arquivo_db": -76.4,
+    "altura_final": 0.78,
+    "perguntas_sobem": [],
+    "enfase": null
+   },
+   {
+    "semente": 22111,
+    "aprovada": false,
+    "motivo": "frases coladas (respiro de 0.07 s)",
+    "nota": -2.046,
+    "fala_s": 6.64,
+    "ritmo_letras_s": 9.9,
+    "respiros_s": [
+     0.068
+    ],
+    "maior_pausa_s": 0.12,
+    "maior_pausa_entre_frases_s": 0.16,
+    "queda_final_ms": 345,
+    "queda_minima_ms": 55,
+    "fim_do_arquivo_db": -64.4,
+    "altura_final": 0.72,
+    "perguntas_sobem": [],
+    "enfase": null
+   },
+   {
+    "semente": 21111,
+    "aprovada": false,
+    "motivo": "frases coladas (respiro de 0.10 s)",
+    "nota": -2.097,
+    "fala_s": 6.88,
+    "ritmo_letras_s": 9.6,
+    "respiros_s": [
+     0.101
+    ],
+    "maior_pausa_s": 0.08,
+    "maior_pausa_entre_frases_s": 0.16,
+    "queda_final_ms": 303,
+    "queda_minima_ms": 55,
+    "fim_do_arquivo_db": -77.7,
+    "altura_final": 0.66,
+    "perguntas_sobem": [],
+    "enfase": null
+   }
+  ]
+ },
+ "01": {
+  "texto": "O primeiro pedido: quem chega precisa saber das cachoeiras… Então elas abrem o site, logo no topo.",
+  "escolhida": 5043,
+  "aprovada": true,
+  "candidatas": [
+   {
+    "semente": 5043,
+    "aprovada": true,
+    "motivo": "ok",
+    "nota": 0.157,
+    "fala_s": 7.12,
+    "ritmo_letras_s": 11.0,
+    "respiros_s": [
+     0.381
+    ],
+    "maior_pausa_s": 0.44,
+    "maior_pausa_entre_frases_s": 0.4,
+    "queda_final_ms": 272,
+    "queda_minima_ms": 55,
+    "fim_do_arquivo_db": -79.0,
+    "altura_final": 0.51,
+    "perguntas_sobem": [],
+    "enfase": null
+   },
+   {
+    "semente": 7043,
+    "aprovada": true,
+    "motivo": "ok",
+    "nota": 0.03,
+    "fala_s": 7.36,
+    "ritmo_letras_s": 10.6,
+    "respiros_s": [
+     0.435
+    ],
+    "maior_pausa_s": 0.52,
+    "maior_pausa_entre_frases_s": 0.56,
+    "queda_final_ms": 294,
+    "queda_minima_ms": 55,
+    "fim_do_arquivo_db": -76.3,
+    "altura_final": 0.5,
+    "perguntas_sobem": [],
+    "enfase": null
+   },
+   {
+    "semente": 12043,
+    "aprovada": true,
+    "motivo": "ok",
+    "nota": 0.03,
+    "fala_s": 7.36,
+    "ritmo_letras_s": 10.6,
+    "respiros_s": [
+     0.467
+    ],
+    "maior_pausa_s": 0.52,
+    "maior_pausa_entre_frases_s": 0.48,
+    "queda_final_ms": 294,
+    "queda_minima_ms": 55,
+    "fim_do_arquivo_db": -68.1,
+    "altura_final": 0.51,
+    "perguntas_sobem": [],
+    "enfase": null
+   }
+  ]
+ },
+ "02": {
+  "texto": "O segundo: o pôr do sol com vinho e queijo canastra é uma experiência, não um item de lista. Ganhou uma seção só dele, e está incluso.",
+  "escolhida": 3060,
+  "aprovada": true,
+  "candidatas": [
+   {
+    "semente": 3060,
+    "aprovada": true,
+    "motivo": "ok",
+    "nota": -0.147,
+    "fala_s": 9.76,
+    "ritmo_letras_s": 10.6,
+    "respiros_s": [
+     0.474
+    ],
+    "maior_pausa_s": 0.52,
+    "maior_pausa_entre_frases_s": 0.52,
+    "queda_final_ms": 241,
+    "queda_minima_ms": 55,
+    "fim_do_arquivo_db": -76.2,
+    "altura_final": 0.76,
+    "perguntas_sobem": [],
+    "enfase": null
+   },
+   {
+    "semente": 2060,
+    "aprovada": true,
+    "motivo": "ok",
+    "nota": -0.183,
+    "fala_s": 9.84,
+    "ritmo_letras_s": 10.5,
+    "respiros_s": [
+     0.523
+    ],
+    "maior_pausa_s": 0.52,
+    "maior_pausa_entre_frases_s": 0.6,
+    "queda_final_ms": 245,
+    "queda_minima_ms": 55,
+    "fim_do_arquivo_db": -76.1,
+    "altura_final": 0.76,
+    "perguntas_sobem": [],
+    "enfase": null
+   },
+   {
+    "semente": 4060,
+    "aprovada": true,
+    "motivo": "ok",
+    "nota": -0.293,
+    "fala_s": 10.04,
+    "ritmo_letras_s": 10.3,
+    "respiros_s": [
+     0.539
+    ],
+    "maior_pausa_s": 0.64,
+    "maior_pausa_entre_frases_s": 0.6,
+    "queda_final_ms": 242,
+    "queda_minima_ms": 55,
+    "fim_do_arquivo_db": -76.6,
+    "altura_final": 0.73,
+    "perguntas_sobem": [],
+    "enfase": null
+   }
+  ]
+ },
+ "03": {
+  "texto": "O terceiro: as fotos precisam aparecer grandes. Um toque, e a foto abre na tela inteira.",
+  "escolhida": 5077,
+  "aprovada": true,
+  "candidatas": [
+   {
+    "semente": 5077,
+    "aprovada": true,
+    "motivo": "ok",
+    "nota": -0.45,
+    "fala_s": 6.88,
+    "ritmo_letras_s": 10.0,
+    "respiros_s": [
+     0.41
+    ],
+    "maior_pausa_s": 0.6,
+    "maior_pausa_entre_frases_s": 0.48,
+    "queda_final_ms": 240,
+    "queda_minima_ms": 55,
+    "fim_do_arquivo_db": -75.4,
+    "altura_final": 0.68,
+    "perguntas_sobem": [],
+    "enfase": null
+   },
+   {
+    "semente": 2077,
+    "aprovada": true,
+    "motivo": "ok",
+    "nota": -0.553,
+    "fala_s": 6.96,
+    "ritmo_letras_s": 9.9,
+    "respiros_s": [
+     0.414
+    ],
+    "maior_pausa_s": 0.6,
+    "maior_pausa_entre_frases_s": 0.44,
+    "queda_final_ms": 224,
+    "queda_minima_ms": 55,
+    "fim_do_arquivo_db": -75.7,
+    "altura_final": 0.71,
+    "perguntas_sobem": [],
+    "enfase": null
+   },
+   {
+    "semente": 3077,
+    "aprovada": true,
+    "motivo": "ok",
+    "nota": -0.61,
+    "fala_s": 7.12,
+    "ritmo_letras_s": 9.7,
+    "respiros_s": [
+     0.458
+    ],
+    "maior_pausa_s": 0.68,
+    "maior_pausa_entre_frases_s": 0.52,
+    "queda_final_ms": 237,
+    "queda_minima_ms": 55,
+    "fim_do_arquivo_db": -78.8,
+    "altura_final": 0.63,
+    "perguntas_sobem": [],
+    "enfase": null
+   }
+  ]
+ },
+ "04": {
+  "texto": "E o quarto: o hóspede escolhe o chalé e já fala com a pousada. Escolhe as datas, os chalés da Vila Pequi, e a consulta chega pronta no WhatsApp.",
+  "escolhida": 20094,
+  "aprovada": false,
+  "candidatas": [
+   {
+    "semente": 20094,
+    "aprovada": false,
+    "motivo": "frases coladas (respiro de 0.06 s)",
+    "nota": 0.4,
+    "fala_s": 9.84,
+    "ritmo_letras_s": 11.3,
+    "respiros_s": [
+     0.062
+    ],
+    "maior_pausa_s": 0.48,
+    "maior_pausa_entre_frases_s": 0.11,
+    "queda_final_ms": 304,
+    "queda_minima_ms": 55,
+    "fim_do_arquivo_db": -78.7,
+    "altura_final": null,
+    "perguntas_sobem": [],
+    "enfase": null
+   },
+   {
+    "semente": 21094,
+    "aprovada": false,
+    "motivo": "frases coladas (respiro de 0.07 s)",
+    "nota": 0.4,
+    "fala_s": 9.84,
+    "ritmo_letras_s": 11.3,
+    "respiros_s": [
+     0.068
+    ],
+    "maior_pausa_s": 0.48,
+    "maior_pausa_entre_frases_s": 0.11,
+    "queda_final_ms": 304,
+    "queda_minima_ms": 55,
+    "fim_do_arquivo_db": -81.6,
+    "altura_final": 0.4,
+    "perguntas_sobem": [],
+    "enfase": null
+   },
+   {
+    "semente": 22094,
+    "aprovada": false,
+    "motivo": "frases coladas (respiro de 0.09 s)",
+    "nota": 0.25,
+    "fala_s": 10.08,
+    "ritmo_letras_s": 11.0,
+    "respiros_s": [
+     0.086
+    ],
+    "maior_pausa_s": 0.52,
+    "maior_pausa_entre_frases_s": 0.08,
+    "queda_final_ms": 306,
+    "queda_minima_ms": 55,
+    "fim_do_arquivo_db": -79.0,
+    "altura_final": null,
+    "perguntas_sobem": [],
+    "enfase": null
+   }
+  ]
+ }
+}
