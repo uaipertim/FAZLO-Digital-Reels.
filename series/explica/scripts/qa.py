@@ -10,7 +10,8 @@ Confere:
   formato     1080×1920, 60 fps, H.264 yuv420p, AAC 48 kHz estéreo; 60–90 s (ou o "duracao_alvo" do roteiro); vídeo e áudio com a mesma duração;
   som         −14 LUFS integrados (±0,5) e pico real ≤ −1 dBTP medidos NO MP4 (depois do AAC);
   voz         cada capítulo é UMA geração inteira, colocada sem cortes: o trecho na narração montada é idêntico ao
-              arquivo da geração (fora os fades de 8 ms / 60 ms nas pontas) e o arquivo é o registrado (sha1);
+              arquivo da geração (fora os fades de 8 ms / 60 ms nas pontas) e o arquivo é o registrado (sha1); com
+              respiro inserido, a derivada é a tomada original + zeros, só em pontos abaixo de −60 dB (regra de 28/10);
   o corte     a varredura de "o corte" soa em cada troca de capítulo, quando a barra cruza o centro (2–13 kHz);
   leitura     cada linha de apoio fica ≥ 1,5 s inteira na tela e nunca há duas ao mesmo tempo;
   áreas       (caixas do motor, a cada 0,25 s, fora das passagens) todo conteúdo entre y 265 e 1456 e fora da coluna
@@ -105,11 +106,15 @@ I = float(re.search(r'I:\s+(-?[\d.]+) LUFS', summ).group(1))
 TP = float(re.search(r'Peak:\s+(-?[\d.]+) dBFS', summ).group(1))
 ok(-14.5 <= I <= -13.5, f'loudness integrado {I:.1f} LUFS (alvo −14)')
 ok(TP <= -1.0, f'pico real {TP:.1f} dBTP (limite −1)')
+niveis = {}
 for nome, rot in (('voz-tratada', 'a voz sozinha'), ('trilha', 'a trilha sozinha (com ducking)'), ('efeitos', 'os efeitos sozinhos')):
     f = os.path.join(AUD, nome + '.wav')
     if os.path.exists(f):
         ev = run(['ffmpeg', '-hide_banner', '-nostats', '-i', f, '-af', 'ebur128', '-f', 'null', '-']).stderr
-        info(f'{rot}, na escala da mixagem: {float(re.search(r"I:\s+(-?[\d.]+) LUFS", ev[ev.rindex("Summary:"):]).group(1)):.1f} LUFS')
+        niveis[nome] = float(re.search(r"I:\s+(-?[\d.]+) LUFS", ev[ev.rindex("Summary:"):]).group(1))
+        info(f'{rot}, na escala da mixagem: {niveis[nome]:.1f} LUFS')
+if 'voz-tratada' in niveis and 'efeitos' in niveis:
+    ok(niveis['voz-tratada'] - niveis['efeitos'] >= 3, f'a voz fica {niveis["voz-tratada"] - niveis["efeitos"]:.1f} dB acima dos efeitos (mínimo +3 dB)')
 
 # ---------------------------------------------------------------- voz
 report += ['', 'VOZ (uma geração inteira por capítulo, nada emendado)']
@@ -124,8 +129,20 @@ def decodifica(path):
 for c in LN['colocacao']:
     key = f'{c["cap"]:02d}'
     arq = os.path.join(AUD, c['arquivo'])
-    sha_ok = hashlib.sha1(open(arq, 'rb').read()).hexdigest() == FALAS[key]['sha1_audio']
+    sha_ok = hashlib.sha1(open(os.path.join(AUD, c.get('origem', c['arquivo'])), 'rb').read()).hexdigest() == FALAS[key]['sha1_audio']
     y = decodifica(arq)
+    if c.get('respiro_inserido'):
+        # respiro inserido: a derivada tem de ser a tomada original com zeros só nos pontos registrados (abaixo de −60 dB)
+        x0, pos, lido, okd = decodifica(os.path.join(AUD, c['origem'])), 0, 0, True
+        for it in sorted(c['respiro_inserido'], key=lambda z: z['t']):
+            i, nz = int(round(it['t'] * SR)), int(round(it['silencio_s'] * SR))
+            okd &= np.array_equal(y[pos:pos + i - lido], x0[lido:i]) and not np.any(y[pos + i - lido:pos + i - lido + nz])
+            pos, lido = pos + i - lido + nz, i
+        okd &= np.array_equal(y[pos:pos + len(x0) - lido], x0[lido:])
+        e0 = np.sqrt(np.convolve(x0 ** 2, np.ones(480) / 480, mode='same'))
+        nivel = max(20 * np.log10(e0[int(round(it['t'] * SR))] / e0.max() + 1e-12) for it in c['respiro_inserido'])
+        ok(okd and nivel <= -60, f'capítulo {key}: respiro inserido ' + ', '.join(f'{it["silencio_s"]:.2f} s em {it["t"]:.3f} s (tomada: {it["respiro_da_tomada_s"]:.2f} s → alvo {it["alvo_s"]:.2f} s)' for it in c['respiro_inserido'])
+           + f'; a derivada é a tomada original + silêncio, amostra por amostra: {"sim" if okd else "NÃO"}; nível no ponto {nivel:.0f} dB (máx. −60)')
     seg = y[int(round(c['de_s'] * SR)):int(round(c['ate_s'] * SR))]
     i = int(round(c['no_video_s'] * SR))
     k0, k1 = int(0.008 * SR), int(0.06 * SR)
@@ -172,6 +189,19 @@ if aps:
     ok(not sobrepostas, 'nunca duas linhas de apoio ao mesmo tempo (a anterior sai antes de a próxima entrar)')
 else:
     info('o episódio não tem linhas de apoio (nada a conferir)')
+
+# ---------------------------------------------------------------- legenda palavra por palavra
+if LN.get('legenda'):
+    report += ['', 'LEGENDA PALAVRA POR PALAVRA']
+    txt_leg = open(os.path.join(AUD, 'legenda.txt')).read()
+    for ln in txt_leg.splitlines():
+        if ln.startswith(('OK ', 'FALHA')):
+            ok(ln.startswith('OK'), 'legenda.py: ' + ln[7:].strip())
+    pgs = MOT.get('legenda') or {}
+    curtas = [q for q in pgs.get('paginas', []) if q['t1'] - q['t0'] < 1.5 - 1e-3]
+    ok(pgs.get('paginas') and not curtas, f'no motor: {len(pgs.get("paginas", []))} páginas, a mais curta com {min((q["t1"] - q["t0"] for q in pgs.get("paginas", [])), default=0):.2f} s (mínimo 1,5 s); {pgs.get("juntadas", 0)} juntadas')
+    foneticas = [q['texto'] for q in pgs.get('paginas', []) if re.search(r'f[áa]zlo\b|u[áa]tsap', q['texto'], re.I) and not re.search(r'\bFAZLO\b', q['texto'])]
+    ok(not foneticas, 'nenhuma grafia fonética na legenda desenhada (Fázlo, Uátsap)' + ('' if not foneticas else ': ' + '; '.join(foneticas)))
 
 # ---------------------------------------------------------------- áreas seguras
 report += ['', 'ÁREAS SEGURAS']

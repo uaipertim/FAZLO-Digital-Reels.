@@ -196,9 +196,11 @@
   // legenda ligada: os diagramas (de y ≈ 740–1450) vão para y 650–1250, em escala, centrados em x = 540
   let LEG = null, LEGON = false;
   const DIA = { A: 740, B: 650, k: (1250 - 650) / (1450 - 740) };
-  const diaM = (c) => { c.translate(540, DIA.B); c.scale(DIA.k, DIA.k); c.translate(-540, -DIA.A); };
-  const mapR = (R) => ({ ...R, x: 540 + (R.x - 540) * DIA.k, y: DIA.B + (R.y - DIA.A) * DIA.k, w: R.w * DIA.k, h: R.h * DIA.k });
-  const mapW = (P) => ({ ...P, x: 540 + (P.x - 540) * DIA.k, y: DIA.B + (P.y - DIA.A) * DIA.k, s: P.s * DIA.k });
+  // uma cena pode ter a própria âncora (CENAS.<tipo>.dia): ex. o pedido do collab, cujo cartão fica no lugar (y 446)
+  const diaDe = (tipo) => (CENAS[tipo] && CENAS[tipo].dia) || DIA;
+  const diaM = (c, D = DIA) => { c.translate(540, D.B); c.scale(D.k, D.k); c.translate(-540, -D.A); };
+  const mapR = (R, D = DIA) => ({ ...R, x: 540 + (R.x - 540) * D.k, y: D.B + (R.y - D.A) * D.k, w: R.w * D.k, h: R.h * D.k });
+  const mapW = (P, D = DIA) => ({ ...P, x: 540 + (P.x - 540) * D.k, y: D.B + (P.y - D.A) * D.k, s: P.s * D.k });
   const MARCA = { x: 80, y: 287, w: 176 };
 
   // a palavra da fala que dispara uma peça: "palavra", "palavra#2", "+1.2" (s depois do início do capítulo), "fim"
@@ -1318,10 +1320,14 @@
       S.lista = at(cap, d.lista && d.lista.em);
       S.listaY = 560;
       const lines = cap.titulo.map(typo);
-      let s = 78, rows;
+      let s = LEGON ? 68 : 78, rows;
       const quebra = (z) => lines.map((l) => wrap(l, DISPLAY, z, 800, 860));      // até x 940: fora da coluna de botões
       while (s > 40 && ((rows = quebra(s)).flat().length > 4 || rows.flat().some((r) => tw(r, DISPLAY, s, 800) > 860))) s -= 1;
       S.ts = s; S.rows = rows; S.tTop = 1078;
+      // legenda ligada: a ilustração encolhe (0,78, a partir do topo) e o título sobe; tudo acaba antes de y 1270
+      S.ilu = LEGON ? 0.78 : 1;
+      S.seloY = LEGON ? 445 + (994 - 445) * S.ilu : 994;
+      if (LEGON) S.tTop = S.seloY + 70;
       for (let k = 0; k < 4; k++) cue(S.lista + 0.09 * k, 'conta', { k });
       cue(cap.voo[0], 'encolhe'); cue(cap.voo[1], 'pousa');
       cap.lay = { apoioY: 1460 };
@@ -1331,10 +1337,12 @@
     draw(c, cap, S, t) {
       chip(c, cap.rotulo, L.x0, 372, { on: 0, size: 22, ls: 4, h: 50, cor: C.lime, corTexto: C.lime, solido: true });
       const a = 1 - 0.78 * E.out(p(t, S.lista - 0.1, S.lista + 0.45));
+      c.save(); c.translate(540, 445); c.scale(S.ilu, S.ilu); c.translate(-540, -445);
       cachoeira(c, 540, 515, t, a);
       boxHere(c, 'ilustração', 200, 445, 880, 975);
       c.save(); c.globalAlpha *= a; balaoPedido(c, 652, 452, t); c.restore();
-      chip(c, cap.diagrama.selo, 540, 994, { on: 1, size: 22, ls: 3.5, h: 52, align: 'center', glow: false });
+      c.restore();
+      chip(c, cap.diagrama.selo, 540, S.seloY, { on: 1, size: 22, ls: 3.5, h: 52, align: 'center', glow: false });
       let y = S.tTop + S.ts * 0.8;
       S.rows.forEach((rs, i) => rs.forEach((r) => { txt(c, r, L.x0, y, { fam: DISPLAY, size: S.ts, weight: 800, color: i ? C.lime : C.white, box: `título ${i + 1}` }); y += S.ts * 1.1; }));
     },
@@ -1344,6 +1352,7 @@
   const CARD = { x: 80, y: 446, w: 700, pad: 26, size: 27, lh: 37 };
   const SHOT = 1170;                                  // largura dos PNGs (390 px CSS × 3)
   CENAS.pedido = {
+    dia: { A: 446, B: 446, k: (1250 - 446) / (1440 - 446) },      // legenda ligada: o cartão fica, o celular vai até y 1250
     setup(cap) {
       const d = cap.diagrama, S = {};
       S.k = pedidoCaps().indexOf(cap) + 1 || cap.n;
@@ -1493,6 +1502,7 @@
 
   // ---- fecho_collab: a lista com os 4 ✓ no centro, "Site por Fazlo Digital" em lima e o site; depois, só a logo
   CENAS.fecho_collab = {
+    dia: { A: 0, B: 0, k: 1 },                    // legenda ligada: não encolhe (o crédito e o site já acabam em y 1282)
     setup(cap) {
       const d = cap.diagrama, S = {};
       S.lista = at(cap, d.lista.em);
@@ -1546,7 +1556,7 @@
     }
     drawRotulo(c, cap, t); drawTitulo(c, cap, t); drawApoio(c, cap, t, cap.lay.apoioY);
     c.save(); c.translate(0, flutua(t));                // a cena nunca fica parada: a parte flutua devagar (±4 px)
-    if (LEGON) diaM(c);                                 // legenda ligada: o diagrama em escala, até y ≈ 1250
+    if (LEGON) diaM(c, diaDe(tipo));                    // legenda ligada: o diagrama em escala, até y ≈ 1250
     if (cena.extra) cena.extra(c, cap, S, t);
     if (cena.parte && (!cap.voo || t < cap.voo[0])) cena.parte(c, cap, S, t);
     c.restore();
@@ -1580,7 +1590,7 @@
   }
   // collab: o cartão do pedido encolhe e voa até o cartãozinho dele na lista do canto, já em lima
   function vooPedido(c, cap, t) {
-    const S = cap.S, R = S.parte, cena = CENAS.pedido, B = listaRect(LCANTO, S.k - 1), R0 = LEGON ? mapR(R) : R;
+    const S = cap.S, R = S.parte, cena = CENAS.pedido, B = listaRect(LCANTO, S.k - 1), R0 = LEGON ? mapR(R, diaDe('pedido')) : R;
     const u = E.io(p(t, cap.voo[0], cap.voo[1]));
     const x = lerp(R0.x, B.x, u), y = lerp(R0.y + flutua(cap.voo[0]), B.y, u) - Math.sin(u * Math.PI) * 60, w = lerp(R0.w, B.w, u), h = lerp(R0.h, B.h, u);
     const conteudo = 1 - p(u, 0.25, 0.7), lima = p(u, 0.35, 0.85);

@@ -1,117 +1,241 @@
 {
- "duracao": 54.963,
+ "duracao": 58.462,
  "apoios": [],
  "trocas": [
   {
    "cap": 1,
-   "t0": 4.266,
-   "t1": 5.066
+   "t0": 5.38,
+   "t1": 6.18
   },
   {
    "cap": 2,
-   "t0": 11.361,
-   "t1": 12.161
+   "t0": 14.08,
+   "t1": 14.88
   },
   {
    "cap": 3,
-   "t0": 21.451,
-   "t1": 22.251
+   "t0": 25.42,
+   "t1": 26.22
   },
   {
    "cap": 4,
-   "t0": 30.334,
-   "t1": 31.134
+   "t0": 33.88,
+   "t1": 34.68
   },
   {
    "cap": 5,
-   "t0": 44.334,
-   "t1": 45.134
+   "t0": 46.78,
+   "t1": 47.58
   }
  ],
  "montagens": [
   {
    "cap": 0,
    "primeira": 0,
-   "ultima": 2.062,
+   "ultima": 2.9,
    "voo": [
-    3.506,
-    4.126
+    4.62,
+    5.24
    ],
    "cursor": [
-    4.186,
-    4.486
+    5.3,
+    5.6
    ]
   },
   {
    "cap": 1,
-   "primeira": 5.07,
-   "ultima": 10.167,
+   "primeira": 6.16,
+   "ultima": 13,
    "voo": [
-    10.601,
-    11.221
+    13.32,
+    13.94
    ],
    "cursor": [
-    11.281,
-    11.581
+    14,
+    14.3
    ]
   },
   {
    "cap": 2,
-   "primeira": 12.247,
-   "ultima": 20.095,
+   "primeira": 14.94,
+   "ultima": 24.06,
    "voo": [
-    20.691,
-    21.311
+    24.66,
+    25.28
    ],
    "cursor": [
-    21.371,
-    21.671
+    25.34,
+    25.64
    ]
   },
   {
    "cap": 3,
-   "primeira": 22.337,
-   "ultima": 29.047,
+   "primeira": 26.2,
+   "ultima": 32.64,
    "voo": [
-    29.574,
-    30.194
+    33.12,
+    33.74
    ],
    "cursor": [
-    30.254,
-    30.554
+    33.8,
+    34.1
    ]
   },
   {
    "cap": 4,
-   "primeira": 31.336,
-   "ultima": 40.914,
+   "primeira": 34.86,
+   "ultima": 44.238,
    "voo": [
-    43.574,
-    44.194
+    46.02,
+    46.64
    ],
    "cursor": [
-    44.254,
-    44.554
+    46.7,
+    47
    ]
   },
   {
    "cap": 5,
-   "primeira": 45.556,
-   "ultima": 49.55,
+   "primeira": 48.12,
+   "ultima": 52.672,
    "voo": null,
    "cursor": null
   }
  ],
  "fecho": {
-  "t0": 44.734,
+  "t0": 47.18,
   "corte_logo": [
-   51.463,
-   51.963
+   54.962,
+   55.462
   ],
   "logo_parada": [
-   51.963,
-   54.963
+   55.462,
+   58.462
   ],
-  "fim": 54.963
+  "fim": 58.462
+ },
+ "legenda": {
+  "paginas": [
+   {
+    "cena": "00",
+    "t0": 0.1,
+    "t1": 2.9722,
+    "texto": "Quatro cachoeiras dentro da pousada.",
+    "juntada": false
+   },
+   {
+    "cena": "00",
+    "t0": 2.9722,
+    "t1": 6.08,
+    "texto": "Como mostrar isso num site?",
+    "juntada": false
+   },
+   {
+    "cena": "01",
+    "t0": 6.08,
+    "t1": 9.12,
+    "texto": "O primeiro pedido: quem chega precisa saber",
+    "juntada": true
+   },
+   {
+    "cena": "01",
+    "t0": 9.12,
+    "t1": 12.8,
+    "texto": "das cachoeiras… Então elas abrem o site, logo",
+    "juntada": true
+   },
+   {
+    "cena": "01",
+    "t0": 12.8,
+    "t1": 14.78,
+    "texto": "no topo.",
+    "juntada": true
+   },
+   {
+    "cena": "02",
+    "t0": 14.78,
+    "t1": 17.82,
+    "texto": "O segundo: o pôr do sol com vinho e queijo",
+    "juntada": true
+   },
+   {
+    "cena": "02",
+    "t0": 17.82,
+    "t1": 20.7,
+    "texto": "canastra é uma experiência, não um item",
+    "juntada": true
+   },
+   {
+    "cena": "02",
+    "t0": 20.7,
+    "t1": 23.633,
+    "texto": "de lista. Ganhou uma seção só dele,",
+    "juntada": true
+   },
+   {
+    "cena": "02",
+    "t0": 23.633,
+    "t1": 26.12,
+    "texto": "e está incluso.",
+    "juntada": true
+   },
+   {
+    "cena": "03",
+    "t0": 26.12,
+    "t1": 29.24,
+    "texto": "O terceiro: as fotos precisam aparecer",
+    "juntada": true
+   },
+   {
+    "cena": "03",
+    "t0": 29.24,
+    "t1": 34.58,
+    "texto": "grandes. Um toque, e a foto abre na tela inteira.",
+    "juntada": true
+   },
+   {
+    "cena": "04",
+    "t0": 34.58,
+    "t1": 38.3,
+    "texto": "E o quarto: o hóspede escolhe o chalé e já fala",
+    "juntada": false
+   },
+   {
+    "cena": "04",
+    "t0": 38.3,
+    "t1": 39.8392,
+    "texto": "com a pousada.",
+    "juntada": false
+   },
+   {
+    "cena": "04",
+    "t0": 39.8392,
+    "t1": 42.678,
+    "texto": "Escolhe as datas, os chalés da Vila Pequi,",
+    "juntada": false
+   },
+   {
+    "cena": "04",
+    "t0": 42.678,
+    "t1": 47.48,
+    "texto": "e a consulta chega pronta no WhatsApp.",
+    "juntada": false
+   },
+   {
+    "cena": "05",
+    "t0": 47.48,
+    "t1": 51.6659,
+    "texto": "A pousada pediu. A gente fez. Site por FAZLO",
+    "juntada": true
+   },
+   {
+    "cena": "05",
+    "t0": 51.6659,
+    "t1": 55.462,
+    "texto": "Digital… pra Pousada Guardião da Serra.",
+    "juntada": true
+   }
+  ],
+  "juntadas": 4
  }
 }

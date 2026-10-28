@@ -72,6 +72,9 @@ series/explica/scripts/episodio.sh explica-01 --refaz 3,5   # gera de novo, INTE
 series/explica/scripts/episodio.sh explica-01 --forcar      # renderiza mesmo fora de 60–90 s (ou do "duracao_alvo")
 python3 series/explica/scripts/voz.py explica-01 --so 0,4,5  # gera só esses capítulos (amostras para aprovar antes do resto)
 python3 series/explica/scripts/voz.py explica-01 --refaz 0 --semente 0:5026   # o cap 0 com uma semente escolhida, conferido de novo
+python3 series/explica/scripts/voz.py explica-01 --candidatos 3   # 3 tomadas aprovadas por capítulo (voz/candidatos/), instala a de maior nota
+python3 series/explica/scripts/voz.py explica-01 --escolhe 0:21026,5:20111   # troca pela candidata escolhida de ouvido (sem API)
+python3 series/explica/scripts/voz.py explica-01 --reconfere   # confere de novo as tomadas instaladas; exceções em "voz_excecoes" do roteiro
 python3 series/explica/scripts/linha.py explica-02 --estimativa   # estima as durações de um roteiro novo, sem voz e sem API
 ```
 
@@ -115,7 +118,8 @@ Fora da nuvem, exporte `ELEVENLABS_API_KEY` no terminal. Os scripts só leem a v
 | ritmo | 8–18 letras por segundo de fala (era 9–18 até 24/10) |
 | pausas | entre frases, respiro de 0,12 s a 1,6 s (silêncio medido no áudio); dentro de uma frase, nenhuma pausa passa de 1,2 s (eram 1,1 s e 0,85 s até 24/10: o eleven_v4 fala com mais pausas). Conta como "entre frases" a troca de item da `fala` e todo fim de frase dentro de um item (palavra que termina em . ? ! …) |
 | fim de frase | o arquivo tem de **terminar em silêncio** (abaixo de −50 dB); se acaba com a voz soando, é corte. A queda de −15 dB (relativo ao pico da fala) até o silêncio (−50 dB) tem de durar **≥ 55 ms quando a última palavra termina em vogal** e **≥ 35 ms** nas outras (calibração de 23/10: 40 ms numa vogal soou cortado; 59 e 63 ms soaram naturais). Quedas que começam em −20 dB ou abaixo são fim natural. A voz também não pode subir no fim de uma frase afirmativa |
-| perguntas | em toda frase com "?", a altura da voz sobe ≥ 10% na parte final (a tônica) |
+| perguntas | em toda pergunta de **sim ou não**, a altura da voz sobe ≥ 10% na parte final (a tônica; o capítulo pode pedir mais com `"sobe_min"` na `conferencia`). A pergunta **aberta** (como, quando, onde, quem, qual, quanto, o que, por que…) pode descer no fim, como no português falado (decisão de 28/10, com o eleven_v4) |
+| respiro inserido | **permitido só assim** (decisão de 28/10): campo `"respiro_inserido": [{"depois_da_frase": 1, "alvo_s": 0.5}]` no capítulo. O `linha.py` insere silêncio digital no meio do maior trecho da própria tomada que já está abaixo de −60 dB entre as duas frases, até o respiro chegar ao alvo; nenhum som falado é cortado nem mexido, e o capítulo continua sendo uma geração só. O vídeo usa `voz/cap-NN-respiro.wav`; a tomada da API fica intacta, e a revisão confere, amostra por amostra, que a derivada é a original + silêncio. Serve para o eleven_v4, que não faz pausa com reticências, parágrafo nem `<break>` |
 | transcrição | se a chave tiver a permissão de speech-to-text, o texto ouvido bate com o roteiro, palavra por palavra (≥ 92%); sem a permissão, a geração segue e o histórico registra `transcricao: null` |
 
 **Calibração do corte:** um fecho ouvido como cortado em outro episódio caía de −8,7 dB ao silêncio em 32 ms. Finais de 37–57 ms a partir de nível mais baixo soaram normais.

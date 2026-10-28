@@ -4,7 +4,7 @@
    "n": 0,
    "texto": "Quatro cachoeiras dentro da pousada. Como mostrar isso num site?",
    "semente": 21026,
-   "aprovada": false,
+   "aprovada": true,
    "inicio_da_fala": 0.0,
    "fim_da_fala": 4.4,
    "sha1_audio": "b52d0d94833d9212e4e98f92eae65afe05443396",
@@ -725,7 +725,31 @@
      },
      "reprovada": "pergunta sem subida ([-0.16], mínimo 0.15)"
     }
-   ]
+   ],
+   "escolhida_por": "escuta",
+   "conferencia_atual": {
+    "resultado": "ok",
+    "quando": "2026-10-28 17:10",
+    "fala_s": 4.4,
+    "ritmo_letras_s": 12.0,
+    "maior_pausa_s": 0.08,
+    "respiros_s": [
+     0.462
+    ],
+    "maior_pausa_entre_frases_s": 0.48,
+    "sobra_no_fim_s": 0.24,
+    "queda_final_ms": 402,
+    "nivel_35ms_antes_db": -32.9,
+    "fim_do_arquivo_db": -77.3,
+    "queda_minima_ms": 55,
+    "altura_final": 0.8,
+    "perguntas_sobem": [
+     -0.14
+    ],
+    "perguntas_abertas": [
+     true
+    ]
+   }
   },
   "01": {
    "n": 1,
@@ -1316,7 +1340,26 @@
       "enfase": null
      }
     }
-   ]
+   ],
+   "conferencia_atual": {
+    "resultado": "ok",
+    "quando": "2026-10-28 17:10",
+    "fala_s": 7.12,
+    "ritmo_letras_s": 11.0,
+    "maior_pausa_s": 0.44,
+    "respiros_s": [
+     0.381
+    ],
+    "maior_pausa_entre_frases_s": 0.4,
+    "sobra_no_fim_s": 0.24,
+    "queda_final_ms": 272,
+    "nivel_35ms_antes_db": -31.0,
+    "fim_do_arquivo_db": -79.0,
+    "queda_minima_ms": 55,
+    "altura_final": 0.51,
+    "perguntas_sobem": [],
+    "perguntas_abertas": []
+   }
   },
   "02": {
    "n": 2,
@@ -1863,7 +1906,26 @@
       "enfase": null
      }
     }
-   ]
+   ],
+   "conferencia_atual": {
+    "resultado": "ok",
+    "quando": "2026-10-28 17:10",
+    "fala_s": 9.76,
+    "ritmo_letras_s": 10.6,
+    "maior_pausa_s": 0.52,
+    "respiros_s": [
+     0.474
+    ],
+    "maior_pausa_entre_frases_s": 0.52,
+    "sobra_no_fim_s": 0.32,
+    "queda_final_ms": 241,
+    "nivel_35ms_antes_db": -26.9,
+    "fim_do_arquivo_db": -76.2,
+    "queda_minima_ms": 55,
+    "altura_final": 0.76,
+    "perguntas_sobem": [],
+    "perguntas_abertas": []
+   }
   },
   "03": {
    "n": 3,
@@ -2291,13 +2353,32 @@
       "enfase": null
      }
     }
-   ]
+   ],
+   "conferencia_atual": {
+    "resultado": "ok",
+    "quando": "2026-10-28 17:10",
+    "fala_s": 6.88,
+    "ritmo_letras_s": 10.0,
+    "maior_pausa_s": 0.6,
+    "respiros_s": [
+     0.41
+    ],
+    "maior_pausa_entre_frases_s": 0.48,
+    "sobra_no_fim_s": 0.24,
+    "queda_final_ms": 240,
+    "nivel_35ms_antes_db": -35.9,
+    "fim_do_arquivo_db": -75.4,
+    "queda_minima_ms": 55,
+    "altura_final": 0.68,
+    "perguntas_sobem": [],
+    "perguntas_abertas": []
+   }
   },
   "04": {
    "n": 4,
    "texto": "E o quarto: o hóspede escolhe o chalé e já fala com a pousada. Escolhe as datas, os chalés da Vila Pequi, e a consulta chega pronta no WhatsApp.",
    "semente": 20094,
-   "aprovada": false,
+   "aprovada": true,
    "inicio_da_fala": 0.0,
    "fim_da_fala": 9.84,
    "sha1_audio": "5c5ec7bde8a168317c4474b9186b410bbd307284",
@@ -3204,13 +3285,39 @@
      },
      "reprovada": "frases coladas (respiro de 0.09 s)"
     }
-   ]
+   ],
+   "conferencia_atual": {
+    "resultado": "ok",
+    "quando": "2026-10-28 17:10",
+    "fala_s": 9.84,
+    "ritmo_letras_s": 11.3,
+    "maior_pausa_s": 0.48,
+    "respiros_s": [
+     0.062
+    ],
+    "maior_pausa_entre_frases_s": 0.11,
+    "sobra_no_fim_s": 0.32,
+    "queda_final_ms": 304,
+    "nivel_35ms_antes_db": -41.1,
+    "fim_do_arquivo_db": -78.7,
+    "queda_minima_ms": 55,
+    "altura_final": null,
+    "perguntas_sobem": [],
+    "perguntas_abertas": [],
+    "respiro_inserido": [
+     {
+      "t": 4.88708,
+      "abaixo_s": 0.054,
+      "respiro_da_tomada_s": 0.062
+     }
+    ]
+   }
   },
   "05": {
    "n": 5,
    "texto": "A pousada pediu. A gente fez. Site por FAZLO Digital… pra Pousada Guardião da Serra.",
    "semente": 20111,
-   "aprovada": false,
+   "aprovada": true,
    "inicio_da_fala": 0.0,
    "fim_da_fala": 6.64,
    "sha1_audio": "5672e9207083c9333bc070cf013f47ebd4869c8c",
@@ -3943,7 +4050,42 @@
      },
      "reprovada": "frases coladas (respiro de 0.10 s)"
     }
-   ]
+   ],
+   "escolhida_por": "escuta",
+   "conferencia_atual": {
+    "resultado": "sem ênfase em \"Site por FAZLO Digital\" (0.057)",
+    "quando": "2026-10-28 17:10",
+    "fala_s": 6.64,
+    "ritmo_letras_s": 9.9,
+    "maior_pausa_s": 0.44,
+    "respiros_s": [
+     0.108
+    ],
+    "maior_pausa_entre_frases_s": 0.08,
+    "sobra_no_fim_s": 0.32,
+    "queda_final_ms": 317,
+    "nivel_35ms_antes_db": -28.0,
+    "fim_do_arquivo_db": -76.4,
+    "queda_minima_ms": 55,
+    "altura_final": 0.78,
+    "perguntas_sobem": [],
+    "perguntas_abertas": [],
+    "respiro_inserido": [
+     {
+      "t": 4.7494,
+      "abaixo_s": 0.099,
+      "respiro_da_tomada_s": 0.108
+     }
+    ],
+    "enfase": {
+     "trecho": "Site por FAZLO Digital",
+     "altura_acima_do_resto": 0.057
+    }
+   },
+   "excecao": {
+    "falha": "sem ênfase em \"Site por FAZLO Digital\" (0.057)",
+    "motivo": "escolhida de ouvido pelo Willian em 28/10 (fecho-s20111); a ênfase em \"Site por FAZLO Digital\" mede 5,7% (mínimo 6%)"
+   }
   }
  },
  "voz": "Raquel",

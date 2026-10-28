@@ -13,7 +13,8 @@ Chromium, com a fonte de verdade) e confere tudo:
   grafia      o texto na tela é o do roteiro (FAZLO, WhatsApp), casado palavra a palavra com o alinhamento (que tem a
               grafia enviada à API: Fázlo, Uátsap). Se o número de palavras divergir, ou um par não bater nem pelo
               dicionário de pronúncia, PARA com erro (nunca adivinha);
-  destaque    só o campo "destaque" da frase (1 trecho, até 2 palavras, que precisa estar na frase); sem ele, tudo branco;
+  destaque    só o campo "destaque" da frase (1 trecho, até 2 palavras — até 3 nas expressões fixas, como "pôr do sol" —,
+              que precisa estar na frase); sem ele, tudo branco;
   sincronia   os tempos vêm do alinhamento, levados ao áudio final (o deslocamento de cada fala; os aparos só tiram
               silêncio). O início de cada palavra que vem depois de uma pausa (≥ 0,12 s) é medido na voz montada do
               vídeo, como na série FALA (o fim do último silêncio de ≥ 30 ms antes dela, 26 dB abaixo do nível da
@@ -37,6 +38,9 @@ REPO = os.path.dirname(os.path.dirname(AQUI))
 SR = 48000
 PRONUNCIA = {'FAZLO': 'Fázlo', 'WhatsApp': 'Uátsap'}     # roteiro -> texto enviado à API (sem diferenciar maiúsculas)
 MAX_DESTAQUE = 2                                          # palavras por trecho de destaque
+# expressões fixas: podem ter até 3 palavras (decisão de 28/10); o resto continua com no máximo 2
+EXPRESSOES_FIXAS = {'por do sol', 'cafe da manha', 'fim de semana', 'dia a dia', 'day use'}
+MAX_EXPRESSAO_FIXA = 3
 PAUSA = 0.12                                              # pausa antes da palavra a partir da qual o início é medido
 META_MEDIA, META_MAX = 0.040, 0.080
 SUBIDA_LIM = None
@@ -118,8 +122,10 @@ def marca_destaque(f, destaque, onde):
     if not isinstance(destaque, str):
         raise ErroLegenda(f'{onde}: "destaque" é um trecho só (texto), não {type(destaque).__name__}')
     alvo = [norm(w) for w in tokens(destaque)]
-    if not alvo or len(alvo) > MAX_DESTAQUE:
-        raise ErroLegenda(f'{onde}: o destaque "{destaque}" tem {len(alvo)} palavras (de 1 a {MAX_DESTAQUE})')
+    fixa = ' '.join(alvo) in EXPRESSOES_FIXAS
+    if not alvo or len(alvo) > (MAX_EXPRESSAO_FIXA if fixa else MAX_DESTAQUE):
+        raise ErroLegenda(f'{onde}: o destaque "{destaque}" tem {len(alvo)} palavras (de 1 a {MAX_DESTAQUE}; até '
+                          f'{MAX_EXPRESSAO_FIXA} só nas expressões fixas: {", ".join(sorted(EXPRESSOES_FIXAS))})')
     ws = [norm(w['w']) for w in f['palavras']]
     for i in range(len(ws) - len(alvo) + 1):
         if ws[i:i + len(alvo)] == alvo:
@@ -136,20 +142,26 @@ def envelope_db(y):
 
 
 def inicio_medido(env, lim, t_ant0, t0, t1):
-    """o fim do último silêncio (≥ 30 ms, abaixo de lim) antes da palavra, procurado de t0 − 0,40 s a t0 + 0,20 s"""
+    """o fim do MAIOR silêncio (≥ 30 ms, abaixo de lim) antes da palavra, procurado de t0 − 0,40 s a t0 + 0,20 s.
+    (Até 28/10 era o último silêncio; numa palavra como "Escolhe" o "sc" faz uma queda curta dentro dela, e a legenda
+    entrava 139 ms depois da voz. A pausa de verdade é a maior.)"""
     q30 = int(0.03 * SR)
     a0 = max(int((t_ant0 + 0.05) * SR), int((t0 - 0.40) * SR))
     a1 = min(len(env), int((t0 + 0.20) * SR))
-    q = env[a0:a1] <= lim
-    j = len(q) - 1 - int(0.10 * SR)
-    while j >= q30:
-        if q[j - q30:j + 1].all():
-            while j + 1 < len(q) and q[j + 1]:
-                j += 1
-            t_on = (a0 + j + 1) / SR
-            return t_on if t_ant0 + 0.05 < t_on < t1 - 0.03 else None
-        j -= 1
-    return None
+    q = np.append(env[a0:a1] <= lim, False)
+    lim_fim = len(q) - 1 - int(0.10 * SR)
+    melhor, run = None, 0
+    for j, v in enumerate(q):
+        if v:
+            run += 1
+            continue
+        if run >= q30 and j - 1 <= lim_fim + run and (melhor is None or run >= melhor[0]):
+            melhor = (run, j)                           # j: a 1ª amostra depois do silêncio
+        run = 0
+    if melhor is None:
+        return None
+    t_on = (a0 + melhor[1]) / SR
+    return t_on if t_ant0 + 0.05 < t_on < t1 - 0.03 else None
 
 
 def refina(cenas, y):
@@ -225,7 +237,9 @@ def explica(ep):
     for n, c in enumerate(rot['capitulos']):
         F, cap = falas[f'{n:02d}'], linha['capitulos'][n]
         desloc = cap['voz_t0'] - F['inicio_da_fala']               # a fala entra inteira, deslocada (linha.py)
-        frases = casa(c['fala'], F['alinhamento'], lambda t, d=desloc: t + d, f'capítulo {n:02d}', fim=F['fim_da_fala'])
+        ins = cap.get('respiro_inserido') or []                     # respiro inserido: o que vem depois do ponto se desloca
+        tempo = lambda t, d=desloc, ins=ins: t + d + sum(i['silencio_s'] for i in ins if t >= i['t'])
+        frases = casa(c['fala'], F['alinhamento'], tempo, f'capítulo {n:02d}', fim=F['fim_da_fala'])
         cenas.append({'id': f'{n:02d}', 'ancora': None, 'frases': frases})
     for c in cenas:
         for f in c['frases']:

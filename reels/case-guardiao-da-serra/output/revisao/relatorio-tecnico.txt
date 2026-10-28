@@ -4,59 +4,73 @@ reels/case-guardiao-da-serra/output/fazlo-digital-case-guardiao-da-serra.mp4
 FORMATO
 OK     vídeo h264 High yuv420p
 OK     resolução 1080×1920 (9:16)
-OK     60 fps, 3295 quadros
-OK     duração 54.92 s (alvo 45–60 s)
+OK     60 fps, 3505 quadros
+OK     duração 58.42 s (alvo 45–60 s)
 OK     áudio aac 48000 Hz, 2 canais, 264 kb/s
-OK     vídeo e áudio com a mesma duração (Δ 46 ms)
-       arquivo 36.9 MB, 5.4 Mb/s
-       capítulos (do início do corte de entrada ao início do corte seguinte): 00 4.3 s · 01 7.1 s · 02 10.1 s · 03 8.9 s · 04 14.0 s · 05 10.6 s
+OK     vídeo e áudio com a mesma duração (Δ 45 ms)
+       arquivo 36.5 MB, 5.0 Mb/s
+       capítulos (do início do corte de entrada ao início do corte seguinte): 00 5.4 s · 01 8.7 s · 02 11.3 s · 03 8.5 s · 04 12.9 s · 05 11.7 s
 
 SOM (medido no MP4, depois do AAC)
 OK     loudness integrado -14.1 LUFS (alvo −14)
-OK     pico real -1.8 dBTP (limite −1)
-       a voz sozinha, na escala da mixagem: -13.3 LUFS
-       a trilha sozinha (com ducking), na escala da mixagem: -28.3 LUFS
-       os efeitos sozinhos, na escala da mixagem: -25.3 LUFS
+OK     pico real -1.6 dBTP (limite −1)
+       a voz sozinha, na escala da mixagem: -13.4 LUFS
+       a trilha sozinha (com ducking), na escala da mixagem: -28.4 LUFS
+       os efeitos sozinhos, na escala da mixagem: -25.4 LUFS
+OK     a voz fica 12.0 dB acima dos efeitos (mínimo +3 dB)
 
 VOZ (uma geração inteira por capítulo, nada emendado)
-OK     capítulo 00: 3.59 s contínuos da geração com semente 17026 (17 geração(ões) inteira(s); arquivo íntegro: sim; diferença máx. 0.0e+00)
-         ritmo 15.5 letras/s · respiros entre frases [0.352] s · maior pausa 0.06 s · fim: queda 226 ms, altura final 0.65 · perguntas sobem [0.436]
-OK     capítulo 01: 5.82 s contínuos da geração com semente 2043 (1 geração(ões) inteira(s); arquivo íntegro: sim; diferença máx. 0.0e+00)
-         ritmo 14.1 letras/s · respiros entre frases [0.341] s · maior pausa 0.44 s · fim: queda 203 ms, altura final 0.84
-OK     capítulo 02: 8.81 s contínuos da geração com semente 2060 (1 geração(ões) inteira(s); arquivo íntegro: sim; diferença máx. 0.0e+00)
-         ritmo 12.1 letras/s · respiros entre frases [0.481] s · maior pausa 0.27 s · fim: queda 415 ms, altura final 0.62
-OK     capítulo 03: 7.60 s contínuos da geração com semente 2077 (1 geração(ões) inteira(s); arquivo íntegro: sim; diferença máx. 0.0e+00)
-         ritmo 9.4 letras/s · respiros entre frases [0.438] s · maior pausa 0.44 s · fim: queda 199 ms, altura final 0.77
-OK     capítulo 04: 10.74 s contínuos da geração com semente 2094 (1 geração(ões) inteira(s); arquivo íntegro: sim; diferença máx. 0.0e+00)
-         ritmo 10.6 letras/s · respiros entre frases [0.384] s · maior pausa 0.43 s · fim: queda 191 ms, altura final 0.69
-OK     capítulo 05: 6.28 s contínuos da geração com semente 9111 (8 geração(ões) inteira(s); arquivo íntegro: sim; diferença máx. 0.0e+00)
-         ritmo 11.0 letras/s · respiros entre frases [0.516] s · maior pausa 0.07 s · fim: queda 264 ms, altura final 0.72
+OK     capítulo 00: 4.64 s contínuos da geração com semente 21026 (21 geração(ões) inteira(s); arquivo íntegro: sim; diferença máx. 0.0e+00)
+         ritmo 12.0 letras/s · respiros entre frases [0.411] s · maior pausa 0.16 s · fim: queda 422 ms, altura final 0.86 · perguntas sobem [-0.106]
+OK     capítulo 01: 7.36 s contínuos da geração com semente 5043 (11 geração(ões) inteira(s); arquivo íntegro: sim; diferença máx. 0.0e+00)
+         ritmo 10.6 letras/s · respiros entre frases [0.467] s · maior pausa 0.52 s · fim: queda 294 ms, altura final 0.51
+OK     capítulo 02: 10.06 s contínuos da geração com semente 3060 (3 geração(ões) inteira(s); arquivo íntegro: sim; diferença máx. 0.0e+00)
+         ritmo 10.3 letras/s · respiros entre frases [0.539] s · maior pausa 0.64 s · fim: queda 242 ms, altura final 0.73
+OK     capítulo 03: 7.12 s contínuos da geração com semente 5077 (4 geração(ões) inteira(s); arquivo íntegro: sim; diferença máx. 0.0e+00)
+         ritmo 10.0 letras/s · respiros entre frases [0.41] s · maior pausa 0.6 s · fim: queda 240 ms, altura final 0.68
+OK     capítulo 04: respiro inserido 0.34 s em 4.887 s (tomada: 0.06 s → alvo 0.40 s); a derivada é a tomada original + silêncio, amostra por amostra: sim; nível no ponto -77 dB (máx. −60)
+OK     capítulo 04: 10.48 s contínuos da geração com semente 20094 (21 geração(ões) inteira(s); arquivo íntegro: sim; diferença máx. 0.0e+00)
+         ritmo 11.0 letras/s · respiros entre frases [0.086] s · maior pausa 0.52 s · fim: queda 306 ms, altura final None
+OK     capítulo 05: respiro inserido 0.39 s em 4.749 s (tomada: 0.11 s → alvo 0.50 s); a derivada é a tomada original + silêncio, amostra por amostra: sim; nível no ponto -80 dB (máx. −60)
+OK     capítulo 05: 7.33 s contínuos da geração com semente 20111 (21 geração(ões) inteira(s); arquivo íntegro: sim; diferença máx. 0.0e+00)
+         ritmo 9.9 letras/s · respiros entre frases [0.068] s · maior pausa 0.12 s · fim: queda 345 ms, altura final 0.72
 
 SINCRONIA
-OK     "o corte" soa quando a barra cruza o centro da tela, nas 5 trocas (desvio máx. 127 ms)
+OK     "o corte" soa quando a barra cruza o centro da tela, nas 5 trocas (desvio máx. 128 ms)
 
 LEITURA (linhas de apoio)
        o episódio não tem linhas de apoio (nada a conferir)
 
+LEGENDA PALAVRA POR PALAVRA
+OK     legenda.py: grafia do roteiro na tela (nenhuma grafia fonética: Fázlo, Uátsap)
+OK     legenda.py: sincronia com a voz montada (voz montada pela "colocacao" do linha.json), conferida pela subida da voz: 20 palavras depois de pausa, média 23 ms, máximo 78 ms (meta < 40 / < 80) · pior: cena 02 "uma" -78 ms
+OK     legenda.py: cada página ≥ 1,5 s na tela (a mais curta: 1.54 s)
+OK     legenda.py: páginas nunca sobrepostas (a próxima entra em corte seco)
+OK     legenda.py: a última página de cada cena tem mais de 1 palavra
+OK     legenda.py: dentro de x 130–950 (usa x 142–939)
+OK     legenda.py: nunca abaixo de y 1536 (usa y 1310–1442; faixa 1300–1450)
+OK     no motor: 17 páginas, a mais curta com 1.54 s (mínimo 1,5 s); 4 juntadas
+OK     nenhuma grafia fonética na legenda desenhada (Fázlo, Uátsap)
+
 ÁREAS SEGURAS
-OK     conteúdo importante entre y 265 e 1456: 925 caixas em 187 quadros
+OK     conteúdo importante entre y 265 e 1456: 1818 caixas em 200 quadros
 OK     nenhuma caixa na coluna de botões (x ≥ 950, y 1060–1560)
-       faixa usada pelo conteúdo: y 270–1444, x até 995
-OK     coluna de botões: 0 pixel aceso em 220 quadros amostrados (fora das passagens da barra)
+       faixa usada pelo conteúdo: y 270–1442, x até 940
+OK     coluna de botões: 0 pixel aceso em 234 quadros amostrados (fora das passagens da barra)
 
 IMAGEM
 OK     sem trechos pretos
 OK     sem imagem congelada por 1,5 s ou mais antes da logo final (o fundo e o cursor seguem vivos)
 
 CAPA
-OK     a capa é o quadro 0 do vídeo (PSNR 38.8 dB entre capa.png e o 1º quadro)
-OK     conteúdo da capa em y 372–1373, dentro do recorte 3:4 (y 240–1680) com folga ≥ 40 px
-       centro do bloco da capa em y 873 (centro do recorte: 960); marca em y 287
+OK     a capa é o quadro 0 do vídeo (PSNR 39.2 dB entre capa.png e o 1º quadro)
+OK     conteúdo da capa em y 372–1238, dentro do recorte 3:4 (y 240–1680) com folga ≥ 40 px
+       centro do bloco da capa em y 805 (centro do recorte: 960); marca em y 287
 
 FECHO
-OK     fecho de 10.63 s, do corte de entrada ao fim (mínimo 8,5 s): título + chamado + logo
-OK     a logo fica sozinha e parada nos últimos 3.00 s (de 51.96 s ao fim)
-OK     a logo não se mexe entre 52.01 s e 54.82 s (diferença média 0.24 de 255)
+OK     fecho de 11.68 s, do corte de entrada ao fim (mínimo 8,5 s): título + chamado + logo
+OK     a logo fica sozinha e parada nos últimos 3.00 s (de 55.46 s ao fim)
+OK     a logo não se mexe entre 55.51 s e 58.32 s (diferença média 0.24 de 255)
 OK     só a logo oficial na tela, centralizada (centro em x 540, y 950); nada aceso fora dela (máx. 19)
 
 RESULTADO: aprovado

@@ -40,6 +40,8 @@ Não há destaque automático. Sem o campo `"destaque"`, a frase fica toda em br
 - **Série Explica:** o campo vai na própria frase. Ex.: `{"texto": "Fotos de verdade, …", "destaque": "de verdade"}`.
 - **"Pelos olhos do hóspede":** o campo é `"destaques": {"card2": "taxa"}`. Numa fala em partes, use uma lista com um item por parte (`null` onde não há).
 - **Regras:** um trecho só por frase, de 1 ou 2 palavras, e ele precisa estar na frase. Se não estiver, para com erro.
+- **Expressões fixas** (decisão de 28/10): até 3 palavras, só nas da lista `EXPRESSOES_FIXAS` do `legenda.py` (pôr do sol, café da manhã, fim de semana, dia a dia, day use).
+- **Respiro inserido** (Explica, `respiro_inserido` no capítulo): as palavras depois do ponto onde entrou o silêncio se deslocam junto, pelo `linha.json`.
 
 ## Regras
 

@@ -12,6 +12,7 @@ Série Explica (FAZLO Digital) — a narração: UMA geração inteira por capí
     python3 series/explica/scripts/voz.py explica-01 --escolhe 0:2026,5:4111   troca pela candidata escolhida de ouvido (sem API)
     python3 series/explica/scripts/voz.py explica-01 --candidatos 3 --guardar-todas --refaz 0   guarda também as reprovadas
                                                                     (as N primeiras tomadas), para ouvir quando nenhuma passa
+    python3 series/explica/scripts/voz.py explica-01 --reconfere   confere de novo as tomadas instaladas (regras atuais, sem API)
 
 REGRA DA SÉRIE: todas as frases de um capítulo vão numa chamada só. Se algo sair ruim, o capítulo inteiro é gerado de
 novo com outra semente. Nunca se emendam palavras nem trechos de gerações diferentes. O arquivo que a API devolve fica
@@ -44,7 +45,13 @@ Conferência de cada geração (se uma falhar, o capítulo inteiro é gerado de 
                específicas, ex. {"ritmo_max": 12, "respiros": [null, [0.3, 0.6], [0.3, 0.6], null]}, e um trecho dito com
                ênfase: {"enfase": {"trecho": "Site por Fazlo Digital", "min": 0.06}} (a mediana da altura da voz no
                trecho fica ao menos 6% acima da mediana do resto do capítulo);
-  perguntas    em toda frase com "?", a altura da voz sobe pelo menos 10% na parte final (a tônica);
+  perguntas    em toda pergunta de SIM OU NÃO, a altura da voz sobe pelo menos 10% na parte final (a tônica); a pergunta
+               aberta (como, quando, onde, quem, qual, quanto, o que, por que…) pode descer no fim, como no português
+               falado (decisão de 28/10, com o eleven_v4);
+  respiro      inserido (campo "respiro_inserido" do capítulo: [{"depois_da_frase": 1, "alvo_s": 0.5}]): PERMITIDO SÓ
+               ASSIM (decisão de 28/10): o linha.py insere silêncio digital no meio do maior trecho da própria tomada
+               que já está abaixo de −60 dB entre as duas frases, até o respiro chegar ao alvo. Nenhum som falado é
+               cortado nem mexido; o capítulo continua sendo uma geração só. A conferência exige que esse ponto exista;
   transcrição  (se a API de transcrição responder) o texto ouvido bate com o roteiro, palavra por palavra (≥ 92%).
 
 A chave NÃO passa por aqui: no ambiente de nuvem ela fica nos Segredos de rede e o proxy injeta o cabeçalho xi-api-key;
@@ -74,7 +81,7 @@ SEMENTE = 2026
 TENTATIVAS = 6
 PRONUNCIA = {'FAZLO': 'Fázlo', 'WhatsApp': 'Uátsap'}     # só no texto enviado (na tela continua igual); sem diferenciar maiúsculas
 PRONUNCIA_ANTIGA = {'FAZLO': 'Fázlo'}                     # episódios narrados antes de 24/10
-LIM = {'ritmo': (8.0, 18.0), 'respiro': 0.12, 'pausa_max': 1.2, 'pausa_frases': 1.6, 'corte_ms': 35, 'corte_vogal_ms': 55, 'corte_db': -15.0, 'silencio_db': -50.0,
+LIM = {'silencio_insercao_db': -60.0, 'ritmo': (8.0, 18.0), 'respiro': 0.12, 'pausa_max': 1.2, 'pausa_frases': 1.6, 'corte_ms': 35, 'corte_vogal_ms': 55, 'corte_db': -15.0, 'silencio_db': -50.0,
        'sobe': 0.10, 'transcricao': 0.92}
 
 
@@ -200,6 +207,66 @@ def silencio(e, pk, a, b, lim_db=-32):
     return best / 1000
 
 
+# pergunta aberta (com palavra interrogativa): em português do Brasil ela costuma DESCER no fim, e assim fica (decisão de
+# 28/10); a subida mínima vale só para a pergunta de sim ou não
+PERGUNTA_ABERTA = {'como', 'quando', 'onde', 'aonde', 'quem', 'qual', 'quais', 'quanto', 'quanta', 'quantos', 'quantas',
+                   'que', 'oque', 'porque', 'cade', 'pra'}
+
+
+def primeira_palavra(s):
+    ws = [norm(w) for w in s.split() if norm(w)]
+    if len(ws) > 1 and ws[0] in ('o', 'por', 'pra', 'para') and ws[1] in ('que', 'quê'):
+        return ws[0] + ws[1] if ws[0] != 'pra' else 'pra'
+    return ws[0] if ws else ''
+
+
+def ponto_de_respiro(x, al, cap, k):
+    """Onde um respiro pode ser INSERIDO depois da frase k (0 = a 1ª) de uma tomada: o meio do maior trecho contínuo
+    abaixo de −60 dB (relativo ao pico da fala) entre o fim da última palavra da frase e o começo da 1ª da seguinte.
+    Devolve {'t': instante no arquivo (s), 'abaixo_s': duração do trecho, 'respiro_da_tomada_s'} ou None.
+    REGRA (28/10): o silêncio só pode entrar num ponto assim; nenhum som falado é cortado nem mexido."""
+    ws = palavras(al)
+    pos = sum(len(api_texto(f['texto'])) + 1 for f in cap['fala'][:k + 1]) - 1
+    a = next(w for w in reversed(ws) if w['i0'] < pos)
+    b = next(w for w in ws if w['i0'] >= pos)
+    e = envelope(x)
+    pk = e.max()
+    i0, i1 = int((a['fim_letra'] - 0.02) * SR), int((b['t0'] + 0.15) * SR)
+    q = e[i0:i1] < pk * 10 ** (LIM['silencio_insercao_db'] / 20)
+    best, run, fim_best = 0, 0, 0
+    for j, v in enumerate(q):
+        run = run + 1 if v else 0
+        if run > best:
+            best, fim_best = run, j
+    if best < int(0.01 * SR):                         # pelo menos 10 ms abaixo de −60 dB
+        return None
+    meio = i0 + fim_best - best // 2
+    return {'t': round(meio / SR, 5), 'abaixo_s': round(best / SR, 3), 'respiro_da_tomada_s': round(silencio(e, pk, a['fim_letra'] - 0.02, b['t0'] + 0.15), 3)}
+
+
+def insere_respiros(x, al, cap):
+    """A tomada com os respiros do campo "respiro_inserido" ([{depois_da_frase: 1, alvo_s: 0.5}]): silêncio digital
+    inserido no ponto de ponto_de_respiro, até o respiro chegar ao alvo. Devolve (sinal, alinhamento deslocado,
+    insercoes [{t, silencio_s}] em tempo do arquivo ORIGINAL). Nada da tomada é tirado: só entram zeros."""
+    ins = []
+    for r in cap.get('respiro_inserido') or []:
+        pt = ponto_de_respiro(x, al, cap, r['depois_da_frase'] - 1)
+        if pt is None:
+            raise SystemExit(f'respiro inserido depois da frase {r["depois_da_frase"]}: a tomada não tem ponto abaixo de −60 dB ali')
+        d = round(max(0.0, r['alvo_s'] - pt['respiro_da_tomada_s']), 3)
+        if d > 0:
+            ins.append({'t': pt['t'], 'silencio_s': d, 'respiro_da_tomada_s': pt['respiro_da_tomada_s'], 'alvo_s': r['alvo_s']})
+    y, ultimo = [], 0
+    for it in sorted(ins, key=lambda z: z['t']):
+        i = int(round(it['t'] * SR))
+        y += [x[ultimo:i], np.zeros(int(round(it['silencio_s'] * SR)))]
+        ultimo = i
+    y.append(x[ultimo:])
+    desloca = lambda t: t + sum(it['silencio_s'] for it in ins if t >= it['t'])
+    al2 = {k: (v if k == 'characters' else [round(desloca(t), 4) for t in v]) for k, v in al.items()}
+    return np.concatenate(y), al2, ins
+
+
 def confere(mp3, al, cap):
     """(ok, motivo, números) de uma geração inteira."""
     x = decodifica_bytes(mp3)
@@ -247,7 +314,7 @@ def confere(mp3, al, cap):
     firme = pergunta_final or altura_final is None or altura_final <= 1.02
     # perguntas: a altura sobe na parte final de cada "?" (pico dos últimos 60% contra a mediana dos 40% iniciais)
     ch, t0s, t1s = al['characters'], al['character_start_times_seconds'], al['character_end_times_seconds']
-    sobe, comeco = [], 0
+    sobe, abertas, comeco = [], [], 0
     for i, c in enumerate(ch):
         if c in '.!,;:…':
             comeco = i + 1
@@ -257,6 +324,7 @@ def confere(mp3, al, cap):
         comeco = i + 1
         if not letras_q:
             continue
+        abertas.append(primeira_palavra(''.join(ch[k] for k in range(letras_q[0], i))) in PERGUNTA_ABERTA)
         s_ = fz[int(t0s[letras_q[0]] / 0.01):int((t1s[letras_q[-1]] + 0.04) / 0.01)]
         corte = int(len(s_) * 0.4)
         corpo, cauda = s_[:corte], s_[corte:]
@@ -265,21 +333,30 @@ def confere(mp3, al, cap):
     n = {'fala_s': round(fim - ini, 2), 'ritmo_letras_s': round(ritmo, 1), 'maior_pausa_s': round(maior, 2), 'respiros_s': respiros,
          'maior_pausa_entre_frases_s': round(maior_fr, 2), 'sobra_no_fim_s': round(sobra, 2), 'queda_final_ms': round(queda_ms),
          'nivel_35ms_antes_db': round(float(nivel_antes), 1), 'fim_do_arquivo_db': round(float(fim_arq), 1), 'queda_minima_ms': corte_min, 'altura_final': None if altura_final is None else round(altura_final, 2),
-         'perguntas_sobem': sobe}
+         'perguntas_sobem': sobe, 'perguntas_abertas': abertas}
     if not LIM['ritmo'][0] <= ritmo <= LIM['ritmo'][1]:
         return False, f'ritmo {ritmo:.1f} letras/s', n, x
     if maior > LIM['pausa_max']:
         return False, f'pausa de {maior:.2f} s dentro de uma frase', n, x
     if maior_fr > LIM['pausa_frases']:
         return False, f'pausa entre frases de {maior_fr:.2f} s', n, x
-    if respiros and min(respiros) < LIM['respiro']:
-        return False, f'frases coladas (respiro de {min(respiros):.2f} s)', n, x
+    # respiro inserido depois da geração (campo "respiro_inserido"): nessa troca de frase o respiro da tomada não conta,
+    # mas ela precisa ter um ponto abaixo de −60 dB onde o silêncio possa entrar sem tocar em som falado
+    inseridos = {r['depois_da_frase'] - 1 for r in cap.get('respiro_inserido') or []}
+    for k in sorted(inseridos):
+        pt = ponto_de_respiro(x, al, cap, k)
+        n.setdefault('respiro_inserido', []).append(pt)
+        if pt is None:
+            return False, f'sem ponto abaixo de {LIM["silencio_insercao_db"]} dB depois da frase {k + 1} para o respiro inserido', n, x
+    resp_tomada = [r for k, r in enumerate(respiros) if k not in inseridos]
+    if resp_tomada and min(resp_tomada) < LIM['respiro']:
+        return False, f'frases coladas (respiro de {min(resp_tomada):.2f} s)', n, x
     # conferência própria do capítulo (campo "conferencia" do roteiro): ritmo máximo e respiro em trocas de frase específicas
     cf = cap.get('conferencia') or {}
     if cf.get('ritmo_max') and ritmo > cf['ritmo_max']:
         return False, f'corrido: {ritmo:.1f} letras/s (máximo {cf["ritmo_max"]})', n, x
     for k, faixa in enumerate(cf.get('respiros') or []):
-        if faixa and k < len(respiros) and not faixa[0] <= respiros[k] <= faixa[1]:
+        if faixa and k < len(respiros) and k not in inseridos and not faixa[0] <= respiros[k] <= faixa[1]:
             return False, f'respiro {respiros[k]:.2f} s depois da frase {k + 1} (alvo {faixa[0]}–{faixa[1]} s)', n, x
     if cf.get('enfase'):                                                  # um trecho dito com ênfase: a altura dele fica acima do resto
         trecho, minimo = cf['enfase']['trecho'], cf['enfase'].get('min', 0.06)
@@ -297,7 +374,7 @@ def confere(mp3, al, cap):
     if not firme:
         return False, f'fim suspenso (a voz sobe {altura_final:.2f}x no fim)', n, x
     sobe_min = cf.get('sobe_min', LIM['sobe'])
-    if any(v is None or v < sobe_min for v in sobe):
+    if any(v is None or v < sobe_min for v, ab in zip(sobe, abertas) if not ab):
         return False, f'pergunta sem subida ({sobe}, mínimo {sobe_min})', n, x
     return True, 'ok', n, x
 
@@ -365,6 +442,30 @@ def escolhe(ep_id, pares):
         F.update({'semente': sem, 'aprovada': True, 'inicio_da_fala': round(ws[0]['t0'], 3), 'fim_da_fala': round(ws[-1]['fim_letra'], 3),
                   'sha1_audio': hashlib.sha1(mp3).hexdigest(), 'alinhamento': al, 'escolhida_por': 'escuta'})
         print(f'  cap {n:02d}: agora com a semente {sem}')
+    json.dump(D, open(path, 'w'), ensure_ascii=False, indent=1)
+
+
+def reconfere(ep_id):
+    """Confere de novo as tomadas instaladas com as regras atuais (sem API) e grava o resultado em falas.json. Uma
+    tomada escolhida de ouvido que falhe num critério só passa se estiver em "voz_excecoes" do roteiro
+    ({"05": "motivo"}), e a exceção fica registrada."""
+    global MODELO, AJUSTES, PRONUNCIA
+    ep = json.load(open(os.path.join(SERIE, 'episodios', f'{ep_id}.json')))
+    out = os.path.join(SERIE, 'audio', ep_id, 'voz')
+    path = os.path.join(out, 'falas.json')
+    D = json.load(open(path))
+    MODELO, AJUSTES, PRONUNCIA = D['modelo'], D['ajustes'], D.get('pronuncia', PRONUNCIA_ANTIGA)
+    exc = ep.get('voz_excecoes') or {}
+    for n, c in enumerate(ep['capitulos']):
+        key = f'{n:02d}'
+        F = D['capitulos'][key]
+        ok, motivo, num, _ = confere(open(os.path.join(out, f'cap-{key}.mp3'), 'rb').read(), F['alinhamento'], c)
+        F['conferencia_atual'] = {'resultado': motivo, 'quando': time.strftime('%Y-%m-%d %H:%M'), **num}
+        if not ok and key in exc:
+            F['excecao'] = {'falha': motivo, 'motivo': exc[key]}
+            ok = True
+        F['aprovada'] = ok
+        print(f'  cap {key}: semente {F["semente"]} · {motivo}' + (f' — EXCEÇÃO: {exc[key]}' if F.get('excecao') and key in exc else ''))
     json.dump(D, open(path, 'w'), ensure_ascii=False, indent=1)
 
 
@@ -475,7 +576,9 @@ if __name__ == '__main__':
     if '--medir' not in args:
         forca = dict((int(a), int(b)) for a, b in (v.split(':') for v in args[args.index('--semente') + 1].split(','))) if '--semente' in args else None
         cand = int(args[args.index('--candidatos') + 1]) if '--candidatos' in args else 1
-        if '--escolhe' in args:
+        if '--reconfere' in args:
+            reconfere(args[0])
+        elif '--escolhe' in args:
             escolhe(args[0], dict((int(a), int(b)) for a, b in (v.split(':') for v in args[args.index('--escolhe') + 1].split(','))))
         else:
             gerar(args[0], refaz, so, forca, cand, '--guardar-todas' in args)

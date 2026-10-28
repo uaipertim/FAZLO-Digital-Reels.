@@ -9,6 +9,7 @@
     45,
     60
   ],
+  "legenda": true,
   "capitulos": [
     {
       "rotulo": "A POUSADA PEDIU. A GENTE FEZ.",
@@ -20,7 +21,8 @@
       "fala": [
         {
           "texto": "Quatro cachoeiras dentro da pousada.",
-          "apoio": null
+          "apoio": null,
+          "destaque": "cachoeiras"
         },
         {
           "texto": "Como mostrar isso num site?",
@@ -52,7 +54,8 @@
       "fala": [
         {
           "texto": "O primeiro pedido: quem chega precisa saber das cachoeiras…",
-          "apoio": null
+          "apoio": null,
+          "destaque": "cachoeiras"
         },
         {
           "texto": "Então elas abrem o site, logo no topo.",
@@ -91,7 +94,8 @@
       "fala": [
         {
           "texto": "O segundo: o pôr do sol com vinho e queijo canastra é uma experiência, não um item de lista.",
-          "apoio": null
+          "apoio": null,
+          "destaque": "pôr do sol"
         },
         {
           "texto": "Ganhou uma seção só dele, e está incluso.",
@@ -130,7 +134,8 @@
       "fala": [
         {
           "texto": "O terceiro: as fotos precisam aparecer grandes.",
-          "apoio": null
+          "apoio": null,
+          "destaque": "fotos"
         },
         {
           "texto": "Um toque, e a foto abre na tela inteira.",
@@ -169,7 +174,8 @@
         },
         {
           "texto": "Escolhe as datas, os chalés da Vila Pequi, e a consulta chega pronta no WhatsApp.",
-          "apoio": null
+          "apoio": null,
+          "destaque": "WhatsApp"
         }
       ],
       "diagrama": {
@@ -195,13 +201,19 @@
           }
         ],
         "mensagem": {
-          "em": "whatsapp"
+          "em": "pronta"
         },
         "resolve": {
           "em": "whatsapp"
         }
       },
-      "min": 13.6
+      "min": 12.5,
+      "respiro_inserido": [
+        {
+          "depois_da_frase": 1,
+          "alvo_s": 0.4
+        }
+      ]
     },
     {
       "rotulo": "COLLAB",
@@ -213,7 +225,8 @@
       "fala": [
         {
           "texto": "A pousada pediu. A gente fez. Site por FAZLO Digital…",
-          "apoio": null
+          "apoio": null,
+          "destaque": "FAZLO Digital"
         },
         {
           "texto": "pra Pousada Guardião da Serra.",
@@ -247,7 +260,16 @@
           "trecho": "Site por FAZLO Digital",
           "min": 0.06
         }
-      }
+      },
+      "respiro_inserido": [
+        {
+          "depois_da_frase": 1,
+          "alvo_s": 0.5
+        }
+      ]
     }
-  ]
+  ],
+  "voz_excecoes": {
+    "05": "escolhida de ouvido pelo Willian em 28/10 (fecho-s20111); a ênfase em \"Site por FAZLO Digital\" mede 5,7% (mínimo 6%)"
+  }
 }
