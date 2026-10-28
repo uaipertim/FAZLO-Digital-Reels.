@@ -117,20 +117,6 @@
  "legenda": {
   "paginas": [
    {
-    "cena": "00",
-    "t0": 0.1,
-    "t1": 2.9722,
-    "texto": "Quatro cachoeiras dentro da pousada.",
-    "juntada": false
-   },
-   {
-    "cena": "00",
-    "t0": 2.9722,
-    "t1": 6.08,
-    "texto": "Como mostrar isso num site?",
-    "juntada": false
-   },
-   {
     "cena": "01",
     "t0": 6.08,
     "t1": 9.12,
@@ -217,25 +203,11 @@
    {
     "cena": "04",
     "t0": 42.678,
-    "t1": 47.48,
+    "t1": 46.78,
     "texto": "e a consulta chega pronta no WhatsApp.",
     "juntada": false
-   },
-   {
-    "cena": "05",
-    "t0": 47.48,
-    "t1": 51.6659,
-    "texto": "A pousada pediu. A gente fez. Site por FAZLO",
-    "juntada": true
-   },
-   {
-    "cena": "05",
-    "t0": 51.6659,
-    "t1": 55.462,
-    "texto": "Digital… pra Pousada Guardião da Serra.",
-    "juntada": true
    }
   ],
-  "juntadas": 4
+  "juntadas": 3
  }
 }

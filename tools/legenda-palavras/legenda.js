@@ -44,7 +44,7 @@
         f.palavras.forEach((w) => ws.push({ w: w.w, t0: w.t0 + a0, t1: w.t1 + a0, chave: !!w.chave, frase: fi }));
         if (ws.length > ini) frases.push([ini, ws.length]);
       });
-      return { id: cena.id, ws, frases };
+      return { id: cena.id, ws, frases, ate: cena.ate == null ? null : cena.ate + ancora(cena) };   // ate: as páginas da cena acabam aqui
     });
 
     let juntadas = 0;
@@ -70,7 +70,7 @@
       };
       const cabe = (a, b) => b - a === 1 || quebra(a, b) !== null;
       const prox = cenas.slice(ci + 1).find((c) => c.ws.length);
-      const fimCena = prox ? prox.ws[0].t0 : o.fim;
+      const fimCena = Math.min(prox ? prox.ws[0].t0 : o.fim, cena.ate ?? Infinity);
       let unidades = cena.frases.map((f) => f.slice());
       let pags;
       for (;;) {
@@ -128,6 +128,7 @@
       ultimas.push({ cena: cena.id, n: pags[pags.length - 1].b - pags[pags.length - 1].a });
     });
     paginas.forEach((q, i) => { q.t1 = i + 1 < paginas.length ? paginas[i + 1].t0 : o.fim; });   // corte seco na próxima
+    paginas.forEach((q) => { const c = cenas.find((z) => z.id === q.cena); if (c && c.ate != null) q.t1 = Math.min(q.t1, c.ate); });   // a cena seguinte sem legenda
     const caixaDe = (w) => {                                                             // com o pulo no máximo, na palavra-chave
       const e = w.chave ? S.pulo / 2 : 0, cy = w.y - 0.365 * w.size;
       return { nome: 'legenda', x0: w.x - e * w.wpx, x1: w.x + w.wpx * (1 + e), y0: cy - (0.95 - 0.365) * w.size * (1 + 2 * e), y1: cy + (0.25 + 0.365) * w.size * (1 + 2 * e) };

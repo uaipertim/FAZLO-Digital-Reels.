@@ -1,20 +1,18 @@
 LEGENDA PALAVRA POR PALAVRA — case-guardiao-da-serra
 explica · case-guardiao-da-serra · legenda LIGADA no roteiro
-6 cenas · 12 frases · 114 palavras · 17 páginas
+4 cenas · 8 frases · 89 palavras · 13 páginas
 OK     grafia do roteiro na tela (nenhuma grafia fonética: Fázlo, Uátsap)
-       destaque em limão: cachoeiras, cachoeiras…, pôr, do, sol, fotos, WhatsApp., FAZLO, Digital…
-       início medido na voz em 18 palavras depois de pausa (a marcação da API errava em média 54 ms, no máximo 171 ms)
-OK     sincronia com a voz montada (voz montada pela "colocacao" do linha.json), conferida pela subida da voz: 20 palavras depois de pausa, média 23 ms, máximo 78 ms (meta < 40 / < 80) · pior: cena 02 "uma" -78 ms
+       destaque em limão: cachoeiras…, pôr, do, sol, fotos, WhatsApp.
+       início medido na voz em 15 palavras depois de pausa (a marcação da API errava em média 53 ms, no máximo 171 ms)
+OK     sincronia com a voz montada (voz montada pela "colocacao" do linha.json), conferida pela subida da voz: 17 palavras depois de pausa, média 24 ms, máximo 78 ms (meta < 40 / < 80) · pior: cena 02 "uma" -78 ms
 OK     cada página ≥ 1,5 s na tela (a mais curta: 1.54 s)
-       páginas juntadas (frase curta + a seguinte, para durar ≥ 1,5 s): 4
+       páginas juntadas (frase curta + a seguinte, para durar ≥ 1,5 s): 3
 OK     páginas nunca sobrepostas (a próxima entra em corte seco)
 OK     a última página de cada cena tem mais de 1 palavra
-OK     dentro de x 130–950 (usa x 142–939)
+OK     dentro de x 130–950 (usa x 150–930)
 OK     nunca abaixo de y 1536 (usa y 1310–1442; faixa 1300–1450)
 
 PÁGINAS
-    0.10–  2.97 s  cena 00       2 linha(s)  Quatro *cachoeiras* / dentro da pousada.
-    2.97–  6.08 s  cena 00       2 linha(s)  Como mostrar / isso num site?
     6.08–  9.12 s  cena 01       2 linha(s) · juntada  O primeiro pedido: quem / chega precisa saber
     9.12– 12.80 s  cena 01       2 linha(s) · juntada  das *cachoeiras…* Então / elas abrem o site, logo
    12.80– 14.78 s  cena 01       1 linha(s) · juntada  no topo.
@@ -27,12 +25,9 @@ PÁGINAS
    34.58– 38.30 s  cena 04       2 linha(s)  E o quarto: o hóspede / escolhe o chalé e já fala
    38.30– 39.84 s  cena 04       1 linha(s)  com a pousada.
    39.84– 42.68 s  cena 04       2 linha(s)  Escolhe as datas, / os chalés da Vila Pequi,
-   42.68– 47.48 s  cena 04       2 linha(s)  e a consulta chega / pronta no *WhatsApp.*
-   47.48– 51.67 s  cena 05       2 linha(s) · juntada  A pousada pediu. A gente / fez. Site por *FAZLO*
-   51.67– 55.46 s  cena 05       2 linha(s) · juntada  *Digital…* pra Pousada / Guardião da Serra.
+   42.68– 46.78 s  cena 04       2 linha(s)  e a consulta chega / pronta no *WhatsApp.*
 
 SINCRONIA (palavras depois de pausa: legenda − subida da voz)
-  cena 00         2.972 s   -28 ms  "Como"
   cena 01         7.531 s   -36 ms  "quem"
   cena 01        10.487 s   -29 ms  "Então"
   cena 01        12.459 s   -22 ms  "logo"
@@ -50,7 +45,5 @@ SINCRONIA (palavras depois de pausa: legenda − subida da voz)
   cena 04        37.140 s   +65 ms  "chalé"
   cena 04        39.839 s    -4 ms  "Escolhe"
   cena 04        41.238 s   +63 ms  "chalés"
-  cena 05        51.666 s    -4 ms  "Digital…"
-  cena 05        52.680 s    -5 ms  "pra"
 
 RESULTADO: aprovado

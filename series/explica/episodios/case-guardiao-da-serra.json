@@ -45,7 +45,8 @@
           ]
         ],
         "sobe_min": 0.15
-      }
+      },
+      "legenda": false
     },
     {
       "rotulo": "PEDIDO",
@@ -266,7 +267,8 @@
           "depois_da_frase": 1,
           "alvo_s": 0.5
         }
-      ]
+      ],
+      "legenda": false
     }
   ],
   "voz_excecoes": {

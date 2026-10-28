@@ -24,7 +24,7 @@ python3 tools/legenda-palavras/legenda.py pelos <id>     # -> reels/<id>/audio/v
 
 ## Ligar num episódio
 
-- **Campo no roteiro:** `"legenda": true` no JSON do episódio. O padrão é `false`, e os episódios publicados continuam com `false`.
+- **Campo no roteiro:** `"legenda": true` no JSON do episódio. Na Explica, `"legenda": false` num capítulo deixa só ele sem legenda (ex.: gancho e fecho, quando o texto grande da tela já mostra a frase). O padrão é `false`, e os episódios publicados continuam com `false`.
 - **Os comandos de cada série já rodam o `legenda.py`:**
   - `series/explica/scripts/episodio.sh`, depois do `linha.py`;
   - `tools/episodio.cjs`, depois dos cues.

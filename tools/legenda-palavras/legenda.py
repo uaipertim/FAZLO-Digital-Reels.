@@ -235,12 +235,17 @@ def explica(ep):
         raise ErroLegenda(f'{ep}: a linha do tempo é provisória (sem voz); a legenda só sai com a narração')
     cenas = []
     for n, c in enumerate(rot['capitulos']):
+        if c.get('legenda') is False:                               # capítulo sem legenda (ex.: a tela já mostra a frase)
+            continue
         F, cap = falas[f'{n:02d}'], linha['capitulos'][n]
         desloc = cap['voz_t0'] - F['inicio_da_fala']               # a fala entra inteira, deslocada (linha.py)
         ins = cap.get('respiro_inserido') or []                     # respiro inserido: o que vem depois do ponto se desloca
         tempo = lambda t, d=desloc, ins=ins: t + d + sum(i['silencio_s'] for i in ins if t >= i['t'])
         frases = casa(c['fala'], F['alinhamento'], tempo, f'capítulo {n:02d}', fim=F['fim_da_fala'])
         cenas.append({'id': f'{n:02d}', 'ancora': None, 'frases': frases})
+        prox = rot['capitulos'][n + 1] if n + 1 < len(rot['capitulos']) else None
+        if prox is not None and prox.get('legenda') is False:       # o capítulo seguinte não tem legenda: a última página
+            cenas[-1]['ate'] = cap['t1']                            # sai no começo do corte, sem invadir o capítulo seguinte
     for c in cenas:
         for f in c['frases']:
             for w in f['palavras']:
