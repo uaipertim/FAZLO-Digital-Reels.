@@ -2,34 +2,6 @@
  "duracao": 58.462,
  "cues": [
   {
-   "t": 2.9,
-   "type": "conta",
-   "k": 0
-  },
-  {
-   "t": 2.99,
-   "type": "conta",
-   "k": 1
-  },
-  {
-   "t": 3.08,
-   "type": "conta",
-   "k": 2
-  },
-  {
-   "t": 3.17,
-   "type": "conta",
-   "k": 3
-  },
-  {
-   "t": 4.62,
-   "type": "encolhe"
-  },
-  {
-   "t": 5.24,
-   "type": "pousa"
-  },
-  {
    "t": 5.38,
    "type": "corte"
   },
@@ -41,6 +13,10 @@
    "t": 6.16,
    "type": "monta",
    "k": 1
+  },
+  {
+   "t": 6.18,
+   "type": "pousa"
   },
   {
    "t": 10.48,

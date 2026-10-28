@@ -222,6 +222,23 @@ for s in CX:
             botao.append((s['t'], b))
 ok(not fora, f'conteúdo importante entre y 265 e 1456: {n_cx} caixas em {n_t} quadros' + ('' if not fora else ' · fora: ' + '; '.join(f'{t:.2f}s {b["nome"]} y {b["y0"]:.0f}–{b["y1"]:.0f}' for t, b in fora[:6])))
 ok(not botao, 'nenhuma caixa na coluna de botões (x ≥ 950, y 1060–1560)' + ('' if not botao else ': ' + '; '.join(f'{t:.2f}s {b["nome"]}' for t, b in botao[:6])))
+# a lista dos pedidos (collab) nunca por cima de outra peça (balão, ilustração, textos…), em TODOS os quadros amostrados
+if LN.get('progresso') == 'pedidos':
+    cruza = lambda a, b: a['x0'] < b['x1'] - 0.5 and b['x0'] < a['x1'] - 0.5 and a['y0'] < b['y1'] - 0.5 and b['y0'] < a['y1'] - 0.5
+    sob, n_l = [], 0
+    for s_ in CX:
+        ls = [b for b in s_['caixas'] if b['nome'] == 'lista de pedidos']
+        n_l += bool(ls)
+        for L_ in ls:
+            cl = MOT['fecho']['corte_logo']                 # no corte diagonal da logo cada lado é recortado: a logo e a
+            no_corte = cl[0] - 0.05 <= s_['t'] <= cl[1] + 0.05  # lista nunca dividem pixels (só as caixas se cruzam)
+            sob += [(s_['t'], b['nome']) for b in s_['caixas'] if b['nome'] != 'lista de pedidos' and cruza(L_, b)
+                    and not (no_corte and b['nome'] == 'logo final')]
+    primeira = next((s_['t'] for s_ in CX if any(b['nome'] == 'lista de pedidos' for b in s_['caixas'])), None)
+    ok(not sob, f'a lista dos pedidos não se sobrepõe a nada: {n_l} quadros com a lista, primeira em {primeira:.2f} s'
+       + ('' if not sob else ' · sobreposta em: ' + '; '.join(f'{t:.2f}s {n}' for t, n in sob[:6])))
+    c1 = next(c for c in LN['capitulos'] if c['diagrama']['tipo'] == 'pedido')
+    ok(primeira is not None and primeira >= c1['corte'][1] - 1e-3, f'a lista não aparece na capa nem no gancho (entra em {primeira:.2f} s; o pedido 1 começa em {c1["corte"][1]:.2f} s)')
 ys = [b['y0'] for s in CX if not em_passagem(s['t']) for b in s['caixas']] + [b['y1'] for s in CX if not em_passagem(s['t']) for b in s['caixas']]
 xs = [b['x1'] for s in CX if not em_passagem(s['t']) for b in s['caixas']]
 info(f'faixa usada pelo conteúdo: y {min(ys):.0f}–{max(ys):.0f}, x até {max(xs):.0f}')

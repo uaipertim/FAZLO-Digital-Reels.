@@ -1223,18 +1223,22 @@
     return st;
   }
   function listaPlace(t) {
-    const c0 = CAPS[0], S0 = c0.S, f = ULT();
-    if (t < S0.lista) return null;
-    const meio = { x: 540 - LISTA.w * 1.7 / 2, y: S0.listaY, s: 1.7 };
-    if (t < c0.voo[0]) return meio;
-    if (t < c0.voo[1]) { const q = E.io(p(t, c0.voo[0], c0.voo[1])); return { x: lerp(meio.x, LCANTO.x, q), y: lerp(meio.y, LCANTO.y, q) - Math.sin(q * Math.PI) * 50, s: lerp(meio.s, LCANTO.s, q) }; }
-    if (f.S && f.S.listaPl && t >= f.S.lista) { const q = E.io(p(t, f.S.lista, f.S.lista + 0.7)), g = f.S.listaPl; return { x: lerp(LCANTO.x, g.x, q), y: lerp(LCANTO.y, g.y, q), s: lerp(LCANTO.s, g.s, q) }; }
+    // (28/10) a lista NÃO aparece na capa nem no gancho: entra no fim do corte para o pedido 1, já no canto
+    const f = ULT();
+    if (t < listaEntra()) return null;
+    if (f.S && f.S.listaPl && t >= f.S.lista) {      // fecho: desce primeiro pela coluna da direita, depois vai ao centro (não cruza o título)
+      const g = f.S.listaPl, qy = E.io(p(t, f.S.lista, f.S.lista + 0.5)), qx = E.io(p(t, f.S.lista + 0.35, f.S.lista + 0.85));
+      return { x: lerp(LCANTO.x, g.x, qx), y: lerp(LCANTO.y, g.y, qy), s: lerp(LCANTO.s, g.s, qy) };
+    }
     return LCANTO;
   }
+  const listaEntra = () => { const c1 = pedidoCaps()[0]; return c1 && c1.corte ? c1.corte[1] : 0; };
   function drawLista(c, t, pl) {
-    const st = listaState(t), S0 = CAPS[0].S, s = pl.s;
+    const st = listaState(t), s = pl.s, t0 = listaEntra();
+    const qe = E.out(p(t, t0, t0 + 0.3));              // entrada curta: fade + deslize de 28 px, sem atravessar a tela
+    c.save(); c.globalAlpha *= qe; c.translate((1 - qe) * 28, 0);
     for (let i = 0; i < LISTA.n; i++) {
-      const R = listaRect(pl, i), qa = E.back(p(t, S0.lista + 0.09 * i, S0.lista + 0.09 * i + 0.4), 1.8);
+      const R = listaRect(pl, i), qa = 1;
       if (qa <= 0) continue;
       const lit = st.lit.find((q) => q.i === i), b = st.building === i;
       c.save();
@@ -1259,8 +1263,9 @@
       }
       c.restore();
     }
+    c.restore();
     const last = listaRect(pl, LISTA.n - 1);
-    boxHere(c, 'lista de pedidos', pl.x, pl.y, pl.x + LISTA.w * s, last.y + last.h);
+    if (qe > 0.6) boxHere(c, 'lista de pedidos', pl.x, pl.y, pl.x + LISTA.w * s, last.y + last.h);
   }
 
   // ---------------------------------------------------------------- traço lima com brilho (ilustração da capa)
@@ -1330,15 +1335,15 @@
       S.ilu = comLeg ? 0.78 : 1;
       S.seloY = comLeg ? 445 + (994 - 445) * S.ilu : 994;
       if (comLeg) S.tTop = S.seloY + 70;
-      for (let k = 0; k < 4; k++) cue(S.lista + 0.09 * k, 'conta', { k });
-      cue(cap.voo[0], 'encolhe'); cue(cap.voo[1], 'pousa');
+      // (28/10) sem a lista na capa e no gancho: ela entra no fim do corte para o pedido 1, com um estalo curto
+      cue(listaEntra(), 'pousa');
       cap.lay = { apoioY: 1460 };
       S.pecas = [0, S.lista];
       return S;
     },
     draw(c, cap, S, t) {
       chip(c, cap.rotulo, L.x0, 372, { on: 0, size: 22, ls: 4, h: 50, cor: C.lime, corTexto: C.lime, solido: true });
-      const a = 1 - 0.78 * E.out(p(t, S.lista - 0.1, S.lista + 0.45));
+      const a = 1;                                     // a ilustração fica inteira (a lista não passa mais por cima)
       c.save(); c.translate(540, 445); c.scale(S.ilu, S.ilu); c.translate(-540, -445);
       cachoeira(c, 540, 515, t, a);
       boxHere(c, 'ilustração', 200, 445, 880, 975);
