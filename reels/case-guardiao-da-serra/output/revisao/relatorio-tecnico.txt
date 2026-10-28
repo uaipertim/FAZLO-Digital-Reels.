@@ -8,7 +8,7 @@ OK     60 fps, 3505 quadros
 OK     duração 58.42 s (alvo 45–60 s)
 OK     áudio aac 48000 Hz, 2 canais, 264 kb/s
 OK     vídeo e áudio com a mesma duração (Δ 45 ms)
-       arquivo 36.3 MB, 5.0 Mb/s
+       arquivo 36.4 MB, 5.0 Mb/s
        capítulos (do início do corte de entrada ao início do corte seguinte): 00 5.4 s · 01 8.7 s · 02 11.3 s · 03 8.5 s · 04 12.9 s · 05 11.7 s
 
 SOM (medido no MP4, depois do AAC)
@@ -63,9 +63,9 @@ OK     sem trechos pretos
 OK     sem imagem congelada por 1,5 s ou mais antes da logo final (o fundo e o cursor seguem vivos)
 
 CAPA
-OK     a capa é o quadro 0 do vídeo (PSNR 39.2 dB entre capa.png e o 1º quadro)
-OK     conteúdo da capa em y 372–1238, dentro do recorte 3:4 (y 240–1680) com folga ≥ 40 px
-       centro do bloco da capa em y 805 (centro do recorte: 960); marca em y 287
+OK     a capa é o quadro 0 do vídeo (PSNR 38.7 dB entre capa.png e o 1º quadro)
+OK     conteúdo da capa em y 372–1373, dentro do recorte 3:4 (y 240–1680) com folga ≥ 40 px
+       centro do bloco da capa em y 873 (centro do recorte: 960); marca em y 287
 
 FECHO
 OK     fecho de 11.68 s, do corte de entrada ao fim (mínimo 8,5 s): título + chamado + logo

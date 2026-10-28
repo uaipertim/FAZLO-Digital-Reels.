@@ -1320,14 +1320,16 @@
       S.lista = at(cap, d.lista && d.lista.em);
       S.listaY = 560;
       const lines = cap.titulo.map(typo);
-      let s = LEGON ? 68 : 78, rows;
+      // o capítulo só encolhe se tiver legenda ("legenda": false no capítulo: sem páginas dele, layout original)
+      const comLeg = LEGON && LEG.paginas.some((q) => q.cena === String(cap.n).padStart(2, '0'));
+      let s = comLeg ? 68 : 78, rows;
       const quebra = (z) => lines.map((l) => wrap(l, DISPLAY, z, 800, 860));      // até x 940: fora da coluna de botões
       while (s > 40 && ((rows = quebra(s)).flat().length > 4 || rows.flat().some((r) => tw(r, DISPLAY, s, 800) > 860))) s -= 1;
       S.ts = s; S.rows = rows; S.tTop = 1078;
       // legenda ligada: a ilustração encolhe (0,78, a partir do topo) e o título sobe; tudo acaba antes de y 1270
-      S.ilu = LEGON ? 0.78 : 1;
-      S.seloY = LEGON ? 445 + (994 - 445) * S.ilu : 994;
-      if (LEGON) S.tTop = S.seloY + 70;
+      S.ilu = comLeg ? 0.78 : 1;
+      S.seloY = comLeg ? 445 + (994 - 445) * S.ilu : 994;
+      if (comLeg) S.tTop = S.seloY + 70;
       for (let k = 0; k < 4; k++) cue(S.lista + 0.09 * k, 'conta', { k });
       cue(cap.voo[0], 'encolhe'); cue(cap.voo[1], 'pousa');
       cap.lay = { apoioY: 1460 };
